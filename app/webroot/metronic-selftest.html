@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>esna-new — self-test Metronic + branding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--
+      Static self-test harness. Loads EXACTLY the same assets, in exactly the
+      same order, as app/View/Layouts/default.ctp after the Step 1 rework.
+      Plain HTML on purpose: it needs no PHP, so it can be opened directly in
+      a browser to confirm the asset pipeline before CakePHP is even running.
+
+      Open as:  http://<host>/metronic-selftest.html
+      (or open the file directly from disk - all paths are relative)
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="metronic/demo1/dist/assets/plugins/global/plugins.bundle.css">
+    <link rel="stylesheet" href="metronic/demo1/dist/assets/css/style.bundle.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/esna-theme.css">
+
+    <script src="metronic/demo1/dist/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="js/flatpickr-fr.js"></script>
+</head>
+
+<body id="kt_app_body" class="app-default">
+    <div class="container py-10">
+
+        <h1 class="fw-bold mb-2">esna-new — self-test</h1>
+        <p class="text-muted mb-8">Metronic 8.2.0 + ESNAPHARM branding (Poppins / purple).</p>
+
+        <!-- ============ automated checks ============ -->
+        <div class="card mb-8">
+            <div class="card-header">
+                <h3 class="card-title">Vérifications automatiques</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-row-bordered gy-4 align-middle">
+                    <thead>
+                        <tr class="fw-bold fs-6 text-gray-800">
+                            <th>Contrôle</th>
+                            <th>Attendu</th>
+                            <th>Résultat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="checks"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ============ branding ============ -->
+        <div class="card mb-8">
+            <div class="card-header">
+                <h3 class="card-title">Charte graphique</h3>
+            </div>
+            <div class="card-body">
+                <p>Ce paragraphe doit s'afficher en <strong>Poppins</strong>.</p>
+                <div class="d-flex flex-wrap gap-4 mt-5">
+                    <div class="text-center">
+                        <div style="width:90px;height:90px;border-radius:12px;background:var(--lb-primary)"></div>
+                        <div class="fs-8 mt-2">--lb-primary<br>#7c6ff0</div>
+                    </div>
+                    <div class="text-center">
+                        <div style="width:90px;height:90px;border-radius:12px;background:var(--lb-primary-dark)"></div>
+                        <div class="fs-8 mt-2">--lb-primary-dark<br>#5b4fd6</div>
+                    </div>
+                    <div class="text-center">
+                        <div style="width:90px;height:90px;border-radius:12px;background:var(--lb-primary-light)"></div>
+                        <div class="fs-8 mt-2">--lb-primary-light<br>#ede9fe</div>
+                    </div>
+                    <div class="text-center">
+                        <div style="width:90px;height:90px;border-radius:12px;border:3px solid var(--lb-border)"></div>
+                        <div class="fs-8 mt-2">--lb-border<br>#e5e0fb</div>
+                    </div>
+                    <div class="text-center">
+                        <div style="width:90px;height:90px;border-radius:50%" class="lb-avatar-bubble"></div>
+                        <div class="fs-8 mt-2">.lb-avatar-bubble</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ keenicons ============ -->
+        <div class="card mb-8">
+            <div class="card-header">
+                <h3 class="card-title">Keenicons (système d'icônes Metronic)</h3>
+            </div>
+            <div class="card-body">
+                <div class="d-flex flex-wrap gap-8 fs-2x align-items-center">
+                    <span><i class="ki-duotone ki-home-2"><span class="path1"></span><span
+                                class="path2"></span></i></span>
+                    <span><i class="ki-duotone ki-profile-user"><span class="path1"></span><span
+                                class="path2"></span><span class="path3"></span><span
+                                class="path4"></span></i></span>
+                    <span><i class="ki-duotone ki-chart-simple"><span class="path1"></span><span
+                                class="path2"></span><span class="path3"></span><span
+                                class="path4"></span></i></span>
+                    <span><i class="ki-duotone ki-calendar-8"><span class="path1"></span><span
+                                class="path2"></span><span class="path3"></span><span class="path4"></span><span
+                                class="path5"></span><span class="path6"></span></i></span>
+                    <span><i class="ki-duotone ki-file-added"><span class="path1"></span><span
+                                class="path2"></span></i></span>
+                    <span class="text-muted fs-6">↔ ancien Font Awesome 4 :</span>
+                    <span><i class="fa fa-home"></i></span>
+                    <span><i class="fa fa-user"></i></span>
+                    <span><i class="fa fa-bar-chart"></i></span>
+                </div>
+                <p class="text-muted fs-7 mt-4 mb-0">
+                    Les deux lignes doivent être visibles : Keenicons pour les pages migrées,
+                    Font Awesome tant qu'il reste des vues non migrées.
+                </p>
+            </div>
+        </div>
+
+        <!-- ============ components ============ -->
+        <div class="card mb-8">
+            <div class="card-header">
+                <h3 class="card-title">Composants Bootstrap 5 / Metronic</h3>
+            </div>
+            <div class="card-body">
+                <div class="row g-5">
+                    <div class="col-md-4">
+                        <label class="form-label">Champ texte (.form-control)</label>
+                        <input type="text" class="form-control" placeholder="Nom du client">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Liste (.form-select)</label>
+                        <select class="form-select">
+                            <option>Médecin</option>
+                            <option>Pharmacie</option>
+                            <option>Hôpital</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Date (flatpickr + locale FR)</label>
+                        <input type="text" class="form-control" id="test-date" placeholder="Choisir une date">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Select2 (fourni par plugins.bundle.js)</label>
+                        <select class="form-select" id="test-select2">
+                            <option value="1">Secteur Nord</option>
+                            <option value="2">Secteur Sud</option>
+                            <option value="3">Secteur Centre</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="separator my-8"></div>
+
+                <div class="d-flex flex-wrap gap-3">
+                    <button class="btn btn-primary">btn-primary</button>
+                    <button class="btn btn-secondary">btn-secondary</button>
+                    <button class="btn btn-light-primary">btn-light-primary</button>
+                    <button class="btn btn-success">btn-success</button>
+                    <button class="btn btn-danger">btn-danger</button>
+                    <span class="badge badge-light-success align-self-center">badge-light-success</span>
+                    <span class="badge badge-light-danger align-self-center">badge-light-danger</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="metronic/demo1/dist/assets/js/scripts.bundle.js"></script>
+    <script>
+        (function () {
+            var rows = [];
+
+            function check(name, expected, pass, actual) {
+                rows.push(
+                    '<tr>' +
+                    '<td class="fw-semibold">' + name + '</td>' +
+                    '<td class="text-muted">' + expected + '</td>' +
+                    '<td>' + (pass
+                        ? '<span class="badge badge-light-success">OK</span>'
+                        : '<span class="badge badge-light-danger">ÉCHEC</span>') +
+                    ' <span class="text-muted fs-8">' + (actual || '') + '</span></td>' +
+                    '</tr>'
+                );
+            }
+
+            // jQuery: present, and exactly one instance
+            var jq = window.jQuery;
+            check('jQuery chargé', 'défini', !!jq, jq ? 'v' + jq.fn.jquery : 'absent');
+            check('jQuery en une seule instance',
+                'window.$ === window.jQuery',
+                !!jq && window.$ === window.jQuery,
+                '');
+
+            // Plugins that must survive the de-duplication
+            check('Select2 attaché à jQuery', 'jQuery.fn.select2',
+                !!(jq && jq.fn && jq.fn.select2), '');
+            check('flatpickr chargé', 'window.flatpickr',
+                typeof window.flatpickr === 'function', '');
+            check('Locale FR de flatpickr', 'flatpickr.l10ns.fr',
+                !!(window.flatpickr && window.flatpickr.l10ns && window.flatpickr.l10ns.fr),
+                window.flatpickr && window.flatpickr.l10ns && window.flatpickr.l10ns.fr
+                    ? window.flatpickr.l10ns.fr.months.longhand[0] : '');
+            check('daterangepicker chargé', 'jQuery.fn.daterangepicker',
+                !!(jq && jq.fn && jq.fn.daterangepicker), '');
+
+            // Metronic UI bundle
+            check('Metronic KTComponents', 'window.KTComponents ou KTUtil',
+                !!(window.KTComponents || window.KTUtil), '');
+
+            // Keenicons webfont actually applied
+            var probe = document.createElement('i');
+            probe.className = 'ki-duotone ki-home-2';
+            document.body.appendChild(probe);
+            var fam = getComputedStyle(probe, ':before').fontFamily || '';
+            document.body.removeChild(probe);
+            check('Police Keenicons appliquée', 'keenicons-duotone',
+                /keenicons/i.test(fam), fam);
+
+            // Brand tokens from esna-theme.css
+            var cs = getComputedStyle(document.documentElement);
+            var primary = (cs.getPropertyValue('--lb-primary') || '').trim();
+            check('Variable de marque --lb-primary', '#7c6ff0',
+                primary.toLowerCase() === '#7c6ff0', primary);
+
+            var bodyFont = getComputedStyle(document.body).fontFamily || '';
+            check('Police Poppins appliquée', 'Poppins',
+                /poppins/i.test(bodyFont), bodyFont);
+
+            document.getElementById('checks').innerHTML = rows.join('');
+
+            // Live widgets
+            if (jq && jq.fn.select2) {
+                jq('#test-select2').select2({ placeholder: 'Choisir un secteur' });
+            }
+            if (window.flatpickr) {
+                window.flatpickr('#test-date', { locale: 'fr', dateFormat: 'd/m/Y' });
+            }
+        })();
+    </script>
+</body>
+
+</html>

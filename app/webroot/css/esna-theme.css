@@ -1,0 +1,217 @@
+/*
+ * esna-theme.css — ESNAPHARM "CRM VMP" brand layer on top of Metronic 8.2.0
+ * ---------------------------------------------------------------------------
+ * Extracted verbatim from the inline <style> block that used to live in
+ * app/View/Layouts/default.ctp (lines 25-231). Behaviour is unchanged: this
+ * file is loaded AFTER Metronic's style.bundle.css so its overrides still win.
+ *
+ * Brand decision (confirmed 2026-07-22): keep the purple palette and Poppins.
+ * Use the --lb-* custom properties below on every migrated page rather than
+ * hard-coding hex values, so the branding stays consistent app-wide.
+ */
+
+:root {
+    --lb-primary: #7c6ff0;
+    --lb-primary-dark: #5b4fd6;
+    --lb-primary-light: #ede9fe;
+    --lb-border: #e5e0fb;
+    --lb-text: #1e1b3a;
+    --lb-muted: #64748b;
+}
+
+body {
+    font-family: 'Poppins', sans-serif !important;
+    background-color: #f6f5fb !important;
+}
+
+/* ================= HEADER ================= */
+#kt_app_header {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid var(--lb-border) !important;
+    box-shadow: 0 2px 12px rgba(31, 29, 74, 0.04) !important;
+}
+
+#kt_app_header .fs-3.text-primary,
+#kt_app_header .fs-3 {
+    color: var(--lb-primary) !important;
+    font-weight: 700 !important;
+}
+
+/* ================= SIDEBAR COLLAPSE: LOGO SWAP ================= */
+.app-sidebar-logo-minimize {
+    display: none !important;
+}
+
+[data-kt-app-sidebar-minimize="on"] .app-sidebar-logo-default {
+    display: none !important;
+}
+
+[data-kt-app-sidebar-minimize="on"] .app-sidebar-logo-minimize {
+    display: flex !important;
+}
+
+/* ================= SIDEBAR COLLAPSE: SEARCH BAR SWAP ================= */
+.sidebar-search-icon {
+    display: none !important;
+}
+
+.sidebar-search-icon-btn {
+    background-color: #f6f5fb !important;
+    border: 1px solid var(--lb-border) !important;
+    border-radius: 10px !important;
+    color: var(--lb-muted) !important;
+    width: 34px;
+    height: 34px;
+}
+
+.sidebar-search-icon-btn:hover {
+    background-color: var(--lb-primary-light) !important;
+    color: var(--lb-primary-dark) !important;
+}
+
+[data-kt-app-sidebar-minimize="on"] .sidebar-search-full {
+    display: none !important;
+}
+
+[data-kt-app-sidebar-minimize="on"] .sidebar-search-icon {
+    display: flex !important;
+}
+
+.app-navbar-item .btn-icon {
+    background-color: var(--lb-primary-light) !important;
+    color: var(--lb-primary) !important;
+    border-radius: 10px !important;
+}
+
+.app-navbar-item .btn-icon:hover {
+    background-color: var(--lb-primary) !important;
+    color: #fff !important;
+}
+
+.app-navbar-item .badge-circle {
+    background-color: var(--lb-primary) !important;
+    color: #fff !important;
+    font-size: 10px !important;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+}
+
+/* admin avatar bubble */
+.lb-avatar-bubble {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--lb-primary) 0%, #a89bff 100%);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+/* ================= SIDEBAR ================= */
+#kt_app_sidebar {
+    background-color: #ffffff !important;
+    border-right: 1px solid var(--lb-border) !important;
+}
+
+/* quick-search input inside sidebar */
+#RechercherLienDirect {
+    background-color: #f6f5fb !important;
+    border: 1px solid var(--lb-border) !important;
+    border-radius: 10px !important;
+    padding: 10px 14px !important;
+}
+
+#kt_app_sidebar .menu-link,
+#kt_app_sidebar .menu-item > .menu-link,
+#kt_app_sidebar .menu-item .menu-link {
+    color: var(--lb-muted) !important;
+    border-radius: 10px !important;
+    padding: 10px 12px !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    transition: all .15s ease !important;
+}
+
+#kt_app_sidebar .menu-link:hover,
+#kt_app_sidebar .menu-item:hover > .menu-link {
+    color: var(--lb-primary-dark) !important;
+    background-color: var(--lb-primary-light) !important;
+}
+
+#kt_app_sidebar .menu-item.menu-accordion.hover > .menu-link,
+#kt_app_sidebar .menu-item.here > .menu-link,
+#kt_app_sidebar .menu-item.active > .menu-link {
+    color: #fff !important;
+    background-color: var(--lb-primary) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 14px rgba(124, 111, 240, 0.3) !important;
+}
+
+.menu-icon i {
+    color: inherit !important;
+    font-size: 13px !important;
+}
+
+#kt_app_sidebar .menu-sub-accordion {
+    background-color: #ffffff !important;
+    border: 1px solid var(--lb-border) !important;
+    border-radius: 10px !important;
+    margin: 4px 0 8px 0 !important;
+    padding: 4px !important;
+}
+
+#kt_app_sidebar .menu-sub-accordion .menu-item > .menu-link,
+#kt_app_sidebar .menu-sub-accordion .menu-link,
+#kt_app_sidebar .menu-sub-accordion .menu-link:link,
+#kt_app_sidebar .menu-sub-accordion .menu-link:visited {
+    background-color: #ffffff !important;
+    color: var(--lb-muted) !important;
+    font-weight: 500 !important;
+    font-size: 11px !important;
+    padding: 8px 12px 8px 30px !important;
+    box-shadow: none !important;
+}
+
+#kt_app_sidebar .menu-sub-accordion .menu-link:hover,
+#kt_app_sidebar .menu-sub-accordion .menu-item:hover > .menu-link,
+#kt_app_sidebar .menu-sub-accordion .menu-item.active > .menu-link,
+#kt_app_sidebar .menu-sub-accordion .menu-item.here > .menu-link {
+    background-color: var(--lb-primary) !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 14px rgba(124, 111, 240, 0.22) !important;
+}
+
+.badge-light-danger {
+    background-color: #fce7f3 !important;
+    color: #f472b6 !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+}
+
+/* ================= UTILITIES ================= */
+.fixed-botton {
+    position: fixed;
+    bottom: 39px;
+    right: 20px;
+    z-index: 9999;
+    text-align: right;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.fixed-botton:hover {
+    opacity: 1;
+}
+
+@media only screen and (max-width: 768px) {
+    .name_user {
+        display: none;
+    }
+}
