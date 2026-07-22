@@ -98,8 +98,9 @@ Legend: ✅ done · 🟡 in progress · ⬜ pending · ⛔ blocked
 | 6b | Audit inherited `default.ctp` + Metronic bundle contents | ✅ 2026-07-21 — see §4 |
 | 7 | Master layout `default.ctp` via `Html->css()` / `Html->script()` | ✅ 2026-07-22 |
 | 7b | Classify mobile/API view groups (in scope vs out) | ✅ 2026-07-22 — **in scope**, see §7 |
-| 8 | Shared partials (sidebar / topbar / flash / breadcrumbs) | ⬜ |
-| 9 | Page-by-page reconstruction | ⬜ awaiting sign-off on self-test page |
+| 8 | Shared partials (sidebar / topbar / flash / breadcrumbs) | ✅ 2026-07-22 |
+| 8b | Delete dead `_old.ctp` files (16) | ✅ 2026-07-22 |
+| 9 | Page-by-page reconstruction — Clients first | ⬜ awaiting self-test result |
 
 ### Per-module migration checklist
 
@@ -237,6 +238,90 @@ Verification performed:
   attached, `flatpickr.l10ns.fr` present, Keenicons webfont applied, `--lb-primary` =
   `#7c6ff0`, Poppins active, `KTComponents` loaded) plus visual swatches, icon rows and
   Metronic form/button/badge samples.
+
+### 2026-07-22 — Step 2: shared layout partials + dead-code removal
+
+**A. Deleted 16 dead files** (user-approved). Each was verified to have **zero**
+references anywhere in `app/` before removal, and all are recoverable from git history:
+
+- 14 `*_old.ctp` views in the mobile groups (7,993 lines) — see §7.
+- 2 `Layouts/default_old.ctp`, `Layouts/appmobile_old.ctp` (TODO #3, now closed).
+
+View count: 376 → **361** (376 − 16 deleted + 1 new `Elements/assets/datatables.ctp`).
+
+**B. Extracted the layout into partials.** `app/View/Layouts/default.ctp` went
+**1,209 → 337 lines** (−72%). New files under `app/View/Elements/layout/`:
+
+| Element | Lines | Contents |
+|---|---:|---|
+| `topbar.ctp` | 84 | `app-header` — notifications, mailbox, user menu, logout |
+| `sidebar.ctp` | 757 | `app-sidebar` — the whole nav menu incl. inline `Droits` rights checks |
+| `footer.ctp` | 20 | `app-footer` — ESNAPHARM / CRM VMP |
+| `chat_ia.ctp` | 51 | floating "Chat with IA" launcher + BS5 modal |
+| `flash.ctp` | 97 | **new** — flash messages as Metronic alerts (see below) |
+| `page_header.ctp` | 77 | **new** — reusable page title + breadcrumb toolbar |
+
+The layout now reads as a page skeleton: `element('layout/topbar')`,
+`element('layout/sidebar')`, `element('layout/flash')`, `fetch('content')`,
+`element('layout/footer')`, `element('layout/chat_ia')`.
+
+**C. Flash messages now render server-side.** This was the one part of Step 2 that
+changes behaviour, and it needed care:
+
+- CakePHP 2's `SessionHelper::flash()` **hardcodes** its output for the `default`
+  element — always `<div id="flashMessage" class="message">…</div>` — and, unlike other
+  elements, adding an `Elements/default.ctp` does **not** override it. Of the **417**
+  `setFlash()` calls in `app/Controller`, **345** pass only a message, **57** pass 2 args
+  and **15** pass 3; the only non-default usage is
+  `'default', array('class' => 'alert alert-success'|'alert alert-danger')`.
+- The old layout coped by rewriting `#flashMessage` with jQuery inside
+  `$(window).load()`. That fired only after *every* asset had downloaded, so the raw
+  unstyled message was painted first, and it depended on jQuery being present.
+- `Elements/layout/flash.ctp` instead post-processes the helper's output **server-side**:
+  no flash-of-unstyled-content, no jQuery dependency, and **no controller changes** —
+  all 417 `setFlash()` calls keep working untouched, which respects the
+  "views only, don't touch business logic" constraint.
+- Severity mapping is deliberately **identical to the old JS** so nothing changes
+  semantically: `flash` → success, `auth` → danger, and an explicit `alert-*` class from
+  the controller always wins. Unrecognised/custom markup is passed through untouched
+  rather than mangled.
+- The now-redundant `$(window).load()` rewriter was removed from the layout — left in
+  place it would have **overwritten** the new server-rendered alert markup.
+
+**D. New `page_header` element** gives every page a consistent Metronic toolbar
+(`page-title` + `breadcrumb-separatorless` + optional actions slot). Markup copied from
+Metronic's own `dist/account/activity.html` rather than hand-invented. Usage:
+
+```php
+<?php echo $this->element('layout/page_header', array(
+    'title'  => 'Liste des clients',
+    'crumbs' => array('Clients' => array('controller' => 'clients', 'action' => 'index'),
+                      'Fiche client' => null),
+    'actions' => '<a href="#" class="btn btn-primary btn-sm">Ajouter</a>',
+)); ?>
+```
+
+Verification performed:
+
+- `php -l` on the layout and all 6 elements → **no syntax errors**.
+- **Content-preservation proof**: a script re-inlined every `element('layout/…')` call
+  back into the layout, normalised whitespace/comments, and diffed against the
+  pre-extraction backup. The **only** differences reported were the two intended ones
+  (flash element replacing `Session->flash()`, and the deleted jQuery rewriter).
+  `topbar`, `sidebar`, `footer` and `chat_ia` are **byte-identical** — the 746-line
+  sidebar moved without a single markup change.
+- `<div>` open/close balance checked per element: topbar 11/11, sidebar 54/54,
+  footer 4/4, chat_ia 13/13. *(The first footer extraction over-grabbed 3 closing
+  `</div>`s belonging to `app-main`/`app-wrapper`/`app-page`; caught by this check
+  and fixed.)*
+- Flash parsing unit-tested against the 7 real output shapes CakePHP produces for the
+  `setFlash()` call styles found in the controllers (plain, auth, explicit success,
+  explicit danger, embedded HTML, apostrophes/accents, custom-element passthrough) →
+  **all 7 pass**.
+- Confirmed `$this->Session` resolves inside an element on CakePHP 2.10: `View::__get()`
+  → `HelperCollection::__isset()` → `load()` lazily instantiates the helper
+  (`lib/Cake/View/HelperCollection.php:57`), which is why the old layout could use it
+  without declaring `$helpers`.
 
 ---
 
@@ -449,6 +534,14 @@ work.
     pipeline and branding. **A PHP 7.4 runtime is needed to test actual `.ctp` rendering.**
 14. **Mobile layouts still on CDN Bootstrap 4.3.1** (`appmobile.ctp`, `appmobilepro.ctp`)
     and AdminLTE (`mobile.ctp`) — see §7. Needs its own migration track.
-15. **14 dead `_old.ctp` files** in the mobile groups (7,993 lines, zero controller
-    references) — awaiting user go-ahead to exclude/delete. See §7. There are also
-    `default_old.ctp` / `appmobile_old.ctp` in `Layouts/` (TODO #3).
+15. ~~14 dead `_old.ctp` files~~ — **CLOSED 2026-07-22**: 16 files deleted (14 mobile
+    views + 2 `_old` layouts), user-approved, recoverable from git history.
+16. **Conventions for page migration** (established in Step 2, apply from Clients on):
+    - page title/breadcrumb → `$this->element('layout/page_header', array(...))`
+    - table pages → `$this->element('assets/datatables')` instead of the BS3 pair
+    - per-view assets → pass `array('block' => 'css')` / `array('block' => 'script')`
+    - brand colours → use the `--lb-*` custom properties, never raw `#7c6ff0`
+17. **Bootstrap 3/4 compat shim is still active** in the layout — a delegated click
+    handler that maps legacy `data-toggle`/`data-target`/`data-dismiss` to Bootstrap 5's
+    `data-bs-*`. It keeps un-migrated views working. Once every view uses `data-bs-*`,
+    delete the shim; until then, do **not** rely on it in newly migrated markup.
