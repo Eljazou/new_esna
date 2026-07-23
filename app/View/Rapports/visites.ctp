@@ -1,9 +1,8 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
+<?php echo $this->element('assets/datatables'); ?>
+<?php
  echo $this->Html->css('_all-skins.min');
  ?>
-<?php echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
+<?php
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -76,7 +75,7 @@ echo $this->Html->script('demo');
 		display:flex; align-items:center;
 		padding:4px 16px 4px 4px;
 	}
-	#dateform .input-group-addon{ display:none; }
+	#dateform .input-group-text{ display:none; }
 	#dateform .form-control{
 		border:none !important; background:transparent !important; box-shadow:none !important;
 		font-size:13.5px; color:#44444f; padding:10px 6px !important; cursor:pointer;
@@ -96,7 +95,7 @@ echo $this->Html->script('demo');
 		overflow:hidden;
 		box-shadow:0 10px 28px rgba(140,126,242,0.07);
 	}
-	.rapports-card .box-body{ padding:0; overflow-x:auto; }
+	.rapports-card .card-body{ padding:0; overflow-x:auto; }
 
 	table.rapports-table{ margin-bottom:0; }
 	table.rapports-table thead th{
@@ -250,8 +249,8 @@ echo $this->Html->script('demo');
 </div>
 
 <div class="rapports-card">
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped rapports-table">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4 rapports-table">
             <thead>
                 <tr>
 					<th>VM</th>

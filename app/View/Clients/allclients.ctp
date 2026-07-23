@@ -877,7 +877,7 @@ body, .content-wrapper{
         var conte = 0;
         $('#example1 tfoot th').each(function () {
             var title = $(this).text();
-            $(this).html('<input type="text" placeholder="' + title + '" class="' + conte"/>');
+            $(this).html('<input type="text" placeholder="' + title + '" class="form-control form-control-sm ' + conte + '"/>');
             conte = conte + 1;
         });
 

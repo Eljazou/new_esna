@@ -1,14 +1,8 @@
 <?php echo $this->Html->css('daterangepicker'); ?>
-<?php echo $this->Html->css('select2.min'); ?>
-<?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('select2.full.min');
-?>
-
 <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
 
 <style>
-    .box-primary .box-header {
+    .box-primary .card-header {
         background: #3c8dbc;
         color: white;
     }
@@ -59,7 +53,7 @@ echo $this->Html->script('select2.full.min');
         margin-left: 30px;
     }
 
-    .box.box-primary {
+    .card.box-primary {
         border: 2px solid #3c8dbc;
         z-index: 9;
     }
@@ -67,18 +61,18 @@ echo $this->Html->script('select2.full.min');
 
 <div class="myrow">
     <div class="col-md-12" style="margin-bottom: 10px;">
-        <div class="box ">
+        <div class="card">
             
-            <div class="box-body">
+            <div class="card-body">
                 <?php echo $this->Form->create('Rapport'); ?>
                 <?php echo $this->Form->input('id', array('type' => 'hidden')); ?>
 
                 <div class="col-md-12" style="margin-bottom: 24px;">
                     <div class="">
-                        <label class="box-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;font-weight: normal;width: auto;text-align:left;float:left;">Rapport concernant la date :</label>
+                        <label class="card-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;font-weight: normal;width: auto;text-align:left;float:left;">Rapport concernant la date :</label>
                         <div class="col-md-4">
                             <div class="input-group col-lg-12" >
-                                <div class="input-group-addon">
+                                <div class="input-group-text">
                                     <i class="fa-regular fa-clock"></i>
                                 </div>
                                 <input type="text" name="data[Rapport][date]" class="form-control pull-right" name="date" id="reservationtime" placeholder="Date" value="<?php echo $this->request->data['Rapport']['date_debut'].' -- '.$this->request->data['Rapport']['date_fin']; ?>">
@@ -87,7 +81,7 @@ echo $this->Html->script('select2.full.min');
                     </div>
 
                     <div class="">
-                        <label class="box-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;font-weight: normal;width: auto;text-align:left;float:left;">Titre Rapport :</label>
+                        <label class="card-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;font-weight: normal;width: auto;text-align:left;float:left;">Titre Rapport :</label>
                         <div class="col-md-4">
                             <div class="input-group col-lg-12" >
                                 <input name="data[Rapport][titre]" class="form-control" type="text" id="RapportTitre">
@@ -97,11 +91,11 @@ echo $this->Html->script('select2.full.min');
 
                 </div>
 
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Activité CRM</h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Activité CRM</h3>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <div class="cart">
                             <div class="cart-header">
                                 <h2 class="title-cart">
@@ -111,14 +105,14 @@ echo $this->Html->script('select2.full.min');
                             <div class="myrow">
 
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="mb-5">
                                         <label>Moyenne de visite</label>
                                         <input name="data[Rapport][moyen_visite]" type="text" class="form-control" id="moyen-visite" value="<?php echo h($this->request->data['Rapport']['moyen_visite']); ?>">
                                     </div>
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="mb-5">
                                         <label>Taux de couverture</label>
                                         <input name="data[Rapport][taux_couverture]" type="text" class="form-control" id="taux" value="<?php echo h($this->request->data['Rapport']['taux_couverture']); ?>">
                                     </div>
@@ -135,14 +129,14 @@ echo $this->Html->script('select2.full.min');
                             </div>
                             <div class="myrow">
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="mb-5">
                                         <label>Nombre de visites solo</label>
                                         <input name="data[Rapport][visite_solo]" type="number" class="form-control" id="moyen-visite" value="<?php echo h($this->request->data['Rapport']['visite_solo']); ?>">
                                     </div>
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="mb-5">
                                         <label>En double</label>
                                         <input name="data[Rapport][visite_double]" type="number" class="form-control" id="taux" value="<?php echo h($this->request->data['Rapport']['visite_double']); ?>">
                                     </div>
@@ -153,7 +147,7 @@ echo $this->Html->script('select2.full.min');
                         </div>
 
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="mb-5">
                                 <label>Commentaire</label>
                                 <textarea name="data[Rapport][commentaire_activite]" class="form-control"><?php echo h($this->request->data['Rapport']['commentaire_activite']); ?></textarea>
                             </div>
@@ -161,31 +155,31 @@ echo $this->Html->script('select2.full.min');
                     </div>
                 </div>
                 
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Feed back terrain</h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Feed back terrain</h3>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="mb-5">
                                 <label>Activité terrain</label>
                                 <textarea name="data[Rapport][activite_terrain]" class="form-control"><?php echo h($this->request->data['Rapport']['activite_terrain']); ?></textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="mb-5">
                                 <label>Feed back matériel et produits</label>
                                 <textarea name="data[Rapport][Feed_terrain]" class="form-control"><?php echo h($this->request->data['Rapport']['Feed_terrain']); ?></textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="mb-5">
                                 <label>Activité de la concurrence</label>
                                 <textarea name="data[Rapport][concurrence_terrain]" class="form-control"><?php echo h($this->request->data['Rapport']['concurrence_terrain']); ?></textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="mb-5">
                                 <label>Commentaire</label>
                                 <textarea name="data[Rapport][commentaire_terrain]" class="form-control"><?php echo h($this->request->data['Rapport']['commentaire_terrain']); ?></textarea>
                             </div>

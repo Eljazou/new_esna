@@ -102,7 +102,8 @@ Legend: ✅ done · 🟡 in progress · ⬜ pending · ⛔ blocked
 | 8b | Delete dead `_old.ctp` files (16) | ✅ 2026-07-22 |
 | 9 | Page-by-page reconstruction — **Clients (15 views)** | ✅ 2026-07-22 |
 | 10 | Page-by-page — **Visites (13 views)** | ✅ 2026-07-23 |
-| 11 | Next module: Rapports (11 views) | ⬜ |
+| 11 | Page-by-page — **Rapports (11 views)** | ✅ 2026-07-23 |
+| 12 | Next module: Users (16 views) | ⬜ |
 
 ### Per-module migration checklist
 
@@ -476,6 +477,87 @@ earlier audit had no pattern for (`ion ion-bag` etc.) — now Keenicons. Clients
 | `verify_code_intact.py` | catches code corruption `php -l` cannot see |
 | `audit_legacy.py` | comment-aware sweep for 17 legacy patterns |
 
+### 2026-07-23 — Step 3, module 3: **Rapports** (11 views) ✅
+
+Largest module so far: 13,782 → 13,674 lines, including `add.ctp` (3,771 lines),
+`view.ctp` (3,448) and `edit.ctp` (2,752). All 11 views: `php -l` clean, **logic identical**
+(`add.ctp` alone: 1,473 PHP statements unchanged), legacy audit **ALL CLEAN**.
+
+| View | Lines | Notes |
+|---|---:|---|
+| `add.ctp` | 3771 | 21 `.box`, 168 grid, 87 FA icons, 86 modals; `.optionh` toggle markup + its JS |
+| `view.ctp` | 3448 | same shape, read-only |
+| `edit.ctp` | 2752 | same shape |
+| `addsp.ctp` / `editsp.ctp` / `viewsp.ctp` | 594/246/362 | "sans produit" report variants |
+| `index.ctp` / `index_dsm.ctp` / `index_vmp.ctp` | ~513 ea. | three role-scoped listings |
+| `archive.ctp` | 493 | DataTables listing |
+| `visites.ctp` | 578 | visit sub-listing |
+
+**121 icon references migrated**, in three passes because the JS coupling differs:
+- 87 toggle class-strings (`"fa fa-plus"` / `"fa fa-minus"`) → single-glyph `ki-plus`/
+  `ki-minus`. **No `<span class="pathN">` children on these** — the JS swaps the whole class
+  attribute, so duotone children would survive the swap and render as stray boxes.
+- 34 static icons (`fa-user-md`, `fa-cloud-upload`) → duotone with proper path spans,
+  preserving their inline `style` attributes.
+- **A trap caught mid-migration:** the class-string *assignments* use double quotes
+  (`"fa fa-plus"`) but the *comparisons* use single quotes (`'fa fa-plus'`). Migrating only
+  the double-quoted form leaves `if (clas == 'fa fa-plus')` testing against a value that can
+  no longer occur — every expander silently stops working. Both forms were migrated together
+  and coherence verified per file.
+
+Three residuals the migrator correctly refused to touch, handled by hand:
+`class="box-body … boxtog<?php echo $i; ?>"` (class attribute containing PHP), `col-xs-*`
+inside JS strings, and a bare `class="label-warning"` (no `label ` prefix, so unmapped).
+
+### TODO #18 — closed
+
+Investigation showed the coupling I had been cautious about **does not exist**: every view
+carries its *own* copy of `objettog()`/`boxtogpo()` next to its *own* markup. There is no
+cross-file dependency.
+
+- `Rapports/{add,edit,view}.ctp` — markup + their own JS, migrated together ✅
+- `Users/admin_statistique.ctp` — self-contained, stays on Font Awesome until the Users
+  module; nothing in Rapports can break it ✅
+- `Clients/view.ctp` — defines `objettog()` but emits **zero** `.optionh` markup, so the
+  function is inert there. Moved to Keenicons for consistency ✅
+
+### 🔴 Real corruption found in already-committed Clients code
+
+`Clients/allclients.ctp` contained damage from the original buggy migrator (Bug A), shipped
+in the Clients commit:
+
+```js
+original:   $(this).html('<input … placeholder="' + title + '" class="' + conte + '"/>');
+committed:  $(this).html('<input … placeholder="' + title + '" class="' + conte"/>');
+```
+
+Invalid JavaScript — it would have thrown at runtime and killed the per-column filter setup
+on the client listing. `php -l` reported the file clean throughout.
+
+**Why it survived two earlier checks:** the ad-hoc verification I ran when first flagging
+this file used a fixed-width context window (`.{30}…`) to compare occurrences, and the
+damaged one sat too close to a line start to be captured. I reported "0 real losses" on
+the strength of that. It was wrong.
+
+Fixed, and the method replaced with `tools/scan_concat_damage.py`, which compares the
+**multiset of concatenation expressions** per file — no context window, nothing can hide.
+It was control-tested by re-introducing the exact bug: it reports
+`LOST {'+ conte +': 1}` while `php -l` on the same file reports *"No syntax errors"*.
+`verify_code_intact.py` now also excludes `<style>` blocks from token counts, since CSS
+braces and font URLs like `Plus+Jakarta+Sans` produced false positives that were masking
+signal.
+
+**Full re-scan of all 39 migrated views across the 3 modules: no other concatenation
+damage exists.**
+
+### Verification status — 39 views, 3 modules
+
+| Module | lint | logic | code intact | concat | legacy |
+|---|---|---|---|---|---|
+| Clients (15) | ✅ | ✅ *(4 files: `-0` removals, only `page_header` additions + 1 icon-in-label)* | ✅ | ✅ | ✅ |
+| Visites (13) | ✅ | ✅ identical | ✅ | ✅ | ✅ |
+| Rapports (11) | ✅ | ✅ identical | ✅ | ✅ | ✅ |
+
 ---
 
 ## 5. Migration checklist — inventory of `app/View/**/*.ctp`
@@ -532,7 +614,7 @@ pattern · `KI` = files already using Keenicons.
 | Appwebfinal | 16 | 7 | 1 | 3 | 16 | 0 | ⬜ |
 | Appweb | 16 | 7 | 2 | 5 | 16 | 0 | ⬜ |
 | Listes | 12 | 7 | 6 | 8 | 2 | 2 | ⬜ |
-| Rapports | 11 | 11 | 3 | 9 | 9 | 0 | ⬜ |
+| Rapports | 11 | 0 | 0 | 0 | 0 | ✅ | **✅ done 2026-07-23** |
 | Prospects | 8 | 7 | 2 | 4 | 4 | 0 | ⬜ |
 | Brochures | 8 | 5 | 2 | 5 | 2 | 0 | ⬜ |
 | Rapportprocpects | 7 | 5 | 4 | 7 | 6 | 0 | ⬜ |
@@ -694,7 +776,9 @@ work.
     - table pages → `$this->element('assets/datatables')` instead of the BS3 pair
     - per-view assets → pass `array('block' => 'css')` / `array('block' => 'script')`
     - brand colours → use the `--lb-*` custom properties, never raw `#7c6ff0`
-18. **`objettog()` icon toggle is intentionally still on Font Awesome** in
+18. ~~`objettog()` icon toggle still on Font Awesome~~ — **CLOSED 2026-07-23**: no
+    cross-file coupling exists (each view owns its copy of the function); Rapports migrated,
+    `Clients/view.ctp` moved to Keenicons. Original note: in
     `Clients/view.ctp`. It drives `.objet/.optionh/.optionb` markup that lives in
     `Rapports/{add,edit,view}.ctp` and `Users/admin_statistique.ctp`. When those views are
     migrated, swap the markup **and** the class-string comparison in `objettog()` together,
@@ -704,6 +788,16 @@ work.
 19. **`Clients/system_index.ctp` is an orphan view** — no controller action and no
     references anywhere in `app/`. It was restyled for consistency but is unreachable.
     Candidate for deletion; **not deleted without approval** since it is not an `_old` file.
+25. **`Users/admin_statistique.ctp` still uses Font Awesome** for its `.optionh` toggle.
+    It is self-contained (own markup + own `boxtogpo()`), so nothing is broken — migrate
+    markup and JS together when the Users module is done.
+26. **Icons whose class is swapped by JavaScript must be single-glyph Keenicons** (no
+    `<span class="pathN">` children). The JS replaces the whole class attribute; duotone
+    child spans would survive and render as stray boxes. Applies to every `ki-plus`/
+    `ki-minus` toggle in Visites and Rapports.
+27. **Class-string comparisons and assignments can use different quote styles** in the same
+    file (`if (clas == 'fa fa-plus')` vs `.attr("class", "fa fa-plus")`). Migrate both or the
+    toggle silently stops matching. Hit in Rapports/{add,edit,view}.
 21. **Markup built inside JavaScript strings is not auto-migrated.** The migrator now
     refuses to rewrite class attributes inside `<script>` blocks and string literals
     (see Bug A, 2026-07-23) because doing so corrupts concatenation operators. Any legacy

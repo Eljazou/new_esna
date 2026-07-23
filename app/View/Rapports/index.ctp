@@ -1,14 +1,8 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php echo $this->Html->css('daterangepicker');
-echo $this->Html->css('dataTables.bootstrap');
 echo $this->Html->css('_all-skins.min');
 ?>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('select2.full.min');
-?>
-<?php echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -121,9 +115,9 @@ function truncateText($text, $limit = 50)
 
 <div class="row">
     <div class="col-md-12" style="margin-bottom: 24px;">
-        <div class="box form-group">
-            <div class="box-header with-border">
-                <label class="box-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;font-weight: normal;width: auto;text-align:left;float:left;">Date du rapport</label>
+        <div class="card mb-5">
+            <div class="card-header">
+                <label class="card-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;font-weight: normal;width: auto;text-align:left;float:left;">Date du rapport</label>
                 <div class="col-md-10">
                     <?php echo $this->Form->create(false, array(
                         'url' => array('controller' => 'rapports', 'action' => 'index'),
@@ -131,8 +125,8 @@ function truncateText($text, $limit = 50)
                         'id' => 'dateform'
                     )); ?>
                     <div class="input-group col-md-5" style="float:left;">
-                        <div class="input-group-addon">
-                            <i class="fa fa-clock-o"></i>
+                        <div class="input-group-text">
+                            <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                         </div>
                         <input type="text"
                             <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?>
@@ -160,9 +154,9 @@ function truncateText($text, $limit = 50)
 <div class="row">
     <div class="col-md-12">
 
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title"><?php echo __('Rapports'); ?></h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><?php echo __('Rapports'); ?></h3>
                 <div class="box-tools pull-right">
                     <?php
                     $currentDay  = date('N'); // 1 = Monday, 7 = Sunday
@@ -197,7 +191,7 @@ function truncateText($text, $limit = 50)
                         }
                     } else {
                     ?>
-                        <span class="badge bg-red" data-toggle="tooltip"
+                        <span class="badge bg-danger" data-bs-toggle="tooltip"
                             title="L'ajout est autorisé du vendredi jusqu'au lundi matin">
                             L'ajout est bloqué !
                         </span>
@@ -206,8 +200,8 @@ function truncateText($text, $limit = 50)
                 </div>
             </div>
 
-            <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+            <div class="card-body">
+                <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                     <thead>
                         <tr>
                             <th>Ligne</th>
@@ -307,8 +301,8 @@ function truncateText($text, $limit = 50)
 
                                 <td class="actions">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                                            <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                                        <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">
+                                            <i class="ki-duotone ki-setting-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>&nbsp;<span class=""></span>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
@@ -381,15 +375,13 @@ function truncateText($text, $limit = 50)
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 <h4 class="modal-title" id="textModalLabel">Texte complet</h4>
             </div>
             <div class="modal-body" id="modalTextContent">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
             </div>
         </div>
     </div>
@@ -397,13 +389,6 @@ function truncateText($text, $limit = 50)
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <?php echo $this->Html->script('daterangepicker'); ?>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 <script>
     // Function to show full text in modal

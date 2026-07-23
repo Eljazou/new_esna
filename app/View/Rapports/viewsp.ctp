@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
 
 <style>
-    .box-primary .box-header {
+    .box-primary .card-header {
         background: #3c8dbc;
         color: white;
     }
@@ -38,7 +38,7 @@
         width: 100%;
     }
 
-    .box.box-primary {
+    .card.box-primary {
         border: 2px solid #3c8dbc;
     }
 
@@ -164,22 +164,22 @@
 
 <div class="row">
     <div class="col-md-12" style="margin-bottom: 10px;">
-        <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title">Détail du rapport de <?php echo $rapport['User']['name'] . " de " . $rapport['Rapport']['date_debut'] . " à " . $rapport['Rapport']['date_fin'];  ?></h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Détail du rapport de <?php echo $rapport['User']['name'] . " de " . $rapport['Rapport']['date_debut'] . " à " . $rapport['Rapport']['date_fin'];  ?></h3>
                 <div class="box-tools pull-right">
                     <?php echo $this->Html->link('<i class="fa-solid fa-pen-to-square"></i> Modifier', array('action' => 'edit', $rapport['Rapport']['id']), array('class' => 'btn btn-primary btn-sm', 'escape' => false)); ?>
                     <?php echo $this->Html->link('<i class="fa-solid fa-list"></i> Liste', array('action' => 'index'), array('class' => 'btn btn-default btn-sm', 'escape' => false)); ?>
                 </div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
 
 
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Activité CRM</h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Activité CRM</h3>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <div class="cart">
                             <div class="cart-header">
                                 <h2 class="title-cart">
@@ -238,11 +238,11 @@
                     </div>
                 </div>
 
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Feed back terrain</h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Feed back terrain</h3>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <div class="col-md-12">
                             <div class="form-group-view">
                                 <label class="label-view">Activité terrain</label>
@@ -352,7 +352,7 @@
                     </div>
                 </div>
             </div>
-            <div class="box-footer">
+            <div class="card-footer">
 
             </div>
         </div>

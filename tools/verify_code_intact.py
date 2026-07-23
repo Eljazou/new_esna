@@ -53,6 +53,13 @@ TOKENS = {
 
 def counts(path):
     s = io.open(path, encoding='utf-8', errors='replace').read()
+    # <style> blocks are CSS, not code: their braces are not program structure,
+    # and text like a "Plus+Jakarta+Sans" font URL or a comment such as
+    # "icon badge + title + subtitle" reads as a concat operator to the regex.
+    # Migrations legitimately delete whole <style> blocks, so counting them
+    # produced false "corruption" on Clients/{add,index}.ctp. Excluded here so
+    # a report of CORRUPTION always means something real.
+    s = re.sub(r'<style[^>]*>.*?</style>', '', s, flags=re.S)
     return {k: len(re.findall(p, s)) for k, p in TOKENS.items()}
 
 

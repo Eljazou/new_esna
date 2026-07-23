@@ -1231,17 +1231,18 @@ function cv_badges($label, $pipeValue) {
 <script type="text/javascript">
     function objettog(id) {
         $('.optionb' + id).toggle();
-        // NOTE: the .objet/.optionh/.optionb markup this function drives is NOT
-        // emitted by this view -- it lives in Rapports/{add,edit,view}.ctp and
-        // Users/admin_statistique.ctp, which are still on Font Awesome. The
-        // selectors below therefore stay on .fa until those views are migrated,
-        // otherwise the toggle would stop matching. See PROJECT_LOG TODO #18.
-        var clas = $(".optionh" + id + " .fa").attr("class");
-        if (clas == 'fa fa-minus') {
-            $(".optionh" + id + " .fa").attr("class", "fa fa-plus");
+        // TODO #18 closed 2026-07-23. Each view carries its OWN copy of this
+        // function next to its own markup -- there is no cross-file coupling.
+        // This view emits no .objet/.optionh markup at all (that lives in
+        // Rapports/*, now migrated, and Users/admin_statistique.ctp, still on
+        // Font Awesome but self-contained), so this function is inert here.
+        // Kept and moved to Keenicons for consistency with Rapports.
+        var clas = $(".optionh" + id + " .ki-duotone").attr("class");
+        if (clas == 'ki-duotone ki-minus fs-6') {
+            $(".optionh" + id + " .ki-duotone").attr("class", "ki-duotone ki-plus fs-6");
         }
-        if (clas == 'fa fa-plus') {
-            $(".optionh" + id + " .fa").attr("class", "fa fa-minus");
+        if (clas == 'ki-duotone ki-plus fs-6') {
+            $(".optionh" + id + " .ki-duotone").attr("class", "ki-duotone ki-minus fs-6");
         }
     }
 

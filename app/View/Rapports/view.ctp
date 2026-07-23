@@ -1,15 +1,16 @@
+<?php echo $this->element('assets/datatables'); ?>
 <div class="row">
 	<div class="col-md-12">
-		<div class="box">
-			<div class="box-header with-border">
-				<h3 class="box-title col-xs-12"><?php echo __('Rapport'); ?>: <b style="text-decoration:underline;"><?php echo $this->Html->link($rapport['User']['name'], array('controller' => 'users', 'action' => 'view', $rapport['User']['id'])); ?></b> <?php
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title col-12"><?php echo __('Rapport'); ?>: <b style="text-decoration:underline;"><?php echo $this->Html->link($rapport['User']['name'], array('controller' => 'users', 'action' => 'view', $rapport['User']['id'])); ?></b> <?php
 																																																																setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 																																																																echo '<span style="float:right;">' . strftime("%A le %d-%m-%Y", strtotime($rapport['Rapport']['date_debut'])) . ' à ' .
 																																																																	strftime("%A le %d-%m-%Y", strtotime($rapport['Rapport']['date_fin'])) . '</span>';
 																																																																?></h3>
 			</div>
-			<div class="box-body table-responsive">
-				<table class="table table-bordered">
+			<div class="card-body table-responsive">
+				<table class="table table-row-bordered align-middle gy-4">
 					<!-- <tr>
 						<th><?php //echo __('Employé'); 
 							?></th>
@@ -85,12 +86,12 @@
 						</td>
 					</tr>
 				</table>
-				<div class="col-xs-12" style="margin-top:10px;">
+				<div class="col-12" style="margin-top:10px;">
 					<?php if (!empty($rapport["RapportConcurance"])):
 						foreach ($rapport["RapportConcurance"] as $c):
 					?>
 							<div class="col-md-4">
-								<div class="box box-widget widget-user-2">
+								<div class="card box-widget widget-user-2">
 									<div class="widget-user-header bg-light-blue">
 										<?php if ($c["type_offre"] != null && $c["type_offre"] != "") {
 											$info = explode(",", $c["type_offre"]);
@@ -99,20 +100,20 @@
 											<?php	}
 										}
 										if ($c["agressivite"] == "Très agressive") { ?>
-											<span class="bg-red" style="float:right;padding: 4px 11px;border-radius:5px;font-size: 15px;text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.95);font-weight: bold;box-shadow: inset 1px 1px 3px rgba(101, 101, 101, 0.65);color:#fff;">Très agressive</span>
+											<span class="bg-danger" style="float:right;padding: 4px 11px;border-radius:5px;font-size: 15px;text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.95);font-weight: bold;box-shadow: inset 1px 1px 3px rgba(101, 101, 101, 0.65);color:#fff;">Très agressive</span>
 										<?php }
 										if ($c["agressivite"] == "Agressive") { ?>
-											<span class="bg-yellow" style="background:#e6be08 !important;float:right;padding: 4px 11px;border-radius:5px;font-size: 15px;text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.95);font-weight: bold;box-shadow: inset 1px 1px 3px rgba(101, 101, 101, 0.65);color:#fff !important;">Agressive</span>
+											<span class="bg-warning" style="background:#e6be08 !important;float:right;padding: 4px 11px;border-radius:5px;font-size: 15px;text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.95);font-weight: bold;box-shadow: inset 1px 1px 3px rgba(101, 101, 101, 0.65);color:#fff !important;">Agressive</span>
 										<?php }
 										if ($c["agressivite"] == "Peu agressive") { ?>
-											<span class="bg-yellow" style="float:right;padding: 4px 11px;border-radius:5px;font-size: 15px;text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.95);font-weight: bold;box-shadow: inset 1px 1px 3px rgba(101, 101, 101, 0.65);color:#fff;">Peu agressive</span>
+											<span class="bg-warning" style="float:right;padding: 4px 11px;border-radius:5px;font-size: 15px;text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.95);font-weight: bold;box-shadow: inset 1px 1px 3px rgba(101, 101, 101, 0.65);color:#fff;">Peu agressive</span>
 										<?php } ?>
-										<h5 class="widget-user-desc"><i class="fa fa-cube"></i> <?php echo $c["produit_concurant"]; ?></h5>
+										<h5 class="widget-user-desc"><i class="ki-duotone ki-cube-2 fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> <?php echo $c["produit_concurant"]; ?></h5>
 										<br>
-										<h3 class="widget-user-username"><i class="fa fa-diamond"></i> <?php echo $this->requestAction("produits/system_get_name_produit/" . $c["produit_id"]); ?></h3>
+										<h3 class="widget-user-username"><i class="ki-duotone ki-element-11 fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> <?php echo $this->requestAction("produits/system_get_name_produit/" . $c["produit_id"]); ?></h3>
 
 									</div>
-									<div class="box-footer no-padding">
+									<div class="card-footer no-padding">
 										<div class="col-md-12 projet-desc" style="max-height: 82px;min-height: 65px;height: auto;padding: 0px;">
 											<h5 class="widget-user-desc" style="font-size: 16px;">L'offre : <?php echo $c["offre"]; ?></h5>
 										</div>
@@ -217,7 +218,7 @@
 	}
 
 	@media (max-width:896px) {
-		.box-body {
+		.card-body {
 			overflow: scroll;
 			overflow-y: hidden;
 		}
@@ -288,8 +289,6 @@
 </style>
 <?php
 echo $this->Html->css('_all-skins.min');
-echo $this->Html->css('select2.min');
-echo $this->Html->css('dataTables.bootstrap');
 ?>
 <?php
 
@@ -610,7 +609,7 @@ foreach ($clientsG as $key => $value) {
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="myModalLabelapp" style="width: auto;float: left;"><?php echo $key; ?></h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: 45px;float: right;margin-top: -11px;">×</button>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 				</div>
 				<div class="modal-body" style="padding: 5px;float: left;max-width: 100%;overflow: auto;">
 					<table class="col-md-12 col-sm-12 table table-striped display" id="" style="float:none; margin:auto; width:100%; max-height: 650px;">
@@ -658,8 +657,8 @@ foreach ($clientsG as $key => $value) {
 
 											foreach ($obV as $o) {
 												$products = explode(';', $o); ?>
-												<div class="col-xs-12" style="float:left;padding: 0px;margin-bottom: 4px;">
-													<span class="label bg-aqua" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
+												<div class="col-12" style="float:left;padding: 0px;margin-bottom: 4px;">
+													<span class="label bg-primary" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
 																																																						//debug($product);
 																																																						foreach ($produits as $key => $p) {
 																																																							if ($key == $products[0]) {
@@ -668,14 +667,14 @@ foreach ($clientsG as $key => $value) {
 																																																						}
 																																																						//echo $products[0];
 																																																						?>
-														</b> <i class="fa fa-plus" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
+														</b> <i class="ki-duotone ki-plus fs-6" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
 													<div class="boxtogprod<?php echo $ii; ?>" style="display:none;">
 														<?php $objections = explode(',', $products[1]);
 														array_pop($objections);
 														foreach ($objections as $obj) {
 															$objec = explode('|', $obj); ?>
 															<div class="col-md-2 objet objeto<?php echo $iii; ?>">
-																<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="fa fa-plus"></i></span>
+																<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="ki-duotone ki-plus fs-6"></i></span>
 																<ul class="optionb optionbo boxtogpo<?php echo $iii; ?>">
 																	<?php for ($j = 1; $j < count($objec); $j++) { ?>
 																		<li><?php echo $objec[$j]; ?></li>
@@ -784,7 +783,7 @@ foreach ($clientsGP as $key => $value) {
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="myModalLabelapp" style="width: auto;float: left;"><?php echo $key; ?></h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: 45px;float: right;margin-top: -11px;">×</button>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 				</div>
 				<div class="modal-body" style="padding: 5px;float: left;max-width: 100%;overflow: auto;">
 					<table class="col-md-12 col-sm-12 table table-striped display" id="" style="float:none; margin:auto; width:100%; max-height: 650px;">
@@ -833,8 +832,8 @@ foreach ($clientsGP as $key => $value) {
 
 											foreach ($obV as $o) {
 												$products = explode(';', $o); ?>
-												<div class="col-xs-12" style="float:left;padding: 0px;margin-bottom: 4px;">
-													<span class="label bg-aqua" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
+												<div class="col-12" style="float:left;padding: 0px;margin-bottom: 4px;">
+													<span class="label bg-primary" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
 																																																						//debug($product);
 																																																						foreach ($produits as $key => $p) {
 																																																							if ($key == $products[0]) {
@@ -843,14 +842,14 @@ foreach ($clientsGP as $key => $value) {
 																																																						}
 																																																						//echo $products[0];
 																																																						?>
-														</b> <i class="fa fa-plus" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
+														</b> <i class="ki-duotone ki-plus fs-6" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
 													<div class="boxtogprod<?php echo $ii; ?>" style="display:none;">
 														<?php $objections = explode(',', $products[1]);
 														array_pop($objections);
 														foreach ($objections as $obj) {
 															$objec = explode('|', $obj); ?>
 															<div class="col-md-2 objet objeto<?php echo $iii; ?>">
-																<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="fa fa-plus"></i></span>
+																<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="ki-duotone ki-plus fs-6"></i></span>
 																<ul class="optionb optionbo boxtogpo<?php echo $iii; ?>">
 																	<?php for ($j = 1; $j < count($objec); $j++) { ?>
 																		<li><?php echo $objec[$j]; ?></li>
@@ -958,7 +957,7 @@ foreach ($clientsGC as $key => $value) {
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="myModalLabelapp" style="width: auto;float: left;"><?php echo $key; ?></h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: 45px;float: right;margin-top: -11px;">×</button>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 				</div>
 				<div class="modal-body" style="padding: 5px;float: left;max-width: 100%;overflow: auto;">
 					<table class="col-md-12 col-sm-12 table table-striped display" id="" style="float:none; margin:auto; width:100%; max-height: 650px;">
@@ -1005,8 +1004,8 @@ foreach ($clientsGC as $key => $value) {
 
 											foreach ($obV as $o) {
 												$products = explode(';', $o); ?>
-												<div class="col-xs-12" style="float:left;padding: 0px;margin-bottom: 4px;">
-													<span class="label bg-aqua" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
+												<div class="col-12" style="float:left;padding: 0px;margin-bottom: 4px;">
+													<span class="label bg-primary" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
 																																																						//debug($product);
 																																																						foreach ($produits as $key => $p) {
 																																																							if ($key == $products[0]) {
@@ -1015,14 +1014,14 @@ foreach ($clientsGC as $key => $value) {
 																																																						}
 																																																						//echo $products[0];
 																																																						?>
-														</b> <i class="fa fa-plus" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
+														</b> <i class="ki-duotone ki-plus fs-6" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
 													<div class="boxtogprod<?php echo $ii; ?>" style="display:none;">
 														<?php $objections = explode(',', $products[1]);
 														array_pop($objections);
 														foreach ($objections as $obj) {
 															$objec = explode('|', $obj); ?>
 															<div class="col-md-2 objet objeto<?php echo $iii; ?>">
-																<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="fa fa-plus"></i></span>
+																<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="ki-duotone ki-plus fs-6"></i></span>
 																<ul class="optionb optionbo boxtogpo<?php echo $iii; ?>">
 																	<?php for ($j = 1; $j < count($objec); $j++) { ?>
 																		<li><?php echo $objec[$j]; ?></li>
@@ -1131,7 +1130,7 @@ if (!empty($sliced_price)) {
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title" id="myModalLabelapp" style="width: auto;float: left;"><?php echo $key; ?></h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: 45px;float: right;margin-top: -11px;">×</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 					</div>
 					<div class="modal-body" style="padding: 5px;float: left;max-width: 100%;overflow: auto;">
 						<table class="col-md-12 col-sm-12 table table-striped display" id="" style="float:none; margin:auto; width:100%; max-height: 650px;">
@@ -1183,8 +1182,8 @@ if (!empty($sliced_price)) {
 
 														foreach ($obV as $o) {
 															$products = explode(';', $o); ?>
-															<div class="col-xs-12" style="float:left;padding: 0px;margin-bottom: 4px;">
-																<span class="label bg-aqua" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
+															<div class="col-12" style="float:left;padding: 0px;margin-bottom: 4px;">
+																<span class="label bg-primary" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
 																																																									//debug($product);
 																																																									foreach ($produits as $key => $p) {
 																																																										if ($key == $products[0]) {
@@ -1193,14 +1192,14 @@ if (!empty($sliced_price)) {
 																																																									}
 																																																									//echo $products[0];
 																																																									?>
-																	</b> <i class="fa fa-plus" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
+																	</b> <i class="ki-duotone ki-plus fs-6" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
 																<div class="boxtogprod<?php echo $ii; ?>" style="display:none;">
 																	<?php $objections = explode(',', $products[1]);
 																	array_pop($objections);
 																	foreach ($objections as $obj) {
 																		$objec = explode('|', $obj); ?>
 																		<div class="col-md-2 objet objeto<?php echo $iii; ?>">
-																			<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="fa fa-plus"></i></span>
+																			<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="ki-duotone ki-plus fs-6"></i></span>
 																			<ul class="optionb optionbo boxtogpo<?php echo $iii; ?>">
 																				<?php for ($j = 1; $j < count($objec); $j++) { ?>
 																					<li><?php echo $objec[$j]; ?></li>
@@ -1312,7 +1311,7 @@ if (!empty($sliced_indication)) {
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title" id="myModalLabelapp" style="width: auto;float: left;"><?php echo $key; ?></h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: 45px;float: right;margin-top: -11px;">×</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 					</div>
 					<div class="modal-body" style="padding: 5px;float: left;max-width: 100%;overflow: auto;">
 						<table class="col-md-12 col-sm-12 table table-striped display" id="" style="float:none; margin:auto; width:100%; max-height: 650px;">
@@ -1361,8 +1360,8 @@ if (!empty($sliced_indication)) {
 
 														foreach ($obV as $o) {
 															$products = explode(';', $o); ?>
-															<div class="col-xs-12" style="float:left;padding: 0px;margin-bottom: 4px;">
-																<span class="label bg-aqua" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
+															<div class="col-12" style="float:left;padding: 0px;margin-bottom: 4px;">
+																<span class="label bg-primary" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
 																																																									//debug($product);
 																																																									foreach ($produits as $key => $p) {
 																																																										if ($key == $products[0]) {
@@ -1371,14 +1370,14 @@ if (!empty($sliced_indication)) {
 																																																									}
 																																																									//echo $products[0];
 																																																									?>
-																	</b> <i class="fa fa-plus" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
+																	</b> <i class="ki-duotone ki-plus fs-6" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
 																<div class="boxtogprod<?php echo $ii; ?>" style="display:none;">
 																	<?php $objections = explode(',', $products[1]);
 																	array_pop($objections);
 																	foreach ($objections as $obj) {
 																		$objec = explode('|', $obj); ?>
 																		<div class="col-md-2 objet objeto<?php echo $iii; ?>">
-																			<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="fa fa-plus"></i></span>
+																			<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="ki-duotone ki-plus fs-6"></i></span>
 																			<ul class="optionb optionbo boxtogpo<?php echo $iii; ?>">
 																				<?php for ($j = 1; $j < count($objec); $j++) { ?>
 																					<li><?php echo $objec[$j]; ?></li>
@@ -1490,7 +1489,7 @@ if (!empty($sliced_pathologie)) {
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title" id="myModalLabelapp" style="width: auto;float: left;"><?php echo $key; ?></h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: 45px;float: right;margin-top: -11px;">×</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 					</div>
 					<div class="modal-body" style="padding: 5px;float: left;max-width: 100%;overflow: auto;">
 						<table class="col-md-12 col-sm-12 table table-striped display" id="" style="float:none; margin:auto; width:100%; max-height: 650px;">
@@ -1539,8 +1538,8 @@ if (!empty($sliced_pathologie)) {
 
 														foreach ($obV as $o) {
 															$products = explode(';', $o); ?>
-															<div class="col-xs-12" style="float:left;padding: 0px;margin-bottom: 4px;">
-																<span class="label bg-aqua" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
+															<div class="col-12" style="float:left;padding: 0px;margin-bottom: 4px;">
+																<span class="label bg-primary" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
 																																																									//debug($product);
 																																																									foreach ($produits as $key => $p) {
 																																																										if ($key == $products[0]) {
@@ -1549,14 +1548,14 @@ if (!empty($sliced_pathologie)) {
 																																																									}
 																																																									//echo $products[0];
 																																																									?>
-																	</b> <i class="fa fa-plus" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
+																	</b> <i class="ki-duotone ki-plus fs-6" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
 																<div class="boxtogprod<?php echo $ii; ?>" style="display:none;">
 																	<?php $objections = explode(',', $products[1]);
 																	array_pop($objections);
 																	foreach ($objections as $obj) {
 																		$objec = explode('|', $obj); ?>
 																		<div class="col-md-2 objet objeto<?php echo $iii; ?>">
-																			<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="fa fa-plus"></i></span>
+																			<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="ki-duotone ki-plus fs-6"></i></span>
 																			<ul class="optionb optionbo boxtogpo<?php echo $iii; ?>">
 																				<?php for ($j = 1; $j < count($objec); $j++) { ?>
 																					<li><?php echo $objec[$j]; ?></li>
@@ -1668,7 +1667,7 @@ if (!empty($sliced_posologie)) {
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title" id="myModalLabelapp" style="width: auto;float: left;"><?php echo $key; ?></h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: 45px;float: right;margin-top: -11px;">×</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 					</div>
 					<div class="modal-body" style="padding: 5px;float: left;max-width: 100%;overflow: auto;">
 						<table class="col-md-12 col-sm-12 table table-striped display" id="" style="float:none; margin:auto; width:100%; max-height: 650px;">
@@ -1718,8 +1717,8 @@ if (!empty($sliced_posologie)) {
 
 														foreach ($obV as $o) {
 															$products = explode(';', $o); ?>
-															<div class="col-xs-12" style="float:left;padding: 0px;margin-bottom: 4px;">
-																<span class="label bg-aqua" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
+															<div class="col-12" style="float:left;padding: 0px;margin-bottom: 4px;">
+																<span class="label bg-primary" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
 																																																									//debug($product);
 																																																									foreach ($produits as $key => $p) {
 																																																										if ($key == $products[0]) {
@@ -1728,14 +1727,14 @@ if (!empty($sliced_posologie)) {
 																																																									}
 																																																									//echo $products[0];
 																																																									?>
-																	</b> <i class="fa fa-plus" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
+																	</b> <i class="ki-duotone ki-plus fs-6" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
 																<div class="boxtogprod<?php echo $ii; ?>" style="display:none;">
 																	<?php $objections = explode(',', $products[1]);
 																	array_pop($objections);
 																	foreach ($objections as $obj) {
 																		$objec = explode('|', $obj); ?>
 																		<div class="col-md-2 objet objeto<?php echo $iii; ?>">
-																			<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="fa fa-plus"></i></span>
+																			<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="ki-duotone ki-plus fs-6"></i></span>
 																			<ul class="optionb optionbo boxtogpo<?php echo $iii; ?>">
 																				<?php for ($j = 1; $j < count($objec); $j++) { ?>
 																					<li><?php echo $objec[$j]; ?></li>
@@ -1847,7 +1846,7 @@ if (!empty($sliced_presentation)) {
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title" id="myModalLabelapp" style="width: auto;float: left;"><?php echo $key; ?></h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: 45px;float: right;margin-top: -11px;">×</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 					</div>
 					<div class="modal-body" style="padding: 5px;float: left;max-width: 100%;overflow: auto;">
 						<table class="col-md-12 col-sm-12 table table-striped display" id="" style="float:none; margin:auto; width:100%; max-height: 650px;">
@@ -1897,8 +1896,8 @@ if (!empty($sliced_presentation)) {
 
 														foreach ($obV as $o) {
 															$products = explode(';', $o); ?>
-															<div class="col-xs-12" style="float:left;padding: 0px;margin-bottom: 4px;">
-																<span class="label bg-aqua" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
+															<div class="col-12" style="float:left;padding: 0px;margin-bottom: 4px;">
+																<span class="label bg-primary" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
 																																																									//debug($product);
 																																																									foreach ($produits as $key => $p) {
 																																																										if ($key == $products[0]) {
@@ -1907,14 +1906,14 @@ if (!empty($sliced_presentation)) {
 																																																									}
 																																																									//echo $products[0];
 																																																									?>
-																	</b> <i class="fa fa-plus" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
+																	</b> <i class="ki-duotone ki-plus fs-6" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
 																<div class="boxtogprod<?php echo $ii; ?>" style="display:none;">
 																	<?php $objections = explode(',', $products[1]);
 																	array_pop($objections);
 																	foreach ($objections as $obj) {
 																		$objec = explode('|', $obj); ?>
 																		<div class="col-md-2 objet objeto<?php echo $iii; ?>">
-																			<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="fa fa-plus"></i></span>
+																			<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="ki-duotone ki-plus fs-6"></i></span>
 																			<ul class="optionb optionbo boxtogpo<?php echo $iii; ?>">
 																				<?php for ($j = 1; $j < count($objec); $j++) { ?>
 																					<li><?php echo $objec[$j]; ?></li>
@@ -2032,7 +2031,7 @@ if (!empty($tSec)) {
 																											}
 																										}
 																										?></h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: 45px;float: right;margin-top: -11px;">×</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 					</div>
 					<div class="modal-body" style="padding: 5px;float: left;max-width: 100%;overflow: auto;">
 						<table class="col-md-12 col-sm-12 table table-striped display" id="" style="float:none; margin:auto; width:100%; max-height: 650px;">
@@ -2079,8 +2078,8 @@ if (!empty($tSec)) {
 
 												foreach ($obV as $o) {
 													$products = explode(';', $o); ?>
-													<div class="col-xs-12" style="float:left;padding: 0px;margin-bottom: 4px;">
-														<span class="label bg-aqua" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
+													<div class="col-12" style="float:left;padding: 0px;margin-bottom: 4px;">
+														<span class="label bg-primary" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
 																																																							//debug($product);
 																																																							foreach ($produits as $key => $p) {
 																																																								if ($key == $products[0]) {
@@ -2089,14 +2088,14 @@ if (!empty($tSec)) {
 																																																							}
 																																																							//echo $products[0];
 																																																							?>
-															</b> <i class="fa fa-plus" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
+															</b> <i class="ki-duotone ki-plus fs-6" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
 														<div class="boxtogprod<?php echo $ii; ?>" style="display:none;">
 															<?php $objections = explode(',', $products[1]);
 															array_pop($objections);
 															foreach ($objections as $obj) {
 																$objec = explode('|', $obj); ?>
 																<div class="col-md-2 objet objeto<?php echo $iii; ?>">
-																	<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="fa fa-plus"></i></span>
+																	<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="ki-duotone ki-plus fs-6"></i></span>
 																	<ul class="optionb optionbo boxtogpo<?php echo $iii; ?>">
 																		<?php for ($j = 1; $j < count($objec); $j++) { ?>
 																			<li><?php echo $objec[$j]; ?></li>
@@ -2212,7 +2211,7 @@ if (!empty($tSpec)) {
 																											}
 																										}
 																										?></h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: 45px;float: right;margin-top: -11px;">×</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 					</div>
 					<div class="modal-body" style="padding: 5px;float: left;max-width: 100%;overflow: auto;">
 						<table class="col-md-12 col-sm-12 table table-striped display" id="" style="float:none; margin:auto; width:100%; max-height: 650px;">
@@ -2259,8 +2258,8 @@ if (!empty($tSpec)) {
 
 												foreach ($obV as $o) {
 													$products = explode(';', $o); ?>
-													<div class="col-xs-12" style="float:left;padding: 0px;margin-bottom: 4px;">
-														<span class="label bg-aqua" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
+													<div class="col-12" style="float:left;padding: 0px;margin-bottom: 4px;">
+														<span class="label bg-primary" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
 																																																							//debug($product);
 																																																							foreach ($produits as $key => $p) {
 																																																								if ($key == $products[0]) {
@@ -2269,14 +2268,14 @@ if (!empty($tSpec)) {
 																																																							}
 																																																							//echo $products[0];
 																																																							?>
-															</b> <i class="fa fa-plus" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
+															</b> <i class="ki-duotone ki-plus fs-6" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
 														<div class="boxtogprod<?php echo $ii; ?>" style="display:none;">
 															<?php $objections = explode(',', $products[1]);
 															array_pop($objections);
 															foreach ($objections as $obj) {
 																$objec = explode('|', $obj); ?>
 																<div class="col-md-2 objet objeto<?php echo $iii; ?>">
-																	<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="fa fa-plus"></i></span>
+																	<span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="ki-duotone ki-plus fs-6"></i></span>
 																	<ul class="optionb optionbo boxtogpo<?php echo $iii; ?>">
 																		<?php for ($j = 1; $j < count($objec); $j++) { ?>
 																			<li><?php echo $objec[$j]; ?></li>
@@ -2378,31 +2377,31 @@ if (!empty($tSpec)) {
 } ?>
 <div class="row" style="margin:0px;">
 	<div class="col-md-12" style="float:none;margin:auto;">
-		<div class="box" style="border-color:#3c8dbc;">
-			<div class="box-header with-border">
-				<h3 class="box-title">Statistique</h3>
+		<div class="card" style="border-color:#3c8dbc;">
+			<div class="card-header">
+				<h3 class="card-title">Statistique</h3>
 			</div>
-			<div class="box col-md-12" style="padding:1%;">
+			<div class="card col-md-12" style="padding:1%;">
 				<div class="col-md-12" style="padding:1%;">
-					<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0;font-size: 16px;font-weight: normal;">Nombre de visites :</label>
-					<div class="col-xs-4 col-md-4 text-center">
-						<b style="font-size:25px;color:#00a65a;font-weight:bold;text-transform: uppercase;"><i class="fa fa-user-md" style="font-size:52px;"></i></br>
+					<label class="col-md-12 col-sm-12 col-12" style="padding:0;font-size: 16px;font-weight: normal;">Nombre de visites :</label>
+					<div class="col-4 col-md-4 text-center">
+						<b style="font-size:25px;color:#00a65a;font-weight:bold;text-transform: uppercase;"><i class="ki-duotone ki-profile-user" style="font-size:52px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></br>
 							<e class="visite-v">0 Visités</e>
 						</b>
 					</div>
-					<div class="col-xs-4 col-md-4 text-center">
-						<b style="font-size:25px;color:#f56954;font-weight:bold;text-transform: uppercase;"><i class="fa fa-user-md" style="font-size:52px;"></i></br>
+					<div class="col-4 col-md-4 text-center">
+						<b style="font-size:25px;color:#f56954;font-weight:bold;text-transform: uppercase;"><i class="ki-duotone ki-profile-user" style="font-size:52px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></br>
 							<e class="visite-n">0 Non Visités</e>
 						</b>
 					</div>
-					<div class="col-xs-4 col-md-4 text-center">
-						<b style="font-size:25px;color:#3c8dbc;font-weight:bold;text-transform: uppercase;"><i class="fa fa-user-md" style="font-size:52px;"></i></br>
+					<div class="col-4 col-md-4 text-center">
+						<b style="font-size:25px;color:#3c8dbc;font-weight:bold;text-transform: uppercase;"><i class="ki-duotone ki-profile-user" style="font-size:52px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></br>
 							<e class="visite-o">0 Objectif</e>
 						</b>
 					</div>
 				</div>
 				<div class="col-md-12" style="border-top:1px solid #ddd;padding:1%;">
-					<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0;font-size: 16px;font-weight: normal;">Visite par Potentialité :</label>
+					<label class="col-md-12 col-sm-12 col-12" style="padding:0;font-size: 16px;font-weight: normal;">Visite par Potentialité :</label>
 					<table class="col-md-8 col-sm-12 table table-striped" style="float:none;margin:auto;width:90%;">
 						<thead>
 							<tr>
@@ -2418,49 +2417,49 @@ if (!empty($tSpec)) {
 							<tr>
 								<td>Visité</td>
 								<td>
-									<div class="col-xs-12 col-md-12 text-center">
+									<div class="col-12 col-md-12 text-center">
 										<div class="objet objet0">
 											<b style="font-size:22px;color:#00a65a;font-weight:bold;text-transform: uppercase;">
-												<i class="fa fa-user-md" style="font-size:30px;"></i>
+												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh optionh0" style="color:#00a65a;font-size: 22px;font-weight: bold;" onclick="objettog(0)">
-												<e class="pcm-v">0</e> <i class="fa fa-plus"></i>
+												<e class="pcm-v">0</e> <i class="ki-duotone ki-plus"><span class="path1"></span></i>
 											</span>
 										</div>
 									</div>
 								</td>
 								<td>
-									<div class="col-xs-12 col-md-12 text-center">
+									<div class="col-12 col-md-12 text-center">
 										<div class="objet objet1">
 											<b style="font-size:22px;color:#00a65a;font-weight:bold;text-transform: uppercase;">
-												<i class="fa fa-user-md" style="font-size:30px;"></i>
+												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh optionh1" style="color:#00a65a;font-size: 22px;font-weight: bold;" onclick="objettog(1)">
-												<e class="qam-v">0</e> <i class="fa fa-plus"></i>
+												<e class="qam-v">0</e> <i class="ki-duotone ki-plus"><span class="path1"></span></i>
 											</span>
 										</div>
 									</div>
 								</td>
 								<td>
-									<div class="col-xs-12 col-md-12 text-center">
+									<div class="col-12 col-md-12 text-center">
 										<div class="objet objet2">
 											<b style="font-size:22px;color:#00a65a;font-weight:bold;text-transform: uppercase;">
-												<i class="fa fa-user-md" style="font-size:30px;"></i>
+												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh optionh2" style="color:#00a65a;font-size: 22px;font-weight: bold;" onclick="objettog(2)">
-												<e class="pm-v">0</e> <i class="fa fa-plus"></i>
+												<e class="pm-v">0</e> <i class="ki-duotone ki-plus"><span class="path1"></span></i>
 											</span>
 										</div>
 									</div>
 								</td>
 								<td>
-									<div class="col-xs-12 col-md-12 text-center">
+									<div class="col-12 col-md-12 text-center">
 										<div class="objet objet3">
 											<b style="font-size:22px;color:#00a65a;font-weight:bold;text-transform: uppercase;">
-												<i class="fa fa-user-md" style="font-size:30px;"></i>
+												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh optionh3" style="color:#00a65a;font-size: 22px;font-weight: bold;" onclick="objettog(3)">
-												<e class="nr-v">0</e> <i class="fa fa-plus"></i>
+												<e class="nr-v">0</e> <i class="ki-duotone ki-plus"><span class="path1"></span></i>
 											</span>
 										</div>
 									</div>
@@ -2469,10 +2468,10 @@ if (!empty($tSpec)) {
 							<tr>
 								<td>Non visité</td>
 								<td>
-									<div class="col-xs-12 col-md-12 text-center">
+									<div class="col-12 col-md-12 text-center">
 										<div class="objet">
 											<b style="font-size:22px;color:#f56954;font-weight:bold;text-transform: uppercase;">
-												<i class="fa fa-user-md" style="font-size:30px;"></i>
+												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh" style="color:#f56954;font-size: 22px;font-weight: bold;">
 												<e class="pcm-n">0</e>
@@ -2481,10 +2480,10 @@ if (!empty($tSpec)) {
 									</div>
 								</td>
 								<td>
-									<div class="col-xs-12 col-md-12 text-center">
+									<div class="col-12 col-md-12 text-center">
 										<div class="objet">
 											<b style="font-size:22px;color:#f56954;font-weight:bold;text-transform: uppercase;">
-												<i class="fa fa-user-md" style="font-size:30px;"></i>
+												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh" style="color:#f56954;font-size: 22px;font-weight: bold;">
 												<e class="qam-n">0</e>
@@ -2493,10 +2492,10 @@ if (!empty($tSpec)) {
 									</div>
 								</td>
 								<td>
-									<div class="col-xs-12 col-md-12 text-center">
+									<div class="col-12 col-md-12 text-center">
 										<div class="objet">
 											<b style="font-size:22px;color:#f56954;font-weight:bold;text-transform: uppercase;">
-												<i class="fa fa-user-md" style="font-size:30px;"></i>
+												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh" style="color:#f56954;font-size: 22px;font-weight: bold;">
 												<e class="pm-n">0</e>
@@ -2505,10 +2504,10 @@ if (!empty($tSpec)) {
 									</div>
 								</td>
 								<td>
-									<div class="col-xs-12 col-md-12 text-center">
+									<div class="col-12 col-md-12 text-center">
 										<div class="objet">
 											<b style="font-size:22px;color:#f56954;font-weight:bold;text-transform: uppercase;">
-												<i class="fa fa-user-md" style="font-size:30px;"></i>
+												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh" style="color:#f56954;font-size: 22px;font-weight: bold;">
 												<e class="nr-n">0</e>
@@ -2521,13 +2520,13 @@ if (!empty($tSpec)) {
 					</table>
 				</div>
 				<div class="col-md-12" style="border-top:1px solid #ddd;padding:1%;">
-					<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0;font-size: 16px;font-weight: normal;">Genre :</label>
-					<div class="col-xs-6 col-md-6 text-center">
+					<label class="col-md-12 col-sm-12 col-12" style="padding:0;font-size: 16px;font-weight: normal;">Genre :</label>
+					<div class="col-6 col-md-6 text-center">
 						<input type="text" class="knob" data-thickness="0.2" data-angleArc="250" data-angleOffset="-125" value="<?php echo $pourcentageH; ?>%" data-width="100%" data-height="100%" data-fgColor="#00c0ef" data-readonly="true" data-text="89%">
 						<b class="knob-h">%</b>
 						<div class="knob-label" style="color:#00c0ef;"><b>HOMME</b></div>
 					</div>
-					<div class="col-xs-6 col-md-6 text-center">
+					<div class="col-6 col-md-6 text-center">
 						<input type="text" class="knob" data-thickness="0.2" data-angleArc="250" data-angleOffset="-125" value="<?php echo $pourcentageF; ?>%" data-width="100%" data-height="100%" data-fgColor="#ef00a6" data-readonly="true" data-text="11%">
 						<b class="knob-f">%</b>
 						<div class="knob-label" style="color:#ef00a6;"><b>FEMME</b></div>
@@ -2535,13 +2534,13 @@ if (!empty($tSpec)) {
 				</div>
 
 				<div class="col-md-12" style="border-top:1px solid #ddd;padding:1%;">
-					<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0;font-size: 16px;font-weight: normal;">Activité :</label>
-					<div class="col-xs-6 col-md-6 text-center">
+					<label class="col-md-12 col-sm-12 col-12" style="padding:0;font-size: 16px;font-weight: normal;">Activité :</label>
+					<div class="col-6 col-md-6 text-center">
 						<input type="text" class="knob" data-thickness="0.2" data-angleArc="250" data-angleOffset="-125" value="<?php echo $pourcentagePrive; ?>%" data-width="100%" data-height="100%" data-fgColor="#00c0ef" data-readonly="true" data-text="89%">
 						<b class="knob-h">%</b>
 						<div class="knob-label" style="color:#00c0ef;"><b>Privé</b></div>
 					</div>
-					<div class="col-xs-6 col-md-6 text-center">
+					<div class="col-6 col-md-6 text-center">
 						<input type="text" class="knob" data-thickness="0.2" data-angleArc="250" data-angleOffset="-125" value="<?php echo $pourcentagePublic; ?>%" data-width="100%" data-height="100%" data-fgColor="#ef00a6" data-readonly="true" data-text="11%">
 						<b class="knob-f">%</b>
 						<div class="knob-label" style="color:#ef00a6;"><b>Reste</b></div>
@@ -2550,61 +2549,61 @@ if (!empty($tSpec)) {
 
 
 				<div class="col-md-12" style="border-top:1px solid #ddd;padding:1%;">
-					<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0;font-size: 16px;font-weight: normal;">Partenaires :</label>
-					<div class="col-xs-4 col-md-4 text-center">
+					<label class="col-md-12 col-sm-12 col-12" style="padding:0;font-size: 16px;font-weight: normal;">Partenaires :</label>
+					<div class="col-4 col-md-4 text-center">
 						<input type="text" class="knob" value="<?php echo $pourcentagePartB; ?>%" data-thickness="0.2" data-width="80%" data-height="80%" data-fgColor="#00a65a" data-readonly="true" data-text="60%">
 						<b class="knob-b">%</b>
 						<div class="knob-label" style="color:#00a65a;margin-top:10px;">
 							<div class="objet objet4">
-								<span class="optionh optionh4" style="color:#00a65a;" onclick="objettog(4)"><b>BIEN </b><i class="fa fa-plus"></i></span>
+								<span class="optionh optionh4" style="color:#00a65a;" onclick="objettog(4)"><b>BIEN </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-4 col-md-4 text-center">
+					<div class="col-4 col-md-4 text-center">
 						<input type="text" class="knob" value="<?php echo $pourcentagePartM; ?>%" data-thickness="0.2" data-width="80%" data-height="80%" data-fgColor="#fdde00" data-readonly="true" data-text="22%">
 						<b class="knob-m">%</b>
 						<div class="knob-label" style="color:#fdde00;margin-top:10px;">
 							<div class="objet objet5">
-								<span class="optionh optionh5" style="color:#fdde00;" onclick="objettog(5)"><b>MOYEN </b><i class="fa fa-plus"></i></span>
+								<span class="optionh optionh5" style="color:#fdde00;" onclick="objettog(5)"><b>MOYEN </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-4 col-md-4 text-center">
+					<div class="col-4 col-md-4 text-center">
 						<input type="text" class="knob" value="<?php echo $pourcentagePartF; ?>%" data-thickness="0.2" data-width="80%" data-height="80%" data-fgColor="#f56954" data-readonly="true" data-text="18%">
 						<b class="knob-fi">%</b>
 						<div class="knob-label" style="color:#f56954;margin-top:10px;">
 							<div class="objet objet6">
-								<span class="optionh optionh6" style="color:#f56954;" onclick="objettog(6)"><b>FAIBLE </b><i class="fa fa-plus"></i></span>
+								<span class="optionh optionh6" style="color:#f56954;" onclick="objettog(6)"><b>FAIBLE </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-12" style="border-top:1px solid #ddd;padding:1%;">
-					<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0;font-size: 16px;font-weight: normal;">Concurrents :</label>
-					<div class="col-xs-4 col-md-4 text-center">
+					<label class="col-md-12 col-sm-12 col-12" style="padding:0;font-size: 16px;font-weight: normal;">Concurrents :</label>
+					<div class="col-4 col-md-4 text-center">
 						<input type="text" class="knob" value="<?php echo $pourcentageConCent; ?>%" data-skin="tron" data-thickness="0.2" data-width="80%" data-height="80%" data-fgColor="#00a65a" data-readonly="true" data-text="50%">
 						<b class="knob-b">%</b>
 						<div class="knob-label" style="color:#00a65a;margin-top:10px;">
 							<div class="objet objet7">
-								<span class="optionh optionh7" style="color:#00a65a;" onclick="objettog(7)"><b>100 </b><i class="fa fa-plus"></i></span>
+								<span class="optionh optionh7" style="color:#00a65a;" onclick="objettog(7)"><b>100 </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-4 col-md-4 text-center">
+					<div class="col-4 col-md-4 text-center">
 						<input type="text" class="knob" value="<?php echo $pourcentageConCinq; ?>%" data-skin="tron" data-thickness="0.2" data-width="80%" data-height="80%" data-fgColor="#fdde00" data-readonly="true" data-text="36%">
 						<b class="knob-m">%</b>
 						<div class="knob-label" style="color:#fdde00;margin-top:10px;">
 							<div class="objet objet8">
-								<span class="optionh optionh8" style="color:#fdde00;" onclick="objettog(8)"><b>50 </b><i class="fa fa-plus"></i></span>
+								<span class="optionh optionh8" style="color:#fdde00;" onclick="objettog(8)"><b>50 </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-4 col-md-4 text-center">
+					<div class="col-4 col-md-4 text-center">
 						<input type="text" class="knob" value="<?php echo $pourcentageConPM; ?>%" data-skin="tron" data-thickness="0.2" data-width="80%" data-height="80%" data-fgColor="#f56954" data-readonly="true" data-text="14%">
 						<b class="knob-fi">%</b>
 						<div class="knob-label" style="color:#f56954;margin-top:10px;">
 							<div class="objet objet9">
-								<span class="optionh optionh9" style="color:#f56954;" onclick="objettog(9)"><b>-+ </b><i class="fa fa-plus"></i></span>
+								<span class="optionh optionh9" style="color:#f56954;" onclick="objettog(9)"><b>-+ </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
 							</div>
 						</div>
 					</div>
@@ -2612,7 +2611,7 @@ if (!empty($tSpec)) {
 
 
 				<div class="col-md-12" style="border-top:1px solid #ddd;padding:1%;">
-					<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0;font-size: 16px;font-weight: normal;margin-bottom:20px;">Les objections les plus mentionnées :</label>
+					<label class="col-md-12 col-sm-12 col-12" style="padding:0;font-size: 16px;font-weight: normal;margin-bottom:20px;">Les objections les plus mentionnées :</label>
 					</br>
 					<table class="col-md-12 col-sm-12 table table-striped" style="float:none;margin:auto;width:100%;">
 						<thead>
@@ -2630,7 +2629,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_price)) {
 										foreach ($sliced_price as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="fa fa-plus"></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2644,7 +2643,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_indication)) {
 										foreach ($sliced_indication as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="fa fa-plus"></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2657,7 +2656,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_pathologie)) {
 										foreach ($sliced_pathologie as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="fa fa-plus"></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2670,7 +2669,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_posologie)) {
 										foreach ($sliced_posologie as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="fa fa-plus"></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2683,7 +2682,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_presentation)) {
 										foreach ($sliced_presentation as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="fa fa-plus"></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2694,7 +2693,7 @@ if (!empty($tSpec)) {
 					</table>
 				</div>
 				<div class="col-md-12" style="border-top:1px solid #ddd;padding:1%;">
-					<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0;font-size: 16px;font-weight: normal;">Les secteurs:</label>
+					<label class="col-md-12 col-sm-12 col-12" style="padding:0;font-size: 16px;font-weight: normal;">Les secteurs:</label>
 					<div class="col-md-2"></div>
 					<div class="col-md-8" style="height:auto;max-height:400px;overflow:auto;">
 						<table class="col-md-12 col-sm-12 table table-striped display1" id="" style="float:none;margin:auto;width:100%;">
@@ -2718,7 +2717,7 @@ if (!empty($tSpec)) {
 										</td>
 										<td>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $sec; ?> </b><i class="fa fa-plus"></i>
+												<b><?php echo $sec; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
 											</span>
 										</td>
 									</tr>
@@ -2730,7 +2729,7 @@ if (!empty($tSpec)) {
 					<div class="col-md-2"></div>
 				</div>
 				<div class="col-md-12" style="border-top:1px solid #ddd;padding:1%;">
-					<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0;font-size: 16px;font-weight: normal;">Les spécialités:</label>
+					<label class="col-md-12 col-sm-12 col-12" style="padding:0;font-size: 16px;font-weight: normal;">Les spécialités:</label>
 					<div class="col-md-2"></div>
 					<div class="col-md-8" style="height:auto;max-height:400px;overflow:auto;">
 						<table class="col-md-12 col-sm-12 table table-striped display1" id="" style="float:none;margin:auto;width:100%;">
@@ -2754,7 +2753,7 @@ if (!empty($tSpec)) {
 										</td>
 										<td>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $vl; ?> </b><i class="fa fa-plus"></i>
+												<b><?php echo $vl; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
 											</span>
 										</td>
 									</tr>
@@ -2772,9 +2771,9 @@ if (!empty($tSpec)) {
 </div>
 <div class="row">
 	<div class="col-md-12 table-plus" style="float:none;margin:auto;">
-		<div class="box" style="border-color:#3c8dbc;">
-			<div class="box-header with-border">
-				<h3 class="box-title">Liste des visites</h3>
+		<div class="card" style="border-color:#3c8dbc;">
+			<div class="card-header">
+				<h3 class="card-title">Liste des visites</h3>
 			</div>
 			<?php
 			if (!empty($visites)) {
@@ -2798,7 +2797,7 @@ if (!empty($tSpec)) {
 					$j++;
 
 			?>
-					<div class="box" style="padding:1%;width:98%;margin:auto;">
+					<div class="card" style="padding:1%;width:98%;margin:auto;">
 						<?php
 						$date_begin = date("Y-m-d", strtotime('monday this week', strtotime($date_debut)));
 						if (date('l', strtotime($date_fin)) != 'Sunday') {
@@ -2834,8 +2833,8 @@ if (!empty($tSpec)) {
 								$class = "green";
 						} ?>
 
-						<div class="box-header with-border">
-							<div class="box-title col-md-10">
+						<div class="card-header">
+							<div class="card-title col-md-10">
 								<div class="col-md-2" style="font-size: 15px;"><b>Employé : </b></br><span><?php echo $name; ?></span></div>
 								<div class="col-md-2" style="font-size: 15px;"><b>NB Visite : </b></br><span><?php
 																												$visiteglobale = $visiteglobale + $value;
@@ -2858,12 +2857,12 @@ if (!empty($tSpec)) {
 											echo 'Objectif non renseigné,impossible de faire le calcul';
 										else
 											echo round($value / $objectifglobale * 100, 2) . '%'; ?>
-										<button type="button" onclick="boxtogl(<?php echo $i; ?>)" class="btn btn-box-tool" style="font-size:16px; border-radius:0px;border-left:1px solid #fff;padding: 0px 4px;color:#fff;"><i id="iconl<?php echo $i; ?>" class="fa fa-plus" style="color:#fff;"></i></button>
+										<button type="button" onclick="boxtogl(<?php echo $i; ?>)" class="btn btn-box-tool" style="font-size:16px; border-radius:0px;border-left:1px solid #fff;padding: 0px 4px;color:#fff;"><i id="iconl<?php echo $i; ?>" class="ki-duotone ki-plus fs-6" style="color:#fff;"></i></button>
 									</span></div>
 							</div>
-							<button type="button" onclick="boxtog(<?php echo $i; ?>)" class="btn btn-box-tool" style="float: right;font-size:16px;">Voir tout les visites <i id="icon<?php echo $i; ?>" class="fa fa-plus" style="color:#aaa;"></i></button>
+							<button type="button" onclick="boxtog(<?php echo $i; ?>)" class="btn btn-box-tool" style="float: right;font-size:16px;">Voir tout les visites <i id="icon<?php echo $i; ?>" class="ki-duotone ki-plus fs-6" style="color:#aaa;"></i></button>
 							<div class="col-md-12 boxtogl<?php echo $i; ?>" style="display:none;overflow: scroll;overflow-y: hidden;">
-								<table class="table table-bordered" style="text-align:center;">
+								<table class="table table-row-bordered align-middle gy-4" style="text-align:center;">
 									<thead>
 										<tr>
 											<th>Type</th>
@@ -2948,7 +2947,7 @@ if (!empty($tSpec)) {
 																										echo 0;
 																									} ?>%</span><?php } ?>
 											</td>
-											<td><?php if ($keyO == "Médecin"): ?><button type="button" onclick="boxtogp(<?php echo $i; ?>)" class="btn btn-box-tool" style="float: none;margin:auto;font-size:16px;"><i id="iconp<?php echo $i; ?>" class="fa fa-plus" style="color:#aaa;"></i></button><?php endif; ?></td>
+											<td><?php if ($keyO == "Médecin"): ?><button type="button" onclick="boxtogp(<?php echo $i; ?>)" class="btn btn-box-tool" style="float: none;margin:auto;font-size:16px;"><i id="iconp<?php echo $i; ?>" class="ki-duotone ki-plus fs-6" style="color:#aaa;"></i></button><?php endif; ?></td>
 										</tr>
 										<?php if ($keyO == "Médecin"): ?>
 											<tbody class="boxtogp<?php echo $i; ?>" style="display:none;">
@@ -3038,8 +3037,8 @@ if (!empty($tSpec)) {
 								</table>
 							</div>
 						</div>
-						<div class="box-body table-responsive boxtog<?php echo $i; ?>" style="display:none;overflow: scroll;overflow-y: hidden;">
-							<table class="table table-bordered display" id="">
+						<div class="card-body table-responsive boxtog<?php echo $i; ?>" style="display:none;overflow: scroll;overflow-y: hidden;">
+							<table class="table table-row-bordered align-middle gy-4 display" id="">
 								<thead>
 									<tr>
 										<th>Client</th>
@@ -3193,11 +3192,6 @@ if (!empty($tSpec)) {
 		margin-top: 6px !important;
 	}
 </style>
-<?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('select2.full.min');
-?>
-
 <script>
 	function listeid(id) {
 		$(".inputid").attr("value", id);
@@ -3209,9 +3203,6 @@ echo $this->Html->script('select2.full.min');
 </script>
 
 <?php
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -3246,44 +3237,44 @@ echo $this->Html->script('demo');
 	function boxtog(id) {
 		$(".boxtog" + id).toggle();
 		var clas = $("#icon" + id).attr("class");
-		if (clas == 'fa fa-minus') {
-			$("#icon" + id).attr("class", "fa fa-plus");
+		if (clas == 'ki-duotone ki-minus fs-6') {
+			$("#icon" + id).attr("class", "ki-duotone ki-plus fs-6");
 		}
-		if (clas == 'fa fa-plus') {
-			$("#icon" + id).attr("class", "fa fa-minus");
+		if (clas == 'ki-duotone ki-plus fs-6') {
+			$("#icon" + id).attr("class", "ki-duotone ki-minus fs-6");
 		}
 	}
 
 	function boxtogl(id) {
 		$(".boxtogl" + id).toggle();
 		var clas = $("#iconl" + id).attr("class");
-		if (clas == 'fa fa-minus') {
-			$("#iconl" + id).attr("class", "fa fa-plus");
+		if (clas == 'ki-duotone ki-minus fs-6') {
+			$("#iconl" + id).attr("class", "ki-duotone ki-plus fs-6");
 		}
-		if (clas == 'fa fa-plus') {
-			$("#iconl" + id).attr("class", "fa fa-minus");
+		if (clas == 'ki-duotone ki-plus fs-6') {
+			$("#iconl" + id).attr("class", "ki-duotone ki-minus fs-6");
 		}
 	}
 
 	function boxtogp(id) {
 		$(".boxtogp" + id).toggle();
 		var clas = $("#iconp" + id).attr("class");
-		if (clas == 'fa fa-minus') {
-			$("#iconp" + id).attr("class", "fa fa-plus");
+		if (clas == 'ki-duotone ki-minus fs-6') {
+			$("#iconp" + id).attr("class", "ki-duotone ki-plus fs-6");
 		}
-		if (clas == 'fa fa-plus') {
-			$("#iconp" + id).attr("class", "fa fa-minus");
+		if (clas == 'ki-duotone ki-plus fs-6') {
+			$("#iconp" + id).attr("class", "ki-duotone ki-minus fs-6");
 		}
 	}
 
 	function objettog(id) {
 		var clas = $(".optionh" + id + " .fa").attr("class");
 		$("#myModalapp" + id).modal('show');
-		/*if (clas == 'fa fa-minus') {
-		    $(".optionh"+id+" .fa").attr("class", "fa fa-plus");
+		/*if (clas == 'ki-duotone ki-minus fs-6') {
+		    $(".optionh"+id+" .fa").attr("class", "ki-duotone ki-plus fs-6");
 		}
-		if (clas == 'fa fa-plus') {
-		    $(".optionh"+id+" .fa").attr("class", "fa fa-minus");
+		if (clas == 'ki-duotone ki-plus fs-6') {
+		    $(".optionh"+id+" .fa").attr("class", "ki-duotone ki-minus fs-6");
 		}*/
 	}
 </script>
@@ -3428,22 +3419,22 @@ echo $this->Html->script('demo');
 	function boxtogpo(id) {
 		$(".boxtogpo" + id).toggle();
 		var clas = $("#iconpo" + id).attr("class");
-		if (clas == 'fa fa-minus') {
-			$("#iconpo" + id).attr("class", "fa fa-plus");
+		if (clas == 'ki-duotone ki-minus fs-6') {
+			$("#iconpo" + id).attr("class", "ki-duotone ki-plus fs-6");
 		}
-		if (clas == 'fa fa-plus') {
-			$("#iconpo" + id).attr("class", "fa fa-minus");
+		if (clas == 'ki-duotone ki-plus fs-6') {
+			$("#iconpo" + id).attr("class", "ki-duotone ki-minus fs-6");
 		}
 	}
 
 	function boxtogprod(id) {
 		$(".boxtogprod" + id).toggle();
 		var clas = $("#iconpr" + id).attr("class");
-		if (clas == 'fa fa-minus') {
-			$("#iconpr" + id).attr("class", "fa fa-plus");
+		if (clas == 'ki-duotone ki-minus fs-6') {
+			$("#iconpr" + id).attr("class", "ki-duotone ki-plus fs-6");
 		}
-		if (clas == 'fa fa-plus') {
-			$("#iconpr" + id).attr("class", "fa fa-minus");
+		if (clas == 'ki-duotone ki-plus fs-6') {
+			$("#iconpr" + id).attr("class", "ki-duotone ki-minus fs-6");
 		}
 	}
 </script>
