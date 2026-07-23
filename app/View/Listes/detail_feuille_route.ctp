@@ -1,8 +1,7 @@
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     .select2-container--default .select2-selection--multiple .select2-selection__choice__remove{color:#fff !important;}
 </style>
-<?php echo $this->Html->css('select2.min'); ?>
-
 <!-- ============================================================
      Modal — potentialité du client
      ============================================================ -->
@@ -96,7 +95,7 @@
             </div>
             <div class="card-body pt-0">
                 <div class="table-responsive">
-                    <table id="example1" class="table table-bordered align-middle">
+                    <table id="example1" class="table table-row-bordered align-middle gy-4">
                         <thead>
                             <tr>
                                 <th>Nom</th>
@@ -222,15 +221,9 @@
 </div>
 
 <?php
-
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
-echo $this->Html->script('select2.full.min');
 ?>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEpnSCwdoRPf5V3vIWy7j6wzjewQRC8uE&amp;&libraries=places"></script>
 <script>

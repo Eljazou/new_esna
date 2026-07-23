@@ -1,8 +1,9 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php //echo date("i:s"); if($id=="3000") echo $this->element('sql_dump'); ?>
 <style>
     .col-md-8 label{float: left;margin-top: 6px;font-weight: normal;}
     @media (max-width: 810px) {
-        .panel-heading{width:100% !important;}
+        .card-header{width:100% !important;}
     }
 
 :root {
@@ -18,9 +19,9 @@
 }
 
 body { background: var(--lr-bg); }
-.panel.panel-primary { border: none; box-shadow: none; background: transparent; }
+.card.panel-primary { border: none; box-shadow: none; background: transparent; }
 .col-md-8 label { float: left; margin-top: 6px; font-weight: normal; }
-@media (max-width: 810px) { .panel-heading { width: 100% !important; } }
+@media (max-width: 810px) { .card-header { width: 100% !important; } }
 
 /* ===== CARDS & HEADERS ===== */
 .lr-card {
@@ -95,7 +96,7 @@ table.lr-table tbody tr td input[type="checkbox"] { width: 17px; height: 17px; a
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuwmNaUU3JfRgdkYbhaV0hptTkcTKqn8Q"></script>
 <div class="row">
     <div class="col-md-11" style="float:none;margin:auto;">
-        <div class="panel panel-primary">
+        <div class="card">
             <?php
             echo $this->Form->create('Feuilleroute');
             if (!empty($liste_id))
@@ -140,7 +141,7 @@ table.lr-table tbody tr td input[type="checkbox"] { width: 17px; height: 17px; a
                     </select>
                 </div>
                 <div class="lr-table-wrap">
-                    <table id="example1" class="display table table-bordered lr-table">
+                    <table id="example1" class="display table table-row-bordered align-middle gy-4 lr-table">
                         <thead>
                             <tr>
                                 <th>Nom</th>
@@ -214,7 +215,7 @@ table.lr-table tbody tr td input[type="checkbox"] { width: 17px; height: 17px; a
                     </div>
                 </div>
                 <div class="lr-table-wrap">
-                    <table id="example2" class="display table table-bordered lr-table">
+                    <table id="example2" class="display table table-row-bordered align-middle gy-4 lr-table">
                         <thead>
                             <tr>
                                 <th>Liste</th>
@@ -284,7 +285,7 @@ table.lr-table tbody tr td input[type="checkbox"] { width: 17px; height: 17px; a
                         </div>
                     </div>
                     <div class="lr-table-wrap">
-                        <table id="example3" class="display table table-bordered lr-table">
+                        <table id="example3" class="display table table-row-bordered align-middle gy-4 lr-table">
                             <thead>
                                 <tr>
                                     <th>Liste</th>
@@ -386,20 +387,18 @@ table.lr-table tbody tr td input[type="checkbox"] { width: 17px; height: 17px; a
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 echo $this->Html->script('jquery.flot.min');
 echo $this->Html->script('jquery.flot.resize.min');
 echo $this->Html->script('jquery.flot.pie.min');
 echo $this->Html->script('jquery.flot.categories.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 ?>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
+<?php
+// jQuery UI is required here: this view calls .datepicker(). Metronic does
+// not bundle it, so it is served from webroot instead of the CDN.
+echo $this->Html->script('jquery-ui.min'); ?>
 <script>
                                             $(function () {
                                                 $('.display').DataTable({

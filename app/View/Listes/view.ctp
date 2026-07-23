@@ -1,3 +1,4 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 ?>
@@ -75,8 +76,6 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 </style>
 <?php
 $visites = array();
-echo $this->Html->css('select2.min');
-echo $this->Html->css('dataTables.bootstrap');
 ?>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -297,7 +296,7 @@ echo $this->Html->css('dataTables.bootstrap');
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-bordered align-middle">
+					<table class="table table-row-bordered align-middle gy-4">
 						<thead>
 							<tr class="text-muted fw-bold fs-7 text-uppercase">
 								<th></th>
@@ -424,7 +423,7 @@ echo $this->Html->css('dataTables.bootstrap');
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table table-bordered align-middle">
+						<table class="table table-row-bordered align-middle gy-4">
 							<thead>
 								<tr class="text-muted fw-bold fs-7 text-uppercase">
 									<th></th>
@@ -511,7 +510,7 @@ echo $this->Html->css('dataTables.bootstrap');
 			</div>
 			<div class="card-body">
 				<div class="table-responsive" style="max-height:243px;overflow-y:auto;">
-					<table class="table table-bordered align-middle" id="example1">
+					<table class="table table-row-bordered align-middle gy-4" id="example1">
 						<thead>
 							<tr>
 								<th>Code</th>
@@ -625,7 +624,7 @@ echo $this->Html->css('dataTables.bootstrap');
 				if (!empty($feuilles)):
 				?>
 					<div class="table-responsive">
-						<table class="table table-bordered table-striped align-middle">
+						<table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 							<thead>
 								<tr>
 									<th>Date</th>
@@ -750,26 +749,16 @@ echo $this->Html->css('dataTables.bootstrap');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 echo $this->Html->script('jquery.flot.min');
 echo $this->Html->script('jquery.flot.resize.min');
 echo $this->Html->script('jquery.flot.pie.min');
 echo $this->Html->script('jquery.flot.categories.min');
-echo $this->Html->script('select2.full.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuwmNaUU3JfRgdkYbhaV0hptTkcTKqn8Q"></script>
 <script>

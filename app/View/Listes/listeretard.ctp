@@ -1,7 +1,8 @@
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     .select2-container--default .select2-selection--multiple .select2-selection__choice__remove{color:#fff !important;}
     @media (max-width:896px){
-        .box-body{
+        .card-body{
             overflow: scroll;
             overflow-y: hidden;
         }
@@ -245,10 +246,6 @@
         margin-top:0;
     }
 </style>
-<?php
-echo $this->Html->css('select2.min');
-echo $this->Html->css('dataTables.bootstrap');
-?>
 <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -289,7 +286,7 @@ echo $this->Html->css('dataTables.bootstrap');
                         </div>
                         <div class="col-md-12" style="padding:0px;">
                             <div class="col-lg-12 col-md-12 col-sm-12" style="padding-top:5px;padding-bottom:5px;">
-                                <h3 class="panel-title" style="padding:0px;"></h3>
+                                <h3 class="card-title" style="padding:0px;"></h3>
                             </div>
                             <?php
                             echo $this->Form->input('produits', array('name' => "data[Clientspropose][produits]", 'label' => 'La liste des produits', 'class' => 'form-control select2', 'multiple' => "multiple"));
@@ -299,7 +296,7 @@ echo $this->Html->css('dataTables.bootstrap');
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="<?php echo $this->Html->url(array('controller' => 'visites', 'action' => 'add', 40)); ?>" class="btn btn-default lienid">Plus tard</a>
+                <a href="<?php echo $this->Html->url(array('controller' => 'visites', 'action' => 'add', 40)); ?>" class="btn btn-light lienid">Plus tard</a>
                 <input type="submit" class="btn btn-primary" value="Envoyer">
             </div>
             </form>
@@ -312,7 +309,7 @@ echo $this->Html->css('dataTables.bootstrap');
         <div class="lr-card">
             <div class="lr-card-header">
                 <div class="lr-header-left">
-                    <div class="lr-icon-circle"><i class="fa fa-users"></i></div>
+                    <div class="lr-icon-circle"><i class="ki-duotone ki-profile-user s"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></div>
                     <div>
                         <h3 class="lr-title">La liste des clients</h3>
                         <p class="lr-subtitle">Gérez et consultez tous les clients enregistrés dans le système.</p>
@@ -320,25 +317,25 @@ echo $this->Html->css('dataTables.bootstrap');
                 </div>
                 <div class="lr-header-right">
                     <div class="lr-search-wrap">
-                        <i class="fa fa-search"></i>
+                        <i class="ki-duotone ki-magnifier"><span class="path1"></span><span class="path2"></span></i>
                         <input type="text" id="lr-search-input" placeholder="Rechercher un client...">
                     </div>
                 </div>
             </div>
 
-            <div class="box-body" style="padding:0;">
+            <div class="card-body" style="padding:0;">
                 <div class="lr-table-wrap">
-                    <table class="table table-bordered lr-table" id="example1">
+                    <table class="table table-row-bordered align-middle gy-4 lr-table" id="example1">
                         <thead>
                             <tr>
-                                <th>Liste <i class="fa fa-sort lr-sort"></i></th>
-                                <th>Nom <i class="fa fa-sort lr-sort"></i></th>
-                                <th>Type <i class="fa fa-sort lr-sort"></i></th>
-                                <th>Spécialité <i class="fa fa-sort lr-sort"></i></th>
-                                <th>Pot <i class="fa fa-sort lr-sort"></i></th>
-                                <th>Secteur <i class="fa fa-sort lr-sort"></i></th>
-                                <th>Nb° de Retards <i class="fa fa-sort lr-sort"></i></th>
-                                <th>Action <i class="fa fa-sort lr-sort"></i></th>
+                                <th>Liste <i class="ki-duotone ki-up-down lr-sort"><span class="path1"></span><span class="path2"></span></i></th>
+                                <th>Nom <i class="ki-duotone ki-up-down lr-sort"><span class="path1"></span><span class="path2"></span></i></th>
+                                <th>Type <i class="ki-duotone ki-up-down lr-sort"><span class="path1"></span><span class="path2"></span></i></th>
+                                <th>Spécialité <i class="ki-duotone ki-up-down lr-sort"><span class="path1"></span><span class="path2"></span></i></th>
+                                <th>Pot <i class="ki-duotone ki-up-down lr-sort"><span class="path1"></span><span class="path2"></span></i></th>
+                                <th>Secteur <i class="ki-duotone ki-up-down lr-sort"><span class="path1"></span><span class="path2"></span></i></th>
+                                <th>Nb° de Retards <i class="ki-duotone ki-up-down lr-sort"><span class="path1"></span><span class="path2"></span></i></th>
+                                <th>Action <i class="ki-duotone ki-up-down lr-sort"><span class="path1"></span><span class="path2"></span></i></th>
                                 <?php
                                 if ($this->requestAction('/droits/getrole/listes/envoyer_client_retard') == 1)
                                     echo "<th>Envoyer au SP <i class='fa fa-sort lr-sort'></i></th>";
@@ -362,7 +359,7 @@ echo $this->Html->css('dataTables.bootstrap');
                                     <td><?php
                                         if ($this->requestAction('/droits/getrole/Visites/add') == 1)
                                             if ($value['Client']['potentialite'] == 'NR') {
-                                                echo "<a data-toggle='modal' data-target='#gridSystemModal' style='cursor:pointer;' onclick='listeid(" . $value["Client"]['id'] . ")'>Visiter</a>";
+                                                echo "<a data-bs-toggle='modal' data-bs-target='#gridSystemModal' style='cursor:pointer;' onclick='listeid(" . $value["Client"]['id'] . ")'>Visiter</a>";
                                             } else
                                                 echo $this->Html->link('Visiter', array('controller' => 'visites', 'action' => 'add', $value["Client"]['id']), array("target" => "_blank"));
                                         ?>&nbsp;</td>
@@ -388,7 +385,7 @@ echo $this->Html->css('dataTables.bootstrap');
             <div class="lr-card">
                 <div class="lr-card-header">
                     <div class="lr-header-left">
-                        <div class="lr-icon-circle"><i class="fa fa-road"></i></div>
+                        <div class="lr-icon-circle"><i class="ki-duotone ki-route fs-5"><span class="path1"></span><span class="path2"></span></i></div>
                         <div>
                             <h3 class="lr-title">La liste des feuilles de route</h3>
                             <p class="lr-subtitle">Consultez l'historique de vos feuilles de route.</p>
@@ -396,21 +393,21 @@ echo $this->Html->css('dataTables.bootstrap');
                     </div>
                     <?php
                     if ($this->requestAction('/droits/getrole/listes/feuilleroute') == 1)
-                        echo $this->Html->link('<i class="fa fa-plus"></i> Créer une feuille de route', array('action' => 'feuilleroute', AuthComponent::user('id')), array('class' => 'lr-btn-primary', 'escape' => false));
+                        echo $this->Html->link('<i class="ki-duotone ki-plus"><span class="path1"></span></i> Créer une feuille de route', array('action' => 'feuilleroute', AuthComponent::user('id')), array('class' => 'lr-btn-primary', 'escape' => false));
                     ?>
                 </div>
 
-                <div class="box-body" style="padding:0;">
+                <div class="card-body" style="padding:0;">
                     <?php
                     $feuilles = $this->requestAction('/listes/system_get_list_feuille_route/' . AuthComponent::user('id') . '/' . $date_debut);
                     ?>
                     <div class="lr-table-wrap">
-                        <table class="table table-bordered lr-table">
+                        <table class="table table-row-bordered align-middle gy-4 lr-table">
                             <thead>
                                 <tr>
-                                    <th>Date <i class="fa fa-sort lr-sort"></i></th>
-                                    <th>Nombre de clients <i class="fa fa-sort lr-sort"></i></th>
-                                    <th>Action <i class="fa fa-sort lr-sort"></i></th>
+                                    <th>Date <i class="ki-duotone ki-up-down lr-sort"><span class="path1"></span><span class="path2"></span></i></th>
+                                    <th>Nombre de clients <i class="ki-duotone ki-up-down lr-sort"><span class="path1"></span><span class="path2"></span></i></th>
+                                    <th>Action <i class="ki-duotone ki-up-down lr-sort"><span class="path1"></span><span class="path2"></span></i></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -434,11 +431,6 @@ echo $this->Html->css('dataTables.bootstrap');
         </div>
     </div>
 <?php endif; ?>
-<?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('select2.full.min');
-?>
-
 <script>
     function listeid(id) {
         $(".inputid").attr("value", id);
@@ -450,21 +442,11 @@ echo $this->Html->script('select2.full.min');
 </script>
 
 <?php
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script>
     $(function () {
         var table = $('#example1').DataTable({

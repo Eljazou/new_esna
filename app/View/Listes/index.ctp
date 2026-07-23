@@ -1,11 +1,10 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>	
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><?php echo __('Listes'); ?></h3>
+<?php echo $this->element('assets/datatables'); ?>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?php echo __('Listes'); ?></h3>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -24,8 +23,8 @@
                     <td class="actions">
                         <div class="btn-group">
                             <button type="button" class="btn btn-info">Action</button>
-                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span>
+                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">
+                                <span class=""></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><?php echo $this->Html->link(__('Voir'), array('action' => 'view', $liste['Liste']['id'])); ?></li>
@@ -40,10 +39,6 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

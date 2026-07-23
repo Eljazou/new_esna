@@ -1,11 +1,11 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">
-        <h3 class="panel-title"><span class="glyphicon glyphicon-plus"></span> <?php echo __('Editer une liste'); ?></h3>
+<div class="card">
+	<div class="card-header">
+        <h3 class="card-title"><span class="glyphicon glyphicon-plus"></span> <?php echo __('Editer une liste'); ?></h3>
     </div>
-	<div class="panel-body">
+	<div class="card-body">
         <div class="col-lg-6">
-            <div class="panel panel-primary">
-                <div class="panel-body form-horizontal payment-form">
+            <div class="card">
+                <div class="card-body payment-form">
 				<?php echo $this->Form->create('Liste'); ?>
 	<?php
 		echo $this->Form->input('id',array('class'=>'form-control'));

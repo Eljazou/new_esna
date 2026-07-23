@@ -21,7 +21,7 @@ PATTERNS = {
     'AdminLTE colours':      r'class="[^"]*bg-(aqua|green|red|yellow|purple|navy|teal)(?![-\w])',
     'well':                  r'class="[^"]*(?<![-\w])well(?![-\w])',
     'col-xs-*':              r'\bcol-xs-\d',
-    'BS3 data-toggle':       r'\sdata-(toggle|dismiss|target)=',
+    'BS3 data-toggle':       r'''\sdata-(toggle|dismiss|target|parent)=['"]''',
     'input-group-addon':     r'input-group-addon',
     'control-label':         r'class="[^"]*control-label',
     'form-horizontal':       r'class="[^"]*form-horizontal',

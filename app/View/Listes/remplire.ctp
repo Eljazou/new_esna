@@ -1,10 +1,6 @@
-<?php
-echo $this->Html->script('jquery-2.2.3.min');
-?>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
- <?php echo $this->Html->css('dataTables.bootstrap'); 
-	?>
-<style>
+<?php echo $this->element('assets/datatables'); ?>
+<?php echo $this->Html->css('jquery-ui.min', array('block' => 'css')); ?>
+ <style>
     #sortable1, #sortable2 {
         border: 1px solid #eee;
         width: 49.5%;
@@ -30,15 +26,15 @@ echo $this->Html->script('jquery-2.2.3.min');
     }
     #sortable1 li{background:#1188c1;color: #fff;}
     #sortable2 li{background:#11905b;color:#fff;}
-	.panel.panel-primary .well.text-center .btn-primary {
+	.card.panel-primary .well.text-center .btn-primary {
 		float: right;
 		margin-right: 4px;
 	}
-	.panel.panel-primary .well.text-center {
+	.card.panel-primary .well.text-center {
 		padding-bottom: 22px !important;
 		float:left;
 	}
-	.panel-body{
+	.card-body{
 		padding: 0px !important;
 	}
 	@media and screen (max-width:900px){
@@ -60,7 +56,7 @@ echo $this->Html->script('jquery-2.2.3.min');
 		.col-lg-10 {
 			width: 100% !important;
 		}
-		.panel-body{
+		.card-body{
 			padding:0px !important;
 		}
 		#sortable1 li, #sortable2 li {
@@ -88,7 +84,6 @@ echo $this->Html->script('jquery-2.2.3.min');
     cursor: not-allowed !important;
 }
 </style>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <!-- <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 <script>
     /*$(function () {
@@ -97,15 +92,15 @@ echo $this->Html->script('jquery-2.2.3.min');
         }).disableSelection();
     });*/
 </script>
-<div class="panel panel-primary">
-    <div class="panel-heading col-lg-10 col-md-10 col-sm-12">
-        <h3 class="panel-title"><?php echo 'Remplire la liste : ' . $liste['Liste']['name'] . ' de ' . $liste['User']['name']; ?>
+<div class="card">
+    <div class="card-header col-lg-10 col-md-10 col-sm-12">
+        <h3 class="card-title"><?php echo 'Remplire la liste : ' . $liste['Liste']['name'] . ' de ' . $liste['User']['name']; ?>
         </h3>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
         <div class="col-lg-10 col-md-10 col-sm-12">
-            <div class="panel panel-primary">
-                <div class="panel-body form-horizontal payment-form">
+            <div class="card">
+                <div class="card-body payment-form">
                     <?php echo $this->Form->create(('Affectation'),array('id'=>'myForm'));
                     echo $this->Form->input('name', array('label' => 'Nom de la liste',"value"=>$name,'class' => 'form-control'));
                     ?>
@@ -218,7 +213,6 @@ echo $this->Html->script('jquery-2.2.3.min');
         </div>
     </div>
 </div>
-<?php echo $this->Html->script('jquery.dataTables.min'); ?>
 <script>
 
 	$(function () {

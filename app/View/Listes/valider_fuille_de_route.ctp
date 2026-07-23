@@ -5,14 +5,14 @@ $monday = new DateTime(date('Y-m-d'));
 $date_debut = $monday->modify('-' . ($nbDay - 1) . ' days')->format('Y-m-d');
 //echo $date_debut;
 ?>
-<div class="box">
+<div class="card">
 
-    <div class="box-body">
-        <div class="box-header with-border">
-            <h3 class="box-title">La liste des feuilles de route à valider</h3>
+    <div class="card-body">
+        <div class="card-header">
+            <h3 class="card-title">La liste des feuilles de route à valider</h3>
         </div>
 
-        <table class="table table-bordered table-striped">
+        <table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <tbody>
                 <tr>
                     <th>VM</th>

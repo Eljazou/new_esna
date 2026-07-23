@@ -104,7 +104,8 @@ Legend: ✅ done · 🟡 in progress · ⬜ pending · ⛔ blocked
 | 10 | Page-by-page — **Visites (13 views)** | ✅ 2026-07-23 |
 | 11 | Page-by-page — **Rapports (11 views)** | ✅ 2026-07-23 |
 | 12 | Page-by-page — **Users (15 views)** | ✅ 2026-07-23 |
-| 13 | Next module: Listes (12 views) | ⬜ |
+| 13 | Page-by-page — **Listes (12 views)** | ✅ 2026-07-23 |
+| 14 | Next: remaining ~40 small CRUD modules + mobile groups | ⬜ |
 
 ### Per-module migration checklist
 
@@ -629,6 +630,56 @@ Other fixes in this pass:
 | Rapports | 11 | ✅ | ✅ identical | ✅ | ✅ | ✅ |
 | Users | 15 | ✅ | ✅ identical | ✅ | ✅ | ✅ |
 
+### 2026-07-23 — Step 3, module 5: **Listes** (12 views) ✅
+
+3,885 → 3,812 lines. All 12 views: `php -l` clean, **logic identical** (one file differs by
+an intentional icon swap inside a PHP link label), legacy audit **ALL CLEAN**.
+
+### 🔴 Functional bug found and fixed: Bootstrap 5 modal that would not open
+
+`Listes/listeretard.ctp` builds a link inside a PHP echo, with **single-quoted** attributes:
+
+```php
+echo "<a data-toggle='modal' data-target='#gridSystemModal' …>Visiter</a>";
+```
+
+Every `data-*` → `data-bs-*` rule in the migrator matched only the **double-quoted** HTML
+form, so this survived untouched. Under Bootstrap 5 the old attribute names are ignored
+entirely — the "Visiter" modal would silently do nothing.
+
+Fixed here, and both tools hardened: the migrator now rewrites single-quoted variants, and
+the audit pattern matches either quote style. **A sweep of all five migrated modules found
+no other instance** — this was the only one, but it would have been invisible to `php -l`,
+to the logic diff, and to the concat scan. Only a browser click would have revealed it.
+
+Other work in this module:
+- **jQuery UI, decided per file rather than by rule** — the three views that reference it
+  needed three different answers:
+  - `feuilleroute.ctp` — calls `.datepicker()` → **kept**, now served from `webroot`.
+  - `feullederoutepharmacie.ctp` — loads it but calls **no** widget → **removed** (CSS+JS).
+  - `remplire.ctp` — calls `.sortable()`, but its `<script>` include was **already commented
+    out in `esna/`**, and jQuery UI was never loaded globally. So the drag-and-drop list has
+    been broken upstream, before this migration. CSS de-CDN'd; the commented include left
+    exactly as found. **Not fixed on purpose** — restoring a missing dependency changes
+    behaviour, which is outside a restyle. See TODO #31.
+- 12 Font Awesome icons → Keenicons. The 11 `fa-sort` ones carry an extra `lr-sort` class
+  that is CSS-only (never swapped by JS), so the class was preserved alongside the Keenicon.
+- `col-xs-12` inside a FormHelper `$options` div class → `col-12`.
+- `valider_fuille_de_route.ctp` is an **orphan** (no controller action, no references) —
+  restyled and left in place per the precedent set for `Clients/system_index.ctp`.
+
+### Verification status — 66 views, 5 modules
+
+| Module | views | lint | logic | code intact | concat | legacy |
+|---|---:|---|---|---|---|---|
+| Clients | 15 | ✅ | ✅ *(4 files, `-0` removals)* | ✅ | ✅ | ✅ |
+| Visites | 13 | ✅ | ✅ identical | ✅ | ✅ | ✅ |
+| Rapports | 11 | ✅ | ✅ identical | ✅ | ✅ | ✅ |
+| Users | 15 | ✅ | ✅ identical | ✅ | ✅ | ✅ |
+| Listes | 12 | ✅ | ✅ *(1 file, icon in label)* | ✅ | ✅ | ✅ |
+
+Audit pattern set is now **22 patterns**, both quote styles.
+
 ---
 
 ## 5. Migration checklist — inventory of `app/View/**/*.ctp`
@@ -684,7 +735,7 @@ pattern · `KI` = files already using Keenicons.
 | Clients | ~~16~~ 15 | 0 | 0 | 0 | 0 | ✅ | **✅ done 2026-07-22** |
 | Appwebfinal | 16 | 7 | 1 | 3 | 16 | 0 | ⬜ |
 | Appweb | 16 | 7 | 2 | 5 | 16 | 0 | ⬜ |
-| Listes | 12 | 7 | 6 | 8 | 2 | 2 | ⬜ |
+| Listes | 12 | 0 | 0 | 0 | 0 | ✅ | **✅ done 2026-07-23** |
 | Rapports | 11 | 0 | 0 | 0 | 0 | ✅ | **✅ done 2026-07-23** |
 | Prospects | 8 | 7 | 2 | 4 | 4 | 0 | ⬜ |
 | Brochures | 8 | 5 | 2 | 5 | 2 | 0 | ⬜ |
@@ -863,7 +914,11 @@ work.
     with the Users module (markup + JS migrated together). Original note: for its `.optionh` toggle.
     It is self-contained (own markup + own `boxtogpo()`), so nothing is broken — migrate
     markup and JS together when the Users module is done.
-28. **Inert AdminLTE collapse/remove buttons remain** in `Visites/pointage.ctp` and
+28. **Inert collapse/remove buttons — DEFERRED by owner decision (2026-07-23).** Leave as
+    they are: visually styled, non-functional, exactly as before the migration. There is
+    not enough visibility into whether real users need that functionality; whoever owns the
+    app post-migration decides once it is in use. Do not wire up or delete without that
+    decision. Original note: in `Visites/pointage.ctp` and
     `Users/tableau_bord_super_formail.ctp`. Their `data-widget="collapse|remove"` attribute
     needed AdminLTE's `app.min.js`, which the Metronic layout does not load — so they have
     been dead since before this migration. The attribute (the last AdminLTE marker) was
@@ -873,6 +928,17 @@ work.
 29. **`Users/tableau_bord_super_cp.ctp` is an orphan** (868 lines) — no controller action
     and no references, same situation as `Clients/system_index.ctp`. Restyled for
     consistency, left in place per the precedent set for that file.
+31. **`Listes/remplire.ctp` drag-and-drop is broken upstream.** It calls
+    `$("#sortable1, #sortable2").sortable()` but its jQuery UI `<script>` include was
+    already commented out in `esna/`, and jQuery UI is never loaded globally — so the
+    feature has not worked for some time, independent of this migration. To restore it,
+    uncomment the include (or add `echo $this->Html->script('jquery-ui.min');`). Left
+    untouched because reviving a dependency is a behaviour change, not a restyle.
+32. **Attribute rewrites must cover both quote styles.** Markup inside PHP echo strings
+    commonly uses single quotes (`data-toggle='modal'`), which double-quote-only rules miss
+    entirely. Under Bootstrap 5 that means a control that silently does nothing — invisible
+    to lint, logic diff and concat scan alike. Fixed in the tools 2026-07-23; if a new
+    attribute rewrite is ever added, add both variants.
 30. **"ALL CLEAN" means "clean against the 22 patterns currently audited."** Three separate
     times an incomplete pattern set produced a clean report on code that still had defects.
     When migrating a new module, expect to discover legacy classes not yet in
