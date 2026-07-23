@@ -10,7 +10,7 @@
         --text-muted: #8d8da8;
     }
 
-    body, .box, .table {
+    body, .card, .table {
         font-family: 'Poppins', sans-serif;
     }
 
@@ -20,7 +20,7 @@
         margin-bottom: 30px;
     }
 
-    .box {
+    .card {
         border-radius: var(--radius-xl) !important;
         border: 1px solid var(--theme-border) !important;
         box-shadow: 0 4px 20px rgba(108, 99, 245, 0.06) !important;
@@ -30,7 +30,7 @@
     }
 
     /* Header Section */
-    .box-header {
+    .card-header {
         position: relative;
         padding: 24px 30px;
         background: linear-gradient(120deg, #ffffff 0%, #ffffff 55%, #ece7fd 100%);
@@ -40,7 +40,7 @@
         gap: 16px;
     }
 
-    .box-header::before {
+    .card-header::before {
         content: '';
         display: block;
         width: 12px;
@@ -49,7 +49,7 @@
         border-radius: 6px;
     }
 
-    .box-title {
+    .card-title {
         font-size: 20px !important;
         font-weight: 700 !important;
         color: var(--text-dark) !important;
@@ -57,7 +57,7 @@
         line-height: 1.2;
     }
 
-    .box-body {
+    .card-body {
         padding: 24px 30px !important;
     }
 
@@ -144,11 +144,11 @@
 </style>
 
 <div class="gadget-box-wrapper">
-    <div class="box">
-        <div class="box-header">
-            <h3 class="box-title"><?php echo __('Détail de la demande des gadgets'); ?></h3>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"><?php echo __('Détail de la demande des gadgets'); ?></h3>
         </div>
-        <div class="box-body">
+        <div class="card-body">
             <div class="table-responsive-wrapper">
                 <table id="example1" class="table">
                     <thead>
@@ -205,7 +205,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<?php echo $this->Html->script('jquery-2.2.3.min');
+<?php
 echo $this->Html->script('daterangepicker');
 ?>
 <script>

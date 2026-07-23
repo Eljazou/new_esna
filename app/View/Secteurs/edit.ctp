@@ -63,7 +63,7 @@
     .lav-card-body { padding: 24px 26px; }
 
     .field-group { margin-bottom: 18px; }
-    .field-group label.control-label { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; display: block; }
+    .field-group label.form-label { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; display: block; }
     .field-group .form-control {
         border: 1px solid var(--border);
         border-radius: var(--radius-sm);
@@ -130,57 +130,57 @@
     <div class="col-md-8 offset-md-2">
         <div class="lav-card accent-top">
             <div class="lav-card-header">
-                <i class="fa fa-pencil hdr-ic"></i>
+                <i class="ki-duotone ki-pencil hdr-ic"><span class="path1"></span><span class="path2"></span></i>
                 <h3 class="lav-card-title"><?php echo __('Éditer le secteur'); ?></h3>
-                <?php echo $this->Html->link('<i class="fa fa-arrow-left"></i> Retour', array('action' => 'index'), array('class' => 'btn-lav-back', 'escape' => false)); ?>
+                <?php echo $this->Html->link('<i class="ki-duotone ki-arrow-left"><span class="path1"></span><span class="path2"></span></i> Retour', array('action' => 'index'), array('class' => 'btn-lav-back', 'escape' => false)); ?>
             </div>
             <div class="lav-card-body">
-                <?php echo $this->Form->create('Secteur', array('class' => 'form-horizontal')); ?>
+                <?php echo $this->Form->create('Secteur', array('class' => '')); ?>
                 <?php echo $this->Form->input('id', array('type' => 'hidden')); ?>
 
-                <div class="section-eyebrow"><i class="fa fa-map-o"></i> Région</div>
+                <div class="section-eyebrow"><i class="ki-duotone ki-map"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Région</div>
                 <div class="field-group">
-                    <label class="control-label">Région</label>
+                    <label class="form-label fw-semibold text-gray-800">Région</label>
                     <?php echo $this->Form->input('region', array('label' => false, 'class' => 'form-control', 'div' => false, 'placeholder' => 'Nom de la région')); ?>
                 </div>
                 <div class="field-group">
-                    <label class="control-label">Région IMS</label>
+                    <label class="form-label fw-semibold text-gray-800">Région IMS</label>
                     <?php echo $this->Form->input('region_ims', array('label' => false, 'class' => 'form-control', 'div' => false, 'placeholder' => 'Nom IMS de la région')); ?>
                 </div>
 
                 <hr class="section-divider">
 
-                <div class="section-eyebrow"><i class="fa fa-building-o"></i> Ville</div>
+                <div class="section-eyebrow"><i class="ki-duotone ki-bank -o"><span class="path1"></span><span class="path2"></span></i> Ville</div>
                 <div class="field-group">
-                    <label class="control-label">Ville</label>
+                    <label class="form-label fw-semibold text-gray-800">Ville</label>
                     <?php echo $this->Form->input('ville', array('label' => false, 'class' => 'form-control', 'div' => false, 'placeholder' => 'Nom de la ville')); ?>
                 </div>
                 <div class="field-group">
-                    <label class="control-label">Ville IMS</label>
+                    <label class="form-label fw-semibold text-gray-800">Ville IMS</label>
                     <?php echo $this->Form->input('ville_ims', array('label' => false, 'class' => 'form-control', 'div' => false, 'placeholder' => 'Nom IMS de la ville')); ?>
                 </div>
 
                 <hr class="section-divider">
 
-                <div class="section-eyebrow"><i class="fa fa-map-marker"></i> Secteur</div>
+                <div class="section-eyebrow"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> Secteur</div>
                 <div class="field-group">
-                    <label class="control-label">Secteur</label>
+                    <label class="form-label fw-semibold text-gray-800">Secteur</label>
                     <?php echo $this->Form->input('secteur', array('label' => false, 'class' => 'form-control', 'div' => false, 'placeholder' => 'Nom du secteur')); ?>
                 </div>
                 <div class="field-group">
-                    <label class="control-label">Secteur IMS</label>
+                    <label class="form-label fw-semibold text-gray-800">Secteur IMS</label>
                     <?php echo $this->Form->input('secteur_ims', array('label' => false, 'class' => 'form-control', 'div' => false, 'placeholder' => 'Nom IMS du secteur')); ?>
                 </div>
 
                 <hr class="section-divider">
 
                 <!-- ============ CARTE GPS ============ -->
-                <div class="section-eyebrow"><i class="fa fa-globe"></i> Zone GPS</div>
+                <div class="section-eyebrow"><i class="ki-duotone ki-map"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Zone GPS</div>
                 <div class="field-group">
                     <div class="map-info-bar">
-                        <span class="info-text"><i class="fa fa-info-circle"></i> Dessinez ou modifiez le polygone pour délimiter la zone du secteur.</span>
+                        <span class="info-text"><i class="ki-duotone ki-information-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Dessinez ou modifiez le polygone pour délimiter la zone du secteur.</span>
                         <span class="gps-status empty" id="gps_status">
-                            <i class="fa fa-times-circle"></i> Non défini
+                            <i class="ki-duotone ki-cross-circle"><span class="path1"></span><span class="path2"></span></i> Non défini
                         </span>
                     </div>
                     <div id="map-secteur"></div>
@@ -196,7 +196,7 @@
 
                 <div class="field-group" style="margin-top:24px;">
                     <button type="submit" class="btn-lav-primary">
-                        <i class="fa fa-save"></i> Enregistrer
+                        <i class="ki-duotone ki-check-circle"><span class="path1"></span><span class="path2"></span></i> Enregistrer
                     </button>
                     <?php echo $this->Html->link('Annuler', array('action' => 'index'), array('class' => 'btn-lav-outline')); ?>
                 </div>
@@ -208,7 +208,6 @@
 </div>
 </div>
 
-<?php echo $this->Html->script('jquery-2.2.3.min'); ?>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
 <script>
@@ -314,10 +313,10 @@
     function updateGpsStatus(filled, nPoints) {
         if (filled) {
             $('#gps_status').removeClass('empty').addClass('filled')
-                .html('<i class="fa fa-check-circle"></i> Zone définie (' + nPoints + ' points)');
+                .html('<i class="ki-duotone ki-check -circle"></i> Zone définie (' + nPoints + ' points)');
         } else {
             $('#gps_status').removeClass('filled').addClass('empty')
-                .html('<i class="fa fa-times-circle"></i> Non défini');
+                .html('<i class="ki-duotone ki-cross-circle"><span class="path1"></span><span class="path2"></span></i> Non défini');
         }
     }
 

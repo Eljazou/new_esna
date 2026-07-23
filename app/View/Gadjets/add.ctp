@@ -4,19 +4,19 @@
     .de, .de * { font-family:'Poppins',sans-serif; }
 
     /* ---------- CARD ---------- */
-    .de.box {
+    .de.card {
         background:#ffffff !important;
         border:1px solid rgba(229,224,251,.7) !important;
         border-radius:18px !important;
         box-shadow:0 12px 34px rgba(140,126,242,.07) !important;
         overflow:visible;
     }
-    .de .box-header {
+    .de .card-header {
         border:none !important;
         padding:24px 24px 16px 24px !important;
         display:flex; align-items:center; flex-wrap:wrap; gap:16px;
     }
-    .de .box-title {
+    .de .card-title {
         font-size:18px !important; font-weight:700 !important; color:#2d2b45 !important;
         margin:0 !important; line-height:normal !important;
     }
@@ -24,7 +24,7 @@
         margin-left:auto !important; float:none !important;
         width:auto !important; max-width:320px; margin-bottom:0 !important;
     }
-    .de .input-group-date .input-group-addon {
+    .de .input-group-date .input-group-text {
         display:none; /* icon now baked into the input's background-image */
     }
     .de #reservationtime.form-control {
@@ -49,13 +49,13 @@
     }
 
     /* ---------- BODY / TABLE ---------- */
-    .de .box-body {
+    .de .card-body {
         overflow:scroll; overflow-y:hidden;
         padding:8px 24px 24px 24px !important;
     }
-    .de .box-body::-webkit-scrollbar{ height:8px; }
-    .de .box-body::-webkit-scrollbar-thumb{ background:#e5e0fb; border-radius:8px; }
-    .de .box-body::-webkit-scrollbar-track{ background:transparent; }
+    .de .card-body::-webkit-scrollbar{ height:8px; }
+    .de .card-body::-webkit-scrollbar-thumb{ background:#e5e0fb; border-radius:8px; }
+    .de .card-body::-webkit-scrollbar-track{ background:transparent; }
 
     .de #example1.table {
         border:1px solid #f1f1f8 !important;
@@ -116,7 +116,7 @@
     }
 
     /* submit button */
-    .de .well.text-center {
+    .de .card.text-center {
         background:transparent !important; border:none !important; box-shadow:none !important;
         padding:20px 24px 26px !important; margin:0 !important;
     }
@@ -170,12 +170,12 @@
     @media (max-width:600px){ .lb-range-panels{ flex-direction:column; gap:10px; } .lb-range-divider{ display:none; } }
 </style>
 
-<div class="box de">
-    <div class="box-header">
-        <h3 class="box-title"><?php echo __('Demande d\'échantillons'); ?></h3>
+<div class="card de">
+    <div class="card-header">
+        <h3 class="card-title"><?php echo __('Demande d\'échantillons'); ?></h3>
         <div class="input-group input-group-date">
-            <div class="input-group-addon">
-                <i class="fa fa-clock-o"></i>
+            <div class="input-group-text">
+                <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
             </div>
             <input type="text" class="form-control" id="reservationtime" name="reservationtime" placeholder="Rechercher" autocomplete="off">
         </div>
@@ -183,9 +183,9 @@
     <?php echo $this->Form->create('Gadjet', array("onsubmit" => "return Validationqte()"));
     echo $this->Form->hidden("json");
     ?>
-    <div class="box-body">
+    <div class="card-body">
 
-        <table id="example1" class="table table-bordered table-striped" style="float: left;">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4" style="float: left;">
 
             <thead>
                 <tr>
@@ -225,7 +225,7 @@
             endforeach; ?>
         </table>
     </div>
-    <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'submit btn btn-primary btn-large', 'div' => array('class' => 'well text-center'))); ?>
+    <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'submit btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center'))); ?>
 </div>
 
 <?php

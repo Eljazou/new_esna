@@ -1,12 +1,12 @@
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title" style="padding-left: 0px;margin-left: -7px;">Proposer la modification d'un client</h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title" style="padding-left: 0px;margin-left: -7px;">Proposer la modification d'un client</h3>
     </div>
     <?php if ($this->request->data['Clientspropose']['type_id'] == '1'): ?>
-        <div class="panel-body">
+        <div class="card-body">
             <div class="col-lg-6">
-                <div class="panel panel-primary">
-                    <div class="panel-body form-horizontal payment-form">
+                <div class="card">
+                    <div class="card-body payment-form">
                         <?php echo $this->Form->create('Clientspropose'); ?>
                         <?php
                         if ($editer == null)
@@ -201,7 +201,7 @@
                             //echo $this->Form->input('produits', array('name' => "data[Clientspropose][produits][]", 'label' => 'La liste des produits', 'class' => 'form-control select2', 'multiple' => "multiple"));
                             ?>
                         </div>-->
-    <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center col-md-12', 'style' => 'float:left;'))); ?>
+    <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center col-md-12', 'style' => 'float:left;'))); ?>
                     </div>
                 </div>
             </div>
@@ -209,10 +209,10 @@
     <?php endif;
     if ($this->request->data['Clientspropose']['type_id'] == '2'):
         ?>
-        <div class="panel-body">
+        <div class="card-body">
             <div class="col-lg-6">
-                <div class="panel panel-primary">
-                    <div class="panel-body form-horizontal payment-form">
+                <div class="card">
+                    <div class="card-body payment-form">
                         <?php echo $this->Form->create('Clientspropose'); ?>
                         <?php
                         if ($editer == null)
@@ -254,7 +254,7 @@
                         echo $this->Form->input('fixe', array('label' => 'Fixe', 'class' => 'form-control'));
                         echo $this->Form->input('fax', array('label' => 'Fax', 'class' => 'form-control'));
                         echo $this->Form->input('adress', array('label' => 'Adresse', 'class' => 'form-control'));
-                        echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center')));
+                        echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center')));
                         ?>
                     </div>
                 </div>
@@ -263,10 +263,10 @@
 <?php endif;
 if ($this->request->data['Clientspropose']['type_id'] == '3'):
     ?>
-        <div class="panel-body">
+        <div class="card-body">
             <div class="col-lg-6">
-                <div class="panel panel-primary">
-                    <div class="panel-body form-horizontal payment-form">
+                <div class="card">
+                    <div class="card-body payment-form">
                         <?php echo $this->Form->create('Clientspropose'); ?>
                         <?php
                         if ($editer == null)
@@ -307,7 +307,7 @@ if ($this->request->data['Clientspropose']['type_id'] == '3'):
                         echo $this->Form->input('fixe', array('label' => 'Fixe', 'class' => 'form-control'));
                         echo $this->Form->input('fax', array('label' => 'Fax', 'class' => 'form-control'));
                         echo $this->Form->input('adress', array('label' => 'Adresse', 'class' => 'form-control'));
-                        echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center')));
+                        echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center')));
                         ?>
                     </div>
                 </div>
@@ -316,9 +316,6 @@ if ($this->request->data['Clientspropose']['type_id'] == '3'):
 <?php endif; ?>
 </div>
 
-<?php
-echo $this->Html->script('jquery-2.2.3.min');
-?>
 <script>
     $(document).ready(function () {
         $("#regions").change(function () {

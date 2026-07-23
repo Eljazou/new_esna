@@ -1,5 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
-
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     :root{
         --purple-primary:#7C3AED;
@@ -74,14 +73,14 @@
     .btn-amber-solid:hover{ background:#D97706; color:#fff; }
 
     /* ===== Table card ===== */
-    .box.box-primary{
+    .card{
         border:none;
         border-radius:18px;
         box-shadow:0 4px 18px rgba(109,40,217,0.08);
         background:#fff;
     }
-    .box.box-primary .box-header{ display:none; }
-    .box-body{ padding:20px 24px 8px; }
+    .card .card-header{ display:none; }
+    .card-body{ padding:20px 24px 8px; }
 
     /* Toolbar row (export buttons + search) */
     .dt-buttons{ margin-bottom: 16px; display:flex; gap:10px; flex-wrap:wrap; }
@@ -239,21 +238,21 @@
     <div class="page-header-actions">
         <?php
         if ($this->requestAction('/droits/getrole/secteurs/add') == 1)
-            echo $this->Html->link('<i class="fa fa-plus"></i> Ajouter', array('action' => 'add'), array('class' => 'btn btn-purple-solid', 'escape' => false));
+            echo $this->Html->link('<i class="ki-duotone ki-plus"></i> Ajouter', array('action' => 'add'), array('class' => 'btn btn-purple-solid', 'escape' => false));
         if (AuthComponent::user('role') == "Admin" || AuthComponent::user('role') == "Responsable promotion")
-            echo $this->Html->link('<i class="fa fa-globe"></i> Afficher le Maroc', array('action' => 'view', "A", "all"), array('class' => 'btn btn-blue-solid', 'escape' => false));
+            echo $this->Html->link('<i class="ki-duotone ki-map"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Afficher le Maroc', array('action' => 'view', "A", "all"), array('class' => 'btn btn-blue-solid', 'escape' => false));
         if ($this->requestAction('/droits/getrole/secteurs/archive') == 1)
-            echo $this->Html->link('<i class="fa fa-archive"></i> Archives', array('action' => 'archive'), array('class' => 'btn btn-amber-solid', 'escape' => false));
+            echo $this->Html->link('<i class="ki-duotone ki-archive"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Archives', array('action' => 'archive'), array('class' => 'btn btn-amber-solid', 'escape' => false));
         ?>
     </div>
 </div>
 
-<div class="box box-primary">
-    <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-map-marker"></i> <?php echo __('Secteurs'); ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> <?php echo __('Secteurs'); ?></h3>
     </div>
-    <div class="box-body">
-        <table id="tbl_secteurs" class="table table-bordered table-striped table-hover">
+    <div class="card-body">
+        <table id="tbl_secteurs" class="table table-row-bordered table-row-gray-300 align-middle gy-4 table-hover">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -303,22 +302,22 @@
                     </td>
                     <td class="text-center">
                         <div class="btn-group">
-                            <button type="button" class="actions-toggle dropdown-toggle" data-toggle="dropdown" aria-expanded="false" onclick="return toggleLegacyDropdown(this);">
+                            <button type="button" class="actions-toggle dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" onclick="return toggleLegacyDropdown(this);">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg>
                             </button>
                             <ul class="dropdown-menu" role="menu" style="display:none;">
                                 <?php if ($this->requestAction('/droits/getrole/secteurs/view') == 1): ?>
-                                    <li><?php echo $this->Html->link('<i class="fa fa-eye fa-fw"></i> Voir', array('action' => 'view', $secteur['Secteur']['id']), array('escape' => false)); ?></li>
+                                    <li><?php echo $this->Html->link('<i class="ki-duotone ki-eye"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Voir', array('action' => 'view', $secteur['Secteur']['id']), array('escape' => false)); ?></li>
                                 <?php endif; ?>
                                 <?php if ($this->requestAction('/droits/getrole/secteurs/edit') == 1): ?>
-                                    <li><?php echo $this->Html->link('<i class="fa fa-pencil fa-fw"></i> Éditer', array('action' => 'edit', $secteur['Secteur']['id']), array('escape' => false)); ?></li>
+                                    <li><?php echo $this->Html->link('<i class="ki-duotone ki-pencil"><span class="path1"></span><span class="path2"></span></i> Éditer', array('action' => 'edit', $secteur['Secteur']['id']), array('escape' => false)); ?></li>
                                 <?php endif; ?>
                                 <?php if ($this->requestAction('/droits/getrole/secteurs/delete') == 1): ?>
                                     <li class="divider"></li>
-                                    <li><?php echo $this->Form->postLink('<i class="fa fa-trash fa-fw"></i> Supprimer', array('action' => 'delete', $secteur['Secteur']['id']), array('escape' => false), 'Êtes-vous sûr ?'); ?></li>
+                                    <li><?php echo $this->Form->postLink('<i class="ki-duotone ki-trash"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i> Supprimer', array('action' => 'delete', $secteur['Secteur']['id']), array('escape' => false), 'Êtes-vous sûr ?'); ?></li>
                                 <?php endif; ?>
                                 <?php if ($this->requestAction('/droits/getrole/secteurs/archive') == 1): ?>
-                                    <li><?php echo $this->Html->link('<i class="fa fa-archive fa-fw"></i> Archiver', array('action' => 'archive', $secteur['Secteur']['id'], 0), array('escape' => false)); ?></li>
+                                    <li><?php echo $this->Html->link('<i class="ki-duotone ki-archive"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Archiver', array('action' => 'archive', $secteur['Secteur']['id'], 0), array('escape' => false)); ?></li>
                                 <?php endif; ?>
                             </ul>
                         </div>
@@ -330,11 +329,6 @@
     </div>
 </div>
 
-<?php echo $this->Html->script('jquery-2.2.3.min'); ?>
-<?php echo $this->Html->script('jquery.dataTables.min'); ?>
-<script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>

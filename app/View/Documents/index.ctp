@@ -1,22 +1,23 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
+<?php echo $this->element('assets/datatables'); ?>
+<?php
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 echo $this->Html->css('daterangepicker');
 ?>	
 <div class="row">
     <div class="col-md-12" style="margin-bottom: 24px;"> 
-        <div class="box form-group">
-            <div class="box-header with-border">
-                <label class="box-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;
+        <div class="card mb-5">
+            <div class="card-header">
+                <label class="card-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;
                        font-weight: normal;width: auto;text-align:left;float:left;">
                     Pour des documents d'une période précise,veuillez sélectionner une date :
                 </label>
                 <div class="col-md-6">
                     <form action="<?php echo $this->Html->url(array("action" => "index", $user_id)); ?>" method="get" id="dateform">
                         <div class="input-group col-lg-12" style="float:left;">
-                            <div class="input-group-addon">
-                                <i class="fa fa-clock-o"></i>
+                            <div class="input-group-text">
+                                <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                             </div>
-                            <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control pull-right" name="date" id="reservationtime" placeholder="Rechercher">
+                            <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control float-end" name="date" id="reservationtime" placeholder="Rechercher">
                         </div>
                     </form>
                 </div>
@@ -25,13 +26,13 @@ echo $this->Html->css('daterangepicker');
         </div>
     </div>
 	<div class="col-md-12"> 
-		<div class="box">
-			<div class="box-header">
-				<h3 class="box-title"><?php echo __('Documents'); ?></h3>
-				<?php echo $this->Html->link(__("Demande de document"), array('action' => 'add'), array('class'=>"btn bg-purple btn-flat margin",'style'=>'float:right;')); ?>
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title"><?php echo __('Documents'); ?></h3>
+				<?php echo $this->Html->link(__("Demande de document"), array('action' => 'add'), array('class'=>"btn bg-primary margin",'style'=>'float:right;')); ?>
 			</div>
-			<div class="box-body">
-				<table id="example1" class="table table-bordered table-striped">
+			<div class="card-body">
+				<table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 					<thead>
 						<tr>
 							<th>User</th>
@@ -71,11 +72,11 @@ echo $this->Html->css('daterangepicker');
 				</table>
 			</div>
 			<?php if (!empty($users)): ?>
-				<div class="box-header">
-					<h3 class="box-title">La liste des employés</h3>
+				<div class="card-header">
+					<h3 class="card-title">La liste des employés</h3>
 				</div>
-				<div class="box-body">
-					<table class="table table-bordered table-striped">
+				<div class="card-body">
+					<table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 						<thead>
 							<tr>
 								<th>Utilisateur</th>
@@ -103,17 +104,12 @@ echo $this->Html->css('daterangepicker');
 	</div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
 echo $this->Html->script('daterangepicker');
 ?>
 <script>

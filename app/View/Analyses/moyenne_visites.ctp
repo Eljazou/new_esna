@@ -241,7 +241,7 @@
                             "label" => array('text' => '<span class="field-icon f-indigo"><i class="ki-duotone ki-briefcase"><span class="path1"></span><span class="path2"></span></i></span>Choisissez l\'activté', 'escape' => false),
                             "name" => "activite",
                             'options' => array("" => "Choisissez", "prive" => "Privé", "Publique" => "Publique"),
-                            'class' => 'form-control pull-right',
+                            'class' => 'form-control float-end',
                             'value' => $activite_selected
                         ));
                         echo $this->Form->input('potentialite', array(
@@ -259,7 +259,7 @@
                                 "C2" => "C2",
                                 "C3" => "C3"
                             ),
-                            'class' => 'form-control pull-right choix_multi select2',
+                            'class' => 'form-control float-end choix_multi select2',
                             'multiple' => 'multiple'
                         ));
                         if (AuthComponent::user('role') != 'Super viseur')
@@ -268,7 +268,7 @@
                                 "label" => array('text' => '<span class="field-icon f-blue"><i class="ki-duotone ki-bank"><span class="path1"></span><span class="path2"></span></i></span>La liste des secteurs', 'escape' => false),
                                 "name" => "secteur",
                                 'options' => $secteurs,
-                                'class' => 'form-control pull-right choix_multi select2',
+                                'class' => 'form-control float-end choix_multi select2',
                             ));
 
                         echo $this->Form->input('category', array(
@@ -276,7 +276,7 @@
                             "label" => array('text' => '<span class="field-icon f-purple"><i class="ki-duotone ki-heart"><span class="path1"></span><span class="path2"></span></i></span>La liste des spécialité', 'escape' => false),
                             "name" => "category",
                             'options' => $categories,
-                            'class' => 'form-control pull-right choix_multi select2'
+                            'class' => 'form-control float-end choix_multi select2'
                         ));
                         ?>
                     </div>
@@ -289,7 +289,7 @@
                                 "label" => false,
                                 "name" => "users",
                                 'options' => $allusers,
-                                'class' => 'form-control pull-right choix_multi vm select2',
+                                'class' => 'form-control float-end choix_multi vm select2',
                                 'value' => array_values($selected_users)
                             ));
                             ?>
@@ -300,7 +300,7 @@
                             "label" => array('text' => '<span class="field-icon f-mint"><i class="ki-duotone ki-menu -ul"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>Les lignes', 'escape' => false),
                             "name" => "ligne",
                             'options' => $lignes,
-                            'class' => 'form-control pull-right choix_multi vm select2',
+                            'class' => 'form-control float-end choix_multi vm select2',
                             'multiple' => 'multiple'
                         ));
                         $types = array("1" => "Medcin", "2" => "Pharmacie",);
@@ -309,7 +309,7 @@
                             "label" => array('text' => '<span class="field-icon f-teal"><i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>Type de client', 'escape' => false),
                             "name" => "type",
                             'options' => $types,
-                            'class' => 'form-control pull-right choix_multi vm select2',
+                            'class' => 'form-control float-end choix_multi vm select2',
                             'multiple' => 'multiple'
                         ));
                         ?>

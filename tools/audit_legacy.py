@@ -15,7 +15,11 @@ import glob
 
 PATTERNS = {
     'AdminLTE .box':         r'class="[^"]*(?<![-\w])box(?![-\w])[^"]*"',
-    'box-header/body/title': r'class="[^"]*box-(header|body|title|footer)',
+    # (?![-\w]) so `box-header-custom` / `box-body-content` -- the app's OWN
+    # component classes, which are not AdminLTE and must not be renamed -- are
+    # not reported as leftovers. Same hyphen-boundary trap that made
+    # metronize.py rewrite `small-box-footer` into `small-card-footer`.
+    'box-header/body/title': r'class="[^"]*(?<![-\w])box-(header|body|title|footer)(?![-\w])',
     'BS3 panel':             r'class="[^"]*(?<![-\w])panel(-heading|-body|-title|-footer)?(?![-\w])',
     'small-box/info-box':    r'class="[^"]*(small-box|info-box)',
     'AdminLTE colours':      r'class="[^"]*bg-(aqua|green|red|yellow|purple|navy|teal)(?![-\w])',

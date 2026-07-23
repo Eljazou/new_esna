@@ -21,7 +21,7 @@
                             </label>
                         </div> 
                         <?php $i++; }
-                        echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center col-md-12')));
+                        echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center col-md-12')));
                         ?>
                 </div>
             </div>

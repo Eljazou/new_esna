@@ -146,7 +146,7 @@
         <?php echo $this->Form->hidden('id'); ?>
         
         <!-- Main Pack Field -->
-        <div class="form-group">
+        <div class="mb-5">
             <?php echo $this->Form->input('nombre', array(
                 "type" => "number",
                 'label' => __('Nombre de pack'), 

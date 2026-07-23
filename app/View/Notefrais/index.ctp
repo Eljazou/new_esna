@@ -1,13 +1,10 @@
-<?php
-
-?>
+<?php echo $this->element('assets/datatables'); ?>
 <style type="text/css">
     /*.coltotal{
         display: flex;
     }*/
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/l10n/fr.js"></script>
 <style type="text/css">
@@ -225,7 +222,7 @@ span.flatpickr-weekday{ color: var(--ptg-purple); font-weight: 600; }
 			</div>
 			<form action="" method="get" id="dateform" autocomplete="off" class="d-flex align-items-center gap-2 ms-auto">
 				<div class="input-group ptg-date-field" style="max-width:220px;">
-					<span class="input-group-text" id="datepicker-trigger" style="cursor:pointer;"><i class="fa fa-clock-o"></i></span>
+					<span class="input-group-text" id="datepicker-trigger" style="cursor:pointer;"><i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i></span>
 					<input type="text" class="form-control ptg-date-input" name="date" id="datepicker" placeholder="Sélectionner une date" autocomplete="off">
 				</div>
 				<input type="submit" value="Rechercher" class="btn btn-primary btn-sm">
@@ -306,8 +303,7 @@ span.flatpickr-weekday{ color: var(--ptg-purple); font-weight: 600; }
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true" onclick="remove_tiri()">×</span></button>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 					<h4 class="accept">Êtes-vous sûr(e) de valider Ca ?</h4>
 					<h4 class="refuse">Êtes-vous sûr(e) de refuser Ca ?</h4>
 				</div>
@@ -325,7 +321,7 @@ span.flatpickr-weekday{ color: var(--ptg-purple); font-weight: 600; }
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default pull-left" data-dismiss="modal" onclick="remove_tiri()">Fermer</button>
+					<button type="button" class="btn btn-light float-start" data-bs-dismiss="modal" onclick="remove_tiri()">Fermer</button>
 					<button type="button" class="btn btn-primary" onclick="submit_form()">Envoyer</button>
 				</div>
 			</div>
@@ -339,8 +335,7 @@ span.flatpickr-weekday{ color: var(--ptg-purple); font-weight: 600; }
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true" onclick="remove_tiri()">×</span></button>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 				</div>
 				<div class="modal-body">
 					<h4>
@@ -348,7 +343,7 @@ span.flatpickr-weekday{ color: var(--ptg-purple); font-weight: 600; }
 					</h4>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default pull-left" data-dismiss="modal" >Fermer</button>
+					<button type="button" class="btn btn-light float-start" data-bs-dismiss="modal" >Fermer</button>
 				</div>
 			</div>
 
@@ -368,13 +363,6 @@ span.flatpickr-weekday{ color: var(--ptg-purple); font-weight: 600; }
 // echo $this->Form->create('Notefrai',["url"=>["action"=>"valider",1,$users,$mois]]);
 // echo $this->Form->input('commentaire', array('class' => 'form-control select2'));
 // echo $this->Form->end(array('label' => 'Ajouter'));
-
-				 
-echo $this->Html->css('dataTables.bootstrap');
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 ?>
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.4.1/css/buttons.dataTables.min.css">

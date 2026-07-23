@@ -1,11 +1,11 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php echo $this->Html->css('daterangepicker');
-echo $this->Html->css('dataTables.bootstrap');
 
 ?>
 
 <style>
     @media (max-width:1237px){
-        .box-body{
+        .card-body{
             overflow: scroll;
             overflow-y: hidden;
         }
@@ -17,7 +17,7 @@ echo $this->Html->css('dataTables.bootstrap');
 { 
     font-size: 23px;
 }
-.box-header{
+.card-header{
     color: #333;
     background-color: #f5f5f5;
 }
@@ -44,14 +44,14 @@ echo $this->Html->css('dataTables.bootstrap');
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 <h4 class="modal-title">Maps <b style="float:right;margin-right:10px;"></b></h4>
             </div>
             <div class="modal-body" style="height: 480px;">
                 <div id="map" class="col-md-12" style="height: 480px;"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
             </div>
         </div>
     </div>
@@ -59,9 +59,9 @@ echo $this->Html->css('dataTables.bootstrap');
 <!-- fin modal -->
 <div class="col-md-12">
 
-<div class="box box-info">
-    <div class="box-header">
-        <h3 class="box-title">
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
             <?php setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
             echo __('Note de frais'); ?>
         </h3>
@@ -72,7 +72,7 @@ echo $this->Html->css('dataTables.bootstrap');
                             
                             <label for="">Date </label>
                             <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> 
-                                   class="form-control pull-right" name="date" id="reservationtime" placeholder="Rechercher">
+                                   class="form-control float-end" name="date" id="reservationtime" placeholder="Rechercher">
                         </div>
                         <div class="col-md-6">
                         <?php 
@@ -80,14 +80,14 @@ echo $this->Html->css('dataTables.bootstrap');
                      ?>
                         </div>
                         <?php
-                        echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center col-md-12 col-xs-12','style'=>'margin:10px 0px;'))); ?>
+                        echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center col-md-12 col-12','style'=>'margin:10px 0px;'))); ?>
                     
 
     </div>
     </div>
     <?php if(!empty($info)):?>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>Date</th>
@@ -136,12 +136,12 @@ echo $this->Html->css('dataTables.bootstrap');
                     <td><?php echo $note["divers"]; ?> DH</td>
                     <td><?php if(isset($reels[$date]))
 									echo $reels[$date]; ?> Km</td>
-                    <td><button data-toggle="modal" id="<?php echo $date; ?>" data-target="#visitemaps"  type="button" class="btn btn-primary bg-green visitemaps"><?php echo count($gps[$date]); ?></button></td>
+                    <td><button data-bs-toggle="modal" id="<?php echo $date; ?>" data-bs-target="#visitemaps"  type="button" class="btn btn-primary bg-success visitemaps"><?php echo count($gps[$date]); ?></button></td>
                 </tr>
             <?php endforeach; ?>
         </table>
         <h1>RECAP de <?php echo $user["User"]["name"] ?></h1>
-        <table class="table table-bordered table-striped">
+        <table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <tr>
                 <td>KILOMETRAGE</td>	
                 <td>IND KM</td>
@@ -196,7 +196,7 @@ echo $this->Html->css('dataTables.bootstrap');
             </tr>
         </table>
 		<h1>RECAP des congés et absences <?php echo $user["User"]["name"] ?></h1>
-        <table class="table table-bordered table-striped">
+        <table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <tr>
                 <?php
 				unset($dataabsence["total"]);
@@ -229,9 +229,9 @@ echo $this->Html->css('dataTables.bootstrap');
     ?>
 <div class="row" style="margin:36px 0px;">
     <div class="col-lg-12" style="padding: 0 25px;">
-        <div class="panel panel-primary" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-            <div class="panel-heading" style="width: 100%;">
-                <h3 class="panel-title" style="padding-left: 0px;margin-left: -7px;">
+        <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+            <div class="card-header" style="width: 100%;">
+                <h3 class="card-title" style="padding-left: 0px;margin-left: -7px;">
                     </span>Ajustement de note de frais
 						<?php $pret=$this->requestaction("/avences/system_get_pret_for_notedefrais/".$user["User"]["id"]);
 							
@@ -242,10 +242,10 @@ echo $this->Html->css('dataTables.bootstrap');
 						?>
 					</h3>
             </div>
-            <div class="panel-body" style="padding: 21px 0;box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px!important;">
+            <div class="card-body" style="padding: 21px 0;box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px!important;">
                 <div class="col-lg-9">
-                    <div class="panel panel-primary">
-                        <div class="panel-body form-horizontal payment-form">
+                    <div class="card">
+                        <div class="card-body payment-form">
                             <?php 
 							
 							$types=array();
@@ -277,31 +277,31 @@ echo $this->Html->css('dataTables.bootstrap');
 								echo $this->Form->hidden('next_user_auto_id', array('value' =>$next_user_auto_id));
 								echo $this->Form->hidden('thiorique', array('value' =>$theorique));
 								echo $this->Form->hidden('definitif', array('label' => 'Note de frais definitif', "value"=>round($theorique*$taux/100,1),'class' => 'form-control','readonly'));								
-								echo $this->Form->end(array('label' => 'Ajouter la note de frais', 'class' => 'btn btn-primary btn-large',"id"=>"envoyedata" ,'div' => array('class' => 'well text-center col-md-12 col-xs-12','style'=>'margin:10px 0px;')));
+								echo $this->Form->end(array('label' => 'Ajouter la note de frais', 'class' => 'btn btn-primary btn-large',"id"=>"envoyedata" ,'div' => array('class' => 'card card-body bg-light text-center col-md-12 col-12','style'=>'margin:10px 0px;')));
 							}
 							else 
 							{
 								echo $this->Form->hidden('thiorique', array("value"=>$noteajouter["Notefrai"]["thiorique"],'class' => 'form-control'));
 								echo $this->Form->hidden('definitif', array('label' => 'Note de frais definitif', "value"=>round($theorique*$taux/100,1)+$noteajouter["Notefrai"]["ajustement"],'class' => 'form-control'));
                                 ?>
-								<div class="well text-center col-md-12 col-xs-12" style="margin:10px 0px;">
+								<div class="card card-body bg-light text-center col-md-12 col-12" style="margin:10px 0px;">
 									<input class="btn btn-primary btn-large" type="submit" value="Ajouter la note de frais">
 								</div>
 								<?php echo $this->Form->end();
 							}
 							?>
                            <div class="col-md-12">
-                                <div class="box box-warning direct-chat direct-chat-warning collapsed-box">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Historiques des ajustements</h3>
-                                        <div class="box-tools pull-right">
-                                            <span data-toggle="tooltip" title="" class="badge bg-yellow badge_ajustement" data-original-title="3 New Messages"></span>
-                                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                <div class="card direct-chat direct-chat-warning">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Historiques des ajustements</h3>
+                                        <div class="card-toolbar float-end">
+                                            <span data-bs-toggle="tooltip" title="" class="badge bg-warning badge_ajustement" data-original-title="3 New Messages"></span>
+                                            <button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="collapse"><i class="ki-duotone ki-plus"></i>
                                             </button>
                                         </div>
                                     </div>
                                     <!-- /.box-header -->
-                                    <div class="box-body">
+                                    <div class="card-body">
                                         <div class="direct-chat-messages histo_ajust">
                                         <?php 
 										$ajustement=0;
@@ -311,15 +311,15 @@ echo $this->Html->css('dataTables.bootstrap');
 											$ajustement+=$c["Noteajustement"]["ajustement"]; ?>
                                             <div class="direct-chat-msg">
                                                 <div class="direct-chat-info clearfix">
-                                                    <span class="direct-chat-name name_user pull-left"><?php echo $c["User"]["name"];?></span>
-                                                    <span class="direct-chat-timestamp pull-right motant"><?php echo $c["Noteajustement"]["ajustement"];?> DH</span>
+                                                    <span class="direct-chat-name name_user float-start"><?php echo $c["User"]["name"];?></span>
+                                                    <span class="direct-chat-timestamp float-end motant"><?php echo $c["Noteajustement"]["ajustement"];?> DH</span>
                                                 </div>
                                                 <div class="direct-chat-text">
                                                     Nature : <?php echo $c["Noteajustement"]["nature"];?>
 													<br>
                                                     <?php echo $c["Noteajustement"]["commentaire"];?>
                                                 </div>
-												<span class="direct-chat-timestamp pull-right"><?php echo  $c["Noteajustement"]["created"];?></span>
+												<span class="direct-chat-timestamp float-end"><?php echo  $c["Noteajustement"]["created"];?></span>
                                             </div>
                                         <?php endforeach;?>
                                         </div>
@@ -330,17 +330,17 @@ echo $this->Html->css('dataTables.bootstrap');
 							
 							
 							<div class="col-md-12">
-                                <div class="box box-warning direct-chat direct-chat-warning collapsed-box">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Historiques des validations</h3>
-                                        <div class="box-tools pull-right">
-                                            <span data-toggle="tooltip" title="" class="badge bg-yellow badge_validation" data-original-title="3 New Messages"></span>
-                                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                <div class="card direct-chat direct-chat-warning">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Historiques des validations</h3>
+                                        <div class="card-toolbar float-end">
+                                            <span data-bs-toggle="tooltip" title="" class="badge bg-warning badge_validation" data-original-title="3 New Messages"></span>
+                                            <button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="collapse"><i class="ki-duotone ki-plus"></i>
                                             </button>
                                         </div>
                                     </div>
                                     <!-- /.box-header -->
-                                    <div class="box-body">
+                                    <div class="card-body">
                                         <div class="direct-chat-messages histo_valid">
                                         <?php 
 										$ajustement=0;
@@ -349,7 +349,7 @@ echo $this->Html->css('dataTables.bootstrap');
 												continue;?>
                                             <div class="direct-chat-msg">
                                                 <div class="direct-chat-info clearfix">
-                                                    <span class="direct-chat-name pull-left"><?php echo $c["User"]["name"];?></span>
+                                                    <span class="direct-chat-name float-start"><?php echo $c["User"]["name"];?></span>
                                                     
                                                 </div>
                                                 <div class="direct-chat-text">
@@ -363,7 +363,7 @@ echo $this->Html->css('dataTables.bootstrap');
 													<br>
                                                     <?php echo $c["Noteajustement"]["commentaire"];?>
                                                 </div>
-												<span class="direct-chat-timestamp pull-right"><?php echo  $c["Noteajustement"]["created"];?></span>
+												<span class="direct-chat-timestamp float-end"><?php echo  $c["Noteajustement"]["created"];?></span>
                                             </div>
                                         <?php endforeach;?>
                                         </div>
@@ -378,27 +378,27 @@ echo $this->Html->css('dataTables.bootstrap');
                 </div>
                 <div class="col-lg-3" style="padding: 0 28px;">
                     <div class="row">
-                        <div class="col-lg-12 col-xs-12">
+                        <div class="col-lg-12 col-12">
                         <!-- small box -->
-                        <div class="small-box bg-aqua">
+                        <div class="card bg-primary">
                             <div class="inner">
                             <h3 id="theorique"><?php echo $theorique; ?><sup style="font-size: 20px">DH</sup></h3>
                                 <p>Total Théorique</p>
                             </div>
                         </div>
                         </div>
-						<div class="col-lg-12 col-xs-12">
+						<div class="col-lg-12 col-12">
                             <!-- small box -->
-                            <div class="small-box bg-yellow">
+                            <div class="card bg-warning">
                                 <div class="inner">
                                     <h3 id="ajustement" ><?php echo $ajustement ?><sup style="font-size: 20px">DH</sup></h3>
                                     <p>Ajustement de note de frais</p>
                                 </div>
                             </div>
                         </div>
-						<div class="col-lg-12 col-xs-12">
+						<div class="col-lg-12 col-12">
                             <!-- small box -->
-                            <div class="small-box bg-success">
+                            <div class="card bg-success">
                                 <div class="inner">
                                     <h3 id="final"><?php echo $theorique+$ajustement;?><sup style="font-size: 20px">DH</sup></h3>
                                     <p>Note de frais final <br>Theorique +Ajustement</p>
@@ -409,8 +409,8 @@ echo $this->Html->css('dataTables.bootstrap');
                 </div>
             </div>
 
-            <div class="panel-footer">
-                <div class="box-footer text-center">
+            <div class="card-footer">
+                <div class="card-footer text-center">
                     <button class="btn btn-success" onclick="valide_user('accept')">Accepter</button>
                      <button class="btn btn-danger" onclick="valide_user('refuse')">Refusée</button>
                 </div>
@@ -428,8 +428,7 @@ echo $this->Html->css('dataTables.bootstrap');
 <div class="modal-dialog">
 <div class="modal-content">
 <div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true" onclick="remove_tiri()">×</span></button>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 <h4 class="accept">Êtes-vous sûr(e) de valider Ca ?</h4>
 <h4 class="refuse">Êtes-vous sûr(e) de refuser Ca ?</h4>
 </div>
@@ -445,7 +444,7 @@ echo $this->Html->css('dataTables.bootstrap');
      ?>
 </div>
 <div class="modal-footer">
-<button type="button" class="btn btn-default pull-left" data-dismiss="modal" onclick="remove_tiri()">Fermer</button>
+<button type="button" class="btn btn-light float-start" data-bs-dismiss="modal" onclick="remove_tiri()">Fermer</button>
 <button type="button" class="btn btn-primary" onclick="submit_form()">Envoyer</button>
 </div>
 </div>
@@ -463,12 +462,6 @@ echo $this->Html->css('dataTables.bootstrap');
 // echo $this->Form->create('Notefrai',["url"=>["action"=>"valider",1,$user["User"]["id"],$mois]]);
 // echo $this->Form->input('commentaire', array('class' => 'form-control select2'));
 // echo $this->Form->end(array('label' => 'Ajouter'));
-
-
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -478,13 +471,6 @@ echo $this->Html->script('demo');
     echo $this->Html->script('daterangepicker');
 ?>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuwmNaUU3JfRgdkYbhaV0hptTkcTKqn8Q&amp;"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script>
     $(function() {
     var table = $('#example1, #example2').DataTable({

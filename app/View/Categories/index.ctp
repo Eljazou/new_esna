@@ -1,5 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     :root{
         --purple-primary:#9B8AFB;
@@ -93,7 +92,7 @@
         overflow:hidden;
         margin-top:16px;
     }
-    .specialites-card .box-body{ padding:0; }
+    .specialites-card .card-body{ padding:0; }
 
     table.spec-table{ margin-bottom:0; }
     table.spec-table thead th{
@@ -154,20 +153,20 @@
     .dropdown-menu>li>a:hover{ background:var(--purple-bg); color:var(--purple-dark); }
 
     /* Matrix table card below */
-    .tablebox .box{
+    .tablebox .card{
         border:none;
         border-radius:18px;
         box-shadow:0 4px 18px rgba(139,126,242,0.08);
         overflow:hidden;
     }
-    .tablebox .box-header.with-border{
+    .tablebox .card-header.with-border{
         border-bottom:1px solid var(--border-soft);
         background:var(--purple-bg);
         padding:16px 20px;
         margin-bottom:0;
     }
-    .tablebox .box-title{ color:var(--purple-dark); font-weight:700; margin:0; }
-    .tablebox .box-body{ padding:24px 20px; }
+    .tablebox .card-title{ color:var(--purple-dark); font-weight:700; margin:0; }
+    .tablebox .card-body{ padding:24px 20px; }
 
     #example2.dataTable{
         border-collapse:separate !important;
@@ -197,7 +196,7 @@
     #example2.dataTable tbody td:first-child{ font-weight:600; white-space:normal; }
     #example2.table-striped>tbody>tr:nth-of-type(odd){ background-color:#FBFAFF; }
     #example2 tbody tr:hover{ background-color:var(--purple-bg) !important; }
-    #example2.dataTable.table-bordered{ border:none; }
+    #example2.dataTable.table-row-bordered{ border:none; }
 
     div.dataTables_wrapper div.dataTables_filter{ margin-bottom:14px; }
     div.dataTables_wrapper div.dataTables_filter label{
@@ -293,13 +292,13 @@ function specialiteIconSvg($key) {
     </div>
     <?php
     if ($this->requestAction('/droits/getrole/categories/add') == 1)
-        echo $this->Html->link('<i class="fa fa-plus"></i> Ajouter', array('action' => 'add'), array('class' => "btn btn-purple-solid", 'escape' => false));
+        echo $this->Html->link('<i class="ki-duotone ki-plus"></i> Ajouter', array('action' => 'add'), array('class' => "btn btn-purple-solid", 'escape' => false));
     ?>
 </div>
 
 <div class="specialites-card">
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped spec-table">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4 spec-table">
             <thead>
                 <tr>
                     <th>Spécialité</th>
@@ -322,8 +321,8 @@ function specialiteIconSvg($key) {
                     </td>
                     <td class="actions">
                         <div class="btn-group">
-                            <button type="button" class="actions-toggle dropdown-toggle" data-toggle="dropdown" aria-expanded="false" onclick="return toggleLegacyDropdown(this);">
-                                <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                            <button type="button" class="actions-toggle dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" onclick="return toggleLegacyDropdown(this);">
+                                <i class="ki-duotone ki-setting-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>&nbsp;<span class=""></span>
                             </button>
                             <ul class="dropdown-menu" role="menu" style="display:none;">
                                 <li>  <?php echo $this->Html->link(__('Voir'), array('action' => 'view', $category['Category']['id'])); ?></li>
@@ -339,13 +338,13 @@ function specialiteIconSvg($key) {
 </div>
 
 
-<div class="tablebox col-md-12 col-sm-12 col-xs-12">
-    <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title">Spécialités</h3>
+<div class="tablebox col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Spécialités</h3>
         </div>
-        <div class="box-body" style="height: 243px;overflow-y: scroll;overflow-x: hidden;">
-            <table id="example2" class="display table table-bordered table-striped">
+        <div class="card-body" style="height: 243px;overflow-y: scroll;overflow-x: hidden;">
+            <table id="example2" class="display table table-row-bordered table-row-gray-300 align-middle gy-4">
                 <thead>
                     <tr>
                         <th>Spécialités</th>
@@ -702,10 +701,6 @@ function specialiteIconSvg($key) {
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 echo $this->Html->script('jquery.flot.min');
@@ -715,13 +710,6 @@ echo $this->Html->script('jquery.flot.categories.min');
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script>
     // Snapshot our jQuery instance right after our plugins load, before Metronic's own
     // bundles (plugins.bundle.js / app.min.js) can silently reassign window.jQuery,

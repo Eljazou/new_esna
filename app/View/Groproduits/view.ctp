@@ -1,19 +1,16 @@
-<?php
-
-echo $this->Html->css('dataTables.bootstrap');
-		?>	
+<?php echo $this->element('assets/datatables'); ?>
 <style>
 thead tr th{font-size: 15px;font-weight: 600;padding:5px 3px !important;}
 </style>
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title" style="font-size:24px;"><?php echo __('Groproduit'); ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title" style="font-size:24px;"><?php echo __('Groproduit'); ?></h3>
 		<h2 style="color: #3c8dbc;text-align:center;font-size: 38px;"><?php echo h($groproduit['Groproduit']['name']); ?></h2>
     </div>
-    <div class="box-body">
+    <div class="card-body">
           <?php if (!empty($groproduit['Grovente'])): ?>
 
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 		<thead>
 	<tr>
 		<th><?php echo __('Id'); ?></th>
@@ -48,10 +45,7 @@ thead tr th{font-size: 15px;font-weight: 600;padding:5px 3px !important;}
 <?php endif; ?>
  </div>
 </div>
-	<?php echo $this->Html->script('jquery-2.2.3.min');
-        echo $this->Html->script('bootstrap.min');
-        echo $this->Html->script('app.min');
-        echo $this->Html->script('jquery.dataTables.min');
+	<?php
         echo $this->Html->script('jquery.slimscroll.min');
         echo $this->Html->script('fastclick');
         echo $this->Html->script('demo');

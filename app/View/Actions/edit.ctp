@@ -1,5 +1,3 @@
-<?php echo $this->Html->css('select2.min'); ?>
-
 <style type="text/css">
     /* Theme Base Definitions */
     :root {
@@ -251,7 +249,7 @@
                         <div class="form-group-custom">
                             <div class="date-field-wrap">
                                 <?php echo $this->Form->input('date_debut', ['type' => 'text', 'class' => 'form-control lb-date-input', 'id' => 'datepicker', 'label' => "Date début", 'div' => false, 'autocomplete' => 'off']); ?>
-                                <i class="fa fa-calendar date-field-icon"></i>
+                                <i class="ki-duotone ki-calendar-8 date-field-icon"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>
                             </div>
                         </div>
                     </div>
@@ -259,7 +257,7 @@
                         <div class="form-group-custom">
                             <div class="date-field-wrap">
                                 <?php echo $this->Form->input('date_fin', ['type' => 'text', 'class' => 'form-control lb-date-input', 'id' => 'datepicker1', 'label' => "Date fin", 'div' => false, 'autocomplete' => 'off']); ?>
-                                <i class="fa fa-calendar date-field-icon"></i>
+                                <i class="ki-duotone ki-calendar-8 date-field-icon"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>
                             </div>
                         </div>
                     </div>

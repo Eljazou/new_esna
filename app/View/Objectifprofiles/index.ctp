@@ -1,7 +1,7 @@
 <style>
     body { background: #f4f5fa; }
 
-    .box-header {
+    .card-header {
         background: linear-gradient(135deg, #7b5ce8 0%, #9b6ef0 100%);
         padding: 24px 28px;
         display: flex;
@@ -12,13 +12,13 @@
         margin-bottom: 24px;
     }
 
-    .box-header .title-wrap {
+    .card-header .title-wrap {
         display: flex;
         align-items: center;
         gap: 14px;
     }
 
-    .box-header .icon-circle {
+    .card-header .icon-circle {
         width: 44px;
         height: 44px;
         border-radius: 12px;
@@ -29,13 +29,13 @@
         flex-shrink: 0;
     }
 
-    .box-header .icon-circle svg {
+    .card-header .icon-circle svg {
         width: 22px;
         height: 22px;
         stroke: #fff;
     }
 
-    .box-header h3.box-title {
+    .card-header h3.card-title {
         color: #fff !important;
         font-size: 20px;
         font-weight: 700;
@@ -43,7 +43,7 @@
         width: auto !important;
     }
 
-    .box-header .subtitle {
+    .card-header .subtitle {
         color: rgba(255,255,255,0.85);
         font-size: 13px;
         margin-top: 2px;
@@ -236,7 +236,7 @@
         border-radius: 0 0 10px 10px;
     }
 </style>
-<div class="box-header">
+<div class="card-header">
     <div class="title-wrap">
         <div class="icon-circle">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -246,7 +246,7 @@
             </svg>
         </div>
         <div>
-            <h3 class="box-title"><?php echo __('Les Objectifs des profils'); ?></h3>
+            <h3 class="card-title"><?php echo __('Les Objectifs des profils'); ?></h3>
             <div class="subtitle"><?php echo __('Consultez et gérez les objectifs par profil'); ?></div>
         </div>
     </div>

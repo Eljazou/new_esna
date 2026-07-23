@@ -1,4 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
+<?php echo $this->element('assets/datatables'); ?>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style type="text/css">
@@ -7,11 +7,11 @@
         --primary-light: #ece9fe;
     }
 
-    body, .box, table, .dropdown-menu {
+    body, .card, table, .dropdown-menu {
         font-family: 'Poppins', sans-serif;
     }
 
-    .box {
+    .card {
         border-radius: 22px !important;
         border: none !important;
         box-shadow: 0 4px 20px rgba(108, 99, 245, 0.08) !important;
@@ -20,7 +20,7 @@
     }
 
     /* ===== Hero header ===== */
-    .box-header {
+    .card-header {
         border: none !important;
         position: relative;
         overflow: hidden;
@@ -47,7 +47,7 @@
 
     .hero-text { z-index: 2; }
 
-    .box-title.hero-title {
+    .card-title.hero-title {
         font-size: 22px;
         font-weight: 700;
         color: #2b2b45;
@@ -71,7 +71,7 @@
     }
 
     /* ===== Table body wrapper ===== */
-    .box-body { padding: 24px 30px 30px; }
+    .card-body { padding: 24px 30px 30px; }
 
     /* Length / entries per page */
     .dataTables_length {
@@ -127,7 +127,7 @@
         padding-bottom: 16px !important;
     }
 
-    table.table-bordered td, table.table-bordered th {
+    table.table-row-bordered td, table.table-row-bordered th {
         border-color: #f1effa !important;
     }
 
@@ -250,13 +250,13 @@
     }
 </style>
 
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
         <div class="hero-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
         </div>
         <div class="hero-text">
-            <h3 class="box-title hero-title"><?php echo __('Archive des documents'); ?></h3>
+            <h3 class="card-title hero-title"><?php echo __('Archive des documents'); ?></h3>
             <div class="hero-subtitle">Retrouvez et consultez toutes les demandes de documents</div>
         </div>
         <svg class="hero-illustration" width="150" height="110" viewBox="0 0 150 110" fill="none">
@@ -271,8 +271,8 @@
             <circle cx="60" cy="35" r="2.5" fill="#8f7bfb" opacity="0.4"/>
         </svg>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>User</th>
@@ -346,10 +346,6 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

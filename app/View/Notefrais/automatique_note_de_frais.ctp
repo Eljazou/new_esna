@@ -1,6 +1,6 @@
 <style>
     @media (max-width:1237px){
-        .box-body{
+        .card-body{
             overflow: scroll;
             overflow-y: hidden;
         }
@@ -12,14 +12,14 @@
 { 
     font-size: 23px;
 }
-.box-header{
+.card-header{
     color: #333;
     background-color: #f5f5f5;
 }
 /* ==========================================================================
    NOTE DE FRAIS: COMPLETE WHITE CARD WRAPPER (TITLE + FORM + BUTTON)
    ========================================================================== */
-.box-header:has(#reservationtime) {
+.card-header:has(#reservationtime) {
     background: #ffffff !important;
     border: 1px solid #e2e8f0 !important;
     border-radius: 24px !important;
@@ -49,7 +49,7 @@
     align-items: center !important;
 }
 
-.box-header .box-title {
+.card-header .card-title {
     font-size: 24px !important;
     font-weight: 700 !important;
     color: #101828 !important;
@@ -106,7 +106,7 @@
 }
 
 .col-md-12:has(#reservationtime) div:has(.btn-primary),
-.col-md-12:has(#reservationtime) .well {
+.col-md-12:has(#reservationtime) .card {
     background: transparent !important;
     border: none !important;
     padding: 0 !important;
@@ -179,13 +179,13 @@
 .lb-range-apply-btn{ border:none; background:linear-gradient(135deg,#b497ff,#9d76fa); color:#fff; font-size:12.5px; font-weight:700; cursor:pointer; padding:6px 14px; border-radius:16px; }
 .lb-range-apply-btn:hover{ opacity:.92; }
 
-.box-header:has(#reservationtime),
+.card-header:has(#reservationtime),
 .col-md-12:has(#reservationtime) {
     overflow: visible !important;
 }
 </style>
-<div class="box-header">
-        <h3 class="box-title">
+<div class="card-header">
+        <h3 class="card-title">
             <?php setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
             echo __('Note de frais'); ?>
         </h3>
@@ -196,12 +196,12 @@
                             
                             <label for="">Date </label>
                             <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> 
-							class="form-control pull-right" name="date" id="reservationtime" placeholder="Rechercher" autocomplete="off">
+							class="form-control float-end" name="date" id="reservationtime" placeholder="Rechercher" autocomplete="off">
                         </div>
                         <div class="col-md-6">
                         </div>
                         <?php
-                        echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center col-md-12 col-xs-12','style'=>'margin:10px 0px;'))); ?>
+                        echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center col-md-12 col-12','style'=>'margin:10px 0px;'))); ?>
     </div>
     </div>
 

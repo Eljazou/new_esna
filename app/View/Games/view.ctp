@@ -14,7 +14,7 @@
             line-height: 1.5;
         }
 
-        .box {
+        .card {
             background: #ffffff;
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
@@ -24,7 +24,7 @@
         }
 
         /* Clean Header Layouts */
-        .box-header h3 {
+        .card-header h3 {
             font-size: 1.2rem;
             font-weight: 600;
             color: #1e293b;
@@ -35,7 +35,7 @@
         }
 
         /* Accent indicator line under headers */
-        .box-header h3::after {
+        .card-header h3::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -170,10 +170,10 @@
 <body>
 
 <!-- Box 1: Gamme details header -->
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <dl>
             <dt><h3><?php echo __('La gamme'); ?></h3></dt>
             <dd><h4><?php echo h($game['Game']['name']); ?></h4></dd>
@@ -182,11 +182,11 @@
 </div>
 
 <!-- Box 2: Brochures Linked Table -->
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
         <h3><?php echo __('Brochures liées à la gamme'); ?></h3>
     </div>
-    <div class="box-body">
+    <div class="card-body">
     <?php if (!empty($game['Brochure'])): ?>
         <table class="table table-striped">
             <thead>
@@ -204,9 +204,9 @@
                     <td><a href="/img/brochures/<?php echo $brochure['file']; ?>">Visualiser</a></td>
                     <td><?php echo $brochure['created']; ?></td>
                     <td class="actions">
-                        <?php echo $this->Html->link(__('Voir'), array('controller' => 'brochures', 'action' => 'view', $brochure['id']), array("class"=>"btn bg-blue btn-flat")); ?>
-                        <?php echo $this->Html->link(__('Editer'), array('controller' => 'brochures', 'action' => 'edit', $brochure['id']), array("class"=>"btn bg-blue btn-flat")); ?>
-                        <?php echo $this->Html->link(__('Archiver'), array('controller' => 'brochures', 'action' => 'archive', $brochure['id']), array("class"=>"btn bg-blue btn-flat"), 0); ?>
+                        <?php echo $this->Html->link(__('Voir'), array('controller' => 'brochures', 'action' => 'view', $brochure['id']), array("class"=>"btn bg-primary")); ?>
+                        <?php echo $this->Html->link(__('Editer'), array('controller' => 'brochures', 'action' => 'edit', $brochure['id']), array("class"=>"btn bg-primary")); ?>
+                        <?php echo $this->Html->link(__('Archiver'), array('controller' => 'brochures', 'action' => 'archive', $brochure['id']), array("class"=>"btn bg-primary"), 0); ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -217,11 +217,11 @@
 </div>
 
 <!-- Box 3: Samples Linked Table -->
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
         <h3><?php echo __('Echantillons liés à la gamme'); ?></h3>
     </div>
-    <div class="box-body">
+    <div class="card-body">
     <?php if (!empty($game['Echantillon'])): ?>
         <table class="table table-striped">
             <thead>
@@ -237,9 +237,9 @@
                     <td><?php echo $echantillon['name']; ?></td>
                     <td><?php echo $echantillon['created']; ?></td>
                     <td class="actions">
-                        <?php echo $this->Html->link(__('Voir'), array('controller' => 'echantillons', 'action' => 'view', $echantillon['id']), array("class"=>"btn bg-blue btn-flat")); ?>
-                        <?php echo $this->Html->link(__('Editer'), array('controller' => 'echantillons', 'action' => 'edit', $echantillon['id']), array("class"=>"btn bg-blue btn-flat")); ?>
-                        <?php echo $this->Html->link(__('Archiver'), array('controller' => 'echantillons', 'action' => 'archive', $echantillon['id']), array("class"=>"btn bg-blue btn-flat"), 0); ?>
+                        <?php echo $this->Html->link(__('Voir'), array('controller' => 'echantillons', 'action' => 'view', $echantillon['id']), array("class"=>"btn bg-primary")); ?>
+                        <?php echo $this->Html->link(__('Editer'), array('controller' => 'echantillons', 'action' => 'edit', $echantillon['id']), array("class"=>"btn bg-primary")); ?>
+                        <?php echo $this->Html->link(__('Archiver'), array('controller' => 'echantillons', 'action' => 'archive', $echantillon['id']), array("class"=>"btn bg-primary"), 0); ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -250,11 +250,11 @@
 </div>
 
 <!-- Box 4: Products Linked Table (With Cleaned Container Closures) -->
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
         <h3><?php echo __('Produits liés à la gamme'); ?></h3>
     </div>
-    <div class="box-body">
+    <div class="card-body">
     <?php if (!empty($game['Produit'])): ?>
         <table class="table table-striped">
             <thead>
@@ -274,9 +274,9 @@
                     <td><?php echo $produit['prix']; ?></td>
                     <td><?php echo $produit['created']; ?></td>
                     <td class="actions">
-                        <?php echo $this->Html->link(__('Voir'), array('controller' => 'produits', 'action' => 'view', $produit['id']), array("class"=>"btn bg-blue btn-flat")); ?>
-                        <?php echo $this->Html->link(__('Editer'), array('controller' => 'produits', 'action' => 'edit', $produit['id']), array("class"=>"btn bg-blue btn-flat")); ?>
-                        <?php echo $this->Html->link(__('Archiver'), array('controller' => 'produits', 'action' => 'archive', $produit['id']), array("class"=>"btn bg-blue btn-flat"), 0); ?>
+                        <?php echo $this->Html->link(__('Voir'), array('controller' => 'produits', 'action' => 'view', $produit['id']), array("class"=>"btn bg-primary")); ?>
+                        <?php echo $this->Html->link(__('Editer'), array('controller' => 'produits', 'action' => 'edit', $produit['id']), array("class"=>"btn bg-primary")); ?>
+                        <?php echo $this->Html->link(__('Archiver'), array('controller' => 'produits', 'action' => 'archive', $produit['id']), array("class"=>"btn bg-primary"), 0); ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

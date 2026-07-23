@@ -1,6 +1,4 @@
-<?php
-echo $this->Html->css('dataTables.bootstrap');
-?>
+<?php echo $this->element('assets/datatables'); ?>
 <?php
 // ---- Palette + icônes décoratives uniquement (aucune donnée modifiée) ----
 $ptg_palette = array(
@@ -86,15 +84,15 @@ $ptg_n = count($ptg_palette);
 .ptg-page-deco svg{ width: 150px; height: 110px; }
 
 /* card wrapping the table */
-.ptg-wrapper .box{
+.ptg-wrapper .card{
 	background: #fff;
 	border: 1px solid var(--ptg-border);
 	border-radius: 18px !important;
 	box-shadow: 0 6px 22px rgba(108,99,245,0.1);
 	overflow: hidden;
 }
-.ptg-wrapper .box-header{ display: none; } /* replaced by ptg-page-header above */
-.ptg-wrapper .box-body{ padding: 0; }
+.ptg-wrapper .card-header{ display: none; } /* replaced by ptg-page-header above */
+.ptg-wrapper .card-body{ padding: 0; }
 
 .ptg-wrapper table{
 	border: none !important;
@@ -257,13 +255,13 @@ $ptg_n = count($ptg_palette);
 		</svg>
 	</div>
 </div>
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><?php echo __('Bon de Commande des échantillons'); ?>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?php echo __('Bon de Commande des échantillons'); ?>
         </h3>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th><span class="ptg-th-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>Produit</span></th>
@@ -300,13 +298,13 @@ $ptg_n = count($ptg_palette);
     <?php echo $this->Form->create('Gadjet'); ?>
                             <input type="number" value="<?php echo $v; ?>" name="data[Gadjet][quantite]" style="float:left;width:80px;margin-right:5px;padding:3px;">
                             <input type="hidden" value="<?php echo "$key"; ?>" name="data[Gadjet][info]" >
-    <?php //echo $this->Form->end(array('label' => 'Modifier'), array('class'=>"btn bg-purple btn-flat",'style'=>"float:left;"));  ?>
+    <?php //echo $this->Form->end(array('label' => 'Modifier'), array('class'=>"btn bg-primary",'style'=>"float:left;"));  ?>
                             <input type="submit" class="btn bg-light-blue btn-sm" value="Modifier">
                             </form>
                         </div>
                     </td>
                     <td>
-    <?php echo $this->Html->link('<svg class="ptg-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>Voir', array('action' => 'voir', $key), array('class' => "btn bg-purple btn-flat ptg-voir", 'escape' => false)); ?><button type="button" class="btn bg-purple btn-flat ptg-edit" style="margin-left:3px;" onclick="btn(<?php echo $i++; ?>)"><svg class="ptg-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>Edit</button>
+    <?php echo $this->Html->link('<svg class="ptg-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>Voir', array('action' => 'voir', $key), array('class' => "btn bg-primary ptg-voir", 'escape' => false)); ?><button type="button" class="btn bg-primary ptg-edit" style="margin-left:3px;" onclick="btn(<?php echo $i++; ?>)"><svg class="ptg-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>Edit</button>
                     </td>
                 </tr>
 <?php endforeach; ?>
@@ -320,13 +318,9 @@ $ptg_n = count($ptg_palette);
         </table>
     </div>
 </div>
-<?php echo $this->Html->link('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Valider', array('action' => 'admin', 1), array('class' => "btn bg-purple btn-flat margin ptg-valider", 'escape' => false)); ?>
+<?php echo $this->Html->link('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Valider', array('action' => 'admin', 1), array('class' => "btn bg-primary margin ptg-valider", 'escape' => false)); ?>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('jquery.dataTables.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

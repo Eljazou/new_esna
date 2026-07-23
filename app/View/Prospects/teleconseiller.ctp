@@ -179,9 +179,10 @@
         </div>
         <?php
         if ($this->requestAction('/droits/getrole/users/add') == 1 )
-            // The options array was written as a positional string,
-            // array('class="btn bg-purple btn-flat margin"'), which CakePHP
-            // renders as a junk `0="class=..."` attribute -- so this button
+            // The options array was written as a positional string --
+            // array( 'class=&quot;btn bg-purple btn-flat margin&quot;' ) in the
+            // original -- which CakePHP
+            // renders as a junk `0="class=..."` attribute, so this button
             // never actually received a class and the .tc-wrapper .btn rule
             // above has never applied. Corrected to a real 'class' key; purely
             // presentational, the link target is untouched.

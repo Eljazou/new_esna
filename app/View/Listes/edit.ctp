@@ -13,7 +13,7 @@
 		echo $this->Form->input('name',array('label' => 'Nom','class'=>'form-control'));
 		echo $this->Form->input('semaine',array('label' => 'Semaine','class'=>'form-control'));
 	?>
-<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-primary btn-large','div' => array('class' => 'well text-center'))); ?>
+<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-primary btn-large','div' => array('class' => 'card card-body bg-light text-center'))); ?>
 </div>
 </div>
 </div>

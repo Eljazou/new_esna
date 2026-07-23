@@ -716,7 +716,7 @@ foreach ($clientsG as $key => $value) {
 											for ($ch = 0; $ch < count($ech); $ch++) {
 												$ec =  explode("-", $ech[$ch]);
 												$nomch = $this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-												echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+												echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 											}
 										} ?>
 										&nbsp;
@@ -740,7 +740,7 @@ foreach ($clientsG as $key => $value) {
 											} else {
 												$nomch = $this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
 											}
-											echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+											echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										} ?>
 										&nbsp;</td>
 									<td><?php if (!empty($val["Visite"]['produitsNP'])) {
@@ -748,7 +748,7 @@ foreach ($clientsG as $key => $value) {
 											$l = 0;
 											foreach ($ec as $e) {
 												$nomch = $this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-												echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+												echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 												$l++;
 											}
 										} ?>
@@ -891,7 +891,7 @@ foreach ($clientsGP as $key => $value) {
 											for ($ch = 0; $ch < count($ech); $ch++) {
 												$ec =  explode("-", $ech[$ch]);
 												$nomch = $this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-												echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+												echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 											}
 										} ?>
 										&nbsp;
@@ -915,7 +915,7 @@ foreach ($clientsGP as $key => $value) {
 											} else {
 												$nomch = $this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
 											}
-											echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+											echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										} ?>
 										&nbsp;</td>
 									<td><?php if (!empty($val["Visite"]['produitsNP'])) {
@@ -923,7 +923,7 @@ foreach ($clientsGP as $key => $value) {
 											$l = 0;
 											foreach ($ec as $e) {
 												$nomch = $this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-												echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+												echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 												$l++;
 											}
 										} ?>
@@ -1063,7 +1063,7 @@ foreach ($clientsGC as $key => $value) {
 											for ($ch = 0; $ch < count($ech); $ch++) {
 												$ec =  explode("-", $ech[$ch]);
 												$nomch = $this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-												echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+												echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 											}
 										} ?>
 										&nbsp;
@@ -1087,7 +1087,7 @@ foreach ($clientsGC as $key => $value) {
 											} else {
 												$nomch = $this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
 											}
-											echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+											echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										} ?>
 										&nbsp;</td>
 									<td><?php if (!empty($val["Visite"]['produitsNP'])) {
@@ -1095,7 +1095,7 @@ foreach ($clientsGC as $key => $value) {
 											$l = 0;
 											foreach ($ec as $e) {
 												$nomch = $this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-												echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+												echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 												$l++;
 											}
 										} ?>
@@ -1241,7 +1241,7 @@ if (!empty($sliced_price)) {
 														for ($ch = 0; $ch < count($ech); $ch++) {
 															$ec =  explode("-", $ech[$ch]);
 															$nomch = $this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-															echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+															echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 														}
 													} ?>
 													&nbsp;
@@ -1265,7 +1265,7 @@ if (!empty($sliced_price)) {
 														} else {
 															$nomch = $this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
 														}
-														echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+														echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 													} ?>
 													&nbsp;</td>
 												<td><?php if (!empty($val["Visite"]['produitsNP'])) {
@@ -1273,7 +1273,7 @@ if (!empty($sliced_price)) {
 														$l = 0;
 														foreach ($ec as $e) {
 															$nomch = $this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-															echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+															echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 															$l++;
 														}
 													} ?>
@@ -1419,7 +1419,7 @@ if (!empty($sliced_indication)) {
 														for ($ch = 0; $ch < count($ech); $ch++) {
 															$ec =  explode("-", $ech[$ch]);
 															$nomch = $this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-															echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+															echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 														}
 													} ?>
 													&nbsp;
@@ -1443,7 +1443,7 @@ if (!empty($sliced_indication)) {
 														} else {
 															$nomch = $this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
 														}
-														echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+														echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 													} ?>
 													&nbsp;</td>
 												<td><?php if (!empty($val["Visite"]['produitsNP'])) {
@@ -1451,7 +1451,7 @@ if (!empty($sliced_indication)) {
 														$l = 0;
 														foreach ($ec as $e) {
 															$nomch = $this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-															echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+															echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 															$l++;
 														}
 													} ?>
@@ -1597,7 +1597,7 @@ if (!empty($sliced_pathologie)) {
 														for ($ch = 0; $ch < count($ech); $ch++) {
 															$ec =  explode("-", $ech[$ch]);
 															$nomch = $this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-															echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+															echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 														}
 													} ?>
 													&nbsp;
@@ -1621,7 +1621,7 @@ if (!empty($sliced_pathologie)) {
 														} else {
 															$nomch = $this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
 														}
-														echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+														echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 													} ?>
 													&nbsp;</td>
 												<td><?php if (!empty($val["Visite"]['produitsNP'])) {
@@ -1629,7 +1629,7 @@ if (!empty($sliced_pathologie)) {
 														$l = 0;
 														foreach ($ec as $e) {
 															$nomch = $this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-															echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+															echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 															$l++;
 														}
 													} ?>
@@ -1776,7 +1776,7 @@ if (!empty($sliced_posologie)) {
 														for ($ch = 0; $ch < count($ech); $ch++) {
 															$ec =  explode("-", $ech[$ch]);
 															$nomch = $this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-															echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+															echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 														}
 													} ?>
 													&nbsp;
@@ -1800,7 +1800,7 @@ if (!empty($sliced_posologie)) {
 														} else {
 															$nomch = $this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
 														}
-														echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+														echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 													} ?>
 													&nbsp;</td>
 												<td><?php if (!empty($val["Visite"]['produitsNP'])) {
@@ -1808,7 +1808,7 @@ if (!empty($sliced_posologie)) {
 														$l = 0;
 														foreach ($ec as $e) {
 															$nomch = $this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-															echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+															echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 															$l++;
 														}
 													} ?>
@@ -1955,7 +1955,7 @@ if (!empty($sliced_presentation)) {
 														for ($ch = 0; $ch < count($ech); $ch++) {
 															$ec =  explode("-", $ech[$ch]);
 															$nomch = $this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-															echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+															echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 														}
 													} ?>
 													&nbsp;
@@ -1979,7 +1979,7 @@ if (!empty($sliced_presentation)) {
 														} else {
 															$nomch = $this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
 														}
-														echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+														echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 													} ?>
 													&nbsp;</td>
 												<td><?php if (!empty($val["Visite"]['produitsNP'])) {
@@ -1987,7 +1987,7 @@ if (!empty($sliced_presentation)) {
 														$l = 0;
 														foreach ($ec as $e) {
 															$nomch = $this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-															echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+															echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 															$l++;
 														}
 													} ?>
@@ -2137,7 +2137,7 @@ if (!empty($tSec)) {
 												for ($ch = 0; $ch < count($ech); $ch++) {
 													$ec =  explode("-", $ech[$ch]);
 													$nomch = $this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 												}
 											} ?>
 											&nbsp;
@@ -2161,7 +2161,7 @@ if (!empty($tSec)) {
 												} else {
 													$nomch = $this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
 												}
-												echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+												echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 											} ?>
 											&nbsp;</td>
 										<td><?php if (!empty($val["Visite"]['produitsNP'])) {
@@ -2169,7 +2169,7 @@ if (!empty($tSec)) {
 												$l = 0;
 												foreach ($ec as $e) {
 													$nomch = $this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 													$l++;
 												}
 											} ?>
@@ -2317,7 +2317,7 @@ if (!empty($tSpec)) {
 												for ($ch = 0; $ch < count($ech); $ch++) {
 													$ec =  explode("-", $ech[$ch]);
 													$nomch = $this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 												}
 											} ?>
 											&nbsp;
@@ -2341,7 +2341,7 @@ if (!empty($tSpec)) {
 												} else {
 													$nomch = $this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
 												}
-												echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+												echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 											} ?>
 											&nbsp;</td>
 										<td><?php if (!empty($val["Visite"]['produitsNP'])) {
@@ -2349,7 +2349,7 @@ if (!empty($tSpec)) {
 												$l = 0;
 												foreach ($ec as $e) {
 													$nomch = $this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 													$l++;
 												}
 											} ?>

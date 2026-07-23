@@ -88,7 +88,7 @@
     .product-row:hover {
         background-color: var(--theme-primary-light);
     }
-    .product-row .form-group {
+    .product-row .mb-5 {
         margin-bottom: 0;
     }
     .product-row label {
@@ -157,16 +157,16 @@
                 <?php echo $this->Form->create('Offre'); ?>
                 
                 <!-- Main Details Section -->
-                <div class="form-group">
+                <div class="mb-5">
                     <?php echo $this->Form->input('id', array('label' => 'Id', 'class' => 'form-control')); ?>
                 </div>
-                <div class="form-group">
+                <div class="mb-5">
                     <?php echo $this->Form->input('titre', array('label' => 'Titre', 'class' => 'form-control')); ?>
                 </div>
-                <div class="form-group">
+                <div class="mb-5">
                     <?php echo $this->Form->input('description', array('label' => 'Description', 'class' => 'form-control')); ?>
                 </div>
-                <div class="form-group">
+                <div class="mb-5">
                     <?php echo $this->Form->input('montantmin', array('label' => 'Montant minimal (DH)', 'class' => 'form-control')); ?>
                 </div>
 
@@ -179,9 +179,9 @@
                     // Existing items loop
                     foreach ($offres as $offre) {
                         echo '<div class="row product-row comm comm'.$i.'">';
-                        echo '<div class="col-xs-6">' . $this->Form->input('produit_id', array('label' => false, 'default' => $offre['Offrespicial']['produit_id'], 'name' => "data[$i][Offrespicial][produit_id]", 'class' => 'form-control prod')) . '</div>';
-                        echo '<div class="col-xs-3">' . $this->Form->input('quantite', array('label' => false, 'name' => "data[$i][Offrespicial][quantite]", 'value' => $offre['Offrespicial']['quantite'], 'class' => 'form-control prodq', 'placeholder' => 'Qté')) . '</div>';
-                        echo '<div class="col-xs-3">' . $this->Form->input('reduction', array('label' => false, 'name' => "data[$i][Offrespicial][reduction]", 'value' => $offre['Offrespicial']['reduction'], 'class' => 'form-control prodr', 'placeholder' => 'Réduction')) . '</div>';
+                        echo '<div class="col-6">' . $this->Form->input('produit_id', array('label' => false, 'default' => $offre['Offrespicial']['produit_id'], 'name' => "data[$i][Offrespicial][produit_id]", 'class' => 'form-control prod')) . '</div>';
+                        echo '<div class="col-3">' . $this->Form->input('quantite', array('label' => false, 'name' => "data[$i][Offrespicial][quantite]", 'value' => $offre['Offrespicial']['quantite'], 'class' => 'form-control prodq', 'placeholder' => 'Qté')) . '</div>';
+                        echo '<div class="col-3">' . $this->Form->input('reduction', array('label' => false, 'name' => "data[$i][Offrespicial][reduction]", 'value' => $offre['Offrespicial']['reduction'], 'class' => 'form-control prodr', 'placeholder' => 'Réduction')) . '</div>';
                         echo '</div>';
                         $i++;
                     }
@@ -189,9 +189,9 @@
                     // Supplementary empty rows loop (up to 10 items total)
                     for ($i = count($offres); $i < 10; $i++) {
                         echo '<div class="row product-row comm comm'.$i.'">';
-                        echo '<div class="col-xs-6">' . $this->Form->input('produit_id', array('label' => false, 'name' => "data[$i][Offrespicial][produit_id]", 'class' => 'form-control prod')) . '</div>';
-                        echo '<div class="col-xs-3">' . $this->Form->input('quantite', array('label' => false, 'name' => "data[$i][Offrespicial][quantite]", 'class' => 'form-control prodq', 'placeholder' => 'Qté')) . '</div>';
-                        echo '<div class="col-xs-3">' . $this->Form->input('reduction', array('label' => false, 'name' => "data[$i][Offrespicial][reduction]", 'class' => 'form-control prodr', 'placeholder' => 'Réduction')) . '</div>';  
+                        echo '<div class="col-6">' . $this->Form->input('produit_id', array('label' => false, 'name' => "data[$i][Offrespicial][produit_id]", 'class' => 'form-control prod')) . '</div>';
+                        echo '<div class="col-3">' . $this->Form->input('quantite', array('label' => false, 'name' => "data[$i][Offrespicial][quantite]", 'class' => 'form-control prodq', 'placeholder' => 'Qté')) . '</div>';
+                        echo '<div class="col-3">' . $this->Form->input('reduction', array('label' => false, 'name' => "data[$i][Offrespicial][reduction]", 'class' => 'form-control prodr', 'placeholder' => 'Réduction')) . '</div>';  
                         echo '</div>';
                     }
                     ?>
@@ -202,9 +202,9 @@
 
                 <!-- Action Button Element to Inject Rows -->
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-12">
                         <a onclick="addcom(<?php echo $i; ?>)" class="btn btn-add-product btnaddcom" style="cursor: pointer;">
-                            <i class="fa fa-plus"></i> Ajouter un produit
+                            <i class="ki-duotone ki-plus"></i> Ajouter un produit
                         </a>
                     </div>
                 </div>

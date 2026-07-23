@@ -421,9 +421,9 @@ foreach ($visites as $visite) {
                         <td><?php
                             if ($this->requestAction('/droits/getrole/clients/detail_visites') == 1)
                                 if ($type == 0)
-                                    echo $this->Html->link('Détail', array('action' => 'detail_visites', 0, $date_debut, $date_fin), array('class' => "btn bg-blue btn-flat", 'style' => "float:right;"));
+                                    echo $this->Html->link('Détail', array('action' => 'detail_visites', 0, $date_debut, $date_fin), array('class' => "btn bg-primary", 'style' => "float:right;"));
                                 else
-                                    echo $this->Html->link('Détail', array('action' => 'detail_visites', 0, $date_debut, $date_fin, $user_id), array('class' => "btn bg-blue btn-flat", 'style' => "float:right;"));
+                                    echo $this->Html->link('Détail', array('action' => 'detail_visites', 0, $date_debut, $date_fin, $user_id), array('class' => "btn bg-primary", 'style' => "float:right;"));
                             ?></td>
                     </tr>
                     <?php
@@ -437,9 +437,9 @@ foreach ($visites as $visite) {
                             <td><?php
                                 if ($this->requestAction('/droits/getrole/clients/detail_visites') == 1)
                                     if ($user_id == 0)
-                                        echo $this->Html->link('Détail', array('action' => 'detail_visites', $nbvisite, $date_debut, $date_fin), array('class' => "btn bg-blue btn-flat", 'style' => "float:right;"));
+                                        echo $this->Html->link('Détail', array('action' => 'detail_visites', $nbvisite, $date_debut, $date_fin), array('class' => "btn bg-primary", 'style' => "float:right;"));
                                     else
-                                        echo $this->Html->link('Détail', array('action' => 'detail_visites', $nbvisite, $date_debut, $date_fin, $user_id), array('class' => "btn bg-blue btn-flat", 'style' => "float:right;"));
+                                        echo $this->Html->link('Détail', array('action' => 'detail_visites', $nbvisite, $date_debut, $date_fin, $user_id), array('class' => "btn bg-primary", 'style' => "float:right;"));
                                 ?></td>
                         </tr>
                     <?php } ?>
@@ -464,7 +464,7 @@ foreach ($visites as $visite) {
                         ?>
                         <tr>
                             <td><?php echo $s["User"]["name"]; ?></td>
-                            <td><?php  echo $this->Html->link('Détail', array('action' => 'statistique_visites',$s["User"]["id"]), array('class' => "btn bg-blue btn-flat", 'style' => "float:right;")); ?></td>
+                            <td><?php  echo $this->Html->link('Détail', array('action' => 'statistique_visites',$s["User"]["id"]), array('class' => "btn bg-primary", 'style' => "float:right;")); ?></td>
                         </tr>
                     <?php } ?>
                 </table>

@@ -2,10 +2,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <?php
-echo $this->Html->css('select2.min');
-echo $this->Html->script('jquery-2.2.3.min');
 echo $this->Html->script('https://code.jquery.com/ui/1.12.0/jquery-ui.js');
-echo $this->Html->script('select2.full.min');
 ?>
 
 <style type="text/css">

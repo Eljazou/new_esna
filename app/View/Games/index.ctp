@@ -1,8 +1,8 @@
-<?php echo $this->Html->css('dataTables.bootstrap');?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     body { background: #f4f5fa; }
 
-    .box {
+    .card {
         background: #fff;
         border-radius: 16px;
         border: none;
@@ -10,7 +10,7 @@
         overflow: hidden;
     }
 
-    .box-header {
+    .card-header {
         background: linear-gradient(135deg, #7b5ce8 0%, #9b6ef0 100%);
         padding: 24px 28px;
         display: flex;
@@ -19,13 +19,13 @@
         border: none;
     }
 
-    .box-header .title-wrap {
+    .card-header .title-wrap {
         display: flex;
         align-items: center;
         gap: 14px;
     }
 
-    .box-header .icon-circle {
+    .card-header .icon-circle {
         width: 44px;
         height: 44px;
         border-radius: 12px;
@@ -35,20 +35,20 @@
         justify-content: center;
     }
 
-    .box-header .icon-circle svg {
+    .card-header .icon-circle svg {
         width: 22px;
         height: 22px;
         stroke: #fff;
     }
 
-    .box-header h3.box-title {
+    .card-header h3.card-title {
         color: #fff;
         font-size: 20px;
         font-weight: 700;
         margin: 0;
     }
 
-    .box-header .subtitle {
+    .card-header .subtitle {
         color: rgba(255,255,255,0.85);
         font-size: 13px;
         margin-top: 2px;
@@ -80,7 +80,7 @@
         stroke: #fff;
     }
 
-    .box-body {
+    .card-body {
         padding: 24px 28px 28px;
         overflow: scroll;
         overflow-y: hidden;
@@ -115,7 +115,7 @@
         background-color: #fbfaff;
     }
 
-    table.table-bordered {
+    table.table-row-bordered {
         border: none;
     }
 
@@ -205,8 +205,8 @@
     }
 </style>
 
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
         <div class="title-wrap">
             <div class="icon-circle">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -217,7 +217,7 @@
                 </svg>
             </div>
             <div>
-                <h3 class="box-title"><?php echo __('Games'); ?></h3>
+                <h3 class="card-title"><?php echo __('Games'); ?></h3>
                 <div class="subtitle"><?php echo __("Consultez et gérez les gammes disponibles"); ?></div>
             </div>
         </div>
@@ -229,8 +229,8 @@
             );
         endif; ?>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>Réf</th>
@@ -244,11 +244,11 @@
                     <td><span class="game-badge"><?php echo h($game['Game']['name']); ?></span>&nbsp;</td>
                     <td class="actions">
                         <div class="btn-group dropdown">
-                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false" onclick="return toggleLegacyDropdown(this);">
+                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false" onclick="return toggleLegacyDropdown(this);">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="3"></circle>
                                     <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                                </svg>&nbsp;<span class="caret"></span>
+                                </svg>&nbsp;<span class=""></span>
                             </button>
                             <ul class="dropdown-menu" role="menu" style="display:none;">
                                 <li>
@@ -269,10 +269,6 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -311,13 +307,6 @@ jQuery(function () {
 });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script>
     $(function () {
         $('#example1').DataTable({

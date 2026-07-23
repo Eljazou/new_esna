@@ -35,7 +35,7 @@ echo $this->Html->script('demo');
 							echo $this->Form->date('date_fin', array('class' => 'form-control','value' => $date_fin));
 							echo $this->Form->input('description', array('class' => 'form-control'));
 							?>
-							<?php echo $this->Form->end(array('label' => 'Modifier', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center'))); ?>
+							<?php echo $this->Form->end(array('label' => 'Modifier', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center'))); ?>
 						</div>
 					</div>
 				</div>
@@ -449,7 +449,7 @@ foreach($objections as $obj){
                                         {
                                             $ec=  explode("-", $ech[$ch]);
                                             $nomch=$this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-                                            echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+                                            echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
                                         }
                                     }?>
 								&nbsp; 
@@ -458,7 +458,7 @@ foreach($objections as $obj){
 							<td><?php if(!empty($val["Visite"]['produits'])){
 										$ec=  explode("|", $val["Visite"]['produits']);
 													$nomch=$this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										}?>
 								&nbsp;</td>
 								<td><?php if(!empty($val["Visite"]['produitsNP'])){
@@ -466,7 +466,7 @@ foreach($objections as $obj){
 										$l=0;
 										foreach($ec as $e){
 													$nomch=$this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-										echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+										echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 										$l++;
 										}}?>
 								&nbsp;</td>
@@ -570,7 +570,7 @@ foreach($objections as $obj){
                                         {
                                             $ec=  explode("-", $ech[$ch]);
                                             $nomch=$this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-                                            echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+                                            echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
                                         }
                                     }?>
 								&nbsp; 
@@ -579,7 +579,7 @@ foreach($objections as $obj){
 							<td><?php if(!empty($val["Visite"]['produits'])){
 										$ec=  explode("|", $val["Visite"]['produits']);
 													$nomch=$this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										}?>
 								&nbsp;</td>
 								<td><?php if(!empty($val["Visite"]['produitsNP'])){
@@ -587,7 +587,7 @@ foreach($objections as $obj){
 										$l=0;
 										foreach($ec as $e){
 													$nomch=$this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-										echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+										echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 										$l++;
 										}}?>
 								&nbsp;</td>
@@ -690,7 +690,7 @@ foreach($objections as $obj){
                                         {
                                             $ec=  explode("-", $ech[$ch]);
                                             $nomch=$this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-                                            echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+                                            echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
                                         }
                                     }?>
 								&nbsp; 
@@ -699,7 +699,7 @@ foreach($objections as $obj){
 							<td><?php if(!empty($val["Visite"]['produits'])){
 										$ec=  explode("|", $val["Visite"]['produits']);
 													$nomch=$this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										}?>
 								&nbsp;</td>
 								<td><?php if(!empty($val["Visite"]['produitsNP'])){
@@ -707,7 +707,7 @@ foreach($objections as $obj){
 										$l=0;
 										foreach($ec as $e){
 													$nomch=$this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-										echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+										echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 										$l++;
 										}}?>
 								&nbsp;</td>
@@ -816,7 +816,7 @@ foreach($objections as $obj){
                                         {
                                             $ec=  explode("-", $ech[$ch]);
                                             $nomch=$this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-                                            echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+                                            echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
                                         }
                                     }?>
 								&nbsp; 
@@ -825,7 +825,7 @@ foreach($objections as $obj){
 							<td><?php if(!empty($val["Visite"]['produits'])){
 										$ec=  explode("|", $val["Visite"]['produits']);
 													$nomch=$this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										}?>
 								&nbsp;</td>
 								<td><?php if(!empty($val["Visite"]['produitsNP'])){
@@ -833,7 +833,7 @@ foreach($objections as $obj){
 										$l=0;
 										foreach($ec as $e){
 													$nomch=$this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-										echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+										echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 										$l++;
 										}}?>
 								&nbsp;</td>
@@ -940,7 +940,7 @@ foreach($objections as $obj){
                                         {
                                             $ec=  explode("-", $ech[$ch]);
                                             $nomch=$this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-                                            echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+                                            echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
                                         }
                                     }?>
 								&nbsp; 
@@ -949,7 +949,7 @@ foreach($objections as $obj){
 							<td><?php if(!empty($val["Visite"]['produits'])){
 										$ec=  explode("|", $val["Visite"]['produits']);
 													$nomch=$this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										}?>
 								&nbsp;</td>
 								<td><?php if(!empty($val["Visite"]['produitsNP'])){
@@ -957,7 +957,7 @@ foreach($objections as $obj){
 										$l=0;
 										foreach($ec as $e){
 													$nomch=$this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-										echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+										echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 										$l++;
 										}}?>
 								&nbsp;</td>
@@ -1063,7 +1063,7 @@ foreach($objections as $obj){
                                         {
                                             $ec=  explode("-", $ech[$ch]);
                                             $nomch=$this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-                                            echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+                                            echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
                                         }
                                     }?>
 								&nbsp; 
@@ -1072,7 +1072,7 @@ foreach($objections as $obj){
 							<td><?php if(!empty($val["Visite"]['produits'])){
 										$ec=  explode("|", $val["Visite"]['produits']);
 													$nomch=$this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										}?>
 								&nbsp;</td>
 								<td><?php if(!empty($val["Visite"]['produitsNP'])){
@@ -1080,7 +1080,7 @@ foreach($objections as $obj){
 										$l=0;
 										foreach($ec as $e){
 													$nomch=$this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-										echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+										echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 										$l++;
 										}}?>
 								&nbsp;</td>
@@ -1187,7 +1187,7 @@ foreach($objections as $obj){
                                         {
                                             $ec=  explode("-", $ech[$ch]);
                                             $nomch=$this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-                                            echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+                                            echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
                                         }
                                     }?>
 								&nbsp; 
@@ -1196,7 +1196,7 @@ foreach($objections as $obj){
 							<td><?php if(!empty($val["Visite"]['produits'])){
 										$ec=  explode("|", $val["Visite"]['produits']);
 													$nomch=$this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										}?>
 								&nbsp;</td>
 								<td><?php if(!empty($val["Visite"]['produitsNP'])){
@@ -1204,7 +1204,7 @@ foreach($objections as $obj){
 										$l=0;
 										foreach($ec as $e){
 													$nomch=$this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-										echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+										echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 										$l++;
 										}}?>
 								&nbsp;</td>
@@ -1311,7 +1311,7 @@ foreach($objections as $obj){
                                         {
                                             $ec=  explode("-", $ech[$ch]);
                                             $nomch=$this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-                                            echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+                                            echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
                                         }
                                     }?>
 								&nbsp; 
@@ -1320,7 +1320,7 @@ foreach($objections as $obj){
 							<td><?php if(!empty($val["Visite"]['produits'])){
 										$ec=  explode("|", $val["Visite"]['produits']);
 													$nomch=$this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										}?>
 								&nbsp;</td>
 								<td><?php if(!empty($val["Visite"]['produitsNP'])){
@@ -1328,7 +1328,7 @@ foreach($objections as $obj){
 										$l=0;
 										foreach($ec as $e){
 													$nomch=$this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-										echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+										echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 										$l++;
 										}}?>
 								&nbsp;</td>
@@ -1437,7 +1437,7 @@ foreach($objections as $obj){
                                         {
                                             $ec=  explode("-", $ech[$ch]);
                                             $nomch=$this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-                                            echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+                                            echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
                                         }
                                     }?>
 								&nbsp; 
@@ -1446,7 +1446,7 @@ foreach($objections as $obj){
 							<td><?php if(!empty($val["Visite"]['produits'])){
 										$ec=  explode("|", $val["Visite"]['produits']);
 													$nomch=$this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										}?>
 								&nbsp;</td>
 								<td><?php if(!empty($val["Visite"]['produitsNP'])){
@@ -1454,7 +1454,7 @@ foreach($objections as $obj){
 										$l=0;
 										foreach($ec as $e){
 													$nomch=$this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-										echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+										echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 										$l++;
 										}}?>
 								&nbsp;</td>
@@ -1564,7 +1564,7 @@ foreach($objections as $obj){
                                         {
                                             $ec=  explode("-", $ech[$ch]);
                                             $nomch=$this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-                                            echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+                                            echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
                                         }
                                     }?>
 								&nbsp; 
@@ -1573,7 +1573,7 @@ foreach($objections as $obj){
 							<td><?php if(!empty($val["Visite"]['produits'])){
 										$ec=  explode("|", $val["Visite"]['produits']);
 													$nomch=$this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										}?>
 								&nbsp;</td>
 								<td><?php if(!empty($val["Visite"]['produitsNP'])){
@@ -1581,7 +1581,7 @@ foreach($objections as $obj){
 										$l=0;
 										foreach($ec as $e){
 													$nomch=$this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-										echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+										echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 										$l++;
 										}}?>
 								&nbsp;</td>
@@ -2349,14 +2349,14 @@ foreach($objections as $obj){
                                         {
                                             $ec=  explode("-", $ech[$ch]);
                                             $nomch=$this->requestAction('/echantillons/system_get_name/' . $ec[0]);
-                                            echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+                                            echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;margin-bottom:7px;float:left;' ><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
                                         }
                                     }?>
 								&nbsp;</td>
 								<td><?php if(!empty($value["Visite"]['produits'])){
 										$ec=  explode("|", $value["Visite"]['produits']);
 													$nomch=$this->requestAction('/produits/system_get_name_produit/' . $ec[0]);
-													echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
+													echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 7px;'><b style='margin-right: 8px;'>$nomch</b><span class='label-warning' style='width: auto;padding: 5px 5px;'>$ec[1]</span></span>";
 										}?>
 								&nbsp;</td>
 								<td><?php if(!empty($value["Visite"]['produitsNP'])){
@@ -2364,7 +2364,7 @@ foreach($objections as $obj){
 										$l=0;
 										foreach($ec as $e){
 													$nomch=$this->requestAction('/games/system_get_name_game/' . $ec[$l]);
-										echo "<span class='label label-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
+										echo "<span class='badge badge-light-success' style='width: auto;padding: 5px 9px;margin-right: 3px;vertical-align: middle;line-height: 28px;'><b style='margin-right: 8px;'>$nomch</b></span><br>";
 										$l++;
 										}}?>
 								&nbsp;</td>

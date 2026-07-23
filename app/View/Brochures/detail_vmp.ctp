@@ -111,7 +111,7 @@
                 <a href="img/brochures/<?php echo $b['brochures']['file']; ?>" target="_blanck">
                     <div class="col-md-4 col-sm-6 col-12" style="margin-bottom:10px;">
                         <div class="info-box" style="box-shadow: 1px 1px 1px rgba(0,0,0,0.1) !important;">
-                            <span class="info-box-icon bg-primary-active"><i class="ki-duotone ki-text-bold"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
+                            <span class="info-box-icon bg-aqua-active"><i class="ki-duotone ki-text-bold"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="color:#444;text-decoration:none;">Spécialité : <?php echo $b['categories']['name']; ?></span>
                                 <span class="info-box-text" style="color:#444;text-decoration:none;"><?php echo $b['brochures']['name']; ?></span>

@@ -1,5 +1,5 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
- echo $this->Html->css('dataTables.bootstrap');
  echo $this->Html->css('jqcloud');
 ?>
 <style>
@@ -58,14 +58,14 @@
 	.mtc-stat-label{ font-size:12.5px; color:var(--mtc-muted); font-weight:600; margin-top:2px; }
 
 	/* ============================================================
-	   Card shell (replaces AdminLTE .box)
+	   Card shell (replaces AdminLTE .card)
 	   ============================================================ */
 	.mtc-card{ background:var(--mtc-surface); border:1px solid var(--mtc-border); border-radius:var(--mtc-radius); box-shadow:var(--mtc-shadow); margin-bottom:18px; overflow:hidden; }
 	.mtc-card-header{ display:flex; align-items:center; gap:10px; padding:16px 20px; border-bottom:1px solid var(--mtc-border); }
 	.mtc-card-header i.hdr-ic{ color:var(--mtc-accent); font-size:15px; }
 	.mtc-card-header .mtc-card-title{ font-size:15px; font-weight:700; color:var(--mtc-ink); margin:0; flex:1; }
-	.mtc-card-header .btn-box-tool{ color:var(--mtc-muted); background:transparent; border:none; padding:4px 8px; border-radius:var(--mtc-radius-sm); }
-	.mtc-card-header .btn-box-tool:hover{ background:var(--mtc-accent-soft); color:var(--mtc-accent-dark); }
+	.mtc-card-header .btn{ color:var(--mtc-muted); background:transparent; border:none; padding:4px 8px; border-radius:var(--mtc-radius-sm); }
+	.mtc-card-header .btn:hover{ background:var(--mtc-accent-soft); color:var(--mtc-accent-dark); }
 	.mtc-card-body{ padding:18px 20px; }
 	.mtc-card.accent-top{ border-top:3px solid var(--mtc-accent); }
 
@@ -128,28 +128,28 @@
 
 <div class="mtc-stats-row">
     <div class="card card-flush mtc-stat">
-        <div class="symbol symbol-50px symbol-light-primary"><i class="fa fa-stethoscope"></i></div>
+        <div class="symbol symbol-50px symbol-light-primary"><i class="ki-duotone ki-pulse"><span class="path1"></span><span class="path2"></span></i></div>
         <div>
             <div class="fs-2hx fw-bolder text-gray-800"><?php echo $category['Category']['name']; ?></div>
             <div class="mtc-stat-label">Spécialité</div>
         </div>
     </div>
     <div class="card card-flush mtc-stat">
-        <div class="symbol symbol-50px symbol-light-info"><i class="fa fa-file-pdf-o"></i></div>
+        <div class="symbol symbol-50px symbol-light-info"><i class="ki-duotone ki-file -pdf-o"><span class="path1"></span><span class="path2"></span></i></div>
         <div>
             <div class="fs-2hx fw-bolder text-gray-800" id="tab-1"></div>
             <div class="mtc-stat-label">Brochures</div>
         </div>
     </div>
     <div class="card card-flush mtc-stat">
-        <div class="symbol symbol-50px symbol-light-warning"><i class="fa fa-graduation-cap"></i></div>
+        <div class="symbol symbol-50px symbol-light-warning"><i class="ki-duotone ki-teacher"><span class="path1"></span><span class="path2"></span></i></div>
         <div>
             <div class="fs-2hx fw-bolder text-gray-800" id="tab-2"></div>
             <div class="mtc-stat-label">Formations</div>
         </div>
     </div>
     <div class="card card-flush mtc-stat">
-        <div class="symbol symbol-50px symbol-light-success"><i class="fa fa-users"></i></div>
+        <div class="symbol symbol-50px symbol-light-success"><i class="ki-duotone ki-people"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i></div>
         <div>
             <div class="fs-2hx fw-bolder text-gray-800" id="tab-3"></div>
             <div class="mtc-stat-label">Clients</div>
@@ -159,7 +159,7 @@
 
 <div class="mtc-card accent-top">
     <div class="mtc-card-header">
-        <i class="fa fa-bar-chart-o hdr-ic"></i>
+        <i class="ki-duotone ki-chart-simple -o hdr-ic"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
         <h3 class="mtc-card-title">Potentialité des clients</h3>
     </div>
     <div class="mtc-card-body">
@@ -169,10 +169,10 @@
 </section>
 <div class="mtc-card">
     <div class="mtc-card-header">
-        <i class="fa fa-bar-chart-o hdr-ic"></i>
+        <i class="ki-duotone ki-chart-simple -o hdr-ic"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
         <h3 class="mtc-card-title">Type des clients</h3>
-        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        <button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="collapse"><i class="ki-duotone ki-minus"></i></button>
+        <button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="remove"><i class="ki-duotone ki-cross"><span class="path1"></span><span class="path2"></span></i></button>
     </div>
     <div class="mtc-card-body">
         <div id="donut-chart" style="height: 300px;"></div>
@@ -185,19 +185,19 @@
         <ul class="nav nav-tabs">
                 <?php //$active=' class="active" '; if (!empty($category['Brochure'])): ?>
                     <li class="active"<?php //echo $active;$active=''; ?>>
-                        <a href="#tab_1" data-toggle="tab" aria-expanded="true">Brochures
+                        <a href="#tab_1" data-bs-toggle="tab" aria-expanded="true">Brochures
                         </a>
                     </li>
                 <?php //endif; ?>
                 <?php //if (!empty($category['Formation'])): ?>
                     <li <?php //echo $active;$active=''; ?>>
-                        <a href="#tab_2" data-toggle="tab" aria-expanded="true">Formations
+                        <a href="#tab_2" data-bs-toggle="tab" aria-expanded="true">Formations
                         </a>
                     </li>
                 <?php //endif; ?>
                 <?php //if (!empty($category['Client'])): ?>
                     <li <?php //echo $active;$active=''; ?>>
-                        <a href="#tab_3" data-toggle="tab" aria-expanded="true">Clients
+                        <a href="#tab_3" data-bs-toggle="tab" aria-expanded="true">Clients
                         </a>
                     </li>
                 <?php //endif; ?>
@@ -208,7 +208,7 @@
                     <h5><?php echo __('Liste des brochures'); ?></h5>
 					<?php if (!empty($category['Brochure'])): ?>
 					 <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-12">
                             <div class="mtc-card">
                                 
                                 <div class="mtc-card-body table-responsive">
@@ -239,7 +239,7 @@
                     <h5><?php echo __('Liste Formations'); ?></h5>
 					<?php if (!empty($category['Formation'])): ?>
 					<div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-12">
                             <div class="mtc-card">
                                 
                                 <div class="mtc-card-body table-responsive">
@@ -270,7 +270,7 @@
                     <h5><?php echo __('Liste des Clients'); ?></h5>
 					<?php if (!empty($category['Client'])): ?>
 					 <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-12">
                             <div class="mtc-card">
                                 
                                 <div class="mtc-card-body table-responsive">
@@ -378,10 +378,10 @@ $objection=array_slice($frequency,0,10);
 ?>
 <div class="mtc-card">
 	<div class="mtc-card-header">
-		<i class="fa fa-cloud hdr-ic"></i>
+		<i class="ki-duotone ki-cloud hdr-ic"></i>
 		<h3 class="mtc-card-title">Les mots les plus répétés</h3>
-		<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-		<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+		<button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="collapse"><i class="ki-duotone ki-minus"></i></button>
+		<button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="remove"><i class="ki-duotone ki-cross"><span class="path1"></span><span class="path2"></span></i></button>
 	</div>
 	<div class="mtc-card-body" style="display:flex;flex-wrap:wrap;gap:16px;">
 		<div class="mtc-wordcloud-col" style="flex:1 1 260px;">
@@ -400,11 +400,7 @@ $objection=array_slice($frequency,0,10);
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
 echo $this->Html->script('jqcloud-1.0.0.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -415,13 +411,6 @@ echo $this->Html->script('jquery.flot.categories.min');
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});

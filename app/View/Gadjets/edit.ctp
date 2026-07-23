@@ -1,11 +1,11 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">
-        <h3 class="panel-title"><span class="glyphicon glyphicon-plus"></span> <?php echo __('Editer Gadget'); ?></h3>
+<div class="card">
+	<div class="card-header">
+        <h3 class="card-title"><span class="glyphicon glyphicon-plus"></span> <?php echo __('Editer Gadget'); ?></h3>
     </div>
-	<div class="panel-body">
+	<div class="card-body">
         <div class="col-lg-6">
-            <div class="panel panel-primary">
-                <div class="panel-body form-horizontal payment-form">
+            <div class="card">
+                <div class="card-body payment-form">
 				<?php echo $this->Form->create('Gadjet'); ?>
 	<?php
 		echo $this->Form->input('id',array('class'=>'form-control'));
@@ -16,7 +16,7 @@
 		echo $this->Form->input('date_fin',array('label' => 'Date fin','class'=>'form-control'));
 		echo $this->Form->input('archive',array('label' => 'Archive','class'=>'form-control'));
 	?>
-<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-primary btn-large','div' => array('class' => 'well text-center'))); ?>
+<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-primary btn-large','div' => array('class' => 'card card-body bg-light text-center'))); ?>
 </div>
 </div>
 </div>

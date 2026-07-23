@@ -1,5 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
-
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     :root{
         --purple-primary:#7C3AED;
@@ -12,7 +11,7 @@
     }
 
     @media (max-width:936px){
-        .box-body{ overflow: scroll; overflow-y: hidden; }
+        .card-body{ overflow: scroll; overflow-y: hidden; }
     }
 
     /* ===== Header card ===== */
@@ -68,13 +67,13 @@
     }
 
     /* ===== Table card ===== */
-    .box{
+    .card{
         border:none;
         border-radius:18px;
         box-shadow:0 4px 18px rgba(109,40,217,0.08);
         overflow:hidden;
     }
-    .box-body{ padding:20px 24px 8px; }
+    .card-body{ padding:20px 24px 8px; }
 
     /* DataTables top controls */
     div.dataTables_wrapper div.dataTables_length select,
@@ -225,7 +224,7 @@
     <div class="modal-dialog col-md-10" style="margin:auto;float:none;width:32%;min-width:450px;top:10%;">
         <div class="modal-content" style="float:left;width: 100%;padding-bottom: 27px;">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 <h4 class="modal-title" id="myModalLabel">Réponse</h4>
             </div>
             <div class="modal-body">
@@ -262,9 +261,9 @@
     </div>
 </div>
 
-<div class="box">
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+<div class="card">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>Nom</th>
@@ -334,10 +333,6 @@
 
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

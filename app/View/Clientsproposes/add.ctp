@@ -1,4 +1,3 @@
-<?php echo $this->Html->css('select2.min'); ?>
 <style>
     :root {
         --metronic-accent: #7C3AED;
@@ -14,13 +13,13 @@
         background: var(--metronic-bg);
     }
 
-    .panel.panel-primary {
+    .card {
         background: transparent;
         border: none;
         box-shadow: none;
     }
 
-    .panel.panel-primary .col-lg-6 {
+    .card .col-lg-6 {
         float: left !important;
         margin: 0 !important;
         padding: 0 8px 0 0 !important;
@@ -170,7 +169,7 @@
         opacity: 0.9;
     }
 
-    .payment-form .well {
+    .payment-form .card {
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
@@ -196,14 +195,14 @@
     }
 
     @media (max-width: 991px) {
-        .panel.panel-primary .col-lg-6 {
+        .card .col-lg-6 {
             padding-right: 0 !important;
         }
     }
 </style>
 <div class="row">
     <div class="col-md-11 mx-auto">
-        <div class="panel panel-primary">
+        <div class="card">
             <div class="lr-card mb-5">
                 <div class="lr-card-header">
                     <div class="lr-icon-circle">
@@ -218,9 +217,9 @@
 
             <?php $k='';if($type==null || $type=='Médecin'): ?>
             <div class="lr-card">
-                <div class="panel-body form-horizontal payment-form p-0">
+                <div class="card-body payment-form p-0">
                     <?php echo $this->Form->create('Clientspropose'); ?>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="input select"><label for="ClientsproposeTypeId">Type</label>
                             <select onchange="location = this.value;" class="form-select form-select-solid" id="ClientsproposeTypeId">
 
@@ -303,7 +302,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <?php
                         echo $this->Form->input('nom', array('label' => 'Nom', 'class' => 'form-control form-control-solid'));
                         echo $this->Form->input('prenom', array('label' => 'Prénom', 'class' => 'form-control form-control-solid'));
@@ -325,7 +324,7 @@
             <?php endif;
             if( $type=='Pharmacie'): ?>
             <div class="lr-card">
-                <div class="panel-body form-horizontal payment-form p-0">
+                <div class="card-body payment-form p-0">
                     <?php echo $this->Form->create('Clientspropose'); ?>
                         <div class="input select"><label for="ClientsproposeTypeId">Type</label>
                             <select onchange="location = this.value;" class="form-select form-select-solid" id="ClientsproposeTypeId">
@@ -361,7 +360,7 @@
             <?php endif;
             if( $type=='Grossiste'): ?>
             <div class="lr-card">
-                <div class="panel-body form-horizontal payment-form p-0">
+                <div class="card-body payment-form p-0">
                     <?php echo $this->Form->create('Clientspropose'); ?>
                         <div class="input select"><label for="ClientsproposeTypeId">Type</label>
                             <select onchange="location = this.value;" class="form-select form-select-solid" id="ClientsproposeTypeId">
@@ -397,18 +396,11 @@
         </div>
     </div>
 </div>
-<?php
-echo $this->Html->script('jquery-2.2.3.min');
-?>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <?php
-	echo $this->Html->script('bootstrap.min');
-	echo $this->Html->script('app.min');
 	echo $this->Html->script('jquery.slimscroll.min');
 	echo $this->Html->script('fastclick');
 	echo $this->Html->script('demo');
-	echo $this->Html->script('select2.full.min');
 ?>
 <script>
 $(function () {

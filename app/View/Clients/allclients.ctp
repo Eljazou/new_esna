@@ -587,7 +587,7 @@ body, .content-wrapper{
     <div class="col-lg-3 col-6">
         <a href="<?php echo $this->Html->Url(array('action' => 'index')); ?>" class="stat-card purple">
             <div class="top-row">
-                <div class="stat-icon"><i class="ki-duotone ki-handcart fs-2x"><span class="path1"></span><span class="path2"></span></i></div>
+                <div class="stat-icon"><i class="ki-duotone ki-handcart fs-2x"></i></div>
             </div>
             <h3 id="nbmedcin"><?php echo $nb_clients; ?></h3>
             <p>N° Clients</p>

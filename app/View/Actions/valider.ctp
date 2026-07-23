@@ -1,7 +1,7 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>	
+<?php echo $this->element('assets/datatables'); ?>
 <style>
      @media (max-width:1282px){
-        .box-body{
+        .card-body{
             overflow: scroll;
             overflow-y: auto;
 			padding-bottom:60px;
@@ -22,14 +22,14 @@
 	--ptg-yellow: #e0a800;
 	--ptg-red: #e5484d;
 }
-.ptg-wrapper .box{
+.ptg-wrapper .card{
 	background: #fff;
 	border: 1px solid var(--ptg-border);
 	border-radius: 16px !important;
 	box-shadow: 0 4px 18px rgba(108,99,245,0.08);
 	overflow: hidden;
 }
-.ptg-wrapper .box-header{
+.ptg-wrapper .card-header{
 	border: none !important;
 	background: transparent;
 	padding: 22px 24px 18px 24px;
@@ -49,7 +49,7 @@
 	justify-content: center;
 }
 .ptg-header-icon svg{ width: 22px; height: 22px; display: block; }
-.ptg-wrapper .box-header .box-title{
+.ptg-wrapper .card-header .card-title{
 	font-weight: 700 !important;
 	font-size: 17px !important;
 	color: var(--ptg-text) !important;
@@ -63,7 +63,7 @@
 	margin-top: 3px;
 	font-weight: 400;
 }
-.ptg-wrapper .box-body{
+.ptg-wrapper .card-body{
 	padding: 0 24px 24px 24px;
 }
 
@@ -175,9 +175,9 @@
 	padding: 5px 12px;
 	letter-spacing: .02em;
 }
-.ptg-wrapper .badge.bg-yellow{ background: #FFF4D6 !important; color: #9a6b00 !important; }
-.ptg-wrapper .badge.bg-green{ background: #DEFBEC !important; color: #14804a !important; }
-.ptg-wrapper .badge.bg-red{ background: #FDE7E7 !important; color: #c53030 !important; }
+.ptg-wrapper .badge.bg-warning{ background: #FFF4D6 !important; color: #9a6b00 !important; }
+.ptg-wrapper .badge.bg-success{ background: #DEFBEC !important; color: #14804a !important; }
+.ptg-wrapper .badge.bg-danger{ background: #FDE7E7 !important; color: #c53030 !important; }
 
 /* actions dropdown */
 .ptg-wrapper td.actions .btn-group .btn{
@@ -212,18 +212,18 @@
 </style>
 
 <div class="ptg-wrapper">
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
         <span class="ptg-header-icon">
 			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><line x1="9" y1="7" x2="15" y2="7"></line><line x1="9" y1="11" x2="15" y2="11"></line><line x1="9" y1="15" x2="12" y2="15"></line></svg>
 		</span>
 		<div>
-			<h3 class="box-title"><?php echo __('Validation des actions'); ?></h3>
+			<h3 class="card-title"><?php echo __('Validation des actions'); ?></h3>
 			<div class="ptg-header-sub">Consultez et validez les actions en attente</div>
 		</div>
     </div>
-    <div class="box-body" style="">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body" style="">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>Client</th>
@@ -275,16 +275,16 @@
                     </td>
                     <td><?php
                         if ($action['Action']['date_debut'] > date('Y-m-d'))
-                            echo '<span class="badge bg-yellow">Prochainement</span>';
+                            echo '<span class="badge bg-warning">Prochainement</span>';
                         else if ($j >= 0)
-                            echo '<span class="badge bg-green">En cours</span>';
+                            echo '<span class="badge bg-success">En cours</span>';
                         else
-                            echo '<span class="badge bg-red">Terminé</span>';
+                            echo '<span class="badge bg-danger">Terminé</span>';
                         ?></td>
                     <td class="actions">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-								<i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">
+								<i class="ki-duotone ki-setting-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>&nbsp;<span class=""></span>
 							  </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><?php echo $this->Html->link(__('Editer'), array('action' => 'edit', $action['Action']['id'])); ?></li>
@@ -314,10 +314,6 @@
 </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

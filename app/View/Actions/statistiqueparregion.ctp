@@ -1,9 +1,8 @@
+<?php echo $this->element('assets/datatables'); ?>
 ﻿<?php
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
     echo $this->Html->css('daterangepicker');
     ?>
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         @media (max-width: 980px){
@@ -17,7 +16,7 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
         font-family:'Poppins',sans-serif;
         color:#3a3a4a;
     }
-    .spr-wrapper .box{
+    .spr-wrapper .card{
         background:#fff;
         border:none;
         border-radius:18px;
@@ -76,7 +75,7 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
         overflow:hidden;
         background:#fff;
     }
-    .spr-wrapper .input-group-addon{
+    .spr-wrapper .input-group-text{
         background:#faf9ff;
         border:none;
         border-right:1.5px solid #ded9fb;
@@ -126,7 +125,7 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
         float:none !important;
     }
     .spr-wrapper .buttons-excel{background:#e8f8ee !important;color:#1f9d55 !important;}
-    .spr-wrapper .box-body.table-responsive{
+    .spr-wrapper .card-body.table-responsive{
         padding:0 24px 24px 24px;
     }
     .spr-wrapper table.dataTable thead th{
@@ -144,9 +143,9 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
     .spr-wrapper table.dataTable tbody tr:hover{
         background:#faf9ff;
     }
-    .spr-wrapper .badge.bg-red{background:#f4544e;border-radius:999px;padding:4px 10px;}
-    .spr-wrapper .badge.bg-yellow{background:#e6b93d;border-radius:999px;padding:4px 10px;color:#4a3c07;}
-    .spr-wrapper .badge.bg-green{background:#3fb37f;border-radius:999px;padding:4px 10px;}
+    .spr-wrapper .badge.bg-danger{background:#f4544e;border-radius:999px;padding:4px 10px;}
+    .spr-wrapper .badge.bg-warning{background:#e6b93d;border-radius:999px;padding:4px 10px;color:#4a3c07;}
+    .spr-wrapper .badge.bg-success{background:#3fb37f;border-radius:999px;padding:4px 10px;}
     .spr-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button{
         border-radius:999px !important;
         border:1px solid #e7e5f7 !important;
@@ -164,9 +163,9 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
     }
     </style>
     <div class="spr-wrapper">
-	<div class="row ">
+	<div class="row">
         <div class="col-md-12" style="margin-bottom: 24px;"> 
-            <div class="box form-group" style="border-radius:18px;box-shadow:none;">
+            <div class="card mb-5" style="border-radius:18px;box-shadow:none;">
                 <div class="spr-datebanner">
                     <div class="spr-datebanner-left">
                         <div class="spr-icon-badge">
@@ -180,10 +179,10 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
                     <div class="col-md-6" style="padding:0;">
                         <form action="/actions/statistiqueparregion/" method="get" id="dateform">
                             <div class="input-group col-lg-12" style="float:left;">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-clock-o"></i>
+                                <div class="input-group-text">
+                                    <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                                 </div>
-                                <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control pull-right" name="date" id="reservationtime" placeholder="Rechercher">
+                                <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control float-end" name="date" id="reservationtime" placeholder="Rechercher">
                             </div>
                         </form>
                     </div>
@@ -194,8 +193,8 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
     </div>
 <?php foreach ($info as $vmp): ?>
     <div class="row">
-        <div class="col-xs-12">
-            <div class="box" style="margin-bottom:22px;">
+        <div class="col-12">
+            <div class="card" style="margin-bottom:22px;">
                 <div class="spr-report-header">
                     <div class="spr-report-header-left">
                         <div class="spr-icon-badge">
@@ -206,7 +205,7 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
                         </h3>
                     </div>
                 </div>
-                <div class="box-body table-responsive no-padding">
+                <div class="card-body table-responsive no-padding">
                     <table class="table table-hover example1"  border="0" >
                         <thead>
                             <tr>
@@ -241,11 +240,11 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
                                         $datediff = $your_date - $now;
                                         $j = floor($datediff / (60 * 60 * 24));
                                         if ($v["Action"]['date_debut'] > date('Y-m-d'))
-                                            echo '<span class="badge bg-yellow">Prochainement</span>';
+                                            echo '<span class="badge bg-warning">Prochainement</span>';
                                         else if ($j >= 0)
-                                            echo '<span class="badge bg-green">En cours</span>';
+                                            echo '<span class="badge bg-success">En cours</span>';
                                         else
-                                            echo '<span class="badge bg-red">Terminé</span>';
+                                            echo '<span class="badge bg-danger">Terminé</span>';
                                         ?></td>
                                     <td><?php echo $this->Html->link($v["User"]["name"],array("controller"=>"users",'action'=>'view',$v['User']['id'])); ?></td>
                                     <td><?php echo $v["Action"]["game_id"]; ?></td>
@@ -297,22 +296,11 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
     </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <?php echo $this->Html->script('daterangepicker'); ?>

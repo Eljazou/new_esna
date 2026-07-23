@@ -1,4 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     :root{
         --accent:#6c5ce7;
@@ -11,7 +11,7 @@
     }
 
     @media (max-width:1282px){
-        .box-body{
+        .card-body{
             overflow: scroll;
             overflow-y: auto;
 			padding-bottom:60px;
@@ -52,7 +52,7 @@
         overflow:hidden;
         box-shadow:0 10px 28px rgba(140,126,242,0.07);
     }
-    .packs-card .box-body{ padding:0; }
+    .packs-card .card-body{ padding:0; }
 
     table.packs-table{ margin-bottom:0; }
     table.packs-table thead th{
@@ -188,8 +188,8 @@
 </div>
 
 <div class="packs-card">
-    <div class="box-body" style="">
-        <table id="example1" class="table table-bordered table-striped packs-table">
+    <div class="card-body" style="">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4 packs-table">
             <thead>
                 <tr>
                     <th>Client</th>
@@ -218,7 +218,7 @@
 
                     <td class="actions">
                         <div class="btn-group dropdown">
-                            <button type="button" class="actions-toggle dropdown-toggle" data-toggle="dropdown" aria-expanded="false" onclick="return toggleLegacyDropdown(this);">
+                            <button type="button" class="actions-toggle dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" onclick="return toggleLegacyDropdown(this);">
 														<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg>
 										  </button>
                             <ul class="dropdown-menu dropdown-menu-right" role="menu" style="display:none;">
@@ -237,10 +237,6 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

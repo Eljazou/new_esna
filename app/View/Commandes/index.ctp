@@ -1,5 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
-
+<?php echo $this->element('assets/datatables'); ?>
 <?php
 // Helper d'affichage uniquement — calcule les initiales pour l'avatar, ne modifie aucune donnée
 function ptg_initials($name){
@@ -29,14 +28,14 @@ function ptg_initials($name){
 	--ptg-blue-soft: #E9F1FE;
 	--ptg-blue: #3f6fd1;
 }
-.ptg-wrapper .box{
+.ptg-wrapper .card{
 	background: #fff;
 	border: 1px solid var(--ptg-border);
 	border-radius: 16px !important;
 	box-shadow: 0 4px 18px rgba(108,99,245,0.08);
 	overflow: hidden;
 }
-.ptg-wrapper .box-header{
+.ptg-wrapper .card-header{
 	border: none !important;
 	background: transparent;
 	padding: 22px 24px 18px 24px;
@@ -56,7 +55,7 @@ function ptg_initials($name){
 	justify-content: center;
 }
 .ptg-header-icon svg{ width: 22px; height: 22px; display: block; }
-.ptg-wrapper .box-header .box-title{
+.ptg-wrapper .card-header .card-title{
 	font-weight: 700 !important;
 	font-size: 17px !important;
 	color: var(--ptg-text) !important;
@@ -70,7 +69,7 @@ function ptg_initials($name){
 	margin-top: 3px;
 	font-weight: 400;
 }
-.ptg-wrapper .box-body{
+.ptg-wrapper .card-body{
 	padding: 0 24px 24px 24px;
 }
 
@@ -266,13 +265,11 @@ function ptg_initials($name){
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 <h4 class="modal-title" id="produitsModalLabel">Détails des produits</h4>
             </div>
             <div class="modal-body">
-                <table class="table table-bordered">
+                <table class="table table-row-bordered align-middle gy-4">
                     <thead>
                         <tr>
                             <th>Produit</th>
@@ -285,25 +282,25 @@ function ptg_initials($name){
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Box principale -->
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
         <span class="ptg-header-icon">
 			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><line x1="9" y1="7" x2="15" y2="7"></line><line x1="9" y1="11" x2="15" y2="11"></line><line x1="9" y1="15" x2="12" y2="15"></line></svg>
 		</span>
 		<div>
-			<h3 class="box-title">La liste des commandes</h3>
+			<h3 class="card-title">La liste des commandes</h3>
 			<div class="ptg-header-sub">Consultez et gérez l'ensemble des commandes</div>
 		</div>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>Ref</th>
@@ -410,10 +407,6 @@ function ptg_initials($name){
 
 <?php
 // Inclusion des scripts nécessaires
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

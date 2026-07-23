@@ -1,11 +1,10 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>	
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><?php echo __('Commandes'); ?></h3>
+<?php echo $this->element('assets/datatables'); ?>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?php echo __('Commandes'); ?></h3>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>Client</th>
@@ -33,9 +32,9 @@
                              echo $info[1]; ?></td>
                     <td><?php echo $info[0]*1.2; ?> Dhs</td>
 					<td><?php if($commande['Commande']['archive']==0)
-						echo '<span class="badge bg-yellow">En cours de validation</span>';
+						echo '<span class="badge bg-warning">En cours de validation</span>';
 					if($commande['Commande']['archive']==1)
-						echo '<span class="badge bg-green">Validé</span>'; ?>
+						echo '<span class="badge bg-success">Validé</span>'; ?>
 					</td>
                     <td><?php echo h($commande['Commande']['created']); ?></td>
                     <td class="actions">
@@ -47,10 +46,6 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

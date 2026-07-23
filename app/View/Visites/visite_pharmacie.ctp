@@ -324,7 +324,7 @@ input[type='readonly']{
 							<b class="ajouterconcur_pharm btn btn-primary" style="float:right;">Ajouter concurrence</b>
 						</div>
 					
-                    <?php echo $this->Form->end(array('label' => 'Enregistrer le rapport de la visite', 'class' => 'btn btn-primary btn-large submit','div' => array('class' => 'well text-center  col-md-12 col-sm-12 col-12'))); ?>
+                    <?php echo $this->Form->end(array('label' => 'Enregistrer le rapport de la visite', 'class' => 'btn btn-primary btn-large submit','div' => array('class' => 'card card-body bg-light text-center col-md-12 col-sm-12 col-12'))); ?>
                 </div>
             </div>
         </div>

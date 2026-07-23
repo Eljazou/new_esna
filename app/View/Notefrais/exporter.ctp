@@ -15,7 +15,7 @@ $months = [
     overflow: hidden;
 }
 
-.notes-frais-panel .panel-heading {
+.notes-frais-panel .card-header {
     background: #fff !important;
     padding: 24px 24px 16px !important;
     border-bottom: none;
@@ -53,7 +53,7 @@ $months = [
     padding: 10px;
 }
 
-.notes-frais-panel .small-box {
+.notes-frais-panel .card {
     border-radius: 12px;
     padding: 20px;
     position: relative;
@@ -66,18 +66,18 @@ $months = [
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.notes-frais-panel .small-box:hover {
+.notes-frais-panel .card:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
 
-.notes-frais-panel .small-box .inner h3 {
+.notes-frais-panel .card .inner h3 {
     font-size: 30px;
     font-weight: 700;
     margin: 0 0 4px;
 }
 
-.notes-frais-panel .small-box .inner p {
+.notes-frais-panel .card .inner p {
     font-size: 13px;
     margin: 0;
     opacity: 0.9;
@@ -108,10 +108,10 @@ $months = [
 </style>
 
 <div class="container">
-    <div class="panel panel-default notes-frais-panel">
-        <div class="panel-heading text-center">
+    <div class="card notes-frais-panel">
+        <div class="card-header text-center">
             <h3 class="card-title">
-                <i class="ion ion-clipboard mr-1"></i>
+                <i class="ki-duotone ki-clipboard me-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
                 La liste des notes de frais à exporter
             </h3>
             <hr>
@@ -127,7 +127,7 @@ $months = [
             $i = rand(0, 3);
         ?>
         <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-            <div class="small-box <?php echo $styles[$i]; ?>">
+            <div class="card <?php echo $styles[$i]; ?>">
                 <div class="inner">
                     <h3><?php echo $nombre; ?></h3>
                     <p>Liste du mois de <?php echo $moisname . ' ' . $year; ?></p>

@@ -151,35 +151,35 @@
                         echo $this->Form->input('name', array(
                             "label" => "Nom", 
                             'class' => 'form-control',
-                            'div' => array('class' => 'form-group')
+                            'div' => array('class' => 'mb-5')
                         ));
                         echo $this->Form->input('objectif', array(
                             "label" => "Objectif", 
                             'class' => 'form-control',
-                            'div' => array('class' => 'form-group')
+                            'div' => array('class' => 'mb-5')
                         ));
                         echo $this->Form->input('date_debut', array(
                             "type" => "text", 
                             "label" => "Date Début",
                             'class' => 'form-control date',
-                            'div' => array('class' => 'form-group')
+                            'div' => array('class' => 'mb-5')
                         ));
                         echo $this->Form->input('date_fin', array(
                             "type" => "text", 
                             "label" => "Date Fin",
                             'class' => 'form-control date',
-                            'div' => array('class' => 'form-group')
+                            'div' => array('class' => 'mb-5')
                         ));
                         echo $this->Form->input('file', array(
                             'type' => 'file', 
                             'label' => 'Fichier',
                             'class' => 'form-control',
-                            'div' => array('class' => 'form-group')
+                            'div' => array('class' => 'mb-5')
                         ));
                         ?>
                     </div>
                     <div class="card-footer">
-                        <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-outline-info', 'div' => array('class' => 'well text-center'))); ?>
+                        <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-outline-info', 'div' => array('class' => 'card card-body bg-light text-center'))); ?>
                     </div>
                 </div>
             </div>

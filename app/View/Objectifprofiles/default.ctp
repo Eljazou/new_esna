@@ -37,10 +37,10 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <li class="dropdown messages-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-envelope-o"></i>
+                                <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                    <i class="ki-duotone ki-sms -o"><span class="path1"></span><span class="path2"></span></i>
                                     <?php $nombremessage=$this->requestAction('/boitemails/system_get_nombre_mail'); ?>
-                                    <span class="label label-success"><?php echo $nombremessage; ?></span>
+                                    <span class="badge badge-light-success"><?php echo $nombremessage; ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="header">Vous avez <?php echo $nombremessage; ?> nouveaux messages</li>
@@ -56,13 +56,13 @@
                             <li class="dropdown user user-menu">
                                 <!-- Menu Toggle Button -->
                                 <a href="javascript:void(0);" style="cursor:default;">
-									<i class="fa fa-user"></i>
+									<i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
                                     <span class=""><?php echo AuthComponent::user('name'); ?></span>
                                 </a>
                             </li>
 							 <li class="dropdown user user-menu">
 								<a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'logout')); ?>" class="">
-									<i class="fa fa-sign-out"></i>
+									<i class="ki-duotone ki-exit-right"><span class="path1"></span><span class="path2"></span></i>
                                     <span class="">Se déconnecter</span>
                                 </a>
 							</li>
@@ -79,7 +79,7 @@
                         if($role==1): ?>
                         <li class="">
                             <a href="<?php echo $this->Html->url(array('controller' => 'brochures', 'action' => 'index')); ?>">
-                                <i class="fa fa-book"></i> 
+                                <i class="ki-duotone ki-book"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> 
                                 <span><?php if (AuthComponent::user('role') == 'Admin')
                                                echo "Programme produit";
                                             else
@@ -93,7 +93,7 @@
                         if($role==1): ?>
                         <li class="">
                             <a href="<?php echo $this->Html->url(array('controller' => 'formations', 'action' => 'index')); ?>">
-                                <i class="fa fa-flask"></i> 
+                                <i class="ki-duotone ki-flask"><span class="path1"></span><span class="path2"></span></i> 
                                 <span>Formations</span>
                             </a>
                         </li>
@@ -102,7 +102,7 @@
                         if($role==1): ?>
                         <li class="">
                             <a href="<?php echo $this->Html->url(array('controller' => 'clients', 'action' => 'index')); ?>">
-                                <i class="fa fa-users"></i> 
+                                <i class="ki-duotone ki-people"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i> 
                                 <span>Clients</span>
                             </a>
                         </li>
@@ -111,7 +111,7 @@
                         if($role==1): ?>
                         <li class="">
                             <a href="<?php echo $this->Html->url(array('controller' => 'notefrais', 'action' => 'index')); ?>">
-                                <i class="fa fa-money"></i> 
+                                <i class="ki-duotone ki-dollar"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> 
                                 <span>Note de frais</span>
                             </a>
                         </li>
@@ -120,7 +120,7 @@
                         if($role==1): ?>
                         <li class="">
                             <a href="<?php echo $this->Html->url(array('controller' => 'gadjets', 'action' => 'index')); ?>">
-                                <i class="fa fa-rocket"></i> 
+                                <i class="ki-duotone ki-rocket"><span class="path1"></span><span class="path2"></span></i> 
                                 <span>Echantillons</span>
                             </a>
                         </li>
@@ -129,7 +129,7 @@
                         if($role==1): ?>
                         <li class="">
                             <a href="<?php echo $this->Html->url(array('controller' => 'gadjets', 'action' => 'admin')); ?>">
-                                <i class="fa fa-rocket"></i> 
+                                <i class="ki-duotone ki-rocket"><span class="path1"></span><span class="path2"></span></i> 
                                 <span>Administration Echantillons</span>
                             </a>
                         </li>
@@ -138,7 +138,7 @@
                         if($role==1): ?>
                         <li class="">
                             <a href="<?php echo $this->Html->url(array('controller' => 'listes', 'action' => 'view')); ?>">
-                                <i class="fa fa-list"></i> 
+                                <i class="ki-duotone ki-menu"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> 
                                 <span>Ma liste</span>
                             </a>
                         </li>
@@ -147,7 +147,7 @@
                         if($role==1): ?>
                         <li class="">
                             <a href="<?php echo $this->Html->url(array('controller' => 'listes', 'action' => 'listeretard')); ?>">
-                                <i class="fa fa-calendar-minus-o"></i> 
+                                <i class="ki-duotone ki-calendar-8 -minus-o"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i> 
                                 <span>Ma liste de retards</span>
                             </a>
                         </li>
@@ -156,7 +156,7 @@
                         if($role==1): ?>
                         <li class="">
                             <a href="<?php echo $this->Html->url(array('controller' => 'listes', 'action' => 'route')); ?>">
-                                <i class="fa fa-align-left"></i> 
+                                <i class="ki-duotone ki-text-align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> 
                                 <span>Feuille de route</span>
                             </a>
                         </li>
@@ -165,7 +165,7 @@
                         if($role==1): ?>
                         <li class="">
                             <a href="<?php echo $this->Html->url(array('controller' => 'clientsproposes', 'action' => 'add')); ?>">
-                                <i class="fa fa-user-plus"></i> 
+                                <i class="ki-duotone ki-profile-user -plus"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> 
                                 <span>Proposer un client</span>
                             </a>
                         </li>
@@ -174,7 +174,7 @@
                         if($role==1): ?>
                         <li class="">
                             <a href="<?php echo $this->Html->url(array('controller' => 'absences', 'action' => 'add')); ?>">
-                                <i class="fa fa-clock-o"></i> 
+                                <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i> 
                                 <span>Demande d'absence</span>
                             </a>
                         </li>
@@ -183,7 +183,7 @@
                         if($role==1): ?>
                         <li class="">
                             <a href="<?php echo $this->Html->url(array('controller' => 'rapports', 'action' => 'index')); ?>">
-                                <i class="fa fa-clock-o"></i> 
+                                <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i> 
                                 <span>Rapports</span>
                             </a>
                         </li>
@@ -195,9 +195,9 @@
                         if($role1==1 || $role2==1 || $role3==1 || $role4==1):
                         ?>
                             <li class="treeview">
-                                <a href="#"><i class="fa fa-cogs"></i> <span>Gestion des utilisateurs</span>
+                                <a href="#"><i class="ki-duotone ki-setting-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i> <span>Gestion des utilisateurs</span>
                                     <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
+                                        <i class="ki-duotone ki-left float-end"></i>
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
@@ -232,9 +232,9 @@
                         if($role5==1 || $role1==1 || $role2==1 || $role3==1 || $role4==1):
                         ?>
                             <li class="treeview">
-                                <a href="#"><i class="fa fa-check"></i> <span>Validation</span>
+                                <a href="#"><i class="ki-duotone ki-check"></i> <span>Validation</span>
                                     <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
+                                        <i class="ki-duotone ki-left float-end"></i>
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
@@ -275,9 +275,9 @@
                         $role10 = $this->requestAction('/droits/getrole/rapports/index');
                         if($role10==1 || $role9==1 || $role1==1 || $role2==1 || $role3==1 || $role4==1 || $role5==1 || $role6==1 || $role7==1 || $role8==1):?>
                         <li class="treeview">
-                            <a href="#"><i class="fa fa-user"></i> <span>Administration</span>
+                            <a href="#"><i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> <span>Administration</span>
                                 <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
+                                    <i class="ki-duotone ki-left float-end"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
@@ -341,9 +341,9 @@
                         if($role15==1 || $role14==1 || $role2==1 || $role3==1 || $role4==1 || $role5==1 || $role6==1 || 
                                 $role7==1 || $role8==1 || $role9==1 || $role10==1 || $role11==1 || $role12==1 || $role13==1):?>
                         <li class="treeview">
-                            <a href="#"><i class="fa fa-archive"></i> <span>Archive</span>
+                            <a href="#"><i class="ki-duotone ki-archive"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> <span>Archive</span>
                                 <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
+                                    <i class="ki-duotone ki-left float-end"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
@@ -395,19 +395,14 @@
                 </section>
             </div>
             <footer class="main-footer">
-                <div class="pull-right hidden-xs">
+                <div class="float-end hidden-xs">
                     CRM VMP
                 </div>
                 <strong>Copyright &copy; 2016 <a href="#">ICOZ</a>.</strong> All rights reserved.
             </footer>
             <div class="control-sidebar-bg"></div>
         </div>
-        <?php
-        echo $this->Html->script('jquery-2.2.3.min');
-        echo $this->Html->script('bootstrap.min');
-        echo $this->Html->script('app.min');
-        ?>
-    </body>
+            </body>
 	<script>
 			$(window).load(function(){
 				var text1 = $("#flashMessage").text();

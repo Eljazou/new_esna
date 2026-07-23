@@ -115,11 +115,11 @@
 
 <div class="card">
     <div class="card-header">
-        <h3 class="custom-card-title"><?php echo __('La liste des clients'); ?></h3>
+        <h3 class="custom-panel-title"><?php echo __('La liste des clients'); ?></h3>
         <?php echo $this->Html->link('Archiver tout', array('action' => 'archivetous'), array('class' => 'btn btn-lavender btn-lavender-sm')); ?>
     </div>
     
-    <div class="custom-card-body">
+    <div class="custom-panel-body">
         <div class="table-responsive">
             <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                 <thead>

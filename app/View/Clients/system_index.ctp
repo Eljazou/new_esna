@@ -21,7 +21,7 @@
     <div class="card-header">
         <h3 class="card-title"><?php echo __('La liste des clients'); ?></h3>
         <?php if ($this->requestAction('/droits/getrole/clients/add') == 1)
-            echo $this->Html->link(__('Ajouter'), array('action' => 'add',"Médecin"), array("target"=>"_blanck",'class'=>"btn bg-purple btn-flat", 'style'=>"float:right;"));
+            echo $this->Html->link(__('Ajouter'), array('action' => 'add',"Médecin"), array("target"=>"_blanck",'class'=>"btn bg-primary", 'style'=>"float:right;"));
         ?>
     </div>
     <div class="card-body" id="tabclient">

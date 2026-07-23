@@ -3,7 +3,7 @@
     <div class="card-header">
         <h3 class="card-title"><?php echo __('Rapports'); ?></h3>
         <?php if ($this->requestAction('/droits/getrole/rapports/add') == 1)
-            echo $this->Html->link(__('Ajouter'), array('action' => 'add'), array('class' => "btn bg-purple btn-flat", 'style' => "float:right;"));
+            echo $this->Html->link(__('Ajouter'), array('action' => 'add'), array('class' => "btn bg-primary", 'style' => "float:right;"));
         ?>
     </div>
     <div class="card-body">

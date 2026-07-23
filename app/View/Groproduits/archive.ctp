@@ -1,13 +1,10 @@
-<?php
-
-echo $this->Html->css('dataTables.bootstrap');
-		?>	
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><?php echo __('La liste des produits des grossistes'); ?></h3>
+<?php echo $this->element('assets/datatables'); ?>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?php echo __('La liste des produits des grossistes'); ?></h3>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>Ref</th>
@@ -29,10 +26,7 @@ echo $this->Html->css('dataTables.bootstrap');
         </table>
     </div>
 </div>
-	<?php echo $this->Html->script('jquery-2.2.3.min');
-        echo $this->Html->script('bootstrap.min');
-        echo $this->Html->script('app.min');
-        echo $this->Html->script('jquery.dataTables.min');
+	<?php
         echo $this->Html->script('jquery.slimscroll.min');
         echo $this->Html->script('fastclick');
         echo $this->Html->script('demo');

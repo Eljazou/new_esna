@@ -1,5 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
-
+<?php echo $this->element('assets/datatables'); ?>
 <style>
 /* ==========================================================================
    METRONIC PREMIUM HISTORY LAYOUT (LAVENDER PROFILE)
@@ -27,7 +26,7 @@
     background: #ffffff;
 }
 
-.history-master-header .box-title {
+.history-master-header .card-title {
     font-size: 18px;
     font-weight: 700;
     color: #332A5B;
@@ -37,7 +36,7 @@
     gap: 12px;
 }
 
-.history-master-header .box-title i {
+.history-master-header .card-title i {
     color: #907DFA;
     font-size: 20px;
 }
@@ -221,7 +220,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
-.bg-green {
+.bg-success {
     background: linear-gradient(135deg, #1B9E5A 0%, #3CD083 100%) !important;
     color: #ffffff !important;
 }
@@ -231,7 +230,7 @@
     color: #ffffff !important;
 }
 
-.bg-red {
+.bg-danger {
     background: linear-gradient(135deg, #ED4C5C 0%, #FF7381 100%) !important;
     color: #ffffff !important;
 }
@@ -279,14 +278,14 @@
 <div class="history-card-container">
     <div class="history-master-header">
         <?php if(!empty($isIndividuel)): ?>
-            <h3 class="box-title"><i class="fa fa-user"></i> Historique de : <?php echo h($vmpName); ?></h3>
+            <h3 class="card-title"><i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> Historique de : <?php echo h($vmpName); ?></h3>
         <?php else: ?>
-            <h3 class="box-title"><i class="fa fa-history"></i> Historique Global des Évaluations</h3>
+            <h3 class="card-title"><i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i> Historique Global des Évaluations</h3>
         <?php endif; ?>
         
         <div>
             <a href="<?php echo $this->Html->url(array('action' => 'index')); ?>" class="btn-back-dashboard">
-                <i class="fa fa-arrow-left"></i> Retour au tableau de bord
+                <i class="ki-duotone ki-arrow-left"><span class="path1"></span><span class="path2"></span></i> Retour au tableau de bord
             </a>
         </div>
     </div>
@@ -347,12 +346,12 @@
 
             <?php foreach ($groupedHistory as $supName => $vmps): ?>
                 <!-- Supervisor Title Heading -->
-                <div class="sup-heading"><i class="fa fa-users"></i> Supervisé par : <?php echo h($supName); ?></div>
+                <div class="sup-heading"><i class="ki-duotone ki-people"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i> Supervisé par : <?php echo h($supName); ?></div>
 
                 <?php foreach ($vmps as $vmpName2 => $evaluations): ?>
                     <!-- Representative Sub-Heading (Global View Only) -->
                     <?php if(empty($isIndividuel)): ?>
-                        <div class="vmp-heading"><i class="fa fa-user"></i> Délégué Médical : <span style="font-weight: 700; color: #7966E3; margin-left: 4px;"><?php echo h($vmpName2); ?></span></div>
+                        <div class="vmp-heading"><i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> Délégué Médical : <span style="font-weight: 700; color: #7966E3; margin-left: 4px;"><?php echo h($vmpName2); ?></span></div>
                     <?php endif; ?>
 
                     <div class="history-table-wrapper">
@@ -395,15 +394,15 @@
                                                     <?php echo number_format($pct, 2, '.', ''); ?> %
                                                 </span>
                                             <?php else: ?>
-                                                <span class="label label-default" style="border-radius: 20px; padding: 4px 10px;">N/A</span>
+                                                <span class="badge badge-light" style="border-radius: 20px; padding: 4px 10px;">N/A</span>
                                             <?php endif; ?>
                                         </td>
                                         <td style="color: #746A9F; font-size: 13px;"><?php echo date('d/m/Y à H:i', strtotime($eva['Evaluation']['created'])); ?></td>
                                         <td class="text-center">
                                             <div class="actions">
-                                                <a href="<?php echo $this->Html->url(array('action' => 'view', $eva['Evaluation']['id'])); ?>" class="btn btn-info btn-xs" title="Voir le rapport"><i class="fa fa-eye"></i></a>
-                                                <a href="<?php echo $this->Html->url(array('action' => 'edit', $eva['Evaluation']['id'])); ?>" class="btn btn-primary btn-xs" title="Modifier"><i class="fa fa-edit"></i></a>
-                                                <a href="<?php echo $this->Html->url(array('action' => 'archive', $eva['Evaluation']['id'], 0)); ?>" class="btn btn-warning btn-xs" title="Archiver" onclick="return confirm('Voulez-vous archiver cette fiche ?')"><i class="fa fa-archive"></i></a>
+                                                <a href="<?php echo $this->Html->url(array('action' => 'view', $eva['Evaluation']['id'])); ?>" class="btn btn-info btn-xs" title="Voir le rapport"><i class="ki-duotone ki-eye"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></a>
+                                                <a href="<?php echo $this->Html->url(array('action' => 'edit', $eva['Evaluation']['id'])); ?>" class="btn btn-primary btn-xs" title="Modifier"><i class="ki-duotone ki-pencil"><span class="path1"></span><span class="path2"></span></i></a>
+                                                <a href="<?php echo $this->Html->url(array('action' => 'archive', $eva['Evaluation']['id'], 0)); ?>" class="btn btn-warning btn-xs" title="Archiver" onclick="return confirm('Voulez-vous archiver cette fiche ?')"><i class="ki-duotone ki-archive"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -421,6 +420,4 @@
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
 ?>

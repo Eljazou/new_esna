@@ -207,8 +207,8 @@
     <!-- Bottom Lists Section -->
     <div class="tabs-container">
         <ul class="tabs-nav">
-            <li class="active"><a href="#tab_2" data-toggle="tab">Commandes</a></li>
-            <li><a href="#tab_3" data-toggle="tab">Offres</a></li>
+            <li class="active"><a href="#tab_2" data-bs-toggle="tab">Commandes</a></li>
+            <li><a href="#tab_3" data-bs-toggle="tab">Offres</a></li>
         </ul>
         
         <div class="tab-content">

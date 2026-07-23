@@ -787,7 +787,7 @@ foreach ($produits as $key => $p) {
                                     <span class="concurtogg" onclick="concur(<?php echo $i ?>)"><i id="concuricon<?php echo $i ?>" class="ki-duotone ki-minus fs-4"></i></span>
                                 </div>
                             </label>
-                            <div class="space_arround body_veille  concur<?php echo $i ?> concure">
+                            <div class="space_arround body_veille concur<?php echo $i ?> concure">
                                 <div class="col-md-6">
                                     <select name="data[Visite][objection][<?php $i ?>][produit]" class="form-control select2 esna">
                                         <option value="" selected>Choisissez produit</option>
@@ -955,7 +955,7 @@ foreach ($produits as $key => $p) {
                     <?php echo $this->Form->input('commentaire', array('name' => "data[Visite][commentaire]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-12 form-control', 'placeholder' => 'Commentaire', 'required' => 'required')); ?>
                 </div>
 
-                <?php echo $this->Form->end(array('label' => 'Enregistrer le rapport de la visite', 'class' => 'btn btn-primary btn-large submit', 'onclick' => 'handle_submit(event)', 'div' => array('class' => 'well text-center  col-md-12 col-sm-12 col-12'))); ?>
+                <?php echo $this->Form->end(array('label' => 'Enregistrer le rapport de la visite', 'class' => 'btn btn-primary btn-large submit', 'onclick' => 'handle_submit(event)', 'div' => array('class' => 'card card-body bg-light text-center col-md-12 col-sm-12 col-12'))); ?>
 
             </div>
         </div>

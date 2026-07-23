@@ -1,4 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     :root{
         --accent:#7C6FF0;
@@ -70,7 +70,7 @@
         border:1px solid var(--border-soft);
         overflow:hidden;
     }
-    .echantillons-card .box-body{ padding:0; }
+    .echantillons-card .card-body{ padding:0; }
 
     table.ech-table{ margin-bottom:0; }
     table.ech-table thead th{
@@ -237,12 +237,12 @@
             <span class="underline"></span>
         </div>
     </div>
-    <?php echo $this->Html->link('<i class="fa fa-plus"></i> Ajouter un échantillon', array('action' => 'add'), array('class' => "btn btn-add", 'escape' => false)); ?>
+    <?php echo $this->Html->link('<i class="ki-duotone ki-plus"></i> Ajouter un échantillon', array('action' => 'add'), array('class' => "btn btn-add", 'escape' => false)); ?>
 </div>
 
 <div class="echantillons-card">
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped ech-table">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4 ech-table">
             <thead>
                 <tr>
                     <th>Nom de l'échantillon</th>
@@ -270,7 +270,7 @@
                     </td>
                     <td class="actions">
                         <div class="btn-group">
-                            <button type="button" class="actions-toggle dropdown-toggle" data-toggle="dropdown" aria-expanded="false" onclick="return toggleLegacyDropdown(this);">
+                            <button type="button" class="actions-toggle dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" onclick="return toggleLegacyDropdown(this);">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right" role="menu" style="display:none;">
@@ -287,10 +287,6 @@
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>

@@ -1,8 +1,7 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
 	@media (max-width:1269px){
-		.box-body{
+		.card-body{
 			overflow: scroll;
 			overflow-y: hidden;
 		}
@@ -19,14 +18,14 @@
 	--ptg-muted: #8a8fa3;
 	--ptg-border: #ececf5;
 }
-.ptg-wrapper .box{
+.ptg-wrapper .card{
 	background: #fff;
 	border: 1px solid var(--ptg-border);
 	border-radius: 16px !important;
 	box-shadow: 0 4px 18px rgba(108,99,245,0.08);
 	overflow: hidden;
 }
-.ptg-wrapper .box-header{
+.ptg-wrapper .card-header{
 	border: none !important;
 	background: transparent;
 	padding: 22px 24px 18px 24px;
@@ -46,7 +45,7 @@
 	justify-content: center;
 }
 .ptg-header-icon svg{ width: 22px; height: 22px; display: block; }
-.ptg-wrapper .box-header .box-title{
+.ptg-wrapper .card-header .card-title{
 	font-weight: 700 !important;
 	font-size: 17px !important;
 	color: var(--ptg-text) !important;
@@ -60,7 +59,7 @@
 	margin-top: 3px;
 	font-weight: 400;
 }
-.ptg-wrapper .box-body{
+.ptg-wrapper .card-body{
 	padding: 0 24px 24px 24px;
 }
 
@@ -131,18 +130,18 @@
 </style>
 
 <div class="ptg-wrapper">
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
         <span class="ptg-header-icon">
 			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
 		</span>
 		<div>
-			<h3 class="box-title"><?php echo __('Liste des clients proposés'); ?></h3>
+			<h3 class="card-title"><?php echo __('Liste des clients proposés'); ?></h3>
 			<div class="ptg-header-sub">Consultez les clients proposés par les employés</div>
 		</div>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                  <tr>
                      <th>Employé</th>
@@ -176,7 +175,7 @@
                     <td class="actions">
                         <?php 
                         if($this->requestAction('/droits/getrole/clientsproposes/view')==1)
-                            echo $this->Html->link(__('Voir'), array('action' => 'view', $clientspropose['Clientspropose']['id']), array('class'=>"btn btn-primary bg-aqua btn-sm")); 
+                            echo $this->Html->link(__('Voir'), array('action' => 'view', $clientspropose['Clientspropose']['id']), array('class'=>"btn btn-primary bg-primary btn-sm")); 
                         ?>
                     </td>
                 </tr>
@@ -186,10 +185,6 @@
 </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

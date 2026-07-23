@@ -126,7 +126,7 @@
 								<?php endforeach ; ?>
 							</select>
 						</div>
-                        <?php echo $this->Form->end(array('label' => 'Valider','class'=>'btn btn-primary','div' => array('class' => 'box-footer')));
+                        <?php echo $this->Form->end(array('label' => 'Valider','class'=>'btn btn-primary','div' => array('class' => 'card-footer')));
                         ?>&nbsp;
 						
 						</td>

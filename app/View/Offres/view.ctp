@@ -116,17 +116,17 @@
         overflow: hidden;
         margin-bottom: 30px;
     }
-    .box-info-custom .box-header {
+    .box-info-custom .card-header {
         padding: 20px 24px;
         border-bottom: 1px solid var(--theme-border);
     }
-    .box-info-custom .box-title {
+    .box-info-custom .card-title {
         margin: 0;
         font-size: 16px;
         font-weight: 700;
         color: var(--theme-text-dark);
     }
-    .box-info-custom .box-body {
+    .box-info-custom .card-body {
         padding: 0;
     }
 
@@ -208,7 +208,7 @@
                 <p>Prix total (HT)</p>
             </div>
             <div class="metric-icon">
-                <i class="fa fa-shopping-cart"></i>
+                <i class="ki-duotone ki-handcart"></i>
             </div>
         </div>
     </div>
@@ -219,7 +219,7 @@
                 <p>Prix total (TTC)</p>
             </div>
             <div class="metric-icon">
-                <i class="fa fa-bar-chart"></i>
+                <i class="ki-duotone ki-chart-simple"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
             </div>
         </div>
     </div>
@@ -230,7 +230,7 @@
                 <p>Prix brut sans réduction</p>
             </div>
             <div class="metric-icon">
-                <i class="fa fa-tags"></i>
+                <i class="ki-duotone ki-tag"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
             </div>
         </div>
     </div>
@@ -241,7 +241,7 @@
                 <p>Total à gagner</p>
             </div>
             <div class="metric-icon">
-                <i class="fa fa-pie-chart"></i>
+                <i class="ki-duotone ki-chart-pie-simple"><span class="path1"></span><span class="path2"></span></i>
             </div>
         </div>
     </div>
@@ -254,7 +254,7 @@
             <h3 class="title"><?php echo h($offre['Offre']['titre']); ?></h3>
             <h5 class="desc"><?php echo h($offre['Offre']['description']); ?></h5>
             <div class="min-amount-badge">
-                <i class="fa fa-money"></i> Montant minimal : <strong><?php echo h($offre['Offre']['montantmin']); ?> DH</strong>
+                <i class="ki-duotone ki-dollar"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Montant minimal : <strong><?php echo h($offre['Offre']['montantmin']); ?> DH</strong>
             </div>
         </div>
     </div>
@@ -262,11 +262,11 @@
 
 <!-- Data Sheet Module Box -->
 <div class="box-info-custom">
-    <div class="box-header">
-        <h3 class="box-title"><?php echo __('Liste des produits'); ?></h3>
+    <div class="card-header">
+        <h3 class="card-title"><?php echo __('Liste des produits'); ?></h3>
     </div>
     
-    <div class="box-body">
+    <div class="card-body">
         <div class="table-responsive">
             <table class="table-custom">
                 <thead>
@@ -311,13 +311,13 @@
         <div>
             <?php
             if ($this->requestAction('/droits/getrole/offres/edit') == 1)
-                echo $this->Html->link('<i class="fa fa-pencil" style="margin-right: 6px;"></i> ' . __('Editer l\'offre'), array('action' => 'edit', $offre['Offre']['id']), array('class' => "btn-theme btn-theme-primary", 'escape' => false));
+                echo $this->Html->link('<i class="ki-duotone ki-pencil" style="margin-right: 6px;"><span class="path1"></span><span class="path2"></span></i> ' . __('Editer l\'offre'), array('action' => 'edit', $offre['Offre']['id']), array('class' => "btn-theme btn-theme-primary", 'escape' => false));
             ?>
         </div>
         <div>
             <?php
             if ($this->requestAction('/droits/getrole/offres/archive') == 1)
-                echo $this->Html->link('<i class="fa fa-archive" style="margin-right: 6px;"></i> ' . __('Archiver l\'offre'), array('action' => 'archive', $offre['Offre']['id'], 0), array('class' => "btn-theme btn-theme-muted", 'escape' => false));
+                echo $this->Html->link('<i class="ki-duotone ki-archive" style="margin-right: 6px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> ' . __('Archiver l\'offre'), array('action' => 'archive', $offre['Offre']['id'], 0), array('class' => "btn-theme btn-theme-muted", 'escape' => false));
             ?>
         </div>
     </div>

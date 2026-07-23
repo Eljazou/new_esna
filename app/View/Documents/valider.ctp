@@ -1,5 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>	
-
+<?php echo $this->element('assets/datatables'); ?>
 <style>
 /* ================== MODERN RESTYLE (CSS/SVG only — no PHP logic touched) ================== */
 .ptg-wrapper{
@@ -10,14 +9,14 @@
 	--ptg-muted: #8a8fa3;
 	--ptg-border: #ececf5;
 }
-.ptg-wrapper .box{
+.ptg-wrapper .card{
 	background: #fff;
 	border: 1px solid var(--ptg-border);
 	border-radius: 18px !important;
 	box-shadow: 0 6px 22px rgba(108,99,245,0.1);
 	overflow: hidden;
 }
-.ptg-wrapper .box-header{
+.ptg-wrapper .card-header{
 	border: none !important;
 	background: transparent;
 	padding: 24px 26px 16px 26px;
@@ -38,7 +37,7 @@
 	box-shadow: 0 6px 16px rgba(108,99,245,0.3);
 }
 .ptg-header-icon svg{ width: 24px; height: 24px; }
-.ptg-wrapper .box-header .box-title{
+.ptg-wrapper .card-header .card-title{
 	font-weight: 800 !important;
 	font-size: 20px !important;
 	color: var(--ptg-text) !important;
@@ -64,7 +63,7 @@
 	border-radius: 50%;
 	background: var(--ptg-purple);
 }
-.ptg-wrapper .box-body{
+.ptg-wrapper .card-body{
 	padding: 0 26px 26px 26px;
 	border-top: 1px solid var(--ptg-border);
 	margin-top: 6px;
@@ -217,18 +216,18 @@
 </style>
 
 <div class="ptg-wrapper">
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
         <span class="ptg-header-icon">
 			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M9 15l2 2 4-4"></path></svg>
 		</span>
 		<div>
-			<h3 class="box-title"><?php echo __('Validations des documents'); ?></h3>
+			<h3 class="card-title"><?php echo __('Validations des documents'); ?></h3>
 			<div class="ptg-header-underline"><span class="bar"></span><span class="dot"></span></div>
 		</div>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th><span class="ptg-th-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>User</span></th>
@@ -276,10 +275,6 @@
 </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

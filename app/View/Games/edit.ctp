@@ -122,7 +122,7 @@
         <?php echo $this->Form->create('Game'); ?>
         
         <!-- Field Container wrapper -->
-        <div class="form-group">
+        <div class="mb-5">
             <?php
             // Renders the hidden id field safely
             echo $this->Form->input('id', array('type' => 'hidden'));

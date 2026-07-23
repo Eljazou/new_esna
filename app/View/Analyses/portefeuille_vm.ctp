@@ -345,7 +345,7 @@ echo $this->Html->script('demo');
                         "label" => "Choisissez l'activté",
                         "name" => "activite",
                         'options' => array("" => "Choisissez", "prive" => "Privé", "Publique" => "Publique"),
-                        'class' => 'form-control pull-right',
+                        'class' => 'form-control float-end',
                         'value' => $activite
                     ));
                     echo $this->Form->input('potentialite', array(
@@ -363,7 +363,7 @@ echo $this->Html->script('demo');
                             "C2" => "C2",
                             "C3" => "C3"
                         ),
-                        'class' => 'form-control pull-right choix_multi select2',
+                        'class' => 'form-control float-end choix_multi select2',
                         'value' => $potentialite_selected
                     ));
                     if (AuthComponent::user('role') != 'Super viseur')
@@ -372,7 +372,7 @@ echo $this->Html->script('demo');
                             "label" => "La liste des secteurs",
                             "name" => "secteur",
                             'options' => $secteurs,
-                            'class' => 'form-control pull-right choix_multi select2',
+                            'class' => 'form-control float-end choix_multi select2',
                             'value' => $selected_secteur
                         ));
                     echo $this->Form->input('category', array(
@@ -380,7 +380,7 @@ echo $this->Html->script('demo');
                         "label" => "La liste des spécialité",
                         "name" => "category",
                         'options' => $categories,
-                        'class' => 'form-control pull-right choix_multi select2',
+                        'class' => 'form-control float-end choix_multi select2',
                         'multiple' => 'multiple',
                         'value' => array_values($selected_categories)
                     ));
@@ -393,7 +393,7 @@ echo $this->Html->script('demo');
                         'label' => 'La liste des VM',
                         'name' => 'users',
                         'options' => $users, // e.g. [1 => 'Alice', 2 => 'Bob', 16 => 'HADDANE JIHAD']
-                        'class' => 'form-control pull-right choix_multi vm select2',
+                        'class' => 'form-control float-end choix_multi vm select2',
                         'value' => $selected_users
                     ));
                     echo $this->Form->input('type', array(
@@ -401,7 +401,7 @@ echo $this->Html->script('demo');
                         "label" => "Type de client",
                         "name" => "type",
                         'options' => $types,
-                        'class' => 'form-control pull-right choix_multi vm select2',
+                        'class' => 'form-control float-end choix_multi vm select2',
                         'multiple' => 'multiple',
                         'value' => array_values($selected_types)
                     ));

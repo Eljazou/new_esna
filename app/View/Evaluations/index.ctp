@@ -1,4 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     /* ===================================================================
        LaboRate Indigo Card System — Tableau de bord Évaluations 360°
@@ -313,7 +313,7 @@
 
         <?php if (empty($dashboardData)): ?>
             <div class="alert alert-info" style="margin-top: 20px;border-radius:14px;">
-                <i class="fa fa-info-circle"></i> Vous n'avez aucune équipe assignée ou aucun Délégué Médical sous
+                <i class="ki-duotone ki-information-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Vous n'avez aucune équipe assignée ou aucun Délégué Médical sous
                 votre responsabilité.
             </div>
         <?php else: ?>
@@ -528,12 +528,6 @@
         <?php endif; ?>
     </div>
 </div>
-<?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('jquery.dataTables.min');
-echo $this->Html->script('dataTables.bootstrap.min');
-?>
 <script>
     $(function () {
         $('.datatable-team').DataTable({

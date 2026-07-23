@@ -111,17 +111,20 @@ Legend: ✅ done · 🟡 in progress · ⬜ pending · ⛔ blocked
 
 See §5 (inventory) — every module row becomes ✅ as its views are rebuilt.
 
-**Done (11 modules, 107 views):** Clients 15, Visites 13, Rapports 11, Users 15,
+**Done (29 modules, 202 views):** Clients 15, Visites 13, Rapports 11, Users 15,
 Listes 12, Prospects 8, Brochures 8, Rapportprocpects 6, Analyses 7,
-Prospectcompagnes 6, Grosistes 6.
+Prospectcompagnes 6, Grosistes 6, Evaluations 6, Echantillons 6, Documents 6,
+Commandes 6, Avences 6, Secteurs 5, Produits 5, Packs 5, Offres 5,
+Objectifprofiles 5, Notefrais 5, Groproduits 5, Games 5, Gadjets 5,
+Formations 5, Clientsproposes 5, Categories 5, Actions 5.
 
-**Remaining desktop CRUD (~41 modules, ~176 views):** Evaluations 6,
-Echantillons 6, Documents 6, Commandes 6, Avences 6, then the 5-view tier
-(Secteurs, Produits, Packs, Offres, Objectifprofiles, Notefrais, Groproduits,
-Games, Gadjets, Formations, Clientsproposes, Categories, Actions), the 4-view
-tier (Zquestions, Types, Prospectaffaires, Pots, Odpobjectifs, Objectifs,
-Marketings, Lignes, Jourferiers, Groventes, Digitals, Autoechantiants, Absences)
-and the ≤3-view tail.
+**Remaining desktop CRUD (~28 modules, ~82 views):** the 4-view tier
+(Zquestions, Types, Prospectaffaires, Pots, Odpobjectifs, Objectifs, Marketings,
+Lignes, Jourferiers, Groventes, Digitals, Autoechantiants, Absences) and the
+≤3-view tail (Statistiques, Notevalidations, Notefraissecteurs, Hopitals,
+Boitemails, Boiteidees, Actionrapports, Stockvisites, Droits, Asm, Services,
+Plantournes, Pages, Notifications, Gadgetclients). `Errors/` (3) goes with the
+layouts. **Note:** `Droits/backup_database.ctp` is Latin-1 — see TODO #40.
 
 **Separate track (§7):** `Appweb` 10, `Appwebfinal` 13, `Appwebfinalv2` 14,
 `Visitemobileapis` 4 — Bootstrap 4.3.1/AdminLTE layouts, a BS4→BS5 job distinct
@@ -828,6 +831,112 @@ recorded decision, not an unknown. Audit pattern set is now **24 patterns**.
 
 ---
 
+### 2026-07-23 — Step 3, batch 2: **18 small CRUD modules** (95 views) ✅
+
+`Evaluations`, `Echantillons`, `Documents`, `Commandes`, `Avences` (6 each);
+`Secteurs`, `Produits`, `Packs`, `Offres`, `Objectifprofiles`, `Notefrais`,
+`Groproduits`, `Games`, `Gadjets`, `Formations`, `Clientsproposes`,
+`Categories`, `Actions` (5 each).
+
+#### 🔴 The `\b` hyphen trap — silent class corruption in 13 files
+
+`\b` treats a hyphen as a word boundary, so `\bbox-footer\b` also matched the
+**tail** of `small-box-footer`, and `\bpanel-body\b` matched inside
+`sub-panel-body`. The app's own component classes were being renamed:
+
+| original | became | consequence |
+|---|---|---|
+| `small-box-footer` | `small-card-footer` | CSS still `.small-box-footer` → button unstyled |
+| `custom-panel-title` | `custom-card-title` | CSS unchanged → heading unstyled |
+| `form-actions-well` | `form-actions-card card-body bg-light` | **one class became three**, adding card padding/background |
+| `well-custom` | `card card-body bg-light-custom` | nonsense class |
+| `box-header-custom` | `card-header-custom` | CSS unchanged |
+
+Crucially the `<style>` pass did **not** make the matching rename (its selector
+regex correctly requires a literal `.` before the class), so markup and CSS
+disagreed — the exact failure this tool exists to prevent, caused by the tool.
+
+This was latent in the HTML path from the very first module and had already
+shipped; the new PHP-side pass merely made it visible. Every `CLASS_MAP` pattern
+now has its outer `\b` rewritten to `(?<![-\w])` / `(?![-\w])` at load time, so a
+newly added rule cannot reintroduce it. A scan comparing every class token
+against its `esna/` original found **23 corrupted tokens in 13 files**
+(Clients, Brochures, Echantillons, Evaluations, Actions, Formations, Notefrais,
+Offres) — all restored, 42 occurrences. `audit_legacy.py` had the same
+looseness and was reporting those restored custom classes as leftovers; its
+`box-header/body/title` pattern is now boundary-anchored too.
+
+#### Classes written from inside PHP are now migrated
+
+`_outside_php()` deliberately skips every PHP block, so classes that CakePHP
+writes were never touched — FormHelper option arrays (`'class' => 'col-xs-6'`,
+`'div' => array('class' => 'form-group')`) and echoed HTML
+(`echo '<span class="label label-success">'`). Two new passes handle them:
+
+- `fix_php_classes()` — rewrites only **provably static** literals. The guard
+  (`_STATIC_CLASS`) rejects anything containing a quote, `.`, `+`, `$` or `<?`,
+  and also rejects leading/trailing spaces: `'class' => 'form-control ' . $extra`
+  has a load-bearing trailing space, and normalising it yields
+  `form-controlbtn` at runtime. That was caught by the tool's own control test,
+  not by `php -l`.
+- `fix_mixed_classes()` — handles attributes that are part static, part PHP
+  (`class="small-box <?php echo $styles[$i]; ?>"`). These were torn in half by
+  the `_outside_php` split and never matched, so `small-box` survived in the
+  markup while the `<style>` pass renamed `.small-box` → `.card` — leaving
+  Notefrais' card styling pointed at nothing. Only literal segments are mapped;
+  everything between `<?` and `?>` is untouched, and segment whitespace is
+  preserved.
+
+Biggest single win: `Rapports/{add,edit,view}.ctp` carried **96 Bootstrap 3
+`label label-*` badges** inside PHP echo strings. BS5 has no `.label` class at
+all, so every one of them was rendering as unstyled text. Now `badge
+badge-light-*`.
+
+#### Other fixes
+
+- **Font Awesome modifiers survived onto Keenicons** (`ki-duotone ki-trash
+  fa-fw`). FA4 is still loaded globally, so `.fa-fw{width:1.28em}` really
+  applied and distorted the glyph. Stripped, in both the swapper and the repair
+  pass.
+- **A non-UTF-8 view crashed the migrator mid-run**, leaving a batch
+  half-applied. `Droits/backup_database.ctp` is Latin-1. `process()` now detects
+  the encoding, writes back in the **same** encoding (a silent re-encode would
+  mangle every accented character) and skips-with-a-message rather than raising.
+- **`Secteurs/view.ctp` dynamic icons** — `<i class="fa <?= $meta['icon'] ?>">`
+  picks one of six client-type icons from a PHP table. Keenicons duotone glyphs
+  render *nothing* without the right number of `<span class="pathN">` children
+  and the count differs per icon, so the table now carries a `paths` key
+  alongside the name. This is the only place in the app where an icon class is
+  chosen at runtime.
+- **Ionicons** (`ion ion-clipboard`, Notefrais ×2) — Ionicons was never loaded,
+  in `esna/` either, so these had never rendered. Converted to `ki-clipboard`
+  and `mr-1` → `me-1` for BS5.
+
+#### Judgement calls
+
+- `info-box` kept in `Formations/index.ctp` (self-styled locally, same as
+  batch 1).
+- `Objectifprofiles/default.ctp` is an **orphan** — a complete AdminLTE HTML
+  document with no `default()` action and no references, like
+  `Clients/system_index.ctp`. Its `data-toggle="offcanvas"` is AdminLTE's own
+  sidebar toggle, dead with AdminLTE gone. Left in place per precedent.
+- Unscoped dead `.form-group` rules left alone (4 files); the one scoped rule
+  (`Offres/edit.ctp` `.product-row .form-group`) re-pointed to `.mb-5`.
+
+### Verification status — 202 views, 29 modules
+
+| | |
+|---|---|
+| `php -l` | **202 files, 0 failures** |
+| logic diff | **202 compared, 0 skipped**, 25 files differ — all icon swaps, BS3→BS5 class renames inside PHP strings, and the 3 added statements for `Secteurs/view.ctp` icon spans. Every diff is `-N/+N` balanced except those 3. |
+| code intact | ALL INTACT, every module |
+| concat damage | ALL CLEAN |
+| legacy audit | residuals in 9 files, **all recorded decisions** (FA kept ×3, `info-box` ×4, `data-widget` ×4 per TODO #28, orphan template ×1) |
+
+Audit pattern set is now **25 patterns**, boundary-anchored.
+
+---
+
 ## 5. Migration checklist — inventory of `app/View/**/*.ctp`
 
 **376 `.ctp` files** across 65 view directories.
@@ -1112,7 +1221,23 @@ work.
     markup and CSS disagree in five modules already signed off. It is now derived from
     those maps. Same lesson as #30, one layer down: a second list of the same facts will
     eventually disagree with the first.
-30. **"ALL CLEAN" means "clean against the 24 patterns currently audited."** Four separate
+38. **`\b` is the wrong boundary for CSS class names.** A hyphen IS a word boundary, so
+    `\bbox-footer\b` matches inside `small-box-footer` and `\bpanel-body\b` inside
+    `sub-panel-body`. Use `(?<![-\w])` / `(?![-\w])` for anything that matches a class
+    name — in the migrator and in the audit. This silently renamed the app's own
+    components in 13 files while leaving their CSS untouched.
+39. **Whitespace in a class value can be load-bearing.** `'class' => 'form-control ' . $extra`
+    concatenates; trimming that trailing space produces `form-controlbtn` at runtime, and
+    the same applies to the literal segments of `class="a <?php ... ?> b"`. Any rewrite of a
+    class value must preserve edge whitespace or refuse the value outright.
+40. **Not every view is UTF-8.** `Droits/backup_database.ctp` is Latin-1. Read and write
+    each file in its own encoding; a silent re-encode corrupts every accented character, and
+    an unhandled decode error aborts a batch part-way through.
+41. **Dynamic Keenicons need their path count carried with them.** A duotone glyph renders
+    nothing without the right number of `<span class="pathN">` children, and the count
+    varies per icon. Where the icon class is chosen at runtime (`Secteurs/view.ctp`), the
+    count must travel in the same data structure — it cannot be assumed.
+30. **"ALL CLEAN" means "clean against the 25 patterns currently audited."** Five separate
     times an incomplete pattern set produced a clean report on code that still had defects.
     When migrating a new module, expect to discover legacy classes not yet in
     `tools/audit_legacy.py`; add them and **re-run the migrator over all previously

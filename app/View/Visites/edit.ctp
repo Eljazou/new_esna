@@ -226,7 +226,7 @@ echo $this->Html->script('jquery-ui.min'); ?>
         </div>
 
         <div class="card-body">
-            <?php echo $this->Form->create('Visite', array('class' => 'form-horizontal')); ?>
+            <?php echo $this->Form->create('Visite', array('class' => '')); ?>
 
                 <?php echo $this->Form->input('id'); ?>
 

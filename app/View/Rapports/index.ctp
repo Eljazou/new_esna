@@ -175,7 +175,7 @@ function truncateText($text, $limit = 50)
                             echo $this->Html->link(
                                 __('Ajouter'),
                                 ['action' => 'add'],
-                                ['class' => 'btn bg-purple btn-flat', 'style' => 'float:right;']
+                                ['class' => 'btn bg-primary', 'style' => 'float:right;']
                             );
                         }
                         if ($this->requestAction('/droits/getrole/rapports/addsp') == 1 || AuthComponent::user('role') == 'Admin' ) {
@@ -186,7 +186,7 @@ function truncateText($text, $limit = 50)
                             echo $this->Html->link(
                                 __('Ajouter ' . $sup),
                                 ['action' => 'addsp'],
-                                ['class' => 'btn bg-purple btn-flat', 'style' => 'float:right;margin-right: 9px;']
+                                ['class' => 'btn bg-primary', 'style' => 'float:right;margin-right: 9px;']
                             );
                         }
                     } else {

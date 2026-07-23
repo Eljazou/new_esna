@@ -1,6 +1,6 @@
-<div class="box">
+<div class="card">
 <h2><?php echo __('Pack'); ?></h2>
-		 			<?php echo $this->Html->link(__('Editer'), array('action' => 'edit'), array('class'=>'btn bg-purple btn-flat', 'style'=>'float:right;'));?>
+		 			<?php echo $this->Html->link(__('Editer'), array('action' => 'edit'), array('class'=>'btn bg-primary', 'style'=>'float:right;'));?>
 
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
@@ -31,12 +31,12 @@
 	</dl>
 </div>
 
-<div class="box-body table-responsive">
-            <div class="box-footer">
+<div class="card-body table-responsive">
+            <div class="card-footer">
                 <div class="related">
 	<h3><?php echo __('Related Packdetails'); ?></h3>
 	<?php if (!empty($pack['Packdetail'])): ?>
-	<table class="table table-bordered table-striped">
+	<table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Pack Id'); ?></th>

@@ -1,12 +1,12 @@
-<div class="box">
-    <div class="box-header with-border">
+<div class="card">
+    <div class="card-header">
         <h2><?php echo __('Commande'); ?></h2>
 		<?php if($commande['Commande']['archive']==0)
-						echo '<span class="badge bg-yellow" style="float: right;margin-top: -31px;font-size: 16px;">En cours de validation</span>';
+						echo '<span class="badge bg-warning" style="float: right;margin-top: -31px;font-size: 16px;">En cours de validation</span>';
 					if($commande['Commande']['archive']==1)
-						echo '<span class="badge bg-green" style="float: right;margin-top: -31px;font-size: 16px;">Validé</span>'; ?>
+						echo '<span class="badge bg-success" style="float: right;margin-top: -31px;font-size: 16px;">Validé</span>'; ?>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <div class="col-md-12">
             <table class="col-md-4 table">
                 <?php if (AuthComponent::user('id') != $commande['User']['id']): ?>
@@ -45,7 +45,7 @@
                             if (AuthComponent::user('role') != 'VMP' && AuthComponent::user('role') != 'Coordinateur')
                             {
                                 ?>
-                                <div class="form-group">
+                                <div class="mb-5">
                                     <label for="DroitUserId">Clients</label>
                                     <select name="data[Droit][user_id]" class="form-control" onchange="location = this.value;">
                                         <?php
@@ -109,13 +109,13 @@
         ?>
     </div>
 </div>
-<div class="box">
-    <div class="box-header with-border">
+<div class="card">
+    <div class="card-header">
         <h3><?php echo __('Résumé de commande'); ?></h3>
     </div>
-    <div class="box-body">
+    <div class="card-body">
 <?php if (!empty($commande['Comander'])): ?>
-            <table class="table table-bordered">
+            <table class="table table-row-bordered align-middle gy-4">
                 <tr>
                     <th><?php echo __('Produit'); ?></th>
                     <th><?php echo __('Quantite'); ?></th>

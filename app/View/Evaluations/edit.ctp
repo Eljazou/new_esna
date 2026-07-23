@@ -1,5 +1,4 @@
 <?php
-echo $this->Html->css('select2.min');
 echo $this->Html->css('datepicker3');
 ?>
 <style>
@@ -21,9 +20,9 @@ echo $this->Html->css('datepicker3');
     .footer-actions { width: 220px; text-align: right; }
     .score-val { font-size: 24px; font-weight: bold; margin: 0 10px; }
     .badge-footer { font-size: 16px; padding: 5px 15px; border-radius: 20px; vertical-align: middle; margin-left: 10px; }
-    .bg-green { background-color: #00a65a !important; color: #fff; }
+    .bg-success { background-color: #00a65a !important; color: #fff; }
     .bg-orange { background-color: #f39c12 !important; color: #fff; }
-    .bg-red { background-color: #dd4b39 !important; color: #fff; }
+    .bg-danger { background-color: #dd4b39 !important; color: #fff; }
 </style>
 
 <div class="row">
@@ -32,26 +31,26 @@ echo $this->Html->css('datepicker3');
     <?php echo $this->Form->hidden('user_id'); ?>
     
     <div class="col-md-12">
-        <div class="box box-primary evaluation-box">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-edit"></i> MODIFIER L'ÉVALUATION</h3>
+        <div class="card evaluation-box">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-pencil"><span class="path1"></span><span class="path2"></span></i> MODIFIER L'ÉVALUATION</h3>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="mb-5">
                             <label>Délégué Médical (VMP)</label>
                             <input type="text" class="form-control" value="<?php echo h($user['User']['name']); ?>" readonly>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="mb-5">
                             <label>Période - Début</label>
                             <?php echo $this->Form->input('periode_debut', array('type' => 'text', 'class' => 'form-control datepicker', 'label' => false, 'required' => true)); ?>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="mb-5">
                             <label>Période - Fin</label>
                             <?php echo $this->Form->input('periode_fin', array('type' => 'text', 'class' => 'form-control datepicker', 'label' => false, 'required' => true)); ?>
                         </div>
@@ -61,12 +60,12 @@ echo $this->Html->css('datepicker3');
         </div>
 
         <!-- BLOC 1 -->
-        <div class="box box-default evaluation-box" id="box_b1">
-            <div class="box-header with-border">
-                <h3 class="box-title">BLOC 1 : PRÉPARATION ET PRÉSENTATION DES VISITES</h3>
-                <div class="box-tools pull-right"><span class="label label-info">Moyenne: <span id="avg_b1">0.0</span>/4</span></div>
+        <div class="card evaluation-box" id="box_b1">
+            <div class="card-header">
+                <h3 class="card-title">BLOC 1 : PRÉPARATION ET PRÉSENTATION DES VISITES</h3>
+                <div class="card-toolbar float-end"><span class="badge badge-light-info">Moyenne: <span id="avg_b1">0.0</span>/4</span></div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="section-header">Section 1 : Préparation des visites</div>
                 <div class="q-row"><div class="q-text">Le délégué planifie-t-il ses visites de manière efficace via le CRM ?</div><?php echo $this->element('q_radios', array('name' => 'q1_1')); ?></div>
                 <div class="q-row"><div class="q-text">Le délégué définit-il des objectifs clairs des visites ?</div><?php echo $this->element('q_radios', array('name' => 'q1_2')); ?></div>
@@ -80,12 +79,12 @@ echo $this->Html->css('datepicker3');
         </div>
 
         <!-- BLOC 2 -->
-        <div class="box box-default evaluation-box" id="box_b2">
-            <div class="box-header with-border">
-                <h3 class="box-title">BLOC 2 : TECHNIQUE DE VENTE ET DE COMMUNICATION</h3>
-                <div class="box-tools pull-right"><span class="label label-info">Moyenne: <span id="avg_b2">0.0</span>/4</span></div>
+        <div class="card evaluation-box" id="box_b2">
+            <div class="card-header">
+                <h3 class="card-title">BLOC 2 : TECHNIQUE DE VENTE ET DE COMMUNICATION</h3>
+                <div class="card-toolbar float-end"><span class="badge badge-light-info">Moyenne: <span id="avg_b2">0.0</span>/4</span></div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="q-row"><div class="q-text">Le délégué introduit-il clairement le produit ?</div><?php echo $this->element('q_radios', array('name' => 'q2_1')); ?></div>
                 <div class="q-row"><div class="q-text">Le délégué communique-t-il de manière claire et structurée ?</div><?php echo $this->element('q_radios', array('name' => 'q2_2')); ?></div>
                 <div class="q-row"><div class="q-text">Le délégué utilise-t-il efficacement les supports visuels ?</div><?php echo $this->element('q_radios', array('name' => 'q2_3')); ?></div>
@@ -97,12 +96,12 @@ echo $this->Html->css('datepicker3');
         </div>
 
         <!-- BLOC 3 -->
-        <div class="box box-default evaluation-box" id="box_b3">
-            <div class="box-header with-border">
-                <h3 class="box-title">BLOC 3 : ENGAGEMENT ET ANALYSE POST-VISITES</h3>
-                <div class="box-tools pull-right"><span class="label label-info">Moyenne: <span id="avg_b3">0.0</span>/4</span></div>
+        <div class="card evaluation-box" id="box_b3">
+            <div class="card-header">
+                <h3 class="card-title">BLOC 3 : ENGAGEMENT ET ANALYSE POST-VISITES</h3>
+                <div class="card-toolbar float-end"><span class="badge badge-light-info">Moyenne: <span id="avg_b3">0.0</span>/4</span></div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="section-header">Section 1 : Conclure et engagement</div>
                 <div class="q-row"><div class="q-text">Le délégué conclut-il efficacement les visites ?</div><?php echo $this->element('q_radios', array('name' => 'q3_1')); ?></div>
                 <div class="q-row"><div class="q-text">Le délégué obtient-il l'engagement des médecins ?</div><?php echo $this->element('q_radios', array('name' => 'q3_2')); ?></div>
@@ -114,13 +113,13 @@ echo $this->Html->css('datepicker3');
             <?php echo $this->Form->hidden('score_b3', array('id' => 'input_score_b3')); ?>
         </div>
 
-        <div class="box box-warning evaluation-box">
-            <div class="box-header with-border"><h3 class="box-title">Observations & Plan d'Action</h3></div>
-            <div class="box-body">
+        <div class="card evaluation-box">
+            <div class="card-header"><h3 class="card-title">Observations & Plan d'Action</h3></div>
+            <div class="card-body">
                 <div class="row">
-                    <div class="col-md-4"><div class="form-group"><label>Observations générales</label><?php echo $this->Form->textarea('observations_generales', array('class' => 'form-control', 'rows' => 3)); ?></div></div>
-                    <div class="col-md-4"><div class="form-group"><label>Plan d'amélioration</label><?php echo $this->Form->textarea('plan_amelioration', array('class' => 'form-control', 'rows' => 3)); ?></div></div>
-                    <div class="col-md-4"><div class="form-group"><label>Appréciation VM</label><?php echo $this->Form->textarea('appreciation_vm', array('class' => 'form-control', 'rows' => 3)); ?></div></div>
+                    <div class="col-md-4"><div class="mb-5"><label>Observations générales</label><?php echo $this->Form->textarea('observations_generales', array('class' => 'form-control', 'rows' => 3)); ?></div></div>
+                    <div class="col-md-4"><div class="mb-5"><label>Plan d'amélioration</label><?php echo $this->Form->textarea('plan_amelioration', array('class' => 'form-control', 'rows' => 3)); ?></div></div>
+                    <div class="col-md-4"><div class="mb-5"><label>Appréciation VM</label><?php echo $this->Form->textarea('appreciation_vm', array('class' => 'form-control', 'rows' => 3)); ?></div></div>
                 </div>
             </div>
         </div>
@@ -128,16 +127,16 @@ echo $this->Html->css('datepicker3');
     
     <div class="fixed-score-footer">
         <div class="footer-vmp">
-            <i class="fa fa-user"></i> <strong><?php echo h($user['User']['name']); ?></strong>
+            <i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> <strong><?php echo h($user['User']['name']); ?></strong>
         </div>
         <div class="footer-score">
             <span>SCORE ACTUEL :</span>
             <span class="score-val" id="foot_score_pct">0</span><span style="font-size: 20px; font-weight: bold;">%</span>
-            <span id="foot_badge" class="badge-footer bg-red">En attente</span>
+            <span id="foot_badge" class="badge-footer bg-danger">En attente</span>
             <span style="color: #777; margin-left: 20px;">(<span id="foot_points">0</span>/<span id="foot_max">68</span> pts)</span>
         </div>
         <div class="footer-actions">
-            <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-refresh"></i> METTRE À JOUR</button>
+            <button type="submit" class="btn btn-primary btn-lg"><i class="ki-duotone ki-arrows-circle"><span class="path1"></span><span class="path2"></span></i> METTRE À JOUR</button>
         </div>
     </div>
 
@@ -147,8 +146,6 @@ echo $this->Html->css('datepicker3');
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
 echo $this->Html->script('bootstrap-datepicker');
 echo $this->Html->script('bootstrap-datepicker.fr');
 ?>

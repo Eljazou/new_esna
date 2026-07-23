@@ -335,13 +335,13 @@
                     </div>
                 </div>
 
-                <div class='row form-group imgs'>
+                <div class='row mb-5 imgs'>
                     <div class="input-images" style="padding-top: .5rem; width: 100%;"></div>
                 </div>
                 
                 <?php
                 echo $this->Html->link('Annuler', array('action' => 'index'), array('class' => 'btn-cancel'));
-                echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center col-md-12')));
+                echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center col-md-12')));
                 ?>
             </div>
         </div>

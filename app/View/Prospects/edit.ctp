@@ -32,7 +32,7 @@
 	
 </div>
 <div class="card-footer">
-<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-warning','div' => array('class' => 'well text-center'))); ?>
+<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-warning','div' => array('class' => 'card card-body bg-light text-center'))); ?>
 
 </div>
 </div>

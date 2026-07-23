@@ -16,7 +16,7 @@
     </div>
 
     <!-- ===== METRONIC CARD BODY ===== -->
-    <?php echo $this->Form->create('Grosiste', array('class' => 'form-horizontal')); ?>
+    <?php echo $this->Form->create('Grosiste', array('class' => '')); ?>
     <div class="card-body py-4">
         
         <?php echo $this->Form->input('id'); ?>

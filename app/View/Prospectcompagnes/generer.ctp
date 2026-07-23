@@ -135,7 +135,7 @@ echo $this->Html->script('demo');
 
             </div>
             <div class="card-footer clearfix">
-                <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-outline-info', 'div' => array('class' => 'well text-center'))); ?>
+                <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-outline-info', 'div' => array('class' => 'card card-body bg-light text-center'))); ?>
             </div>
         </div>
 

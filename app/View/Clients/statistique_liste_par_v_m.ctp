@@ -23,19 +23,19 @@
         overflow: hidden;
         margin-bottom: 30px;
     }
-    .report-card-custom .card-header-custom {
+    .report-card-custom .box-header-custom {
         background: #ffffff;
         padding: 22px 24px;
         border-bottom: 1px solid var(--theme-border);
     }
-    .report-card-custom .card-title-custom {
+    .report-card-custom .box-title-custom {
         margin: 0;
         font-size: 16px;
         font-weight: 700;
         color: var(--theme-text-dark);
         line-height: 1.4;
     }
-    .report-card-custom .card-body-custom {
+    .report-card-custom .box-body-custom {
         padding: 0;
     }
 
@@ -176,10 +176,10 @@ foreach ($data as $vmp):
         <?php foreach($potcat as $key => $pp): ?>
             <div class="col-md-6 col-12">
                 <div class="report-card-custom">
-                    <div class="card-header-custom">
+                    <div class="box-header-custom">
                         <h3 class="card-title_custom">Rapport des listes de <strong><?php echo h($key); ?></strong> du <?php echo h($vmp['User']['name']); ?></h3>
                     </div>
-                    <div class="card-body-custom">
+                    <div class="box-body-custom">
                         <table class="table-report-custom">
                             <thead>
                                 <tr>
@@ -206,10 +206,10 @@ foreach ($data as $vmp):
         <!-- 2. Activity Metrics Tracker Card Matrix -->
         <div class="col-md-6 col-12">
             <div class="report-card-custom">
-                <div class="card-header-custom">
-                    <h3 class="card-title-custom">Rapport des listes de Activité du <?php echo h($vmp['User']['name']); ?></h3>
+                <div class="box-header-custom">
+                    <h3 class="box-title-custom">Rapport des listes de Activité du <?php echo h($vmp['User']['name']); ?></h3>
                 </div>
-                <div class="card-body-custom">
+                <div class="box-body-custom">
                     <table class="table-report-custom">
                         <thead>
                             <tr>
@@ -239,10 +239,10 @@ foreach ($data as $vmp):
         <!-- 3. Base Potentiality Tracker Card Matrix -->
         <div class="col-md-6 col-12">
             <div class="report-card-custom">
-                <div class="card-header-custom">
-                    <h3 class="card-title-custom">Rapport des listes de POT du <?php echo h($vmp['User']['name']); ?></h3>
+                <div class="box-header-custom">
+                    <h3 class="box-title-custom">Rapport des listes de POT du <?php echo h($vmp['User']['name']); ?></h3>
                 </div>
-                <div class="card-body-custom">
+                <div class="box-body-custom">
                     <table class="table-report-custom">
                         <thead>
                             <tr>
@@ -272,10 +272,10 @@ foreach ($data as $vmp):
         <!-- 4. Cross-Reference Activity Potential Matrix -->
         <div class="col-md-6 col-12">
             <div class="report-card-custom">
-                <div class="card-header-custom">
-                    <h3 class="card-title-custom">Rapport des listes de POT / Activité <?php echo h($vmp['User']['name']); ?></h3>
+                <div class="box-header-custom">
+                    <h3 class="box-title-custom">Rapport des listes de POT / Activité <?php echo h($vmp['User']['name']); ?></h3>
                 </div>
-                <div class="card-body-custom">
+                <div class="box-body-custom">
                     <table class="table-report-custom">
                         <thead>
                             <tr>
@@ -307,10 +307,10 @@ foreach ($data as $vmp):
         <!-- 5. Specialties Distribution Card Matrix -->
         <div class="col-md-6 col-12">
             <div class="report-card-custom">
-                <div class="card-header-custom">
-                    <h3 class="card-title-custom">Rapport des listes de spécialité <?php echo h($vmp['User']['name']); ?></h3>
+                <div class="box-header-custom">
+                    <h3 class="box-title-custom">Rapport des listes de spécialité <?php echo h($vmp['User']['name']); ?></h3>
                 </div>
-                <div class="card-body-custom">
+                <div class="box-body-custom">
                     <table class="table-report-custom">
                         <thead>
                             <tr>
@@ -340,10 +340,10 @@ foreach ($data as $vmp):
         <!-- 6. Localization & Customer Types Analytics Structural Matrix -->
         <div class="col-md-12 col-12">
             <div class="report-card-custom">
-                <div class="card-header-custom">
-                    <h3 class="card-title-custom">Rapport des listes des type clients <?php echo h($vmp['User']['name']); ?></h3>
+                <div class="box-header-custom">
+                    <h3 class="box-title-custom">Rapport des listes des type clients <?php echo h($vmp['User']['name']); ?></h3>
                 </div>
-                <div class="card-body-custom">
+                <div class="box-body-custom">
                     <div class="table-responsive" style="border: none;">
                         <table class="table-report-custom">
                             <thead>

@@ -207,7 +207,7 @@
 						</tbody>
                     </table>
 				</div>
-                    <?php echo $this->Form->end(array('type'=>'button','OnClick'=>'envoyer();','label' => 'Envoyer', 'class' => 'btn btn-primary btn-large submit', 'div' => array('class' => 'well text-center col-lg-12 col-md-12 col-sm-12'))); ?>
+                    <?php echo $this->Form->end(array('type'=>'button','OnClick'=>'envoyer();','label' => 'Envoyer', 'class' => 'btn btn-primary btn-large submit', 'div' => array('class' => 'card card-body bg-light text-center col-lg-12 col-md-12 col-sm-12'))); ?>
                 </div>
             </div>
         </div>

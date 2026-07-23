@@ -7,16 +7,16 @@
         .col-lg-9{top:0 !important;}
     }
     @media (max-width: 1183px){
-        .panel-primary > .panel-heading {
+        .card > .card-header {
             width: 50%;
         }
     }
     @media (max-width: 990px){
-        .panel-primary > .panel-heading {
+        .card > .card-header {
             width: 97% !important;
         }
     }
-    .panel.panel-primary .col-lg-9 {
+    .card .col-lg-9 {
         float: none !important;
         margin: auto !important;
         background: #fff !important;
@@ -24,11 +24,11 @@
         padding-top: 8px;
     }
 </style>
-<div class="panel panel-primary">					
-    <div class="panel-heading col-lg-9 col-md-10 col-sm-12">
-        <h3 class="panel-title" style="padding-left: 0px;margin-left: -7px;"><?php echo __('Ajouter une commande'); ?></h3>
+<div class="card">					
+    <div class="card-header col-lg-9 col-md-10 col-sm-12">
+        <h3 class="card-title" style="padding-left: 0px;margin-left: -7px;"><?php echo __('Ajouter une commande'); ?></h3>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
         <div class="row col-lg-2 col-md-10 col-sm-12 headercomm" style="margin-left: 0%;margin-top: 0%;float: none;background: #fff;border-top-left-radius: 8px;border-bottom-left-radius: 8px;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.27) !important;">
             <?php
             //debug($offres);
@@ -47,7 +47,7 @@
                         foreach ($value['Offrespicial'] as $offre) {
                             ?>
                             <div class="col-md-12 shown">
-                                <div class="col-xs-3">
+                                <div class="col-3">
                                     <?php foreach ($produits as $value) :
                                         if ($offre['produit_id'] == $value['Produit']['id']):
                                             ?>
@@ -56,14 +56,14 @@
                 <?php endif;
             endforeach; ?>
                                 </div>
-                                <div class="col-xs-2">
+                                <div class="col-2">
                                     <big class="prix<?php echo $i; ?>" id="<?php echo round($offre['Produit']['prix'], 2); ?>"><?php echo round($offre['Produit']['prix'], 2) . " DH"; ?></big>
                                 </div>
-            <?php echo $this->Form->input('quantite', array('type' => 'number', 'label' => false, 'id' => 'qte' . $i, 'value' => $offre['quantite'], 'min' => $offre['quantite'], 'name' => "data[$i][Offrespicial][quantite]", 'required' => "required", 'placeholder' => 'qte min = ' . $offre['quantite'], 'class' => 'form-control qte' . $i, 'onkeyup' => "calcultotale($i," . round($offre['Produit']['prix'], 2) . "," . $offre['reduction'] . ",this.value," . $offre['quantite'] . ",event)", 'onchange' => "calcultotale($i," . round($offre['Produit']['prix'], 2) . "," . $offre['reduction'] . ",this.value,null,event)", 'div' => array('class' => 'col-xs-3'))); ?>
-                                <div class="col-xs-2">
+            <?php echo $this->Form->input('quantite', array('type' => 'number', 'label' => false, 'id' => 'qte' . $i, 'value' => $offre['quantite'], 'min' => $offre['quantite'], 'name' => "data[$i][Offrespicial][quantite]", 'required' => "required", 'placeholder' => 'qte min = ' . $offre['quantite'], 'class' => 'form-control qte' . $i, 'onkeyup' => "calcultotale($i," . round($offre['Produit']['prix'], 2) . "," . $offre['reduction'] . ",this.value," . $offre['quantite'] . ",event)", 'onchange' => "calcultotale($i," . round($offre['Produit']['prix'], 2) . "," . $offre['reduction'] . ",this.value,null,event)", 'div' => array('class' => 'col-3'))); ?>
+                                <div class="col-2">
                                     <big class=""><?php echo $offre['reduction'] . " %"; ?></big>
                                 </div>
-                                <div class="col-xs-2">
+                                <div class="col-2">
                                     <big class="totaler totale<?php echo $i; ?>" value="<?php echo round($offre['Produit']['prix'] * $offre['quantite'] * (1 - ($offre['reduction'] / 100)), 2); ?>"><?php echo round($offre['Produit']['prix'] * $offre['quantite'] * (1 - ($offre['reduction'] / 100)), 2) . " DH"; ?></big>
                                 </div>
                                 <input type="hidden" name="data[<?php echo $i; ?>][Offrespicial][prix]" class="totale prixht<?php echo $i; ?>" value="<?php echo round(($offre['Produit']['prix'] * $offre['quantite']), 2); ?>">
@@ -107,26 +107,26 @@
 					<label style="width:100%;margin:0;">Totale TTC avec remise</label>
 					<big class="totaleremise" style="width: 100%;float: left;min-height: 20px;">00.00 DH</big>
 				</div>
-				<div class="well text-center col-md-12 col-lg-12 col-sm-12" style="float:left;"><input class="btn btn-primary btn-sm" type="submit" value="Envoyer"></div>
+				<div class="card card-body bg-light text-center col-md-12 col-lg-12 col-sm-12" style="float:left;"><input class="btn btn-primary btn-sm" type="submit" value="Envoyer"></div>
             </div>
 		</div>
             <div class="col-lg-9 col-md-10 col-sm-12 bodycomm" id="bodycomm" style="padding-bottom:80px;">
-                <div class="panel panel-primary">
-                    <div class="panel-body form-horizontal payment-form">
+                <div class="card">
+                    <div class="card-body payment-form">
                         <div class="row col-md-12">
-                            <div class="col-xs-3">
+                            <div class="col-3">
                                 <label>Produit </label>
                             </div>
-                            <div class="col-xs-2">
+                            <div class="col-2">
                                 <label>Prix U.I </label>
                             </div>
-                            <div class="col-xs-3">
+                            <div class="col-3">
                                 <label>Quantité </label>
                             </div>
-                            <div class="col-xs-2">
+                            <div class="col-2">
                                 <label>Remise % </label>
                             </div>
-                            <div class="col-xs-2">
+                            <div class="col-2">
                                 <label>Total HT </label>
                             </div>
                         </div>
@@ -136,24 +136,24 @@
 $j = $i++;
 foreach ($produits as $value) {
     ?>
-                            <div class="row comm comm<?php echo $j; ?> col-md-12" style="float:left;">
-                                <div class="col-xs-3 productname" style="height:64px;">
+                            <div class="row comm<?php echo $j; ?> col-md-12" style="float:left;">
+                                <div class="col-3 productname" style="height:64px;">
                                     <input type="hidden" name="data[<?php echo $j; ?>][Offrespicial][produit_id]" value="<?php echo $value['Produit']['id']; ?>">
                                     <span><?php echo $value['Produit']['name']; ?></span>
                                 </div>
-                                <div class="col-xs-2" style="height:45px;">
+                                <div class="col-2" style="height:45px;">
                                     <big class="totalui ui<?php echo $j; ?>" value="<?php echo round($value['Produit']['prix'], 2); ?>"><?php echo round($value['Produit']['prix'], 2); ?> DH </big>
                                 </div>
-    <?php echo $this->Form->input('quantite', array('type' => 'number', 'name' => "data[$j][Offrespicial][quantite]", 'value' => "0", 'min' => '0', 'placeholder' => 'Quantité', 'class' => "form-control prodq qten$j", 'label' => false, 'onkeyup' => "calcultotalp($j,this.value,null,event)", 'onchange' => "calcultotalp($j,this.value,null,event)", 'div' => array('class' => 'col-xs-3', 'style' => 'height:45px;'))); ?>
-                                <div class="col-xs-2" style="height:45px;">
+    <?php echo $this->Form->input('quantite', array('type' => 'number', 'name' => "data[$j][Offrespicial][quantite]", 'value' => "0", 'min' => '0', 'placeholder' => 'Quantité', 'class' => "form-control prodq qten$j", 'label' => false, 'onkeyup' => "calcultotalp($j,this.value,null,event)", 'onchange' => "calcultotalp($j,this.value,null,event)", 'div' => array('class' => 'col-3', 'style' => 'height:45px;'))); ?>
+                                <div class="col-2" style="height:45px;">
                                 </div>
-                                <div class="col-xs-2" style="height:45px;">
+                                <div class="col-2" style="height:45px;">
                                     <big class="totalht ht<?php echo $j; ?>" value="00.00">00.00 DH </big>
                                     <input type="hidden" class="inputht<?php echo $j; ?>" name="data[<?php echo $j++; ?>][Offrespicial][prix]" value="00.00">
                                 </div>
                             </div>
 <?php } ?>
-<?php //echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center col-md-12 col-lg-12 col-sm-12', 'style' => 'float:left;'))); ?>
+<?php //echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center col-md-12 col-lg-12 col-sm-12', 'style' => 'float:left;'))); ?>
                     </div>
                 </div>
             </div>
@@ -172,7 +172,7 @@ foreach ($produits as $p) {
             var b = $('.shown').length;
             var div = $(".showit" + id).html();
             var offre = $(".offre" + id + " b").text();
-            var divinput = '<div class="divinput' + id + '" id="name' + id + '" style="border-bottom:1px solid #eee;float:left;padding-bottom:3px;margin-bottom:8px;"><b style="border-bottom:1px solid #eee;font-size:17px;padding-bottom:2px;"><i class="fa fa-tag"></i>' + offre + '</b><div style="margin-top:4px;width: 100%;float: left;">' + div + '</div></div>';
+            var divinput = '<div class="divinput' + id + '" id="name' + id + '" style="border-bottom:1px solid #eee;float:left;padding-bottom:3px;margin-bottom:8px;"><b style="border-bottom:1px solid #eee;font-size:17px;padding-bottom:2px;"><i class="ki-duotone ki-tag"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>' + offre + '</b><div style="margin-top:4px;width: 100%;float: left;">' + div + '</div></div>';
             var a = $(".checkit" + id).attr("id");
             var b = $(".divinput" + id).attr("id");
             if (a != b) {

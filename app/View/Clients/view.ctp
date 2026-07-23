@@ -626,7 +626,7 @@ function cv_badges($label, $pipeValue) {
         <div class="card mb-5 mb-xl-8">
             <div class="card-header card-header-stretch">
                 <div class="card-title d-flex align-items-center">
-                    <i class="ki-duotone ki-map fs-1 text-primary me-3 lh-0"><span class="path1"></span><span class="path2"></span></i>
+                    <i class="ki-duotone ki-map fs-1 text-primary me-3 lh-0"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
                     <h3 class="fw-bold m-0 text-gray-800">Activité client</h3>
                 </div>
                 <div class="card-toolbar m-0">

@@ -1,15 +1,14 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php echo $this->Html->css('daterangepicker'); ?>
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
-
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-    .box, .box-title, th, td, h1, h2, h3, select, input, button {
+    .card, .card-title, th, td, h1, h2, h3, select, input, button {
         font-family: 'Poppins', sans-serif !important;
     }
 
     /* ---------- CARD ---------- */
-    .box {
+    .card {
         background: #ffffff !important;
         border: 1px solid rgba(229, 224, 251, 0.7) !important;
         border-radius: 18px !important;
@@ -17,12 +16,12 @@
         overflow: hidden;
     }
 
-    .box-header {
+    .card-header {
         border: none !important;
         padding: 22px 24px 10px 24px !important;
     }
 
-    .box-title {
+    .card-title {
         font-size: 16px !important;
         font-weight: 600 !important;
         color: #44444f !important;
@@ -33,12 +32,12 @@
         line-height: normal !important;
     }
 
-    .box-title > .btn.bg-purple {
+    .card-title > .btn.bg-primary {
         margin-left: auto;
     }
 
     /* ---------- "DEMANDER DES ECHANTILLONS" BUTTON ---------- */
-    .btn.bg-purple {
+    .btn.bg-primary {
         background: linear-gradient(135deg, #8f7cf6 0%, #6c5ce7 100%) !important;
         color: #ffffff !important;
         font-weight: 600 !important;
@@ -54,13 +53,13 @@
         float: none !important;
         transition: transform .15s ease, box-shadow .15s ease;
     }
-    .btn.bg-purple:hover {
+    .btn.bg-primary:hover {
         color: #ffffff !important;
         transform: translateY(-1px);
         box-shadow: 0 6px 18px rgba(140, 126, 242, 0.36) !important;
     }
     
-    .btn.bg-purple::after {
+    .btn.bg-primary::after {
         content: '';
         width: 11px;
         height: 11px;
@@ -72,14 +71,14 @@
     }
 
     /* ---------- CSV / EXCEL / PRINT BUTTONS ---------- */
-    .box-body {
+    .card-body {
         overflow: scroll;
         overflow-y: hidden;
         padding: 8px 24px 24px 24px !important;
     }
-    .box-body::-webkit-scrollbar { height: 8px; }
-    .box-body::-webkit-scrollbar-thumb { background: #e5e0fb; border-radius: 8px; }
-    .box-body::-webkit-scrollbar-track { background: transparent; }
+    .card-body::-webkit-scrollbar { height: 8px; }
+    .card-body::-webkit-scrollbar-thumb { background: #e5e0fb; border-radius: 8px; }
+    .card-body::-webkit-scrollbar-track { background: transparent; }
 
     .dt-buttons { margin-bottom: 16px; overflow: hidden; }
 
@@ -198,16 +197,16 @@
 
 <div class="row"> 
     <div class="col-md-12"> 
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title"><?php echo __('Stock temps réel'); ?>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><?php echo __('Stock temps réel'); ?>
                     <?php if ($this->requestAction('/droits/getrole/Gadjets/add') == 1)
-                        echo $this->Html->link(__('Demander des échantillons'), array('action' => 'add'), array('class' => "btn bg-purple btn-flat margin"));
+                        echo $this->Html->link(__('Demander des échantillons'), array('action' => 'add'), array('class' => "btn bg-primary margin"));
                     ?>
                 </h3>
             </div>
-            <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+            <div class="card-body">
+                <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                     <thead>
                         <tr>
                             <th>Employé</th>
@@ -279,22 +278,11 @@
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <?php
 echo $this->Html->script('daterangepicker');
 ?>

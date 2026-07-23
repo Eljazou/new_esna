@@ -24,7 +24,7 @@ body {
 }
 
 /* Header Sections Styling */
-.evaluation-box .box-header {
+.evaluation-box .card-header {
     background: #ffffff;
     padding: 20px 24px;
     border-bottom: 1px solid #FAF9FE;
@@ -33,7 +33,7 @@ body {
     justify-content: space-between;
 }
 
-.evaluation-box .box-title {
+.evaluation-box .card-title {
     font-size: 15px;
     font-weight: 700;
     color: #332A5B;
@@ -45,7 +45,7 @@ body {
     gap: 10px;
 }
 
-.evaluation-box .box-title i {
+.evaluation-box .card-title i {
     color: #907DFA;
     font-size: 18px;
 }
@@ -62,7 +62,7 @@ body {
 }
 
 /* Form Input Configurations */
-.evaluation-box .box-body {
+.evaluation-box .card-body {
     padding: 24px;
 }
 
@@ -141,8 +141,8 @@ textarea.form-control {
 }
 
 /* Custom Warning Wrapper Box Context */
-.box-warning { border-top: none !important; }
-.box-warning .box-title i { color: #F39C12; }
+.card { border-top: none !important; }
+.card .card-title i { color: #F39C12; }
 
 /* ==========================================================================
    STICKY BOTTOM CONTROL FOOTER
@@ -225,7 +225,7 @@ textarea.form-control {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.bg-red {
+.bg-danger {
     background: linear-gradient(135deg, #ED4C5C 0%, #FF7381 100%) !important;
     color: #ffffff !important;
 }
@@ -235,7 +235,7 @@ textarea.form-control {
     color: #ffffff !important;
 }
 
-.bg-green {
+.bg-success {
     background: linear-gradient(135deg, #1B9E5A 0%, #3CD083 100%) !important;
     color: #ffffff !important;
 }
@@ -270,20 +270,20 @@ textarea.form-control {
 
     <div class="col-md-12">
         <!-- Informations Générales -->
-        <div class="box box-primary evaluation-box">
-            <div class="box-header">
-                <h3 class="box-title"><i class="fa fa-info-circle"></i> BILAN DE VISITES EN DOUBLE</h3>
+        <div class="card evaluation-box">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-information-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> BILAN DE VISITES EN DOUBLE</h3>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="mb-5">
                             <label>Période - Début</label>
                             <?php echo $this->Form->input('periode_debut', array('type' => 'text', 'class' => 'form-control datepicker', 'label' => false, 'required' => true, 'placeholder' => 'AAAA-MM-JJ')); ?>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="mb-5">
                             <label>Période - Fin</label>
                             <?php echo $this->Form->input('periode_fin', array('type' => 'text', 'class' => 'form-control datepicker', 'label' => false, 'required' => true, 'placeholder' => 'AAAA-MM-JJ')); ?>
                         </div>
@@ -293,12 +293,12 @@ textarea.form-control {
         </div>
 
         <!-- BLOC 1 -->
-        <div class="box box-default evaluation-box" id="box_b1">
-            <div class="box-header">
-                <h3 class="box-title"><i class="fa fa-folder-open text-muted"></i> BLOC 1 : PRÉPARATION ET PRÉSENTATION DES VISITES</h3>
+        <div class="card evaluation-box" id="box_b1">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-folder text-muted"><span class="path1"></span><span class="path2"></span></i> BLOC 1 : PRÉPARATION ET PRÉSENTATION DES VISITES</h3>
                 <div><span class="avg-pill-badge">Moyenne: <span id="avg_b1">0.0</span> / 4</span></div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="section-header">Section 1 : Préparation des visites</div>
                 <div class="q-row">
                     <div class="q-text">Le délégué planifie-t-il ses visites de manière efficace via le CRM ?</div>
@@ -330,12 +330,12 @@ textarea.form-control {
         </div>
 
         <!-- BLOC 2 -->
-        <div class="box box-default evaluation-box" id="box_b2">
-            <div class="box-header">
-                <h3 class="box-title"><i class="fa fa-comments text-muted"></i> BLOC 2 : TECHNIQUE DE VENTE ET DE COMMUNICATION</h3>
+        <div class="card evaluation-box" id="box_b2">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-messages text-muted"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i> BLOC 2 : TECHNIQUE DE VENTE ET DE COMMUNICATION</h3>
                 <div><span class="avg-pill-badge">Moyenne: <span id="avg_b2">0.0</span> / 4</span></div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="q-row">
                     <div class="q-text">Le délégué introduit-il clairement le produit et capte-t-il l’attention ?</div>
                     <?php echo $this->element('q_radios', array('name' => 'q2_1')); ?>
@@ -365,12 +365,12 @@ textarea.form-control {
         </div>
 
         <!-- BLOC 3 -->
-        <div class="box box-default evaluation-box" id="box_b3">
-            <div class="box-header">
-                <h3 class="box-title"><i class="fa fa-line-chart text-muted"></i> BLOC 3 : ENGAGEMENT ET ANALYSE POST-VISITES</h3>
+        <div class="card evaluation-box" id="box_b3">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-chart-line text-muted"><span class="path1"></span><span class="path2"></span></i> BLOC 3 : ENGAGEMENT ET ANALYSE POST-VISITES</h3>
                 <div><span class="avg-pill-badge">Moyenne: <span id="avg_b3">0.0</span> / 4</span></div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="section-header">Section 1 : Conclure et engagement</div>
                 <div class="q-row">
                     <div class="q-text">Le délégué conclut-il efficacement les visites ?</div>
@@ -398,26 +398,26 @@ textarea.form-control {
         </div>
 
         <!-- Observations -->
-        <div class="box box-warning evaluation-box">
-            <div class="box-header">
-                <h3 class="box-title"><i class="fa fa-pencil-square-o"></i> Observations & Plan d'Action</h3>
+        <div class="card evaluation-box">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-pencil -square-o"><span class="path1"></span><span class="path2"></span></i> Observations & Plan d'Action</h3>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="mb-5">
                             <label>Observations générales</label>
                             <?php echo $this->Form->textarea('observations_generales', array('class' => 'form-control', 'rows' => 3)); ?>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="mb-5">
                             <label>Plan d'amélioration</label>
                             <?php echo $this->Form->textarea('plan_amelioration', array('class' => 'form-control', 'rows' => 3)); ?>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="mb-5">
                             <label>Appréciation VM</label>
                             <?php echo $this->Form->textarea('appreciation_vm', array('class' => 'form-control', 'rows' => 3)); ?>
                         </div>
@@ -430,17 +430,17 @@ textarea.form-control {
     <!-- STICKY FOOTER -->
     <div class="fixed-score-footer">
         <div class="footer-vmp">
-            <i class="fa fa-user"></i> <strong id="foot_vmp_name"><?php echo h($user['User']['name']); ?></strong>
+            <i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> <strong id="foot_vmp_name"><?php echo h($user['User']['name']); ?></strong>
         </div>
         <div class="footer-score">
             <span>SCORE :</span>
             <span class="score-val" id="foot_score_pct">0</span>
             <span class="score-percent-symbol">%</span>
-            <span id="foot_badge" class="badge-footer bg-red">En attente</span>
+            <span id="foot_badge" class="badge-footer bg-danger">En attente</span>
             <span class="score-points-count">(<span id="foot_points">0</span> / <span id="foot_max">68</span> pts)</span>
         </div>
         <div class="footer-actions">
-            <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-save"></i> ENREGISTRER</button>
+            <button type="submit" class="btn btn-success btn-lg"><i class="ki-duotone ki-check-circle"><span class="path1"></span><span class="path2"></span></i> ENREGISTRER</button>
         </div>
     </div>
 
@@ -450,8 +450,6 @@ textarea.form-control {
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
 echo $this->Html->script('bootstrap-datepicker');
 echo $this->Html->script('bootstrap-datepicker.fr');
 ?>

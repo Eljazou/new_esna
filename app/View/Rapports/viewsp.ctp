@@ -169,7 +169,7 @@
                 <h3 class="card-title">Détail du rapport de <?php echo $rapport['User']['name'] . " de " . $rapport['Rapport']['date_debut'] . " à " . $rapport['Rapport']['date_fin'];  ?></h3>
                 <div class="card-toolbar float-end">
                     <?php echo $this->Html->link('<i class="ki-duotone ki-pencil"><span class="path1"></span><span class="path2"></span></i> Modifier', array('action' => 'edit', $rapport['Rapport']['id']), array('class' => 'btn btn-primary btn-sm', 'escape' => false)); ?>
-                    <?php echo $this->Html->link('<i class="ki-duotone ki-menu"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> Liste', array('action' => 'index'), array('class' => 'btn btn-default btn-sm', 'escape' => false)); ?>
+                    <?php echo $this->Html->link('<i class="ki-duotone ki-menu"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> Liste', array('action' => 'index'), array('class' => 'btn btn-light btn-sm', 'escape' => false)); ?>
                 </div>
             </div>
             <div class="card-body">

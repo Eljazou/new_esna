@@ -233,7 +233,7 @@
 			?>
       </div>
       <div class="modal-footer">
-      	<?php echo $this->Form->end(array('label' => 'Ajouter',"id"=>"send",'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center col-md-12'))); ?>
+      	<?php echo $this->Form->end(array('label' => 'Ajouter',"id"=>"send",'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center col-md-12'))); ?>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
       </div>
       <?php endif;?>

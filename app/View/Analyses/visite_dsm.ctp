@@ -188,7 +188,7 @@ echo $this->Html->css('daterangepicker');
                         <input type="text" class="form-control float-end" value="<?php echo h($dateaafficherdansleview); ?>" name="date" id="reservationtime" placeholder="Rechercher">
                     </div>
                     <div class="input-group" style="margin-bottom:30px;width: 45%;">
-                        <?php echo $this->Form->input('super', array('class' => "form-control pull-right choix_multi", 'label' => 'La liste des VM', 'options' => $supers, 'multiple' => true)); ?>
+                        <?php echo $this->Form->input('super', array('class' => "form-control float-end choix_multi", 'label' => 'La liste des VM', 'options' => $supers, 'multiple' => true)); ?>
                     </div>
 
                     <div class="col-md-12">

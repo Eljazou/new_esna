@@ -137,7 +137,7 @@
                 <?php
                 echo $this->Form->create('Client');
                 echo $this->Form->input('user_id', array('class' => 'form-control', 'label' => array('text' => '<span class="field-icon"><i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>Choisissez un VM', 'escape' => false)));
-                echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large envoyer', 'div' => array('class' => 'well text-center col-md-12')));
+                echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large envoyer', 'div' => array('class' => 'card card-body bg-light text-center col-md-12')));
                 ?>
             </div>
         </div>

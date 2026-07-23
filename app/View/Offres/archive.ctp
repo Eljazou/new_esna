@@ -1,4 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
+<?php echo $this->element('assets/datatables'); ?>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style type="text/css">
@@ -7,29 +7,29 @@
         --primary-light: #ece9fe;
     }
 
-    body, .box, table, .dropdown-menu {
+    body, .card, table, .dropdown-menu {
         font-family: 'Poppins', sans-serif;
     }
 
-    .box {
+    .card {
         border-radius: 18px !important;
         border: none !important;
         box-shadow: 0 4px 16px rgba(108, 99, 245, 0.06) !important;
         background: #fff !important;
     }
 
-    .box-header {
+    .card-header {
         border: none !important;
         padding: 22px 24px 16px;
     }
 
-    .box-title {
+    .card-title {
         font-size: 15.5px;
         font-weight: 700;
         color: #2b2b45;
     }
 
-    .box-body {
+    .card-body {
         padding: 8px 24px 24px;
     }
 
@@ -158,12 +158,12 @@
     }
 </style>
 
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><?php echo __('La liste des offres archivées'); ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?php echo __('La liste des offres archivées'); ?></h3>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>Titre</th>
@@ -182,7 +182,7 @@
                     <td class="actions">
                         <div class="btn-group">
                             <button type="button" class="btn btn-info dropdown-toggle" aria-haspopup="true" aria-expanded="false" onclick="return toggleLegacyDropdown(this, event);">
-                                <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                                <i class="ki-duotone ki-setting-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>&nbsp;<span class=""></span>
                             </button>
                             <ul class="dropdown-menu" role="menu" style="display:none;">
                                 <li><?php
@@ -202,10 +202,6 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

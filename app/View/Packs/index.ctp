@@ -1,12 +1,11 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-		?>	
-<div class="box">
-      <div class="box-header table-responsive">
-           <h3 class="box-title"><?php echo __('Packs'); ?></h3>
-		 			<?php echo $this->Html->link(__('Ajouter'), array('action' => 'add', ),array('style'=>'float:right;','class'=>'btn bg-purple btn-flat')); ?>
+<?php echo $this->element('assets/datatables'); ?>
+<div class="card">
+      <div class="card-header table-responsive">
+           <h3 class="card-title"><?php echo __('Packs'); ?></h3>
+		 			<?php echo $this->Html->link(__('Ajouter'), array('action' => 'add', ),array('style'=>'float:right;','class'=>'btn bg-primary')); ?>
       </div>
-	<div class="box-body">
-         <table id="example1" class="table table-bordered table-striped">
+	<div class="card-body">
+         <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 		 <thead>
 			<tr>
 							<th>id</th>
@@ -34,22 +33,12 @@
 	</table>
 	</div>
 	</div>
-	<?php echo $this->Html->script('jquery-2.2.3.min');
-        echo $this->Html->script('bootstrap.min');
-        echo $this->Html->script('app.min');
-        echo $this->Html->script('jquery.dataTables.min');
+	<?php
         echo $this->Html->script('jquery.slimscroll.min');
         echo $this->Html->script('fastclick');
         echo $this->Html->script('demo');
         ?>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script>
   $(function () {
     $('#example1').DataTable({

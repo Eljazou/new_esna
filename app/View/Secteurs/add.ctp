@@ -92,8 +92,8 @@ foreach ($allSecteurs as $s) {
     .lav-card-body { padding: 24px 26px; }
 
     .field-group { margin-bottom: 18px; }
-    .field-group label.control-label { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
-    .field-group label.control-label .req { color: var(--danger); }
+    .field-group label.form-label { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
+    .field-group label.form-label .req { color: var(--danger); }
     .field-group .form-control {
         border: 1px solid var(--border);
         border-radius: var(--radius-sm);
@@ -182,9 +182,9 @@ foreach ($allSecteurs as $s) {
     <div class="col-md-8 offset-md-2">
         <div class="lav-card accent-top">
             <div class="lav-card-header">
-                <i class="fa fa-map-marker hdr-ic"></i>
+                <i class="ki-duotone ki-geolocation hdr-ic"><span class="path1"></span><span class="path2"></span></i>
                 <h3 class="lav-card-title"><?php echo __('Ajouter un secteur'); ?></h3>
-                <?php echo $this->Html->link('<i class="fa fa-arrow-left"></i> Retour', array('action' => 'index'), array('class' => 'btn-lav-back', 'escape' => false)); ?>
+                <?php echo $this->Html->link('<i class="ki-duotone ki-arrow-left"><span class="path1"></span><span class="path2"></span></i> Retour', array('action' => 'index'), array('class' => 'btn-lav-back', 'escape' => false)); ?>
             </div>
             <div class="lav-card-body">
                 <?php if ($this->Session->check('Message.flash')): ?>
@@ -193,12 +193,12 @@ foreach ($allSecteurs as $s) {
                     </div>
                 <?php endif; ?>
 
-                <?php echo $this->Form->create('Secteur', array('class' => 'form-horizontal', 'id' => 'formAddSecteur')); ?>
+                <?php echo $this->Form->create('Secteur', array('class' => '', 'id' => 'formAddSecteur')); ?>
 
                 <!-- ============ RÉGION ============ -->
-                <div class="section-eyebrow"><i class="fa fa-map-o"></i> Région</div>
+                <div class="section-eyebrow"><i class="ki-duotone ki-map"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Région</div>
                 <div class="field-group">
-                    <label class="control-label">Région <span class="req">*</span></label>
+                    <label class="form-label fw-semibold text-gray-800">Région <span class="req">*</span></label>
                     <select name="data[Secteur][region_select]" id="region_select" class="form-control">
                         <option value="">-- Choisir une région --</option>
                         <?php foreach ($regionsData as $nom => $ims): ?>
@@ -210,18 +210,18 @@ foreach ($allSecteurs as $s) {
 
                 <!-- Région IMS (existante) -->
                 <div class="field-group" id="region_ims_existing" style="display:none;">
-                    <label class="control-label">IMS Région</label>
+                    <label class="form-label fw-semibold text-gray-800">IMS Région</label>
                     <div><span class="field-static-pill" id="region_ims_val"></span></div>
                 </div>
 
                 <!-- Nouvelle région -->
                 <div id="new_region_block" class="new-entry-block" style="display:none;">
                     <div class="field-group">
-                        <label class="control-label">Nom région</label>
+                        <label class="form-label fw-semibold text-gray-800">Nom région</label>
                         <input type="text" name="data[Secteur][region]" id="region_new_nom" class="form-control" placeholder="Ex: Casablanca-Settat">
                     </div>
                     <div class="field-group">
-                        <label class="control-label">IMS Région</label>
+                        <label class="form-label fw-semibold text-gray-800">IMS Région</label>
                         <input type="text" name="data[Secteur][region_ims]" class="form-control" placeholder="Ex: CASA NORTH">
                     </div>
                 </div>
@@ -229,9 +229,9 @@ foreach ($allSecteurs as $s) {
                 <hr class="section-divider">
 
                 <!-- ============ VILLE ============ -->
-                <div class="section-eyebrow"><i class="fa fa-building-o"></i> Ville</div>
+                <div class="section-eyebrow"><i class="ki-duotone ki-bank -o"><span class="path1"></span><span class="path2"></span></i> Ville</div>
                 <div class="field-group">
-                    <label class="control-label">Ville <span class="req">*</span></label>
+                    <label class="form-label fw-semibold text-gray-800">Ville <span class="req">*</span></label>
                     <select name="data[Secteur][ville_select]" id="ville_select" class="form-control">
                         <option value="">-- Choisir d'abord une région --</option>
                     </select>
@@ -239,18 +239,18 @@ foreach ($allSecteurs as $s) {
 
                 <!-- Ville IMS (existante) -->
                 <div class="field-group" id="ville_ims_existing" style="display:none;">
-                    <label class="control-label">IMS Ville</label>
+                    <label class="form-label fw-semibold text-gray-800">IMS Ville</label>
                     <div><span class="field-static-pill" id="ville_ims_val"></span></div>
                 </div>
 
                 <!-- Nouvelle ville -->
                 <div id="new_ville_block" class="new-entry-block" style="display:none;">
                     <div class="field-group">
-                        <label class="control-label">Nom ville</label>
+                        <label class="form-label fw-semibold text-gray-800">Nom ville</label>
                         <input type="text" name="data[Secteur][ville]" id="ville_new_nom" class="form-control" placeholder="Ex: Mohammedia">
                     </div>
                     <div class="field-group">
-                        <label class="control-label">IMS Ville</label>
+                        <label class="form-label fw-semibold text-gray-800">IMS Ville</label>
                         <input type="text" name="data[Secteur][ville_ims]" class="form-control" placeholder="Ex: MOHAMMEDIA">
                     </div>
                 </div>
@@ -258,28 +258,28 @@ foreach ($allSecteurs as $s) {
                 <hr class="section-divider">
 
                 <!-- ============ SECTEUR ============ -->
-                <div class="section-eyebrow"><i class="fa fa-map-marker"></i> Secteur</div>
+                <div class="section-eyebrow"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> Secteur</div>
                 <div class="field-group">
-                    <label class="control-label">Secteur <span class="req">*</span></label>
+                    <label class="form-label fw-semibold text-gray-800">Secteur <span class="req">*</span></label>
                     <input type="text" name="data[Secteur][secteur]" id="secteur_nom" class="form-control" placeholder="Nom du secteur">
                     <span id="secteur_doublon" class="field-help-error" style="display:none;">
-                        <i class="fa fa-exclamation-triangle"></i> Ce secteur existe déjà dans cette ville
+                        <i class="ki-duotone ki-information-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Ce secteur existe déjà dans cette ville
                     </span>
                 </div>
                 <div class="field-group">
-                    <label class="control-label">IMS Secteur</label>
+                    <label class="form-label fw-semibold text-gray-800">IMS Secteur</label>
                     <input type="text" name="data[Secteur][secteur_ims]" class="form-control" placeholder="Nom IMS du secteur">
                 </div>
 
                 <hr class="section-divider">
 
                 <!-- ============ CARTE GPS ============ -->
-                <div class="section-eyebrow"><i class="fa fa-globe"></i> Zone GPS</div>
+                <div class="section-eyebrow"><i class="ki-duotone ki-map"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Zone GPS</div>
                 <div class="field-group">
                     <div class="map-info-bar">
-                        <span class="info-text"><i class="fa fa-info-circle"></i> Dessinez un polygone sur la carte pour délimiter la zone du secteur.</span>
+                        <span class="info-text"><i class="ki-duotone ki-information-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Dessinez un polygone sur la carte pour délimiter la zone du secteur.</span>
                         <span class="gps-status empty" id="gps_status">
-                            <i class="fa fa-times-circle"></i> Non défini
+                            <i class="ki-duotone ki-cross-circle"><span class="path1"></span><span class="path2"></span></i> Non défini
                         </span>
                     </div>
                     <div id="map-secteur"></div>
@@ -289,7 +289,7 @@ foreach ($allSecteurs as $s) {
                 <!-- ============ SUBMIT ============ -->
                 <div class="field-group" style="margin-top:24px;">
                     <button type="submit" id="btn_submit" class="btn-lav-primary">
-                        <i class="fa fa-save"></i> Enregistrer
+                        <i class="ki-duotone ki-check-circle"><span class="path1"></span><span class="path2"></span></i> Enregistrer
                     </button>
                     <?php echo $this->Html->link('Annuler', array('action' => 'index'), array('class' => 'btn-lav-outline')); ?>
                 </div>
@@ -301,7 +301,6 @@ foreach ($allSecteurs as $s) {
 </div>
 </div>
 
-<?php echo $this->Html->script('jquery-2.2.3.min'); ?>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
 <script>
@@ -493,10 +492,10 @@ foreach ($allSecteurs as $s) {
     function updateGpsStatus(filled, nPoints) {
         if (filled) {
             $('#gps_status').removeClass('empty').addClass('filled')
-                .html('<i class="fa fa-check-circle"></i> Zone définie (' + nPoints + ' points)');
+                .html('<i class="ki-duotone ki-check -circle"></i> Zone définie (' + nPoints + ' points)');
         } else {
             $('#gps_status').removeClass('filled').addClass('empty')
-                .html('<i class="fa fa-times-circle"></i> Non défini');
+                .html('<i class="ki-duotone ki-cross-circle"><span class="path1"></span><span class="path2"></span></i> Non défini');
         }
     }
 

@@ -1,6 +1,6 @@
 <style type="text/css">
     /* ---------- GLOBAL STRUCTURE ---------- */
-    div.box {
+    div.card {
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
@@ -8,7 +8,7 @@
     }
 
     /* ---------- ABSOLUTE HEADER SPACING FIX ---------- */
-    div.box-header {
+    div.card-header {
         background: transparent !important;
         padding: 40px 15px 50px 15px !important;
         position: relative !important;
@@ -18,7 +18,7 @@
         min-height: 80px !important;
     }
 
-    div.box-header h3.box-title {
+    div.card-header h3.card-title {
         font-size: 32px !important;
         font-weight: 700 !important;
         color: #11142d !important;
@@ -27,7 +27,7 @@
         display: block !important;
     }
 
-    div.box-header h3.box-title::after {
+    div.card-header h3.card-title::after {
         content: "Gérez et consultez toutes les formations disponibles" !important;
         display: block !important;
         font-size: 14px !important;
@@ -38,9 +38,9 @@
         letter-spacing: 0.2px !important;
     }
 
-    div.box-header a.btn, 
-    div.box-header [class*="add"] a,
-    div.box-header > a {
+    div.card-header a.btn, 
+    div.card-header [class*="add"] a,
+    div.card-header > a {
         position: absolute !important;
         right: 15px !important;
         top: 35px !important;
@@ -57,20 +57,20 @@
         z-index: 999 !important;
     }
 
-    div.box-header a.btn:hover {
+    div.card-header a.btn:hover {
         background-color: #7262eb !important;
         transform: translateY(-2px) !important;
         box-shadow: 0 14px 28px rgba(140, 126, 242, 0.35) !important;
     }
 
-    div.box-header a.btn::before {
+    div.card-header a.btn::before {
         content: "+ " !important;
         font-weight: 600 !important;
         font-size: 15px !important;
     }
 
     /* ---------- GRID BODY ---------- */
-    div.box-body {
+    div.card-body {
         background: transparent !important;
         padding: 15px !important;
         clear: both !important;
@@ -241,23 +241,23 @@
 </style>
 
 <div class="row col-md-12" style="float:none;margin:auto;">
-    <div class="box">
-        <div class="box-header">
-            <h3 class="box-title"><?php echo __('La liste des formations'); ?></h3>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"><?php echo __('La liste des formations'); ?></h3>
             <?php if ($this->requestAction('/droits/getrole/Formations/add') == 1)
-                echo $this->Html->link(__('Ajouter'), array('action' => 'add'), array('class' => "btn bg-purple btn-flat", 'style' => "float:right;"));
+                echo $this->Html->link(__('Ajouter'), array('action' => 'add'), array('class' => "btn bg-primary", 'style' => "float:right;"));
             ?>
         </div>
         
-        <div class="box-body">
+        <div class="card-body">
             <div class="col-md-12" style="padding: 0px;">
                 <?php foreach ($formations as $f): ?>
-                    <div class="col-md-3 col-sm-5 col-xs-12" style="padding: 0px;margin: 6px;">
+                    <div class="col-md-3 col-sm-5 col-12" style="padding: 0px;margin: 6px;">
                         <div class="info-box" style="margin-bottom: 0px;box-shadow: 1px 1px 1px rgba(0,0,0,0.1) !important;">
                             
                             <!-- The file link only wraps the visual upper content elements -->
                             <a href="img/formations/<?php echo h($f['Formation']['file']); ?>" target="_blank" class="info-box-link-wrapper">
-                                <span class="info-box-icon bg-light-blue"><i class="fa fa-graduation-cap"></i></span>
+                                <span class="info-box-icon bg-light-blue"><i class="ki-duotone ki-teacher"><span class="path1"></span><span class="path2"></span></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text" style="color:#444;"><?php echo h($f['Formation']['name']); ?></span>
                                     <span class="info-box-text" style="color:#444;">Gamme : <?php echo h($f['Game']['name']); ?></span>

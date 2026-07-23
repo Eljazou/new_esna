@@ -78,6 +78,17 @@ CLASS_MAP = [
     (r'\bcaret\b', ''),
 ]
 
+# `\b` treats a hyphen as a word boundary, so `\bbox-footer\b` also matches the
+# TAIL of `small-box-footer`, and `\bpanel-body\b` matches inside
+# `sub-panel-body`. That silently renamed unrelated component classes -- it
+# turned Notefrais' `small-box-footer` into `small-card-footer` while its CSS
+# still said `.small-box-footer`, leaving the button unstyled. Rewrite every
+# pattern's outer `\b` into a boundary that treats `-` as part of the name, so
+# only WHOLE class names ever match. Done here rather than by hand so a new rule
+# added to CLASS_MAP cannot reintroduce the bug.
+CLASS_MAP = [(re.sub(r'\\b$', '(?![-\\\\w])', re.sub(r'^\\b', '(?<![-\\\\w])', p)), r)
+             for p, r in CLASS_MAP]
+
 # Class renames that are safe to apply to a CSS selector as well as to markup.
 # Targets that are Bootstrap UTILITIES rather than components are excluded: a
 # rule written for a component (`.form-group { margin-bottom: 20px }`) must not
@@ -154,6 +165,20 @@ ICON_MAP = {
     'fa-pen-to-square': 'ki-pencil', 'fa-user-group': 'ki-people',
     'fa-magnifying-glass': 'ki-magnifier', 'fa-trash-can': 'ki-trash',
     'fa-xmark': 'ki-cross', 'fa-floppy-disk': 'ki-check-circle',
+    # Batch 2. Keenicons has no globe/world icon at all; every fa-globe here is
+    # geographic ("Zone GPS", "Afficher le Maroc"), so ki-map is the honest fit.
+    'fa-angle-double-right': 'ki-double-right', 'fa-angle-left': 'ki-left',
+    'fa-map-o': 'ki-map', 'fa-map': 'ki-map', 'fa-globe': 'ki-map',
+    'fa-stethoscope': 'ki-pulse', 'fa-rocket': 'ki-rocket',
+    'fa-money': 'ki-dollar', 'fa-graduation-cap': 'ki-teacher',
+    'fa-warning': 'ki-information-5', 'fa-thumbs-o-up': 'ki-like',
+    'fa-sign-out': 'ki-exit-right', 'fa-shopping-cart': 'ki-handcart',
+    'fa-question-circle': 'ki-question', 'fa-history': 'ki-time',
+    'fa-folder-open': 'ki-folder', 'fa-flask': 'ki-flask',
+    'fa-commenting-o': 'ki-message-text', 'fa-cloud': 'ki-cloud',
+    'fa-car': 'ki-car', 'fa-book': 'ki-book', 'fa-ban': 'ki-cross-circle',
+    'fa-arrow-down': 'ki-arrow-down', 'fa-align-left': 'ki-text-align-left',
+    'fa-address-book': 'ki-address-book',
 }
 
 # Icons deliberately NOT mapped. The sentiment scale in Rapportprocpects is a
@@ -229,6 +254,11 @@ def fix_icon_paths(src):
             return m.group(0)
         paths = ''.join('<span class="path%d"></span>' % i
                         for i in range(1, ICON_PATHS[name] + 1))
+        # Also strip Font Awesome modifiers that earlier runs carried over into
+        # the Keenicon class list (`ki-duotone ki-trash fa-fw`).
+        cls, _, rest = tail.partition('"')
+        kept = [t for t in cls.split() if not re.match(r'fa(-|$)', t)]
+        tail = (' ' + ' '.join(kept) if kept else '') + '"' + rest
         return '%s%s%s>%s</i>' % (head, name, tail, paths)
 
     return re.sub(r'(<i[^>]*class="ki-duotone\s+)(ki-[\w-]+)([^"]*")>(.*?)</i>',
@@ -245,7 +275,12 @@ def swap_icons(src):
             return m.group(0)
         paths = ''.join('<span class="path%d"></span>' % i
                         for i in range(1, ICON_PATHS[ki] + 1))
-        extra = (' ' + suffix.strip()) if suffix.strip() else ''
+        # Drop leftover Font Awesome modifier classes (fa-fw, fa-lg, fa-2x,
+        # fa-spin, fa-border ...). They are meaningless on a Keenicon, and the
+        # FA4 stylesheet is still loaded globally -- `.fa-fw{width:1.28em}`
+        # would really apply and distort the glyph.
+        kept = [t for t in suffix.split() if not re.match(r'fa(-|$)', t)]
+        extra = (' ' + ' '.join(kept)) if kept else ''
         return '<i%s class="ki-duotone %s%s"%s>%s</i>' % (
             attrs, ki, extra, after, paths)
 
@@ -299,6 +334,125 @@ def _outside_php(src, fn):
     return ''.join(parts)
 
 
+# Token-level rewrites. Substring regexes are unsafe here: an earlier version
+# turned "search-icon-box" into "search-icon-card". Only whole class names are
+# replaced. Module-level so the HTML pass, the PHP pass and the <style> pass all
+# read the SAME map -- keeping a second copy is what let markup and CSS drift
+# apart across five modules (PROJECT_LOG TODO #37).
+TOKENS = {
+    'box': 'card',
+    'panel': 'card',
+    'form-group': 'mb-5',
+    'well': 'card card-body bg-light',
+    'btn-default': 'btn-light',
+    'btn-flat': '',
+    'caret': '',
+    'control-label': 'form-label fw-semibold text-gray-800',
+    'input-group-addon': 'input-group-text',
+    'table-bordered': 'table-row-bordered',
+    'btn-block': 'w-100',
+    # AdminLTE leftovers found while migrating Users -- these appear across
+    # every module, including ones previously reported clean.
+    'small-box': 'card',
+    'collapsed-box': '',
+    'box-tools': 'card-toolbar',
+    'btn-box-tool': 'btn btn-sm btn-icon btn-active-light-primary',
+    'description-block': 'd-block',
+    # Bootstrap 3 float helpers -> Bootstrap 5
+    'pull-right': 'float-end',
+    'pull-left': 'float-start',
+}
+
+
+def _apply_class_map(val):
+    for pat, rep in CLASS_MAP:
+        val = re.sub(pat, rep, val)
+    return re.sub(r'\s+', ' ', val).strip()
+
+
+def _apply_tokens(val):
+    flat = []
+    for tok in val.split():
+        flat.extend(TOKENS.get(tok, tok).split())
+    seen, out = set(), []
+    for t in flat:
+        if t and t not in seen:
+            seen.add(t)
+            out.append(t)
+    return ' '.join(out)
+
+
+# A class value safe to rewrite inside PHP: letters, digits, spaces, hyphens and
+# underscores ONLY. Anything else -- a quote, a dot, a plus, a `$`, a `<?` --
+# means the value is being built by concatenation or interpolation, and
+# rewriting it would eat the operator. That is Bug A (2026-07-23), which
+# produced valid PHP containing broken JavaScript and linted clean.
+#
+# No LEADING or TRAILING space either. `'class' => 'form-control ' . $extra` is a
+# concatenation fragment whose trailing space is load-bearing; normalising it to
+# 'form-control' silently yields "form-controlbtn" at runtime. Caught by the
+# tool's own control test, not by php -l.
+_STATIC_CLASS = r'[A-Za-z0-9_-]+(?: +[A-Za-z0-9_-]+)*'
+
+
+def fix_mixed_classes(src):
+    """Migrate the STATIC half of a class attribute that also contains PHP.
+
+        <div class="small-box <?php echo $styles[$i]; ?>">
+
+    _outside_php() splits the file on <?php ?> before the markup pass runs, so
+    an attribute like this is torn in half and never matched — the legacy token
+    survived in the markup while the <style> pass renamed the matching CSS rule,
+    leaving `.card .inner` styling pointed at a `small-box` div (hit Notefrais
+    exporter/validation). This runs on the WHOLE source and rewrites only the
+    literal segments, never anything between <? and ?>.
+    """
+    def repl(m):
+        parts = re.split(r'(<\?.*?\?>)', m.group(1), flags=re.S)
+        if any(_is_code_fragment(p) for p in parts[::2]):
+            return m.group(0)
+        # Whitespace around each literal segment is load-bearing: it is what
+        # separates the static classes from whatever the PHP emits. _apply_tokens
+        # strips it, so put it back.
+        def seg(p):
+            if not p.strip():
+                return p
+            lead = p[:len(p) - len(p.lstrip())]
+            trail = p[len(p.rstrip()):]
+            return lead + _apply_tokens(_apply_class_map(p)) + trail
+
+        parts[::2] = [seg(p) for p in parts[::2]]
+        return 'class="%s"' % ''.join(parts)
+
+    return re.sub(r'class="([^"]*<\?.*?\?>[^"]*)"', repl, src, flags=re.S)
+
+
+def fix_php_classes(src):
+    """Migrate class names that PHP writes, where the value is a static literal.
+
+    Covers the two shapes CakePHP views actually use:
+        echo '<div class="col-xs-6">'          -- HTML inside a PHP string
+        'class' => 'btn btn-default'           -- FormHelper option arrays
+        'div' => array('class' => 'form-group')
+    """
+    def mapped(val):
+        return _apply_tokens(_apply_class_map(val))
+
+    # class="..." / class='...' appearing inside PHP string literals. The strict
+    # character class means a concatenated value simply fails to match.
+    src = re.sub(r'class="(%s)"' % _STATIC_CLASS,
+                 lambda m: 'class="%s"' % mapped(m.group(1)), src)
+    src = re.sub(r"class='(%s)'" % _STATIC_CLASS,
+                 lambda m: "class='%s'" % mapped(m.group(1)), src)
+    # 'class' => 'value'  /  "class" => "value"
+    src = re.sub(r"""(['"])class\1(\s*=>\s*)(['"])(%s)\3""" % _STATIC_CLASS,
+                 lambda m: "%sclass%s%s%s%s%s" % (m.group(1), m.group(1),
+                                                  m.group(2), m.group(3),
+                                                  mapped(m.group(4)), m.group(3)),
+                 src)
+    return src
+
+
 def metronize(src):
     # --- Bootstrap 3/4 data-* attributes -> Bootstrap 5 -------------------
     src = re.sub(r'\bdata-toggle="(modal|dropdown|tab|collapse|tooltip|popover)"',
@@ -314,54 +468,25 @@ def metronize(src):
         val = m.group(1)
         if _is_code_fragment(val):
             return m.group(0)
-        for pat, rep in CLASS_MAP:
-            val = re.sub(pat, rep, val)
-        val = re.sub(r'\s+', ' ', val).strip()
-        return 'class="%s"' % val
+        return 'class="%s"' % _apply_class_map(val)
 
     src = _outside_php(src, lambda h: re.sub(r'class="([^"]*)"', fix_class, h))
-
-    # Token-level rewrites. Substring regexes are unsafe here: an earlier
-    # version turned "search-icon-box" into "search-icon-card". Only whole
-    # class names are replaced.
-    TOKENS = {
-        'box': 'card',
-        'panel': 'card',
-        'form-group': 'mb-5',
-        'well': 'card card-body bg-light',
-        'btn-default': 'btn-light',
-        'btn-flat': '',
-        'caret': '',
-        'control-label': 'form-label fw-semibold text-gray-800',
-        'input-group-addon': 'input-group-text',
-        'table-bordered': 'table-row-bordered',
-        'btn-block': 'w-100',
-        # AdminLTE leftovers found while migrating Users -- these appear across
-        # every module, including ones previously reported clean.
-        'small-box': 'card',
-        'collapsed-box': '',
-        'box-tools': 'card-toolbar',
-        'btn-box-tool': 'btn btn-sm btn-icon btn-active-light-primary',
-        'description-block': 'd-block',
-        # Bootstrap 3 float helpers -> Bootstrap 5
-        'pull-right': 'float-end',
-        'pull-left': 'float-start',
-    }
 
     def fix_tokens(m):
         if _is_code_fragment(m.group(1)):
             return m.group(0)
-        flat = []
-        for tok in m.group(1).split():
-            flat.extend(TOKENS.get(tok, tok).split())
-        seen, out = set(), []
-        for t in flat:
-            if t and t not in seen:
-                seen.add(t)
-                out.append(t)
-        return 'class="%s"' % ' '.join(out)
+        return 'class="%s"' % _apply_tokens(m.group(1))
 
     src = _outside_php(src, lambda h: re.sub(r'class="([^"]*)"', fix_tokens, h))
+
+    # --- classes written from inside PHP ---------------------------------
+    # CakePHP builds a lot of markup in PHP: FormHelper option arrays
+    # ('class' => 'col-xs-6', 'div' => array('class' => ...)) and echoed HTML
+    # strings. _outside_php deliberately skips all of it, so those classes were
+    # never migrated. Rewriting there is only safe for values that are provably
+    # STATIC literals -- see _STATIC_CLASS.
+    src = fix_php_classes(src)
+    src = fix_mixed_classes(src)
 
 
     # --- CSS selectors inside this view's own <style> blocks ------------
@@ -454,7 +579,23 @@ def metronize(src):
 
 
 def process(path):
-    src = io.open(path, encoding='utf-8').read()
+    # Not every view is UTF-8 -- Droits/backup_database.ctp is Latin-1. Read and
+    # write back in the SAME encoding so the file's bytes keep their meaning; a
+    # silent re-encode would mangle every accented character in it. Anything
+    # undecodable is reported and skipped rather than raising, so one bad file
+    # cannot abort a run partway and leave the batch half-applied.
+    encoding = 'utf-8'
+    try:
+        src = io.open(path, encoding='utf-8').read()
+    except UnicodeDecodeError:
+        encoding = 'cp1252'
+        try:
+            src = io.open(path, encoding=encoding).read()
+        except UnicodeDecodeError as exc:
+            print('SKIPPED    %s  (undecodable: %s)' % (path, exc))
+            return
+        print('  note %s is %s, not UTF-8 -- preserving that encoding'
+              % (path, encoding))
     del STYLE_WARNINGS[:]
     out, had_dt = metronize(src)
     # A CSS rule kept for a utility-target class is only DEAD if nothing in the
@@ -469,7 +610,7 @@ def process(path):
     if had_dt and "element('assets/datatables')" not in out:
         out = "<?php echo $this->element('assets/datatables'); ?>\n" + out
     if out != src:
-        io.open(path, 'w', encoding='utf-8', newline='').write(out)
+        io.open(path, 'w', encoding=encoding, newline='').write(out)
         print('metronized %s%s' % (path, '  (+datatables element)' if had_dt else ''))
     else:
         print('unchanged  %s' % path)

@@ -1,13 +1,19 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php 
-echo $this->Html->css('dataTables.bootstrap'); 
 
-// Helper functions and patterns for universal use
+// Helper functions and patterns for universal use.
+//
+// Icons migrated from Font Awesome 4 to Keenicons. `paths` is the number of
+// <span class="pathN"> children the icon needs: Keenicons duotone glyphs draw
+// one layer per span and render NOTHING without them. The count differs per
+// icon, so it has to travel with the name rather than be assumed — this is the
+// only place in the app where the icon class is chosen dynamically.
 $typePatterns = array(
-    array('pattern' => 'decin',     'color' => '#e74c3c', 'icon' => 'fa-user-md',    'class' => 'medecin'),
-    array('pattern' => 'pharmacie', 'color' => '#27ae60', 'icon' => 'fa-plus-square', 'class' => 'pharmacie'),
-    array('pattern' => 'grossiste', 'color' => '#f39c12', 'icon' => 'fa-truck',       'class' => 'grossiste'),
-    array('pattern' => 'clinique',  'color' => '#8e44ad', 'icon' => 'fa-hospital-o',  'class' => 'clinique'),
-    array('pattern' => 'pital',     'color' => '#2980b9', 'icon' => 'fa-h-square',    'class' => 'hopital'),
+    array('pattern' => 'decin',     'color' => '#e74c3c', 'icon' => 'ki-pulse',        'paths' => 2, 'class' => 'medecin'),
+    array('pattern' => 'pharmacie', 'color' => '#27ae60', 'icon' => 'ki-plus-square',  'paths' => 3, 'class' => 'pharmacie'),
+    array('pattern' => 'grossiste', 'color' => '#f39c12', 'icon' => 'ki-delivery',     'paths' => 5, 'class' => 'grossiste'),
+    array('pattern' => 'clinique',  'color' => '#8e44ad', 'icon' => 'ki-heart-circle', 'paths' => 2, 'class' => 'clinique'),
+    array('pattern' => 'pital',     'color' => '#2980b9', 'icon' => 'ki-bank',         'paths' => 2, 'class' => 'hopital'),
 );
 
 if (!function_exists('_getTypeStyle')) {
@@ -18,7 +24,7 @@ if (!function_exists('_getTypeStyle')) {
                 return $p;
             }
         }
-        return array('color' => '#95a5a6', 'icon' => 'fa-user', 'class' => 'other');
+        return array('color' => '#95a5a6', 'icon' => 'ki-profile-user', 'paths' => 4, 'class' => 'other');
     }
 }
 
@@ -80,8 +86,8 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
     .lav-card-header { display: flex; align-items: center; gap: 10px; padding: 16px 20px; border-bottom: 1px solid var(--border); }
     .lav-card-header i.hdr-ic { color: var(--accent); font-size: 15px; }
     .lav-card-header .lav-card-title { font-size: 15px; font-weight: 700; color: var(--ink); margin: 0; flex: 1; }
-    .lav-card-header .btn-box-tool { color: var(--muted); background: transparent; border: none; padding: 4px 8px; border-radius: var(--radius-sm); }
-    .lav-card-header .btn-box-tool:hover { background: var(--accent-soft); color: var(--accent-dark); }
+    .lav-card-header .btn { color: var(--muted); background: transparent; border: none; padding: 4px 8px; border-radius: var(--radius-sm); }
+    .lav-card-header .btn:hover { background: var(--accent-soft); color: var(--accent-dark); }
     .lav-card-body { padding: 18px 20px; }
     .lav-card.accent-top { border-top: 3px solid var(--accent); }
     .lav-card.success-top { border-top: 3px solid var(--success); }
@@ -169,27 +175,27 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
 
 <section class="content">
     <div class="row g-3 mb-2">
-        <div class="col-lg-4 col-xs-12 mb-3 mb-lg-0">
+        <div class="col-lg-4 col-12 mb-3 mb-lg-0">
             <div class="kpi-card">
-                <div class="kpi-icon kpi-accent"><i class="fa fa-users"></i></div>
+                <div class="kpi-icon kpi-accent"><i class="ki-duotone ki-people"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i></div>
                 <div>
                     <div class="kpi-value"><?php echo $totalClients; ?></div>
                     <div class="kpi-label">Clients</div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-xs-12 mb-3 mb-lg-0">
+        <div class="col-lg-4 col-12 mb-3 mb-lg-0">
             <div class="kpi-card">
-              <div class="kpi-icon kpi-success"><i class="fa fa-check-circle"></i></div>
+              <div class="kpi-icon kpi-success"><i class="ki-duotone ki-check -circle"></i></div>
               <div>
                 <div class="kpi-value"><?php echo $nbAffecter; ?> <span style="font-size:14px;color:var(--muted);font-weight:600;">(<?php echo $pctAffecter; ?>%)</span></div>
                 <div class="kpi-label">N&deg; clients affect&eacute;s</div>
               </div>
             </div>
         </div>
-        <div class="col-lg-4 col-xs-12">
+        <div class="col-lg-4 col-12">
             <div class="kpi-card">
-              <div class="kpi-icon kpi-warning"><i class="fa fa-user-plus"></i></div>
+              <div class="kpi-icon kpi-warning"><i class="ki-duotone ki-profile-user -plus"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></div>
               <div>
                   <div class="kpi-value"><?php echo $nbNonAffecter; ?> <span style="font-size:14px;color:var(--muted);font-weight:600;">(<?php echo $pctNonAffecter; ?>%)</span></div>
                 <div class="kpi-label">N&deg; Clients non affect&eacute;s</div>
@@ -219,21 +225,21 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
 
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
-                            <b>Région</b> <a href="<?php echo $this->Html->url(array('action' => 'view', $secteur[0]['Secteur']['code_region'], 'region')); ?>" class="pull-right"><?php echo $secteur[0]['Secteur']['region']; ?></a>
-                            <br><small class="text-muted"><i class="fa fa-map-o"></i> IMS : <?php echo !empty($secteur[0]['Secteur']['region_ims']) ? h($secteur[0]['Secteur']['region_ims']) : 'Non défini'; ?></small>
+                            <b>Région</b> <a href="<?php echo $this->Html->url(array('action' => 'view', $secteur[0]['Secteur']['code_region'], 'region')); ?>" class="float-end"><?php echo $secteur[0]['Secteur']['region']; ?></a>
+                            <br><small class="text-muted"><i class="ki-duotone ki-map"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> IMS : <?php echo !empty($secteur[0]['Secteur']['region_ims']) ? h($secteur[0]['Secteur']['region_ims']) : 'Non défini'; ?></small>
                         </li>
                         <li class="list-group-item">
                             <b>Ville</b> 
-                            <a href="<?php echo ($type != 'region') ? $this->Html->url(array('action' => 'view', $secteur[0]['Secteur']['code_ville'], 'ville')) : '#'; ?>" class="pull-right">
+                            <a href="<?php echo ($type != 'region') ? $this->Html->url(array('action' => 'view', $secteur[0]['Secteur']['code_ville'], 'ville')) : '#'; ?>" class="float-end">
                                 <?php echo ($type != 'region') ? $secteur[0]['Secteur']['ville'] : '--'; ?>
                             </a>
-                            <br><small class="text-muted"><i class="fa fa-map-o"></i> IMS : <?php echo !empty($secteur[0]['Secteur']['ville_ims']) ? h($secteur[0]['Secteur']['ville_ims']) : 'Non défini'; ?></small>
+                            <br><small class="text-muted"><i class="ki-duotone ki-map"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> IMS : <?php echo !empty($secteur[0]['Secteur']['ville_ims']) ? h($secteur[0]['Secteur']['ville_ims']) : 'Non défini'; ?></small>
                         </li>
                         <li class="list-group-item">
-                            <b>Secteur</b> <a class="pull-right">
+                            <b>Secteur</b> <a class="float-end">
                                 <?php echo ($type == 'secteur') ? $secteur[0]['Secteur']['secteur'] : '--'; ?>
                             </a>
-                            <br><small class="text-muted"><i class="fa fa-map-o"></i> IMS : <?php echo !empty($secteur[0]['Secteur']['secteur_ims']) ? h($secteur[0]['Secteur']['secteur_ims']) : 'Non défini'; ?></small>
+                            <br><small class="text-muted"><i class="ki-duotone ki-map"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> IMS : <?php echo !empty($secteur[0]['Secteur']['secteur_ims']) ? h($secteur[0]['Secteur']['secteur_ims']) : 'Non défini'; ?></small>
                         </li>
                     </ul>
                     <a href="<?php echo $this->Html->url(array('action' => 'edit', $secteur[0]['Secteur']['id'])); ?>" class="btn btn-lav-block d-block text-center"><b>Editer</b></a>
@@ -244,9 +250,9 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
         <div class="col-md-9">
             <div class="lav-card">
                 <div class="lav-card-header">
-                    <i class="fa fa-bar-chart-o hdr-ic"></i>
+                    <i class="ki-duotone ki-chart-simple -o hdr-ic"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
                     <h3 class="lav-card-title">Potentialité des clients</h3>
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="collapse"><i class="ki-duotone ki-minus"></i></button>
                 </div>
                 <div class="lav-card-body">
                     <div id="bar-chart" style="height: 300px;"></div>
@@ -256,24 +262,24 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
     </div>  
     
     <div class="row">
-        <div class="col-md-3 col-xs-12">
+        <div class="col-md-3 col-12">
             <div class="lav-card accent-top">
                 <div class="lav-card-header">
-                    <i class="fa fa-bar-chart-o hdr-ic"></i>
+                    <i class="ki-duotone ki-chart-simple -o hdr-ic"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
                     <h3 class="lav-card-title">Type des clients</h3>
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="collapse"><i class="ki-duotone ki-minus"></i></button>
                 </div>
                 <div class="lav-card-body">
                     <div id="donut-chart" style="height: 300px;"></div>
                 </div>
             </div>
         </div>
-        <div class="col-md-9 col-xs-12">
+        <div class="col-md-9 col-12">
             <div class="lav-card">
                 <div class="lav-card-header">
-                    <i class="fa fa-bar-chart-o hdr-ic"></i>
+                    <i class="ki-duotone ki-chart-simple -o hdr-ic"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
                     <h3 class="lav-card-title">Potentialité V1 des clients</h3>
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="collapse"><i class="ki-duotone ki-minus"></i></button>
                 </div>
                 <div class="lav-card-body">
                     <div id="bar-chartv1" style="height: 300px;"></div>
@@ -284,15 +290,15 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
 
     <!-- MAIN CLIENTS TABLE -->
     <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-12 col-sm-12 col-12">
             <?php if (!empty($secteur['Client'])): ?>
                 <div class="lav-card">
                     <div class="lav-card-header">
-                        <i class="fa fa-address-book hdr-ic"></i>
+                        <i class="ki-duotone ki-address-book hdr-ic"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
                         <h3 class="lav-card-title">La liste des clients du secteur</h3>
                     </div>
                     <div class="lav-card-body table-scroll" style="height: 243px;">
-                        <table id="example1" class="display table table-bordered table-striped">
+                        <table id="example1" class="display table table-row-bordered table-row-gray-300 align-middle gy-4">
                             <thead>
                                 <tr>
                                     <th>Liste planifié</th>
@@ -327,7 +333,7 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
                                     <td>
                                         <?php if ($client['Client']['hasGps']): ?>
                                             <a href="javascript:void(0);" class="badge-lav badge-lav-<?php echo $client['Client']['inZone'] ? 'success' : 'warning'; ?> go-to-gps" data-id="<?php echo $client['Client']['id']; ?>">
-                                                <i class="fa fa-map-marker"></i> <?php echo $client['Client']['inZone'] ? 'In zone' : 'Out zone'; ?>
+                                                <i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> <?php echo $client['Client']['inZone'] ? 'In zone' : 'Out zone'; ?>
                                             </a>
                                         <?php else: ?>
                                             <span class="badge-lav badge-lav-danger">Non</span>
@@ -344,14 +350,14 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
         </div>
 
         <!-- SPECIALITIES TABLE -->
-        <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-12 col-sm-12 col-12">
             <div class="lav-card">
                 <div class="lav-card-header">
-                    <i class="fa fa-stethoscope hdr-ic"></i>
+                    <i class="ki-duotone ki-pulse hdr-ic"><span class="path1"></span><span class="path2"></span></i>
                     <h3 class="lav-card-title">Spécialités</h3>
                 </div>
                 <div class="lav-card-body table-scroll" style="height: 243px;">
-                    <table id="example2" class="display table table-bordered table-striped">
+                    <table id="example2" class="display table table-row-bordered table-row-gray-300 align-middle gy-4">
                         <thead>
                             <tr>
                                 <th>Spécialités</th>
@@ -407,17 +413,17 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
         <div class="col-md-12">
             <div class="lav-card accent-top">
                 <div class="lav-card-header">
-                    <i class="fa fa-map hdr-ic"></i>
+                    <i class="ki-duotone ki-map hdr-ic"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
                     <h3 class="lav-card-title">Carte du secteur</h3>
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="collapse"><i class="ki-duotone ki-minus"></i></button>
                 </div>
                 <div class="lav-card-body">
                     <div class="map-header-bar">
-                        <i class="fa fa-map-marker"></i>
+                        <i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i>
                         <strong>Zone géographique du secteur</strong>
                         <?php if ($type == 'secteur') echo '— ' . h($secteur[0]['Secteur']['secteur']); ?>
                         <span class="badge-map">
-                            <i class="fa fa-users"></i> <?php echo $totalClients; ?> clients
+                            <i class="ki-duotone ki-people"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i> <?php echo $totalClients; ?> clients
                         </span>
                     </div>
 
@@ -428,24 +434,28 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
                             if ($stName === 'Total') {
                                 // Default Style for Total Box
                                 echo '<div class="map-score-card total">';
-                                echo '<span class="score-icon"><i class="fa fa-users" style="color:#3c8dbc;"></i></span>';
+                                echo '<span class="score-icon"><i class="ki-duotone ki-people" style="color:#3c8dbc;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i></span>';
                                 echo '<div class="score-value open-client-modal" data-filter-type="global" data-filter-val="all" style="color:#3c8dbc;cursor:pointer;" title="Cliquez pour voir">' . $stData['count'] . '</div>';
                                 echo '<div class="score-label">Total Clients</div>';
                                 echo '<div class="score-details">';
-                                echo '<span class="score-gps open-client-modal" data-filter-type="global" data-filter-val="gps_in" title="Dans la zone"><i class="fa fa-map-marker"></i> In: ' . $stData['in_zone'] . '</span>';
-                                echo '<span class="score-gps open-client-modal" data-filter-type="global" data-filter-val="gps_out" title="Hors zone" style="color:#f39c12;"><i class="fa fa-map-marker"></i> Out: ' . $stData['out_zone'] . '</span>';
-                                echo '<span class="score-nogps open-client-modal" data-filter-type="global" data-filter-val="nogps" title="Sans GPS"><i class="fa fa-map-marker" style="opacity:0.5;"></i> N/A: ' . $stData['no_gps'] . '</span>';
+                                echo '<span class="score-gps open-client-modal" data-filter-type="global" data-filter-val="gps_in" title="Dans la zone"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> In: ' . $stData['in_zone'] . '</span>';
+                                echo '<span class="score-gps open-client-modal" data-filter-type="global" data-filter-val="gps_out" title="Hors zone" style="color:#f39c12;"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> Out: ' . $stData['out_zone'] . '</span>';
+                                echo '<span class="score-nogps open-client-modal" data-filter-type="global" data-filter-val="nogps" title="Sans GPS"><i class="ki-duotone ki-geolocation" style="opacity:0.5;"><span class="path1"></span><span class="path2"></span></i> N/A: ' . $stData['no_gps'] . '</span>';
                                 echo '</div></div>';
                             } else {
                                 $meta = _getTypeStyle($stName, $typePatterns);
                                 echo '<div class="map-score-card ' . $meta['class'] . '">';
-                                echo '<span class="score-icon"><i class="fa ' . $meta['icon'] . '" style="color:' . $meta['color'] . ';"></i></span>';
+                                $iconSpans = '';
+                                for ($p = 1; $p <= $meta['paths']; $p++) {
+                                    $iconSpans .= '<span class="path' . $p . '"></span>';
+                                }
+                                echo '<span class="score-icon"><i class="ki-duotone ' . $meta['icon'] . '" style="color:' . $meta['color'] . ';">' . $iconSpans . '</i></span>';
                                 echo '<div class="score-value open-client-modal" data-filter-type="type" data-filter-val="' . $val . '" style="color:' . $meta['color'] . ';cursor:pointer;" title="Cliquez pour voir">' . $stData['count'] . '</div>';
                                 echo '<div class="score-label">' . h($stName) . '</div>';
                                 echo '<div class="score-details">';
-                                echo '<span class="score-gps open-client-modal" data-filter-type="type_gps_in" data-filter-val="' . $val . '" title="Dans la zone"><i class="fa fa-map-marker"></i> In: ' . $stData['in_zone'] . '</span>';
-                                echo '<span class="score-gps open-client-modal" data-filter-type="type_gps_out" data-filter-val="' . $val . '" title="Hors zone" style="color:#f39c12;"><i class="fa fa-map-marker"></i> Out: ' . $stData['out_zone'] . '</span>';
-                                echo '<span class="score-nogps open-client-modal" data-filter-type="type_nogps" data-filter-val="' . $val . '" title="Sans GPS"><i class="fa fa-map-marker" style="opacity:0.5;"></i> N/A: ' . $stData['no_gps'] . '</span>';
+                                echo '<span class="score-gps open-client-modal" data-filter-type="type_gps_in" data-filter-val="' . $val . '" title="Dans la zone"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> In: ' . $stData['in_zone'] . '</span>';
+                                echo '<span class="score-gps open-client-modal" data-filter-type="type_gps_out" data-filter-val="' . $val . '" title="Hors zone" style="color:#f39c12;"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> Out: ' . $stData['out_zone'] . '</span>';
+                                echo '<span class="score-nogps open-client-modal" data-filter-type="type_nogps" data-filter-val="' . $val . '" title="Sans GPS"><i class="ki-duotone ki-geolocation" style="opacity:0.5;"><span class="path1"></span><span class="path2"></span></i> N/A: ' . $stData['no_gps'] . '</span>';
                                 echo '</div></div>';
                             }
                         endforeach; ?>
@@ -462,51 +472,51 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
         <div class="col-md-12">
             <div class="lav-card success-top">
                 <div class="lav-card-header">
-                    <i class="fa fa-car hdr-ic" style="color:var(--success);"></i>
+                    <i class="ki-duotone ki-car hdr-ic" style="color:var(--success);"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
                     <h3 class="lav-card-title">Suivi des visites du secteur</h3>
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="collapse"><i class="ki-duotone ki-minus"></i></button>
                 </div>
                 <div class="visits-body">
                     
                     <!-- Date Filter -->
                     <div class="filter-bar">
                         <?php echo $this->Form->create('Secteur', array('url' => array('action' => 'view', $secteur[0]['Secteur']['id'], $type), 'class' => 'form-inline')); ?>
-                        <strong style="margin-right:15px; font-size: 15px;"><i class="fa fa-calendar" style="color:var(--accent);"></i> Filtrer la période des visites :</strong>
-                        <div class="form-group" style="margin-right:10px;">
+                        <strong style="margin-right:15px; font-size: 15px;"><i class="ki-duotone ki-calendar-8" style="color:var(--accent);"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i> Filtrer la période des visites :</strong>
+                        <div class="mb-5" style="margin-right:10px;">
                             <label style="margin-right:5px;">Du </label>
                             <input type="date" name="data[Secteur][date_debut]" value="<?php echo h($dateDebut); ?>" class="form-control input-sm">
                         </div>
-                        <div class="form-group" style="margin-right:15px;">
+                        <div class="mb-5" style="margin-right:15px;">
                             <label style="margin-right:5px;">Au </label>
                             <input type="date" name="data[Secteur][date_fin]" value="<?php echo h($dateFin); ?>" class="form-control input-sm">
                         </div>
-                        <button type="submit" class="btn btn-lav-filter btn-sm"><i class="fa fa-refresh"></i> Actualiser</button>
+                        <button type="submit" class="btn btn-lav-filter btn-sm"><i class="ki-duotone ki-arrows-circle"><span class="path1"></span><span class="path2"></span></i> Actualiser</button>
                         <?php echo $this->Form->end(); ?>
                     </div>
 
                     <!-- Visit Score Cards -->
                     <div class="map-score-container" style="flex-wrap: nowrap; overflow-x: auto;">
                         <div class="map-score-card total" style="border-left-color: #605ca8;">
-                            <span class="score-icon"><i class="fa fa-list-alt" style="color:#605ca8;"></i></span>
+                            <span class="score-icon"><i class="ki-duotone ki-menu -alt" style="color:#605ca8;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>
                             <div class="score-value" style="color:#605ca8;"><?php echo $visitesStats['total']; ?></div>
                             <div class="score-label">Total Visites</div>
                         </div>
                         <div class="map-score-card pharmacie" style="border-left-color: #27ae60;">
-                            <span class="score-icon"><i class="fa fa-check-circle" style="color:#27ae60;"></i></span>
+                            <span class="score-icon"><i class="ki-duotone ki-check -circle" style="color:#27ae60;"></i></span>
                             <div class="score-value" style="color:#27ae60;"><?php echo $visitesStats['vraie']; ?></div>
                             <div class="score-label">Vraies Visites (&le;500m)</div>
                             <div class="score-details">
-                                <span class="score-gps"><i class="fa fa-map-marker"></i> In: <?php echo $visitesStats['vraie_in']; ?></span>
-                                <span class="score-gps" style="color:#f39c12;"><i class="fa fa-map-marker"></i> Out: <?php echo $visitesStats['vraie_out']; ?></span>
+                                <span class="score-gps"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> In: <?php echo $visitesStats['vraie_in']; ?></span>
+                                <span class="score-gps" style="color:#f39c12;"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> Out: <?php echo $visitesStats['vraie_out']; ?></span>
                             </div>
                         </div>
                         <div class="map-score-card medecin" style="border-left-color: #e74c3c;">
-                            <span class="score-icon"><i class="fa fa-times-circle" style="color:#e74c3c;"></i></span>
+                            <span class="score-icon"><i class="ki-duotone ki-cross-circle" style="color:#e74c3c;"><span class="path1"></span><span class="path2"></span></i></span>
                             <div class="score-value" style="color:#e74c3c;"><?php echo $visitesStats['fausse']; ?></div>
                             <div class="score-label">Fausses Visites (&gt;500m)</div>
                         </div>
                         <div class="map-score-card other">
-                            <span class="score-icon"><i class="fa fa-question-circle" style="color:#95a5a6;"></i></span>
+                            <span class="score-icon"><i class="ki-duotone ki-question" style="color:#95a5a6;"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                             <div class="score-value" style="color:#95a5a6;"><?php echo $visitesStats['no_gps']; ?></div>
                             <div class="score-label">Visites Sans GPS</div>
                         </div>
@@ -514,16 +524,16 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
 
                     <!-- MAP Visites -->
                     <div class="map-header-bar visits-bar" style="margin-top: 15px;">
-                        <i class="fa fa-map-o"></i> <strong>Localisation des visites réelles</strong>
+                        <i class="ki-duotone ki-map"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> <strong>Localisation des visites réelles</strong>
                     </div>
                     <div id="map-visites-view" style="width: 100%; height: 500px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 20px;"></div>
 
                     <!-- TABLE Visites -->
                     <h4 class="visits-subheading">
-                        <i class="fa fa-list"></i> <strong>Détail des visites effectuées dans la période</strong>
+                        <i class="ki-duotone ki-menu"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> <strong>Détail des visites effectuées dans la période</strong>
                     </h4>
                     <div class="table-responsive visits-table-wrap">
-                        <table id="example3" class="display table table-bordered table-striped" style="width:100%;">
+                        <table id="example3" class="display table table-row-bordered table-row-gray-300 align-middle gy-4" style="width:100%;">
                             <thead>
                                 <tr>
                                     <th style="display:none;">Date Sort</th>
@@ -554,16 +564,16 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
                                     </td>
                                     <td>
                                         <?php if (!$tv['hasGps']): ?>
-                                            <span class="badge-lav badge-lav-neutral"><i class="fa fa-ban"></i> N/A</span>
+                                            <span class="badge-lav badge-lav-neutral"><i class="ki-duotone ki-cross-circle"><span class="path1"></span><span class="path2"></span></i> N/A</span>
                                         <?php elseif ($tv['isVraie']): ?>
-                                            <span class="badge-lav badge-lav-success"><i class="fa fa-check"></i> Vraie</span>
+                                            <span class="badge-lav badge-lav-success"><i class="ki-duotone ki-check"></i> Vraie</span>
                                             <?php if ($tv['inZone']): ?>
-                                                <span class="badge-lav badge-lav-info"><i class="fa fa-map-marker"></i> In zone</span>
+                                                <span class="badge-lav badge-lav-info"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> In zone</span>
                                             <?php else: ?>
-                                                <span class="badge-lav badge-lav-warning"><i class="fa fa-map-marker"></i> Out zone</span>
+                                                <span class="badge-lav badge-lav-warning"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> Out zone</span>
                                             <?php endif; ?>
                                         <?php else: ?>
-                                            <span class="badge-lav badge-lav-danger"><i class="fa fa-times"></i> Fausse</span>
+                                            <span class="badge-lav badge-lav-danger"><i class="ki-duotone ki-cross"><span class="path1"></span><span class="path2"></span></i> Fausse</span>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
@@ -582,12 +592,12 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
       <div class="modal-dialog modal-lg" role="document" style="width: 90%;">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white;opacity:1;"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="clientModalLabel"><i class="fa fa-users"></i> Liste détaillée des clients</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            <h4 class="modal-title" id="clientModalLabel"><i class="ki-duotone ki-people"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i> Liste détaillée des clients</h4>
           </div>
           <div class="modal-body">
              <div class="table-responsive">
-                <table id="modalClientTable" class="table table-bordered table-striped" style="width:100%;">
+                <table id="modalClientTable" class="table table-row-bordered table-row-gray-300 align-middle gy-4" style="width:100%;">
                     <thead>
                         <tr>
                             <th>Type</th>
@@ -604,7 +614,7 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
              </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
           </div>
         </div>
       </div>
@@ -612,10 +622,6 @@ $pctNonAffecter = $totalClients > 0 ? number_format((100 * $nbNonAffecter / $tot
 </section>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 echo $this->Html->script('jquery.flot.min');
@@ -625,13 +631,6 @@ echo $this->Html->script('jquery.flot.categories.min');
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
@@ -719,7 +718,7 @@ echo $this->Html->script('jquery.flot.categories.min');
     if ((!sectorGps || sectorGps.length === 0) && clientsMap.length === 0) {
         $('#map-secteur-view').html(
             '<div style="display:flex;align-items:center;justify-content:center;height:200px;color:#999;font-size:16px;">' +
-            '<i class="fa fa-map-o" style="font-size:40px;margin-right:15px;opacity:0.4;"></i>' +
+            '<i class="ki-duotone ki-map" style="font-size:40px;margin-right:15px;opacity:0.4;"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>' +
             '<div><strong>Aucune donnée GPS</strong><br><small>Aucune zone ni localisation client disponible</small></div></div>'
         );
         return;
@@ -739,7 +738,7 @@ echo $this->Html->script('jquery.flot.categories.min');
         var latlngs = [];
         for (var i = 0; i < sectorGps.length; i++) latlngs.push([sectorGps[i][0], sectorGps[i][1]]);
         var polygon = L.polygon(latlngs, { color: '#3c8dbc', weight: 3, fillColor: '#3c8dbc', fillOpacity: 0.15, dashArray: '5, 8' }).addTo(map);
-        polygon.bindPopup('<strong><i class="fa fa-map-marker"></i> Zone du secteur</strong><br><?php echo addslashes($secteur[0]["Secteur"]["secteur"]); ?>');
+        polygon.bindPopup('<strong><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> Zone du secteur</strong><br><?php echo addslashes($secteur[0]["Secteur"]["secteur"]); ?>');
         bounds.extend(polygon.getBounds());
     }
 
@@ -776,18 +775,18 @@ echo $this->Html->script('jquery.flot.categories.min');
     for (var j = 0; j < clientsMap.length; j++) {
         var c = clientsMap[j];
         var inZoneHtml = c.inZone 
-            ? '<span class="label label-success" style="font-size:12px;"><i class="fa fa-map-marker"></i> In Zone</span>'
-            : '<span class="label label-warning" style="font-size:12px;"><i class="fa fa-map-marker"></i> Out Zone</span>';
+            ? '<span class="badge badge-light-success" style="font-size:12px;"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> In Zone</span>'
+            : '<span class="badge badge-light-warning" style="font-size:12px;"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> Out Zone</span>';
             
         var marker = L.marker([c.lat, c.lng], { icon: getMarkerIcon(c.type) }).addTo(map);
         marker.bindPopup(
             '<div style="min-width:180px;">' +
             '<strong style="font-size:15px;">' + c.nom + '</strong><br>' +
-            '<span class="label label-info" style="font-size:12px;">' + c.type + '</span> ' + inZoneHtml + '<br>' +
-            '<span class="label label-warning" style="font-size:12px;">' + c.pot + '</span><br>' +
-            '<small style="color:#888; font-size:12px;"><i class="fa fa-briefcase"></i> ' + c.act + '</small><br>' +
-            '<a href="/clients/view/' + c.id + '" target="_blank" class="btn btn-xs btn-default bg-white" style="margin-top:6px; border:1px solid #ccc; color:#333; font-weight:bold;">' +
-            '<i class="fa fa-eye"></i> Fiche client</a></div>'
+            '<span class="badge badge-light-info" style="font-size:12px;">' + c.type + '</span> ' + inZoneHtml + '<br>' +
+            '<span class="badge badge-light-warning" style="font-size:12px;">' + c.pot + '</span><br>' +
+            '<small style="color:#888; font-size:12px;"><i class="ki-duotone ki-briefcase"><span class="path1"></span><span class="path2"></span></i> ' + c.act + '</small><br>' +
+            '<a href="/clients/view/' + c.id + '" target="_blank" class="btn btn-xs btn-light bg-white" style="margin-top:6px; border:1px solid #ccc; color:#333; font-weight:bold;">' +
+            '<i class="ki-duotone ki-eye"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Fiche client</a></div>'
         );
         bounds.extend([c.lat, c.lng]);
         leafletMarkers[c.id] = marker;
@@ -799,7 +798,7 @@ echo $this->Html->script('jquery.flot.categories.min');
     var legend = L.control({ position: 'bottomright' });
     legend.onAdd = function() {
         var div = L.DomUtil.create('div', 'map-legend');
-        div.innerHTML = '<strong><i class="fa fa-list"></i> Légende</strong><br>';
+        div.innerHTML = '<strong><i class="ki-duotone ki-menu"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> Légende</strong><br>';
         if (sectorGps && sectorGps.length > 0) div.innerHTML += '<i style="background:#3c8dbc;"></i> Zone du secteur<br>';
         for (var type in typeCounts) {
             div.innerHTML += '<i style="background:' + getTypeColor(type) + ';"></i> ' + type + ' (' + typeCounts[type] + ')<br>';
@@ -819,7 +818,7 @@ echo $this->Html->script('jquery.flot.categories.min');
         for (var i=0; i<filtered.length; i++) {
             var c = filtered[i];
             var btnUrl = '<?php echo $this->Html->url(array("controller" => "clients", "action" => "view")); ?>/' + c.id;
-            var gpsBadge = c.hasGps ? (c.inZone ? '<span class="label label-success">In Zone</span>' : '<span class="label label-warning">Out Zone</span>') : '<span class="label label-danger">Non</span>';
+            var gpsBadge = c.hasGps ? (c.inZone ? '<span class="badge badge-light-success">In Zone</span>' : '<span class="badge badge-light-warning">Out Zone</span>') : '<span class="badge badge-light-danger">Non</span>';
             tbodyHTML += '<tr><td>'+c.type+'</td><td>'+c.nom+'</td><td>'+c.spec+'</td><td>'+c.pot+'</td><td>'+c.potv2+'</td><td>'+gpsBadge+'</td><td><a href="'+btnUrl+'" class="btn btn-xs btn-primary">Voir</a></td></tr>';
         }
         $('#modalClientTable tbody').html(tbodyHTML);
@@ -853,7 +852,7 @@ echo $this->Html->script('jquery.flot.categories.min');
             filtered = allSectorClients.filter(function(c) { return c.spec === fSpec && c.pot === fPot; });
         }
         
-        var title = '<i class="fa fa-users"></i> Liste des clients';
+        var title = '<i class="ki-duotone ki-people"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i> Liste des clients';
         if (fType === 'specialite') title += ' - ' + fSpec + ' (' + fPot + ')';
         else if (fVal && fVal !== 'all' && fVal !== 'gps_in' && fVal !== 'gps_out' && fVal !== 'nogps') title += ' - ' + fVal;
         $('#clientModalLabel').html(title);
@@ -891,7 +890,7 @@ echo $this->Html->script('jquery.flot.categories.min');
             var latlngsV = [];
             for (var i = 0; i < sectorGps.length; i++) latlngsV.push([sectorGps[i][0], sectorGps[i][1]]);
             var polygonV = L.polygon(latlngsV, { color: '#00a65a', weight: 3, fillColor: '#00a65a', fillOpacity: 0.15, dashArray: '5, 8' }).addTo(mapVisits);
-            polygonV.bindPopup('<strong><i class="fa fa-map-marker"></i> Zone du secteur</strong>');
+            polygonV.bindPopup('<strong><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> Zone du secteur</strong>');
             boundsV.extend(polygonV.getBounds());
         }
 
@@ -913,14 +912,14 @@ echo $this->Html->script('jquery.flot.categories.min');
             var markerV = L.marker([v.lat, v.lng], { icon: getVisitIcon(v.isVraie, v.inZone) }).addTo(mapVisits);
             
             var badgeHtml = v.isVraie 
-                ? (v.inZone ? '<span class="label label-success">Vraie (In Zone)</span>' : '<span class="label label-warning">Vraie (Out Zone)</span>')
-                : '<span class="label label-danger">Fausse</span>';
+                ? (v.inZone ? '<span class="badge badge-light-success">Vraie (In Zone)</span>' : '<span class="badge badge-light-warning">Vraie (Out Zone)</span>')
+                : '<span class="badge badge-light-danger">Fausse</span>';
 
             markerV.bindPopup(
                 '<div style="min-width:180px;">' +
                 '<strong style="font-size:15px; color:#333;">Client: ' + v.client + '</strong><br>' +
-                '<small style="color:#555; font-size:12px;"><i class="fa fa-user"></i> ' + v.user + '</small><br>' +
-                '<small style="color:#888; font-size:12px;"><i class="fa fa-clock-o"></i> ' + v.date + '</small><hr style="margin:5px 0;">' +
+                '<small style="color:#555; font-size:12px;"><i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> ' + v.user + '</small><br>' +
+                '<small style="color:#888; font-size:12px;"><i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i> ' + v.date + '</small><hr style="margin:5px 0;">' +
                 badgeHtml +
                 '</div>'
             );
@@ -931,7 +930,7 @@ echo $this->Html->script('jquery.flot.categories.min');
         var legendV = L.control({ position: 'bottomright' });
         legendV.onAdd = function() {
             var div = L.DomUtil.create('div', 'map-legend');
-            div.innerHTML = '<strong><i class="fa fa-info-circle"></i> Légende Visites</strong><br>';
+            div.innerHTML = '<strong><i class="ki-duotone ki-information-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Légende Visites</strong><br>';
             div.innerHTML += '<i style="background:#27ae60;"></i> Vraie (In Zone)<br>';
             div.innerHTML += '<i style="background:#f39c12;"></i> Vraie (Out Zone)<br>';
             div.innerHTML += '<i style="background:#e74c3c;"></i> Fausse (> 500m)<br>';

@@ -180,13 +180,13 @@ function truncateText($text, $limit = 50)
                             echo $this->Html->link(
                                 __('Ajouter'),
                                 ['action' => 'add'],
-                                ['class' => 'btn bg-purple btn-flat', 'style' => 'float:right;']
+                                ['class' => 'btn bg-primary', 'style' => 'float:right;']
                             );
                         } elseif ($this->requestAction('/droits/getrole/rapports/addsp') == 1) {
                             echo $this->Html->link(
                                 __('Ajouter'),
                                 ['action' => 'addsp'],
-                                ['class' => 'btn bg-purple btn-flat', 'style' => 'float:right;']
+                                ['class' => 'btn bg-primary', 'style' => 'float:right;']
                             );
                         }
                     } else {

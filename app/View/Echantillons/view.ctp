@@ -85,7 +85,7 @@
         }
 
         /* Table Section */
-        .box {
+        .card {
             background: #ffffff;
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
@@ -95,7 +95,7 @@
             box-sizing: border-box;
         }
 
-        .box-header h3.box-title {
+        .card-header h3.card-title {
             font-size: 1.25rem;
             font-weight: 600;
             color: #1e293b;
@@ -105,7 +105,7 @@
             padding-bottom: 8px;
         }
 
-        .box-header h3.box-title::after {
+        .card-header h3.card-title::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -188,11 +188,11 @@
 
 <!-- Demands List Data Table Block -->
 <?php if (!empty($echantillon['Gadjet'])): ?>
-    <div class="box">
-        <div class="box-header">
-            <h3 class="box-title"><?php echo __('Liste des demandes'); ?></h3>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"><?php echo __('Liste des demandes'); ?></h3>
         </div>
-        <div class="box-body table-responsive">
+        <div class="card-body table-responsive">
             <table class="table">
                 <thead>
                     <tr>

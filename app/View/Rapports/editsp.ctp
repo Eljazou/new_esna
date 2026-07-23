@@ -185,7 +185,7 @@
                     </div>
                 </div>
 				
-				<?php echo $this->Form->end(array('label' => 'Enregistrer les modifications', 'class' => 'btn btn-success btn-large', 'div' => array('class' => 'well text-center col-md-12'))); ?>
+				<?php echo $this->Form->end(array('label' => 'Enregistrer les modifications', 'class' => 'btn btn-success btn-large', 'div' => array('class' => 'card card-body bg-light text-center col-md-12'))); ?>
             </div>
         </div>
     </div>
