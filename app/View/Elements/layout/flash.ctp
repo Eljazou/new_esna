@@ -87,10 +87,7 @@ foreach ($blocks as $key => $severity) {
         </div>
         <button type="button" class="btn btn-icon btn-sm btn-active-light-<?php echo h($severity); ?> ms-auto"
                 data-bs-dismiss="alert" aria-label="Fermer">
-            <i class="ki-duotone ki-cross fs-2">
-                <span class="path1"></span>
-                <span class="path2"></span>
-            </i>
+            <i class="ki-duotone ki-cross fs-2"><span class="path1"></span><span class="path2"></span></i>
         </button>
     </div>
     <?php

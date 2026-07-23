@@ -210,6 +210,11 @@ ICON_MAP = {
     'fa-quote-left': 'ki-message-text', 'fa-balance-scale': 'ki-arrow-right-left',
     'fa-long-arrow-right': 'ki-arrow-right', 'fa-gift': 'ki-gift',
     'fa-image': 'ki-picture',
+    # Sidebar / topbar. Keenicons has no birthday cake; the sidebar entry is a
+    # birthdays list, so a gift carries the same idea.
+    'fa-user-plus': 'ki-user-tick', 'fa-envelope-o': 'ki-sms',
+    'fa-bell-o': 'ki-notification', 'fa-angle-double-left': 'ki-double-left',
+    'fa-birthday-cake': 'ki-gift',
 }
 
 # Ionicons -> Keenicons. Ionicons ships in webroot but is loaded by nothing --

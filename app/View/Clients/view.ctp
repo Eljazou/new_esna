@@ -341,7 +341,7 @@ function cv_badges($label, $pipeValue) {
                             echo $this->Html->link(__('Remettre à 0'), array('action' => 'remettre0', $client['Client']['id']), array("class" => "btn btn-sm btn-light-danger"));
                         if ($this->requestAction('/droits/getrole/gadgetclients/add') == 1): ?>
                             <a href="#gadget_modal" rel="modal:open" class="btn btn-sm btn-light-warning">
-                                <i class="ki-duotone ki-gift fs-4 me-1"><span class="path1"></span><span class="path2"></span></i>
+                                <i class="ki-duotone ki-gift fs-4 me-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
                                 Ajouter gadget
                             </a>
                         <?php endif;

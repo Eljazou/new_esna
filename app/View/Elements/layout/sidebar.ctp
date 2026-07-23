@@ -36,7 +36,7 @@
             class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary h-30px w-30px position-absolute top-50 start-100 translate-middle rotate"
             data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
             data-kt-toggle-name="app-sidebar-minimize" title="Réduire / agrandir le menu">
-            <i class="fa fa-angle-double-left fs-4 rotate-180"></i>
+            <i class="ki-duotone ki-double-left fs-4 rotate-180"><span class="path1"></span><span class="path2"></span></i>
         </div>
     </div>
 
@@ -54,7 +54,7 @@
                 <button type="button" class="btn btn-icon btn-sm sidebar-search-icon-btn"
                     title="Rechercher"
                     onclick="document.getElementById('kt_app_sidebar_toggle').click();">
-                    <i class="fa fa-search"></i>
+                    <i class="ki-duotone ki-magnifier"><span class="path1"></span><span class="path2"></span></i>
                 </button>
             </div>
 
@@ -67,7 +67,7 @@
                     <div class="menu-item">
                         <a class="menu-link"
                             href="<?php echo $this->Html->url(array('controller' => 'absences', 'action' => 'calendrier')); ?>">
-                            <span class="menu-icon"><i class="fa fa-bullhorn fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-speaker fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                             <span class="menu-title">Activité hors terrain</span>
                             <span class="badge badge-light-danger ms-2">New</span>
                         </a>
@@ -79,7 +79,7 @@
                     <div class="menu-item">
                         <a class="menu-link"
                             href="<?php echo $this->Html->url(array('controller' => 'brochures', 'action' => 'index')); ?>">
-                            <span class="menu-icon"><i class="fa fa-book fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-book fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>
                             <span class="menu-title">
                                 <?php
                                 if (AuthComponent::user('role') == 'Admin')
@@ -98,7 +98,7 @@
                     <div class="menu-item">
                         <a class="menu-link"
                             href="<?php echo $this->Html->url(array('controller' => 'formations', 'action' => 'index')); ?>">
-                            <span class="menu-icon"><i class="fa fa-flask fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-flask fs-3"><span class="path1"></span><span class="path2"></span></i></span>
                             <span class="menu-title">Formations</span>
                         </a>
                     </div>
@@ -110,7 +110,7 @@
                     <div class="menu-item">
                         <a class="menu-link"
                             href="<?php echo $this->Html->url(array('controller' => 'marketings', 'action' => 'index')); ?>">
-                            <span class="menu-icon"><i class="fa fa-bullhorn fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-speaker fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                             <span class="menu-title">Marketing</span>
                         </a>
                     </div>
@@ -121,7 +121,7 @@
                     <div class="menu-item">
                         <a class="menu-link"
                             href="<?php echo $this->Html->url(array('controller' => 'clients', 'action' => 'allclients')); ?>">
-                            <span class="menu-icon"><i class="fa fa-users fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-people fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i></span>
                             <span class="menu-title">Liste des clients</span>
                         </a>
                     </div>
@@ -137,7 +137,7 @@
                     ?>
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="fa fa-money fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-dollar fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                             <span class="menu-title">Note de frais</span>
                             <span class="menu-arrow"></span>
                         </span>
@@ -164,7 +164,7 @@
                     <div class="menu-item">
                         <a class="menu-link"
                             href="<?php echo $this->Html->url(array('controller' => 'gadjets', 'action' => 'index')); ?>">
-                            <span class="menu-icon"><i class="fa fa-rocket fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-rocket fs-3"><span class="path1"></span><span class="path2"></span></i></span>
                             <span class="menu-title">Echantillons</span>
                         </a>
                     </div>
@@ -177,7 +177,7 @@
                     ?>
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="fa fa-cogs fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-setting-3 fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i></span>
                             <span class="menu-title">Mon listing</span>
                             <span class="menu-arrow"></span>
                         </span>
@@ -200,7 +200,7 @@
                     <div class="menu-item">
                         <a class="menu-link"
                             href="<?php echo $this->Html->url(array('controller' => 'echantillons', 'action' => 'stockvmp')); ?>">
-                            <span class="menu-icon"><i class="fa fa-align-left fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-text-align-left fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>
                             <span class="menu-title">Stock des échantillons</span>
                         </a>
                     </div>
@@ -212,7 +212,7 @@
                     <div class="menu-item">
                         <a class="menu-link"
                             href="<?php echo $this->Html->url(array('controller' => 'clientsproposes', 'action' => 'add')); ?>">
-                            <span class="menu-icon"><i class="fa fa-user-plus fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-user-tick fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                             <span class="menu-title">Proposer un client</span>
                         </a>
                     </div>
@@ -225,7 +225,7 @@
                     ?>
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="fa fa-check fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-check fs-3"></i></span>
                             <span class="menu-title">Rapports</span>
                             <span class="menu-arrow"></span>
                         </span>
@@ -248,7 +248,7 @@
                     <div class="menu-item">
                         <a class="menu-link"
                             href="<?php echo $this->Html->url(array('controller' => 'grosistes', 'action' => 'index')); ?>">
-                            <span class="menu-icon"><i class="fa fa-clock-o fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-time fs-3"><span class="path1"></span><span class="path2"></span></i></span>
                             <span class="menu-title">Sorti grossiste</span>
                         </a>
                     </div>
@@ -264,7 +264,7 @@
                     ?>
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="fa fa-cogs fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-setting-3 fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i></span>
                             <span class="menu-title">Gestion des utilisateurs</span>
                             <span class="menu-arrow"></span>
                         </span>
@@ -319,7 +319,7 @@
                     ?>
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="fa fa-check fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-check fs-3"></i></span>
                             <span class="menu-title">Validation</span>
                             <span class="menu-arrow"></span>
                         </span>
@@ -377,7 +377,7 @@
                     ?>
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="fa fa-user fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-profile-user fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>
                             <span class="menu-title">Administration</span>
                             <span class="menu-arrow"></span>
                         </span>
@@ -481,7 +481,7 @@
                     ?>
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="fa fa-cogs fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-setting-3 fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i></span>
                             <span class="menu-title">Statistiques</span>
                             <span class="menu-arrow"></span>
                         </span>
@@ -537,7 +537,7 @@
                 if ($role1 == 1 || $role2 == 1 || $role3 == 1 || $role4 == 1 || $role5 == 1 || $role6 == 1 || $role7 == 1 || $role8 == 1): ?>
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="fa fa-archive fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-archive fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                             <span class="menu-title">Analyse de Performance</span>
                             <span class="menu-arrow"></span>
                         </span>
@@ -578,7 +578,7 @@
                     ?>
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="fa fa-archive fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-archive fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                             <span class="menu-title">Centre téléconseiller</span>
                             <span class="menu-arrow"></span>
                         </span>
@@ -615,7 +615,7 @@
                     ?>
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="fa fa-archive fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-archive fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                             <span class="menu-title">Centre digital</span>
                             <span class="menu-arrow"></span>
                         </span>
@@ -637,7 +637,7 @@
                     ?>
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="fa fa-archive fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-archive fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                             <span class="menu-title">Portefeuille client</span>
                             <span class="menu-arrow"></span>
                         </span>
@@ -657,7 +657,7 @@
                     ?>
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="fa fa-archive fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-archive fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                             <span class="menu-title">Services</span>
                             <span class="menu-arrow"></span>
                         </span>
@@ -698,7 +698,7 @@
                     ?>
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="fa fa-archive fs-3"></i></span>
+                            <span class="menu-icon"><i class="ki-duotone ki-archive fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                             <span class="menu-title">Archive</span>
                             <span class="menu-arrow"></span>
                         </span>

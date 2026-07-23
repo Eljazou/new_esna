@@ -5,6 +5,32 @@
 
 ---
 
+## 0. Status at a glance — 2026-07-23
+
+**Scope: the web/desktop application only. The mobile track is OUT OF SCOPE (§7).**
+
+| | |
+|---|---|
+| Desktop views migrated | **286** across **57** modules |
+| Shared elements | **11** (layout partials, `clients/visite_item_*`, `assets/datatables`, `q_radios`) |
+| Layouts | **6** desktop-scope (`default`, `login`, `ajax`, `flash`, `error`, `blanck`) |
+| `php -l` | **302 files, 0 failures** |
+| Logic vs `esna/` | **286 compared, 0 skipped** — 38 differ, every one an icon swap or a BS3→BS5 class rename inside a PHP string |
+| Code-intact | **57/57 modules ALL INTACT** |
+| Concat damage | **ALL CLEAN** |
+| Keenicons path counts | **0 mismatches app-wide** |
+| Legacy audit | residuals in 15 files, **all recorded decisions** — see the ledger in §4 |
+
+**AdminLTE 2 and Bootstrap 3 are gone from the entire repository**, desktop and
+the migrated mobile report views alike.
+
+**Not done, and deliberately so:** the mobile app (`appmobile` /
+`appmobilepro` layouts and their 27 views) — out of scope, see §7. Framework
+error scaffolding (`Errors/*`, `Layouts/error.ctp`) is intentionally left on
+CakePHP's own `cake.generic.css` — see TODO #49.
+
+---
+
 ## 1. Project summary
 
 **What esna-new is:** a visual rebuild of the legacy `esna` application (an internal
@@ -1173,6 +1199,62 @@ Scope was contained: `git status` shows only the 14 report views changed. Not on
 
 ---
 
+### 2026-07-23 — Scope narrowed to web/desktop + final sweep ✅
+
+The owner narrowed the project to the **web/desktop application only**. The
+mobile track is out of scope (§7): `appmobile`, `appmobilepro` and their 27 views
+are not to be migrated, and TODO #48 is closed rather than deferred. The 14
+mobile report views already migrated stay as they are.
+
+Closing out the desktop surface surfaced one genuine gap. **`Elements/layout/`
+had never been through the migrator** — every batch glob targeted module
+directories (`app/View/{Module}/*.ctp`), so the partials extracted back in Step 2
+were never included. `sidebar.ctp` and `topbar.ctp` still carried **29 Font
+Awesome icons across 20 distinct names** — and those two render on *every*
+desktop page, which makes it the most-seen markup in the app.
+
+Migrated with five new mappings (`fa-user-plus` → `ki-user-tick`, `fa-envelope-o`
+→ `ki-sms`, `fa-bell-o` → `ki-notification`, `fa-angle-double-left` →
+`ki-double-left`, `fa-birthday-cake` → `ki-gift`; Keenicons has no cake, and the
+sidebar entry is a birthdays list). The diff is icon-only — no structural change
+to 757 lines of menu markup.
+
+Also repaired one Keenicon path count: `ki-gift` in `Clients/view.ctp` carried 2
+spans and needs 4. It only entered `ICON_PATHS` when `fa-gift` was added for the
+partials, so earlier repair passes had legitimately skipped it. **0 mismatches
+app-wide now.**
+
+The lesson worth carrying: a glob that encodes an assumption about where files
+live ("modules are directories under `app/View/`") will silently skip everything
+that does not fit it. `Elements/` sat outside that shape for the entire project.
+
+### Final verification — web/desktop surface
+
+| | |
+|---|---|
+| `php -l` | **302 files, 0 failures** (286 views + 11 elements + 5 layouts) |
+| logic diff | **286 compared, 0 skipped** — 38 differ, all icon swaps and BS3→BS5 renames inside PHP strings |
+| code intact | **57/57 modules ALL INTACT** |
+| concat damage | **ALL CLEAN** |
+| Keenicons | **0 path-count mismatches app-wide** |
+| legacy audit | 15 files, all recorded decisions |
+
+Residual ledger — every entry is a decision, not an unknown:
+
+| what | where | why |
+|---|---|---|
+| Font Awesome kept | `Rapports/{view,viewsp}`, `Rapportprocpects/ajouter`, `Boiteidees/index`, `Notifications/index`, `Asm/asm_visites_double` | no faithful Keenicons equivalent (TODO #34/#35) |
+| self-styled `info-box` | `Brochures/{index,detail_vmp}`, `Rapportprocpects/fuille_route_conseiller`, `Formations/index` | complete scoped CSS, no AdminLTE dependency |
+| inert `data-widget="collapse"` | `Analyses/portefeuille_vm`, `Secteurs/view`, `Notefrais/notedefrais`, `Categories/view`, `Types/view`, `Statistiques/statistiquesvisite`, `Stockvisites/index` | TODO #28, owner's call |
+| orphan AdminLTE page | `Objectifprofiles/default.ctp` | TODO #42 |
+
+**Still true and worth repeating: no view in this project has ever been rendered
+in a browser.** CakePHP 2.10 needs PHP ≤ 7.4 and only PHP 8.2 is available here,
+so verification has been `php -l` + logic diff + the four custom checkers
+throughout. Visual confirmation remains with whoever has the real database.
+
+---
+
 ## 5. Migration checklist — inventory of `app/View/**/*.ctp`
 
 **376 `.ctp` files** across 65 view directories.
@@ -1292,12 +1374,35 @@ Files already containing Keenicons (partial prior migration, verify rather than 
 
 ---
 
-## 7. Mobile / API view groups — scope decision
+## 7. Mobile / API view groups — ❌ OUT OF SCOPE (owner decision, 2026-07-23)
 
-**Question asked:** are `Appweb`, `Appwebfinal`, `Appwebfinalv2`, `Visitemobileapis`
-(66 `.ctp` files) real visual pages, or pure JSON/data endpoints?
+> **FINAL SCOPE DECISION — read this before doing anything in `Appweb`,
+> `Appwebfinal`, `Appwebfinalv2` or `Visitemobileapis`.**
+>
+> **The project covers the web/desktop app only. The mobile track is out of
+> scope and is not to be migrated.** `appmobile` and `appmobilepro` — their
+> layouts and all 27 views — stay exactly as they are, on Bootstrap 4.3.1.
+>
+> **TODO #48 is closed, not deferred.** The question it was waiting on (which
+> URL the deployed phone app opens, `Appwebfinal` vs `Appwebfinalv2`) no longer
+> needs an answer. Do not chase it.
+>
+> **What was already migrated stays.** `Layouts/mobile.ctp` and its 14
+> visit-report views were moved off Bootstrap 3 + AdminLTE 2 before this
+> decision; the owner confirmed they are to be kept, not reverted. They are
+> finished work, not work-in-progress — see the 2026-07-23 entry in §4. They are
+> also the only reason the last AdminLTE and Bootstrap 3 markup is gone from the
+> repository, which was worth having regardless of scope.
+>
+> Anything below this box is the earlier analysis, kept for the record.
 
-**Answer: they are real visual pages — IN SCOPE.** Evidence:
+---
+
+**Question asked (superseded):** are `Appweb`, `Appwebfinal`, `Appwebfinalv2`,
+`Visitemobileapis` (66 `.ctp` files) real visual pages, or pure JSON/data
+endpoints?
+
+**Answer at the time: they are real visual pages.** Evidence:
 
 - Every one of the 66 files is HTML markup, 173–1,083 lines each, with 7–84 block-level
   tags (`<div>`/`<table>`/`<form>`/`<section>`) per file. None of them emit a JSON payload
@@ -1491,6 +1596,17 @@ work.
     was skipped for four batches because `swap_icons` anchored the prefix at the start of the
     attribute. Fixed in batch 4; matters for the mobile track, which is dense with FA. When a
     pattern assumes token *position* rather than token *presence*, it will miss real cases.
+49. **Framework error pages are deliberately NOT themed.** `Layouts/error.ctp` loads
+    CakePHP's own `cake.generic.css`, not Metronic — an error page must render when the
+    app itself is broken, so making it depend on the theme would be a mistake. The single
+    `<i class="fa fa-warning text-red">` in `Errors/missing_controller.ctp` has never
+    rendered (no Font Awesome on that layout) and is left alone. Note also that
+    `Errors/pdo_error .ctp` and `pdo_error  .ctp` have **trailing spaces in their
+    filenames**, so CakePHP can never match them — they are dead files, left in place
+    because deleting them is the owner's call.
+48. ~~**`Appweb` / `Appwebfinal` are ON HOLD**~~ — **CLOSED 2026-07-23**, not deferred.
+    The mobile track is out of scope (§7); the question of which URL the phone app opens
+    no longer needs an answer.
 46. **`Layouts/mobile.ctp` still loads jQuery 2.2.3.** Its 14 views use `$(...)` heavily but
     no jQuery-2-only idioms, so 3.x would very likely work — "very likely" is not worth it on
     views nobody has rendered yet. Upgrade when someone can watch the forms submit.
