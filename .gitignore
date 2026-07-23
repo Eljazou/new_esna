@@ -57,3 +57,7 @@ Thumbs.db
 
 # Local DB credentials (copy database.php.default -> database.php)
 app/Config/database.php
+
+# Python bytecode from tools/
+__pycache__/
+*.pyc
