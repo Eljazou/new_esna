@@ -1,21 +1,20 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title"><?php echo __('Sortie grossiste'); ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?php echo __('Sortie grossiste'); ?></h3>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
         <div class="col-lg-6">
-            <div class="panel panel-primary">
-                <div class="panel-body form-horizontal payment-form">
+            <div class="card">
+                <div class="card-body payment-form">
                     <?php echo $this->Form->create('Grovente'); 
                     echo $this->Form->input('date',array('type' => 'text','id' => 'datepicker','class'=>'form-control'));
                     echo $this->Form->hidden('grosiste_id',array('value'=>$grossiste_id));
                     ?>
 
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                         <thead>
                             <tr>
                                 <th>Produit</th>
@@ -30,7 +29,7 @@
                             </tr>
                         <?php $i++;endforeach; ?>
                     </table>
-                    <?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-primary btn-large','div' => array('class' => 'well text-center'))); ?>
+                    <?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-primary btn-large','div' => array('class' => 'card card-body bg-light text-center'))); ?>
                 </div>
             </div>
         </div>

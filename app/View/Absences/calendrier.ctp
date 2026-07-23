@@ -9,7 +9,6 @@ if (typeof jQuery === 'undefined') {
     document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"><\/script>');
 }
 </script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/fr.js"></script>
@@ -24,13 +23,6 @@ if (typeof jQuery === 'undefined') {
 </script>
 
 <!-- DataTables buttons -->
-<script src="//cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 <style>
 /* ================== METRONIC RESTYLE (CSS only — PHP/JS logic untouched) ================== */
@@ -323,7 +315,7 @@ if (typeof jQuery === 'undefined') {
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Détails</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
             </div>
             <div class="modal-body">
                 <p>Collaborateur: <span id="user"></span></p>
@@ -347,10 +339,10 @@ if (typeof jQuery === 'undefined') {
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Absences</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
             </div>
             <div class="modal-body">
-                <table id="table_absences" class="table table-bordered table-striped" style="width:100%">
+                <table id="table_absences" class="table table-row-bordered table-row-gray-300 align-middle gy-4" style="width:100%">
                     <thead>
                         <tr>
                             <th>VMP</th>

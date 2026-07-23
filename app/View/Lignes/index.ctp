@@ -1,9 +1,8 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     body { background: #f4f5fa; }
 
-    .box {
+    .card {
         background: #fff;
         border-radius: 16px;
         border: none;
@@ -11,7 +10,7 @@
         overflow: hidden;
     }
 
-    .box-header {
+    .card-header {
         background: #fff;
         padding: 24px 28px 8px;
         display: flex;
@@ -20,13 +19,13 @@
         border: none;
     }
 
-    .box-header .title-wrap {
+    .card-header .title-wrap {
         display: flex;
         align-items: center;
         gap: 16px;
     }
 
-    .box-header .icon-circle {
+    .card-header .icon-circle {
         width: 52px;
         height: 52px;
         border-radius: 14px;
@@ -37,20 +36,20 @@
         flex-shrink: 0;
     }
 
-    .box-header .icon-circle svg {
+    .card-header .icon-circle svg {
         width: 24px;
         height: 24px;
         stroke: #6b46e5;
     }
 
-    .box-header h3.box-title {
+    .card-header h3.card-title {
         color: #1e1e2e;
         font-size: 21px;
         font-weight: 700;
         margin: 0;
     }
 
-    .box-header .subtitle {
+    .card-header .subtitle {
         color: #8b87a5;
         font-size: 14px;
         margin-top: 3px;
@@ -125,7 +124,7 @@
         color: #fff !important;
     }
 
-    .box-body {
+    .card-body {
         padding: 0 28px 28px;
     }
 
@@ -159,7 +158,7 @@
         background-color: #fbfaff;
     }
 
-    table.table-bordered {
+    table.table-row-bordered {
         border: none;
     }
 
@@ -258,8 +257,8 @@
         border-color: #7b5ce8;
     }
 </style>
-<div class="box">
-    <div class="box-header table-responsive">
+<div class="card">
+    <div class="card-header table-responsive">
         <div class="title-wrap">
             <div class="icon-circle">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -269,7 +268,7 @@
                 </svg>
             </div>
             <div>
-                <h3 class="box-title"><?php echo __('Lignes'); ?></h3>
+                <h3 class="card-title"><?php echo __('Lignes'); ?></h3>
                 <div class="subtitle"><?php echo __('Consultez et gérez les lignes disponibles'); ?></div>
             </div>
         </div>
@@ -279,8 +278,8 @@
             array('class' => 'btn-add-modern', 'escape' => false)
         ); ?>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>Ligne</th>
@@ -321,21 +320,11 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script>
     $(function () {
         $('#example1').DataTable({

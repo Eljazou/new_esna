@@ -108,9 +108,16 @@ def _atomic_renames(tokens):
     (`.control-label` -> `.form-label`); renames to nothing are skipped, since
     deleting a selector's text would corrupt the rule rather than retire it.
     """
+    # Accept BOTH pattern shapes. The boundary hardening rewrote `\bfoo\b` into
+    # `(?<![-\w])foo(?![-\w])`, which stopped matching the old `\b`-only form
+    # here -- silently dropping every CLASS_MAP-derived CSS rename
+    # (.panel-heading, .box-footer, .box-body ...) and leaving those rules
+    # pointing at markup that had already been renamed. Caught by the audit's
+    # "CSS .box/.panel rule" pattern in batch 3.
+    ATOMIC = re.compile(r'(?:\\b|\(\?<!\[-\\w\]\))([\w-]+)(?:\\b|\(\?!\[-\\w\]\))\Z')
     ren = {}
     for pat, rep in CLASS_MAP:
-        m = re.fullmatch(r'\\b([\w-]+)\\b', pat)
+        m = ATOMIC.match(pat)
         if m and rep:
             ren[m.group(1)] = rep.split()[0]
     for old, new in tokens.items():
@@ -179,6 +186,19 @@ ICON_MAP = {
     'fa-car': 'ki-car', 'fa-book': 'ki-book', 'fa-ban': 'ki-cross-circle',
     'fa-arrow-down': 'ki-arrow-down', 'fa-align-left': 'ki-text-align-left',
     'fa-address-book': 'ki-address-book',
+    # Batch 3.
+    'fa-comment-o': 'ki-message-text-2', 'fa-flag-o': 'ki-flag',
+    'fa-gamepad': 'ki-joystick', 'fa-paper-plane': 'ki-send',
+    'fa-reply': 'ki-arrow-left', 'fa-th-large': 'ki-element-4',
+    'fa-thumbs-up': 'ki-like', 'fa-thumbs-down': 'ki-dislike',
+}
+
+# Ionicons -> Keenicons. Ionicons ships in webroot but is loaded by nothing --
+# not by the Metronic layout and not by esna's either -- so every one of these
+# has been rendering as an empty box for as long as the file has existed.
+ION_MAP = {
+    'ion-ios-time-outline': 'ki-time',
+    'ion-clipboard': 'ki-clipboard',
 }
 
 # Icons deliberately NOT mapped. The sentiment scale in Rapportprocpects is a
@@ -263,6 +283,28 @@ def fix_icon_paths(src):
 
     return re.sub(r'(<i[^>]*class="ki-duotone\s+)(ki-[\w-]+)([^"]*")>(.*?)</i>',
                   repl, src, flags=re.S)
+
+
+def swap_ionicons(src):
+    """<i class="ion ion-ios-time-outline"> -> the Keenicons equivalent."""
+    def repl(m):
+        attrs, name, suffix, after = m.groups()
+        ki = ION_MAP.get(name)
+        if not ki or ki not in ICON_PATHS:
+            return m.group(0)
+        paths = ''.join('<span class="path%d"></span>' % i
+                        for i in range(1, ICON_PATHS[ki] + 1))
+        # `mr-*`/`ml-*` are Bootstrap 3/4 spacing; BS5 renamed them to me-*/ms-*.
+        kept = [re.sub(r'^mr-', 'me-', re.sub(r'^ml-', 'ms-', t))
+                for t in suffix.split() if not t.startswith('ion-')]
+        extra = (' ' + ' '.join(kept)) if kept else ''
+        return '<i%s class="ki-duotone %s%s"%s>%s</i>' % (
+            attrs, ki, extra, after, paths)
+
+    return re.sub(
+        r'<i((?:\s+(?!class=)[\w-]+="[^"]*")*)\s+class="ion\s+('
+        + '|'.join(sorted(ION_MAP, key=len, reverse=True))
+        + r')([^"]*)"((?:\s+[\w-]+="[^"]*")*)\s*>\s*</i>', repl, src)
 
 
 def swap_icons(src):
@@ -540,6 +582,7 @@ def metronize(src):
                  '<span class="spinner-border spinner-border-sm align-middle">'
                  '</span>', src)
     src = swap_icons(src)
+    src = swap_ionicons(src)
     src = fix_icon_paths(src)
 
     # --- BS3 close button inside modals ----------------------------------

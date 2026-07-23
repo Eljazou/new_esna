@@ -1,6 +1,3 @@
-<?php
-
-?>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
 
 <!-- Injecting Modern Dashboard Styles Directly into this View -->

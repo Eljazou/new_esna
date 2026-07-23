@@ -21,7 +21,7 @@
     }
 
     /* Modern Rounded Layout Cards */
-    #affaire-detail-wrapper .box {
+    #affaire-detail-wrapper .card {
         background: #fff !important;
         border: 1px solid var(--border-color) !important;
         border-radius: var(--radius-lg) !important;
@@ -31,7 +31,7 @@
     }
 
     /* Header Components Structural Realignment */
-    #affaire-detail-wrapper .box-header {
+    #affaire-detail-wrapper .card-header {
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
@@ -40,8 +40,8 @@
         border-bottom: 1px solid var(--border-color) !important;
     }
 
-    #affaire-detail-wrapper .box-header h2,
-    #affaire-detail-wrapper .box-title {
+    #affaire-detail-wrapper .card-header h2,
+    #affaire-detail-wrapper .card-title {
         font-size: 20px !important;
         font-weight: 800 !important;
         color: var(--text-dark) !important;
@@ -51,13 +51,13 @@
     }
 
     /* Header Context Action Buttons Style */
-    #affaire-detail-wrapper .box-header .btn {
+    #affaire-detail-wrapper .card-header .btn {
         margin: 0 !important;
         float: none !important;
     }
 
     #affaire-detail-wrapper .edit-header-link,
-    #affaire-detail-wrapper .bg-purple {
+    #affaire-detail-wrapper .bg-primary {
         background: transparent !important;
         color: var(--text-dark) !important;
         font-weight: 700 !important;
@@ -70,7 +70,7 @@
     }
 
     #affaire-detail-wrapper .edit-header-link:hover,
-    #affaire-detail-wrapper .bg-purple:hover {
+    #affaire-detail-wrapper .bg-primary:hover {
         color: var(--accent) !important;
         background: transparent !important;
     }
@@ -129,7 +129,7 @@
     }
 
     /* Content Workspace Details Area */
-    #affaire-detail-wrapper .box-body {
+    #affaire-detail-wrapper .card-body {
         padding: 24px !important;
     }
 
@@ -226,12 +226,12 @@
 
 <div id="affaire-detail-wrapper">
     <!-- Main Object Card Details Panel -->
-    <div class="box">
-        <div class="box-header table-responsive">
+    <div class="card">
+        <div class="card-header table-responsive">
             <h2><?php echo __('Affaire'); ?></h2>
             <?php 
             if ($this->requestAction('/droits/getrole/prospectaffaires/edit') == 1)
-                echo $this->Html->link(__('Editer'), array('action' => 'edit', $prospectaffaire['Prospectaffaire']['id']), array('class' => 'edit-header-link bg-purple btn-flat')); ?>
+                echo $this->Html->link(__('Editer'), array('action' => 'edit', $prospectaffaire['Prospectaffaire']['id']), array('class' => 'edit-header-link bg-primary')); ?>
         </div>
         <div class="meta-table-container">
             <div class="meta-grid">
@@ -256,15 +256,15 @@
     </div>
 
     <!-- Related Collections Dynamic Sub-table Card Panel -->
-    <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title"><?php echo __('La liste des compagnes'); ?></h3>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"><?php echo __('La liste des compagnes'); ?></h3>
             <?php
             if ($this->requestAction('/droits/getrole/prospectcompagnes/add') == 1)
                 echo $this->Html->link(__('Créé une compagne'), array('controller' => 'prospectcompagnes', 'action' => 'add', $prospectaffaire['Prospectaffaire']['id']), array('class' => 'btn btn-info'));
             ?>
         </div>
-        <div class="box-body">
+        <div class="card-body">
             <div class="related table-responsive">
                 <?php if (!empty($prospectaffaire['Prospectcompagne'])): ?>
                     <table class="table">

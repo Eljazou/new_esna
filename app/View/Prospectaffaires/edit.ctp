@@ -12,7 +12,7 @@
     }
 
     /* Modern Rounded Layout Card */
-    #edit-affaire-wrapper .panel.panel-primary {
+    #edit-affaire-wrapper .card {
         background: #fff !important;
         border: 1px solid var(--border-color) !important;
         border-radius: var(--radius-lg) !important;
@@ -22,7 +22,7 @@
     }
 
     /* Header Components Structural Realignment */
-    #edit-affaire-wrapper .panel-heading {
+    #edit-affaire-wrapper .card-header {
         padding: 20px 24px !important;
         background: #fff !important;
         border-bottom: 1px solid var(--border-color) !important;
@@ -30,7 +30,7 @@
         float: none !important;
     }
 
-    #edit-affaire-wrapper .panel-title {
+    #edit-affaire-wrapper .card-title {
         font-size: 20px !important;
         font-weight: 800 !important;
         color: var(--text-dark) !important;
@@ -39,18 +39,18 @@
     }
 
     /* Workspace Content Formatting */
-    #edit-affaire-wrapper .panel-body {
+    #edit-affaire-wrapper .card-body {
         padding: 24px !important;
     }
 
     /* Nested Inner Blueprint Panels Stripping */
-    #edit-affaire-wrapper .panel-body .panel.panel-primary {
+    #edit-affaire-wrapper .card-body .card {
         border: none !important;
         box-shadow: none !important;
         border-radius: 0 !important;
         margin: 0 !important;
     }
-    #edit-affaire-wrapper .panel-body .panel-body {
+    #edit-affaire-wrapper .card-body .card-body {
         padding: 0 !important;
     }
 
@@ -92,13 +92,13 @@
     }
 
     /* Form Workspace Footer Architecture Elements */
-    #edit-affaire-wrapper .box-footer {
+    #edit-affaire-wrapper .card-footer {
         background: transparent !important;
         border-top: none !important;
         padding: 12px 0 0 0 !important;
     }
 
-    #edit-affaire-wrapper .well.text-center {
+    #edit-affaire-wrapper .card.text-center {
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
@@ -130,14 +130,14 @@
 </style>
 
 <div id="edit-affaire-wrapper">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title"><?php echo __('Editer une affaire'); ?></h3>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"><?php echo __('Editer une affaire'); ?></h3>
         </div>
-        <div class="panel-body">
-            <div class="col-lg-12 col-xs-12">
-                <div class="panel panel-primary">
-                    <div class="panel-body payment-form">
+        <div class="card-body">
+            <div class="col-lg-12 col-12">
+                <div class="card">
+                    <div class="card-body payment-form">
                         <?php echo $this->Form->create('Prospectaffaire'); ?>
                         <?php
                         // Keeps ID track cleanly mapped internally without creating an empty field row
@@ -146,12 +146,12 @@
                         echo $this->Form->input('name', array(
                             "label" => "Nom", 
                             'class' => 'form-control',
-                            'div' => array('class' => 'form-group')
+                            'div' => array('class' => 'mb-5')
                         ));
                         ?>
                     </div>
-                    <div class="box-footer">
-                        <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-outline-info', 'div' => array('class' => 'well text-center'))); ?>
+                    <div class="card-footer">
+                        <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-outline-info', 'div' => array('class' => 'card card-body bg-light text-center'))); ?>
                     </div>
                 </div>
             </div>

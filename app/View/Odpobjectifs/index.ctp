@@ -1,9 +1,8 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-		?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     body { background: #f4f5fa; }
 
-    .box {
+    .card {
         background: #fff;
         border-radius: 16px;
         border: none;
@@ -11,7 +10,7 @@
         overflow: hidden;
     }
 
-    .box-header {
+    .card-header {
         background: #fff;
         padding: 24px 28px;
         display: flex;
@@ -22,13 +21,13 @@
         gap: 12px;
     }
 
-    .box-header .title-wrap {
+    .card-header .title-wrap {
         display: flex;
         align-items: center;
         gap: 16px;
     }
 
-    .box-header .icon-circle {
+    .card-header .icon-circle {
         width: 52px;
         height: 52px;
         border-radius: 14px;
@@ -39,13 +38,13 @@
         flex-shrink: 0;
     }
 
-    .box-header .icon-circle svg {
+    .card-header .icon-circle svg {
         width: 24px;
         height: 24px;
         stroke: #6b46e5;
     }
 
-    .box-header h3.box-title {
+    .card-header h3.card-title {
         color: #1e1e2e;
         font-size: 19px;
         font-weight: 700;
@@ -108,7 +107,7 @@
         stroke: #fff;
     }
 
-    .box-body {
+    .card-body {
         padding: 8px 28px 28px;
     }
 
@@ -148,7 +147,7 @@
         outline: none;
     }
 
-    .date-panel .well {
+    .date-panel .card {
         background: none;
         border: none;
         box-shadow: none;
@@ -202,7 +201,7 @@
         background-color: #fbfaff;
     }
 
-    table.table-bordered {
+    table.table-row-bordered {
         border: none;
     }
 
@@ -249,8 +248,8 @@
         border-color: #7b5ce8;
     }
 </style>
-<div class="box">
-      <div class="box-header table-responsive">
+<div class="card">
+      <div class="card-header table-responsive">
            <div class="title-wrap">
                 <div class="icon-circle">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -259,7 +258,7 @@
                         <circle cx="12" cy="12" r="2"></circle>
                     </svg>
                 </div>
-                <h3 class="box-title">Nombre de contacts à atteindre par région et par produit</h3>
+                <h3 class="card-title">Nombre de contacts à atteindre par région et par produit</h3>
            </div>
 		 	<div class="header-actions">
                 <?php echo $this->Html->link(
@@ -274,21 +273,21 @@
                 ); ?>
             </div>
       </div>
-		<div class="box-body">
-			<div class="panel-body">
+		<div class="card-body">
+			<div class="card-body">
 			<div class="col-lg-6">
 				<div class="date-panel">
 					<?php echo $this->Form->create('Odpobjectif'); ?>
 				<?php
 					echo $this->Form->input('dates',array("options"=>$dates,'label' => 'Choix des dates','class'=>'form-control no-auto-select2'));
 				?>
-			<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn-envoyer','div' => array('class' => 'well text-center col-md-12'))); ?>
+			<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn-envoyer','div' => array('class' => 'card card-body bg-light text-center col-md-12'))); ?>
 			</div>
 		</div>
 		</div>
 		</div>
 		 <?php if(!empty($odps)): ?>
-         <table id="example1" class="table table-bordered table-striped">
+         <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 		 <thead>
 			<tr>
 				<th>Regions</th>
@@ -334,22 +333,12 @@
 	<?php endif; ?>
 	</div>
 	</div>
-	<?php echo $this->Html->script('jquery-2.2.3.min');
-        echo $this->Html->script('bootstrap.min');
-        echo $this->Html->script('app.min');
-        echo $this->Html->script('jquery.dataTables.min');
+	<?php
         echo $this->Html->script('jquery.slimscroll.min');
         echo $this->Html->script('fastclick');
         echo $this->Html->script('demo');
         ?>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script>
     // Snapshot our jQuery instance right after our plugins load, before Metronic's own
     // bundles can silently reassign window.jQuery.

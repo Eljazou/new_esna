@@ -2,9 +2,7 @@
 echo $this->Html->css("style_radio");
 echo $this->Html->css("style_rapport");
 echo $this->Html->css("style_range");
-echo $this->Html->css("jquery.datetimepicker");
-echo $this->Html->css('select2.min'); 
-echo $this->Html->script("fontawesome");
+echo $this->Html->css("jquery.datetimepicker"); 
 ?>
 
 <!-- Injecting Modern Dashboard Styles Directly into this View -->
@@ -373,12 +371,6 @@ echo $this->Html->script("fontawesome");
 </div>
 
 <!-- Core System Dynamic Vendor Scripts Injection Architecture Hooks -->
-<?php 
-echo $this->Html->script('jquery-2.2.3.min'); 
-echo $this->Html->script('select2.full.min');
-echo $this->Html->script('fontawesome'); 
-?>
-
 <script type="text/javascript">
     var regions = <?php echo json_encode($regions); ?>;
     var villes = <?php echo json_encode($villes); ?>;

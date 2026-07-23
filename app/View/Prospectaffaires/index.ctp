@@ -1,5 +1,5 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
-echo $this->Html->css('dataTables.bootstrap');
 echo $this->Html->css('btn-style');
 ?>  
 
@@ -26,7 +26,7 @@ echo $this->Html->css('btn-style');
     }
 
     /* Modern Card Layout */
-    #prospectaffaires-wrapper .box {
+    #prospectaffaires-wrapper .card {
         background: #fff !important;
         border: 1px solid var(--border-color) !important;
         border-radius: var(--radius-lg) !important;
@@ -36,7 +36,7 @@ echo $this->Html->css('btn-style');
     }
 
     /* Flex Row Page Header Container */
-    #prospectaffaires-wrapper .box-header {
+    #prospectaffaires-wrapper .card-header {
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
@@ -45,7 +45,7 @@ echo $this->Html->css('btn-style');
         border-bottom: 1px solid var(--border-color) !important;
     }
 
-    #prospectaffaires-wrapper .box-title {
+    #prospectaffaires-wrapper .card-title {
         font-size: 22px !important;
         font-weight: 800 !important;
         color: var(--text-dark) !important;
@@ -56,7 +56,7 @@ echo $this->Html->css('btn-style');
     }
 
     /* Document Icon Indicator Prefix */
-    #prospectaffaires-wrapper .box-title:before {
+    #prospectaffaires-wrapper .card-title:before {
         content: "\f0f6";
         font-family: "FontAwesome";
         display: inline-flex;
@@ -90,7 +90,7 @@ echo $this->Html->css('btn-style');
     }
 
     /* Data Table Custom Body Architecture */
-    #prospectaffaires-wrapper .box-body {
+    #prospectaffaires-wrapper .card-body {
         padding: 24px !important;
     }
 
@@ -197,15 +197,15 @@ echo $this->Html->css('btn-style');
 </style>
 
 <div id="prospectaffaires-wrapper">
-    <div class="box">
-        <div class="box-header table-responsive">
-            <h3 class="box-title"><?php echo __('Prospectaffaires'); ?></h3>
+    <div class="card">
+        <div class="card-header table-responsive">
+            <h3 class="card-title"><?php echo __('Prospectaffaires'); ?></h3>
 
             <?php if ($this->requestAction('/droits/getrole/prospectaffaires/add') == 1)
                 echo $this->Html->link("Créer une affaire", array('action' => 'add'), array('class' => 'btn-sc btn btn-outline-success')); ?>
         </div>
-        <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
+        <div class="card-body">
+            <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                 <thead>
                     <tr>
                         <th>User</th>
@@ -240,22 +240,11 @@ echo $this->Html->css('btn-style');
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script>
     $(function () {
         $('#example1').DataTable({

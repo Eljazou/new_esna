@@ -36,7 +36,7 @@
         color: #ffffff;
         flex-shrink: 0;
     }
-    .lb-form-header .panel-title {
+    .lb-form-header .card-title {
         color: #ffffff !important;
         font-weight: 600;
         margin: 0;
@@ -138,17 +138,17 @@
     }
 </style>
 
-<div class="panel lb-form-card">
-    <div class="panel-heading lb-form-header">
+<div class="card lb-form-card">
+    <div class="card-header lb-form-header">
         <span class="lb-form-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 4.5v15m7.5-7.5h-15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
             </svg>
         </span>
-        <h3 class="panel-title"><?php echo __('Ajouter un objectif'); ?></h3>
+        <h3 class="card-title"><?php echo __('Ajouter un objectif'); ?></h3>
     </div>
     
-    <div class="panel-body lb-form-body">
+    <div class="card-body lb-form-body">
         <div class="payment-form">
             <?php echo $this->Form->create('Objectif');
             $i=-1;

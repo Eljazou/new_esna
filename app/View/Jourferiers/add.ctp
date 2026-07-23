@@ -1,14 +1,13 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title"></span> Ajouter</h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"></span> Ajouter</h3>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
         <div class="col-lg-6">
-            <div class="panel panel-primary">
-                <div class="panel-body form-horizontal payment-form">
+            <div class="card">
+                <div class="card-body payment-form">
                     <?php
                     echo $this->Form->create('Jourferier');
                     echo $this->Form->input('name', array('label' => 'Nom','class' => 'form-control'));
@@ -23,7 +22,7 @@
                         echo $this->Form->input('date_fin', ['type' => 'text', "required" => "required", 'class' => 'form-control', 'id' => 'datepicker1', 'label' => "Date fin"]);
                         ?>
                     </div>
-                    <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center col-md-12'))); ?>
+                    <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center col-md-12'))); ?>
                 </div>
             </div>
         </div>

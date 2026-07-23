@@ -70,7 +70,7 @@
         overflow:hidden;
         margin-top:16px;
     }
-    .types-card .box-body{ padding:0; }
+    .types-card .card-body{ padding:0; }
 
     table.types-table{ margin-bottom:0; }
     table.types-table thead th{
@@ -175,12 +175,12 @@ function typeIconSvg($key) {
         </div>
     </div>
     <?php if($this->requestAction('/droits/getrole/types/add')==1)
-        echo $this->Html->link('<i class="fa fa-plus"></i> Ajouter', array('action' => 'add'), array('class' => "btn btn-purple-solid", 'escape' => false)); ?>
+        echo $this->Html->link('<i class="ki-duotone ki-plus"></i> Ajouter', array('action' => 'add'), array('class' => "btn btn-purple-solid", 'escape' => false)); ?>
 </div>
 
 <div class="types-card">
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped types-table">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4 types-table">
             <thead>
                 <tr>
                     <th>Type</th>

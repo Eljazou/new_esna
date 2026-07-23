@@ -9,8 +9,8 @@
 
 <section class="content">
 
-    <div class="box">
-        <div class="box-body">
+    <div class="card">
+        <div class="card-body">
             <div class="row">
             <?php 
 			$chifre=$label="";
@@ -64,14 +64,14 @@
 
 <div class="row">
     <section class="content">
-        <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title">Liste des repenses </h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Liste des repenses </h3>
 
             </div>
-                <div class="box-body">
-                    <h3 class="box-title"><?php echo $question["Zquestion"]["question"]; ?></h3>
-                    <table class="table table-bordered table-striped mytable">
+                <div class="card-body">
+                    <h3 class="card-title"><?php echo $question["Zquestion"]["question"]; ?></h3>
+                    <table class="table table-row-bordered table-row-gray-300 align-middle gy-4 mytable">
                         <thead>
                             <tr>
                                 

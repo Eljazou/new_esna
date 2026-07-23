@@ -17,19 +17,19 @@
     }
 
     /* Scoped under an ID to reliably out-specify existing skin styles */
-    #import-pot-excel .panel.panel-primary{
+    #import-pot-excel .card{
         background:#fff !important; 
         border:1px solid var(--border-color) !important;
         border-radius:var(--radius-lg) !important; 
         box-shadow:var(--shadow-card) !important; 
         overflow:hidden !important;
     }
-    #import-pot-excel .panel.panel-primary > .panel-heading{
+    #import-pot-excel .card > .card-header{
         background:var(--accent-light) !important; 
         border-bottom:1px solid var(--border-color) !important;
         padding:16px 24px !important;
     }
-    #import-pot-excel .panel.panel-primary > .panel-heading .panel-title{
+    #import-pot-excel .card > .card-header .card-title{
         color:var(--text-dark) !important; 
         font-size:16px !important; 
         font-weight:700 !important;
@@ -37,7 +37,7 @@
         align-items:center !important; 
         margin-bottom:6px !important;
     }
-    #import-pot-excel .panel.panel-primary > .panel-heading .panel-title:before{
+    #import-pot-excel .card > .card-header .card-title:before{
         content:"\f0ee"; 
         font-family:"FontAwesome"; 
         display:inline-flex; 
@@ -52,24 +52,24 @@
         color:var(--accent-dark); 
         flex:0 0 auto;
     }
-    #import-pot-excel .panel.panel-primary > .panel-heading a{
+    #import-pot-excel .card > .card-header a{
         color:var(--accent-dark) !important; 
         font-weight:600 !important; 
         font-size:13px !important;
         text-decoration:underline !important;
     }
-    #import-pot-excel .panel.panel-primary > .panel-body{ 
+    #import-pot-excel .card > .card-body{ 
         padding:40px 24px !important; 
     }
 
     /* Inner Upload Card Container (Small White Box Centered) */
-    #import-pot-excel .col-lg-6 .panel.panel-primary{
+    #import-pot-excel .col-lg-6 .card{
         background:#fff !important;
         box-shadow:0 4px 20px rgba(0,0,0,0.03) !important; 
         border:1px solid var(--border-color) !important;
         border-radius:var(--radius-md) !important;
     }
-    #import-pot-excel .col-lg-6 .panel.panel-primary .panel-body{ 
+    #import-pot-excel .col-lg-6 .card .card-body{ 
         padding:28px !important; 
     }
 
@@ -163,7 +163,7 @@
         background:var(--accent-dark); 
     }
 
-    #import-pot-excel .payment-form .well.text-center{
+    #import-pot-excel .payment-form .card.text-center{
         background:transparent !important; 
         border:none !important; 
         border-top:1px solid var(--border-color) !important;
@@ -196,26 +196,26 @@
 </style>
 
 <div id="import-pot-excel">
- <div class="panel panel-primary">
-     <div class="panel-heading">
-         <h3 class="panel-title" style="padding-left: 0px;margin-left: -7px;">Importer un fichier Excel</h3>
+ <div class="card">
+     <div class="card-header">
+         <h3 class="card-title" style="padding-left: 0px;margin-left: -7px;">Importer un fichier Excel</h3>
          <?php echo $this->Html->link("Model fichier Excel", '/files/exemple/pots.xlsx') ?>
      </div>
-     <div class="panel-body">
+     <div class="card-body">
          <div class="col-lg-6">
-             <div class="panel panel-primary">
-                 <div class="panel-body form-horizontal payment-form">
+             <div class="card">
+                 <div class="card-body payment-form">
                      <?php echo $this->Form->create('Pot', array('type' => 'file')); ?>
                      <?php
                         echo $this->Form->input('game_id', array('label' => 'Gamme', 'class' => 'form-control'));
                         echo $this->Form->input('user_id', array('label' => 'VM', 'class' => 'form-control'));
                         ?>
                      <div class="file-field-wrap">
-                        <span class="file-btn"><i class="fa fa-upload"></i> Choisir un fichier</span>
+                        <span class="file-btn"><i class="ki-duotone ki-cloud-add"><span class="path1"></span><span class="path2"></span></i> Choisir un fichier</span>
                         <span class="file-name" id="pot-file-name">Aucun fichier choisi</span>
                         <?php echo $this->Form->file('file', array('class' => 'form-control')); ?>
                      </div>
-                     <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center col-md-12'))); ?>
+                     <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center col-md-12'))); ?>
                  </div>
              </div>
          </div>

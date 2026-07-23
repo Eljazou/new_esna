@@ -118,13 +118,15 @@ Commandes 6, Avences 6, Secteurs 5, Produits 5, Packs 5, Offres 5,
 Objectifprofiles 5, Notefrais 5, Groproduits 5, Games 5, Gadjets 5,
 Formations 5, Clientsproposes 5, Categories 5, Actions 5.
 
-**Remaining desktop CRUD (~28 modules, ~82 views):** the 4-view tier
-(Zquestions, Types, Prospectaffaires, Pots, Odpobjectifs, Objectifs, Marketings,
-Lignes, Jourferiers, Groventes, Digitals, Autoechantiants, Absences) and the
-≤3-view tail (Statistiques, Notevalidations, Notefraissecteurs, Hopitals,
-Boitemails, Boiteidees, Actionrapports, Stockvisites, Droits, Asm, Services,
-Plantournes, Pages, Notifications, Gadgetclients). `Errors/` (3) goes with the
-layouts. **Note:** `Droits/backup_database.ctp` is Latin-1 — see TODO #40.
+Plus the 4-view tier (batch 3): Zquestions, Types, Prospectaffaires, Pots,
+Odpobjectifs, Objectifs, Marketings, Lignes, Jourferiers, Groventes, Digitals,
+Autoechantiants, Absences — 4 views each. **42 modules, 254 views done.**
+
+**Remaining desktop CRUD (15 modules, 30 views):** Statistiques 3,
+Notevalidations 3, Notefraissecteurs 3, Hopitals 3, Boitemails 3, Boiteidees 3,
+Actionrapports 3, Stockvisites 2, Droits 2, Asm 2, Services 1, Plantournes 1,
+Pages 1, Notifications 1, Gadgetclients 1. `Errors/` (3) goes with the layouts.
+**Note:** `Droits/backup_database.ctp` is Latin-1 — see TODO #40.
 
 **Separate track (§7):** `Appweb` 10, `Appwebfinal` 13, `Appwebfinalv2` 14,
 `Visitemobileapis` 4 — Bootstrap 4.3.1/AdminLTE layouts, a BS4→BS5 job distinct
@@ -937,6 +939,69 @@ Audit pattern set is now **25 patterns**, boundary-anchored.
 
 ---
 
+### 2026-07-23 — Step 3, batch 3: **the 4-view tier** (13 modules, 52 views) ✅
+
+`Zquestions`, `Types`, `Prospectaffaires`, `Pots`, `Odpobjectifs`, `Objectifs`,
+`Marketings`, `Lignes`, `Jourferiers`, `Groventes`, `Digitals`,
+`Autoechantiants`, `Absences`.
+
+#### 🟡 The batch-2 boundary fix silently broke the CSS renames
+
+Hardening `CLASS_MAP` to `(?<![-\w])…(?![-\w])` meant `_atomic_renames()` — which
+extracted class names by matching the pattern text against `\\b([\w-]+)\\b` —
+stopped matching **anything**. Every CLASS_MAP-derived CSS rename
+(`.panel-heading`, `.panel-body`, `.box-footer`, `.box-body`, `.box-title` …)
+quietly stopped being applied, leaving those rules aimed at markup that had
+already been renamed. Only the two `TOKENS`-derived renames still worked, which
+is why it wasn't obvious.
+
+Caught by the audit's own `CSS .box/.panel rule` pattern, which lit up across 10
+of the 13 modules. `_atomic_renames` now accepts either pattern shape; all 29
+renames verified present. Re-running over every finished module changed **only
+batch-3 files** — the earlier modules had already had their CSS renamed before
+the regression, so nothing shipped broken.
+
+Worth naming the shape of this: a fix for one hyphen-boundary bug introduced a
+second bug in the code that *consumed* those same patterns. The derived-map
+design (TODO #37) is what made it detectable — one place to fix, and the audit
+caught the fallout immediately.
+
+#### Icons
+
+- 8 more Font Awesome names mapped (`fa-comment-o`, `fa-flag-o`, `fa-gamepad` →
+  `ki-joystick`, `fa-paper-plane`, `fa-reply`, `fa-th-large`, `fa-thumbs-up/down`).
+- **Ionicons now converted, not just flagged.** `Absences/index.ctp` had 6
+  `ion-ios-time-outline`. Ionicons ships in `webroot` but is loaded by nothing —
+  not by the Metronic layout, and not by `esna/`'s either — so these have been
+  rendering as empty boxes for as long as the file has existed. New `ION_MAP` +
+  `swap_ionicons()`, which also rewrites BS3/4 `mr-*`/`ml-*` to BS5 `me-*`/`ms-*`.
+- `Groventes/view.ctp` had `class="fa fa-check-square-o btn btn-primary"` **on a
+  `<button>`, inside a JavaScript string** that also contains `'+id+'`
+  concatenations. Migrated by hand per TODO #21, moving the icon into a child
+  `<i>` (the Metronic idiom) and touching no `+` operator.
+- `Digitals/add.ctp`'s FA kit loader removed now that the module is migrated —
+  it was the last deferred one outside the mobile track.
+
+More BS3 classes recovered from inside PHP strings, including another
+`label label-success` built via `str_replace()` in `Digitals/traitement_*` —
+unstyled under BS5, now `badge badge-light-success`.
+
+### Verification status — 254 views, 42 modules
+
+| | |
+|---|---|
+| `php -l` | **254 files, 0 failures** |
+| logic diff | **254 compared, 0 skipped**, 31 differ — all icon swaps and BS3→BS5 class renames inside PHP strings |
+| code intact | ALL INTACT, 42/42 modules |
+| concat damage | ALL CLEAN |
+| legacy audit | residuals in 10 files, **all recorded decisions** |
+
+Remaining residuals, unchanged in character: Font Awesome kept in 3 views
+(TODO #34/#35), self-styled `info-box` in 4, inert `data-widget="collapse"` in 5
+(TODO #28), and the orphan `Objectifprofiles/default.ctp` (TODO #42).
+
+---
+
 ## 5. Migration checklist — inventory of `app/View/**/*.ctp`
 
 **376 `.ctp` files** across 65 view directories.
@@ -1237,7 +1302,21 @@ work.
     nothing without the right number of `<span class="pathN">` children, and the count
     varies per icon. Where the icon class is chosen at runtime (`Secteurs/view.ctp`), the
     count must travel in the same data structure — it cannot be assumed.
-30. **"ALL CLEAN" means "clean against the 25 patterns currently audited."** Five separate
+42. **`Objectifprofiles/default.ctp` is an orphan** — a complete AdminLTE HTML document
+    (`<!DOCTYPE html>`, sidebar, `skin-blue`) with no `default()` action in
+    `ObjectifprofilesController` and no references anywhere. Its
+    `data-toggle="offcanvas"` is AdminLTE's sidebar toggle, dead now that AdminLTE is
+    gone. Restyled and left in place per the `Clients/system_index.ctp` precedent
+    (owner decision, 2026-07-23).
+43. **Ionicons has never rendered in this app.** `webroot/css/ionicons.min.css` exists but
+    no layout has ever loaded it — not the Metronic one, not `esna/`'s. Every `<i class="ion
+    ion-*">` was an empty box. Converted to Keenicons rather than left, since restoring a
+    visible icon is what the markup plainly intended.
+44. **A fix can break its own consumers.** Hardening the CLASS_MAP boundaries (TODO #38)
+    silently disabled `_atomic_renames()`, which parsed those same pattern strings — killing
+    every CSS-side rename until the audit caught it one batch later. When changing the SHAPE
+    of shared data, grep for everything that reads it.
+30. **"ALL CLEAN" means "clean against the 25 patterns currently audited."** Six separate
     times an incomplete pattern set produced a clean report on code that still had defects.
     When migrating a new module, expect to discover legacy classes not yet in
     `tools/audit_legacy.py`; add them and **re-run the migrator over all previously

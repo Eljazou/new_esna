@@ -1,6 +1,5 @@
+<?php echo $this->element('assets/datatables'); ?>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css">
 <style>
     .mb-2 {
@@ -13,22 +12,22 @@
             Liste des Questions
         </h1>
         <div class="breadcrumb">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-default">
                 Scanner le code Qr
             </button>
         </div>
     </section>
 
     <section class="content">
-        <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title">Liste des superviseurs ayant envoyé le rapport : <?php echo $listeusers ?> </h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Liste des superviseurs ayant envoyé le rapport : <?php echo $listeusers ?> </h3>
 
             </div>
             <?php foreach ($users as $user => $questions): ?>
-                <div class="box-body">
-                    <h3 class="box-title"><?php echo $user ?></h3>
-                    <table class="table table-bordered table-striped mytable">
+                <div class="card-body">
+                    <h3 class="card-title"><?php echo $user ?></h3>
+                    <table class="table table-row-bordered table-row-gray-300 align-middle gy-4 mytable">
                         <thead>
                             <tr>
                                 <th>Titre</th>
@@ -48,7 +47,7 @@
                                     <td>
                                         <div class="btn-group">
                                             <?php echo $this->Form->postLink(
-                                                '<i class="fa fa-trash"></i>',
+                                                '<i class="ki-duotone ki-trash"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>',
                                                 ['action' => 'delete', $question['id']],
                                                 [
                                                     'escape' => false,
@@ -77,15 +76,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 <h4 class="modal-title">Scanner le code QR</h4>
             </div>
             <div class="modal-body text-center">
                 <?php echo $this->Html->image('qr-code.png', array('class' => 'logo', "style" => "max-width: 300px;"));   ?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-light float-start" data-bs-dismiss="modal">Annuler</button>
 
             </div>
         </div>
@@ -95,22 +93,11 @@
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-//echo $this->Html->script('bootstrap.min');
-//echo $this->Html->script('app.min');
+//
+//
 ?>
-<?php
-echo $this->Html->script('jquery.dataTables.min');
-
-?>
-
 <!-- -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 <style>
     .dt-button {

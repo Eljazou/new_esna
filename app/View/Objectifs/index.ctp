@@ -1,4 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap');?>
+<?php echo $this->element('assets/datatables'); ?>
 <!-- ===== Metronic-native card (lavender palette kept only where Metronic
      has no equivalent: the gradient header and the mini objective rows).
      Everything else — card, symbol, badges, table, DataTables theming —
@@ -124,10 +124,6 @@
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

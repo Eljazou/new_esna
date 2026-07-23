@@ -22,7 +22,7 @@ echo $this->Html->css('btn-style');
         --shadow-card:0 2px 14px rgba(108,92,231,0.07);
     }
 
-    .bg-yellow, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
+    .bg-warning, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
     background-color: #00a7d0 !important;
     color: #ffffff !important;
     width: 100%;
@@ -45,7 +45,7 @@ td{
     box-shadow: 0px 0px 9px 1px rgb(156 156 156 / 38%);
     background: white;
 }
-.box-footer {
+.card-footer {
     background-color: transparent;
 }
 .grid{
@@ -116,27 +116,27 @@ td{
 .widget-user-desc b, .widget-user-username b{ color:var(--text-muted); font-weight:600; }
 .widget-user-desc a, .widget-user-username a{ color:var(--accent-dark) !important; font-weight:700; }
 
-.box-footer table.table{ margin-bottom:0; }
-.box-footer table.table tr{ border-bottom:1px solid var(--border-color); }
-.box-footer table.table tr:last-child{ border-bottom:none; }
-.box-footer table.table th, .box-footer table.table td{
+.card-footer table.table{ margin-bottom:0; }
+.card-footer table.table tr{ border-bottom:1px solid var(--border-color); }
+.card-footer table.table tr:last-child{ border-bottom:none; }
+.card-footer table.table th, .card-footer table.table td{
     border:none !important; padding:10px 8px !important; font-size:13px; vertical-align:middle;
 }
-.box-footer table.table th{
+.card-footer table.table th{
     color:var(--text-muted) !important; font-weight:600; display:flex; align-items:center; gap:8px;
 }
-.box-footer table.table th i{
+.card-footer table.table th i{
     width:26px; height:26px; border-radius:7px; background:var(--accent-light); color:var(--accent-dark);
     display:inline-flex; align-items:center; justify-content:center; font-size:11px; flex:0 0 auto;
 }
-.box-footer table.table td{ color:var(--text-dark) !important; font-weight:600; }
+.card-footer table.table td{ color:var(--text-dark) !important; font-weight:600; }
 
 .etat-pill{
     display:inline-block; padding:.35em 1em; border-radius:20px; font-size:12px; font-weight:700;
     background:var(--mint-light); color:var(--mint-dark);
 }
 
-.badge.bg-green{
+.badge.bg-success{
     background:var(--mint-light) !important; color:var(--mint-dark) !important; border-radius:20px; font-weight:600;
 }
 .label.label-success{
@@ -162,9 +162,9 @@ td{
 
 <div class="row">
     
-    <div class="col-md-12 ">
+    <div class="col-md-12">
         <!-- titre  -->
-            <h3 class="titre" >La liste des demandes d'opportunités digitales<?php echo $this->Html->link('<i class="fa fa-plus-circle"></i> ' . __('Créer une opportunité'), array('action' => 'add',), array('class' => 'btn-sc btn btn-outline-success','style'=>'float:right', 'escape' => false)); ?></h3>
+            <h3 class="titre" >La liste des demandes d'opportunités digitales<?php echo $this->Html->link('<i class="ki-duotone ki-plus-circle"><span class="path1"></span><span class="path2"></span></i> ' . __('Créer une opportunité'), array('action' => 'add',), array('class' => 'btn-sc btn btn-outline-success','style'=>'float:right', 'escape' => false)); ?></h3>
     <!--end titre  -->
 
     <!-- input Recherche -->
@@ -181,8 +181,8 @@ td{
 ?>
     
 <div class="col-md-6 element-item">
-          <div class="box box-widget widget-user-2 ">
-            <div class="widget-user-header bg-yellow">
+          <div class="card box-widget widget-user-2">
+            <div class="widget-user-header bg-warning">
               <h3 class="widget-user-username" style="    display: contents;"><span class="avatar-badge"><?php echo h($initiales); ?></span><b>Client : </b> <?php echo h($digital['Digital']['nom']); ?>
               </h3>
               <h5 style="max-width: 201px;">
@@ -194,34 +194,34 @@ td{
 
               <h5 class="widget-user-desc"><b>Ajouter par : </b><?php echo $digital['User']['name']; ?></h5>
             </div>
-            <div class="box-footer no-padding">
+            <div class="card-footer no-padding">
                 <div class="col-md-6">
                 <table class="table">
                     <tr>
-                        <th><i class="fa fa-map-marker"></i>ville</th>
-                        <td class="pull-right"><?php echo $this->requestAction("/secteurs/system_get_name/" . $digital['Digital']['secteur_id']); ?></td>
+                        <th><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i>ville</th>
+                        <td class="float-end"><?php echo $this->requestAction("/secteurs/system_get_name/" . $digital['Digital']['secteur_id']); ?></td>
                     </tr>
                     <tr>
-                        <th><i class="fa fa-phone"></i>Téléphone</th>
+                        <th><i class="ki-duotone ki-phone"><span class="path1"></span><span class="path2"></span></i>Téléphone</th>
                         <td><?php echo h($digital['Digital']['telephone']); ?></td>
                     </tr>
                     <tr>
-                        <th><i class="fa fa-th-large"></i>autre</th>
+                        <th><i class="ki-duotone ki-element-4"><span class="path1"></span><span class="path2"></span></i>autre</th>
                         <td><?php echo h($digital['Digital']['autre']); ?></td>
                     </tr>
                     <tr>
-                        <th><i class="fa fa-gamepad"></i>games</th>
+                        <th><i class="ki-duotone ki-joystick"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>games</th>
                         <td><?php
-                        echo '<span class="pull-right badge bg-green">' . str_replace(",", '</span><span class="label label-success">',
+                        echo '<span class="float-end badge bg-success">' . str_replace(",", '</span><span class="badge badge-light-success">',
                                 $digital['Digital']['game_id']) . "</span>";
                         ?></td>
                     </tr>
                     <tr>
-                        <th><i class="fa fa-paper-plane"></i>Origine</th>
+                        <th><i class="ki-duotone ki-send"><span class="path1"></span><span class="path2"></span></i>Origine</th>
                         <td><?php echo h($digital['Digital']['origine']); ?></td>
                     </tr>
                     <tr>
-                        <th><i class="fa fa-user"></i>Demandeur</th>
+                        <th><i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>Demandeur</th>
                         <td><?php echo h($digital['Digital']['demandeur']); ?></td>
                     </tr>
                 </table>
@@ -229,27 +229,27 @@ td{
             <div class="col-md-6">
                 <table class="table">
                     <tr>
-                        <th><i class="fa fa-tag"></i>Type</th>
+                        <th><i class="ki-duotone ki-tag"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>Type</th>
                         <td><?php echo h($digital['Digital']['type']); ?></td>
                     </tr>
                     <tr>
-                        <th><i class="fa fa-comment-o"></i>Commentaire</th>
+                        <th><i class="ki-duotone ki-message-text-2"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>Commentaire</th>
                         <td><?php echo h($digital['Digital']['commentaire']); ?></td>
                     </tr>
                     <tr>
-                        <th><i class="fa fa-reply"></i>Repense</th>
+                        <th><i class="ki-duotone ki-arrow-left"><span class="path1"></span><span class="path2"></span></i>Repense</th>
                         <td><?php echo h($digital['Digital']['repense']); ?></td>
                     </tr>
                     <tr>
-                        <th><i class="fa fa-flag-o"></i>Etat</th>
+                        <th><i class="ki-duotone ki-flag"><span class="path1"></span><span class="path2"></span></i>Etat</th>
                         <td><span class="etat-pill"><?php echo h($digital['Digital']['etat']); ?></span></td>
                     </tr>
                     <tr>
-                        <th><i class="fa fa-clock-o"></i>date repense</th>
+                        <th><i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>date repense</th>
                         <td><?php echo h($digital['Digital']['date_repense']); ?></td>
                     </tr>
                     <tr>
-                        <th><i class="fa fa-calendar"></i>Date d'ajout</th>
+                        <th><i class="ki-duotone ki-calendar-8"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>Date d'ajout</th>
                         <td><?php echo h($digital['Digital']['created']); ?></td>
                     </tr>
                     
@@ -277,10 +277,6 @@ td{
     </div>
     </div>
     <!-- end les element -->
-<?php
-echo $this->Html->script('jquery-2.2.3.min');
-?>
-
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 <script src='http://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js'></script>
 

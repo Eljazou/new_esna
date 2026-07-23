@@ -14,7 +14,7 @@
     }
 
     /* Out-specifies standard Bootstrap theme panel rules */
-    #add-affaire-wrapper .panel.panel-primary {
+    #add-affaire-wrapper .card {
         background: #fff !important; 
         border: 1px solid var(--border-color) !important;
         border-radius: var(--radius-lg) !important; 
@@ -23,7 +23,7 @@
         margin-bottom: 25px;
     }
     
-    #add-affaire-wrapper .panel.panel-primary > .panel-heading {
+    #add-affaire-wrapper .card > .card-header {
         background: var(--accent-light) !important; 
         border-bottom: 1px solid var(--border-color) !important;
         padding: 16px 24px !important;
@@ -31,7 +31,7 @@
         float: none !important;
     }
     
-    #add-affaire-wrapper .panel.panel-primary > .panel-heading .panel-title {
+    #add-affaire-wrapper .card > .card-header .card-title {
         color: var(--text-dark) !important; 
         font-size: 16px !important; 
         font-weight: 700 !important;
@@ -39,7 +39,7 @@
         align-items: center !important; 
     }
     
-    #add-affaire-wrapper .panel.panel-primary > .panel-heading .panel-title:before {
+    #add-affaire-wrapper .card > .card-header .card-title:before {
         content: "\f0ee"; 
         font-family: "FontAwesome"; 
         display: inline-flex; 
@@ -55,7 +55,7 @@
         flex: 0 0 auto;
     }
     
-    #add-affaire-wrapper .panel.panel-primary > .panel-body { 
+    #add-affaire-wrapper .card > .card-body { 
         padding: 40px 24px !important; 
     }
 
@@ -67,14 +67,14 @@
         float: none !important;
     }
     
-    #add-affaire-wrapper .col-lg-10 .panel.panel-primary {
+    #add-affaire-wrapper .col-lg-10 .card {
         background: #fff !important;
         box-shadow: 0 4px 20px rgba(0,0,0,0.03) !important; 
         border: 1px solid var(--border-color) !important;
         border-radius: var(--radius-md) !important;
     }
     
-    #add-affaire-wrapper .col-lg-10 .panel.panel-primary .panel-body { 
+    #add-affaire-wrapper .col-lg-10 .card .card-body { 
         padding: 28px 28px 10px 28px !important; 
     }
 
@@ -113,13 +113,13 @@
     }
 
     /* Layout Card Box Footer Structure */
-    #add-affaire-wrapper .box-footer {
+    #add-affaire-wrapper .card-footer {
         background: transparent !important;
         border: none !important;
         padding: 0 28px 28px 28px !important;
     }
 
-    #add-affaire-wrapper .well.text-center {
+    #add-affaire-wrapper .card.text-center {
         background: transparent !important; 
         border: none !important; 
         border-top: 1px solid var(--border-color) !important;
@@ -155,20 +155,20 @@
 </style>
 
 <div id="add-affaire-wrapper">
-    <div class="panel panel-primary">
-        <div class="panel-heading col-lg-8 col-xs-12">
-            <h3 class="panel-title" style="padding-left: 0px;margin-left: -7px;">Ajouter une affaire</h3>
+    <div class="card">
+        <div class="card-header col-lg-8 col-12">
+            <h3 class="card-title" style="padding-left: 0px;margin-left: -7px;">Ajouter une affaire</h3>
         </div>
-        <div class="panel-body">
-            <div class="col-lg-10 col-xs-12">
-                <div class="panel panel-primary">
-                    <div class="panel-body form-horizontal payment-form">
+        <div class="card-body">
+            <div class="col-lg-10 col-12">
+                <div class="card">
+                    <div class="card-body payment-form">
                         <?php echo $this->Form->create('Prospectaffaire'); 
                         echo $this->Form->input('name', array("label" => "Nom", 'class' => 'form-control'));
                         ?>
                     </div>
-                    <div class="box-footer">
-                        <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-outline-info', 'div' => array('class' => 'well text-center'))); ?>
+                    <div class="card-footer">
+                        <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-outline-info', 'div' => array('class' => 'card card-body bg-light text-center'))); ?>
                     </div>
                 </div>
             </div>

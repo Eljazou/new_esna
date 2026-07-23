@@ -1,12 +1,12 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">
-        <h3 class="panel-title" style="padding-left: 0px;margin-left: -7px;">Editer un objectif</h3>
+<div class="card">
+	<div class="card-header">
+        <h3 class="card-title" style="padding-left: 0px;margin-left: -7px;">Editer un objectif</h3>
 		
     </div>
-	<div class="panel-body">
+	<div class="card-body">
         <div class="col-lg-6">
-            <div class="panel panel-primary">
-                <div class="panel-body form-horizontal payment-form">
+            <div class="card">
+                <div class="card-body payment-form">
 				<?php echo $this->Form->create('Odpobjectif');
 				?>
 	<?php
@@ -18,7 +18,7 @@
 		echo $this->Form->input('date_fin',array('class'=>'form-control'));
 		
 	?>
-<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-primary btn-large','div' => array('class' => 'well text-center col-md-12'))); ?>
+<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-primary btn-large','div' => array('class' => 'card card-body bg-light text-center col-md-12'))); ?>
 
 </div>
 </div>

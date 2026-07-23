@@ -22,7 +22,7 @@ echo $this->Html->css('btn-style');
         --shadow-card:0 2px 14px rgba(108,92,231,0.07);
     }
 
-    .bg-yellow, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
+    .bg-warning, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
         background-color: #00a7d0 !important;
         color: #ffffff !important;
         width: 100%;
@@ -44,7 +44,7 @@ echo $this->Html->css('btn-style');
         box-shadow: 0px 0px 9px 1px rgb(156 156 156 / 38%);
         background: white;
     }
-    .box-footer {
+    .card-footer {
         background-color: transparent;
     }
     .grid{
@@ -193,29 +193,29 @@ echo $this->Html->css('btn-style');
         font-weight: 700; 
     }
 
-    .box-footer table.table{ 
+    .card-footer table.table{ 
         margin-bottom: 0; 
     }
-    .box-footer table.table tr{ 
+    .card-footer table.table tr{ 
         border-bottom: 1px solid var(--border-color); 
     }
-    .box-footer table.table tr:last-child{ 
+    .card-footer table.table tr:last-child{ 
         border-bottom: none; 
     }
-    .box-footer table.table th, .box-footer table.table td{
+    .card-footer table.table th, .card-footer table.table td{
         border: none !important; 
         padding: 10px 8px !important; 
         font-size: 13px; 
         vertical-align: middle;
     }
-    .box-footer table.table th{
+    .card-footer table.table th{
         color: var(--text-muted) !important; 
         font-weight: 600; 
         display: flex; 
         align-items: center; 
         gap: 8px;
     }
-    .box-footer table.table th i{
+    .card-footer table.table th i{
         width: 26px; 
         height: 26px; 
         border-radius: 7px; 
@@ -227,7 +227,7 @@ echo $this->Html->css('btn-style');
         font-size: 11px; 
         flex: 0 0 auto;
     }
-    .box-footer table.table td{ 
+    .card-footer table.table td{ 
         color: var(--text-dark) !important; 
         font-weight: 600; 
     }
@@ -242,7 +242,7 @@ echo $this->Html->css('btn-style');
         color: var(--mint-dark);
     }
 
-    .badge.bg-green{
+    .badge.bg-success{
         background: var(--mint-light) !important; 
         color: var(--mint-dark) !important; 
         border-radius: 20px; 
@@ -316,8 +316,8 @@ echo $this->Html->css('btn-style');
         <div class="grid">
             <?php foreach ($digitals as $digital): ?>
             <div class="col-md-6 element-item">
-                <div class="box box-widget widget-user-2">
-                    <div class="widget-user-header bg-yellow">
+                <div class="card box-widget widget-user-2">
+                    <div class="widget-user-header bg-warning">
                         <h3 class="widget-user-username" style="display: contents;">
                             <b>Client : </b> <?php echo h($digital['Digital']['nom']); ?>
                         </h3>
@@ -331,12 +331,12 @@ echo $this->Html->css('btn-style');
                         </h5>
                         <h5 class="widget-user-desc"><b>Ajouter par : </b><?php echo $digital['User']['name']; ?></h5>
                     </div>
-                    <div class="box-footer no-padding">
+                    <div class="card-footer no-padding">
                         <div class="col-md-6">
                             <table class="table">
                                 <tr>
                                     <th>ville</th>
-                                    <td class="pull-right"><?php echo $this->requestAction("/secteurs/system_get_name/" . $digital['Digital']['secteur_id']); ?></td>
+                                    <td class="float-end"><?php echo $this->requestAction("/secteurs/system_get_name/" . $digital['Digital']['secteur_id']); ?></td>
                                 </tr>
                                 <tr>
                                     <th>Téléphone</th>
@@ -350,7 +350,7 @@ echo $this->Html->css('btn-style');
                                     <th>games</th>
                                     <td>
                                         <?php
-                                        echo '<span class="pull-right badge bg-green">' . str_replace(",", '</span><span class="label label-success">', $digital['Digital']['game_id']) . "</span>";
+                                        echo '<span class="float-end badge bg-success">' . str_replace(",", '</span><span class="badge badge-light-success">', $digital['Digital']['game_id']) . "</span>";
                                         ?>
                                     </td>
                                 </tr>
@@ -414,9 +414,6 @@ echo $this->Html->css('btn-style');
     </div>
 </div>
 
-<?php
-echo $this->Html->script('jquery-2.2.3.min');
-?>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 <script src='http://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js'></script>
 

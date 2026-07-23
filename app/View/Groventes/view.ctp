@@ -1,16 +1,13 @@
-<?php
-
-echo $this->Html->css('dataTables.bootstrap');
-		?>	
+<?php echo $this->element('assets/datatables'); ?>
 <style>
 thead tr th{font-size: 15px;font-weight: 600;padding:5px 3px !important;}
 </style>
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title" style="font-size:24px;"><?php echo __('Sorti'); ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title" style="font-size:24px;"><?php echo __('Sorti'); ?></h3>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
 			<tr>
 				<th>Grossiste</th>
@@ -37,10 +34,7 @@ thead tr th{font-size: 15px;font-weight: 600;padding:5px 3px !important;}
     </table>
  </div>
 </div>
-	<?php echo $this->Html->script('jquery-2.2.3.min');
-        echo $this->Html->script('bootstrap.min');
-        echo $this->Html->script('app.min');
-        echo $this->Html->script('jquery.dataTables.min');
+	<?php
         echo $this->Html->script('jquery.slimscroll.min');
         echo $this->Html->script('fastclick');
         echo $this->Html->script('demo');
@@ -82,7 +76,7 @@ thead tr th{font-size: 15px;font-weight: 600;padding:5px 3px !important;}
 	function changenbr(i){
 		var id = $(".q"+i+" span").attr("id");
 		var value = $(".q"+i+" span").attr("class");
-		var forme = '<?php  echo $this->Form->create("Grovente",array("action"=>"edit")); ?><input type="hidden" name="data[Grovente][id]" value="'+id+'"/><input name="data[Grovente][quantite]" type="number" value="'+value+'" class="col-md-2" min="0"/><button type="submit" class="fa fa-check-square-o btn btn-primary" style=" margin-left: 4px; "></button></form>';
+		var forme = '<?php  echo $this->Form->create("Grovente",array("action"=>"edit")); ?><input type="hidden" name="data[Grovente][id]" value="'+id+'"/><input name="data[Grovente][quantite]" type="number" value="'+value+'" class="col-md-2" min="0"/><button type="submit" class="btn btn-primary" style=" margin-left: 4px; "><i class="ki-duotone ki-check-square"><span class="path1"></span><span class="path2"></span></i></button></form>';
 		$(".q"+i).empty();
 		$(".q"+i).html(forme);
 	}

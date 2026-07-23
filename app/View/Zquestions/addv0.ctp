@@ -217,7 +217,7 @@
                 <!-- Submit Button -->
                 <div class="col-md-12">
                     <div class="d-flex justify-content-between mt-4 gap-3">
-                        <button type="button" id="prevBtn" class="col btn btn-secondary " style="display: none;">Précédent</button>
+                        <button type="button" id="prevBtn" class="col btn btn-secondary" style="display: none;">Précédent</button>
                         <button type="button" id="nextBtn" class="col btn btn-primary">Démarrer</button>
                     </div>
 

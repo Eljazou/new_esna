@@ -1,3 +1,4 @@
+<?php echo $this->element('assets/datatables'); ?>
 
 <style type="text/css">
 :root{
@@ -167,7 +168,7 @@ tinymce.init({
             </div>
             <?php if ($this->requestAction('/droits/getrole/lignes/edit') == 1): ?>
                 <button type="button" class="btn btn-amber-solid" data-bs-toggle="modal" data-bs-target="#editEventModal">
-                    <i class="fa fa-edit"></i> Mettre à jour le message d'événement
+                    <i class="ki-duotone ki-pencil"><span class="path1"></span><span class="path2"></span></i> Mettre à jour le message d'événement
                 </button>
             <?php endif; ?>
         </div>
@@ -182,7 +183,7 @@ tinymce.init({
                 <?php endif; ?>
             </div>
             <?php if (!empty($ligne['Lignespecialiteinfo'])): ?>
-                <table class="table table-bordered table-striped" id="explications-table">
+                <table class="table table-row-bordered table-row-gray-300 align-middle gy-4" id="explications-table">
                     <colgroup>
                         <col style="width:14%">
                         <col style="width:16%">
@@ -219,7 +220,7 @@ tinymce.init({
         <div class="lb-card-body table-responsive">
             <h3 style="margin-top:0; margin-bottom:16px; font-size:16px; font-weight:700;">La liste des collaborateurs de la ligne</h3>
             <?php if (!empty($ligne['User'])): ?>
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                     <thead>
                         <tr>
                             <th><?php echo __('Nom & prénom'); ?></th>
@@ -303,24 +304,11 @@ tinymce.init({
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->css('dataTables.bootstrap');
-
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script>
     // Snapshot our jQuery instance right after our plugins load, before Metronic's own
     // bundles (plugins.bundle.js / scripts.bundle.js) can silently reassign window.jQuery.

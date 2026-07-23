@@ -1,9 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-echo $this->Html->css('select2.min');
-
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('select2.full.min');
-?>
+<?php echo $this->element('assets/datatables'); ?>
 <style type="text/css">
 	/* only the bits Metronic doesn't already give us */
 	.hide_element,
@@ -251,7 +246,7 @@ $metrics = [
 										<?php echo number_format($data["echantillons_c"], 0, ',', ' ') . ' / ' . number_format($data["echantillons"], 0, ',', ' '); ?>
 									</span>
 								</div>
-								<div class="content-historique content-historique<?php echo $k++; ?>">
+								<div class="content-historique<?php echo $k++; ?>">
 									<table class="table">
 										<thead><tr><th>Nom</th><th>Nom d'utilisateur</th><th>Qte</th><th>Date</th></tr></thead>
 										<tbody>
@@ -273,7 +268,7 @@ $metrics = [
 										<?php echo number_format($data["actions_c"], 0, ',', ' ') . ' / ' . number_format($data["actions"], 0, ',', ' '); ?>
 									</span>
 								</div>
-								<div class="content-historique content-historique<?php echo $k++; ?>">
+								<div class="content-historique<?php echo $k++; ?>">
 									<table class="table">
 										<thead><tr><th>Nom d'utilisateur</th><th>Client</th><th>Pot</th><th>Valeur</th><th>Nature</th><th>Description</th></tr></thead>
 										<tbody>
@@ -295,7 +290,7 @@ $metrics = [
 										<?php echo number_format($data["packs_c"], 0, ',', ' ') . ' / ' . number_format($data["packs"], 0, ',', ' '); ?>
 									</span>
 								</div>
-								<div class="content-historique content-historique<?php echo $k++; ?>">
+								<div class="content-historique<?php echo $k++; ?>">
 									<table class="table">
 										<thead><tr><th>Utilisateur</th><th>Client</th><th>Nombre</th></tr></thead>
 										<tbody>
@@ -318,7 +313,7 @@ $metrics = [
 									</span>
 								</div>
 								<button class="btn btn-icon btn-sm btn-light-danger rounded-circle ms-1" onclick='editconsomation(<?php echo $data["id"]; ?>,"ca")' type='button' title='Ajouter'>+</button>
-								<div class="content-historique content-historique<?php echo $k++; ?>">
+								<div class="content-historique<?php echo $k++; ?>">
 									<table class="table">
 										<thead><tr><th>Vm</th><th>Consomation</th><th>Mois</th><th>Commentaire</th></tr></thead>
 										<tbody>
@@ -341,7 +336,7 @@ $metrics = [
 									</span>
 								</div>
 								<button class="btn btn-icon btn-sm btn-light-warning rounded-circle ms-1" onclick='editconsomation(<?php echo $data["id"]; ?>,"budget")' type='button' title='Ajouter'>+</button>
-								<div class="content-historique content-historique<?php echo $k++; ?>">
+								<div class="content-historique<?php echo $k++; ?>">
 									<table class="table">
 										<thead><tr><th>Vm</th><th>Consomation</th><th>Mois</th><th>Commentaire</th></tr></thead>
 										<tbody>
@@ -410,22 +405,12 @@ endforeach;
 	</div>
 </div>
 
-<?php echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
+<?php
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script>
 	$(function() {
 		$('[id^="marketing_table"]').DataTable({
@@ -470,7 +455,6 @@ echo $this->Html->script('demo');
 	}
 </script>
 
-<?php echo $this->Html->script('jquery-3.4.1.min'); ?>
 <script>
 	var jqNew = jQuery.noConflict();
 	jqNew(function() {});

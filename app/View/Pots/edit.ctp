@@ -1,11 +1,11 @@
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title">Modifier la potentialité</h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Modifier la potentialité</h3>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
         <div class="col-lg-6">
-            <div class="panel panel-primary">
-                <div class="panel-body form-horizontal payment-form">
+            <div class="card">
+                <div class="card-body payment-form">
                     <?php echo $this->Form->create('Pot');
 						 echo $this->Form->input('id');
 						 echo $this->Form->input('game_id', array('label' => 'Gamme', 'class' => 'form-control'));
@@ -22,7 +22,7 @@
 						 $types=["H"=>"H","M"=>"M","L"=>"L"];
 						 echo $this->Form->input('pot_prescription', array("options"=>$types,'label' => "potentialité de prescription", 'class' => 'form-control'));
 						 echo $this->Form->input('commentaire', array('class' => 'form-control'));
-					echo $this->Form->end(array('label' => 'Editer',"required"=>"required", 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center col-md-12'))); ?>
+					echo $this->Form->end(array('label' => 'Editer',"required"=>"required", 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center col-md-12'))); ?>
                 </div>
             </div>
         </div>

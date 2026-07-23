@@ -1,11 +1,11 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
-echo $this->Html->css('dataTables.bootstrap');
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 echo $this->Html->css('daterangepicker');
 ?>	
 <style>
     @media (max-width:936px){
-        .box-body{
+        .card-body{
             overflow: scroll;
             overflow-y: hidden;
         }
@@ -14,21 +14,21 @@ echo $this->Html->css('daterangepicker');
 	.dt-button:hover{color:#fff;background:#1a486f;}
 </style>
 
-<div class="row ">
+<div class="row">
     <div class="col-md-12" style="margin-bottom: 24px;"> 
-        <div class="box form-group">
-            <div class="box-header with-border">
-                <label class="box-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;
+        <div class="card mb-5">
+            <div class="card-header">
+                <label class="card-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;
                        font-weight: normal;width: auto;text-align:left;float:left;">
                     Pour des absences d'une période précise,veuillez sélectionner une date :
                 </label>
                 <div class="col-md-6">
                     <form action="<?php echo $this->Html->url(array("action" => "index", $user_id)); ?>" method="get" id="dateform">
                         <div class="input-group col-lg-12" style="float:left;">
-                            <div class="input-group-addon">
-                                <i class="fa fa-clock-o"></i>
+                            <div class="input-group-text">
+                                <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                             </div>
-                            <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control pull-right" name="date" id="reservationtime" placeholder="Rechercher">
+                            <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control float-end" name="date" id="reservationtime" placeholder="Rechercher">
                         </div>
                     </form>
                 </div>
@@ -38,35 +38,35 @@ echo $this->Html->css('daterangepicker');
     </div>
 	<?php if( AuthComponent::user('role')!='Ressource humain'){?>
 <div class="col-md-12" style="float: left;width: 100%;padding: 0px;">
-	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="small-box bg-orange box box-default collapsed-box" style="border-top:0px;">
+	<div class="col-lg-4 col-md-4 col-sm-6 col-12">
+        <div class="card bg-orange" style="border-top:0px;">
             <div class="inner">
                 <h3><?php echo $this->requestAction("/absences/system_get_reste/" . $user_id . "/$date_debut/$date_fin"); ?> Heures</h3>
                 <p>Demandes d'autorisation de sortie</p>
                 <div class="icon">
-                    <i class="ion ion-ios-time-outline"></i>
+                    <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                 </div>
             </div>
         </div>
     </div>
-	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="small-box bg-light-yellow box box-default collapsed-box" style="border-top:0px;">
+	<div class="col-lg-4 col-md-4 col-sm-6 col-12">
+        <div class="card bg-light-yellow" style="border-top:0px;">
            <div class="inner">
                 <h3><?php echo $this->requestAction("/absences/system_get_reste/" . $user_id . "/$date_debut/$date_fin/justifier"); ?> Jours</h3>
                 <p>Absences pour autres motifs</p>
                 <div class="icon">
-                    <i class="ion ion-ios-time-outline"></i>
+                    <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                 </div>
             </div> 
         </div>
     </div>
-	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="small-box bg-yellow box box-default collapsed-box" style="border-top:0px;">
+	<div class="col-lg-4 col-md-4 col-sm-6 col-12">
+        <div class="card bg-warning" style="border-top:0px;">
             <div class="inner">
                 <h3><?php echo $this->requestAction("/absences/system_get_reste/" . $user_id . "/$date_debut/$date_fin/Maladie"); ?> Jours</h3>
                 <p>CM</p>
                 <div class="icon">
-                    <i class="ion ion-ios-time-outline"></i>
+                    <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                 </div>
             </div>
         </div>
@@ -74,12 +74,12 @@ echo $this->Html->css('daterangepicker');
 </div>
 	<?php }?>
 <div class="col-md-12" style="float: left;width: 100%;">
-	<div class="box">
-		<div class="box-header">
-			<h3 class="box-title">Liste des absences</h3>	
-			<div class="btn-group pull-right" style="float:right;">
-				<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-					<i class="fa fa-bars"></i>&nbsp;Demander une absence&nbsp;<span class="caret"></span>
+	<div class="card">
+		<div class="card-header">
+			<h3 class="card-title">Liste des absences</h3>	
+			<div class="btn-group float-end" style="float:right;">
+				<button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
+					<i class="ki-duotone ki-burger-menu"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>&nbsp;Demander une absence&nbsp;<span class=""></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
 					<li> <?php	echo $this->Html->link(__("Je demande une autorisation d'absence durant mes horaires de travail"), array('action' => 'add'));?></li>
@@ -97,7 +97,7 @@ echo $this->Html->css('daterangepicker');
     <div class="modal-dialog col-md-10" style="margin:auto;float:none;width:80%;top:3%;">
 		<div class="modal-content" style="background:#fff;float:left;width: 100%;padding-bottom: 27px;">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 				<h4 class="modal-title" id="myModalLabel">Détail absence</h4>
 			</div>
 			<div class="modal-body">
@@ -141,8 +141,8 @@ echo $this->Html->css('daterangepicker');
 </div>
 <!---->
 
-		<div class="box-body">
-			<table id="example1" class="table table-bordered table-striped">
+		<div class="card-body">
+			<table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 				<thead>
 					<tr>
 						<th>Justificatif</th>
@@ -165,7 +165,7 @@ echo $this->Html->css('daterangepicker');
                 ?>
                 <tr class="elem<?php echo $ii;?>">
                     <td><?php if(!empty($absence['Absence']['file'])){ echo $this->Html->image('absences/' . $absence['Absence']['file'], array('style' => 'height: 100px;width: 100px;float: left;cursor:pointer;','class'=>'tableimg', 'onclick'=>'popup('.$ii.')'));}else { ?>
-					<i class="fa fa-exclamation-triangle" style="font-size: 28px;text-align: center !important;width: 100%;float: left;    color: #aaa;"></i>
+					<i class="ki-duotone ki-information-5" style="font-size: 28px;text-align: center !important;width: 100%;float: left;    color: #aaa;"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
 					<?php } ?>
 					</td>
                     <td><?php echo $this->Html->link($absence['User']['name'], array('controller' => 'users', 'action' => 'view', $absence['User']['id'])); ?></td>
@@ -235,12 +235,12 @@ echo $this->Html->css('daterangepicker');
     <?php if (!empty($users)): ?>
 
 <div class="col-md-12" style="float: left;width: 100%;">
-	<div class="box">
-        <div class="box-header">
-            <h3 class="box-title">Liste des absences des employés</h3>
+	<div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Liste des absences des employés</h3>
         </div>
-        <div class="box-body">
-            <table id="example2" class="table table-bordered table-striped">
+        <div class="card-body">
+            <table id="example2" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                 <thead>
                     <tr>
                         <th>Utilisateur</th>
@@ -281,35 +281,35 @@ echo $this->Html->css('daterangepicker');
 	</div>
 </div>
 <div class="col-md-12" id="stat" style="float: left;width: 100%;padding: 0px;">
-	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="small-box bg-orange box box-default collapsed-box" style="border-top:0px;">
+	<div class="col-lg-4 col-md-4 col-sm-6 col-12">
+        <div class="card bg-orange" style="border-top:0px;">
             <div class="inner">
                 <h3><?php echo $heur ?> Heures</h3>
                 <p>Global des absences</p>
                 <div class="icon">
-                    <i class="ion ion-ios-time-outline"></i>
+                    <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                 </div>
             </div>
         </div>
     </div>
-	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="small-box bg-yellow box box-default collapsed-box" style="border-top:0px;">
+	<div class="col-lg-4 col-md-4 col-sm-6 col-12">
+        <div class="card bg-warning" style="border-top:0px;">
             <div class="inner">
                 <h3><?php echo $ma; ?> Jours</h3>
                 <p>CM</p>
                 <div class="icon">
-                    <i class="ion ion-ios-time-outline"></i>
+                    <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                 </div>
             </div>
         </div>
     </div>
-	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="small-box bg-light-yellow box box-default collapsed-box" style="border-top:0px;">
+	<div class="col-lg-4 col-md-4 col-sm-6 col-12">
+        <div class="card bg-light-yellow" style="border-top:0px;">
             <div class="inner">
                 <h3><?php echo $jus ?> Jours</h3>
                 <p>	Absences pour autres motifs</p>
                 <div class="icon">
-                    <i class="ion ion-ios-time-outline"></i>
+                    <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                 </div>
             </div>
         </div>
@@ -318,24 +318,13 @@ echo $this->Html->css('daterangepicker');
     <?php endif; ?>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>
-<!-- --><script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script> 
+<!-- --><script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script> 
 <?php
-//echo $this->Html->script('jquery-2.2.3.min');
+//
 echo $this->Html->script('daterangepicker');
 ?>
 <script>

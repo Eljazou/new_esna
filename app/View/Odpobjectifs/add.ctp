@@ -1,13 +1,13 @@
-<div class="box">
-      <div class="box-header table-responsive">
-           <h3 class="box-title">Ajouter le nombre de contacts à atteindre par région et par produit</h3>
+<div class="card">
+      <div class="card-header table-responsive">
+           <h3 class="card-title">Ajouter le nombre de contacts à atteindre par région et par produit</h3>
       </div>
 	  <?php echo $this->Form->create('Odpobjectif'); ?>
-	  <div class="panel panel-primary">
-			<div class="panel-body">
+	  <div class="card">
+			<div class="card-body">
 				<div class="col-lg-6">
-					<div class="panel panel-primary">
-						<div class="panel-body form-horizontal payment-form">
+					<div class="card">
+						<div class="card-body payment-form">
 							<?php
 								echo $this->Form->input('date_debut',array('class'=>'form-control'));
 								echo $this->Form->input('date_fin',array('class'=>'form-control'));
@@ -18,8 +18,8 @@
 			</div>
 		</div>
 
-	<div class="box-body">
-         <table id="example1" class="table table-bordered table-striped">
+	<div class="card-body">
+         <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 		 <thead>
 			<tr>
 				<th>Regions</th>
@@ -46,5 +46,5 @@
 	</div>
 	</div>
 	
-<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-primary btn-large','div' => array('class' => 'well text-center col-md-12'))); ?>
+<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-primary btn-large','div' => array('class' => 'card card-body bg-light text-center col-md-12'))); ?>
 

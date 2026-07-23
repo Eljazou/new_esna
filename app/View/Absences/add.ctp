@@ -9,14 +9,14 @@
     }
 </style>
 
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title" style="padding-left: 0px;margin-left: -7px;"> <?php echo 'Demande d\'absence'; ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title" style="padding-left: 0px;margin-left: -7px;"> <?php echo 'Demande d\'absence'; ?></h3>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
         <div class="col-lg-6">
-            <div class="panel panel-primary">
-                <div class="panel-body form-horizontal payment-form">
+            <div class="card">
+                <div class="card-body payment-form">
                     <?php
                     echo $this->Form->create('Absence');
                     echo $this->Form->input('description', array(
@@ -52,19 +52,19 @@
                     echo '</div>';
 
                     ?>
-                    <div class="col-md-12 col-xs-12" style="margin-bottom: 15px;">
+                    <div class="col-md-12 col-12" style="margin-bottom: 15px;">
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" id="checkbox-part-jour"> Une partie de la journée
                             </label>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xs-6" style="padding-left: 0px;">
+                    <div class="col-md-6 col-6" style="padding-left: 0px;">
                         <?php
                         echo $this->Form->input('date_debut', ['autocomplete' => 'off', 'type' => 'text', "required" => "required", 'class' => 'form-control', 'id' => 'datepicker', 'label' => "Date d'arrêt de travail"]);
                         ?>
                     </div>
-                    <div class="col-md-6 col-xs-6 " style="padding: 0px;">
+                    <div class="col-md-6 col-6" style="padding: 0px;">
                         <?php
                         echo $this->Form->input('date_fin', [
                             'type' => 'text',
@@ -75,7 +75,7 @@
                             'div' => ['class' => 'div-date-fin']
                         ]);
                         ?>
-                        <div class="form-group part_jour_group">
+                        <div class="mb-5 part_jour_group">
                             <label for="part_jour">Une partie de la journée</label>
                             <select name="data[Absence][part_jour]" id="part_jour" class="form-control select_part">
                                 <option value="">Sélectionnez</option>
@@ -87,7 +87,7 @@
                         </div>
 
                     </div>
-                    <?php echo $this->Form->end(array('label' => "J'envoie ma demande à mon responsable directe", 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'well text-center col-md-12'))); ?>
+                    <?php echo $this->Form->end(array('label' => "J'envoie ma demande à mon responsable directe", 'class' => 'btn btn-primary btn-large', 'div' => array('class' => 'card card-body bg-light text-center col-md-12'))); ?>
                 </div>
             </div>
         </div>

@@ -1,6 +1,3 @@
-<?php
-echo $this->Html->css('select2.min');
-?>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!--
@@ -13,12 +10,9 @@ echo $this->Html->css('select2.min');
   is what broke things last time. If DataTables Buttons export ever needs touching,
   only the two script tags below (buttons + a live pdfmake CDN) should change.
 -->
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.18/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.18/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 <style>
     :root{
@@ -29,7 +23,7 @@ echo $this->Html->css('select2.min');
         --pink:#ea5a94; --pink-bg:#fde8ef;
         --orange:#e8973a; --orange-bg:#fdf0e2;
     }
-    body,.box,table,.form-control,.filter-label{ font-family:'Poppins',sans-serif; }
+    body,.card,table,.form-control,.filter-label{ font-family:'Poppins',sans-serif; }
 
     /* -- top summary cards (pastel, matching statistiquesvisite design) -- */
     .stat-card{
@@ -83,7 +77,7 @@ echo $this->Html->css('select2.min');
         min-height:42px !important; padding:8px 14px !important; font-size:14px !important; box-shadow:none !important;
     }
     .filter-card .form-control:focus,.filter-card input[type="text"]:focus{ border-color:var(--primary) !important; outline:none; }
-    .filter-card .input-group-addon{ border-radius:10px 0 0 10px !important; border:1.5px solid #e7e6f7 !important;
+    .filter-card .input-group-text{ border-radius:10px 0 0 10px !important; border:1.5px solid #e7e6f7 !important;
         border-right:none !important; background:#fafaff; color:var(--primary); }
     .filter-card #reservationtime{ border-radius:0 10px 10px 0 !important; border-left:none !important; cursor:pointer; }
     .btn-search-pill{ background:linear-gradient(135deg,var(--primary),#5479f7); border:none; border-radius:24px;
@@ -92,10 +86,10 @@ echo $this->Html->css('select2.min');
     .btn-search-pill:hover{ background:linear-gradient(135deg,#5f56ee,#3f66e6); color:#fff; }
 
     /* -- general boxes -- */
-    .box{ border-radius:18px !important; border:none !important; box-shadow:0 4px 16px rgba(108,99,245,.06) !important; background:#fff !important; }
-    .box .box-header{ border:none !important; padding:20px 22px 6px; }
-    .box .box-title{ font-size:15.5px; font-weight:700; color:#2b2b45; }
-    .box .box-body{ padding:16px 22px 22px; }
+    .card{ border-radius:18px !important; border:none !important; box-shadow:0 4px 16px rgba(108,99,245,.06) !important; background:#fff !important; }
+    .card .card-header{ border:none !important; padding:20px 22px 6px; }
+    .card .card-title{ font-size:15.5px; font-weight:700; color:#2b2b45; }
+    .card .card-body{ padding:16px 22px 22px; }
 
     /* -- mini per-VM stat tiles (replaces old AdminLTE .info-box) -- */
     .mini-stat{ border-radius:16px; box-shadow:0 3px 10px rgba(108,99,245,.05); display:flex; align-items:center;
@@ -110,7 +104,7 @@ echo $this->Html->css('select2.min');
 
     /* -- tables -- */
     table.table thead th{ background:#f4f2ff; color:#5b52e0; font-weight:700; font-size:13px; border:none !important; white-space:nowrap; }
-    table.table-bordered td,table.table-bordered th{ border-color:#eef0fa !important; }
+    table.table-row-bordered td,table.table-row-bordered th{ border-color:#eef0fa !important; }
     table.table-striped>tbody>tr:nth-of-type(odd){ background-color:#fbfbff; }
     .red-row{ background-color:#fdecec !important; }
 
@@ -161,10 +155,10 @@ echo $this->Html->css('select2.min');
 
 <div class="row">
     <div class="col-md-12">
-        <div class="col-xs-12" style="margin-bottom:24px;">
+        <div class="col-12" style="margin-bottom:24px;">
 
             <div class="row g-3 mb-3">
-                <div class="col-md-4 col-xs-4">
+                <div class="col-md-4 col-4">
                     <div class="stat-card blue">
                         <div class="stat-card-body">
                             <span class="stat-label">Nombre de visites</span>
@@ -175,7 +169,7 @@ echo $this->Html->css('select2.min');
                     </div>
                 </div>
 
-                <div class="col-md-4 col-xs-4">
+                <div class="col-md-4 col-4">
                     <div class="stat-card green">
                         <div class="stat-card-body">
                             <span class="stat-label">Nombre de Clients visités</span>
@@ -186,7 +180,7 @@ echo $this->Html->css('select2.min');
                     </div>
                 </div>
 
-                <div class="col-md-4 col-xs-4">
+                <div class="col-md-4 col-4">
                     <div class="stat-card red">
                         <div class="stat-card-body">
                             <span class="stat-label">Nombre de Clients non visités</span>
@@ -198,9 +192,9 @@ echo $this->Html->css('select2.min');
                 </div>
             </div>
 
-            <div class="box form-group filter-card">
-                <div class="box-body" style="padding:0;">
-                    <div class="col-xs-12" style="padding:0;">
+            <div class="card mb-5 filter-card">
+                <div class="card-body" style="padding:0;">
+                    <div class="col-12" style="padding:0;">
                         <form action="<?php echo $this->Html->url("/pots/index") ?>" method="post" id="dateform" autocomplete="off">
 
                             <div class="filter-field" style="width:100%;">
@@ -209,9 +203,9 @@ echo $this->Html->css('select2.min');
                                 </div>
                                 <div class="filter-field-body">
                                     <label class="filter-label">Choisissez une date</label>
-                                    <div class="input-group col-lg-6 col-md-8 col-xs-12" style="padding:0;">
-                                        <div class="input-group-addon"><i class="fa fa-clock-o"></i></div>
-                                        <input type="text" <?php if ($dateaafficherdansleview != "") echo 'value="' . $dateaafficherdansleview . '"'; ?> class="form-control pull-right" name="date" id="reservationtime" placeholder="Rechercher" autocomplete="off">
+                                    <div class="input-group col-lg-6 col-md-8 col-12" style="padding:0;">
+                                        <div class="input-group-text"><i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i></div>
+                                        <input type="text" <?php if ($dateaafficherdansleview != "") echo 'value="' . $dateaafficherdansleview . '"'; ?> class="form-control float-end" name="date" id="reservationtime" placeholder="Rechercher" autocomplete="off">
                                     </div>
                                 </div>
                             </div>
@@ -226,7 +220,7 @@ echo $this->Html->css('select2.min');
                                         "label" => "Choisissez une activité",
                                         "name" => "activite",
                                         'options' => array("" => "Choisissez", "prive" => "Privé", "Publique" => "Publique"),
-                                        'class' => 'form-control pull-right',
+                                        'class' => 'form-control float-end',
                                         'div' => 'filter-field-body'
                                     ));
                                     ?>
@@ -240,7 +234,7 @@ echo $this->Html->css('select2.min');
                                     echo $this->Form->input('game_id', array(
                                         "multiple" => "true",
                                         "label" => "Choisissez une gamme",
-                                        'class' => 'form-control pull-right choix_multi select2',
+                                        'class' => 'form-control float-end choix_multi select2',
                                         'multiple' => 'multiple',
                                         'div' => 'filter-field-body'
                                     ));
@@ -256,7 +250,7 @@ echo $this->Html->css('select2.min');
                                         "multiple" => "true",
                                         "label" => "La liste des secteurs",
                                         'options' => $secteurs,
-                                        'class' => 'form-control pull-right choix_multi select2',
+                                        'class' => 'form-control float-end choix_multi select2',
                                         'multiple' => 'multiple',
                                         'div' => 'filter-field-body'
                                     ));
@@ -271,7 +265,7 @@ echo $this->Html->css('select2.min');
                                     echo $this->Form->input('category_id', array(
                                         "multiple" => "true",
                                         "label" => "La liste des spécialité",
-                                        'class' => 'form-control pull-right choix_multi select2',
+                                        'class' => 'form-control float-end choix_multi select2',
                                         'multiple' => 'multiple',
                                         'div' => 'filter-field-body'
                                     ));
@@ -290,7 +284,7 @@ echo $this->Html->css('select2.min');
                                         "label" => "La liste des VM",
                                         "name" => "users",
                                         'options' => $users_listes,
-                                        'class' => 'form-control pull-right choix_multi vm select2',
+                                        'class' => 'form-control float-end choix_multi vm select2',
                                         'multiple' => 'multiple',
                                         'value' => $selected_users,
                                         'div' => 'filter-field-body'
@@ -308,7 +302,7 @@ echo $this->Html->css('select2.min');
                                         "label" => "Les lignes",
                                         "name" => "ligne",
                                         'options' => $lignes,
-                                        'class' => 'form-control pull-right choix_multi select2',
+                                        'class' => 'form-control float-end choix_multi select2',
                                         'multiple' => 'multiple',
                                         'div' => 'filter-field-body'
                                     ));
@@ -326,7 +320,7 @@ echo $this->Html->css('select2.min');
                                         "label" => "Type de client",
                                         "name" => "type",
                                         'options' => $typess,
-                                        'class' => 'form-control pull-right choix_multi select2',
+                                        'class' => 'form-control float-end choix_multi select2',
                                         'multiple' => 'multiple',
                                         'div' => 'filter-field-body'
                                     ));
@@ -348,12 +342,12 @@ echo $this->Html->css('select2.min');
 
         <?php foreach ($allusers as $k => $user): ?>
             <div class="col-md-6">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Clients de l'utilisateur : <?php echo h($user['name']); ?></h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Clients de l'utilisateur : <?php echo h($user['name']); ?></h3>
                     </div>
-                    <div class="box-body" style="max-height:400px; overflow-y:auto;">
-                        <table class="example1 table table-bordered table-striped">
+                    <div class="card-body" style="max-height:400px; overflow-y:auto;">
+                        <table class="example1 table table-row-bordered table-row-gray-300 align-middle gy-4">
                             <thead>
                                 <tr><th>Nom</th><th>Catégorie</th><th>Secteur</th><th>Pot</th><th>Visité</th><th>#</th></tr>
                             </thead>
@@ -412,7 +406,7 @@ echo $this->Html->css('select2.min');
 
                 <div class="col-md-4 pl-0">
                     <div class="mini-stat green">
-                        <div class="mini-stat-icon"><i class="fa fa-thumbs-up"></i></div>
+                        <div class="mini-stat-icon"><i class="ki-duotone ki-like"><span class="path1"></span><span class="path2"></span></i></div>
                         <div>
                             <span class="mini-stat-label">Nbr clients visités</span>
                             <span class="mini-stat-number"><?php echo $nb_client_visiter; ?></span>
@@ -421,7 +415,7 @@ echo $this->Html->css('select2.min');
                 </div>
                 <div class="col-md-4 pl-0">
                     <div class="mini-stat red">
-                        <div class="mini-stat-icon"><i class="fa fa-thumbs-down"></i></div>
+                        <div class="mini-stat-icon"><i class="ki-duotone ki-dislike"><span class="path1"></span><span class="path2"></span></i></div>
                         <div>
                             <span class="mini-stat-label">Nbr clients non visités</span>
                             <span class="mini-stat-number"><?php echo $nb_client_non_visiter; ?></span>
@@ -430,7 +424,7 @@ echo $this->Html->css('select2.min');
                 </div>
                 <div class="col-md-4 pl-0 pr-0">
                     <div class="mini-stat blue">
-                        <div class="mini-stat-icon"><i class="fa fa-user-md"></i></div>
+                        <div class="mini-stat-icon"><i class="ki-duotone ki-profile-user -md"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></div>
                         <div>
                             <span class="mini-stat-label">Nbr total de visites</span>
                             <span class="mini-stat-number"><?php echo $nb_visites; ?></span>
@@ -440,7 +434,7 @@ echo $this->Html->css('select2.min');
             </div>
 
             <div class="col-md-6">
-                <div class="box">
+                <div class="card">
                     <?php
                     $indices = [
                         "Indice 1 et 2" => ["AH", "BH", "CH", "AM", "BM", "CM", "AL", "BL", "CL"],
@@ -451,11 +445,11 @@ echo $this->Html->css('select2.min');
                         "Indice 2 et 3" => ["Réguliers", "Occasionnels", "Avertis"]
                     ];
                     foreach ($indices as $indice => $pots_name): ?>
-                        <div class="box-body" style="max-height:400px; overflow-y:auto; padding:10px;">
-                            <div class="box-header" style="margin-bottom:10px;">
-                                <h4 class="box-title" style="margin:0;"><?php echo ucfirst($indice) . " de : " . $user['name']; ?></h4>
+                        <div class="card-body" style="max-height:400px; overflow-y:auto; padding:10px;">
+                            <div class="card-header" style="margin-bottom:10px;">
+                                <h4 class="card-title" style="margin:0;"><?php echo ucfirst($indice) . " de : " . $user['name']; ?></h4>
                             </div>
-                            <table class="table table-bordered table-condensed" style="font-size:12px;">
+                            <table class="table table-row-bordered align-middle gy-4 table-condensed" style="font-size:12px;">
                                 <thead>
                                     <tr><?php foreach ($names[$indice] as $k => $name) echo "<th>" . $name . "</th>"; ?></tr>
                                 </thead>
@@ -488,7 +482,7 @@ echo $this->Html->css('select2.min');
                 <div class="modal-content" style="border-radius:18px; overflow:hidden;">
                     <div class="modal-header" style="background:var(--primary-light); border:none;">
                         <h5 class="modal-title" style="color:#2b2b45; font-weight:700;">Détails des Pots</h5>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                     </div>
                     <div class="modal-body"><p>Chargement...</p></div>
                 </div>
@@ -497,9 +491,9 @@ echo $this->Html->css('select2.min');
     </div>
 
     <div class="col-md-12">
-        <div class="box">
-            <div class="box-header"><h3 class="box-title">La liste des visites de tout les VM choisi</h3></div>
-            <div class="box-body">
+        <div class="card">
+            <div class="card-header"><h3 class="card-title">La liste des visites de tout les VM choisi</h3></div>
+            <div class="card-body">
                 <div class="table-toolbar">
                     <button type="button" class="btn-export export-excel-trigger">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
@@ -507,7 +501,7 @@ echo $this->Html->css('select2.min');
                     </button>
                 </div>
                 <div style="max-height:400px; overflow-y:auto;">
-                    <table class="example1 main-table table table-bordered table-striped">
+                    <table class="example1 main-table table table-row-bordered table-row-gray-300 align-middle gy-4">
                         <thead>
                             <tr>
                                 <th>VM</th><th>Code Client</th><th>Nom & Prénom</th><th>Spécialité</th><th>Tandance</th>
@@ -563,12 +557,12 @@ echo $this->Html->css('select2.min');
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-radius:18px; overflow:hidden;">
             <div class="modal-header" style="background:var(--primary-light); border:none;">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 <h4 class="modal-title" id="confirmDeleteLabel" style="color:#2b2b45; font-weight:700;">Confirmation</h4>
             </div>
             <div class="modal-body">Vous êtes sûr que tu veux supprimer ce potentielité ?<br>Si oui, cliquez sur Supprimer.</div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button>
                 <button type="button" id="modalDeleteBtn" class="btn btn-danger">Supprimer</button>
             </div>
         </div>
@@ -580,7 +574,7 @@ echo $this->Html->css('select2.min');
         try {
             var modalBody = '';
             if (potsData && potsData.length > 0) {
-                modalBody += '<table class="exemple1 table table-bordered">';
+                modalBody += '<table class="exemple1 table table-row-bordered align-middle gy-4">';
                 modalBody += '<thead><tr><th>Pot</th><th>Patient</th><th>Indication</th><th>Prescription</th><th>Gamme</th><th>Date</th><th>#</th></tr></thead><tbody>';
                 potsData.forEach(function (pot) {
                     modalBody += '<tr>' +
