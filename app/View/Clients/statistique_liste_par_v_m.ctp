@@ -177,7 +177,7 @@ foreach ($data as $vmp):
             <div class="col-md-6 col-12">
                 <div class="report-card-custom">
                     <div class="card-header-custom">
-                        <h3 class="box-title_custom">Rapport des listes de <strong><?php echo h($key); ?></strong> du <?php echo h($vmp['User']['name']); ?></h3>
+                        <h3 class="card-title_custom">Rapport des listes de <strong><?php echo h($key); ?></strong> du <?php echo h($vmp['User']['name']); ?></h3>
                     </div>
                     <div class="card-body-custom">
                         <table class="table-report-custom">

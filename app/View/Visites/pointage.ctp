@@ -13,8 +13,8 @@
 	color: var(--ptg-text);
 }
 
-/* ---- generic card look for every .box on the page ---- */
-.ptg-wrapper .box{
+/* ---- generic card look for every .card on the page ---- */
+.ptg-wrapper .card{
 	background: #fff;
 	border: 1px solid var(--ptg-border);
 	border-radius: 16px !important;
@@ -22,11 +22,11 @@
 	overflow: hidden;
 	margin-bottom: 20px;
 }
-.ptg-wrapper .box.box-solid,
-.ptg-wrapper .box.box-info{
+.ptg-wrapper .card.box-solid,
+.ptg-wrapper .card.box-info{
 	border-top: none;
 }
-.ptg-wrapper .box-header{
+.ptg-wrapper .card-header{
 	background: transparent;
 	border: none !important;
 	padding: 18px 22px;
@@ -34,7 +34,7 @@
 	align-items: center;
 	gap: 12px;
 }
-.ptg-wrapper .box-header .box-title{
+.ptg-wrapper .card-header .card-title{
 	font-weight: 600 !important;
 	font-size: 15px !important;
 	color: var(--ptg-text) !important;
@@ -43,7 +43,7 @@
 	align-items: center;
 	gap: 12px;
 }
-.ptg-wrapper .box-body{
+.ptg-wrapper .card-body{
 	padding: 0 22px 22px 22px;
 }
 
@@ -88,7 +88,7 @@
 }
 
 /* ---- Date filter card ---- */
-.ptg-date-card .box-header{
+.ptg-date-card .card-header{
 	padding: 20px 22px;
 }
 .ptg-date-label{
@@ -108,7 +108,7 @@
 .ptg-date-field-wrap .input-group{
 	width: 100%;
 }
-.ptg-date-field-wrap .input-group-addon{
+.ptg-date-field-wrap .input-group-text{
 	background: #fff !important;
 	border: 1px solid var(--ptg-border) !important;
 	border-right: none !important;
@@ -232,8 +232,8 @@ function distance($longitude,$latitude,$client_longitude,$client_latitude)
 ?>
 <div class="row">
 	<div class="col-md-12" style="margin-bottom: 24px;"> 
-		<div class="box form-group ptg-date-card">
-			<div class="box-header with-border">
+		<div class="card mb-5 ptg-date-card">
+			<div class="card-header">
 				<label class="ptg-date-label" style="margin:0;">
 					<span class="ptg-icon-chip teal">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
@@ -243,8 +243,8 @@ function distance($longitude,$latitude,$client_longitude,$client_latitude)
 				<div class="col-md-6 ptg-date-field-wrap" style="padding-left:0;">
 					<form action="<?php echo $this->Html->url(array("action"=>"pointage")); ?>" method="get" id="dateform">
 						<div class="input-group col-lg-12" style="float:left;">
-							<div class="input-group-addon">
-								<i class="fa fa-clock-o"></i>
+							<div class="input-group-text">
+								<i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
 							</div>
 							<input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control pull-right" name="date" id="reservationtime" placeholder="Rechercher">
 						</div>
@@ -259,9 +259,9 @@ function distance($longitude,$latitude,$client_longitude,$client_latitude)
 </div>
 <div class="row">
 	<div class="col-md-12" style="margin-bottom: 24px;"> 
-	<div class="box box-info collapsed-box">
-            <div class="box-header with-border">
-              <h3 class="box-title">
+	<div class="card collapsed-box">
+            <div class="card-header">
+              <h3 class="card-title">
 				<span class="ptg-icon-chip teal">
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="11" x2="12" y2="16"></line><circle cx="12" cy="8" r="0.5" fill="currentColor" stroke="currentColor"></circle></svg>
 				</span>
@@ -269,29 +269,29 @@ function distance($longitude,$latitude,$client_longitude,$client_latitude)
 			  </h3>
 
               <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="ki-duotone ki-plus"><span class="path1"></span></i>
                 </button>
               </div>
             </div>
             <!-- /.box-header -->
-            <div class="box-body" style="display: none;">
+            <div class="card-body" style="display: none;">
               <div class="table-responsive">
                 <table class="table no-margin">
                   <tbody>
                   <tr>
-					<td><span style="padding-left: 38px;    padding-top: 7px;margin-left:2px" class="label label-danger">  </span> </td>
+					<td><span style="padding-left: 38px;    padding-top: 7px;margin-left:2px" class="badge badge-light-danger">  </span> </td>
 					<td>Client localisé et visite pas chez client (au-delà de 500m)</td>
                   </tr>
                   <tr>
-				  <td><span style="padding-left: 38px;    padding-top: 7px;margin-left:2px;background:#30d930 !important" class="label label-success">  </span> </td>
+				  <td><span style="padding-left: 38px;    padding-top: 7px;margin-left:2px;background:#30d930 !important" class="badge badge-light-success">  </span> </td>
 				  <td>Client localisé et visite chez client (moins de 500m)</td>
                   </tr>
                   <tr>
-				  <td><span style="padding-left: 38px;padding-top: 7px;margin-left:2px" class="label label-warning">  </span> </td>
+				  <td><span style="padding-left: 38px;padding-top: 7px;margin-left:2px" class="badge badge-light-warning">  </span> </td>
 				  <td>Client non localisé mais visite localisée</td>
                   </tr>
 				  <tr>
-				  <td><span style="padding-left: 38px;padding-top: 7px;    margin-left:2px;" class="label label-info">  </span> </td>
+				  <td><span style="padding-left: 38px;padding-top: 7px;    margin-left:2px;" class="badge badge-light-info">  </span> </td>
 				  <td>Client localisé mais visite non localisée</td>
                   </tr>
                   </tbody>
@@ -380,17 +380,17 @@ foreach ($visites as $value)
 	<?php 
 	$localisations=array();
 	foreach($data as $user => $p):?>
-		<div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">
+		<div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
 						<span class="ptg-icon-chip purple">
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 4-6 8-6s8 2 8 6"></path></svg>
 						</span>
                         <?php echo $user; ?> 
                     </h3>
                 </div>
-                <div class="box-body table-responsive no-padding">
+                <div class="card-body table-responsive no-padding">
                     <table class="table table-hover"  border="0">
                         <tbody>
                             <tr>
@@ -468,7 +468,7 @@ foreach ($visites as $value)
 										$pos = strpos($visite['longitude'], "n");
 										$poss = strpos($visite['longitude'], "0.0");
 										if(!empty($visite['longitude']) && $pos === false && $poss === false)
-											// echo '<i class="fa fa-map-marker"></i></a>';
+											// echo '<i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i></a>';
 										if($br%7==0)
 											echo "<br>";
 										$br++;
@@ -519,10 +519,10 @@ foreach ($visites as $value)
             </div>
         </div>
     <?php endforeach;?>
-	<div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-					<h3 class="box-title">
+	<div class="col-12">
+            <div class="card">
+                <div class="card-header">
+					<h3 class="card-title">
 						<span class="ptg-icon-chip purple">
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="20" x2="4" y2="12"></line><line x1="12" y1="20" x2="12" y2="6"></line><line x1="20" y1="20" x2="20" y2="15"></line></svg>
 						</span>
@@ -534,7 +534,7 @@ foreach ($visites as $value)
 						</span>
 					</div>
 				</div>
-                <div class="box-body table-responsive no-padding">
+                <div class="card-body table-responsive no-padding">
                     <table class="table table-hover"  border="0">
 			<tbody>
 				<tr>
@@ -571,7 +571,7 @@ foreach ($visites as $value)
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<?php echo $this->Html->script('jquery-2.2.3.min');
+<?php
 echo $this->Html->script('daterangepicker');?>
 <script>
     $(function () {

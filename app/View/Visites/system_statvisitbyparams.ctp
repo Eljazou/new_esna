@@ -1,10 +1,4 @@
-<?php
-echo $this->Html->css('dataTables.bootstrap');
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('jquery.dataTables.min');
-?>
-
+<?php echo $this->element('assets/datatables'); ?>
 <!-- ===== CONTENEUR PRINCIPAL METRONIC ===== -->
 <div class="card card-custom shadow-sm my-4">
     
@@ -96,7 +90,7 @@ echo $this->Html->script('jquery.dataTables.min');
                                                     }
                                                     ?>
                                                 </span>
-                                                <i class="fa fa-plus text-white cursor-pointer ml-2" id="iconpr<?php echo $ii;?>" onclick="boxtogprod(<?php echo $ii;?>)"></i>
+                                                <i class="ki-duotone ki-plus fs-5 text-white cursor-pointer ml-2" id="iconpr<?php echo $ii;?>" onclick="boxtogprod(<?php echo $ii;?>)"></i>
                                             </span>
 
                                             <div class="boxtogprod<?php echo $ii;?> mt-2 pl-2 border-left-lavender" style="display:none;">
@@ -109,7 +103,7 @@ echo $this->Html->script('jquery.dataTables.min');
                                                     <div class="card card-sub-item p-2 mb-1">
                                                         <div class="d-flex justify-content-between align-items-center cursor-pointer" onclick="boxtogpo(<?php echo $iii;?>)">
                                                             <strong class="text-primary-lavender font-size-sm"><?php echo $objec[0];?></strong>
-                                                            <i id="iconpo<?php echo $iii;?>" class="fa fa-plus font-size-xs text-muted"></i>
+                                                            <i id="iconpo<?php echo $iii;?>" class="ki-duotone ki-plus fs-7 text-muted"></i>
                                                         </div>
                                                         <ul class="boxtogpo<?php echo $iii;?> list-unstyled mb-0 mt-1 pl-2 font-size-xs text-muted" style="display:none;">
                                                             <?php for($j = 1; $j < count($objec); $j++): ?>
@@ -323,20 +317,20 @@ echo $this->Html->script('jquery.dataTables.min');
     function boxtogpo(id) {
         $(".boxtogpo" + id).slideToggle(150);
         var icon = $("#iconpo" + id);
-        if(icon.hasClass("fa-plus")) {
-            icon.removeClass("fa-plus").addClass("fa-minus");
+        if(icon.hasClass("ki-plus")) {
+            icon.removeClass("ki-plus").addClass("ki-minus");
         } else {
-            icon.removeClass("fa-minus").addClass("fa-plus");
+            icon.removeClass("ki-minus").addClass("ki-plus");
         }
     }
 
     function boxtogprod(id) {
         $(".boxtogprod" + id).slideToggle(150);
         var icon = $("#iconpr" + id);
-        if(icon.hasClass("fa-plus")) {
-            icon.removeClass("fa-plus").addClass("fa-minus");
+        if(icon.hasClass("ki-plus")) {
+            icon.removeClass("ki-plus").addClass("ki-minus");
         } else {
-            icon.removeClass("fa-minus").addClass("fa-plus");
+            icon.removeClass("ki-minus").addClass("ki-plus");
         }
     }
 </script>

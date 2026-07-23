@@ -10,7 +10,7 @@ foreach ($produits as $key => $p) {
     $produits[$key] = $pro;
 }
 ?>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<?php echo $this->Html->css('jquery-ui.min', array('block' => 'css')); ?>
 <style>
     /* style new design */
     #VisiteOrder {
@@ -105,7 +105,7 @@ foreach ($produits as $key => $p) {
         justify-content: space-around;
     }
 
-    .box-body {
+    .card-body {
         padding: 30px 35px;
     }
 
@@ -433,17 +433,17 @@ foreach ($produits as $key => $p) {
 </style>
 
 <div class="row">
-    <div class=" col-md-2"></div>
+    <div class="col-md-2"></div>
     <div class="col-md-8">
-        <div class="box box-primary">
-            <div class="box-header with-border ">
-                <h3 class="box-title">Rapport de visite</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Rapport de visite</h3>
             </div>
-            <div class="box-body ">
+            <div class="card-body">
                 <?php echo $this->Form->create('Visite');
                 echo $this->Form->hidden('client_id', array('value' => $client_id));
                 ?>
-                <div class="form-group">
+                <div class="mb-5">
                     <div class="date_div">
                         <label for="datepicker">Date de visite</label>
                         <input type="text" id="datepicker" class="form-control" name="data[Visite][date]" readonly>
@@ -452,16 +452,16 @@ foreach ($produits as $key => $p) {
                 </div>
                 <?php if ($infosclient[0]['clients']['type_id'] == 1 || $infosclient[0]['clients']['type_id'] == 5) { ?>
 
-                    <div class="form-group">
+                    <div class="mb-5">
                         <label>Type visite</label>
                         <div class="row radio_content">
-                            <div class="radio col-xs-6">
+                            <div class="radio col-6">
                                 <label>
                                     <input type="radio" name="data[Visite][type_visite]" value="solo" id="solo" checked class="option-input radio">
                                     Visite solo
                                 </label>
                             </div>
-                            <div class="radio col-xs-6">
+                            <div class="radio col-6">
                                 <label>
                                     <input type="radio" name="data[Visite][type_visite]" value="double" id="double" class="option-input radio">
                                     Visite en double
@@ -473,17 +473,17 @@ foreach ($produits as $key => $p) {
                     <?php
                     if (empty($infosclient[0]['clients']['sexe'])) {
                     ?>
-                        <div class="form-group">
+                        <div class="mb-5">
                             <label>GENRE <sup style="color:red;">*</sup></label>
                             <div class="row radio_content">
-                                <div class="radio col-xs-6">
+                                <div class="radio col-6">
                                     <label>
                                         <input type="radio" name="data[Client][sexe]" value="h" required="required">
                                         HOMME
                                     </label>
 
                                 </div>
-                                <div class="radio col-xs-6">
+                                <div class="radio col-6">
                                     <label>
                                         <input type="radio" name="data[Client][sexe]" value="f" required="required">
                                         FEMME
@@ -495,22 +495,22 @@ foreach ($produits as $key => $p) {
                     <?php
                     }
                     ?>
-                    <div class="form-group">
+                    <div class="mb-5">
                         <label>Potentialité du cabinet (comment jugez-vous l’activité du cabinet ?)<sup style="color:red;">*</sup></label>
                         <div class="row radio_content">
-                            <div class="radio col-xs-4">
+                            <div class="radio col-4">
                                 <label>
                                     <input type="radio" name="data[Visite][partenaires]" value="bien" required="required" class="parte">
                                     BIEN
                                 </label>
                             </div>
-                            <div class="radio col-xs-4">
+                            <div class="radio col-4">
                                 <label>
                                     <input type="radio" name="data[Visite][partenaires]" value="moyen" required="required" class="parte">
                                     MOYEN
                                 </label>
                             </div>
-                            <div class="radio col-xs-4">
+                            <div class="radio col-4">
                                 <label>
                                     <input type="radio" name="data[Visite][partenaires]" value="faible" required="required" class="parte">
                                     FAIBLE
@@ -519,22 +519,22 @@ foreach ($produits as $key => $p) {
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="mb-5">
                         <label>Adoption produits Esnapharm <sup style="color:red;">*</sup></label>
                         <div class="row radio_content">
-                            <div class="radio col-xs-4">
+                            <div class="radio col-4">
                                 <label>
                                     <input type="radio" name="data[Visite][veille]" value="100" required="required" class="concur">
                                     Exclusif
                                 </label>
                             </div>
-                            <div class="radio col-xs-4">
+                            <div class="radio col-4">
                                 <label>
                                     <input type="radio" name="data[Visite][veille]" value="50" required="required" class="concur">
                                     Fidèle
                                 </label>
                             </div>
-                            <div class="radio col-xs-4">
+                            <div class="radio col-4">
                                 <label>
                                     <input type="radio" name="data[Visite][veille]" value="-+" required="required" class="concur">
                                     Rare
@@ -551,12 +551,12 @@ foreach ($produits as $key => $p) {
                         </div>
                         <div class="all_tabs">
                             <div class="tab_evalu tab_evalu1">
-                                <div class="form-group selectgame">
+                                <div class="mb-5 selectgame">
                                     <label>Adoption produit</label>
                                     <?php echo $this->Form->input('games', array('name' => "data[Visite][produit_adoption]", 'label' => false, 'class' => 'col-md-12 form-control select2 produits', "required" => "required", 'data-id' => '1', 'onchange' => 'getProduit(event)', 'id' => "VisiteGames1", 'empty' => 'Choisissez')); ?>
 
                                 </div>
-                                <div class="form-group">
+                                <div class="mb-5">
                                     <label>Nombre de prescription estimé/semaine</label>
                                     <select id="nbr_prescription1" class="form-control" required="required">
                                         <?php for ($i = 0; $i <= 20; $i++) {
@@ -569,23 +569,23 @@ foreach ($produits as $key => $p) {
                                     </select>
                                     <span class="message_erreur">Ce champ est obligatoire</span>
                                 </div>
-                                <div class="form-group">
+                                <div class="mb-5">
                                     <label>Potentialité produit renseigné</label>
                                     <div class="row radio_content">
-                                        <div class="radio col-xs-4">
+                                        <div class="radio col-4">
                                             <label>
                                                 <input type="radio" name="pot1" class="boits nbr_boites1" value="1" disabled required="required">
                                                 1
                                             </label>
 
                                         </div>
-                                        <div class="radio col-xs-4">
+                                        <div class="radio col-4">
                                             <label>
                                                 <input type="radio" name="pot1" class="boits nbr_boites1" value="2" disabled required="required">
                                                 2
                                             </label>
                                         </div>
-                                        <div class="radio col-xs-4">
+                                        <div class="radio col-4">
                                             <label>
                                                 <input type="radio" name="pot1" class="boits nbr_boites1" value="3" disabled required="required">
                                                 3
@@ -597,20 +597,20 @@ foreach ($produits as $key => $p) {
                             </div>
                         </div>
                     </div> -->
-                    <div class="form-group">
+                    <div class="mb-5">
                         <label>DEMANDE PRODUITS NON PRESENTES</label>
-                        <?php echo $this->Form->input('games', array('name' => "data[Visite][produitsNP]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control select2 produits', 'multiple' => "multiple", "style" => "padding:0px;")); ?>
+                        <?php echo $this->Form->input('games', array('name' => "data[Visite][produitsNP]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-12 form-control select2 produits', 'multiple' => "multiple", "style" => "padding:0px;")); ?>
                     </div>
-                    <div class="form-group ">
-                        <label class="col-xs-12 header_tab">
+                    <div class="mb-5">
+                        <label class="col-12 header_tab">
                             <b>OBJECTIONS (1):</b>
                             <div class="element_right">
-                                <span class="concurtogg" onclick="concur(0)"><i id="concuricon0" class="fa fa-minus"></i></span>
+                                <span class="concurtogg" onclick="concur(0)"><i id="concuricon0" class="ki-duotone ki-minus fs-4"></i></span>
                             </div>
                         </label>
-                        <div class="col-xs-12 concur0 concure body_tab">
+                        <div class="col-12 concur0 concure body_tab">
                             <div class="row">
-                                <div class="col-md-3 col-sm-12 col-xs-12 select_objection">
+                                <div class="col-md-3 col-sm-12 col-12 select_objection">
                                     <select name="data[Visite][produitO][0]" class="form-control select2 esna">
                                         <option value="" selected>Choisissez</option>
                                         <?php foreach ($produits as $key => $p) { ?>
@@ -619,67 +619,67 @@ foreach ($produits as $key => $p) {
                                     </select>
                                 </div>
 
-                                <div class="col-md-9 col-sm-12 col-xs-12 inputs">
-                                    <span class="col-xs-4 check0">
+                                <div class="col-md-9 col-sm-12 col-12 inputs">
+                                    <span class="col-4 check0">
                                         <input type="checkbox" name="data[Visite][objection][0]" value="prix" onclick="check(0)">
                                         <b style="font-weight:normal;">PRIX</b>
                                     </span>
-                                    <span class="col-md-8 col-sm-8 col-xs-8">
-                                        <input type="text" name="data[objections][mot_cles][0]" class="mc0 col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1">
-                                        <input type="text" name="data[objections][mot_cles][1]" class="mc0 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2">
-                                        <input type="text" name="data[objections][mot_cles][2]" class="mc0 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3">
+                                    <span class="col-md-8 col-sm-8 col-8">
+                                        <input type="text" name="data[objections][mot_cles][0]" class="mc0 col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1">
+                                        <input type="text" name="data[objections][mot_cles][1]" class="mc0 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2">
+                                        <input type="text" name="data[objections][mot_cles][2]" class="mc0 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3">
                                     </span>
 
-                                    <span class="col-md-4 col-sm-4 col-xs-4 check1">
+                                    <span class="col-md-4 col-sm-4 col-4 check1">
                                         <input type="checkbox" name="data[Visite][objection][1]" value="indication" onclick="check(1)">
                                         <b style="font-weight:normal;">INDICATION</b>
                                     </span>
-                                    <span class="col-md-8 col-sm-8 col-xs-8">
-                                        <input type="text" name="data[objections][mot_cles][3]" class="mc1 col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1">
-                                        <input type="text" name="data[objections][mot_cles][4]" class="mc1 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2">
-                                        <input type="text" name="data[objections][mot_cles][5]" class="mc1 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3">
+                                    <span class="col-md-8 col-sm-8 col-8">
+                                        <input type="text" name="data[objections][mot_cles][3]" class="mc1 col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1">
+                                        <input type="text" name="data[objections][mot_cles][4]" class="mc1 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2">
+                                        <input type="text" name="data[objections][mot_cles][5]" class="mc1 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3">
                                     </span>
 
-                                    <span class="col-md-4 col-sm-4 col-xs-4 check2">
+                                    <span class="col-md-4 col-sm-4 col-4 check2">
                                         <input type="checkbox" name="data[Visite][objection][2]" value="pathologie" onclick="check(2)" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;">
                                         <b style="font-weight:normal;">PATHOLOGIE</b>
                                     </span>
-                                    <span class="col-md-8 col-sm-8 col-xs-8">
-                                        <input type="text" name="data[objections][mot_cles][6]" class="mc2 col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1">
-                                        <input type="text" name="data[objections][mot_cles][7]" class="mc2 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2">
-                                        <input type="text" name="data[objections][mot_cles][8]" class="mc2 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3">
+                                    <span class="col-md-8 col-sm-8 col-8">
+                                        <input type="text" name="data[objections][mot_cles][6]" class="mc2 col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1">
+                                        <input type="text" name="data[objections][mot_cles][7]" class="mc2 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2">
+                                        <input type="text" name="data[objections][mot_cles][8]" class="mc2 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3">
                                     </span>
 
-                                    <span class="col-md-4 col-sm-4 col-xs-4 check3">
+                                    <span class="col-md-4 col-sm-4 col-4 check3">
                                         <input type="checkbox" name="data[Visite][objection][3]" value="posologie" onclick="check(3)" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;">
                                         <b style="font-weight:normal;">POSOLOGIE</b>
                                     </span>
-                                    <span class="col-md-8 col-sm-8 col-xs-8">
-                                        <input type="text" name="data[objections][mot_cles][9]" class="mc3 col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1">
-                                        <input type="text" name="data[objections][mot_cles][10]" class="mc3 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2">
-                                        <input type="text" name="data[objections][mot_cles][11]" class="mc3 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3">
+                                    <span class="col-md-8 col-sm-8 col-8">
+                                        <input type="text" name="data[objections][mot_cles][9]" class="mc3 col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1">
+                                        <input type="text" name="data[objections][mot_cles][10]" class="mc3 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2">
+                                        <input type="text" name="data[objections][mot_cles][11]" class="mc3 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3">
                                     </span>
 
-                                    <span class="col-md-4 col-sm-4 col-xs-4 check4">
+                                    <span class="col-md-4 col-sm-4 col-4 check4">
                                         <input type="checkbox" name="data[Visite][objection][4]" value="presentation" onclick="check(4)" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;">
                                         <b style="font-weight:normal;">PRESENTATION</b>
                                     </span>
-                                    <span class="col-md-8 col-sm-8 col-xs-8">
-                                        <input type="text" name="data[objections][mot_cles][12]" class="mc4 col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1">
-                                        <input type="text" name="data[objections][mot_cles][13]" class="mc4 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2">
-                                        <input type="text" name="data[objections][mot_cles][14]" class="mc4 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3">
+                                    <span class="col-md-8 col-sm-8 col-8">
+                                        <input type="text" name="data[objections][mot_cles][12]" class="mc4 col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1">
+                                        <input type="text" name="data[objections][mot_cles][13]" class="mc4 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2">
+                                        <input type="text" name="data[objections][mot_cles][14]" class="mc4 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3">
                                     </span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class=" concurr" id="1">
+                        <div class="concurr" id="1">
                         </div>
-                        <div class="col-xs-12">
+                        <div class="col-12">
                             <b class="ajouterconcur btn btn-primary" style="float:right;">Ajouter Objections</b>
                         </div>
                         <?php foreach ($ordres as $key => $value) : ?>
-                            <div class="col-xs-4 col-sm-4 col-md-4 nopad text-center">
+                            <div class="col-4 col-sm-4 col-md-4 nopad text-center">
                                 <label class="image-checkbox">
                                     <?php if (!empty($value["Brochure"]["logo"])) : ?>
                                         <img class="img-responsive" src="<?php echo $this->Html->url("/img/brochures/" . $value["Brochure"]["logo"]) ?>" alt="Brochure Image" />
@@ -708,16 +708,16 @@ foreach ($produits as $key => $p) {
                 // ana hna fl myelse 
                 else {
                 ?>
-                    <div class="form-group">
+                    <div class="mb-5">
                         <label>Type de pharmacie <sup style="color:red;">*</sup></label>
                         <div class="row radio_content">
-                            <div class="radio col-xs-6 col-md-6">
+                            <div class="radio col-6 col-md-6">
                                 <label>
                                     <input type="radio" name="data[Visite][type_visite]" value="Client" required="required">
                                     Client
                                 </label>
                             </div>
-                            <div class="radio col-xs-6 col-md-6">
+                            <div class="radio col-6 col-md-6">
                                 <label>
                                     <input type="radio" name="data[Visite][type_visite]" value="Non client" required="required">
                                     Non client
@@ -725,22 +725,22 @@ foreach ($produits as $key => $p) {
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="mb-5">
                         <label>Activité de pharmacie <sup style="color:red;">*</sup></label>
                         <div class="row radio_content">
-                            <div class="radio col-xs-4">
+                            <div class="radio col-4">
                                 <label>
                                     <input type="radio" name="data[Visite][partenaires]" value="Bien" required="required">
                                     Bien
                                 </label>
                             </div>
-                            <div class="radio col-xs-4">
+                            <div class="radio col-4">
                                 <label>
                                     <input type="radio" name="data[Visite][partenaires]" value="Moyen" required="required">
                                     Moyen
                                 </label>
                             </div>
-                            <div class="radio col-xs-4">
+                            <div class="radio col-4">
                                 <label>
                                     <input type="radio" name="data[Visite][partenaires]" value="Faible" required="required">
                                     Faible
@@ -748,26 +748,26 @@ foreach ($produits as $key => $p) {
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="mb-5">
                         <label>La liste des produits partenaire de conseil</label>
-                        <?php echo $this->Form->input('games', array('name' => "data[Visite][produitsNP]", 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control select2 produits', 'label' => false, 'multiple' => "multiple")); ?>
+                        <?php echo $this->Form->input('games', array('name' => "data[Visite][produitsNP]", 'class' => 'col-md-12 col-sm-12 col-12 form-control select2 produits', 'label' => false, 'multiple' => "multiple")); ?>
                     </div>
-                    <!-- <div class="form-group">
+                    <!-- <div class="mb-5">
                         <label>Nombre de boites vendues/semaine</label>
                         <div class="row radio_content">
-                            <div class="radio col-xs-4">
+                            <div class="radio col-4">
                                 <label>
                                     <input type="radio" name="data[Visite][produitsNPchoix]" class="boits" value="5" disabled required="required">
                                     5
                                 </label>
                             </div>
-                            <div class="radio col-xs-4">
+                            <div class="radio col-4">
                                 <label>
                                     <input type="radio" name="data[Visite][produitsNPchoix]" class="boits" value="10" disabled required="required">
                                     10
                                 </label>
                             </div>
-                            <div class="radio col-xs-4">
+                            <div class="radio col-4">
                                 <label>
                                     <input type="radio" name="data[Visite][produitsNPchoix]" class="boits" value="20" disabled required="required">
                                     20
@@ -775,17 +775,17 @@ foreach ($produits as $key => $p) {
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="mb-5">
                         <label>Noms des principaux prescripteurs</label>
-                        <?php echo $this->Form->input('clients', array('name' => "data[Visite][prescripteurs]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control select2 produits', 'multiple' => "multiple")); ?>
+                        <?php echo $this->Form->input('clients', array('name' => "data[Visite][prescripteurs]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-12 form-control select2 produits', 'multiple' => "multiple")); ?>
                     </div>-->
 
                     <?php for ($i = 0; $i < 2; $i++) : ?>
-                        <div class="form-group">
-                            <label class="col-xs-12 header_tab">
+                        <div class="mb-5">
+                            <label class="col-12 header_tab">
                                 <b>Veille <?php echo $i + 1; ?> :</b>
                                 <div class="element_right">
-                                    <span class="concurtogg" onclick="concur(<?php echo $i ?>)"><i id="concuricon<?php echo $i ?>" class="fa fa-minus"></i></span>
+                                    <span class="concurtogg" onclick="concur(<?php echo $i ?>)"><i id="concuricon<?php echo $i ?>" class="ki-duotone ki-minus fs-4"></i></span>
                                 </div>
                             </label>
                             <div class="space_arround body_veille  concur<?php echo $i ?> concure">
@@ -829,18 +829,18 @@ foreach ($produits as $key => $p) {
 
                     <?php endfor;
                     for ($i = 2; $i < 4; $i++) : ?>
-                        <div class="form-group">
+                        <div class="mb-5">
                             <label class="header_tab">
                                 <b>Concurance <?php echo $i - 1; ?> : </b>
                                 <div class="element_right">
                                     <span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#aaa;" onclick="concur(<?php echo $i ?>)">
-                                        <i id="concuricon<?php echo $i ?>" class="fa fa-minus"></i></span>
+                                        <i id="concuricon<?php echo $i ?>" class="ki-duotone ki-minus fs-4"></i></span>
                                 </div>
                             </label>
 
                             <div class="concur<?php echo $i ?> concure body_veille">
 
-                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="col-md-6 col-sm-12 col-12">
                                     <select name="data[Visite][concurrence_p][<?php echo $i; ?>][produit]" class="form-control select2 esna">
                                         <option value="" selected>Choisissez produit</option>
                                         <?php foreach ($games as $key => $p) { ?>
@@ -850,12 +850,12 @@ foreach ($produits as $key => $p) {
                                 </div>
 
 
-                                <span class="col-md-6 col-sm-4 col-xs-4 check0">
+                                <span class="col-md-6 col-sm-4 col-4 check0">
                                     <?php echo $this->Form->input("Visite.concurrence_p.$i.produitconcurant", array("label" => false, 'placeholder' => "Produit concurant", "class" => "form-control")); ?>
 
                                 </span>
 
-                                <div class="col-md-6 col-sm-8 col-xs-8">
+                                <div class="col-md-6 col-sm-8 col-8">
                                     <select name="data[Visite][concurrence_p][<?php echo $i; ?>][emplacement]" class="form-control select2 esna">
                                         <option value="" selected>Choisissez emplacement</option>
                                         <?php
@@ -866,7 +866,7 @@ foreach ($produits as $key => $p) {
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="col-md-6 col-sm-8 col-xs-8">
+                                <div class="col-md-6 col-sm-8 col-8">
                                     <select name="data[Visite][concurrence_p][<?php echo $i; ?>][plv]" class="form-control select2 esna">
                                         <option value="" selected>Choisissez PLV</option>
                                         <?php
@@ -879,55 +879,55 @@ foreach ($produits as $key => $p) {
                                 </div>
 
 
-                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-md-12 col-sm-12 col-12">
                                     <?php echo $this->Form->input("Visite.concurrence_p.$i.stock", array("label" => false, 'placeholder' => "Stock disponible au moment de la visite", "type" => "number", "class" => "form-control")); ?>
 
                                 </div>
                                 <div class="col-md-12">
-                                    <span class="col-md-3 col-sm-4 col-xs-4 check3">
+                                    <span class="col-md-3 col-sm-4 col-4 check3">
                                         <b style="font-weight: 600;">Type de l'offre</b>
                                     </span>
-                                    <span class="col-md-8 col-sm-8 col-xs-8">
-                                        <div class="radio col-xs-4">
+                                    <span class="col-md-8 col-sm-8 col-8">
+                                        <div class="radio col-4">
                                             <label>
                                                 <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][offre]" class="mc3" value="Pack">
                                                 Pack
                                             </label>
                                         </div>
-                                        <div class="radio col-xs-4">
+                                        <div class="radio col-4">
                                             <label>
-                                                <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][offre]" class="mc3 " value="Action">
+                                                <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][offre]" class="mc3" value="Action">
                                                 Action
                                             </label>
                                         </div>
-                                        <div class="radio col-xs-4">
+                                        <div class="radio col-4">
                                             <label>
-                                                <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][offre]" class="mc3 " value="Autres">
+                                                <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][offre]" class="mc3" value="Autres">
                                                 Autres
                                             </label>
                                         </div>
                                     </span>
                                 </div>
                                 <div class="col-md-12" style="padding-top: 14px;">
-                                    <span class="col-md-3 col-sm-4 col-xs-4 check3">
+                                    <span class="col-md-3 col-sm-4 col-4 check3">
                                         <b style="font-weight: 600;">Degré d'agressivité</b>
                                     </span>
-                                    <span class="col-md-9 col-sm-8 col-xs-8">
-                                        <div class="radio col-xs-4">
+                                    <span class="col-md-9 col-sm-8 col-8">
+                                        <div class="radio col-4">
                                             <label>
-                                                <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][agressivite]" class="mc3 " value="Tres agressive">
+                                                <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][agressivite]" class="mc3" value="Tres agressive">
                                                 Tres agressive
                                             </label>
                                         </div>
-                                        <div class="radio col-xs-4">
+                                        <div class="radio col-4">
                                             <label>
-                                                <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][agressivite]" class="mc3 " value="Agressive">
+                                                <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][agressivite]" class="mc3" value="Agressive">
                                                 Agressive
                                             </label>
                                         </div>
-                                        <div class="radio col-xs-4">
+                                        <div class="radio col-4">
                                             <label>
-                                                <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][agressivite]" class="mc3 " value="Peu agressive">
+                                                <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][agressivite]" class="mc3" value="Peu agressive">
                                                 Peu agressive
                                             </label>
                                         </div>
@@ -936,12 +936,12 @@ foreach ($produits as $key => $p) {
                             </div>
                         </div>
                     <?php endfor; ?>
-                    <div class="form-group" id="stockv">
+                    <div class="mb-5" id="stockv">
                         <ul class="tabs">
-                            <li class="col-xs-4"><?php echo $this->Form->input("Stockvisite.0.produit_id", array('label' => 'Produit', "options" => $produits_stock, 'div' => array('id' => 'div0'), 'class' => 'form-control')); ?></li>
-                            <li class="col-xs-4"><?php echo $this->Form->input("Stockvisite.0.quantite", array('label' => 'Quantité', 'class' => 'form-control')); ?></li>
-                            <li class="col-xs-4"><?php echo $this->Form->input("Stockvisite.0.commentaire", array('label' => 'Commentaire', 'class' => 'form-control')); ?></li>
-                            <li class="col-xs-12"><button type="button" id="add" class="btn btn-success btn-large"><i class="fa fa-plus"></i></button></li>
+                            <li class="col-4"><?php echo $this->Form->input("Stockvisite.0.produit_id", array('label' => 'Produit', "options" => $produits_stock, 'div' => array('id' => 'div0'), 'class' => 'form-control')); ?></li>
+                            <li class="col-4"><?php echo $this->Form->input("Stockvisite.0.quantite", array('label' => 'Quantité', 'class' => 'form-control')); ?></li>
+                            <li class="col-4"><?php echo $this->Form->input("Stockvisite.0.commentaire", array('label' => 'Commentaire', 'class' => 'form-control')); ?></li>
+                            <li class="col-12"><button type="button" id="add" class="btn btn-success btn-large"><i class="ki-duotone ki-plus"><span class="path1"></span></i></button></li>
                         </ul>
                         <input type="hidden" name="data[Visite][produit_adoption]" value="" id="produit_val_final">
 
@@ -951,17 +951,17 @@ foreach ($produits as $key => $p) {
                 }
                 ?>
 
-                <div class="form-group comment-group">
+                <div class="mb-5 comment-group">
                     <label>Commentaire <sup style="color:red;">*</sup></label>
-                    <?php echo $this->Form->input('commentaire', array('name' => "data[Visite][commentaire]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control', 'placeholder' => 'Commentaire', 'required' => 'required')); ?>
+                    <?php echo $this->Form->input('commentaire', array('name' => "data[Visite][commentaire]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-12 form-control', 'placeholder' => 'Commentaire', 'required' => 'required')); ?>
                 </div>
 
-                <?php echo $this->Form->end(array('label' => 'Enregistrer le rapport de la visite', 'class' => 'btn btn-primary btn-large submit', 'onclick' => 'handle_submit(event)', 'div' => array('class' => 'well text-center  col-md-12 col-sm-12 col-xs-12'))); ?>
+                <?php echo $this->Form->end(array('label' => 'Enregistrer le rapport de la visite', 'class' => 'btn btn-primary btn-large submit', 'onclick' => 'handle_submit(event)', 'div' => array('class' => 'well text-center  col-md-12 col-sm-12 col-12'))); ?>
 
             </div>
         </div>
     </div>
-    <div class=" col-md-2"></div>
+    <div class="col-md-2"></div>
 
 </div>
 
@@ -969,18 +969,14 @@ foreach ($produits as $key => $p) {
 
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-?>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+// jQuery UI powers the .datepicker() calls below. It is NOT part of
+// Metronic's plugins.bundle, so it must be loaded explicitly -- served from
+// webroot/js instead of the CDN.
+echo $this->Html->script('jquery-ui.min'); ?>
 <?php
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->css('select2.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
-echo $this->Html->script('select2.full.min');
 ?>
 
 <script>
@@ -1128,17 +1124,17 @@ echo $this->Html->script('select2.full.min');
     function concur(id) {
         $(".concur" + id).toggle();
         var clas = $("#concuricon" + id).attr("class");
-        if (clas == 'fa fa-minus') {
-            $("#concuricon" + id).attr("class", "fa fa-plus");
+        if (clas == 'ki-duotone ki-minus fs-4') {
+            $("#concuricon" + id).attr("class", "ki-duotone ki-plus fs-4");
         }
-        if (clas == 'fa fa-plus') {
-            $("#concuricon" + id).attr("class", "fa fa-minus");
+        if (clas == 'ki-duotone ki-plus fs-4') {
+            $("#concuricon" + id).attr("class", "ki-duotone ki-minus fs-4");
         }
     }
     $('.ajouterconcur').click(function() {
         $(".concurtogg").each(function() {
             var btntogg = $(this).children().attr("class");
-            if (btntogg == 'fa fa-minus') {
+            if (btntogg == 'ki-duotone ki-minus fs-4') {
                 $(this).trigger('click');
             }
         });
@@ -1147,7 +1143,7 @@ echo $this->Html->script('select2.full.min');
         var ci = parseInt(cu);
         var chi = 5 + $(".concurr input[type=checkbox]").length;
         var omc = 15 + $(".concurr input[type=text]").length;
-        var div = '<label class="col-xs-12 header_tab"" ><b style="line-height: 27px;">OBJECTIONS (' + (ci + 1) + '):</b> <div><span class="concurclose' + ci + '" style="float:right;cursor:pointer;padding:4px;color:#aaa;margin-left:5px;" onclick="concurcl(' + ci + ')"><i class="fa fa-times"></i></span><span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#aaa;" onclick="concur(' + ci + ')"><i id="concuricon' + ci + '" class="fa fa-minus"></i></span></div></label><div class="col-xs-12 body_tab concur' + ci + ' concure"><div class="col-md-3 col-sm-12 col-xs-12" style="margin-top: 8%;"><select name="data[Visite][produitO][' + ci + ']" class="form-control select2 esna1"><option value="" selected>Choisissez</option><?php foreach ($produits as $key => $p) { ?><option value="<?php echo $key; ?>"><?php echo $p; ?></option><?php } ?></select></div><div class="col-md-9 col-sm-12 col-xs-12 ch inputs"><span class="col-md-4 col-sm-12 col-xs-12 check' + chi + '"><input type="checkbox" name="data[Visite][objection][' + chi + ']" value="prix" onclick="check(' + chi + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PRIX</b></span><span class="col-md-8 col-sm-12 col-xs-12"><input type="text" name="data[objections][mot_cles][' + omc + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 1) + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 2) + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-xs-12 check' + (chi + 1) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 1) + ']" value="indication" onclick="check(' + (chi + 1) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">INDICATION</b></span><span class="col-md-8 col-sm-12 col-xs-12"><input type="text" name="data[objections][mot_cles][' + (omc + 3) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 4) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 5) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-xs-12 check' + (chi + 2) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 2) + ']" value="pathologie" onclick="check(' + (chi + 2) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PATHOLOGIE</b></span><span class="col-md-8 col-sm-12 col-xs-12"><input type="text" name="data[objections][mot_cles][' + (omc + 6) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 7) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 8) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-xs-12 check' + (chi + 3) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 3) + ']" value="posologie" onclick="check(' + (chi + 3) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">POSOLOGIE</b></span><span class="col-md-8 col-sm-12 col-xs-12"><input type="text" name="data[objections][mot_cles][' + (omc + 9) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 10) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 11) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-xs-12 check' + (chi + 4) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 4) + ']" value="presentation" onclick="check(' + (chi + 4) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PRESENTATION</b></span><span class="col-md-8 col-sm-12 col-xs-12"><input type="text" name="data[objections][mot_cles][' + (omc + 12) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 13) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 14) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span></div></div>';
+        var div = '<label class="col-12 header_tab"" ><b style="line-height: 27px;">OBJECTIONS (' + (ci + 1) + '):</b> <div><span class="concurclose' + ci + '" style="float:right;cursor:pointer;padding:4px;color:#aaa;margin-left:5px;" onclick="concurcl(' + ci + ')"><i class="ki-duotone ki-cross"><span class="path1"></span></i></span><span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#aaa;" onclick="concur(' + ci + ')"><i id="concuricon' + ci + '" class="ki-duotone ki-minus fs-4"></i></span></div></label><div class="col-12 body_tab concur' + ci + ' concure"><div class="col-md-3 col-sm-12 col-12" style="margin-top: 8%;"><select name="data[Visite][produitO][' + ci + ']" class="form-control select2 esna1"><option value="" selected>Choisissez</option><?php foreach ($produits as $key => $p) { ?><option value="<?php echo $key; ?>"><?php echo $p; ?></option><?php } ?></select></div><div class="col-md-9 col-sm-12 col-12 ch inputs"><span class="col-md-4 col-sm-12 col-12 check' + chi + '"><input type="checkbox" name="data[Visite][objection][' + chi + ']" value="prix" onclick="check(' + chi + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PRIX</b></span><span class="col-md-8 col-sm-12 col-12"><input type="text" name="data[objections][mot_cles][' + omc + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 1) + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 2) + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-12 check' + (chi + 1) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 1) + ']" value="indication" onclick="check(' + (chi + 1) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">INDICATION</b></span><span class="col-md-8 col-sm-12 col-12"><input type="text" name="data[objections][mot_cles][' + (omc + 3) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 4) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 5) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-12 check' + (chi + 2) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 2) + ']" value="pathologie" onclick="check(' + (chi + 2) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PATHOLOGIE</b></span><span class="col-md-8 col-sm-12 col-12"><input type="text" name="data[objections][mot_cles][' + (omc + 6) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 7) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 8) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-12 check' + (chi + 3) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 3) + ']" value="posologie" onclick="check(' + (chi + 3) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">POSOLOGIE</b></span><span class="col-md-8 col-sm-12 col-12"><input type="text" name="data[objections][mot_cles][' + (omc + 9) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 10) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 11) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-12 check' + (chi + 4) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 4) + ']" value="presentation" onclick="check(' + (chi + 4) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PRESENTATION</b></span><span class="col-md-8 col-sm-12 col-12"><input type="text" name="data[objections][mot_cles][' + (omc + 12) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 13) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 14) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span></div></div>';
         $('.concurr').append(div);
         $(".concurr").attr('id', ci + 1);
         $(".esna1").select2();
@@ -1159,7 +1155,7 @@ echo $this->Html->script('select2.full.min');
     });
     $("#add").click(function() {
         var i = $("#stockv ul").length;
-        $("#stockv").append('<ul class="tabs"><li class="col-xs-4" id="li' + i + '"></li><li class="col-xs-4"><div class="input text"><label for="Stockvisite' + i + 'Quantite">Quantité</label><input name="data[Stockvisite][' + i + '][quantite]" class="form-control" type="text" id="Stockvisite' + i + 'Quantite"></div></li><li class="col-xs-4"><div class="input text"><label for="Stockvisite' + i + 'Commentaire">Commentaire</label><input name="data[Stockvisite][' + i + '][commentaire]" class="form-control" type="text" id="Stockvisite' + i + 'Commentaire"></div></li></ul>');
+        $("#stockv").append('<ul class="tabs"><li class="col-4" id="li' + i + '"></li><li class="col-4"><div class="input text"><label for="Stockvisite' + i + 'Quantite">Quantité</label><input name="data[Stockvisite][' + i + '][quantite]" class="form-control" type="text" id="Stockvisite' + i + 'Quantite"></div></li><li class="col-4"><div class="input text"><label for="Stockvisite' + i + 'Commentaire">Commentaire</label><input name="data[Stockvisite][' + i + '][commentaire]" class="form-control" type="text" id="Stockvisite' + i + 'Commentaire"></div></li></ul>');
         $('#div0').clone().attr('id', 'div' + i).appendTo('#li' + i);
         $('#div' + i + '  #Stockvisite0ProduitId').attr('name', 'data[Stockvisite][' + i + '][produit_id]');
     })

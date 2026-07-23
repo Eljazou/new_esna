@@ -1,12 +1,12 @@
+<?php echo $this->element('assets/datatables'); ?>
  <?php
     setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
     echo $this->Html->css('daterangepicker');
     ?>
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>	
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
     @media (max-width:932px){
-        .box-body{
+        .card-body{
             overflow: scroll;
             overflow-y: hidden;
         }
@@ -14,7 +14,7 @@
 	.table-striped > thead{
 		background-color: #ffffff;
 	}
-    .lu-wrapper .box-body{
+    .lu-wrapper .card-body{
         overflow-x:auto;
         -webkit-overflow-scrolling:touch;
     }
@@ -42,7 +42,7 @@
         font-family:'Poppins',sans-serif;
         color:#3a3a4a;
     }
-    .lu-wrapper .box{
+    .lu-wrapper .card{
         background:#fff;
         border:none;
         border-radius:18px;
@@ -83,13 +83,13 @@
         color:#8b87a8;
         margin-top:2px;
     }
-    .lu-wrapper .box-header{
+    .lu-wrapper .card-header{
         border:none;
         display:flex;
         justify-content:flex-end;
         padding:20px 24px 0 24px;
     }
-    .lu-wrapper .box-header .box-title{
+    .lu-wrapper .card-header .card-title{
         display:none;
     }
     .lu-wrapper .dataTables_filter{
@@ -181,12 +181,12 @@
         <div class="lu-banner-sub">Consultez et gérez les utilisateurs de l'équipe</div>
     </div>
 </div>
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><?php echo __('La liste des utilisateurs'); ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?php echo __('La liste des utilisateurs'); ?></h3>
     </div>
-    <div class="box-body">
-		<table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+		<table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     
@@ -241,10 +241,6 @@
 </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

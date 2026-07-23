@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<?php echo $this->Html->css('jquery-ui.min', array('block' => 'css')); ?>
 <style>
     #image-gallery {
         width: 100%;
@@ -47,7 +47,7 @@
 	.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
 		color: #fff !important;
 	}
-	.panel.panel-primary .col-lg-8 {
+	.card.panel-primary .col-lg-8 {
     float: none !important;
     margin: auto !important;
     background: #fff !important;
@@ -55,14 +55,14 @@
     padding-top: 8px;
 }
 
-.panel-heading.col-lg-8 {
+.card-header.col-lg-8 {
     width: 65.666667%;
 }
 input[type='readonly']{
 	cursor:no-drop;
 }
 @media (max-width:810px){
-	.panel-heading.col-lg-8,.panel-body .col-lg-8{
+	.card-header.col-lg-8,.card-body .col-lg-8{
 		width:100% !important;
 	}
 }
@@ -72,75 +72,75 @@ input[type='readonly']{
 		margin-bottom:10px;
 	}
 }
-.concur .col-xs-8{padding:0px;}
-.concur .col-xs-9{padding:0px;}
-.concur .col-xs-12 span.col-xs-4{padding-left:0px;}
+.concur .col-8{padding:0px;}
+.concur .col-9{padding:0px;}
+.concur .col-12 span.col-4{padding-left:0px;}
 .payment-form{padding:0px;}
 .select2-dropdown{width:324px !important;}
 </style>
-<div class="panel panel-primary">
-    <div class="panel-heading col-lg-8 col-xs-12">
-        <h3 class="panel-title" style="padding-left: 0px;margin-left: -7px;"><?php echo __('Rapport d\'une  visite'); ?></h3>
+<div class="card">
+    <div class="card-header col-lg-8 col-12">
+        <h3 class="card-title" style="padding-left: 0px;margin-left: -7px;"><?php echo __('Rapport d\'une  visite'); ?></h3>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
     <!--<div class="col-lg-3 broch">
             <div class="info-box">
-				<span class="info-box-icon bg-light-blue"><i class="fa fa-bold"></i></span>
+				<span class="symbol symbol-50px bg-primary d-flex align-items-center justify-content-center rounded"><i class="ki-duotone ki-text-bold fs-2 text-white"></i></span>
 				<div class="info-box-content" style="height: 100%;vertical-align: middle;line-height: 79px;">
 					<span class="info-box-text" style="font-size: 23px;color: #999;">Brochures</span>
 				</div>
 			</div>
         </div>-->
-        <div class="col-lg-8 col-xs-12">
-            <div class="panel panel-primary">
-                <div class="panel-body form-horizontal payment-form">
+        <div class="col-lg-8 col-12">
+            <div class="card">
+                <div class="card-body payment-form">
                     <?php echo $this->Form->create('Visite',array("style"=>"float: left; width: 100%; height: auto;")); ?>
 					<?php
 						echo $this->Form->hidden('client_id', array('value' => $client_id));
 						echo $this->Form->input('date', ['type' => 'text', 'class' => 'form-control', 'id' => 'datepicker', 'label' => "Date de visite"]); 
 					?>
 					<div class="input text" style="margin: 4px 0px;float: left;width: 100%;border-top: 3px solid #eee;padding: 3px 6px;border-radius:5px;">
-						<div class="col-xs-6">
+						<div class="col-6">
 							<input type="radio" name="data[Visite][type_visite]" value="client" id="solo" checked style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><label for="solo">Client</label>
 						</div>
-						<div class="col-xs-6">
+						<div class="col-6">
 							<input type="radio" name="data[Visite][type_visite]" value="pas client" id="double" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><label for="double">Pas client</label>
 						</div>
 					</div>
 					
 					<div class="input text" style="margin: 4px 0px;float: left;width: 100%;border-top: 3px solid #eee;padding: 3px 6px;border-radius:5px;">
-						<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0;">
+						<label class="col-md-12 col-sm-12 col-12" style="padding:0;">
 							<?php
 								
 									echo "Activité de la pharmacie";
 							?><sup style="color:red;">*</sup>
 						</label>
-						<span class="col-md-4 col-sm-4 col-xs-4">
+						<span class="col-md-4 col-sm-4 col-4">
 							<input type="radio" name="data[Visite][partenaires]" value="bien" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" required="required" class="parte"><b style="font-weight:normal;"> BIEN </b>
 						</span>
-						<span class="col-md-4 col-sm-4 col-xs-4">
+						<span class="col-md-4 col-sm-4 col-4">
 							<input type="radio" name="data[Visite][partenaires]" value="moyen" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" required="required" class="parte"><b style="font-weight:normal;"> MOYEN </b>
 						</span>
-						<span class="col-md-4 col-sm-4 col-xs-4">
+						<span class="col-md-4 col-sm-4 col-4">
 							<input type="radio" name="data[Visite][partenaires]" value="faible" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" required="required" class="parte"><b style="font-weight:normal;"> FAIBLE </b>
 						</span>
 					</div>
 					<div class="input text" style="margin: 4px 0px;float: left;width: 100%;border-top: 3px solid #eee;padding: 3px 6px;border-radius:5px;">
-						<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0;">Adoption des produits Esnapharm <sup style="color:red;"></sup></label>
-						<span class="col-md-4 col-sm-4 col-xs-4">
+						<label class="col-md-12 col-sm-12 col-12" style="padding:0;">Adoption des produits Esnapharm <sup style="color:red;"></sup></label>
+						<span class="col-md-4 col-sm-4 col-4">
 							<input type="radio" name="data[Visite][veille]" value="100" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"  class="concur"><b style="font-weight:normal;"> Exclusif </b>
 						</span>
-						<span class="col-md-4 col-sm-4 col-xs-4">
+						<span class="col-md-4 col-sm-4 col-4">
 							<input type="radio" name="data[Visite][veille]" value="50" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"  class="concur"><b style="font-weight:normal;"> Fidèle </b>
 						</span>
-						<span class="col-md-4 col-sm-4 col-xs-4">
+						<span class="col-md-4 col-sm-4 col-4">
 							<input type="radio" name="data[Visite][veille]" value="-+" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"  class="concur"><b style="font-weight:normal;"> Rare </b>
 						</span>
 					</div>
 					<!--<div class="input text" style="margin: 4px 0px;float: left;width: 100%;border-top: 3px solid #eee;padding: 3px 6px;border-radius:5px;">
 						
 						// <?php
-                            // echo $this->Form->input('produits', array('name' => "data[Visite][produits]", 'label' => 'La liste des produits partenaire', 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control select2 esna',"style"=>"padding:0px;"));
+                            // echo $this->Form->input('produits', array('name' => "data[Visite][produits]", 'label' => 'La liste des produits partenaire', 'class' => 'col-md-12 col-sm-12 col-12 form-control select2 esna',"style"=>"padding:0px;"));
                             // ?>
                      </div>-->
 					<div class="input text selectgame" style="margin: 4px 0px;float: left;width: 100%;border-top: 3px solid #eee;padding: 3px 6px;border-radius:5px;">
@@ -153,61 +153,61 @@ input[type='readonly']{
 								
 							?>
 						<?php
-							echo $this->Form->input('games', array('name' => "data[Visite][produits]", 'label' => $prod_label, 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control select2 produits', 'multiple' => "multiple","style"=>"padding:0px;"));
+							echo $this->Form->input('games', array('name' => "data[Visite][produits]", 'label' => $prod_label, 'class' => 'col-md-12 col-sm-12 col-12 form-control select2 produits', 'multiple' => "multiple","style"=>"padding:0px;"));
 							
                         ?>
                     </div>
 					<div class="input text" style="margin: 4px 0px;float: left;width: 100%;padding: 3px 6px;">
-						<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0;"><?php echo $boit_label; ?></label>
-						<span class="col-md-4 col-sm-4 col-xs-4">
+						<label class="col-md-12 col-sm-12 col-12" style="padding:0;"><?php echo $boit_label; ?></label>
+						<span class="col-md-4 col-sm-4 col-4">
 							<input type="radio" name="data[Produit][nbr_boites]" class="boits" value="5" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" disabled required="required"><b style="font-weight:normal;"> 5 </b>
 						</span>
-						<span class="col-md-4 col-sm-4 col-xs-4">
+						<span class="col-md-4 col-sm-4 col-4">
 							<input type="radio" name="data[Produit][nbr_boites]" class="boits" value="10" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" disabled required="required"><b style="font-weight:normal;"> 10 </b>
 						</span>
-						<span class="col-md-4 col-sm-4 col-xs-4">
+						<span class="col-md-4 col-sm-4 col-4">
 							<input type="radio" name="data[Produit][nbr_boites]" class="boits" value="20" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" disabled required="required"><b style="font-weight:normal;"> 20 </b>
 						</span>
 					</div>
 					<div class="input text selectgame" style="margin: 4px 0px;float: left;width: 100%;border-top: 3px solid #eee;padding: 3px 6px;border-radius:5px;">
-					<?php echo $this->Form->input('games', array('name' => "data[Visite][produitsNP]", 'label' => $prodc_label, 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control select2 produits', 'multiple' => "multiple","style"=>"padding:0px;")); ?>
+					<?php echo $this->Form->input('games', array('name' => "data[Visite][produitsNP]", 'label' => $prodc_label, 'class' => 'col-md-12 col-sm-12 col-12 form-control select2 produits', 'multiple' => "multiple","style"=>"padding:0px;")); ?>
 					</div>
 					<div class="input text" style="margin: 4px 0px;float: left;width: 100%;padding: 3px 6px;">
-						<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0;"><?php echo $boit_label; ?></label>
-						<span class="col-md-4 col-sm-4 col-xs-4">
+						<label class="col-md-12 col-sm-12 col-12" style="padding:0;"><?php echo $boit_label; ?></label>
+						<span class="col-md-4 col-sm-4 col-4">
 							<input type="radio" name="data[Produit][nbr_boitesC]" class="boits" value="5" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" disabled required="required"><b style="font-weight:normal;"> 5 </b>
 						</span>
-						<span class="col-md-4 col-sm-4 col-xs-4">
+						<span class="col-md-4 col-sm-4 col-4">
 							<input type="radio" name="data[Produit][nbr_boitesC]" class="boits" value="10" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" disabled required="required"><b style="font-weight:normal;"> 10 </b>
 						</span>
-						<span class="col-md-4 col-sm-4 col-xs-4">
+						<span class="col-md-4 col-sm-4 col-4">
 							<input type="radio" name="data[Produit][nbr_boitesC]" class="boits" value="20" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" disabled required="required"><b style="font-weight:normal;"> 20 </b>
 						</span>
 					</div>
 					
 					<div class="input text" style="margin: 4px 0px;float: left;width: 100%;border-top: 3px solid #eee;padding: 3px 6px;border-radius:5px;">
-						<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">Noms des principaux prescripteurs</label>
+						<label class="col-md-12 col-sm-12 col-12" style="padding:0px;">Noms des principaux prescripteurs</label>
 						<?php
-                            echo $this->Form->input('clientsSecteurs', array('name' => "data[Visite][prescripteurs]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control select2 produits', 'multiple' => "multiple","style"=>"padding:0px;"));
+                            echo $this->Form->input('clientsSecteurs', array('name' => "data[Visite][prescripteurs]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-12 form-control select2 produits', 'multiple' => "multiple","style"=>"padding:0px;"));
                         ?>
                     </div>
 									
 					
-					<div class="input text col-md-12 col-sm-12 col-xs-12" style="margin: 4px 0px;float: left;width: 100%;border-top: 3px solid #eee;padding: 3px 6px;border-radius:5px;">
+					<div class="input text col-md-12 col-sm-12 col-12" style="margin: 4px 0px;float: left;width: 100%;border-top: 3px solid #eee;padding: 3px 6px;border-radius:5px;">
                     <?php
 						echo $this->Form->input('commentaire', array('label' => 'Commentaire', 'class' => 'form-control'));
                     ?>
 					</div>
 					
-						<div class="col-xs-12" style="padding:0px;">
-							<h4 class="col-xs-12 bg-blue" style="border: 1px solid #aaa; border-top-right-radius: 4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;">
+						<div class="col-12" style="padding:0px;">
+							<h4 class="col-12 bg-primary" style="border: 1px solid #aaa; border-top-right-radius: 4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;">
 								<b style="line-height: 27px;">Veille (1):</b>
-								<span class="veilletogg" style="float:right;cursor:pointer;padding:4px;color:#074c75;" onclick="veille(0)"><i id="veilleicon0" class="fa fa-minus"></i></span>
+								<span class="veilletogg" style="float:right;cursor:pointer;padding:4px;color:#074c75;" onclick="veille(0)"><i id="veilleicon0" class="ki-duotone ki-minus fs-4"></i></span>
 							</h4>
-							<div style="border:1px solid #aaa; border-bottom-right-radius:4px; border-bottom-left-radius:4px; padding:10px 0px; margin-top:0px; background:#fefefe;" class="col-xs-12 veille0 concur">
-								<div class="col-md-6 col-xs-12">	
-									<div class="col-md-12 col-xs-12">
-										<label class="col-xs-12" style="padding: 0px;">Produit :</label>
+							<div style="border:1px solid #aaa; border-bottom-right-radius:4px; border-bottom-left-radius:4px; padding:10px 0px; margin-top:0px; background:#fefefe;" class="col-12 veille0 concur">
+								<div class="col-md-6 col-12">	
+									<div class="col-md-12 col-12">
+										<label class="col-12" style="padding: 0px;">Produit :</label>
 										<select name="data[veillep][0][produit_id]" class="form-control select2 prodv">
 											<option value="">Choisissez</option>
 											<?php foreach ($games as $k=>$v):?>
@@ -215,8 +215,8 @@ input[type='readonly']{
 											<?php endforeach ; ?>
 										</select>
 									</div>
-									<div class="col-md-12 col-xs-12">
-										<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">Emplacement produits :</label>
+									<div class="col-md-12 col-12">
+										<label class="col-md-12 col-sm-12 col-12" style="padding:0px;">Emplacement produits :</label>
 										<select name="data[veillep][0][emplacement]" class="col-md-12 form-control" style="padding:0px;text-transform: capitalize;">
 											<option value="">Choisissez</option>
 											<option value="Etageres">étagères</option>
@@ -225,13 +225,13 @@ input[type='readonly']{
 										</select>
 									</div>	
 								</div>
-								<div class="col-md-6 col-xs-12">
-									<div class="col-md-12 col-xs-12">
-										<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">Stocks disponibles au moment de la visite :</label>
+								<div class="col-md-6 col-12">
+									<div class="col-md-12 col-12">
+										<label class="col-md-12 col-sm-12 col-12" style="padding:0px;">Stocks disponibles au moment de la visite :</label>
 										<input name="data[veillep][0][stock]" class="form-control" min="0" placeholder="Stock" type="number">
 									</div>
-									<div class="col-md-12 col-xs-12">
-										<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">PLV en place :</label>
+									<div class="col-md-12 col-12">
+										<label class="col-md-12 col-sm-12 col-12" style="padding:0px;">PLV en place :</label>
 										<select name="data[veillep][0][plv]" class="col-md-12 form-control" style="padding:0px;text-transform: capitalize;">
 											<option value="">Choisissez</option>
 											<option value="Panneau">Panneau</option>
@@ -241,22 +241,22 @@ input[type='readonly']{
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 veille_div" style="margin-bottom:10px;padding:0px;" id="1">
+						<div class="col-12 veille_div" style="margin-bottom:10px;padding:0px;" id="1">
 						</div>
-						<div class="col-xs-12">
+						<div class="col-12">
 							<b class="ajouter_veille btn btn-primary" style="float:right;">Ajouter veille</b>
 						</div>
 						
 						
-						<div class="col-xs-12" style="padding:0px;">
-							<h4 class="col-xs-12 bg-blue" style="border: 1px solid #aaa; border-top-right-radius: 4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;">
+						<div class="col-12" style="padding:0px;">
+							<h4 class="col-12 bg-primary" style="border: 1px solid #aaa; border-top-right-radius: 4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;">
 								<b style="line-height: 27px;">Concurrence (1):</b>
-								<span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#074c75;" onclick="concur(0)"><i id="concuricon0" class="fa fa-minus"></i></span>
+								<span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#074c75;" onclick="concur(0)"><i id="concuricon0" class="ki-duotone ki-minus fs-4"></i></span>
 							</h4>
-							<div style="border:1px solid #aaa; border-bottom-right-radius:4px; border-bottom-left-radius:4px; padding:10px 0px; margin-top:0px; background:#fefefe;" class="col-xs-12 concur0 concur">
-								<div class="col-md-6 col-xs-12">	
-									<div class="col-md-12 col-xs-12">
-										<label class="col-xs-12" style="padding: 0px;">Produit :</label>
+							<div style="border:1px solid #aaa; border-bottom-right-radius:4px; border-bottom-left-radius:4px; padding:10px 0px; margin-top:0px; background:#fefefe;" class="col-12 concur0 concur">
+								<div class="col-md-6 col-12">	
+									<div class="col-md-12 col-12">
+										<label class="col-12" style="padding: 0px;">Produit :</label>
 										<select name="data[RapportConcurance][0][produit_id]" class="form-control select2 prodc">
 											<option value="">Choisissez</option>
 											<?php foreach ($games as $k=>$v):?>
@@ -264,12 +264,12 @@ input[type='readonly']{
 											<?php endforeach ; ?>
 										</select>
 									</div>
-									<div class="col-md-12 col-xs-12">
-										<label class="col-xs-12" style="padding: 0px;">Produit concurrent :</label>
-										<input type="text" name="data[RapportConcurance][0][produit_concurant]" class="col-xs-12" placeholder="Rédigez le nom du concurrent" style="float:left; padding:6px 8px;font-weight:bold;">
+									<div class="col-md-12 col-12">
+										<label class="col-12" style="padding: 0px;">Produit concurrent :</label>
+										<input type="text" name="data[RapportConcurance][0][produit_concurant]" class="col-12" placeholder="Rédigez le nom du concurrent" style="float:left; padding:6px 8px;font-weight:bold;">
 									</div>
-									<div class="col-md-12 col-xs-12">
-										<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">Emplacement produits :</label>
+									<div class="col-md-12 col-12">
+										<label class="col-md-12 col-sm-12 col-12" style="padding:0px;">Emplacement produits :</label>
 										<select name="data[RapportConcurance][0][emplacement]" class="col-md-12 form-control" style="padding:0px;text-transform: capitalize;">
 											<option value="">Choisissez</option>
 											<option value="Etageres">étagères</option>
@@ -277,54 +277,54 @@ input[type='readonly']{
 											<option value="Absent">Absent</option>
 										</select>
 									</div>	
-									<div class="col-md-12 col-xs-12">
-										<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">Stocks disponibles au moment de la visite :</label>
+									<div class="col-md-12 col-12">
+										<label class="col-md-12 col-sm-12 col-12" style="padding:0px;">Stocks disponibles au moment de la visite :</label>
 										<input name="data[RapportConcurance][0][stock]" class="form-control" min="0" placeholder="Stock" type="number">
 									</div>
 								</div>
-								<div class="col-md-6 col-xs-12">
-									<div class="col-md-12 col-xs-12">
-										<label class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">PLV en place :</label>
+								<div class="col-md-6 col-12">
+									<div class="col-md-12 col-12">
+										<label class="col-md-12 col-sm-12 col-12" style="padding:0px;">PLV en place :</label>
 										<select name="data[RapportConcurance][0][plv]" class="col-md-12 form-control" style="padding:0px;text-transform: capitalize;">
 											<option value="">Choisissez</option>
 											<option value="Panneau">Panneau</option>
 											<option value="Affiche">Affiche</option>
 										</select>
 									</div>
-									<div class="col-md-12 col-xs-12">
-										<label class="col-xs-12" style="padding: 0px;margin-bottom: 11px;">Type de l’offre :</label>
-										<div class="col-xs-4">
+									<div class="col-md-12 col-12">
+										<label class="col-12" style="padding: 0px;margin-bottom: 11px;">Type de l’offre :</label>
+										<div class="col-4">
 											<input type="checkbox" name="data[RapportConcurance][0][type_offre][]"  value="Pack"><b> Pack</b>
 										</div>
-										<div class="col-xs-4">
+										<div class="col-4">
 											<input type="checkbox" name="data[RapportConcurance][0][type_offre][]" value="Action"><b> Action</b>
 										</div>
-										<div class="col-xs-4">
+										<div class="col-4">
 											<input type="checkbox" name="data[RapportConcurance][0][type_offre][]" value="Autres"><b> Autres</b>
 										</div>
 									</div>
-									<div class="col-md-12 col-xs-12" style="margin-top: 11px;">
-										<label class="col-xs-12" style="padding: 0px;margin-bottom: 11px;">Degrés d’agressivité :</label>
-										<div class="col-xs-4">
+									<div class="col-md-12 col-12" style="margin-top: 11px;">
+										<label class="col-12" style="padding: 0px;margin-bottom: 11px;">Degrés d’agressivité :</label>
+										<div class="col-4">
 											<input type="radio" name="data[RapportConcurance][0][agressivite][]" value="Tres agressive"><b> Très agressive</b>
 										</div>
-										<div class="col-xs-4">
+										<div class="col-4">
 											<input type="radio" name="data[RapportConcurance][0][agressivite][]" value="Agressive"><b> Agressive</b>
 										</div>
-										<div class="col-xs-4">
+										<div class="col-4">
 											<input type="radio" name="data[RapportConcurance][0][agressivite][]" value="Peu agressive"><b> Peu agressive</b>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 concurr_pharm" style="margin-bottom:10px;padding:0px;" id="1">
+						<div class="col-12 concurr_pharm" style="margin-bottom:10px;padding:0px;" id="1">
 						</div>
-						<div class="col-xs-12">
+						<div class="col-12">
 							<b class="ajouterconcur_pharm btn btn-primary" style="float:right;">Ajouter concurrence</b>
 						</div>
 					
-                    <?php echo $this->Form->end(array('label' => 'Enregistrer le rapport de la visite', 'class' => 'btn btn-primary btn-large submit','div' => array('class' => 'well text-center  col-md-12 col-sm-12 col-xs-12'))); ?>
+                    <?php echo $this->Form->end(array('label' => 'Enregistrer le rapport de la visite', 'class' => 'btn btn-primary btn-large submit','div' => array('class' => 'well text-center  col-md-12 col-sm-12 col-12'))); ?>
                 </div>
             </div>
         </div>
@@ -332,23 +332,19 @@ input[type='readonly']{
     </div>	 
 </div>
 <?php
-	echo $this->Html->script('jquery-2.2.3.min');
-?>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+// jQuery UI powers the .datepicker() calls below. It is NOT part of
+// Metronic's plugins.bundle, so it must be loaded explicitly -- served from
+// webroot/js instead of the CDN.
+echo $this->Html->script('jquery-ui.min'); ?>
 <?php
-	echo $this->Html->script('bootstrap.min');
-	echo $this->Html->script('app.min');
-	echo $this->Html->css('select2.min');
 	echo $this->Html->script('jquery.slimscroll.min');
 	echo $this->Html->script('fastclick');
 	echo $this->Html->script('demo');
-	echo $this->Html->script('select2.full.min');
 ?>
 <script>
     /*$('document').ready(function(){
      var hgt = $('body').height();
-     var popup = '<div class="col-md-12 popup" style="display:none;"><div id="image-gallery"><b onclick="$(\'.popup\').hide();" style="cursor:pointer;width: auto;height: auto;z-index: 999999;position: absolute;top:0;right:0;color: #fff;float: right;font-size: 30px;"><i class="fa fa-times"></i></b><div class="image-container"></div><img src="/img/left.svg" class="prev"/><img src="/img/right.svg"  class="next"/><div class="footer-info"><span class="current"></span>/<span class="total"></span></div></div></div>'
+     var popup = '<div class="col-md-12 popup" style="display:none;"><div id="image-gallery"><b onclick="$(\'.popup\').hide();" style="cursor:pointer;width: auto;height: auto;z-index: 999999;position: absolute;top:0;right:0;color: #fff;float: right;font-size: 30px;"><i class="ki-duotone ki-cross"><span class="path1"></span></i></b><div class="image-container"></div><img src="/img/left.svg" class="prev"/><img src="/img/right.svg"  class="next"/><div class="footer-info"><span class="current"></span>/<span class="total"></span></div></div></div>'
      $('body').prepend(popup);
      $('.popup').css('height',hgt+'px !important');
      var a = <?php echo $i; ?>;
@@ -486,11 +482,11 @@ function concurcl(id){
 function concur(id){
 	$(".concur"+id).toggle();
 		var clas = $("#concuricon"+id).attr("class");
-		if(clas=='fa fa-minus'){
-			$("#concuricon"+id).attr("class", "fa fa-plus");
+		if(clas=='ki-duotone ki-minus fs-4'){
+			$("#concuricon"+id).attr("class", "ki-duotone ki-plus fs-4");
 		}
-		if(clas=='fa fa-plus'){
-			$("#concuricon"+id).attr("class", "fa fa-minus");
+		if(clas=='ki-duotone ki-plus fs-4'){
+			$("#concuricon"+id).attr("class", "ki-duotone ki-minus fs-4");
 		}
 }
 function veillecl(id){
@@ -500,17 +496,17 @@ function veillecl(id){
 function veille(id){
 	$(".veille"+id).toggle();
 		var clas = $("#veilleicon"+id).attr("class");
-		if(clas=='fa fa-minus'){
-			$("#veilleicon"+id).attr("class", "fa fa-plus");
+		if(clas=='ki-duotone ki-minus fs-4'){
+			$("#veilleicon"+id).attr("class", "ki-duotone ki-plus fs-4");
 		}
-		if(clas=='fa fa-plus'){
-			$("#veilleicon"+id).attr("class", "fa fa-minus");
+		if(clas=='ki-duotone ki-plus fs-4'){
+			$("#veilleicon"+id).attr("class", "ki-duotone ki-minus fs-4");
 		}
 }
 $('.ajouterconcur').click(function(){
 	$(".concurtogg").each(function(){
 		var btntogg = $(this).children().attr("class");
-		if(btntogg=='fa fa-minus'){
+		if(btntogg=='ki-duotone ki-minus fs-4'){
 				$(this).trigger('click');
 			}
 	});
@@ -524,7 +520,7 @@ $('.ajouterconcur').click(function(){
 $('.ajouterconcur_pharm').click(function(){
 	$(".concurtogg").each(function(){
 		var btntogg = $(this).children().attr("class");
-		if(btntogg=='fa fa-minus'){
+		if(btntogg=='ki-duotone ki-minus fs-4'){
 				$(this).trigger('click');
 			}
 	});
@@ -532,7 +528,7 @@ $('.ajouterconcur_pharm').click(function(){
 	var cu = $(".concurr_pharm").attr('id');
 	var ci = parseInt(cu);
 	console.log(ci);
-	var div = '<h4 class="col-xs-12 bg-blue" style="border: 1px solid #aaa; border-top-right-radius:4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;"><b style="line-height: 27px;">Concurrence ('+(ci+1)+'):</b><span class="concurclose'+ci+'" style="float:right;cursor:pointer;padding:4px;color:#074c75;margin-left:5px;" onclick="concurcl('+ci+')"><i class="fa fa-times"></i></span><span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#074c75;" onclick="concur('+ci+')"><i id="concuricon'+ci+'" class="fa fa-minus"></i></span></h4><div style="border:1px solid #aaa; border-bottom-right-radius:4px; border-bottom-left-radius:4px; padding:10px 0px;margin-top:0px;background:#fefefe;" class="col-xs-12 concur'+ci+' concur"><div class="col-md-6 col-xs-12"><div class="col-md-12 col-xs-12"><label class="col-xs-12" style="padding: 0px;">Produit :</label><select name="data[RapportConcurance]['+ci+'][produit_id]" class="form-control select2 prodc"><option value="">Choisissez</option><?php foreach ($games as $k=>$v):?><option value="<?php echo $k ; ?>"><?php echo $v ; ?></option><?php endforeach ; ?></select></div><div class="col-md-12 col-xs-12"><label class="col-xs-12" style="padding: 0px;">Produit concurrent :</label><input type="text" name="data[RapportConcurance]['+ci+'][produit_concurant]" class="col-xs-12" placeholder="Rédigez le nom du concurrent" style="float:left; padding:6px 8px;font-weight:bold;"></div><div class="col-md-12 col-xs-12"><label class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">Emplacement produits :</label><select name="data[RapportConcurance]['+ci+'][emplacement]" class="col-md-12 form-control" style="padding:0px;text-transform: capitalize;"><option value="">Choisissez</option><option value="Etageres">étagères</option><option value="Presentoirs">présentoirs</option><option value="Absent">Absent</option></select></div><div class="col-md-12 col-xs-12"><label class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">Stocks disponibles au moment de la visite :</label><input name="data[RapportConcurance]['+ci+'][stock]" class="form-control" min="0" placeholder="Stock" type="number"></div></div><div class="col-md-6 col-xs-12"><div class="col-md-12 col-xs-12"><label class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">PLV en place :</label><select name="data[RapportConcurance]['+ci+'][plv]" class="col-md-12 form-control" style="padding:0px;text-transform: capitalize;"><option value="">Choisissez</option><option value="Panneau">Panneau</option><option value="Affiche">Affiche</option></select></div><div class="col-md-12 col-xs-12"><label class="col-xs-12" style="padding: 0px;margin-bottom: 11px;">Type de l’offre :</label><div class="col-xs-4"><input type="checkbox" name="data[RapportConcurance]['+ci+'][type_offre][]" value="Pack"><b> Pack</b></div><div class="col-xs-4"><input type="checkbox" name="data[RapportConcurance]['+ci+'][type_offre][]" value="Action"><b> Action</b></div><div class="col-xs-4"><input type="checkbox" name="data[RapportConcurance]['+ci+'][type_offre][]" value="Autres"><b> Autres</b></div> </div><div class="col-md-12 col-xs-12" style="margin-top: 11px;"><label class="col-xs-12" style="padding: 0px;margin-bottom: 11px;">Degrés d’agressivité :</label><div class="col-xs-4"><input type="radio" name="data[RapportConcurance]['+ci+'][agressivite][]" value="Tres agressive"><b> Très agressive</b></div><div class="col-xs-4"><input type="radio" name="data[RapportConcurance]['+ci+'][agressivite][]" value="Agressive"><b> Agressive</b></div><div class="col-xs-4"><input type="radio" name="data[RapportConcurance]['+ci+'][agressivite][]" value="Peu agressive"><b> Peu agressive</b></div></div></div></div>';
+	var div = '<h4 class="col-12 bg-primary" style="border: 1px solid #aaa; border-top-right-radius:4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;"><b style="line-height: 27px;">Concurrence ('+(ci+1)+'):</b><span class="concurclose'+ci+'" style="float:right;cursor:pointer;padding:4px;color:#074c75;margin-left:5px;" onclick="concurcl('+ci+')"><i class="ki-duotone ki-cross"><span class="path1"></span></i></span><span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#074c75;" onclick="concur('+ci+')"><i id="concuricon'+ci+'" class="ki-duotone ki-minus fs-4"></i></span></h4><div style="border:1px solid #aaa; border-bottom-right-radius:4px; border-bottom-left-radius:4px; padding:10px 0px;margin-top:0px;background:#fefefe;" class="col-12 concur'+ci+' concur"><div class="col-md-6 col-12"><div class="col-md-12 col-12"><label class="col-12" style="padding: 0px;">Produit :</label><select name="data[RapportConcurance]['+ci+'][produit_id]" class="form-control select2 prodc"><option value="">Choisissez</option><?php foreach ($games as $k=>$v):?><option value="<?php echo $k ; ?>"><?php echo $v ; ?></option><?php endforeach ; ?></select></div><div class="col-md-12 col-12"><label class="col-12" style="padding: 0px;">Produit concurrent :</label><input type="text" name="data[RapportConcurance]['+ci+'][produit_concurant]" class="col-12" placeholder="Rédigez le nom du concurrent" style="float:left; padding:6px 8px;font-weight:bold;"></div><div class="col-md-12 col-12"><label class="col-md-12 col-sm-12 col-12" style="padding:0px;">Emplacement produits :</label><select name="data[RapportConcurance]['+ci+'][emplacement]" class="col-md-12 form-control" style="padding:0px;text-transform: capitalize;"><option value="">Choisissez</option><option value="Etageres">étagères</option><option value="Presentoirs">présentoirs</option><option value="Absent">Absent</option></select></div><div class="col-md-12 col-12"><label class="col-md-12 col-sm-12 col-12" style="padding:0px;">Stocks disponibles au moment de la visite :</label><input name="data[RapportConcurance]['+ci+'][stock]" class="form-control" min="0" placeholder="Stock" type="number"></div></div><div class="col-md-6 col-12"><div class="col-md-12 col-12"><label class="col-md-12 col-sm-12 col-12" style="padding:0px;">PLV en place :</label><select name="data[RapportConcurance]['+ci+'][plv]" class="col-md-12 form-control" style="padding:0px;text-transform: capitalize;"><option value="">Choisissez</option><option value="Panneau">Panneau</option><option value="Affiche">Affiche</option></select></div><div class="col-md-12 col-12"><label class="col-12" style="padding: 0px;margin-bottom: 11px;">Type de l’offre :</label><div class="col-4"><input type="checkbox" name="data[RapportConcurance]['+ci+'][type_offre][]" value="Pack"><b> Pack</b></div><div class="col-4"><input type="checkbox" name="data[RapportConcurance]['+ci+'][type_offre][]" value="Action"><b> Action</b></div><div class="col-4"><input type="checkbox" name="data[RapportConcurance]['+ci+'][type_offre][]" value="Autres"><b> Autres</b></div> </div><div class="col-md-12 col-12" style="margin-top: 11px;"><label class="col-12" style="padding: 0px;margin-bottom: 11px;">Degrés d’agressivité :</label><div class="col-4"><input type="radio" name="data[RapportConcurance]['+ci+'][agressivite][]" value="Tres agressive"><b> Très agressive</b></div><div class="col-4"><input type="radio" name="data[RapportConcurance]['+ci+'][agressivite][]" value="Agressive"><b> Agressive</b></div><div class="col-4"><input type="radio" name="data[RapportConcurance]['+ci+'][agressivite][]" value="Peu agressive"><b> Peu agressive</b></div></div></div></div>';
 	$('.concurr_pharm').append(div);
 	$(".concurr_pharm").attr('id',ci+1);
 	$(".prodc").select2();
@@ -542,7 +538,7 @@ $('.ajouterconcur_pharm').click(function(){
 $('.ajouter_veille').click(function(){
 	$(".veilletogg").each(function(){
 		var btntogg = $(this).children().attr("class");
-		if(btntogg=='fa fa-minus'){
+		if(btntogg=='ki-duotone ki-minus fs-4'){
 				$(this).trigger('click');
 			}
 	});
@@ -550,7 +546,7 @@ $('.ajouter_veille').click(function(){
 	var cu = $(".veille_div").attr('id');
 	var ci = parseInt(cu);
 	console.log(ci);
-	var div = '<h4 class="col-xs-12 bg-blue" style="border: 1px solid #aaa; border-top-right-radius:4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;"><b style="line-height: 27px;">Veille ('+(ci+1)+'):</b><span class="veilleclose'+ci+'" style="float:right;cursor:pointer;padding:4px;color:#074c75;margin-left:5px;" onclick="veillecl('+ci+')"><i class="fa fa-times"></i></span><span class="veilletogg" style="float:right;cursor:pointer;padding:4px;color:#074c75;" onclick="veille('+ci+')"><i id="veilleicon'+ci+'" class="fa fa-minus"></i></span></h4><div style="border:1px solid #aaa; border-bottom-right-radius:4px; border-bottom-left-radius:4px; padding:10px 0px;margin-top:0px;background:#fefefe;" class="col-xs-12 veille'+ci+' concur"><div class="col-md-6 col-xs-12"><div class="col-md-12 col-xs-12"><label class="col-xs-12" style="padding: 0px;">Produit :</label><select name="data[veillep]['+ci+'][produit_id]" class="form-control select2 prodv"><option value="">Choisissez</option><?php foreach ($games as $k=>$v):?><option value="<?php echo $k ; ?>"><?php echo $v ; ?></option><?php endforeach ; ?></select></div><div class="col-md-12 col-xs-12"><label class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">Emplacement produits :</label><select name="data[veillep]['+ci+'][emplacement]" class="col-md-12 form-control" style="padding:0px;text-transform: capitalize;"><option value="">Choisissez</option><option value="Etageres">étagères</option><option value="Presentoirs">présentoirs</option><option value="Absent">Absent</option></select></div></div><div class="col-md-6 col-xs-12"><div class="col-md-12 col-xs-12"><label class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">Stocks disponibles au moment de la visite :</label><input name="data[veillep]['+ci+'][stock]" class="form-control" min="0" placeholder="Stock" type="number"></div><div class="col-md-12 col-xs-12"><label class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">PLV en place :</label><select name="data[veillep]['+ci+'][plv]" class="col-md-12 form-control" style="padding:0px;text-transform: capitalize;"><option value="">Choisissez</option><option value="Panneau">Panneau</option><option value="Affiche">Affiche</option></select></div></div></div>';
+	var div = '<h4 class="col-12 bg-primary" style="border: 1px solid #aaa; border-top-right-radius:4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;"><b style="line-height: 27px;">Veille ('+(ci+1)+'):</b><span class="veilleclose'+ci+'" style="float:right;cursor:pointer;padding:4px;color:#074c75;margin-left:5px;" onclick="veillecl('+ci+')"><i class="ki-duotone ki-cross"><span class="path1"></span></i></span><span class="veilletogg" style="float:right;cursor:pointer;padding:4px;color:#074c75;" onclick="veille('+ci+')"><i id="veilleicon'+ci+'" class="ki-duotone ki-minus fs-4"></i></span></h4><div style="border:1px solid #aaa; border-bottom-right-radius:4px; border-bottom-left-radius:4px; padding:10px 0px;margin-top:0px;background:#fefefe;" class="col-12 veille'+ci+' concur"><div class="col-md-6 col-12"><div class="col-md-12 col-12"><label class="col-12" style="padding: 0px;">Produit :</label><select name="data[veillep]['+ci+'][produit_id]" class="form-control select2 prodv"><option value="">Choisissez</option><?php foreach ($games as $k=>$v):?><option value="<?php echo $k ; ?>"><?php echo $v ; ?></option><?php endforeach ; ?></select></div><div class="col-md-12 col-12"><label class="col-md-12 col-sm-12 col-12" style="padding:0px;">Emplacement produits :</label><select name="data[veillep]['+ci+'][emplacement]" class="col-md-12 form-control" style="padding:0px;text-transform: capitalize;"><option value="">Choisissez</option><option value="Etageres">étagères</option><option value="Presentoirs">présentoirs</option><option value="Absent">Absent</option></select></div></div><div class="col-md-6 col-12"><div class="col-md-12 col-12"><label class="col-md-12 col-sm-12 col-12" style="padding:0px;">Stocks disponibles au moment de la visite :</label><input name="data[veillep]['+ci+'][stock]" class="form-control" min="0" placeholder="Stock" type="number"></div><div class="col-md-12 col-12"><label class="col-md-12 col-sm-12 col-12" style="padding:0px;">PLV en place :</label><select name="data[veillep]['+ci+'][plv]" class="col-md-12 form-control" style="padding:0px;text-transform: capitalize;"><option value="">Choisissez</option><option value="Panneau">Panneau</option><option value="Affiche">Affiche</option></select></div></div></div>';
 	$('.veille_div').append(div);
 	$(".veille_div").attr('id',ci+1);
 	$(".prodv").select2();

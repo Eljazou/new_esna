@@ -67,7 +67,7 @@ debug($supers); ?>
 					<div class="card-header">
 						<h5 class="card-title mb-0">Statistiques superviseur</h5>
 					</div>
-					<table class="table my-0 table-striped table-hover table-bordered">
+					<table class="table my-0 table-striped table-hover table-row-bordered">
 						<thead class="text-center">
 							<tr>
 								<th class="d-xxl-table-cell">Nom</th>
@@ -147,7 +147,7 @@ debug($supers); ?>
 					<div class="card-header">
 						<h5 class="card-title mb-0">Statistiques Déléguées </h5>
 					</div>
-					<table class="table my-0 table-striped table-hover table-bordered">
+					<table class="table my-0 table-striped table-hover table-row-bordered">
 						<thead class="text-center">
 							<tr>
 								<th class="d-xxl-table-cell">Nom</th>

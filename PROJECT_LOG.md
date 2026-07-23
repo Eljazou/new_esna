@@ -101,7 +101,8 @@ Legend: ✅ done · 🟡 in progress · ⬜ pending · ⛔ blocked
 | 8 | Shared partials (sidebar / topbar / flash / breadcrumbs) | ✅ 2026-07-22 |
 | 8b | Delete dead `_old.ctp` files (16) | ✅ 2026-07-22 |
 | 9 | Page-by-page reconstruction — **Clients (15 views)** | ✅ 2026-07-22 |
-| 10 | Next module: Visites (17 views) | ⬜ |
+| 10 | Page-by-page — **Visites (13 views)** | ✅ 2026-07-23 |
+| 11 | Next module: Rapports (11 views) | ⬜ |
 
 ### Per-module migration checklist
 
@@ -389,6 +390,92 @@ correct duotone `<span class="pathN">` counts, BS3→BS5 `data-bs-*` rewriting, 
 de-duplication), and `verify_php.py`, which proves a migrated view's PHP logic is
 unchanged. Both were hardened by the bugs above and are ready for the remaining modules.
 
+### 2026-07-23 — Step 3, module 2: **Visites** (17 → 13 views) ✅
+
+**Scope note:** the user decided to skip local browser verification — the project will be
+pushed to GitHub and validated by a colleague who has the real database. Verification here
+is therefore `php -l` + logic-diff + code-integrity + legacy audit, all automated.
+
+**Deleted 4 unreferenced files** (2,643 lines): `add_old.ctp` and the whole `add_old/`
+directory (`addd.ctp`, `adddd.ctp`, `addold.ctp`). Same criteria as previous deletions —
+verified zero references, recoverable from git.
+
+| View | Lines | Notes |
+|---|---:|---|
+| `add.ctp` | 1306 | biggest view in the module; 26 `col-xs-*` → BS5, JS-driven ±icon toggles migrated with their JS |
+| `visite_pharmacie.ctp` | 563 | `.panel`→`.card`, 11 `col-xs-*`, AdminLTE `info-box-icon` → Metronic `symbol` |
+| `pointage.ctp` | 656 | 17 `.box` → `.card` |
+| `statistique.ctp` | 640 | `.box`/`.panel` → `.card` |
+| `archive.ctp` | 415 | DataTables → Metronic bundle |
+| `suiviglobal.ctp` | 344 | DataTables → Metronic bundle |
+| `system_statvisitbyparams.ctp` | 341 | icon toggles use `hasClass`/`addClass` — migrated markup + JS |
+| `edit.ctp` | 313 | jQuery UI datepicker preserved |
+| `system_top.ctp` | 232 | renders with an **empty layout** (fragment) — no asset element added |
+| 3 × `system_get_*_forspecialite_byword.ctp` | 70 ea. | `.box` → `.card` + DataTables bundle |
+| `couvertures.ctp` | 18 | already clean, unchanged |
+
+Module total: 7,681 → 5,004 lines across 17 → 13 files. **Legacy audit: ALL CLEAN** across
+all 17 patterns.
+
+**jQuery UI is now served locally.** `add`/`edit`/`visite_pharmacie` call `.datepicker()`
+(7 call sites). jQuery UI is **not** part of Metronic's `plugins.bundle`, so it must stay —
+it is now loaded from `webroot/js/jquery-ui.min.js` with its CSS vendored to
+`webroot/css/jquery-ui.min.css` plus the 6 `ui-icons_*.png` sprites it references
+(`webroot/css/images/`), which the datepicker's prev/next arrows need. The French locale is
+defined **inline in `add.ctp` itself** (`datepicker.regional.fr`), so no i18n file is
+required — verified still present after migration.
+
+---
+
+### ⚠️ Two serious migrator bugs found this session — both silent
+
+**Bug A — class rewriting corrupted code inside string literals.**
+A `class="([^"]*)"` regex also matches string fragments in *code*:
+
+```php
+'<input type="hidden" class="latc' . $ii . '" value="..."'    // PHP
+'<span class="concurclose' + ci + '" onclick="..."'           // JS
+```
+
+The token de-duplication then treated `+` / `.` as repeated class names and **deleted the
+concatenation operators**. In `Visites/add.ctp` this removed 6 JS `+` operators, breaking
+the dynamic objection/concurrent row builder — a core part of the visit form.
+
+**The PHP case produced a parse error that `php -l` caught. The JS case did not** — the
+file was valid PHP containing broken JavaScript, and linted perfectly clean.
+
+Fixed in three layers: (1) class rewrites are applied only to segments between `<?php ?>`
+**and** `<script>` blocks; (2) a `_is_code_fragment()` guard skips any `class="…"` whose
+value contains concatenation syntax (`' +`, `. $`, `<?`); (3) a new checker,
+`tools/verify_code_intact.py`, diffs structural token counts (JS/PHP concat operators,
+braces, `function`/`foreach`/`if`) between `esna/` and the migrated file.
+
+The checker was **validated against a deliberately corrupted file**: it reported
+`js concat 28 -> 22` while `php -l` on the same file reported *"No syntax errors"* —
+proving the gap it closes. Consequence of the fix: markup built inside JS strings is now
+deliberately **not** auto-migrated; those spots are handled by hand.
+
+**Bug B — jQuery UI was being stripped as a "duplicate jQuery".**
+The CDN de-duplication rule matched `code.jquery.com/ui/1.12.0/jquery-ui.js`. jQuery **UI**
+is a different library that Metronic does not bundle, and removing it silently broke all 7
+`.datepicker()` call sites. The rule now matches only jQuery *core* (`jquery-<version>.js`
+at the CDN root). Clients was checked and never affected.
+
+**Latent issue repaired in Clients** while re-running the fixed tool: `.box-header-custom`
+in a `<style>` block had been left pointing at markup already renamed to
+`.card-header-custom`. Also caught 4 **Ionicons** in `Clients/allclients.ctp` that the
+earlier audit had no pattern for (`ion ion-bag` etc.) — now Keenicons. Clients re-audited:
+**ALL CLEAN**.
+
+**Tooling now in `tools/`** (committed, so it travels with the repo):
+
+| Tool | Purpose |
+|---|---|
+| `metronize.py` | AdminLTE/BS3 → Metronic migrator; token-safe, code-fragment-guarded |
+| `verify_php.py` | proves PHP logic unchanged vs `esna/` |
+| `verify_code_intact.py` | catches code corruption `php -l` cannot see |
+| `audit_legacy.py` | comment-aware sweep for 17 legacy patterns |
+
 ---
 
 ## 5. Migration checklist — inventory of `app/View/**/*.ctp`
@@ -438,7 +525,7 @@ pattern · `KI` = files already using Keenicons.
 | Module | ctp | box | panel | bs3-grid | fa | KI | Status |
 |---|---:|---:|---:|---:|---:|---:|---|
 | Layouts | 19 | 2 | 0 | 2 | 4 | 0 | ⬜ |
-| Visites | 17 | 13 | 6 | 9 | 8 | 0 | ⬜ |
+| Visites | ~~17~~ 13 | 0 | 0 | 0 | 0 | ✅ | **✅ done 2026-07-23** |
 | Appwebfinalv2 | 17 | 3 | 2 | 2 | 8 | 0 | ⬜ |
 | Users | 16 | 9 | 4 | 10 | 5 | 1 | ⬜ |
 | Clients | ~~16~~ 15 | 0 | 0 | 0 | 0 | ✅ | **✅ done 2026-07-22** |
@@ -617,6 +704,22 @@ work.
 19. **`Clients/system_index.ctp` is an orphan view** — no controller action and no
     references anywhere in `app/`. It was restyled for consistency but is unreachable.
     Candidate for deletion; **not deleted without approval** since it is not an `_old` file.
+21. **Markup built inside JavaScript strings is not auto-migrated.** The migrator now
+    refuses to rewrite class attributes inside `<script>` blocks and string literals
+    (see Bug A, 2026-07-23) because doing so corrupts concatenation operators. Any legacy
+    classes in JS-generated HTML must be handled by hand, per view. `Visites/add.ctp` and
+    `visite_pharmacie.ctp` were done manually this way.
+22. **`php -l` is not sufficient verification.** It validates PHP only; broken JavaScript
+    inside a `.ctp` lints clean. Always run `tools/verify_code_intact.py` after migrating a
+    module. Note it can false-positive on prose/URLs that read like `word + word + word`
+    (e.g. a `Plus+Jakarta+Sans` font URL) — eyeball each hit.
+23. **`Visites/system_addd` and `system_adddd` actions have no view files.** Both exist in
+    `VisitesController` but `Visites/system_addd.ctp` / `system_adddd.ctp` do not, so
+    calling them throws MissingViewException. Pre-existing upstream, untouched (controller
+    logic is out of scope for this migration).
+24. **jQuery UI must stay loaded** on `Visites/{add,edit,visite_pharmacie}` — Metronic does
+    not bundle it and 7 `.datepicker()` calls depend on it. Assets are local now
+    (`webroot/js/jquery-ui.min.js`, `webroot/css/jquery-ui.min.css` + `css/images/*.png`).
 20. **`esna-clients.css` must stay loaded** on `add`/`edit`: `#map-canvas` needs its
     explicit 300px height or the Google Maps picker collapses to zero height.
 17. **Bootstrap 3/4 compat shim is still active** in the layout — a delegated click

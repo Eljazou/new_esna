@@ -135,16 +135,36 @@ def swap_icons(src):
 
 
 
+# A class="..." match whose value contains code-concatenation syntax is not a
+# real class list -- it is a fragment of a PHP or JS string being built, e.g.
+#     '<span class="concurclose' + ci + '" ...'        (JS)
+#     '<input class="latc' . $ii . '" ...'             (PHP)
+# Rewriting those eats the + / . operators. Segment-splitting already avoids
+# most of these; this is the belt-and-braces guard that makes it impossible.
+_CODEY = re.compile(r"""['"]\s*[.+]|[.+]\s*['"]|\$\w|\+\s*\w+\s*\+|<\?""")
+
+
+def _is_code_fragment(value):
+    return bool(_CODEY.search(value))
+
+
 def _outside_php(src, fn):
     """Apply fn only to the HTML parts of a .ctp, never inside <?php ... ?>.
 
-    Why this exists: a class="..." regex also matches PHP string literals such as
-        '<input type="hidden" class="latc' . $ii . '" value="...'
-    Rewriting those mangles the concatenation operators and produces a parse
-    error. Splitting on PHP blocks first makes the rewrite structurally unable
-    to touch PHP code.
+    Why this exists: a class="..." regex also matches string literals in code.
+
+      PHP:  '<input type="hidden" class="latc' . $ii . '" value="...'
+      JS:   '<span class="concurclose' + ci + '" onclick="..."'
+
+    Rewriting those eats the concatenation operators (. in PHP, + in JS) and
+    produces a parse error -- and the JS case is invisible to php -l. Splitting
+    on <?php ?> AND <script> blocks first makes the rewrite structurally unable
+    to touch either language.
+
+    Consequence: markup built inside JS strings is deliberately NOT migrated.
+    Run tools/find_js_markup.py to list those spots for manual handling.
     """
-    parts = re.split(r'(<\?php.*?\?>|<\?=.*?\?>)', src, flags=re.S)
+    parts = re.split(r'(<\?php.*?\?>|<\?=.*?\?>|<script.*?</script>)', src, flags=re.S)
     for i in range(0, len(parts), 2):      # even indices are the HTML segments
         parts[i] = fn(parts[i])
     return ''.join(parts)
@@ -163,6 +183,8 @@ def metronize(src):
     # --- class rewrites, applied inside class="..." only ------------------
     def fix_class(m):
         val = m.group(1)
+        if _is_code_fragment(val):
+            return m.group(0)
         for pat, rep in CLASS_MAP:
             val = re.sub(pat, rep, val)
         val = re.sub(r'\s+', ' ', val).strip()
@@ -188,6 +210,8 @@ def metronize(src):
     }
 
     def fix_tokens(m):
+        if _is_code_fragment(m.group(1)):
+            return m.group(0)
         flat = []
         for tok in m.group(1).split():
             flat.extend(TOKENS.get(tok, tok).split())
@@ -242,7 +266,11 @@ def metronize(src):
     src = re.sub(r"\s*(?:echo\s+)?\$this->Html->css\('select2\.min'\);?", '', src)
 
     # CDN duplicates of what Metronic already bundles
-    src = re.sub(r'\s*<script src="https?://code\.jquery\.com/[^"]*"></script>', '', src)
+    # jQuery CORE only. jQuery UI is a DIFFERENT library, is NOT in Metronic's
+    # plugins.bundle, and is required by the .datepicker() calls in several
+    # views -- stripping it silently breaks them. Match jquery-<version>.js at
+    # the code.jquery.com root, never the /ui/ path.
+    src = re.sub(r'\s*<script src="https?://code\.jquery\.com/jquery-[\d.]+(?:\.min)?\.js"></script>', '', src)
     src = re.sub(r'\s*<script src="//?cdn\.datatables\.net/[^"]*"></script>', '', src)
     src = re.sub(r'\s*<script src="https?://cdn\.datatables\.net/[^"]*"></script>', '', src)
     src = re.sub(r'\s*<script src="//?cdnjs\.cloudflare\.com/ajax/libs/jszip/[^"]*"></script>', '', src)

@@ -114,7 +114,7 @@ $detailLinks = array(
         --text-dark: #2b2b45;
         --text-muted: #8b85c9;
     }
-    body, .box, .chart-card, .stat-title { font-family: 'Poppins', sans-serif; }
+    body, .card, .chart-card, .stat-title { font-family: 'Poppins', sans-serif; }
 
     .stat-box {
         border: none !important;
@@ -123,7 +123,7 @@ $detailLinks = array(
         background: #fff !important;
         overflow: visible;
     }
-    .stat-box .box-header {
+    .stat-box .card-header {
         border: none !important;
         padding: 22px 26px;
         display: flex;
@@ -132,7 +132,7 @@ $detailLinks = array(
         flex-wrap: wrap;
         gap: 12px;
     }
-    .stat-box .box-title { font-size: 19px; font-weight: 700; color: var(--text-dark); margin: 0; }
+    .stat-box .card-title { font-size: 19px; font-weight: 700; color: var(--text-dark); margin: 0; }
 
     .btn-voir-detail {
         background: linear-gradient(135deg, var(--primary), #5479f7) !important;
@@ -148,11 +148,11 @@ $detailLinks = array(
     }
     .btn-voir-detail:hover { background: linear-gradient(135deg, #5f56ee, #3f66e6) !important; color: #fff !important; }
 
-    .stat-box .box-body { padding: 4px 26px 26px; }
+    .stat-box .card-body { padding: 4px 26px 26px; }
 
     /* ---------- date range field (styled input, calendar handled by lb-range widget below) ---------- */
     #dateform .input-group { max-width: 320px; }
-    #dateform .input-group-addon {
+    #dateform .input-group-text {
         display: none; /* icon baked into the input's own background-image instead */
     }
     #dateform #reservationtime {
@@ -572,12 +572,12 @@ $detailLinks = array(
 
 <div class="row" style="margin:0px;">
     <div class="col-md-12" style="float:none;margin:auto;">
-        <div class="box stat-box">
-            <div class="box-header with-border">
-                <h3 class="box-title">Statistique</h3>
+        <div class="card stat-box">
+            <div class="card-header">
+                <h3 class="card-title">Statistique</h3>
                 <a class="btn-voir-detail detail" style="cursor:pointer;">Voir Détail</a>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <form action="<?php echo $this->Html->url("/visites/statistique/$id") ?>" method="post" id="dateform">
                     <div class="input-group" style="max-width:320px;">
                         <input type="text" class="form-control" id="reservationtime" placeholder="Rechercher" autocomplete="off">

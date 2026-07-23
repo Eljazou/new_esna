@@ -1,6 +1,9 @@
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<?php echo $this->Html->css('jquery-ui.min', array('block' => 'css')); ?>
+<?php
+// jQuery UI powers the .datepicker() calls below. It is NOT part of
+// Metronic's plugins.bundle, so it must be loaded explicitly -- served from
+// webroot/js instead of the CDN.
+echo $this->Html->script('jquery-ui.min'); ?>
 
 <style type="text/css">
     /* =========================================================

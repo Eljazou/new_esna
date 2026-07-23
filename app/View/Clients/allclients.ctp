@@ -587,7 +587,7 @@ body, .content-wrapper{
     <div class="col-lg-3 col-6">
         <a href="<?php echo $this->Html->Url(array('action' => 'index')); ?>" class="stat-card purple">
             <div class="top-row">
-                <div class="stat-icon"><i class="ion ion-bag"></i></div>
+                <div class="stat-icon"><i class="ki-duotone ki-handcart fs-2x"><span class="path1"></span><span class="path2"></span></i></div>
             </div>
             <h3 id="nbmedcin"><?php echo $nb_clients; ?></h3>
             <p>N° Clients</p>
@@ -597,7 +597,7 @@ body, .content-wrapper{
     <div class="col-lg-3 col-6">
         <a href="<?php echo $this->Html->Url(array('action' => 'index', '1')); ?>" class="stat-card green">
             <div class="top-row">
-                <div class="stat-icon"><i class="ion ion-stats-bars"></i></div>
+                <div class="stat-icon"><i class="ki-duotone ki-chart-simple fs-2x"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></div>
             </div>
             <h3 id="visitetotal"><?php echo $nb_client_affecter; ?></h3>
             <p>N° clients affectés</p>
@@ -607,7 +607,7 @@ body, .content-wrapper{
     <div class="col-lg-3 col-6">
         <a href="<?php echo $this->Html->Url(array('action' => 'index', '-1')); ?>" class="stat-card pink">
             <div class="top-row">
-                <div class="stat-icon"><i class="ion ion-help"></i></div>
+                <div class="stat-icon"><i class="ki-duotone ki-question-2 fs-2x"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></div>
             </div>
             <h3 id="nbuser"><?php echo ($nb_clients - $nb_client_affecter); ?></h3>
             <p>N° Clients non affectés</p>
@@ -618,7 +618,7 @@ body, .content-wrapper{
         <div class="col-lg-3 col-6">
             <a href="<?php echo $this->Html->Url(array('action' => 'remettre0')); ?>" class="stat-card orange">
                 <div class="top-row">
-                    <div class="stat-icon"><i class="ion ion-minus-circled"></i></div>
+                    <div class="stat-icon"><i class="ki-duotone ki-minus-circle fs-2x"><span class="path1"></span><span class="path2"></span></i></div>
                 </div>
                 <h3 id="nbresetclients">Remettre à 0</h3>
                 <p>Tout remettre à 0</p>
