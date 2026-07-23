@@ -1,5 +1,5 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
-echo $this->Html->css('dataTables.bootstrap');
 echo $this->Html->css('metronic/css/style.bundle.css');
 echo $this->Html->script('metronic/widgets.bundle.js');
 echo $this->Html->script('metronic/scripts.bundle.js');
@@ -121,7 +121,7 @@ echo $this->Html->script('metronic/scripts.bundle.js');
     <div class="card metronic-card card-flush">
         <div class="card-header">
             <div class="page-title-wrap">
-                <span class="page-icon"><i class="fa fa-shield"></i></span>
+                <span class="page-icon"><i class="ki-duotone ki-shield"><span class="path1"></span><span class="path2"></span></i></span>
                 <div>
                     <h3>Les règles de validation</h3>
                     <div class="page-subtitle">Gestion des règles, niveaux et messages</div>
@@ -131,7 +131,7 @@ echo $this->Html->script('metronic/scripts.bundle.js');
             <?php
             if ($this->requestAction(array('controller' => 'droits', 'action' => 'getrole', 'notevalidations', 'index')) == 1) {
                 echo $this->Html->link(
-                    '<i class="fa fa-plus me-1" style="color: #fff;"></i> ' . __('Ajouter'),
+                    '<i class="ki-duotone ki-plus me-1" style="color: #fff;"></i> ' . __('Ajouter'),
                     array('action' => 'add'),
                     array('class' => 'btn btn-metronic-add', 'escape' => false)
                 );
@@ -205,7 +205,7 @@ echo $this->Html->script('metronic/scripts.bundle.js');
                             <td class="text-end">
                                 <?php
                                 echo $this->Form->postLink(
-                                    '<i class="fa fa-trash me-1"></i> ' . __('Supprimer'),
+                                    '<i class="ki-duotone ki-trash me-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i> ' . __('Supprimer'),
                                     array('action' => 'delete', $notevalidation['Notevalidation']['id']),
                                     array(
                                         'class' => 'btn btn-sm btn-light-danger fw-semibold',
@@ -224,24 +224,13 @@ echo $this->Html->script('metronic/scripts.bundle.js');
     </div>
 </div>
 
-<?php 
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
+<?php
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 <script>
   $(function () {

@@ -1,6 +1,4 @@
-<?php
-echo $this->Html->css('dataTables.bootstrap');
-?>
+<?php echo $this->element('assets/datatables'); ?>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style type="text/css">
@@ -9,7 +7,7 @@ echo $this->Html->css('dataTables.bootstrap');
         --primary-light: #ede9ff;
     }
 
-    body, .box, table, .form-control {
+    body, .card, table, .form-control {
         font-family: 'Poppins', sans-serif;
     }
 
@@ -22,7 +20,7 @@ echo $this->Html->css('dataTables.bootstrap');
     }
 
     /* ===== Cards ===== */
-    .box.box-primary {
+    .card {
         border-radius: 18px !important;
         border: none !important;
         box-shadow: 0 4px 16px rgba(108, 99, 245, 0.06) !important;
@@ -30,12 +28,12 @@ echo $this->Html->css('dataTables.bootstrap');
         border-top: none !important;
     }
 
-    .box.box-primary .box-header {
+    .card .card-header {
         border: none !important;
         padding: 22px 24px 6px;
     }
 
-    .box.box-primary .box-title {
+    .card .card-title {
         font-size: 15.5px;
         font-weight: 700;
         color: #2b2b45;
@@ -107,7 +105,7 @@ echo $this->Html->css('dataTables.bootstrap');
         color: #fff;
     }
 
-    .box-footer.text-center {
+    .card-footer.text-center {
         border: none !important;
         padding: 6px 24px 24px !important;
     }
@@ -129,7 +127,7 @@ echo $this->Html->css('dataTables.bootstrap');
     }
 
     /* ===== Table ===== */
-    .box.box-primary .box-body {
+    .card .card-body {
         padding: 22px 24px;
     }
 
@@ -141,7 +139,7 @@ echo $this->Html->css('dataTables.bootstrap');
         border: none !important;
     }
 
-    table.table-bordered td, table.table-bordered th {
+    table.table-row-bordered td, table.table-row-bordered th {
         border-color: #eef0fa !important;
     }
 
@@ -188,11 +186,11 @@ echo $this->Html->css('dataTables.bootstrap');
     }
 </style>
 
-<div class="box box-primary">
-    <div class="box-header">
-        <h3 class="box-title">Ajouter une liste</h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Ajouter une liste</h3>
     </div>
-    <div class="panel-body form-horizontal payment-form">
+    <div class="card-body payment-form">
         <?php echo $this->Form->create('Type', array("type" => "file")); ?>
         <div class="col-md-4">
             <?php echo $this->Form->input('user_id', array('label' => 'Nom', 'class' => 'form-control')); ?>
@@ -208,18 +206,18 @@ echo $this->Html->css('dataTables.bootstrap');
             </div>
         </div>
     </div>
-    <div class="box-footer text-center">
+    <div class="card-footer text-center">
         <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn-submit-pill')); ?>
     </div>
 </div>
 
 
-<div class="box box-primary">
-    <div class="box-body">
+<div class="card">
+    <div class="card-body">
         <div class="col-lg-12" style="overflow: auto;">
 
             <?php if (!empty($alldata)): ?>
-                <table class="table table-bordered example1" id="example1">
+                <table class="table table-row-bordered align-middle gy-4 example1" id="example1">
                     <thead>
                         <tr>
                             <th>Num</th>
@@ -242,18 +240,9 @@ echo $this->Html->css('dataTables.bootstrap');
             <?php endif; ?>
 
             <?php
-            echo $this->Html->script('jquery-2.2.3.min');
-            echo $this->Html->script('jquery.dataTables.min');
             echo $this->Html->script('jquery.slimscroll.min');
             ?>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-            <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-            <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-            <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-            <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-            <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-            <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
             <script>
                 $(function() {

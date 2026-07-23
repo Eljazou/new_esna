@@ -20,8 +20,8 @@
 	?>
 	
 </div>
-<div class="box-footer">
-<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-outline-info','div' => array('class' => 'well text-center'))); ?>
+<div class="card-footer">
+<?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-outline-info','div' => array('class' => 'card card-body bg-light text-center'))); ?>
 
 </div>
 </div>

@@ -4,12 +4,12 @@
     /* =========================================================
        THEME MATCHED DESIGN — Modern Lavender & Premium Clean
        ========================================================= */
-    body, .box, .box-title, .panel, .panel-body, label, input, select, textarea, button, p, span {
+    body, .card, .card-title, .card, .card-body, label, input, select, textarea, button, p, span {
         font-family: 'Plus Jakarta Sans', sans-serif !important;
     }
 
     /* 1. CONTAINER PRINCIPAL (BOX) */
-    .box.box-success {
+    .card {
         background: #ffffff !important;
         border-radius: 20px !important;
         border: none !important;
@@ -19,7 +19,7 @@
     }
 
     /* 2. ENTÊTE DE LA PAGE */
-    .box-header.with-border {
+    .card-header.with-border {
         background: transparent !important;
         border: none !important;
         border-bottom: 1px solid #eef0f7 !important;
@@ -27,7 +27,7 @@
         margin-bottom: 24px !important;
     }
 
-    .box-title {
+    .card-title {
         font-size: 22px !important;
         font-weight: 800 !important;
         color: #1a1d36 !important;
@@ -37,17 +37,17 @@
         gap: 10px;
     }
 
-    .box-title i {
+    .card-title i {
         color: #8c7ef2 !important; /* Substitution du vert par la couleur accent */
     }
 
     /* 3. STRUCTURE DU FORMULAIRE */
-    .panel.panel-default {
+    .card {
         border: none !important;
         background: transparent !important;
     }
 
-    .panel-body.form-horizontal {
+    .card-body.form-horizontal {
         padding: 0 !important;
         display: flex;
         flex-direction: column;
@@ -55,7 +55,7 @@
     }
 
     /* 4. LABELS & TYPOGRAPHIE DES APPRENTISSAGES */
-    .form-group label.control-label {
+    .form-group label.form-label {
         font-size: 13px !important;
         font-weight: 700 !important;
         color: #6b6d85 !important;
@@ -179,7 +179,7 @@
         background: linear-gradient(135deg, #9689ff 0%, #7c6ee6 100%) !important;
     }
 
-    .btn-default {
+    .btn-light {
         height: 44px !important;
         padding: 0 24px !important;
         background: #ffffff !important;
@@ -194,27 +194,27 @@
         margin-left: 8px;
     }
 
-    .btn-default:hover {
+    .btn-light:hover {
         background: #f8f9fd !important;
         color: #2b2c45 !important;
         border-color: #d0d3f0 !important;
     }
 </style>
 
-<div class="box box-success">
-    <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-plus"></i> <?php echo __('Ajouter un Rapport d\'Action Promotionnelle'); ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="ki-duotone ki-plus"></i> <?php echo __('Ajouter un Rapport d\'Action Promotionnelle'); ?></h3>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-body form-horizontal">
+                <div class="card">
+                    <div class="card-body">
                         <?php echo $this->Form->create('Actionrapport'); ?>
                         
-                        <div class="form-group row">
-                            <label class="col-sm-3 control-label">Action / Médecin ciblée <span class="text-danger">*</span></label>
+                        <div class="mb-5 row">
+                            <label class="col-sm-3 form-label fw-semibold text-gray-800">Action / Médecin ciblée <span class="text-danger">*</span></label>
                             <div class="col-sm-6">
                                 <?php 
                                 if(empty($actions_list)) {
@@ -227,10 +227,10 @@
                         </div>
 
                         <!-- Détails de l'action sélectionnée -->
-                        <div class="form-group row" id="action-details-container" style="display:none;">
+                        <div class="mb-5 row" id="action-details-container" style="display:none;">
                             <div class="col-sm-6 col-sm-offset-3">
                                 <div class="alert alert-info">
-                                    <h4><i class="fa fa-info-circle"></i> Détails de l'action</h4>
+                                    <h4><i class="ki-duotone ki-information-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Détails de l'action</h4>
                                     <p><strong>Médecin :</strong> <span id="det-medecin"></span></p>
                                     <p><strong>Gamme :</strong> <span id="det-gamme"></span></p>
                                     <p><strong>Période :</strong> Du <span id="det-debut"></span> au <span id="det-fin"></span></p>
@@ -249,45 +249,45 @@
 
                             <hr>
 
-                            <div class="form-group row">
-                                <label class="col-sm-3 control-label">Enquête Médecin <span class="text-danger">*</span></label>
+                            <div class="mb-5 row">
+                                <label class="col-sm-3 form-label fw-semibold text-gray-800">Enquête Médecin <span class="text-danger">*</span></label>
                                 <div class="col-sm-6">
                                     <?php echo $this->Form->input('enquete_medecin', array('label' => false, 'class' => 'form-control', 'options' => $options_enquete, 'empty' => '-- Choisir --', 'required' => 'required')); ?>
                                 </div>
                             </div>
                             
-                            <div class="form-group row">
-                                <label class="col-sm-3 control-label">Enquête Secrétaire <span class="text-danger">*</span></label>
+                            <div class="mb-5 row">
+                                <label class="col-sm-3 form-label fw-semibold text-gray-800">Enquête Secrétaire <span class="text-danger">*</span></label>
                                 <div class="col-sm-6">
                                     <?php echo $this->Form->input('enquete_secretaire', array('label' => false, 'class' => 'form-control', 'options' => $options_enquete, 'empty' => '-- Choisir --', 'required' => 'required')); ?>
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label class="col-sm-3 control-label">Enquête Pharmacie <span class="text-danger">*</span></label>
+                            <div class="mb-5 row">
+                                <label class="col-sm-3 form-label fw-semibold text-gray-800">Enquête Pharmacie <span class="text-danger">*</span></label>
                                 <div class="col-sm-6">
                                     <?php echo $this->Form->input('enquete_pharmacie', array('label' => false, 'class' => 'form-control', 'options' => $options_enquete, 'empty' => '-- Choisir --', 'required' => 'required')); ?>
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label class="col-sm-3 control-label">Niveau de Satisfaction <span class="text-danger">*</span></label>
+                            <div class="mb-5 row">
+                                <label class="col-sm-3 form-label fw-semibold text-gray-800">Niveau de Satisfaction <span class="text-danger">*</span></label>
                                 <div class="col-sm-6">
                                     <?php echo $this->Form->input('niveau_satisfaction', array('label' => false, 'class' => 'form-control', 'options' => $options_satisfaction, 'empty' => '-- Choisir --', 'required' => 'required')); ?>
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label class="col-sm-3 control-label">Commentaire</label>
+                            <div class="mb-5 row">
+                                <label class="col-sm-3 form-label fw-semibold text-gray-800">Commentaire</label>
                                 <div class="col-sm-6">
                                     <?php echo $this->Form->input('commentaire', array('label' => false, 'type' => 'textarea', 'class' => 'form-control', 'rows' => 3)); ?>
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <div class="mb-5 row">
                                 <div class="col-sm-offset-3 col-sm-6">
-                                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Enregistrer le rapport</button>
-                                    <a href="<?php echo $this->Html->url(array('action' => 'index')); ?>" class="btn btn-default">Annuler</a>
+                                    <button type="submit" class="btn btn-success"><i class="ki-duotone ki-check-circle"><span class="path1"></span><span class="path2"></span></i> Enregistrer le rapport</button>
+                                    <a href="<?php echo $this->Html->url(array('action' => 'index')); ?>" class="btn btn-light">Annuler</a>
                                 </div>
                             </div>
                             
@@ -301,14 +301,6 @@
 
     </div>
 </div>
-
-<?php
-echo $this->Html->css('select2.min');
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('select2.full.min');
-?>
 
 <script>
     var actionsDetails = <?php echo isset($actions_json) ? json_encode($actions_json) : '{}'; ?>;

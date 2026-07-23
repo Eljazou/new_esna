@@ -108,7 +108,7 @@
 
 <div class="panel-custom">
     <div class="panel-custom-heading">
-        <h3><i class="fa fa-pencil"></i> <?php echo __('Modifier l\'hôpital'); ?></h3>
+        <h3><i class="ki-duotone ki-pencil"><span class="path1"></span><span class="path2"></span></i> <?php echo __('Modifier l\'hôpital'); ?></h3>
     </div>
     
     <div class="panel-custom-body">
@@ -135,7 +135,7 @@
             )); ?>
             
             <?php echo $this->Html->link(
-                '<i class="fa fa-arrow-left"></i> ' . __('Retour'), 
+                '<i class="ki-duotone ki-arrow-left"><span class="path1"></span><span class="path2"></span></i> ' . __('Retour'), 
                 array('action' => 'index'), 
                 array('class' => 'btn-back', 'escape' => false)
             ); ?>

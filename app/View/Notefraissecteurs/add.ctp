@@ -1,5 +1,3 @@
-<?php echo $this->Html->css('select2.min'); ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -220,11 +218,6 @@
         <?php echo $this->Form->end(); ?>
     </div>
 </div>
-
-<?php
-echo $this->Html->script('jquery-2.2.3.min'); 
-echo $this->Html->script('select2.full.min'); 
-?>
 
 <script type="text/javascript">
     $(function () {

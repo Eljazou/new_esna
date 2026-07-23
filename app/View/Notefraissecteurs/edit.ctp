@@ -1,15 +1,14 @@
-<?php echo $this->Html->css('select2.min');   ?>
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-        <div class="box box-info">
-            <div class="box-header">
-                <h3 class="box-title">Edit Note frais secteurs</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Edit Note frais secteurs</h3>
             </div>
 
 
 
-            <div class="box-body">
+            <div class="card-body">
                 <?php echo $this->Form->create('Notefraissecteur'); ?>
                 <?php
 				echo $this->Form->input('id');
@@ -25,16 +24,13 @@
                 ?>
 
             </div>
-            <div class="box-footer">
-                <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-success', 'div' => array('class' => 'well text-center'))); ?>
+            <div class="card-footer">
+                <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-success', 'div' => array('class' => 'card card-body bg-light text-center'))); ?>
 
             </div>
         </div>
     </div>
 </div>
-<?php
-echo $this->Html->script('jquery-2.2.3.min'); 
- echo $this->Html->script('select2.full.min'); ?>
 <script type="text/javascript">
            $(function () {
         $("#NotefraissecteurVille, #NotefraissecteurDestination").select2();

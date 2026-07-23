@@ -1,4 +1,5 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
+<?php echo $this->element('assets/datatables'); ?>
+<?php
         echo $this->Html->css('btn-style');
 		?>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -7,7 +8,7 @@
 		font-family:'Poppins',sans-serif;
 		color:#3a3a4a;
 	}
-	.sv-wrapper .box{
+	.sv-wrapper .card{
 		background:#fff;
 		border-radius:18px;
 		border:none;
@@ -15,14 +16,14 @@
 		padding:28px 30px;
 		margin-bottom:24px;
 	}
-	.sv-wrapper .box-header{
+	.sv-wrapper .card-header{
 		display:flex;
 		align-items:center;
 		gap:14px;
 		padding:0 0 22px 0;
 		border:none;
 	}
-	.sv-wrapper .box-header .sv-icon-badge{
+	.sv-wrapper .card-header .sv-icon-badge{
 		width:48px;
 		height:48px;
 		min-width:48px;
@@ -32,12 +33,12 @@
 		align-items:center;
 		justify-content:center;
 	}
-	.sv-wrapper .box-header .sv-icon-badge svg{
+	.sv-wrapper .card-header .sv-icon-badge svg{
 		width:24px;
 		height:24px;
 		stroke:#6C63F5;
 	}
-	.sv-wrapper .box-title{
+	.sv-wrapper .card-title{
 		font-size:22px;
 		font-weight:600;
 		color:#2d2b45;
@@ -134,12 +135,12 @@
 		font-weight:500;
 		color:#454358;
 	}
-	.sv-wrapper .box-footer{
+	.sv-wrapper .card-footer{
 		background:transparent;
 		border:none;
 		padding:24px 0 0 0;
 	}
-	.sv-wrapper .btn.bg-purple{
+	.sv-wrapper .btn.bg-primary{
 		width:100%;
 		background:linear-gradient(90deg,#6C63F5,#8c7ef2);
 		border:none;
@@ -151,11 +152,11 @@
 		box-shadow:0 6px 18px rgba(108,99,245,0.3);
 		transition:transform .15s ease, box-shadow .15s ease;
 	}
-	.sv-wrapper .btn.bg-purple:hover{
+	.sv-wrapper .btn.bg-primary:hover{
 		transform:translateY(-1px);
 		box-shadow:0 8px 22px rgba(108,99,245,0.38);
 	}
-	.sv-wrapper .well{
+	.sv-wrapper .card{
 		background:transparent;
 		border:none;
 		box-shadow:none;
@@ -176,7 +177,7 @@
 		color:#6a6785;
 		font-weight:600;
 	}
-	.sv-wrapper .table.table-bordered.table-striped{
+	.sv-wrapper .table.table-row-bordered.table-striped{
 		border:1px solid #eeecf9;
 		border-radius:12px;
 		overflow:hidden;
@@ -225,17 +226,17 @@
 	}
 </style>
 <div class="sv-wrapper">
-<div class="box">
-      <div class="box-header table-responsive">
+<div class="card">
+      <div class="card-header table-responsive">
            <div class="sv-icon-badge">
 			   <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
 		   </div>
 		   <div>
-			   <h3 class="box-title">Stock visites</h3>
+			   <h3 class="card-title">Stock visites</h3>
 			   <div class="box-subtitle">Recherchez les niveaux de stock d'un produit</div>
 		   </div>
       </div>
-	<div class="box-body">
+	<div class="card-body">
 		<!-- Button trigger modal -->
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -243,14 +244,12 @@
 			<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" style="font-size: 23px;" id="exampleModalLabel">Stock visites</h5>
-				<button type="button" style="margin-top: -28px;" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 			</div>
 			<div class="modal-body" id="contents">
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
 			</div>
 			</div>
 		</div>
@@ -267,19 +266,19 @@
 			</div>
 		</div>
 		<div>
-		<div class="box box-warning direct-chat direct-chat-warning" style="margin-top:20px;box-shadow:none;padding:20px 22px;">
-			<div class="box-header with-border" style="padding-bottom:16px;">
+		<div class="card direct-chat direct-chat-warning" style="margin-top:20px;box-shadow:none;padding:20px 22px;">
+			<div class="card-header" style="padding-bottom:16px;">
 				<div class="sv-icon-badge" style="width:38px;height:38px;min-width:38px;">
 					<svg viewBox="0 0 24 24" fill="none" stroke="#6C63F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
 				</div>
-				<h3 class="box-title" style="font-size:18px;">Informations</h3>
-				<div class="box-tools pull-right">
-					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+				<h3 class="card-title" style="font-size:18px;">Informations</h3>
+				<div class="card-toolbar float-end">
+					<button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="collapse"><i class="ki-duotone ki-minus"></i>
 					</button>
 				</div>
 			</div>
 			<!-- /.box-header -->
-			<div class="box-body">
+			<div class="card-body">
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="marl etat-rouge">
@@ -314,8 +313,8 @@
 			</div>
 		</div>
 		</div>
-		<div class="box-footer">
-		<?php echo $this->Form->end(array('label' => 'Rechercher','class'=>'btn bg-purple btn-flat','div' => array('class' => 'well text-center'))); ?>
+		<div class="card-footer">
+		<?php echo $this->Form->end(array('label' => 'Rechercher','class'=>'btn bg-primary','div' => array('class' => 'card card-body bg-light text-center'))); ?>
 
 		</div>
 
@@ -332,7 +331,7 @@
 	<div class="<?php echo $i;?>" style="display:none">
 	    <div class="row r<?php echo $i;?>">
 			<div class="col-md-12">
-				<table class="table table-bordered table-striped tb">
+				<table class="table table-row-bordered table-row-gray-300 align-middle gy-4 tb">
 					<tr>
 						<th>Produit</th>
 						<td><?php echo $stockvisite['Produit']['name']; ?>&nbsp;</td>
@@ -372,15 +371,15 @@
 	</div>
 <?php $i++; endforeach; ?>
 	</div>
-<div class="box">
-      <div class="box-header table-responsive">
+<div class="card">
+      <div class="card-header table-responsive">
            <div class="sv-icon-badge">
 			   <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
 		   </div>
-		   <h3 class="box-title"><?php echo __('Stockvisites'); ?></h3>
+		   <h3 class="card-title"><?php echo __('Stockvisites'); ?></h3>
       </div>
-	<div class="box-body">
-         <table id="example1" class="table table-bordered table-striped">
+	<div class="card-body">
+         <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 		 <thead>
 			<tr>
 				<th>L</th>
@@ -419,22 +418,12 @@
 
 	</div>
 </div>
-	<?php echo $this->Html->script('jquery-2.2.3.min');
-        echo $this->Html->script('bootstrap.min');
-        echo $this->Html->script('app.min');
-        echo $this->Html->script('jquery.dataTables.min');
+	<?php
         echo $this->Html->script('jquery.slimscroll.min');
         echo $this->Html->script('fastclick');
         echo $this->Html->script('demo');
         ?>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuwmNaUU3JfRgdkYbhaV0hptTkcTKqn8Q&amp;"></script>
 <script>
   $(function () {

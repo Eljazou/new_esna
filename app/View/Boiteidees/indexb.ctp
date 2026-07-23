@@ -4,22 +4,20 @@
         <h2 class="title-1 m-b-25"><?php echo 'Boiteidees'; ?></h2>
             <div class="float-right">
 
-                <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-toggle="modal" data-target="#popup_add">
-                    <i class="fas fa-plus"></i> Ajouter
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-bs-toggle="modal" data-bs-target="#popup_add">
+                    <i class="ki-duotone ki-plus"></i> Ajouter
                 </button>
                 <div class="modal fade" id="popup_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLongTitle"><?php echo 'Index Boiteidee'; ?></h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                             </div>
                             <div class="modal-body">
                                 <?php echo $this->Form->create('Boiteidee',array('url'=>array('action'=>'add'))); ?>
 
-                                <div class='row form-group'>
+                                <div class='row mb-5'>
                                     	<?php
 		echo $this->Form->input('user_id',array('label'=>false,'class'=>'form-control','placeholder'=>'user_id','div' => array('class' => 'col-md-6 m-b-25')));
 		echo $this->Form->input('name',array('label'=>false,'class'=>'form-control','placeholder'=>'name','div' => array('class' => 'col-md-6 m-b-25')));
@@ -28,7 +26,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                                 <?php echo $this->Form->end(array('label' => 'Ajouter','class'=>'au-btn au-btn--green')); ?>
 
                             </div>
@@ -36,7 +34,7 @@
                     </div>
                 </div>
             </div>
-        <div class="table-responsive table--no-card ">
+        <div class="table-responsive table--no-card">
             <table class="table table-borderless table-striped table-earning" id="example">
                 <thead class="thead-dark">
                     <tr>

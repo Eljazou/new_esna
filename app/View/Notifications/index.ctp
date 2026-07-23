@@ -58,7 +58,6 @@ if (!empty($notifications)) {
   asort($vms);
 }
 ?>
-<?php echo $this->Html->css('select2.min'); ?>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -698,7 +697,7 @@ if (!empty($notifications)) {
   <!-- Header -->
   <div class="notif-header">
     <div class="notif-header-left">
-      <div class="notif-header-icon"><i class="fa fa-bell"></i></div>
+      <div class="notif-header-icon"><i class="ki-duotone ki-notification"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></div>
       <div>
         <h2>Notifications</h2>
         <p>Centre d'alertes et d'activités</p>
@@ -776,15 +775,15 @@ if (!empty($notifications)) {
 
         if ($isCrm) {
           $typeClass = 'type-crm';
-          $icon = 'fa-bullhorn';
+          $icon = 'ki-speaker'; $iconPaths = 3;   // duotone layer count, see below
           $dataType = 'crm';
         } elseif ($isRemp) {
           $typeClass = 'type-remplacement';
-          $icon = 'fa-exchange';
+          $icon = 'ki-arrows-loop'; $iconPaths = 2;
           $dataType = 'remplacement';
         } else {
           $typeClass = 'type-default';
-          $icon = 'fa-bell';
+          $icon = 'ki-notification'; $iconPaths = 3;
           $dataType = 'other';
         }
 
@@ -795,19 +794,26 @@ if (!empty($notifications)) {
         <li data-type="<?php echo $dataType; ?>" data-status="<?php echo $dataStatus; ?>" data-vm="<?php echo !empty($notif['Sender']['id']) ? $notif['Sender']['id'] : 'system'; ?>">
           <div class="notif-card <?php echo $typeClass; ?><?php echo $isUnread ? ' unread' : ''; ?>">
             <div class="notif-icon-wrap">
-              <i class="fa <?php echo $icon; ?>"></i>
+              <i class="ki-duotone <?php echo $icon; ?>"><?php
+                // Keenicons duotone glyphs draw one layer per <span class="pathN">
+                // and render NOTHING without them; the count differs per icon, so it
+                // travels with the name above rather than being assumed.
+                for ($k = 1; $k <= $iconPaths; $k++) {
+                    echo '<span class="path' . $k . '"></span>';
+                }
+              ?></i>
             </div>
             <div class="notif-body">
               <div class="notif-top">
                 <span class="notif-title"><?php echo h($titre); ?></span>
                 <span class="notif-meta">
-                  <i class="fa fa-clock-o"></i> <?php echo $dateAgo; ?>
+                  <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i> <?php echo $dateAgo; ?>
                 </span>
               </div>
               <div class="notif-message"><?php echo $n['message']; ?></div>
               <?php if (!empty($n['first_read_by'])): ?>
                 <div class="notif-read-by">
-                  <i class="fa fa-eye"></i> Lu par : <strong><?php echo h($n['first_read_by']); ?></strong>
+                  <i class="ki-duotone ki-eye"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Lu par : <strong><?php echo h($n['first_read_by']); ?></strong>
                   <?php if (!empty($n['first_read_at'])): ?>
                     <span class="read-at-time">(<?php echo time_ago($n['first_read_at']); ?>)</span>
                   <?php endif; ?>

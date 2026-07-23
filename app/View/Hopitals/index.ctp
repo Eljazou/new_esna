@@ -1,8 +1,8 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     body { background: #f4f5fa; }
 
-    .box {
+    .card {
         background: #fff;
         border-radius: 16px;
         border: none;
@@ -10,7 +10,7 @@
         overflow: hidden;
     }
 
-    .box-header {
+    .card-header {
         background: #fff;
         padding: 16px 20px;
         display: flex;
@@ -19,13 +19,13 @@
         border: none;
     }
 
-    .box-header .title-wrap {
+    .card-header .title-wrap {
         display: flex;
         align-items: center;
         gap: 12px;
     }
 
-    .box-header .icon-circle {
+    .card-header .icon-circle {
         width: 40px;
         height: 40px;
         border-radius: 11px;
@@ -36,20 +36,20 @@
         flex-shrink: 0;
     }
 
-    .box-header .icon-circle svg {
+    .card-header .icon-circle svg {
         width: 19px;
         height: 19px;
         stroke: #6b46e5;
     }
 
-    .box-header h3.box-title {
+    .card-header h3.card-title {
         color: #1e1e2e;
         font-size: 17px;
         font-weight: 700;
         margin: 0;
     }
 
-    .box-header .subtitle {
+    .card-header .subtitle {
         color: #8b87a5;
         font-size: 12.5px;
         margin-top: 2px;
@@ -84,7 +84,7 @@
         stroke: #fff;
     }
 
-    .box-body {
+    .card-body {
         padding: 4px 20px 20px;
     }
 
@@ -118,7 +118,7 @@
         background-color: #fbfaff;
     }
 
-    table.table-bordered {
+    table.table-row-bordered {
         border: none;
     }
 
@@ -247,8 +247,8 @@
     }
 </style>
 
-<div class="box box-primary">
-    <div class="box-header with-border">
+<div class="card">
+    <div class="card-header">
         <div class="title-wrap">
             <div class="icon-circle">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -260,11 +260,11 @@
                 </svg>
             </div>
             <div>
-                <h3 class="box-title">Gestion des hôpitaux</h3>
+                <h3 class="card-title">Gestion des hôpitaux</h3>
                 <div class="subtitle">Consultez et gérez les hôpitaux enregistrés</div>
             </div>
         </div>
-        <div class="box-tools pull-right">
+        <div class="card-toolbar float-end">
             <?php echo $this->Html->link(
                 '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Ajouter',
                 array('action' => 'add'),
@@ -272,9 +272,9 @@
             ); ?>
         </div>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <?php echo $this->Session->flash(); ?>
-        <table id="tbl_hopitals" class="table table-bordered table-striped table-hover">
+        <table id="tbl_hopitals" class="table table-row-bordered table-row-gray-300 align-middle gy-4 table-hover">
             <thead>
                 <tr>
                     <th>#</th>

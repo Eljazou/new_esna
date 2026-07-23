@@ -44,12 +44,9 @@ $frequencess = array_count_values($frequences);
   If Excel/CSV/Print export ever needs to change, only touch the two script tags
   below (dataTables.buttons + buttons.html5/print + a live pdfmake CDN), nothing else.
 -->
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.18/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.18/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 <style>
     /* ===== Design system (svs) — purple theme, Bootstrap 5 / Metronic native ===== */
@@ -69,26 +66,26 @@ $frequencess = array_count_values($frequences);
     .svs .stat-card .progress{ height:3px; margin:10px 0 8px; }
     .svs .stat-card .stat-desc{ font-size:12.5px; opacity:.75; }
 
-    .svs .stat-card.bg-blue{ background:#eaf0fd; }
-    .svs .stat-card.bg-blue .stat-label,
-    .svs .stat-card.bg-blue .stat-number,
-    .svs .stat-card.bg-blue .stat-desc{ color:#4e73df; }
-    .svs .stat-card.bg-blue .progress{ background:rgba(78,115,223,.15); }
-    .svs .stat-card.bg-blue .progress-bar{ background:#4e73df; }
+    .svs .stat-card.bg-primary{ background:#eaf0fd; }
+    .svs .stat-card.bg-primary .stat-label,
+    .svs .stat-card.bg-primary .stat-number,
+    .svs .stat-card.bg-primary .stat-desc{ color:#4e73df; }
+    .svs .stat-card.bg-primary .progress{ background:rgba(78,115,223,.15); }
+    .svs .stat-card.bg-primary .progress-bar{ background:#4e73df; }
 
-    .svs .stat-card.bg-green{ background:#e8f8f0; }
-    .svs .stat-card.bg-green .stat-label,
-    .svs .stat-card.bg-green .stat-number,
-    .svs .stat-card.bg-green .stat-desc{ color:#2e9e68; }
-    .svs .stat-card.bg-green .progress{ background:rgba(46,158,104,.15); }
-    .svs .stat-card.bg-green .progress-bar{ background:#2e9e68; }
+    .svs .stat-card.bg-success{ background:#e8f8f0; }
+    .svs .stat-card.bg-success .stat-label,
+    .svs .stat-card.bg-success .stat-number,
+    .svs .stat-card.bg-success .stat-desc{ color:#2e9e68; }
+    .svs .stat-card.bg-success .progress{ background:rgba(46,158,104,.15); }
+    .svs .stat-card.bg-success .progress-bar{ background:#2e9e68; }
 
-    .svs .stat-card.bg-red{ background:#fdecec; }
-    .svs .stat-card.bg-red .stat-label,
-    .svs .stat-card.bg-red .stat-number,
-    .svs .stat-card.bg-red .stat-desc{ color:#e0453f; }
-    .svs .stat-card.bg-red .progress{ background:rgba(224,69,63,.15); }
-    .svs .stat-card.bg-red .progress-bar{ background:#e0453f; }
+    .svs .stat-card.bg-danger{ background:#fdecec; }
+    .svs .stat-card.bg-danger .stat-label,
+    .svs .stat-card.bg-danger .stat-number,
+    .svs .stat-card.bg-danger .stat-desc{ color:#e0453f; }
+    .svs .stat-card.bg-danger .progress{ background:rgba(224,69,63,.15); }
+    .svs .stat-card.bg-danger .progress-bar{ background:#e0453f; }
 
     /* -- filter card -- */
     .svs-filterbox{
@@ -194,7 +191,7 @@ $frequencess = array_count_values($frequences);
     <div class="col-12 mb-4">
         <div class="row g-3 mb-3">
             <div class="col-md-4">
-                <div class="stat-card bg-blue">
+                <div class="stat-card bg-primary">
                     <div class="card-body">
                         <span class="stat-label">Nombre de visites</span>
                         <span class="stat-number"><?php echo count($visites); ?></span>
@@ -204,7 +201,7 @@ $frequencess = array_count_values($frequences);
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="stat-card bg-green">
+                <div class="stat-card bg-success">
                     <div class="card-body">
                         <span class="stat-label">Nombre de Clients visités</span>
                         <span class="stat-number"><?php echo $nombredeclientvisiter; ?></span>
@@ -216,7 +213,7 @@ $frequencess = array_count_values($frequences);
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="stat-card bg-red">
+                <div class="stat-card bg-danger">
                     <div class="card-body">
                         <span class="stat-label">Nombre de Clients non visités</span>
                         <span class="stat-number"><?php echo count($clientnonvisites); ?></span>
@@ -237,7 +234,7 @@ $frequencess = array_count_values($frequences);
                     </div>
                     <p class="svs-date-label">Choisissez une date</p>
                     <div class="input-group flex-nowrap" style="max-width:520px;">
-                        <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
+                        <span class="input-group-text"><i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i></span>
                         <input type="text" <?php if ($dateaafficherdansleview != "") echo 'value="' . $dateaafficherdansleview . '"'; ?> class="form-control" name="date" id="reservationtime" placeholder="Rechercher" autocomplete="off">
                     </div>
                 </div>
@@ -377,7 +374,7 @@ $frequencess = array_count_values($frequences);
                     <div id="piechart_3d" style="width:100%;height:500px;"></div>
                 </div>
                 <div class="col-12">
-                    <table class="table table-bordered display" id="example1">
+                    <table class="table table-row-bordered align-middle gy-4 display" id="example1">
                         <thead>
                             <tr><th>Activité</th><th>Visités</th><th>Non visités</th></tr>
                         </thead>
@@ -431,7 +428,7 @@ $frequencess = array_count_values($frequences);
                     <div id="bar_chart1" style="width:100%;height:500px;"></div>
                 </div>
                 <div class="col-12">
-                    <table class="table table-bordered display" id="example1">
+                    <table class="table table-row-bordered align-middle gy-4 display" id="example1">
                         <thead><tr><th>potentialité</th><th>Visiter</th><th>Non visiter</th></tr></thead>
                         <tbody>
                             <?php
@@ -476,7 +473,7 @@ $frequencess = array_count_values($frequences);
                     <div id="bar_chart2" style="width:100%;height:500px;margin-bottom:19px;"></div>
                 </div>
                 <div class="col-12">
-                    <table class="table table-bordered display" id="example1">
+                    <table class="table table-row-bordered align-middle gy-4 display" id="example1">
                         <thead><tr><th>spécialité</th><th>Visiter</th><th>Non visiter</th></tr></thead>
                         <tbody>
                             <?php
@@ -535,7 +532,7 @@ $frequencess = array_count_values($frequences);
             <div class="card-header"><h3 class="card-title">La liste des visites</h3></div>
             <div class="card-body">
                 <div class="col-12">
-                    <table class="table table-bordered display" id="example1">
+                    <table class="table table-row-bordered align-middle gy-4 display" id="example1">
                         <thead>
                             <tr>
                                 <th>VM</th><th>Client</th><th>Type pharmacie</th><th>code wavsoft</th>
@@ -589,7 +586,7 @@ $frequencess = array_count_values($frequences);
             <div class="card-header"><h3 class="card-title">La liste des clients non visites</h3></div>
             <div class="card-body">
                 <div class="col-12">
-                    <table class="table table-bordered display" id="example1">
+                    <table class="table table-row-bordered align-middle gy-4 display" id="example1">
                         <thead><tr><th>Client</th><th>Activite</th><th>POT</th></tr></thead>
                         <tbody>
                             <?php foreach ($clientnonvisites as $client): ?>
@@ -615,7 +612,7 @@ $frequencess = array_count_values($frequences);
             <div class="card-header"><h3 class="card-title">ODP</h3></div>
             <div class="card-body">
                 <div class="col-12">
-                    <table class="table table-bordered display" id="example1">
+                    <table class="table table-row-bordered align-middle gy-4 display" id="example1">
                         <thead>
                             <tr><td>Brochure</td><?php foreach ($classement as $key => $values) echo "<th>$values</th>"; ?><td>Total</td></tr>
                         </thead>
@@ -654,7 +651,7 @@ $frequencess = array_count_values($frequences);
             <div class="card-header"><h3 class="card-title">ODP en %</h3></div>
             <div class="card-body">
                 <div class="col-12">
-                    <table class="table table-bordered display" id="example1">
+                    <table class="table table-row-bordered align-middle gy-4 display" id="example1">
                         <thead>
                             <tr><td>Brochure</td><?php foreach ($classement as $key => $values) echo "<th>$values</th>"; ?><td>Seuil de présentation</td></tr>
                         </thead>
@@ -705,7 +702,7 @@ $frequencess = array_count_values($frequences);
                     <div id="chart_boite" style="width:100%;height:500px;margin-bottom:19px;"></div>
                 </div>
                 <div class="col-12">
-                    <table class="table table-bordered display" id="example1">
+                    <table class="table table-row-bordered align-middle gy-4 display" id="example1">
                         <thead>
                             <tr>
                                 <th>VM</th><th>Nom</th><th>POT</th><th>Spécialité</th><th>Secteur</th>
@@ -751,7 +748,7 @@ $frequencess = array_count_values($frequences);
             <div class="card-header">
                 <h3 class="card-title">Cartographie des visites</h3>
                 <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-widget="collapse"><i class="ki-duotone ki-minus"></i></button>
                 </div>
             </div>
             <div class="card-body p-0">
@@ -762,14 +759,14 @@ $frequencess = array_count_values($frequences);
                             <div class="modal-header">
                                 <h4 class="modal-title" id="myModalLabel">Détail</h4>
                                 <div class="card-tools">
-                                    <span data-toggle="tooltip" title="" class="badge bg-success message-date" data-original-title="3 New Messages"></span>
+                                    <span data-bs-toggle="tooltip" title="" class="badge bg-success message-date" data-original-title="3 New Messages"></span>
                                 </div>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <form action="#" method="post" id="dateform2">
                                 <div class="modal-body" style="max-height:60vh;height:auto;overflow-y:auto;text-align:justify;">
                                     <div class="col-12">
-                                        <table class="table table-bordered table-striped"><tbody></tbody></table>
+                                        <table class="table table-row-bordered table-row-gray-300 align-middle gy-4"><tbody></tbody></table>
                                     </div>
                                     <div class="col-12 action"></div>
                                 </div>
@@ -789,7 +786,7 @@ $frequencess = array_count_values($frequences);
             <div class="card-header">
                 <h3 class="card-title">Cartographie des clients</h3>
                 <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-widget="collapse"><i class="ki-duotone ki-minus"></i></button>
                 </div>
             </div>
             <div class="card-body p-0">
@@ -800,14 +797,14 @@ $frequencess = array_count_values($frequences);
                             <div class="modal-header">
                                 <h4 class="modal-title" id="myModalLabel2">Détail</h4>
                                 <div class="card-tools">
-                                    <span data-toggle="tooltip" title="" class="badge bg-success message-date" data-original-title="3 New Messages"></span>
+                                    <span data-bs-toggle="tooltip" title="" class="badge bg-success message-date" data-original-title="3 New Messages"></span>
                                 </div>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <form action="#" method="post" id="dateform3">
                                 <div class="modal-body" style="max-height:60vh;height:auto;overflow-y:auto;text-align:justify;">
                                     <div class="col-12">
-                                        <table class="table table-bordered table-striped"><tbody></tbody></table>
+                                        <table class="table table-row-bordered table-row-gray-300 align-middle gy-4"><tbody></tbody></table>
                                     </div>
                                     <div class="col-12 action"></div>
                                 </div>
@@ -1074,7 +1071,7 @@ $frequencess = array_count_values($frequences);
         };
         var chart = new google.visualization.ComboChart(document.getElementById('piechart_3d'));
         google.visualization.events.addListener(chart, 'ready', function () {
-            $('#piechart_3d').prepend('<a href="' + chart.getImageURI() + '" class="btn-download btn btn-primary" style="margin-top:20px;" download="' + chart.getImageURI() + '"><i class="fa fa-download"></i> Exporter</a>');
+            $('#piechart_3d').prepend('<a href="' + chart.getImageURI() + '" class="btn-download btn btn-primary" style="margin-top:20px;" download="' + chart.getImageURI() + '"><i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Exporter</a>');
         });
         chart.draw(data, options);
     }
@@ -1109,7 +1106,7 @@ $frequencess = array_count_values($frequences);
         };
         var chart = new google.visualization.ComboChart(document.getElementById('bar_chart1'));
         google.visualization.events.addListener(chart, 'ready', function () {
-            $('#bar_chart1').prepend('<a href="' + chart.getImageURI() + '" class="btn-download btn btn-primary" style="margin-top:20px;" download="' + chart.getImageURI() + '"><i class="fa fa-download"></i> Exporter</a>');
+            $('#bar_chart1').prepend('<a href="' + chart.getImageURI() + '" class="btn-download btn btn-primary" style="margin-top:20px;" download="' + chart.getImageURI() + '"><i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Exporter</a>');
         });
         chart.draw(data, options);
     }
@@ -1137,7 +1134,7 @@ $frequencess = array_count_values($frequences);
         };
         var chart = new google.visualization.ComboChart(document.getElementById('bar_chart2'));
         google.visualization.events.addListener(chart, 'ready', function () {
-            $('#bar_chart2').prepend('<a href="' + chart.getImageURI() + '" class="btn-download btn btn-primary" style="margin-top:20px;" download="' + chart.getImageURI() + '"><i class="fa fa-download"></i> Exporter</a>');
+            $('#bar_chart2').prepend('<a href="' + chart.getImageURI() + '" class="btn-download btn btn-primary" style="margin-top:20px;" download="' + chart.getImageURI() + '"><i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Exporter</a>');
         });
         chart.draw(data, options);
     }
@@ -1162,7 +1159,7 @@ $frequencess = array_count_values($frequences);
         };
         var chart = new google.visualization.ComboChart(document.getElementById('bar_chart3'));
         google.visualization.events.addListener(chart, 'ready', function () {
-            $('#bar_chart3').prepend('<a href="' + chart.getImageURI() + '" class="btn-download btn btn-primary" style="margin-top:20px;" download="' + chart.getImageURI() + '"><i class="fa fa-download"></i> Exporter</a>');
+            $('#bar_chart3').prepend('<a href="' + chart.getImageURI() + '" class="btn-download btn btn-primary" style="margin-top:20px;" download="' + chart.getImageURI() + '"><i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Exporter</a>');
         });
         chart.draw(data, options);
     }

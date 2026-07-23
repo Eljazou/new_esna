@@ -1,5 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
-
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     :root{
         --accent:#6c5ce7;
@@ -14,15 +13,15 @@
         --shadow-card:0 2px 14px rgba(108,92,231,0.07);
     }
 
-    .box{
+    .card{
         background:#fff;
         border:1px solid var(--border-color);
         border-radius:var(--radius-lg);
         box-shadow:var(--shadow-card);
         margin-bottom:20px;
     }
-    .box .box-header{ border-bottom:none; padding:24px 24px 6px 24px; }
-    .box .box-body{ padding:0 24px 24px 24px; }
+    .card .card-header{ border-bottom:none; padding:24px 24px 6px 24px; }
+    .card .card-body{ padding:0 24px 24px 24px; }
 
     .section-header{ display:flex; align-items:flex-start; gap:14px; margin-bottom:20px; }
     .section-icon{
@@ -30,7 +29,7 @@
         background:var(--accent); color:#fff;
         display:flex; align-items:center; justify-content:center; font-size:19px;
     }
-    .section-header h3.box-title{ margin:0; font-size:18px; font-weight:700; color:var(--text-dark); }
+    .section-header h3.card-title{ margin:0; font-size:18px; font-weight:700; color:var(--text-dark); }
     .section-header p.section-subtitle{ margin:2px 0 0 0; font-size:13px; color:var(--text-muted); }
 
     /* Toolbar: length + search */
@@ -113,23 +112,23 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <div class="section-header">
                     <span class="section-icon"><i class="fa fa-lightbulb-o"></i></span>
                     <div>
-                        <h3 class="box-title">Boite à idées</h3>
+                        <h3 class="card-title">Boite à idées</h3>
                         <p class="section-subtitle">Consultez et gérez les idées proposées par les visiteurs médicaux.</p>
                     </div>
                 </div>
             </div>
-            <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+            <div class="card-body">
+                <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                     <thead>
                         <tr>
-                            <th><i class="fa fa-user th-icon"></i>VM</th>
+                            <th><i class="ki-duotone ki-profile-user th-icon"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>VM</th>
                             <th><i class="fa fa-lightbulb-o th-icon"></i>Idée</th>
-                            <th><i class="fa fa-calendar th-icon"></i>Date d'ajout</th>
+                            <th><i class="ki-duotone ki-calendar-8 th-icon"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>Date d'ajout</th>
                             <th class="actions">#</th>
                         </tr>
                     </thead>
@@ -156,14 +155,14 @@
                             </td>
                             <td>
                                 <div class="date-cell">
-                                    <i class="fa fa-calendar"></i>
+                                    <i class="ki-duotone ki-calendar-8"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>
                                     <?php echo $boiteidee['Boiteidee']['created'] ?>
                                 </div>
                             </td>
                             <td class="actions">
                                 <?php
                                 if ($this->requestAction('/droits/getrole/boiteidees/delete') == 1)
-                                    echo $this->Form->postLink('<i class="fa fa-trash-o"></i> Supprimer', array('action' => 'delete', $boiteidee['Boiteidee']['id']), array('class' => 'btn-delete', 'escape' => false), 'Etes-vous sur de vouloir supprimer # %s?', $boiteidee['Boiteidee']['name']);
+                                    echo $this->Form->postLink('<i class="ki-duotone ki-trash"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i> Supprimer', array('action' => 'delete', $boiteidee['Boiteidee']['id']), array('class' => 'btn-delete', 'escape' => false), 'Etes-vous sur de vouloir supprimer # %s?', $boiteidee['Boiteidee']['name']);
                                 ?>
                             </td>
                         </tr>
@@ -174,10 +173,6 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -199,7 +194,7 @@ echo $this->Html->script('demo');
                 info: "Affichage de _START_ à _END_ sur _TOTAL_ entrées",
                 infoEmpty: "Aucune entrée disponible",
                 paginate: { previous: "← Précédent", next: "Suivant →" },
-                emptyTable: '<div class="dt-empty-state"><span class="dt-empty-icon"><i class="fa fa-inbox"></i></span><div class="dt-empty-title">Aucune idée disponible</div></div>'
+                emptyTable: '<div class="dt-empty-state"><span class="dt-empty-icon"><i class="ki-duotone ki-directbox-default"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span><div class="dt-empty-title">Aucune idée disponible</div></div>'
             }
         });
     });

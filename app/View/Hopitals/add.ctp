@@ -132,7 +132,7 @@
             )); ?>
             
             <?php echo $this->Html->link(
-                '<i class="fa fa-arrow-left"></i> ' . __('Retour'), 
+                '<i class="ki-duotone ki-arrow-left"><span class="path1"></span><span class="path2"></span></i> ' . __('Retour'), 
                 array('action' => 'index'), 
                 array('class' => 'btn-back', 'escape' => false)
             ); ?>

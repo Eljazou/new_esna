@@ -176,7 +176,7 @@
         <!-- Sidebar Controls Left Pane -->
         <div class="col-md-3">
             <a href="<?php echo $this->Html->url(array('action' => 'index')); ?>" class="btn-compose">
-                <i class="fa fa-arrow-left" style="margin-right: 6px;"></i> Retour
+                <i class="ki-duotone ki-arrow-left" style="margin-right: 6px;"><span class="path1"></span><span class="path2"></span></i> Retour
             </a>
 
             <div class="mailbox-container" style="padding: 15px 12px;">
@@ -184,7 +184,7 @@
                 <ul class="folder-nav-list">
                     <li>
                         <a href="<?php echo $this->Html->url(array('action' => 'index')); ?>">
-                            <span><i class="fa fa-inbox"></i> Boite de réception</span>
+                            <span><i class="ki-duotone ki-directbox-default"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> Boite de réception</span>
                             <span class="folder-badge">
                                 <?php echo $this->requestAction('/boitemails/system_get_nombre_mail'); ?>
                             </span>
@@ -192,7 +192,7 @@
                     </li>
                     <li>
                         <a href="<?php echo $this->Html->url(array('action' => 'index', -1)); ?>">
-                            <span><i class="fa fa-paper-plane-o"></i> Boite d'envoi</span>
+                            <span><i class="ki-duotone ki-send -o"><span class="path1"></span><span class="path2"></span></i> Boite d'envoi</span>
                         </a>
                     </li>
                 </ul>
@@ -209,7 +209,7 @@
                 <?php echo $this->Form->create('Boitemail'); ?>
                 
                 <div class="mailbox-body">
-                    <div class="form-group">
+                    <div class="mb-5">
                         <?php echo $this->Form->input('user_id', array(
                             'label' => 'Utilisateur',
                             'class' => 'mailbox-input',
@@ -217,7 +217,7 @@
                         )); ?>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="mb-5">
                         <?php echo $this->Form->input('titre', array(
                             'label' => 'Titre',
                             'placeholder' => "Sujet : ",
@@ -226,7 +226,7 @@
                         )); ?>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="mb-5">
                         <?php echo $this->Form->input('message', array(
                             'label' => 'Message',
                             'type' => 'textarea',
@@ -238,7 +238,7 @@
                 
                 <div class="mailbox-footer-custom">
                     <button type="submit" class="btn-send">
-                        <i class="fa fa-envelope-o"></i> Envoyer
+                        <i class="ki-duotone ki-sms -o"><span class="path1"></span><span class="path2"></span></i> Envoyer
                     </button>
                 </div>
                 

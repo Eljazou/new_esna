@@ -191,6 +191,13 @@ ICON_MAP = {
     'fa-gamepad': 'ki-joystick', 'fa-paper-plane': 'ki-send',
     'fa-reply': 'ki-arrow-left', 'fa-th-large': 'ki-element-4',
     'fa-thumbs-up': 'ki-like', 'fa-thumbs-down': 'ki-dislike',
+    # Batch 4.
+    'fa-inbox': 'ki-directbox-default', 'fa-bullseye': 'ki-focus',
+    'fa-medkit': 'ki-bandage', 'fa-bell': 'ki-notification',
+    'fa-shield': 'ki-shield', 'fa-mobile': 'ki-monitor-mobile',
+    'fa-id-badge': 'ki-badge', 'fa-cube': 'ki-cube-2', 'fa-flag': 'ki-flag',
+    'fa-facebook': 'ki-facebook', 'fa-facebook-official': 'ki-facebook',
+    'fa-bullhorn': 'ki-speaker', 'fa-exchange': 'ki-arrows-loop',
 }
 
 # Ionicons -> Keenicons. Ionicons ships in webroot but is loaded by nothing --
@@ -210,6 +217,12 @@ ION_MAP = {
 ICON_KEEP = {
     'fa-angry', 'fa-frown', 'fa-meh-rolling-eyes', 'fa-smile-beam',
     'fa-laugh-beam', 'fa-bow-arrow', 'fa-spinner',
+    # Batch 4: Keenicons has no lightbulb/idea glyph (Boiteidees "Idée"), no
+    # bell-with-slash for a "no notifications" empty state, and no hashtag for
+    # a "Code" column header. Substituting an approximate glyph would change
+    # what each one communicates, so they keep Font Awesome -- which is loaded
+    # globally anyway until TODO #11 closes.
+    'fa-lightbulb-o', 'fa-bell-slash-o', 'fa-hashtag',
 }
 # How many <span class="pathN"> each Keenicon needs (duotone layers).
 #
@@ -309,7 +322,8 @@ def swap_ionicons(src):
 
 def swap_icons(src):
     def repl(m):
-        attrs, name, suffix, after = m.group(1), m.group(3), m.group(4), m.group(5)
+        attrs, lead = m.group('attrs'), m.group('lead')
+        name, suffix, after = m.group('name'), m.group('suffix'), m.group('after')
         if name in ICON_KEEP:
             return m.group(0)
         ki = ICON_MAP.get(name)
@@ -322,7 +336,9 @@ def swap_icons(src):
         # FA4 stylesheet is still loaded globally -- `.fa-fw{width:1.28em}`
         # would really apply and distort the glyph.
         kept = [t for t in suffix.split() if not re.match(r'fa(-|$)', t)]
-        extra = (' ' + ' '.join(kept)) if kept else ''
+        keep_lead = [t for t in lead.split() if not re.match(r'fa(-|$)', t)]
+        extra = ' '.join(keep_lead + kept)
+        extra = (' ' + extra) if extra else ''
         return '<i%s class="ki-duotone %s%s"%s>%s</i>' % (
             attrs, ki, extra, after, paths)
 
@@ -330,13 +346,19 @@ def swap_icons(src):
     #   <i class="fa fa-cog"></i>            <i class="fa fa-cog fs-2"></i>
     #   <i onclick="..." class="fa fa-clock-o"></i>
     #   <i class="fal fa-comments"></i>      (Font Awesome 5 Pro prefixes)
+    #   <i class="icon fa fa-info-circle"></i>   (prefix NOT the first token)
     # `fa` alone stays in the alternation for FA4 markup; fas/far/fal/fab are
-    # FA5 and appear in the Rapportprocpects and Analyses views.
+    # FA5 and appear in the Rapportprocpects and Analyses views. `lead` holds
+    # any classes written before the prefix -- they are the app's own and are
+    # carried over, so anchoring the prefix at the start of the attribute (as
+    # this did until batch 4) silently skipped those icons instead.
     return re.sub(
-        r'<i((?:\s+(?!class=)[\w-]+="[^"]*")*)\s+class="'
-        r'((?:fa[srlb]?|fa-(?:solid|regular|light|thin|brands|duotone))\s+)('
+        r'<i(?P<attrs>(?:\s+(?!class=)[\w-]+="[^"]*")*)\s+class="'
+        r'(?P<lead>(?:[\w-]+\s+)*?)'
+        r'(?:fa[srlb]?|fa-(?:solid|regular|light|thin|brands|duotone))\s+'
+        r'(?P<name>'
         + '|'.join(sorted(set(ICON_MAP) | ICON_KEEP, key=len, reverse=True))
-        + r')([^"]*)"((?:\s+[\w-]+="[^"]*")*)\s*>\s*</i>',
+        + r')(?P<suffix>[^"]*)"(?P<after>(?:\s+[\w-]+="[^"]*")*)\s*>\s*</i>',
         repl, src)
 
 

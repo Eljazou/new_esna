@@ -1,9 +1,6 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
-echo $this->Html->css('dataTables.bootstrap');
 echo $this->Html->css('_all-skins.min');
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('jquery.dataTables.min');
 ?>
 
 <style>
@@ -24,12 +21,12 @@ echo $this->Html->script('jquery.dataTables.min');
         --shadow-card:0 2px 14px rgba(108,92,231,0.06);
     }
 
-    .box{
+    .card{
         background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-lg);
         box-shadow:var(--shadow-card); margin-bottom:20px;
     }
-    .box .box-header.with-border{ border-bottom:none; padding:22px 24px 8px 24px; }
-    .box .box-body{ padding:16px 24px 24px 24px; }
+    .card .card-header.with-border{ border-bottom:none; padding:22px 24px 8px 24px; }
+    .card .card-body{ padding:16px 24px 24px 24px; }
 
     .section-header{ display:flex; align-items:center; gap:14px; }
     .section-icon{
@@ -46,7 +43,7 @@ echo $this->Html->script('jquery.dataTables.min');
         padding: 18px 20px !important; border-radius: var(--radius-md) !important;
         border: 1px solid var(--accent-pale) !important; display:flex; align-items:flex-end; gap:20px; flex-wrap:wrap;
     }
-    .filter-inline .form-group{ display:flex; flex-direction:column; margin:0 !important; position:relative; }
+    .filter-inline .mb-5{ display:flex; flex-direction:column; margin:0 !important; position:relative; }
     .filter-inline label{ font-weight:700; font-size:13px; color:var(--text-dark); margin-bottom:6px !important; }
 
     /* ---------- Custom date pickers (vanilla JS, no external dependency) ---------- */
@@ -187,39 +184,39 @@ echo $this->Html->script('jquery.dataTables.min');
     .modal-header .close{ color:#fff; opacity:.9; }
     .modal-body table.table thead th{ background:var(--accent-light); color:var(--text-dark); font-size:12.5px; text-transform:uppercase; letter-spacing:.02em; border:none; }
     .modal-body table.table td{ vertical-align:middle; font-size:13.5px; }
-    .modal-footer .btn-default{ border-radius:var(--radius-sm); }
+    .modal-footer .btn-light{ border-radius:var(--radius-sm); }
 </style>
 
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-primary">
-            <div class="box-header with-border">
+        <div class="card">
+            <div class="card-header">
                 <div class="section-header">
-                    <span class="section-icon"><i class="fa fa-line-chart"></i></span>
+                    <span class="section-icon"><i class="ki-duotone ki-chart-line"><span class="path1"></span><span class="path2"></span></i></span>
                     <div>
                         <h3 class="box-title-main">Tableau de bord Superviseurs</h3>
                         <p class="box-subtitle">Visites Doubles</p>
                     </div>
                 </div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <!-- Filtre par dates -->
                 <form action="<?php echo $this->Html->url(array('controller' => 'asm', 'action' => 'asm_visites_double')); ?>" method="post" class="form-inline filter-inline">
-                    <div class="form-group">
+                    <div class="mb-5">
                         <label for="date_debut">Du :</label>
                         <div class="date-field-wrap">
                             <input type="text" name="data[Filtre][date_debut]" id="date_debut" class="form-control lb-date-input" autocomplete="off" value="<?php echo h($date_debut); ?>">
-                            <i class="fa fa-calendar date-field-icon"></i>
+                            <i class="ki-duotone ki-calendar-8 date-field-icon"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="mb-5">
                         <label for="date_fin">Au :</label>
                         <div class="date-field-wrap">
                             <input type="text" name="data[Filtre][date_fin]" id="date_fin" class="form-control lb-date-input" autocomplete="off" value="<?php echo h($date_fin); ?>">
-                            <i class="fa fa-calendar date-field-icon"></i>
+                            <i class="ki-duotone ki-calendar-8 date-field-icon"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-filter"></i> Filtrer</button>
+                    <button type="submit" class="btn btn-primary"><i class="ki-duotone ki-filter"><span class="path1"></span><span class="path2"></span></i> Filtrer</button>
                 </form>
 
                 <!-- Tableau Principal -->
@@ -227,8 +224,8 @@ echo $this->Html->script('jquery.dataTables.min');
                     <table class="table-dsm">
                         <thead>
                             <tr>
-                                <th class="bg-dsm-head"><i class="fa fa-home"></i>DSM</th>
-                                <th class="bg-type-head"><i class="fa fa-clipboard"></i>Type de visites</th>
+                                <th class="bg-dsm-head"><i class="ki-duotone ki-home-2"><span class="path1"></span><span class="path2"></span></i>DSM</th>
+                                <th class="bg-type-head"><i class="ki-duotone ki-clipboard"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>Type de visites</th>
                                 <th class="bg-type-head">S1</th>
                                 <th class="bg-type-head">S2</th>
                                 <th class="bg-type-head">S3</th>
@@ -285,37 +282,37 @@ echo $this->Html->script('jquery.dataTables.min');
 
 <div class="row" style="margin-top: 20px;">
     <div class="col-md-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
+        <div class="card">
+            <div class="card-header">
                 <div class="section-header">
-                    <span class="section-icon"><i class="fa fa-calendar-check-o"></i></span>
+                    <span class="section-icon"><i class="ki-duotone ki-calendar-8 -check-o"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i></span>
                     <div>
                         <h3 class="box-title-main">Détails des Visites</h3>
                     </div>
                 </div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="table-responsive">
                     <table class="table-dsm" id="detailsVisitesTable">
                         <thead>
                             <tr>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-calendar"></i>DATE</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-map-marker"></i>Distance Client</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-map-marker"></i>Distance Double</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-home"></i>DSM</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-user"></i>VMP</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-calendar-8"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>DATE</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i>Distance Client</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i>Distance Double</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-home-2"><span class="path1"></span><span class="path2"></span></i>DSM</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>VMP</th>
                                 <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-hashtag"></i>Code</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-id-badge"></i>Nom &amp; Prénom</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-clipboard"></i>Type de visite</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-briefcase"></i>Type client</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-star"></i>Spécialité</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-line-chart"></i>Tendance</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-map"></i>Secteur</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-bullseye"></i>Pot</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-bullseye"></i>Pot V2</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-cube"></i>POT V2 (Gamme)</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-eye"></i>Nb Visite</th>
-                                <th class="bg-type-head" style="padding: 8px;"><i class="fa fa-map-pin"></i>Localisé</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-badge"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>Nom &amp; Prénom</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-clipboard"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>Type de visite</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-briefcase"><span class="path1"></span><span class="path2"></span></i>Type client</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-star"></i>Spécialité</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-chart-line"><span class="path1"></span><span class="path2"></span></i>Tendance</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-map"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>Secteur</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-focus"><span class="path1"></span><span class="path2"></span></i>Pot</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-focus"><span class="path1"></span><span class="path2"></span></i>Pot V2</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-cube-2"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>POT V2 (Gamme)</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-eye"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>Nb Visite</th>
+                                <th class="bg-type-head" style="padding: 8px;"><i class="ki-duotone ki-map -pin"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>Localisé</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -340,11 +337,11 @@ echo $this->Html->script('jquery.dataTables.min');
                                                             $dist = $v['distance'];
                                                             $distance_text = $dist . ' m';
                                                             if ($dist > 1000) {
-                                                                $dist_client_html = '<span class="label label-danger" style="font-size:12px;">' . $distance_text . '</span>';
+                                                                $dist_client_html = '<span class="badge badge-light-danger" style="font-size:12px;">' . $distance_text . '</span>';
                                                             } elseif ($dist >= 500 && $dist <= 1000) {
-                                                                $dist_client_html = '<span class="label label-warning" style="font-size:12px;">' . $distance_text . '</span>';
+                                                                $dist_client_html = '<span class="badge badge-light-warning" style="font-size:12px;">' . $distance_text . '</span>';
                                                             } else {
-                                                                $dist_client_html = '<span class="label label-success" style="font-size:12px;">' . $distance_text . '</span>';
+                                                                $dist_client_html = '<span class="badge badge-light-success" style="font-size:12px;">' . $distance_text . '</span>';
                                                             }
                                                         }
 
@@ -353,11 +350,11 @@ echo $this->Html->script('jquery.dataTables.min');
                                                             $dist = $v['distance_double'];
                                                             $distance_text = $dist . ' m';
                                                             if ($dist > 1000) {
-                                                                $dist_double_html = '<span class="label label-danger" style="font-size:12px;">' . $distance_text . '</span>';
+                                                                $dist_double_html = '<span class="badge badge-light-danger" style="font-size:12px;">' . $distance_text . '</span>';
                                                             } elseif ($dist >= 500 && $dist <= 1000) {
-                                                                $dist_double_html = '<span class="label label-warning" style="font-size:12px;">' . $distance_text . '</span>';
+                                                                $dist_double_html = '<span class="badge badge-light-warning" style="font-size:12px;">' . $distance_text . '</span>';
                                                             } else {
-                                                                $dist_double_html = '<span class="label label-success" style="font-size:12px;">' . $distance_text . '</span>';
+                                                                $dist_double_html = '<span class="badge badge-light-success" style="font-size:12px;">' . $distance_text . '</span>';
                                                             }
                                                         }
 
@@ -416,11 +413,11 @@ echo $this->Html->script('jquery.dataTables.min');
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 <h4 class="modal-title" id="datesModalLabel">Jours travaillés</h4>
             </div>
             <div class="modal-body">
-                <table class="table table-bordered table-striped table-hover" id="datesTable">
+                <table class="table table-row-bordered table-row-gray-300 align-middle gy-4 table-hover" id="datesTable">
                     <thead>
                         <tr>
                             <th>Date</th>
@@ -433,7 +430,7 @@ echo $this->Html->script('jquery.dataTables.min');
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
             </div>
         </div>
     </div>
@@ -444,12 +441,12 @@ echo $this->Html->script('jquery.dataTables.min');
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-success">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:#fff; opacity:1;"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 <h4 class="modal-title" id="visitesModalLabel" style="color:#fff;">Détails des visites</h4>
             </div>
             <div class="modal-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped" id="visitesTable">
+                    <table class="table table-row-bordered table-row-gray-300 align-middle gy-4" id="visitesTable">
                         <thead>
                             <tr>
                                 <th>VMP (Accompagné)</th>
@@ -469,15 +466,12 @@ echo $this->Html->script('jquery.dataTables.min');
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="$('#visitesModal').modal('hide'); $('body').addClass('modal-open');">Retour</button>
+                <button type="button" class="btn btn-light" onclick="$('#visitesModal').modal('hide'); $('body').addClass('modal-open');">Retour</button>
             </div>
         </div>
     </div>
 </div>
-
-<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
 
 <script>
     var globalVisitesData = {};
@@ -504,7 +498,7 @@ echo $this->Html->script('jquery.dataTables.min');
 
             tr.append($('<td>').css('text-align', 'center').append(valBtn));
 
-            var actBtn = $('<button>').addClass('btn btn-sm btn-primary').html('<i class="fa fa-eye"></i> Détails')
+            var actBtn = $('<button>').addClass('btn btn-sm btn-primary').html('<i class="ki-duotone ki-eye"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Détails')
                 .attr('onclick', "openVisitesModal('" + key + "', '" + dateStr + "')");
             tr.append($('<td>').css('text-align', 'center').append(actBtn));
 
@@ -545,11 +539,11 @@ echo $this->Html->script('jquery.dataTables.min');
             if (v.distance !== null && v.distance !== undefined) {
                 var distanceText = v.distance + ' m';
                 if (v.distance > 1000) {
-                    distClientCell.html('<span class="label label-danger" style="font-size:12px;">' + distanceText + '</span>');
+                    distClientCell.html('<span class="badge badge-light-danger" style="font-size:12px;">' + distanceText + '</span>');
                 } else if (v.distance >= 500 && v.distance <= 1000) {
-                    distClientCell.html('<span class="label label-warning" style="font-size:12px;">' + distanceText + '</span>');
+                    distClientCell.html('<span class="badge badge-light-warning" style="font-size:12px;">' + distanceText + '</span>');
                 } else {
-                    distClientCell.html('<span class="label label-success" style="font-size:12px;">' + distanceText + '</span>');
+                    distClientCell.html('<span class="badge badge-light-success" style="font-size:12px;">' + distanceText + '</span>');
                 }
             } else {
                 distClientCell.text('-');
@@ -561,13 +555,13 @@ echo $this->Html->script('jquery.dataTables.min');
                 var distanceText = v.distance_double + ' m';
                 if (v.distance_double > 1000) {
                     tr.css('background-color', '#ffe6e6');
-                    distDoubleCell.html('<span class="label label-danger" style="font-size:12px;">' + distanceText + '</span>');
+                    distDoubleCell.html('<span class="badge badge-light-danger" style="font-size:12px;">' + distanceText + '</span>');
                 } else if (v.distance_double >= 500 && v.distance_double <= 1000) {
                     tr.css('background-color', '#fff3cd');
-                    distDoubleCell.html('<span class="label label-warning" style="font-size:12px;">' + distanceText + '</span>');
+                    distDoubleCell.html('<span class="badge badge-light-warning" style="font-size:12px;">' + distanceText + '</span>');
                 } else {
                     tr.css('background-color', '#e6ffe6');
-                    distDoubleCell.html('<span class="label label-success" style="font-size:12px;">' + distanceText + '</span>');
+                    distDoubleCell.html('<span class="badge badge-light-success" style="font-size:12px;">' + distanceText + '</span>');
                 }
             } else {
                 distDoubleCell.text('-');
@@ -599,7 +593,7 @@ echo $this->Html->script('jquery.dataTables.min');
                     "infoEmpty": "Showing 0 to 0 of 0 entries",
                     "infoFiltered": "(filtré depuis _MAX_ éléments au total)",
                     "zeroRecords": "Aucune visite ne correspond à vos critères de recherche.",
-                    "emptyTable": '<div class="dt-empty-state"><span class="dt-empty-icon"><i class="fa fa-inbox"></i></span><div class="dt-empty-title">Aucune donnée disponible dans le tableau</div><div class="dt-empty-sub">Aucune visite ne correspond à vos critères de recherche.</div></div>',
+                    "emptyTable": '<div class="dt-empty-state"><span class="dt-empty-icon"><i class="ki-duotone ki-directbox-default"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span><div class="dt-empty-title">Aucune donnée disponible dans le tableau</div><div class="dt-empty-sub">Aucune visite ne correspond à vos critères de recherche.</div></div>',
                     "paginate": {
                         "previous": "Précédent",
                         "next": "Suivant"
@@ -610,7 +604,7 @@ echo $this->Html->script('jquery.dataTables.min');
                 "buttons": [
                     {
                         extend: 'excelHtml5',
-                        text: '<i class="fa fa-file-excel-o"></i> Exporter en Excel',
+                        text: '<i class="ki-duotone ki-file -excel-o"><span class="path1"></span><span class="path2"></span></i> Exporter en Excel',
                         className: 'btn btn-success btn-sm',
                         title: 'Détails_Visites'
                     }

@@ -78,7 +78,7 @@
                             </span>
                         </div>
                         <div class="card-body p-4 d-flex flex-column justify-content-between">
-                            <div class="form-group mb-3">
+                            <div class="mb-5 mb-3">
                                 <label class="text-muted font-size-xs font-weight-bold mb-1">Liste associée :</label>
                                 <select name="data[Plantourne][<?php echo $i; ?>][liste_id]" class="form-control custom-select-lavender" id="PlantourneListeId">
                                     <option value="0">Choisissez...</option>
@@ -103,7 +103,7 @@
 
                             <?php if ($id != 0 && $this->requestAction('/droits/getrole/Plantournes/retarder') == 1): ?>
                                 <div class="dropdown mt-2">
-                                    <button class="btn btn-sm btn-light-danger dropdown-toggle font-weight-bolder w-100 d-flex justify-content-between align-items-center" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn btn-sm btn-light-danger dropdown-toggle font-weight-bolder w-100 d-flex justify-content-between align-items-center" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span>Retarder la semaine</span>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right w-100 shadow-sm border-0">
@@ -390,8 +390,7 @@ function getStartAndEndDate($week, $year)
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<?php 
-echo $this->Html->script('jquery-2.2.3.min');
+<?php
 echo $this->Html->script('daterangepicker');
 ?>
 

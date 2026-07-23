@@ -1,14 +1,5 @@
-<?php
-
-?>
+<?php echo $this->element('assets/datatables'); ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 <?php
 // These were missing entirely, which is why the multi-selects rendered as native
@@ -18,9 +9,6 @@
 // buttons plugins were loaded, so `$(...).DataTable` was undefined. That threw a
 // JS error partway through the script block, which stopped everything after it,
 // including the select2 initialization line further down.
-echo $this->Html->css('select2.min');
-echo $this->Html->script('jquery.dataTables.min');
-echo $this->Html->script('select2.full.min');
 ?>
 
 <style>
@@ -40,18 +28,18 @@ echo $this->Html->script('select2.full.min');
         --shadow-card:0 2px 14px rgba(108,92,231,0.07);
     }
 
-    .box-body{ overflow:hidden; overflow-y:hidden; }
+    .card-body{ overflow:hidden; overflow-y:hidden; }
 
     /* ---------- Card shell ---------- */
-    .box{
+    .card{
         background:var(--card-bg);
         border:1px solid var(--border-color);
         border-radius:var(--radius-lg);
         box-shadow:var(--shadow-card);
         margin-bottom:24px;
     }
-    .box .box-header.with-border{ border-bottom:none; padding:24px 24px 8px 24px; }
-    .box .box-body{ padding:0 24px 24px 24px; }
+    .card .card-header.with-border{ border-bottom:none; padding:24px 24px 8px 24px; }
+    .card .card-body{ padding:0 24px 24px 24px; }
 
     .section-header{ display:flex; align-items:flex-start; gap:14px; margin-bottom:6px; }
     .section-icon{
@@ -59,7 +47,7 @@ echo $this->Html->script('select2.full.min');
         background:var(--accent-light); color:var(--accent);
         display:flex; align-items:center; justify-content:center; font-size:18px;
     }
-    .section-header h3.box-title{ margin:0; font-size:17px; font-weight:700; color:var(--text-dark); }
+    .section-header h3.card-title{ margin:0; font-size:17px; font-weight:700; color:var(--text-dark); }
     .section-header p.section-subtitle{ margin:2px 0 0 0; font-size:13px; color:var(--text-muted); }
 
     /* ---------- Filter form ---------- */
@@ -68,7 +56,7 @@ echo $this->Html->script('select2.full.min');
        icon-label-above-input layout that float collapses the wrapper's height to 0,
        so the next field's label renders on top of the previous input. Neutralize both. */
     #dateform{ overflow:hidden; }
-    #dateform .form-group,
+    #dateform .mb-5,
     #dateform > .col-md-6 > div.input{
         margin-bottom:20px !important;
         clear:both !important;
@@ -86,8 +74,8 @@ echo $this->Html->script('select2.full.min');
         font-size:12px; flex:0 0 auto;
     }
     #dateform .form-control,
-    #dateform select.pull-right,
-    #dateform .select2.pull-right,
+    #dateform select.float-end,
+    #dateform .select2.float-end,
     #dateform .select2-container{
         float:none !important;
         width:100% !important;
@@ -308,47 +296,47 @@ echo $this->Html->script('select2.full.min');
 </style>
 
 <div class="row">
-    <div class="col-xs-12" style="margin-bottom: 24px;">
+    <div class="col-12" style="margin-bottom: 24px;">
 
-        <div class="box form-group">
-            <div class="box-header with-border">
+        <div class="card mb-5">
+            <div class="card-header">
                 <div class="section-header">
-                    <span class="section-icon"><i class="fa fa-filter"></i></span>
+                    <span class="section-icon"><i class="ki-duotone ki-filter"><span class="path1"></span><span class="path2"></span></i></span>
                     <div>
-                        <h3 class="box-title">Filtres de recherche</h3>
+                        <h3 class="card-title">Filtres de recherche</h3>
                         <p class="section-subtitle">Affinez votre recherche pour trouver vos clients</p>
                     </div>
                 </div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <form action="<?php echo $this->Html->url("/statistiques/statclient") ?>" method="post" id="dateform" autocomplete="off">
                     <div class="col-md-6 col-sm-6">
                         <?php
-                        echo $this->Form->input('category', array("id" => "filter_activite", "label" => array('text' => '<span class="field-icon"><i class="fa fa-th-large"></i></span>Choisissez l\'activté', 'escape' => false), "name" => "activite",
+                        echo $this->Form->input('category', array("id" => "filter_activite", "label" => array('text' => '<span class="field-icon"><i class="ki-duotone ki-element-4"><span class="path1"></span><span class="path2"></span></i></span>Choisissez l\'activté', 'escape' => false), "name" => "activite",
                             'options' => array("" => "Choisissez", "prive" => "Privé", "Publique" => "Publique"),
-                            'class' => 'form-control pull-right'));
-                        echo $this->Form->input('potentialite', array("id" => "filter_potentialite", "multiple" => "true", "label" => array('text' => '<span class="field-icon"><i class="fa fa-star"></i></span>Choisissez potentialité', 'escape' => false), "name" => "potentialite",
+                            'class' => 'form-control float-end'));
+                        echo $this->Form->input('potentialite', array("id" => "filter_potentialite", "multiple" => "true", "label" => array('text' => '<span class="field-icon"><i class="ki-duotone ki-star"></i></span>Choisissez potentialité', 'escape' => false), "name" => "potentialite",
                             'options' => array("A1" => "A1", "A2" => "A2", "A3" => "A3",
                                 "B1" => "B1", "B2" => "B2", "B3" => "B3",
                                 "C1" => "C1", "C2" => "C2", "C3" => "C3"),
-                            'class' => 'form-control pull-right choix_multi select2', 'multiple' => 'multiple'));
+                            'class' => 'form-control float-end choix_multi select2', 'multiple' => 'multiple'));
                         if (AuthComponent::user('role') != 'Super viseur')
-                            echo $this->Form->input('category', array("id" => "filter_secteur", "multiple" => "true", "label" => array('text' => '<span class="field-icon"><i class="fa fa-building"></i></span>La liste des secteurs', 'escape' => false), "name" => "secteur",
-                                'options' => $secteurs, 'class' => 'form-control pull-right choix_multi select2', 'multiple' => 'multiple'));
+                            echo $this->Form->input('category', array("id" => "filter_secteur", "multiple" => "true", "label" => array('text' => '<span class="field-icon"><i class="ki-duotone ki-bank"><span class="path1"></span><span class="path2"></span></i></span>La liste des secteurs', 'escape' => false), "name" => "secteur",
+                                'options' => $secteurs, 'class' => 'form-control float-end choix_multi select2', 'multiple' => 'multiple'));
 
-                        echo $this->Form->input('category', array("id" => "filter_category", "multiple" => "true", "label" => array('text' => '<span class="field-icon"><i class="fa fa-flask"></i></span>La liste des spécialité', 'escape' => false), "name" => "category",
-                            'options' => $categories, 'class' => 'form-control pull-right choix_multi select2', 'multiple' => 'multiple'));
+                        echo $this->Form->input('category', array("id" => "filter_category", "multiple" => "true", "label" => array('text' => '<span class="field-icon"><i class="ki-duotone ki-flask"><span class="path1"></span><span class="path2"></span></i></span>La liste des spécialité', 'escape' => false), "name" => "category",
+                            'options' => $categories, 'class' => 'form-control float-end choix_multi select2', 'multiple' => 'multiple'));
                         ?>
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <?php
-                        echo $this->Form->input('user', array("id" => "filter_users", "multiple" => "true", "label" => array('text' => '<span class="field-icon"><i class="fa fa-users"></i></span>La liste des VM', 'escape' => false), "name" => "users",
-                            'options' => $users, 'class' => 'form-control pull-right choix_multi vm select2', 'multiple' => 'multiple'));
-                        echo $this->Form->input('ligne', array("id" => "filter_ligne", "multiple" => "true", "label" => array('text' => '<span class="field-icon"><i class="fa fa-list-ul"></i></span>Les lignes', 'escape' => false), "name" => "ligne",
-                            'options' => $lignes, 'class' => 'form-control pull-right choix_multi vm select2', 'multiple' => 'multiple'));
+                        echo $this->Form->input('user', array("id" => "filter_users", "multiple" => "true", "label" => array('text' => '<span class="field-icon"><i class="ki-duotone ki-people"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i></span>La liste des VM', 'escape' => false), "name" => "users",
+                            'options' => $users, 'class' => 'form-control float-end choix_multi vm select2', 'multiple' => 'multiple'));
+                        echo $this->Form->input('ligne', array("id" => "filter_ligne", "multiple" => "true", "label" => array('text' => '<span class="field-icon"><i class="ki-duotone ki-menu -ul"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>Les lignes', 'escape' => false), "name" => "ligne",
+                            'options' => $lignes, 'class' => 'form-control float-end choix_multi vm select2', 'multiple' => 'multiple'));
                         $types = array("1" => "Medcin", "2" => "Pharmacie",);
-                        echo $this->Form->input('type', array("id" => "filter_type", "multiple" => "true", "label" => array('text' => '<span class="field-icon"><i class="fa fa-user-md"></i></span>Type de client', 'escape' => false), "name" => "type",
-                            'options' => $types, 'class' => 'form-control pull-right choix_multi vm select2', 'multiple' => 'multiple'));
+                        echo $this->Form->input('type', array("id" => "filter_type", "multiple" => "true", "label" => array('text' => '<span class="field-icon"><i class="ki-duotone ki-profile-user -md"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>Type de client', 'escape' => false), "name" => "type",
+                            'options' => $types, 'class' => 'form-control float-end choix_multi vm select2', 'multiple' => 'multiple'));
                         ?>
                     </div>
                     <div class="col-md-12">
@@ -361,7 +349,7 @@ echo $this->Html->script('select2.full.min');
         <?php if (isset($infos)): ?>
             <div class="stat-row">
                 <div class="stat-card">
-                    <span class="stat-icon c-blue"><i class="fa fa-mobile"></i></span>
+                    <span class="stat-icon c-blue"><i class="ki-duotone ki-monitor-mobile"><span class="path1"></span><span class="path2"></span></i></span>
                     <div class="stat-body">
                         <div class="stat-label">GSM</div>
                         <div class="stat-value"><?php echo $infos["tel"]; ?></div>
@@ -369,7 +357,7 @@ echo $this->Html->script('select2.full.min');
                     </div>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-icon c-pink"><i class="fa fa-phone"></i></span>
+                    <span class="stat-icon c-pink"><i class="ki-duotone ki-phone"><span class="path1"></span><span class="path2"></span></i></span>
                     <div class="stat-body">
                         <div class="stat-label">Fixe</div>
                         <div class="stat-value"><?php echo $infos["fixe"]; ?></div>
@@ -377,7 +365,7 @@ echo $this->Html->script('select2.full.min');
                     </div>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-icon c-green"><i class="fa fa-envelope-o"></i></span>
+                    <span class="stat-icon c-green"><i class="ki-duotone ki-sms -o"><span class="path1"></span><span class="path2"></span></i></span>
                     <div class="stat-body">
                         <div class="stat-label">Mail</div>
                         <div class="stat-value"><?php echo $infos["mail"]; ?></div>
@@ -385,7 +373,7 @@ echo $this->Html->script('select2.full.min');
                     </div>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-icon c-facebook"><i class="fa fa-facebook-official"></i></span>
+                    <span class="stat-icon c-facebook"><i class="ki-duotone ki-facebook"><span class="path1"></span><span class="path2"></span></i></span>
                     <div class="stat-body">
                         <div class="stat-label">Facebook</div>
                         <div class="stat-value"><?php echo $infos["fax"]; ?></div>
@@ -393,7 +381,7 @@ echo $this->Html->script('select2.full.min');
                     </div>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-icon c-purple"><i class="fa fa-map-marker"></i></span>
+                    <span class="stat-icon c-purple"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i></span>
                     <div class="stat-body">
                         <div class="stat-label">Géolocalisation</div>
                         <div class="stat-value"><?php echo $infos["gps"]; ?></div>
@@ -404,17 +392,17 @@ echo $this->Html->script('select2.full.min');
         <?php endif; ?>
 
         <div class="col-md-12">
-            <div class="box">
-                <div class="box-header with-border">
+            <div class="card">
+                <div class="card-header">
                     <div class="section-header">
-                        <span class="section-icon"><i class="fa fa-users"></i></span>
+                        <span class="section-icon"><i class="ki-duotone ki-people"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i></span>
                         <div>
-                            <h3 class="box-title">La liste des clients</h3>
+                            <h3 class="card-title">La liste des clients</h3>
                         </div>
                     </div>
                 </div>
-                <div class="box-body">
-                    <div class="col-xs-12">
+                <div class="card-body">
+                    <div class="col-12">
                         <table class="table table-bordred display" id="example1">
                             <thead>
                                 <tr>
@@ -469,26 +457,26 @@ echo $this->Html->script('select2.full.min');
         </div>
 
         <div class="col-md-12">
-            <div class="box">
-                <div class="box-header with-border">
+            <div class="card">
+                <div class="card-header">
                     <div class="section-header">
-                        <span class="section-icon"><i class="fa fa-bar-chart"></i></span>
+                        <span class="section-icon"><i class="ki-duotone ki-chart-simple"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>
                         <div>
-                            <h3 class="box-title">Suivi de remplissage client</h3>
+                            <h3 class="card-title">Suivi de remplissage client</h3>
                         </div>
                     </div>
                 </div>
-                <div class="box-body">
+                <div class="card-body">
                     <div class="stat-row">
                         <div class="stat-card">
-                            <span class="stat-icon c-indigo"><i class="fa fa-file-text-o"></i></span>
+                            <span class="stat-icon c-indigo"><i class="ki-duotone ki-file -text-o"><span class="path1"></span><span class="path2"></span></i></span>
                             <div class="stat-body">
                                 <div class="stat-label">Total Affecté</div>
                                 <div class="stat-value"><?php echo $total; ?></div>
                             </div>
                         </div>
                         <div class="stat-card">
-                            <span class="stat-icon c-green"><i class="fa fa-phone"></i></span>
+                            <span class="stat-icon c-green"><i class="ki-duotone ki-phone"><span class="path1"></span><span class="path2"></span></i></span>
                             <div class="stat-body">
                                 <div class="stat-label">% téléphone rempli</div>
                                 <div class="stat-value"><?php
@@ -501,7 +489,7 @@ echo $this->Html->script('select2.full.min');
                             </div>
                         </div>
                         <div class="stat-card">
-                            <span class="stat-icon c-blue"><i class="fa fa-phone-square"></i></span>
+                            <span class="stat-icon c-blue"><i class="ki-duotone ki-phone -square"><span class="path1"></span><span class="path2"></span></i></span>
                             <div class="stat-body">
                                 <div class="stat-label">% fixe rempli</div>
                                 <div class="stat-value"><?php
@@ -514,7 +502,7 @@ echo $this->Html->script('select2.full.min');
                             </div>
                         </div>
                         <div class="stat-card">
-                            <span class="stat-icon c-purple"><i class="fa fa-envelope"></i></span>
+                            <span class="stat-icon c-purple"><i class="ki-duotone ki-sms"><span class="path1"></span><span class="path2"></span></i></span>
                             <div class="stat-body">
                                 <div class="stat-label">% adresse mail rempli</div>
                                 <div class="stat-value"><?php
@@ -527,7 +515,7 @@ echo $this->Html->script('select2.full.min');
                             </div>
                         </div>
                         <div class="stat-card">
-                            <span class="stat-icon c-facebook"><i class="fa fa-facebook"></i></span>
+                            <span class="stat-icon c-facebook"><i class="ki-duotone ki-facebook"><span class="path1"></span><span class="path2"></span></i></span>
                             <div class="stat-body">
                                 <div class="stat-label">% compte face rempli</div>
                                 <div class="stat-value"><?php
@@ -540,7 +528,7 @@ echo $this->Html->script('select2.full.min');
                             </div>
                         </div>
                         <div class="stat-card">
-                            <span class="stat-icon c-pink"><i class="fa fa-map-marker"></i></span>
+                            <span class="stat-icon c-pink"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i></span>
                             <div class="stat-body">
                                 <div class="stat-label">% compte Géolocalisation rempli</div>
                                 <div class="stat-value"><?php
@@ -563,7 +551,6 @@ echo $this->Html->script('select2.full.min');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
 echo $this->Html->script('daterangepicker');
 ?>
 <script>
@@ -639,13 +626,13 @@ echo $this->Html->script('daterangepicker');
                 language: {
                     search: "",
                     searchPlaceholder: "Rechercher...",
-                    emptyTable: '<div class="dt-empty-state"><span class="dt-empty-icon"><i class="fa fa-inbox"></i></span><div class="dt-empty-title">Aucune donnée disponible</div><div class="dt-empty-sub">Aucun client trouvé pour les filtres sélectionnés.</div></div>',
+                    emptyTable: '<div class="dt-empty-state"><span class="dt-empty-icon"><i class="ki-duotone ki-directbox-default"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span><div class="dt-empty-title">Aucune donnée disponible</div><div class="dt-empty-sub">Aucun client trouvé pour les filtres sélectionnés.</div></div>',
                     paginate: { previous: "Précédent", next: "Suivant" }
                 },
                 buttons: [
-                    { extend: 'csv', text: '<i class="fa fa-file-text-o"></i> CSV' },
-                    { extend: 'excel', text: '<i class="fa fa-file-excel-o"></i> Excel' },
-                    { extend: 'print', text: '<i class="fa fa-print"></i> Imprimer' }
+                    { extend: 'csv', text: '<i class="ki-duotone ki-file -text-o"><span class="path1"></span><span class="path2"></span></i> CSV' },
+                    { extend: 'excel', text: '<i class="ki-duotone ki-file -excel-o"><span class="path1"></span><span class="path2"></span></i> Excel' },
+                    { extend: 'print', text: '<i class="ki-duotone ki-printer"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i> Imprimer' }
                 ]
             });
         } catch (e) {

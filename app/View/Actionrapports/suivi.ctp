@@ -1,4 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
+<?php echo $this->element('assets/datatables'); ?>
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
 
 <style type="text/css">
@@ -7,12 +7,12 @@
     /* =========================================================
        THEME MATCHED DESIGN — Modern Lavender / Premium Tracking
        ========================================================= */
-    body, .box, .box-title, .table, th, td, .callout, .btn, .badge {
+    body, .card, .card-title, .table, th, td, .callout, .btn, .badge {
         font-family: 'Plus Jakarta Sans', sans-serif !important;
     }
 
     /* 1. CONTAINER PRINCIPAL (BOX) */
-    .box.box-primary {
+    .card {
         background: #ffffff !important;
         border-radius: 20px !important;
         border: none !important;
@@ -22,7 +22,7 @@
     }
 
     /* 2. ENTÊTE */
-    .box-header.with-border {
+    .card-header.with-border {
         background: transparent !important;
         border: none !important;
         border-bottom: 1px solid #eef0f7 !important;
@@ -33,7 +33,7 @@
         align-items: center;
     }
 
-    .box-title {
+    .card-title {
         font-size: 22px !important;
         font-weight: 800 !important;
         color: #1a1d36 !important;
@@ -43,7 +43,7 @@
         gap: 10px;
     }
 
-    .box-title i {
+    .card-title i {
         color: #8c7ef2 !important;
     }
 
@@ -82,7 +82,7 @@
         margin-top: 15px;
     }
 
-    .table.table-bordered {
+    .table.table-row-bordered {
         border: 1px solid #e4e6fb !important;
         border-collapse: separate !important;
         border-spacing: 0 !important;
@@ -166,7 +166,7 @@
     }
 
     /* 6. COMPOSANTS DE NAVIGATION (BOUTONS) */
-    .btn-default {
+    .btn-light {
         height: 36px !important;
         padding: 0 16px !important;
         background: #ffffff !important;
@@ -181,7 +181,7 @@
         transition: all 0.2s ease !important;
     }
 
-    .btn-default:hover {
+    .btn-light:hover {
         background: #f8f9fd !important;
         color: #2b2c45 !important;
         border-color: #d0d3f0 !important;
@@ -244,27 +244,27 @@
 
     /* Responsive fallbacks */
     @media (max-width: 1282px) {
-        .box-body {
+        .card-body {
             overflow-x: auto;
             padding-bottom: 30px;
         }
     }
 </style>
 
-<div class="box box-primary">
-    <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-flag"></i> <?php echo __('Suivi des Rapports d\'Actions'); ?></h3>
-        <div class="box-tools pull-right">
-            <a href="<?php echo $this->Html->url(array('action' => 'index')); ?>" class="btn btn-default btn-sm">
-                <i class="fa fa-list"></i> Retour aux rapports
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="ki-duotone ki-flag"><span class="path1"></span><span class="path2"></span></i> <?php echo __('Suivi des Rapports d\'Actions'); ?></h3>
+        <div class="card-toolbar float-end">
+            <a href="<?php echo $this->Html->url(array('action' => 'index')); ?>" class="btn btn-light btn-sm">
+                <i class="ki-duotone ki-menu"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> Retour aux rapports
             </a>
         </div>
     </div>
 
-    <div class="box-body">
+    <div class="card-body">
 
         <div class="callout callout-info">
-            <h4><i class="icon fa fa-info-circle"></i> Objectif de cette page</h4>
+            <h4><i class="ki-duotone ki-information-5 icon"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Objectif de cette page</h4>
             <p>Permet d'identifier rapidement les médecins/actions en cours qui manquent de rapports. Le compteur indique le <b>nombre de jours écoulés depuis le dernier rapport</b> (ou depuis le début de l'action si aucun rapport n'a été fait).</p>
             <p style="margin-top: 12px; margin-bottom: 0;">
                 <span class="badge flag-badge flag-vert">Vert</span> < 15 jours &nbsp;&nbsp;&nbsp;
@@ -281,7 +281,7 @@
         <?php Stein: else: ?>
 
             <div class="table-responsive">
-                <table id="tableSuivi" class="table table-bordered table-striped table-hover" style="width:100%;">
+                <table id="tableSuivi" class="table table-row-bordered table-row-gray-300 align-middle gy-4 table-hover" style="width:100%;">
                     <thead>
                         <tr>
                             <th>État</th>
@@ -357,16 +357,7 @@
     </div>
 </div>
 
-<?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
-echo $this->Html->script('dataTables.bootstrap.min');
-?>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
 
 <script>
     $(function() {
@@ -388,7 +379,7 @@ echo $this->Html->script('dataTables.bootstrap.min');
                        "<'row'<'col-sm-5'i><'col-sm-7'p>>",
                 "buttons": [{
                     extend: 'excelHtml5',
-                    text: '<i class="fa fa-file-excel-o"></i> Exporter Excel',
+                    text: '<i class="ki-duotone ki-file -excel-o"><span class="path1"></span><span class="path2"></span></i> Exporter Excel',
                     className: 'btn btn-success btn-sm'
                 }],
                 "language": {

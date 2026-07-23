@@ -177,7 +177,7 @@
 </style>
 
 <div class="row">
-	<div class="col-xs-12">
+	<div class="col-12">
 		<div class="page-header-card">
 			<div class="page-header-icon">
 				<svg viewBox="0 0 24 24" fill="none" stroke="#6C5FC7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>

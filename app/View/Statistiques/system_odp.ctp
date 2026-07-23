@@ -1,13 +1,7 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
 echo $this->Html->css('daterangepicker');
-echo $this->Html->css('select2.min');
-echo $this->Html->css('dataTables.bootstrap');
 echo $this->Html->css('_all-skins.min');
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('select2.full.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -15,13 +9,6 @@ echo $this->Html->script('markerclusterer_compiled');
 
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <style>
 	 .rouge {
         background-color: red;
@@ -34,7 +21,7 @@ echo $this->Html->script('markerclusterer_compiled');
         background-color: green;
 		color: white;
     }
-    .box-body {
+    .card-body {
         overflow: hidden;
         overflow-y: hidden;
     }
@@ -95,18 +82,18 @@ echo $this->Html->script('markerclusterer_compiled');
     .col-sm-7,
     .col-sm-8,
     .col-sm-9,
-    .col-xs-1,
-    .col-xs-10,
-    .col-xs-11,
-    .col-xs-12,
-    .col-xs-2,
-    .col-xs-3,
-    .col-xs-4,
-    .col-xs-5,
-    .col-xs-6,
-    .col-xs-7,
-    .col-xs-8,
-    .col-xs-9 {
+    .col-1,
+    .col-10,
+    .col-11,
+    .col-12,
+    .col-2,
+    .col-3,
+    .col-4,
+    .col-5,
+    .col-6,
+    .col-7,
+    .col-8,
+    .col-9 {
         padding-left: 15px !important;
         padding-right: 15px !important;
     }
@@ -157,28 +144,28 @@ echo $this->Html->script('markerclusterer_compiled');
     }
 </style>
 <div class="row">
-    <div class="col-xs-12" style="margin-bottom: 24px;">
+    <div class="col-12" style="margin-bottom: 24px;">
         
         
-        <div class="box form-group">
-            <div class="box-header with-border">
+        <div class="card mb-5">
+            <div class="card-header">
             </div>
-            <div class="box-body">
-                <div class="col-xs-12">
-                    <label class="box-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;font-weight: bold;width: auto;text-align:left;float:left;">choisissez une date</label>
+            <div class="card-body">
+                <div class="col-12">
+                    <label class="card-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;font-weight: bold;width: auto;text-align:left;float:left;">choisissez une date</label>
                     <form action="#" method="post" id="dateform" autocomplete="off">
-                        <div class="input-group col-lg-10 col-md-10 col-xs-12" style="float:right;margin-bottom:30px;">
-                            <div class="input-group-addon">
-                                <i class="fa fa-clock-o"></i>
+                        <div class="input-group col-lg-10 col-md-10 col-12" style="float:right;margin-bottom:30px;">
+                            <div class="input-group-text">
+                                <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                             </div>
-                            <input type="text" <?php if ($dateaafficherdansleview != "") echo 'value="' . $dateaafficherdansleview . '"'; ?> class="form-control pull-right" name="date" id="reservationtime" placeholder="Rechercher">
+                            <input type="text" <?php if ($dateaafficherdansleview != "") echo 'value="' . $dateaafficherdansleview . '"'; ?> class="form-control float-end" name="date" id="reservationtime" placeholder="Rechercher">
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <?php
                             echo $this->Form->input('category', array(
                                 "label" => "Choisissez une activité", "name" => "activite",
                                 'options' => array("" => "Choisissez", "prive" => "Privé", "Publique" => "Publique"),
-                                'class' => 'form-control pull-right'
+                                'class' => 'form-control float-end'
                             ));
                             echo $this->Form->input('potentialite', array(
                                 "multiple" => "true", "label" => "Choisissez potentialité", "name" => "potentialite",
@@ -187,17 +174,17 @@ echo $this->Html->script('markerclusterer_compiled');
                                     "B1" => "B1", "B2" => "B2", "B3" => "B3", "B4" => "B4",
                                     "C1" => "C1", "C2" => "C2", "C3" => "C3", "C4" => "C4"
                                 ),
-                                'class' => 'form-control pull-right choix_multi select2', 'multiple' => 'multiple'
+                                'class' => 'form-control float-end choix_multi select2', 'multiple' => 'multiple'
                             ));
                             if (AuthComponent::user('role') != 'Super viseur')
                                 echo $this->Form->input('category', array(
                                     "multiple" => "true", "label" => "La liste des secteurs", "name" => "secteur",
-                                    'options' => $secteurs, 'class' => 'form-control pull-right choix_multi select2', 'multiple' => 'multiple'
+                                    'options' => $secteurs, 'class' => 'form-control float-end choix_multi select2', 'multiple' => 'multiple'
                                 ));
 
                             echo $this->Form->input('category', array(
                                 "multiple" => "true", "label" => "La liste des spécialité", "name" => "category",
-                                'options' => $categories, 'class' => 'form-control pull-right choix_multi select2', 'multiple' => 'multiple'
+                                'options' => $categories, 'class' => 'form-control float-end choix_multi select2', 'multiple' => 'multiple'
                             ));
                             ?>
                         </div>
@@ -205,16 +192,16 @@ echo $this->Html->script('markerclusterer_compiled');
                             <?php
                             echo $this->Form->input('user', array(
                                 "multiple" => "true", "label" => "La liste des VM", "name" => "users",
-                                'options' => $users, 'class' => 'form-control pull-right choix_multi vm select2', 'multiple' => 'multiple'
+                                'options' => $users, 'class' => 'form-control float-end choix_multi vm select2', 'multiple' => 'multiple'
                             ));
                             echo $this->Form->input('ligne', array(
                                 "multiple" => "true", "label" => "Les lignes", "name" => "ligne",
-                                'options' => $lignes, 'class' => 'form-control pull-right choix_multi select2', 'multiple' => 'multiple'
+                                'options' => $lignes, 'class' => 'form-control float-end choix_multi select2', 'multiple' => 'multiple'
                             ));
                             $typess = array("1" => "Medcin", "2" => "Pharmacie");
                             echo $this->Form->input('type', array(
                                 "multiple" => "true", "label" => "Type de client", "name" => "type",
-                                'options' => $typess, 'class' => 'form-control pull-right choix_multi select2', 'multiple' => 'multiple'
+                                'options' => $typess, 'class' => 'form-control float-end choix_multi select2', 'multiple' => 'multiple'
                             ));
                             ?>
                         </div>
@@ -242,12 +229,12 @@ echo $this->Html->script('markerclusterer_compiled');
 				}
 		?>
             <div class="col-md-12">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">ODP de <?php echo $region; if($category!="") echo " de la spécialité : ".$categories[$category]; ?></h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">ODP de <?php echo $region; if($category!="") echo " de la spécialité : ".$categories[$category]; ?></h3>
                     </div>
-                    <div class="box-body">
-                        <div class="col-xs-12">
+                    <div class="card-body">
+                        <div class="col-12">
                             <table class="table table-bordred display">
 
                                 <thead>
@@ -333,8 +320,6 @@ echo $this->Html->script('markerclusterer_compiled');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 
 <?php
-
-echo $this->Html->script('jquery-2.2.3.min');
 echo $this->Html->script('daterangepicker');
 ?>
 

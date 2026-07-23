@@ -137,7 +137,7 @@
     <div class="card metronic-card">
         <div class="card-header">
             <div class="page-title-wrap">
-                <span class="page-icon"><i class="fa fa-archive"></i></span>
+                <span class="page-icon"><i class="ki-duotone ki-archive"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                 <div>
                     <h3><?php echo __('Détails du Pack'); ?> #<?php echo h($pack['Pack']['id']); ?></h3>
                 </div>
@@ -145,7 +145,7 @@
 
             <?php 
             echo $this->Html->link(
-                '<i class="fa fa-pencil me-1" style="color:#fff;"></i> ' . __('Editer'), 
+                '<i class="ki-duotone ki-pencil me-1" style="color:#fff;"><span class="path1"></span><span class="path2"></span></i> ' . __('Editer'), 
                 array('action' => 'edit', $pack['Pack']['id']), 
                 array('class' => 'btn btn-metronic-edit', 'escape' => false)
             );
@@ -221,7 +221,7 @@
     <div class="card metronic-card">
         <div class="card-header">
             <div class="page-title-wrap">
-                <span class="page-icon"><i class="fa fa-list-alt"></i></span>
+                <span class="page-icon"><i class="ki-duotone ki-menu -alt"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>
                 <div>
                     <h3><?php echo __('Détails associés (Packdetails)'); ?></h3>
                 </div>
@@ -229,7 +229,7 @@
 
             <?php 
             echo $this->Html->link(
-                '<i class="fa fa-plus me-1"></i> ' . __('Nouveau Packdetail'), 
+                '<i class="ki-duotone ki-plus me-1"></i> ' . __('Nouveau Packdetail'), 
                 array('controller' => 'packdetails', 'action' => 'add', '?' => array('pack_id' => $pack['Pack']['id'])), 
                 array('class' => 'btn btn-sm btn-light-primary fw-semibold', 'escape' => false)
             ); 
@@ -268,21 +268,21 @@
                                         <div class="d-flex justify-content-end gap-2">
                                             <?php 
                                             echo $this->Html->link(
-                                                '<i class="fa fa-eye"></i>', 
+                                                '<i class="ki-duotone ki-eye"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>', 
                                                 array('controller' => 'packdetails', 'action' => 'view', $packdetail['id']),
                                                 array('class' => 'btn btn-icon btn-sm btn-light-info', 'title' => __('Voir'), 'escape' => false)
                                             ); 
                                             ?>
                                             <?php 
                                             echo $this->Html->link(
-                                                '<i class="fa fa-pencil"></i>', 
+                                                '<i class="ki-duotone ki-pencil"><span class="path1"></span><span class="path2"></span></i>', 
                                                 array('controller' => 'packdetails', 'action' => 'edit', $packdetail['id']),
                                                 array('class' => 'btn btn-icon btn-sm btn-light-warning', 'title' => __('Editer'), 'escape' => false)
                                             ); 
                                             ?>
                                             <?php 
                                             echo $this->Form->postLink(
-                                                '<i class="fa fa-trash"></i>', 
+                                                '<i class="ki-duotone ki-trash"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>', 
                                                 array('controller' => 'packdetails', 'action' => 'delete', $packdetail['id']),
                                                 array('class' => 'btn btn-icon btn-sm btn-light-danger', 'title' => __('Supprimer'), 'escape' => false),
                                                 __('Êtes-vous sûr de vouloir supprimer ?')
@@ -297,7 +297,7 @@
                 </div>
             <?php else: ?>
                 <div class="p-5 text-center text-muted fs-7">
-                    <i class="fa fa-info-circle me-1"></i> <?php echo __('Aucun détail associé à ce pack pour le moment.'); ?>
+                    <i class="ki-duotone ki-information-5 me-1"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> <?php echo __('Aucun détail associé à ce pack pour le moment.'); ?>
                 </div>
             <?php endif; ?>
         </div>

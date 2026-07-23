@@ -1,11 +1,6 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
-echo $this->Html->css('dataTables.bootstrap');
-echo $this->Html->css('_all-skins.min');
-echo $this->Html->css('select2.min'); // Pour le multiselect
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('jquery.dataTables.min');
-echo $this->Html->script('select2.full.min');
+echo $this->Html->css('_all-skins.min'); // Pour le multiselect
 
 // Extensions DataTables Export (Excel)
 echo $this->Html->script('https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js');
@@ -32,12 +27,12 @@ echo $this->Html->css('https://cdn.datatables.net/buttons/1.6.2/css/buttons.data
         --shadow-card:0 2px 14px rgba(108,92,231,0.06);
     }
 
-    .box{
+    .card{
         background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-lg);
         box-shadow:var(--shadow-card); margin-bottom:20px; position:relative; overflow:hidden;
     }
-    .box .box-header.with-border{ border-bottom:none; padding:22px 24px 8px 24px; }
-    .box .box-body{ padding:16px 24px 24px 24px; }
+    .card .card-header.with-border{ border-bottom:none; padding:22px 24px 8px 24px; }
+    .card .card-body{ padding:16px 24px 24px 24px; }
 
     .section-header{ display:flex; align-items:center; gap:16px; }
     .section-icon{
@@ -209,7 +204,7 @@ echo $this->Html->css('https://cdn.datatables.net/buttons/1.6.2/css/buttons.data
     /* ---------- Modal ---------- */
     .modal-content{ border-radius:var(--radius-md); overflow:hidden; border:none; }
     .modal-body table.table thead th{ background:var(--accent-light); color:var(--text-dark); font-size:12.5px; text-transform:uppercase; letter-spacing:.02em; border:none; }
-    .modal-footer .btn-default{ border-radius:var(--radius-sm); }
+    .modal-footer .btn-light{ border-radius:var(--radius-sm); }
     .btn-show-map.btn-info{
         background:var(--accent-light) !important; color:var(--accent-dark) !important; border:1px solid var(--accent-pale) !important;
         border-radius:20px !important; box-shadow:none !important;
@@ -218,39 +213,39 @@ echo $this->Html->css('https://cdn.datatables.net/buttons/1.6.2/css/buttons.data
 
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-primary">
-            <div class="box-header with-border">
+        <div class="card">
+            <div class="card-header">
                 <div class="section-header">
-                    <span class="section-icon"><i class="fa fa-medkit"></i></span>
+                    <span class="section-icon"><i class="ki-duotone ki-bandage"><span class="path1"></span><span class="path2"></span></i></span>
                     <div>
                         <h3 class="box-title-main">Suivi Pharmacies</h3>
                         <p class="box-subtitle">(visitées &amp; non visitées)</p>
                     </div>
                 </div>
-                <span class="header-decor"><i class="fa fa-plus-square"></i></span>
+                <span class="header-decor"><i class="ki-duotone ki-plus -square"></i></span>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <!-- Filtres -->
                 <form action="<?php echo $this->Html->url(array('action' => 'suivi_pharmacie')); ?>" method="post" class="filter-inline">
 
                     <div class="filter-field">
-                        <label for="date_debut"><i class="fa fa-calendar-o"></i>Du :</label>
+                        <label for="date_debut"><i class="ki-duotone ki-calendar-8 -o"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>Du :</label>
                         <div class="date-field-wrap">
                             <input type="text" name="data[Filtre][date_debut]" id="date_debut" class="form-control lb-date-input" autocomplete="off" value="<?php echo h($date_debut); ?>">
-                            <i class="fa fa-calendar date-field-icon"></i>
+                            <i class="ki-duotone ki-calendar-8 date-field-icon"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>
                         </div>
                     </div>
 
                     <div class="filter-field">
-                        <label for="date_fin"><i class="fa fa-calendar-o"></i>Au :</label>
+                        <label for="date_fin"><i class="ki-duotone ki-calendar-8 -o"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>Au :</label>
                         <div class="date-field-wrap">
                             <input type="text" name="data[Filtre][date_fin]" id="date_fin" class="form-control lb-date-input" autocomplete="off" value="<?php echo h($date_fin); ?>">
-                            <i class="fa fa-calendar date-field-icon"></i>
+                            <i class="ki-duotone ki-calendar-8 date-field-icon"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>
                         </div>
                     </div>
 
                     <div class="filter-field">
-                        <label for="ligne_id"><i class="fa fa-list-ul"></i>Ligne :</label>
+                        <label for="ligne_id"><i class="ki-duotone ki-menu -ul"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>Ligne :</label>
                         <select name="data[Filtre][ligne_id]" id="ligne_id" class="form-control" style="width: 180px;">
                             <option value="">-- Choisir une ligne --</option>
                             <?php foreach ($lignes_list as $lid => $lname): ?>
@@ -262,7 +257,7 @@ echo $this->Html->css('https://cdn.datatables.net/buttons/1.6.2/css/buttons.data
                     </div>
 
                     <div class="filter-field">
-                        <label for="users"><i class="fa fa-users"></i>Utilisateurs :</label>
+                        <label for="users"><i class="ki-duotone ki-people"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>Utilisateurs :</label>
                         <select name="data[Filtre][users][]" id="users" class="form-control select2" multiple="multiple" data-placeholder="Sélectionner un ou plusieurs VMP" style="width: 380px;">
                             <?php foreach ($users_list as $id => $name): ?>
                                 <option value="<?php echo $id; ?>" <?php echo (in_array($id, $selected_users)) ? 'selected' : ''; ?>>
@@ -272,12 +267,12 @@ echo $this->Html->css('https://cdn.datatables.net/buttons/1.6.2/css/buttons.data
                         </select>
                     </div>
 
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-filter"></i> Filtrer</button>
+                    <button type="submit" class="btn btn-primary"><i class="ki-duotone ki-filter"><span class="path1"></span><span class="path2"></span></i> Filtrer</button>
                 </form>
 
                 <!-- Tableau Principal -->
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover" id="pharmaciesTable" style="width:100%">
+                    <table class="table table-row-bordered table-row-gray-300 align-middle gy-4 table-hover" id="pharmaciesTable" style="width:100%">
                         <thead>
                             <tr>
                                 <th>VM</th>
@@ -348,12 +343,12 @@ echo $this->Html->css('https://cdn.datatables.net/buttons/1.6.2/css/buttons.data
                                                 );
                                                 ?>
                                                 <button type="button" class="btn btn-success btn-xs btn-visites-detail"
-                                                    data-toggle="modal" data-target="#modalDetailVisites"
+                                                    data-bs-toggle="modal" data-bs-target="#modalDetailVisites"
                                                     data-info='<?php echo htmlspecialchars(json_encode($visiteData), ENT_QUOTES, 'UTF-8'); ?>'>
-                                                    <?php echo $nb_visites; ?> <i class="fa fa-search-plus"></i>
+                                                    <?php echo $nb_visites; ?> <i class="ki-duotone ki-magnifier -plus"><span class="path1"></span><span class="path2"></span></i>
                                                 </button>
                                             <?php else: ?>
-                                                <span class="label label-default" style="font-size:13px;">0</span>
+                                                <span class="badge badge-light" style="font-size:13px;">0</span>
                                             <?php endif; ?>
                                         </td>
 
@@ -367,17 +362,17 @@ echo $this->Html->css('https://cdn.datatables.net/buttons/1.6.2/css/buttons.data
 
                                         <td style="text-align:center;">
                                             <?php if ($presence_liste == 'Oui'): ?>
-                                                <span class="label label-primary">Oui</span>
+                                                <span class="badge badge-light-primary">Oui</span>
                                             <?php else: ?>
-                                                <span class="label label-warning">Non</span>
+                                                <span class="badge badge-light-warning">Non</span>
                                             <?php endif; ?>
                                         </td>
 
                                         <td style="text-align:center;">
                                             <?php if ($is_localisee == 'Oui'): ?>
-                                                <span class="label label-success">Oui</span>
+                                                <span class="badge badge-light-success">Oui</span>
                                             <?php else: ?>
-                                                <span class="label label-danger">Non</span>
+                                                <span class="badge badge-light-danger">Non</span>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
@@ -400,9 +395,7 @@ echo $this->Html->css('https://cdn.datatables.net/buttons/1.6.2/css/buttons.data
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #9b90e0; color: white;">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; opacity: 1;">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 <h4 class="modal-title" id="modalDetailVisitesLabel">Détails des visites</h4>
             </div>
             <div class="modal-body">
@@ -411,7 +404,7 @@ echo $this->Html->css('https://cdn.datatables.net/buttons/1.6.2/css/buttons.data
 
                 <!-- Tableau des visites -->
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped" id="tableModalVisites">
+                    <table class="table table-row-bordered table-row-gray-300 align-middle gy-4" id="tableModalVisites">
                         <thead>
                             <tr>
                                 <th>Date et Heure</th>
@@ -430,11 +423,11 @@ echo $this->Html->css('https://cdn.datatables.net/buttons/1.6.2/css/buttons.data
                 <h5 style="font-weight: bold; margin-top:20px;">Localisation sur la Carte</h5>
                 <div id="mapVisite" style="height: 350px; width: 100%; border: 1px solid #ccc; background-color: #eee; border-radius: 4px;"></div>
                 <div id="mapWarning" style="color: red; display: none; margin-top: 10px; font-weight: bold;">
-                    <i class="fa fa-warning"></i> Coordonnées GPS incomplètes pour afficher la carte.
+                    <i class="ki-duotone ki-information-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Coordonnées GPS incomplètes pour afficher la carte.
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
             </div>
         </div>
     </div>
@@ -630,7 +623,7 @@ echo $this->Html->css('https://cdn.datatables.net/buttons/1.6.2/css/buttons.data
                 "infoEmpty": "Showing 0 to 0 of 0 entries",
                 "infoFiltered": "(filtré depuis _MAX_ éléments au total)",
                 "zeroRecords": "Aucune donnée ne correspond à votre sélection.",
-                "emptyTable": '<div class="dt-empty-state"><span class="dt-empty-icon"><i class="fa fa-clipboard"></i></span><div class="dt-empty-title">Aucune donnée disponible</div><div class="dt-empty-sub">Aucune donnée ne correspond à votre sélection.</div></div>',
+                "emptyTable": '<div class="dt-empty-state"><span class="dt-empty-icon"><i class="ki-duotone ki-clipboard"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span><div class="dt-empty-title">Aucune donnée disponible</div><div class="dt-empty-sub">Aucune donnée ne correspond à votre sélection.</div></div>',
                 "paginate": {
                     "previous": "Previous",
                     "next": "Next"
@@ -645,7 +638,7 @@ echo $this->Html->css('https://cdn.datatables.net/buttons/1.6.2/css/buttons.data
             "dom": 'Bfrtip',
             "buttons": [{
                 extend: 'excelHtml5',
-                text: '<i class="fa fa-file-excel-o"></i> Exporter en Excel',
+                text: '<i class="ki-duotone ki-file -excel-o"><span class="path1"></span><span class="path2"></span></i> Exporter en Excel',
                 className: 'btn btn-success',
                 title: 'Suivi_Pharmacies_' + $('#date_debut').val() + '_au_' + $('#date_fin').val()
             }]

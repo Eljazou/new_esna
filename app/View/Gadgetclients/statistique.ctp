@@ -1,6 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>
-
+<?php echo $this->element('assets/datatables'); ?>
 <style type="text/css">
     :root{
         --accent:#6c5ce7;
@@ -17,19 +15,19 @@
         --shadow-card:0 2px 14px rgba(108,92,231,0.07);
     }
 
-    .box-body{ overflow: scroll; }
+    .card-body{ overflow: scroll; }
     tfoot{ display: table-header-group; }
 
-    .box{
+    .card{
         background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-lg);
         box-shadow:var(--shadow-card); margin-bottom:20px; position:relative; overflow:hidden;
     }
-    .box:after{
+    .card:after{
         content:""; position:absolute; left:0; right:0; bottom:0; height:4px;
         background:linear-gradient(90deg, var(--border-color) 0%, var(--accent) 45%, var(--border-color) 45%);
     }
-    .box .box-header{ border-bottom:none; padding:0; }
-    .box .box-body{ padding:24px; }
+    .card .card-header{ border-bottom:none; padding:0; }
+    .card .card-body{ padding:24px; }
 
     /* ---------- Date range banner ---------- */
     .date-banner{
@@ -48,7 +46,7 @@
         float:none !important; width:auto !important; flex:1 1 320px; margin:0 !important;
         max-width:420px;
     }
-    .date-banner .input-group-addon{ display:none; }
+    .date-banner .input-group-text{ display:none; }
     .date-banner .form-control{
         border:1px solid var(--border-color) !important;
         border-radius:var(--radius-sm) !important;
@@ -73,11 +71,11 @@
         width:52px; height:52px; border-radius:50%; background:var(--accent-light); color:var(--accent);
         display:flex; align-items:center; justify-content:center; font-size:21px; flex:0 0 auto;
     }
-    .list-heading h3.box-title{
+    .list-heading h3.card-title{
         margin:0; font-size:26px; font-weight:800; color:var(--text-dark); position:relative; padding-bottom:10px;
     }
-    .list-heading h3.box-title .accent{ color:var(--green); }
-    .list-heading h3.box-title:after{
+    .list-heading h3.card-title .accent{ color:var(--green); }
+    .list-heading h3.card-title:after{
         content:""; position:absolute; left:0; bottom:0; width:70px; height:3px;
         background:linear-gradient(90deg, var(--border-color) 0%, var(--border-color) 45%, var(--accent) 45%, var(--accent) 100%);
         border-radius:2px;
@@ -203,35 +201,35 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <div class="date-banner">
-                    <span class="section-icon"><i class="fa fa-clock-o"></i></span>
+                    <span class="section-icon"><i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i></span>
                     <div class="date-banner-text">
                         Pour des statistiques d'une période précise,
                         <strong>veuillez sélectionner une date :</strong>
                     </div>
                     <?php echo $this->Form->create('Client'); ?>
                     <div class="input-group input-date">
-                        <div class="input-group-addon">
-                            <i class="fa fa-clock-o"></i>
+                        <div class="input-group-text">
+                            <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                         </div>
-                        <input type="text" readonly <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control pull-right" name="date" id="reservationtime" placeholder="Rechercher">
+                        <input type="text" readonly <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control float-end" name="date" id="reservationtime" placeholder="Rechercher">
                     </div>
                     <input type="submit" class="btn btn-success btn-date-submit">
                     </form>
                 </div>
             </div>
             <div class="list-heading">
-                <span class="section-icon"><i class="fa fa-users"></i></span>
-                <h3 class="box-title">Liste <span class="accent">des clients</span></h3>
+                <span class="section-icon"><i class="ki-duotone ki-people"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i></span>
+                <h3 class="card-title">Liste <span class="accent">des clients</span></h3>
             </div>
-            <div class="box-body" style="padding-top:0;">
+            <div class="card-body" style="padding-top:0;">
                 <div class="table-toolbar">
                     <div class="dt-buttons-slot"></div>
                     <div class="dataTables_filter_slot"></div>
                 </div>
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                     <thead>
                         <tr>
                             <th>VM</th>
@@ -276,8 +274,6 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -294,9 +290,7 @@ echo $this->Html->script('demo');
          shut down for years anyway (those two <script> tags 404 silently).
      Kept: dataTables.buttons + jszip + buttons.html5, which is everything
      the Excel export actually needs. -->
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 
 <script>
 (function ($) {
@@ -320,10 +314,10 @@ echo $this->Html->script('demo');
             "autoWidth": false,
             dom: 'B<"table-toolbar-inner">frt<"table-footer"ip>',
             language: {
-                emptyTable: '<div class="dt-empty-state"><span class="dt-empty-icon"><i class="fa fa-inbox"></i></span><div class="dt-empty-title">Aucune donnée disponible dans le tableau</div></div>'
+                emptyTable: '<div class="dt-empty-state"><span class="dt-empty-icon"><i class="ki-duotone ki-directbox-default"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span><div class="dt-empty-title">Aucune donnée disponible dans le tableau</div></div>'
             },
             buttons: [
-                { extend: 'excel', text: '<i class="fa fa-file-excel-o"></i> Excel' }
+                { extend: 'excel', text: '<i class="ki-duotone ki-file -excel-o"><span class="path1"></span><span class="path2"></span></i> Excel' }
             ]
         });
         // move the generated export buttons and search box into the styled toolbar row

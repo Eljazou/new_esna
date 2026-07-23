@@ -122,11 +122,19 @@ Plus the 4-view tier (batch 3): Zquestions, Types, Prospectaffaires, Pots,
 Odpobjectifs, Objectifs, Marketings, Lignes, Jourferiers, Groventes, Digitals,
 Autoechantiants, Absences — 4 views each. **42 modules, 254 views done.**
 
-**Remaining desktop CRUD (15 modules, 30 views):** Statistiques 3,
-Notevalidations 3, Notefraissecteurs 3, Hopitals 3, Boitemails 3, Boiteidees 3,
-Actionrapports 3, Stockvisites 2, Droits 2, Asm 2, Services 1, Plantournes 1,
-Pages 1, Notifications 1, Gadgetclients 1. `Errors/` (3) goes with the layouts.
-**Note:** `Droits/backup_database.ctp` is Latin-1 — see TODO #40.
+Plus the ≤3-view tail (batch 4): Statistiques 3, Notevalidations 3,
+Notefraissecteurs 3, Hopitals 3, Boitemails 3, Boiteidees 3, Actionrapports 3,
+Stockvisites 2, Droits 2, Asm 2, Services 1, Plantournes 1, Pages 1,
+Notifications 1, Gadgetclients 1.
+
+### ✅ Desktop CRUD track complete — 57 modules, 286 views
+
+**Still outstanding:** the mobile/web-app track (§7 — `Appweb` 10,
+`Appwebfinal` 13, `Appwebfinalv2` 14, `Visitemobileapis` 4 = 41 views), the
+`Elements/` directory, and the remaining layouts (`appmobile`, `appmobilepro`,
+`mobile`, `error`, `blanck`, `Emails/`, `Errors/`). The mobile views sit on
+**Bootstrap 4.3.1 / AdminLTE** layouts — a BS4→BS5 job, distinct from the
+BS3→BS5 work done so far, and they need their own layout decisions first.
 
 **Separate track (§7):** `Appweb` 10, `Appwebfinal` 13, `Appwebfinalv2` 14,
 `Visitemobileapis` 4 — Bootstrap 4.3.1/AdminLTE layouts, a BS4→BS5 job distinct
@@ -1002,6 +1010,80 @@ Remaining residuals, unchanged in character: Font Awesome kept in 3 views
 
 ---
 
+### 2026-07-23 — Step 3, batch 4: **the ≤3-view tail** (15 modules, 32 views) ✅ — desktop track complete
+
+`Statistiques`, `Notevalidations`, `Notefraissecteurs`, `Hopitals`,
+`Boitemails`, `Boiteidees`, `Actionrapports` (3 each); `Stockvisites`,
+`Droits`, `Asm` (2 each); `Services`, `Plantournes`, `Pages`, `Notifications`,
+`Gadgetclients` (1 each).
+
+#### The Latin-1 file went through cleanly
+
+`Droits/backup_database.ctp` is cp1252. The encoding handling added in batch 2
+detected it, reported it, and left the file **byte-identical** — no re-encode,
+no mangled accents, no crash. This was the specific risk flagged as TODO #40.
+
+#### 🟡 The FA prefix is not always the first class
+
+`Actionrapports/suivi.ctp` had `class="icon fa fa-info-circle"`. `swap_icons`
+anchored the prefix at the **start** of the class attribute, so any icon with a
+leading class of its own was silently skipped — no error, no audit hit until the
+widened FA pattern from batch 1 caught it. The regex now allows leading classes
+and carries them over (switched to named groups; positional indices had become
+unreadable). An app-wide scan confirms **0 remaining** non-leading prefixes.
+
+This matters more than one icon: the mobile track is dense with Font Awesome and
+would have hit the same gap repeatedly.
+
+#### Icons
+
+13 more names mapped (`fa-inbox` → `ki-directbox-default`, `fa-bullseye` →
+`ki-focus`, `fa-medkit` → `ki-bandage`, `fa-bell` → `ki-notification`,
+`fa-bullhorn` → `ki-speaker`, `fa-exchange` → `ki-arrows-loop`, plus shield,
+mobile, id-badge, cube, flag, facebook ×2).
+
+`Notifications/index.ctp` is the **second** view where the icon class is chosen
+at runtime (`$icon = 'fa-bullhorn' | 'fa-exchange' | 'fa-bell'`). Same treatment
+as `Secteurs/view.ctp`: an `$iconPaths` value travels with each name and the
+spans are emitted in a loop, because a duotone glyph renders nothing without
+them and the count differs per icon.
+
+Three icons **keep Font Awesome** — Keenicons has no lightbulb/idea glyph
+(`Boiteidees` "Idée"), no bell-with-slash for a "no notifications" empty state,
+and no hashtag for a "Code" column header. Substituting an approximate glyph
+would change what each communicates. Consistent with the sentiment-scale and
+file-type decisions; FA4 is loaded globally regardless until TODO #11.
+
+More BS3 `label label-*` recovered from PHP strings — 6 in
+`Asm/asm_visites_double.ctp` (distance badges), 5 in `Notevalidations/view.ctp`.
+
+### Verification status — 286 views, 57 modules — DESKTOP TRACK COMPLETE
+
+| | |
+|---|---|
+| `php -l` | **286 files, 0 failures** |
+| logic diff | **286 compared, 0 skipped**, 38 differ — all icon swaps and BS3→BS5 renames inside PHP strings, plus the loop statements added for the two runtime-chosen icons |
+| code intact | ALL INTACT, 57/57 modules |
+| concat damage | ALL CLEAN |
+| legacy audit | residuals in 15 files, **all recorded decisions** |
+
+Residual ledger — nothing here is unknown:
+
+| what | where | why |
+|---|---|---|
+| Font Awesome kept | `Rapports/{view,viewsp}`, `Rapportprocpects/ajouter`, `Boiteidees/index`, `Notifications/index`, `Asm/asm_visites_double` | no faithful Keenicons equivalent (TODO #34/#35) |
+| self-styled `info-box` | `Brochures/{index,detail_vmp}`, `Rapportprocpects/fuille_route_conseiller`, `Formations/index` | complete scoped CSS, no AdminLTE dependency |
+| inert `data-widget="collapse"` | `Analyses/portefeuille_vm`, `Secteurs/view`, `Notefrais/notedefrais`, `Categories/view`, `Types/view`, `Statistiques/statistiquesvisite`, `Stockvisites/index` | TODO #28, owner's call |
+| orphan AdminLTE page | `Objectifprofiles/default.ctp` | TODO #42 |
+
+**What remains overall:** the mobile/web-app track (§7 — `Appweb` 10,
+`Appwebfinal` 13, `Appwebfinalv2` 14, `Visitemobileapis` 4 = 41 views on
+Bootstrap 4.3.1/AdminLTE layouts), the `Elements/` directory, and the remaining
+layouts (`appmobile`, `appmobilepro`, `mobile`, `error`, `blanck`, `Emails/`,
+`Errors/`).
+
+---
+
 ## 5. Migration checklist — inventory of `app/View/**/*.ctp`
 
 **376 `.ctp` files** across 65 view directories.
@@ -1316,7 +1398,11 @@ work.
     silently disabled `_atomic_renames()`, which parsed those same pattern strings — killing
     every CSS-side rename until the audit caught it one batch later. When changing the SHAPE
     of shared data, grep for everything that reads it.
-30. **"ALL CLEAN" means "clean against the 25 patterns currently audited."** Six separate
+45. **The Font Awesome prefix is not always the first class.** `class="icon fa fa-info-circle"`
+    was skipped for four batches because `swap_icons` anchored the prefix at the start of the
+    attribute. Fixed in batch 4; matters for the mobile track, which is dense with FA. When a
+    pattern assumes token *position* rather than token *presence*, it will miss real cases.
+30. **"ALL CLEAN" means "clean against the 25 patterns currently audited."** Seven separate
     times an incomplete pattern set produced a clean report on code that still had defects.
     When migrating a new module, expect to discover legacy classes not yet in
     `tools/audit_legacy.py`; add them and **re-run the migrator over all previously

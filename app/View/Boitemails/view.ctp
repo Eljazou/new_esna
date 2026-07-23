@@ -183,7 +183,7 @@
         <!-- Sidebar Folders Component -->
         <div class="col-md-3">
             <a href="<?php echo $this->Html->url(array('action' => 'add')); ?>" class="btn-compose">
-                <i class="fa fa-pencil" style="margin-right: 6px;"></i> Nouveau message
+                <i class="ki-duotone ki-pencil" style="margin-right: 6px;"><span class="path1"></span><span class="path2"></span></i> Nouveau message
             </a>
 
             <div class="mailbox-container" style="padding: 15px 12px;">
@@ -191,7 +191,7 @@
                 <ul class="folder-nav-list">
                     <li>
                         <a href="<?php echo $this->Html->url(array('action' => 'index')); ?>">
-                            <span><i class="fa fa-inbox"></i> Boite de réception</span>
+                            <span><i class="ki-duotone ki-directbox-default"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> Boite de réception</span>
                             <span class="folder-badge">
                                 <?php echo $this->requestAction('/boitemails/system_get_nombre_mail'); ?>
                             </span>
@@ -199,7 +199,7 @@
                     </li>
                     <li>
                         <a href="<?php echo $this->Html->url(array('action' => 'index', -1)); ?>">
-                            <span><i class="fa fa-paper-plane-o"></i> Boite d'envoi</span>
+                            <span><i class="ki-duotone ki-send -o"><span class="path1"></span><span class="path2"></span></i> Boite d'envoi</span>
                         </a>
                     </li>
                 </ul>
@@ -228,7 +228,7 @@
                                 ?>
                             </h5>
                             <span class="mailbox-read-time-custom">
-                                <i class="fa fa-clock-o" style="margin-right: 4px;"></i> 
+                                <i class="ki-duotone ki-time" style="margin-right: 4px;"><span class="path1"></span><span class="path2"></span></i> 
                                 <?php echo $boitemail['Boitemail']['created']; ?>
                             </span>
                         </div>
@@ -243,7 +243,7 @@
                     <?php if(!empty($boitemail['Boitemail']['lien'])): ?>
                         <div class="message-actions-footer">
                             <a href="/esna<?php echo $boitemail['Boitemail']['lien']; ?>" class="btn-lavender">
-                                <i class="fa fa-eye" style="margin-right: 6px;"></i> Voir
+                                <i class="ki-duotone ki-eye" style="margin-right: 6px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Voir
                             </a>
                         </div>
                     <?php endif; ?>

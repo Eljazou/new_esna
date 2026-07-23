@@ -1,4 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
+<?php echo $this->element('assets/datatables'); ?>
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
 <style>
     :root{
@@ -23,7 +23,7 @@
     }
 
     @media (max-width:1282px) {
-        .box-body {
+        .card-body {
             overflow: scroll;
             overflow-y: auto;
             padding-bottom: 60px;
@@ -67,7 +67,7 @@
         gap:16px;
         flex-wrap:wrap;
     }
-    .filtre-box .form-group{ margin:0; position:relative; }
+    .filtre-box .mb-5{ margin:0; position:relative; }
     .filtre-box label{
         display:flex;
         align-items:center;
@@ -301,19 +301,19 @@
     </div>
 </div>
 
-<div class="box-body" style="padding:0;">
+<div class="card-body" style="padding:0;">
 
     <!-- Filtres par date -->
     <div class="filtre-box">
         <form method="get" action="<?php echo $this->Html->url(array('controller' => 'actionrapports', 'action' => 'index')); ?>" class="form-inline" style="display:flex; align-items:flex-end; gap:16px; flex-wrap:wrap;">
-            <div class="form-group">
+            <div class="mb-5">
                 <label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Date début</label>
                 <div class="date-field-wrap">
                     <input type="text" name="date_debut" id="datepicker_debut" class="form-control lb-date-input" autocomplete="off" value="<?php echo h($date_debut); ?>">
                     <span class="date-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="mb-5">
                 <label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Date fin</label>
                 <div class="date-field-wrap">
                     <input type="text" name="date_fin" id="datepicker_fin" class="form-control lb-date-input" autocomplete="off" value="<?php echo h($date_fin); ?>">
@@ -346,7 +346,7 @@
 
         <div class="rapports-card">
         <div class="table-responsive">
-            <table id="tableRapports" class="table table-bordered table-striped table-hover rapports-table" style="width:100%;">
+            <table id="tableRapports" class="table table-row-bordered table-row-gray-300 align-middle gy-4 table-hover rapports-table" style="width:100%;">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -445,18 +445,11 @@
 
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
-echo $this->Html->script('dataTables.bootstrap.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
 <script>
     $(function() {
         $('#tableRapports').DataTable({
@@ -472,7 +465,7 @@ echo $this->Html->script('demo');
                 "<'row'<'col-sm-5'i><'col-sm-7'p>>",
             "buttons": [{
                 extend: 'excelHtml5',
-                text: '<i class="fa fa-file-excel-o"></i> Exporter Excel',
+                text: '<i class="ki-duotone ki-file -excel-o"><span class="path1"></span><span class="path2"></span></i> Exporter Excel',
                 className: 'btn buttons-excel btn-sm'
             }],
             "language": {
