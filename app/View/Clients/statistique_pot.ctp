@@ -1,3 +1,4 @@
+<?php echo $this->element('assets/datatables'); ?>
 ﻿<?php
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
     echo $this->Html->css('daterangepicker');
@@ -7,16 +8,16 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
             .tablebox{margin-top:0px !important;}
         }
     </style>
-	<div class="row ">
+	<div class="row">
         <div class="col-md-12" style="margin-bottom: 24px;"> 
-            <div class="box form-group">
-                <div class="box-header with-border">
-                    <label class="box-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;font-weight: normal;width: auto;text-align:left;float:left;">Pour des statistiques d'une période précise,veuillez sélectionner une date :</label>
+            <div class="card mb-5">
+                <div class="card-header">
+                    <label class="card-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 0px;font-weight: normal;width: auto;text-align:left;float:left;">Pour des statistiques d'une période précise,veuillez sélectionner une date :</label>
                     <div class="col-md-6">
                         <form action="/clients/statistique_pot/" method="get" id="dateform">
                             <div class="input-group col-lg-12" style="float:left;">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-clock-o"></i>
+                                <div class="input-group-text">
+                                    <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                                 </div>
                                 <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control pull-right" name="date" id="reservationtime" placeholder="Rechercher">
                             </div>
@@ -29,14 +30,14 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
     </div>
 <?php foreach ($users as $vmp): ?>
     <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
                         Rapport des visites de l'équipe de <?php echo $vmp['super']['User']['name']; ?>
                     </h3>
                 </div>
-                <div class="box-body table-responsive no-padding">
+                <div class="card-body table-responsive no-padding">
                     <table class="table table-hover"  border="0">
                         <tbody>
                             <tr>
@@ -82,16 +83,12 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 <?php endforeach; ?>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 echo $this->Html->script('jquery.flot.min');
 echo $this->Html->script('jquery.flot.resize.min');
 echo $this->Html->script('jquery.flot.pie.min');
 echo $this->Html->script('jquery.flot.categories.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 ?>
 

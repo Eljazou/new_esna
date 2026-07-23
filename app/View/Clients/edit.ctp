@@ -1,11 +1,24 @@
-<?php echo $this->Html->css("style_rapport");
-echo $this->Html->css('select2.min');
+<?php
+/**
+ * Clients :: edit — formulaire de modification d'un client.
+ *
+ * Migrated to Metronic 8 (Bootstrap 5). All PHP is untouched: the utf8ize()
+ * helper, the json_encode() payloads feeding the region/ville/secteur
+ * cascade, every type_id branch and all FormHelper field names are
+ * unchanged. Only classes and wrapper divs were restyled.
+ */
+echo $this->Html->css("style_rapport");
+echo $this->Html->css('esna-clients', array('block' => 'css'));
+echo $this->element('layout/page_header', array(
+    'title'  => __('Editer un client'),
+    'crumbs' => array(
+        'Clients' => array('controller' => 'clients', 'action' => 'index'),
+        'Editer'  => null,
+    ),
+));
 //debug($regions);exit();
 ?>
 <?php
-
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('select2.full.min');
 
 function utf8ize($mixed)
 {
@@ -127,41 +140,41 @@ $secteur_clean = utf8ize($secteur);
         <h3 class="card-title fw-bold"><?php echo __('Editer un client'); ?></h3>
     </div>
     <div class="card-body">
-        <div class="form-horizontal payment-form">
+        <div>
             <?php if ($this->request->data['Client']['type_id'] == 1 || $this->request->data['Client']['type_id'] == 5): ?>
                 <?php echo $this->Form->create('Client'); ?>
                 <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <?php
                     echo $this->Form->input('id', array('class' => 'form-control'));
-                    echo $this->Form->input('type_id', array('label' => 'Type', 'class' => 'form-control'));
-                    // echo $this->Form->input('secteur_id', array('label' => 'Secteur', 'class' => 'form-control'));
+                    echo $this->Form->input('type_id', array('label' => 'Type', 'class' => 'form-select'));
+                    // echo $this->Form->input('secteur_id', array('label' => 'Secteur', 'class' => 'form-select'));
                     ?>
-                    <div class="input select">
-                        <label for="regions">Région</label>
-                        <select name="data[Client][region_id]" id="ClientRegionId" class="form-control select2" onchange="region_change();">
+                    <div class="mb-5">
+                        <label for="regions" class="form-label fw-semibold text-gray-800">Région</label>
+                        <select name="data[Client][region_id]" id="ClientRegionId" class="form-select select2" onchange="region_change();">
 
                         </select>
                     </div>
-                    <div class="input select" id="ville">
-                        <label for="regions">Ville</label>
-                        <select name="data[Client][]" class="form-control" id="ClientVilleId" onchange="villes_change();">
+                    <div class="mb-5" id="ville">
+                        <label for="regions" class="form-label fw-semibold text-gray-800">Ville</label>
+                        <select name="data[Client][]" class="form-select" id="ClientVilleId" onchange="villes_change();">
                             <option value='<?php echo $secteur['Secteur']['id']; ?>'><?php echo $secteur['Secteur']['ville']; ?></option>
                         </select>
                     </div>
-                    <div id="secteur" class="input select" id="secteur">
-                        <label for="regions">Secteur</label>
-                        <select name="data[Client][secteur_id]" class="form-control" id="ClientSecteurId">
+                    <div id="secteur" class="mb-5">
+                        <label for="regions" class="form-label fw-semibold text-gray-800">Secteur</label>
+                        <select name="data[Client][secteur_id]" class="form-select" id="ClientSecteurId">
                             <option value='<?php echo $secteur['Secteur']['id']; ?>'><?php echo $secteur['Secteur']['secteur']; ?></option>
                         </select>
                     </div>
 
                     <?php
-                    echo $this->Form->input('category_id', array('label' => 'Spécialité', 'class' => 'form-control'));
+                    echo $this->Form->input('category_id', array('label' => 'Spécialité', 'class' => 'form-select'));
                     ?>
-                    <div class="input select">
-                        <label for="ClientCategoryId">Tendance</label>
-                        <select name="data[Client][category1_id]" class="form-control" id="ClientCategoryId">
+                    <div class="mb-5">
+                        <label for="ClientCategoryId" class="form-label fw-semibold text-gray-800">Tendance</label>
+                        <select name="data[Client][category1_id]" class="form-select" id="ClientCategoryId">
                             <option value="">Choisissez</option>
                             <?php
                             foreach ($categories as $key => $value) {
@@ -173,9 +186,9 @@ $secteur_clean = utf8ize($secteur);
                             ?>
                         </select>
                     </div>
-                    <div class="input select">
-                        <label for="ClientCategoryId">Titre</label>
-                        <select name="data[Client][titre]" class="form-control" id="ClientCategoryId">
+                    <div class="mb-5">
+                        <label for="ClientCategoryId" class="form-label fw-semibold text-gray-800">Titre</label>
+                        <select name="data[Client][titre]" class="form-select" id="ClientCategoryId">
                             <?php
                             $selected = '';
                             if ("Docteur" == $this->request->data['Client']['titre']) {
@@ -190,9 +203,9 @@ $secteur_clean = utf8ize($secteur);
                             ?>
                         </select>
                     </div>
-                    <div class="input select">
-                        <label for="ClientActiviteSelect">Activité</label>
-                        <select name="data[Client][activite]" class="form-control" id="ClientActiviteSelect">
+                    <div class="mb-5">
+                        <label for="ClientActiviteSelect" class="form-label fw-semibold text-gray-800">Activité</label>
+                        <select name="data[Client][activite]" class="form-select" id="ClientActiviteSelect">
                             <?php
                             $selected = '';
                             if ("Prive" == $this->request->data['Client']['activite']) {
@@ -209,9 +222,9 @@ $secteur_clean = utf8ize($secteur);
                         </select>
                     </div>
 
-                    <div class="input select" id="hopital-field" style="display:<?php echo (strtolower($this->request->data['Client']['activite']) === 'publique') ? 'block' : 'none'; ?>;">
-                        <label>Hôpital</label>
-                        <select name="data[Client][hopital_id]" id="ClientHopitalSelect" class="form-control" style="width:100%">
+                    <div class="mb-5" id="hopital-field" style="display:<?php echo (strtolower($this->request->data['Client']['activite']) === 'publique') ? 'block' : 'none'; ?>;">
+                        <label class="form-label fw-semibold text-gray-800">Hôpital</label>
+                        <select name="data[Client][hopital_id]" id="ClientHopitalSelect" class="form-select" style="width:100%">
                             <option value="">-- Choisir ou créer un hôpital --</option>
                             <?php foreach ($all_hopitals as $h_id => $h_name): ?>
                                 <option value="<?php echo $h_id; ?>" <?php echo ($this->request->data['Client']['hopital_id'] == $h_id) ? 'selected' : ''; ?>>
@@ -220,9 +233,9 @@ $secteur_clean = utf8ize($secteur);
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <div class="input select">
-                        <label for="ClientCategoryId">Exercice</label>
-                        <select name="data[Client][exercice]" class="form-control" id="ClientCategoryId">
+                    <div class="mb-5">
+                        <label for="ClientCategoryId" class="form-label fw-semibold text-gray-800">Exercice</label>
+                        <select name="data[Client][exercice]" class="form-select" id="ClientCategoryId">
                             <?php
                             $selected = '';
                             if ("Centre de sante" == $this->request->data['Client']['exercice']) {
@@ -253,9 +266,9 @@ $secteur_clean = utf8ize($secteur);
                         </select>
                     </div>
 
-                    <div class="input select">
-                        <label for="ClientCategoryId">Patients par Jour</label>
-                        <select name="data[Client][A]" class="form-control" id="ClientCategoryId">
+                    <div class="mb-5">
+                        <label for="ClientCategoryId" class="form-label fw-semibold text-gray-800">Patients par Jour</label>
+                        <select name="data[Client][A]" class="form-select" id="ClientCategoryId">
                             <?php
                             $selected = '';
                             $this->request->data['Client']['A'] = $this->request->data['Client']['potentialite'][0];
@@ -282,17 +295,17 @@ $secteur_clean = utf8ize($secteur);
                 </div>
 
                 <div class="col-lg-6 col-md-6">
-                    <div class="input select">
-                        <label for="ClientsproposeCategoryId">Classification</label>
-                        <select name="data[Client][potentialitev2]" class="form-control" id="ClientsproposeCategoryId">
+                    <div class="mb-5">
+                        <label for="ClientsproposeCategoryId" class="form-label fw-semibold text-gray-800">Classification</label>
+                        <select name="data[Client][potentialitev2]" class="form-select" id="ClientsproposeCategoryId">
                             <option <?php if ($this->request->data['Client']['potentialitev2'] == "PCM") echo ' selected '; ?> value="PCM">PCM</option>
                             <option <?php if ($this->request->data['Client']['potentialitev2'] == "QAM") echo ' selected '; ?> value="QAM">QAM</option>
                             <option <?php if ($this->request->data['Client']['potentialitev2'] == "PM") echo ' selected '; ?> value="PM">PM</option>
                         </select>
                     </div>
-                    <div class="input select">
-                        <label for="ClientCategoryId">Adoption des produits Esnapharm</label>
-                        <select name="data[Client][1]" class="form-control" id="ClientCategoryId">
+                    <div class="mb-5">
+                        <label for="ClientCategoryId" class="form-label fw-semibold text-gray-800">Adoption des produits Esnapharm</label>
+                        <select name="data[Client][1]" class="form-select" id="ClientCategoryId">
                             <?php
                             $selected = '';
                             if ("1" == $this->request->data['Client']['1']) {
@@ -327,9 +340,9 @@ $secteur_clean = utf8ize($secteur);
                     echo $this->Form->input('fax', array('label' => 'Fax', 'class' => 'form-control'));
                     echo $this->Form->input('adress', array('label' => 'Adresse', 'class' => 'form-control', 'type' => 'text'));
                     ?>
-                    <div class="input select">
-                        <label>La liste des produits</label>
-                        <select name="data[Client][produits][]" id="produit_list" class="form-control select2" multiple="multiple">
+                    <div class="mb-5">
+                        <label class="form-label fw-semibold text-gray-800">La liste des produits</label>
+                        <select name="data[Client][produits][]" id="produit_list" class="form-select select2" multiple="multiple">
                             <?php
                             foreach ($produits as $va => $value) {
                                 $selected = "";
@@ -349,13 +362,13 @@ $secteur_clean = utf8ize($secteur);
                 </div>
 
                 <div class="col-lg-12 col-md-12">
-                    <div class="input select">
-                        <label>Map</label>
-                        <table class="table">
+                    <div class="mb-5">
+                        <label class="form-label fw-semibold text-gray-800">Map</label>
+                        <table class="table align-middle">
                             <tr>
-                                <td><label>Latitude:</label></td>
+                                <td><label class="form-label fw-semibold text-gray-800">Latitude:</label></td>
                                 <td><?php echo $this->Form->input('latitude', array('id' => 'latitude_mag', 'label' => false)); ?></td>
-                                <td><label>Longitude:</label></td>
+                                <td><label class="form-label fw-semibold text-gray-800">Longitude:</label></td>
                                 <td><?php echo $this->Form->input('longitude', array('id' => 'longitude_mag', 'label' => false)); ?></td>
                             </tr>
                         </table>
@@ -372,28 +385,28 @@ $secteur_clean = utf8ize($secteur);
                     <?php
                     echo $this->Form->input('id', array('class' => 'form-control'));
 
-                    echo $this->Form->input('type_id', array('label' => 'Type', 'class' => 'form-control'));
+                    echo $this->Form->input('type_id', array('label' => 'Type', 'class' => 'form-select'));
                     echo $this->Form->input('code_wavsoft', array('label' => 'Code wavsoft', 'class' => 'form-control'));
-                    echo $this->Form->input('category_id', array('label' => 'Spécialité', 'class' => 'form-control'));
+                    echo $this->Form->input('category_id', array('label' => 'Spécialité', 'class' => 'form-select'));
                     $types = array("Client" => "Client", "Prospect" => "Prospect");
-                    echo $this->Form->input('type_pharmacie', array('class' => 'form-control', 'options' => $types));
-                    //echo $this->Form->input('secteur_id', array('label' => 'Secteur','class' => 'form-control'));
+                    echo $this->Form->input('type_pharmacie', array('class' => 'form-select', 'options' => $types));
+                    //echo $this->Form->input('secteur_id', array('label' => 'Secteur','class' => 'form-select'));
                     ?>
-                    <div class="input select">
-                        <label for="regions">Région</label>
-                        <select name="data[Client][region_id]" id="ClientRegionId" class="form-control select2" onchange="region_change();">
+                    <div class="mb-5">
+                        <label for="regions" class="form-label fw-semibold text-gray-800">Région</label>
+                        <select name="data[Client][region_id]" id="ClientRegionId" class="form-select select2" onchange="region_change();">
 
                         </select>
                     </div>
-                    <div class="input select" id="ville">
-                        <label for="regions">Ville</label>
-                        <select name="data[Client][]" class="form-control" id="ClientVilleId" onchange="villes_change();">
+                    <div class="mb-5" id="ville">
+                        <label for="regions" class="form-label fw-semibold text-gray-800">Ville</label>
+                        <select name="data[Client][]" class="form-select" id="ClientVilleId" onchange="villes_change();">
                             <option value='<?php echo $secteur['Secteur']['id']; ?>'><?php echo $secteur['Secteur']['ville']; ?></option>
                         </select>
                     </div>
-                    <div id="secteur" class="input select" id="secteur">
-                        <label for="regions">Secteur</label>
-                        <select name="data[Client][secteur_id]" class="form-control" id="ClientSecteurId">
+                    <div id="secteur" class="mb-5">
+                        <label for="regions" class="form-label fw-semibold text-gray-800">Secteur</label>
+                        <select name="data[Client][secteur_id]" class="form-select" id="ClientSecteurId">
                             <option value='<?php echo $secteur['Secteur']['id']; ?>'><?php echo $secteur['Secteur']['secteur']; ?></option>
                         </select>
                     </div>
@@ -414,9 +427,9 @@ $secteur_clean = utf8ize($secteur);
                 <div class="col-md-12">
                     <div class="row">
                     <div class="col-lg-4 col-md-4">
-                        <div class="input select">
-                            <label>Type de pharmacie</label>
-                            <select name="data[Client][A]" class="form-control">
+                        <div class="mb-5">
+                            <label class="form-label fw-semibold text-gray-800">Type de pharmacie</label>
+                            <select name="data[Client][A]" class="form-select">
                                 <?php
                                 $selected = '';
                                 $this->request->data['Client']['A'] = $this->request->data['Client']['potentialite'][0];
@@ -441,9 +454,9 @@ $secteur_clean = utf8ize($secteur);
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4">
-                        <div class="input select">
-                            <label>Commande des produits</label>
-                            <select name="data[Client][1]" class="form-control" id="ClientCategoryId">
+                        <div class="mb-5">
+                            <label class="form-label fw-semibold text-gray-800">Commande des produits</label>
+                            <select name="data[Client][1]" class="form-select" id="ClientCategoryId">
                                 <?php
                                 $selected = '';
                                 if ("1" == $this->request->data['Client']['1']) {
@@ -465,9 +478,9 @@ $secteur_clean = utf8ize($secteur);
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4">
-                        <div class="input select">
-                            <label>Emplacement du pharmacie</label>
-                            <select name="data[Client][e]" class="form-control">
+                        <div class="mb-5">
+                            <label class="form-label fw-semibold text-gray-800">Emplacement du pharmacie</label>
+                            <select name="data[Client][e]" class="form-select">
                                 <?php
                                 $selected = '';
                                 if ("Centre" == $this->request->data['Client']['e']) {
@@ -490,13 +503,13 @@ $secteur_clean = utf8ize($secteur);
                     </div>
 
                     <div class="col-lg-12 col-md-12">
-                        <div class="input select">
-                            <label>Map</label>
-                            <table class="table">
+                        <div class="mb-5">
+                            <label class="form-label fw-semibold text-gray-800">Map</label>
+                            <table class="table align-middle">
                                 <tr>
-                                    <td><label>Latitude:</label></td>
+                                    <td><label class="form-label fw-semibold text-gray-800">Latitude:</label></td>
                                     <td><?php echo $this->Form->input('latitude', array('id' => 'latitude_mag', 'label' => false)); ?></td>
-                                    <td><label>Longitude:</label></td>
+                                    <td><label class="form-label fw-semibold text-gray-800">Longitude:</label></td>
                                     <td><?php echo $this->Form->input('longitude', array('id' => 'longitude_mag', 'label' => false)); ?></td>
                                 </tr>
                             </table>
@@ -511,10 +524,10 @@ $secteur_clean = utf8ize($secteur);
                     <div class="col-lg-12 col-md-12">
                         <?php
                         echo $this->Form->input('id', array('class' => 'form-control'));
-                        echo $this->Form->input('type_id', array('label' => 'Type', 'class' => 'form-control'));
-                        echo $this->Form->input('category_id', array('label' => 'Spécialité', 'class' => 'form-control'));
+                        echo $this->Form->input('type_id', array('label' => 'Type', 'class' => 'form-select'));
+                        echo $this->Form->input('category_id', array('label' => 'Spécialité', 'class' => 'form-select'));
                         $types = array("Client" => "Client", "Prospect" => "Prospect");
-                        echo $this->Form->input('type_pharmacie', array('label' => 'Type de client', 'class' => 'form-control', 'options' => $types));
+                        echo $this->Form->input('type_pharmacie', array('label' => 'Type de client', 'class' => 'form-select', 'options' => $types));
                         echo $this->Form->input('nom', array('label' => 'Nom', 'class' => 'form-control'));
                         echo $this->Form->input('prenom', array('label' => 'Prénom', 'class' => 'form-control'));
                         echo $this->Form->input('mail', array('label' => 'Mail', 'class' => 'form-control'));
@@ -524,21 +537,21 @@ $secteur_clean = utf8ize($secteur);
                         echo $this->Form->input('adress', array('label' => 'Adresse', 'class' => 'form-control', 'type' => 'text'));
                         echo $this->Form->input('code_wavsoft', array('class' => 'form-control'));
                         ?>
-                        <div class="input select">
-                            <label for="regions">Région</label>
-                            <select name="data[Client][region_id]" id="ClientRegionId" class="form-control select2" onchange="region_change();">
+                        <div class="mb-5">
+                            <label for="regions" class="form-label fw-semibold text-gray-800">Région</label>
+                            <select name="data[Client][region_id]" id="ClientRegionId" class="form-select select2" onchange="region_change();">
 
                             </select>
                         </div>
-                        <div class="input select" id="ville">
-                            <label for="regions">Ville</label>
-                            <select name="data[Client][]" class="form-control" id="ClientVilleId" onchange="villes_change();">
+                        <div class="mb-5" id="ville">
+                            <label for="regions" class="form-label fw-semibold text-gray-800">Ville</label>
+                            <select name="data[Client][]" class="form-select" id="ClientVilleId" onchange="villes_change();">
                                 <option value='<?php echo $secteur['Secteur']['id']; ?>'><?php echo $secteur['Secteur']['ville']; ?></option>
                             </select>
                         </div>
-                        <div id="secteur" class="input select" id="secteur">
-                            <label for="regions">Secteur</label>
-                            <select name="data[Client][secteur_id]" class="form-control" id="ClientSecteurId">
+                        <div id="secteur" class="mb-5">
+                            <label for="regions" class="form-label fw-semibold text-gray-800">Secteur</label>
+                            <select name="data[Client][secteur_id]" class="form-select" id="ClientSecteurId">
                                 <option value='<?php echo $secteur['Secteur']['id']; ?>'><?php echo $secteur['Secteur']['secteur']; ?></option>
                             </select>
                         </div>
@@ -548,13 +561,13 @@ $secteur_clean = utf8ize($secteur);
                     <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary', 'div' => array('class' => 'text-center col-md-12 mt-4'))); ?>
 
                     <div class="col-lg-12 col-md-12">
-                        <div class="input select">
-                            <label>Map</label>
-                            <table class="table">
+                        <div class="mb-5">
+                            <label class="form-label fw-semibold text-gray-800">Map</label>
+                            <table class="table align-middle">
                                 <tr>
-                                    <td><label>Latitude:</label></td>
+                                    <td><label class="form-label fw-semibold text-gray-800">Latitude:</label></td>
                                     <td><?php echo $this->Form->input('latitude', array('id' => 'latitude_mag', 'label' => false)); ?></td>
-                                    <td><label>Longitude:</label></td>
+                                    <td><label class="form-label fw-semibold text-gray-800">Longitude:</label></td>
                                     <td><?php echo $this->Form->input('longitude', array('id' => 'longitude_mag', 'label' => false)); ?></td>
                                 </tr>
                             </table>
@@ -568,7 +581,6 @@ $secteur_clean = utf8ize($secteur);
 
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
 ?>
 <script>
     $(document).ready(function() {

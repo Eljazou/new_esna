@@ -1,6 +1,4 @@
-<?php
-
-?>
+<?php echo $this->element('assets/datatables'); ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
 :root{
@@ -181,7 +179,7 @@ body, .content-wrapper{
 .toolbar-field.small{ flex: 0 1 130px; }
 
 .toolbar-field label,
-.box-body label{
+.card-body label{
     font-size:12.5px;
     font-weight:600;
     color:var(--text-dark);
@@ -586,7 +584,7 @@ body, .content-wrapper{
 </style>
 
 <div class="row">
-    <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-3 col-6">
         <a href="<?php echo $this->Html->Url(array('action' => 'index')); ?>" class="stat-card purple">
             <div class="top-row">
                 <div class="stat-icon"><i class="ion ion-bag"></i></div>
@@ -596,7 +594,7 @@ body, .content-wrapper{
             <span class="stat-link">Voir détails &rarr;</span>
         </a>
     </div>
-    <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-3 col-6">
         <a href="<?php echo $this->Html->Url(array('action' => 'index', '1')); ?>" class="stat-card green">
             <div class="top-row">
                 <div class="stat-icon"><i class="ion ion-stats-bars"></i></div>
@@ -606,7 +604,7 @@ body, .content-wrapper{
             <span class="stat-link">Voir détails &rarr;</span>
         </a>
     </div>
-    <div class="col-lg-3 col-xs-6">
+    <div class="col-lg-3 col-6">
         <a href="<?php echo $this->Html->Url(array('action' => 'index', '-1')); ?>" class="stat-card pink">
             <div class="top-row">
                 <div class="stat-icon"><i class="ion ion-help"></i></div>
@@ -617,7 +615,7 @@ body, .content-wrapper{
         </a>
     </div>
     <?php if ($this->requestAction(array('controller' => 'droits', 'action' => 'getrole', 'clients', 'remettre0')) == 1): ?>
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-6">
             <a href="<?php echo $this->Html->Url(array('action' => 'remettre0')); ?>" class="stat-card orange">
                 <div class="top-row">
                     <div class="stat-icon"><i class="ion ion-minus-circled"></i></div>
@@ -635,20 +633,20 @@ body, .content-wrapper{
         <div class="card card-flush" id="searchCard">
             <div class="card-header">
                 <div class="card-title">
-                    <div class="search-icon-box"><i class="fa fa-search"></i></div>
+                    <div class="search-icon-box"><i class="ki-duotone ki-magnifier"><span class="path1"></span><span class="path2"></span></i></div>
                     <div>
                         <h2>Recherche</h2>
                         <div class="subtitle">Rechercher et filtrer les clients</div>
                     </div>
                 </div>
             </div>
-            <div class="card-body box-body">
+            <div class="card-body">
                 <div class="toolbar-row">
                     <?php echo $this->Form->create('Client', array('class' => 'toolbar-form-global')); ?>
                     <div class="toolbar-field grow">
                         <label>Recherche globale</label>
                         <div class="search-wrap">
-                            <i class="fa fa-search"></i>
+                            <i class="ki-duotone ki-magnifier"><span class="path1"></span><span class="path2"></span></i>
                             <input type="text" name="client_search" placeholder="Société ou nom ou code_wavesoft" class="form-control form-control-solid input_txt search-pill">
                         </div>
                     </div>
@@ -667,7 +665,7 @@ body, .content-wrapper{
                         <?php echo $this->Form->input('limit', array('class' => 'form-control form-control-solid limit-input limit', 'label' => "Limite à afficher", 'value' => $limite)); ?>
                     </div>
                     <button type="submit" class="btn btn_search btn-primary">Rechercher</button>
-                    <?php echo $this->Html->link('<i class="fa fa-refresh"></i>&nbsp; Réinitialiser', array('action' => 'index'), array('class' => 'btn-light-primary', 'escape' => false)); ?>
+                    <?php echo $this->Html->link('<i class="ki-duotone ki-arrows-circle"><span class="path1"></span><span class="path2"></span></i>&nbsp; Réinitialiser', array('action' => 'index'), array('class' => 'btn-light-primary', 'escape' => false)); ?>
                 </div>
             </div>
         </div>
@@ -682,9 +680,9 @@ body, .content-wrapper{
                     echo $this->Html->link(__('Ajouter +'), array('action' => 'add', "Médecin"), array("target" => "_blanck", 'class' => "btn-ajouter", 'escape' => false));
                 ?>
             </div>
-            <div class="box-body" id="tabclient">
+            <div class="card-body" id="tabclient">
                 <div class="table-scroll">
-                <table id="example1" class="table table-bordered table-striped display">
+                <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4 gs-4">
                     <thead>
                         <tr>
                             <th>Code</th>
@@ -723,8 +721,8 @@ body, .content-wrapper{
                             <td><?php echo h($client['Client']['potentialitev2']); ?>&nbsp;</td>
                             <td class="actions">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                                        <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                                    <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">
+                                        <i class="ki-duotone ki-setting-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>&nbsp;<span class=""></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
                                         <li><?php
@@ -751,9 +749,6 @@ body, .content-wrapper{
     </div>
 </div>
 
-<?php
-echo $this->Html->script('jquery.dataTables.min');
-?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 
 <script>
@@ -882,7 +877,7 @@ echo $this->Html->script('jquery.dataTables.min');
         var conte = 0;
         $('#example1 tfoot th').each(function () {
             var title = $(this).text();
-            $(this).html('<input type="text" placeholder="' + title + '" class="' + conte + '"/>');
+            $(this).html('<input type="text" placeholder="' + title + '" class="' + conte"/>');
             conte = conte + 1;
         });
 

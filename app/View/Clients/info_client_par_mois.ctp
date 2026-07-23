@@ -1,5 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
-
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     :root{
         --accent:#6c5ce7;
@@ -14,15 +13,15 @@
         --shadow-card:0 2px 14px rgba(45,43,66,0.05);
     }
 
-    .box{
+    .card{
         background:#fff;
         border:1px solid var(--border-color);
         border-radius:var(--radius-lg);
         box-shadow:var(--shadow-card);
         margin-bottom:20px;
     }
-    .box .box-header{ border-bottom:none; padding:22px 24px 6px 24px; }
-    .box .box-body{ padding:0 24px 24px 24px; }
+    .card .card-header{ border-bottom:none; padding:22px 24px 6px 24px; }
+    .card .card-body{ padding:0 24px 24px 24px; }
 
     .section-header{ display:flex; align-items:flex-start; gap:14px; margin-bottom:18px; }
     .section-icon{
@@ -30,7 +29,7 @@
         background:var(--accent-soft); color:var(--accent);
         display:flex; align-items:center; justify-content:center; font-size:17px;
     }
-    .section-header h3.box-title{ margin:0; font-size:16.5px; font-weight:700; color:var(--text-dark); }
+    .section-header h3.card-title{ margin:0; font-size:16.5px; font-weight:700; color:var(--text-dark); }
     .section-header p.section-subtitle{ margin:2px 0 0 0; font-size:12.5px; color:var(--text-muted); }
 
     /* VM select form */
@@ -126,32 +125,32 @@
 <div class="row">
     <div class="col-md-12">
 
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <div class="section-header">
-                    <span class="section-icon"><i class="fa fa-user-md"></i></span>
+                    <span class="section-icon"><i class="ki-duotone ki-profile-user -md"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>
                     <div>
-                        <h3 class="box-title">Choisissez un VM</h3>
+                        <h3 class="card-title">Choisissez un VM</h3>
                         <p class="section-subtitle">Sélectionnez le visiteur médical pour afficher la liste des clients.</p>
                     </div>
                 </div>
                 <?php
                 echo $this->Form->create('Client');
-                echo $this->Form->input('user_id', array('class' => 'form-control', 'label' => array('text' => '<span class="field-icon"><i class="fa fa-user"></i></span>Choisissez un VM', 'escape' => false)));
+                echo $this->Form->input('user_id', array('class' => 'form-control', 'label' => array('text' => '<span class="field-icon"><i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>Choisissez un VM', 'escape' => false)));
                 echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-primary btn-large envoyer', 'div' => array('class' => 'well text-center col-md-12')));
                 ?>
             </div>
         </div>
 
-        <div class="box">
-            <div class="box-body" style="padding-top:24px;">
+        <div class="card">
+            <div class="card-body" style="padding-top:24px;">
                 <div class="section-header">
-                    <span class="section-icon"><i class="fa fa-list"></i></span>
+                    <span class="section-icon"><i class="ki-duotone ki-menu"><span class="path1"></span></i></span>
                     <div>
-                        <h3 class="box-title">Liste des clients</h3>
+                        <h3 class="card-title">Liste des clients</h3>
                     </div>
                 </div>
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                     <thead>
                         <tr>
                             <th>Nom</th>
@@ -189,10 +188,6 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -210,7 +205,7 @@ echo $this->Html->script('demo');
             language: {
                 search: "",
                 searchPlaceholder: "Rechercher...",
-                emptyTable: '<div class="dt-empty-state"><span class="dt-empty-icon"><i class="fa fa-inbox"></i></span><div class="dt-empty-title">Aucune donnée disponible</div><div class="dt-empty-sub">Aucun client trouvé pour le moment.</div></div>'
+                emptyTable: '<div class="dt-empty-state"><span class="dt-empty-icon"><i class="ki-duotone ki-file-deleted fs-2x"><span class="path1"></span><span class="path2"></span></i></span><div class="dt-empty-title">Aucune donnée disponible</div><div class="dt-empty-sub">Aucun client trouvé pour le moment.</div></div>'
             }
         });
     });

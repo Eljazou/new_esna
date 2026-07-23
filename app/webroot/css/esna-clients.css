@@ -1,0 +1,50 @@
+/*
+ * esna-clients.css — view-scoped styles for the Clients module.
+ *
+ * These are the few rules Metronic has no equivalent for. Everything else that
+ * used to live in the ~280-line inline <style> blocks of add.ctp / edit.ctp is
+ * now handled by Metronic classes + the ESNAPHARM brand layer (esna-theme.css),
+ * so those blocks were removed.
+ *
+ * Loaded per view with:
+ *     $this->Html->css('esna-clients', array('block' => 'css'));
+ */
+
+/* Google Maps picker (add.ctp / edit.ctp).
+   #map-canvas MUST keep an explicit height: the Maps API renders into an
+   absolutely-positioned child, so a container with auto height collapses to
+   0px and the map silently disappears. */
+#map-card {
+    background: var(--bs-gray-100);
+    border: 1px solid var(--lb-border, var(--bs-gray-300));
+    border-radius: 0.625rem;
+    padding: 1rem 1.125rem;
+    margin: 0.25rem 0 1.125rem 0;
+    clear: both;
+}
+
+#map-card table.table {
+    margin-bottom: 0.625rem;
+    width: 100%;
+}
+
+#map-card table.table td {
+    border: none;
+    padding: 0.25rem 0.625rem 0.25rem 0;
+    vertical-align: middle;
+}
+
+#map-canvas {
+    border-radius: 0.625rem;
+    overflow: hidden;
+    border: 1px solid var(--lb-border, var(--bs-gray-300));
+    width: 100%;
+    height: 300px;
+}
+
+/* Select2 renders its own container; make it match Metronic field height when
+   it sits next to .form-control siblings. */
+.select2-container .select2-selection--single,
+.select2-container .select2-selection--multiple {
+    min-height: calc(1.5em + 1.55rem + 2px);
+}

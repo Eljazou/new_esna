@@ -1,7 +1,5 @@
 <?php
-echo $this->Html->css('select2.min');
 echo $this->Html->css("style_rapport");
-echo $this->Html->script('select2.full.min');
 ?>
 
 <style>
@@ -264,7 +262,7 @@ echo $this->Html->script('select2.full.min');
     <h4>Résultats</h4>
 </div>
 
-<table id="example1" class="table table-bordered table-striped">
+<table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
     <thead>
         <tr>
             <th>Client</th>

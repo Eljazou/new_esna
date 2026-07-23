@@ -1,14 +1,14 @@
 ﻿
 <?php foreach ($users as $vmp): ?>
     <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
                         Rapport des visites de l'équipe de <?php echo $vmp['super']['User']['name']; ?>
                     </h3>
                 </div>
-                <div class="box-body table-responsive no-padding">
+                <div class="card-body table-responsive no-padding">
                     <table class="table table-hover"  border="0">
                         <tbody>
                             <tr>
@@ -29,13 +29,13 @@
                                     <th><?php echo $v["visite"]; ?></th>
                                     <th><?php echo $v["visite_planifier"]-$v["visite"]; ?></th>
                                     <th><?php echo $v["action"]; ?></th>
-                                    <th><a class="btn btn-primary" style="cursor:pointer;" data-toggle="modal" data-target="#myModal<?php echo $i;?>">Afficher Clients</a></th>
+                                    <th><a class="btn btn-primary" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $i;?>">Afficher Clients</a></th>
                                 </tr>
 								<div id="myModal<?php echo $i++;?>" class="modal fade" role="dialog">
 									<div class="modal-dialog" style="width: 66%;">
 										<div class="modal-content" style="float:left;width:100%;">
 											<div class="modal-header" style="float:left;width:100%;">
-												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 												<h4 class="modal-title">La liste des clients</h4>
 											</div>	
 											<div class="modal-body" style="float:left;width:100%;">
@@ -62,7 +62,7 @@
 												?>
 										  </div>
 										  <div class="modal-footer" style="float:left;width:100%;">
-											<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+											<button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
 										  </div>
 										</div>
 									</div>

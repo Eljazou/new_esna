@@ -221,12 +221,12 @@ function cv_badges($label, $pipeValue) {
                         ?></div>
                     <div class="text-gray-500 fw-semibold fs-6">Nombre de visites</div>
                 </div>
-                <button type="button" onclick="boxtog(1)" class="btn btn-icon btn-sm btn-light" title="Plus de détails"><i id="icon1" class="fa fa-plus"></i></button>
+                <button type="button" onclick="boxtog(1)" class="btn btn-icon btn-sm btn-light" title="Plus de détails"><i id="icon1" class="ki-duotone ki-plus fs-3"></i></button>
             </div>
             <div class="card-body pt-0 box1" style="display:none;">
                 <div class="text-muted fs-7" style="max-height:180px;overflow-y:auto;">
                     <?php foreach ($details as $key => $value): ?>
-                        <div class="py-1"><i class="fa fa-clock text-primary me-2"></i><?php echo $value; ?></div>
+                        <div class="py-1"><i class="ki-duotone ki-time text-primary me-2"><span class="path1"></span><span class="path2"></span></i><?php echo $value; ?></div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -255,12 +255,12 @@ function cv_badges($label, $pipeValue) {
                         ?></div>
                     <div class="text-gray-500 fw-semibold fs-6">Nombre de retards</div>
                 </div>
-                <button type="button" onclick="boxtog(2)" class="btn btn-icon btn-sm btn-light" title="Plus de détails"><i id="icon2" class="fa fa-plus"></i></button>
+                <button type="button" onclick="boxtog(2)" class="btn btn-icon btn-sm btn-light" title="Plus de détails"><i id="icon2" class="ki-duotone ki-plus fs-3"></i></button>
             </div>
             <div class="card-body pt-0 box2" style="display:none;">
                 <div class="text-muted fs-7" style="max-height:180px;overflow-y:auto;">
                     <?php foreach ($dateretard as $key => $value): ?>
-                        <div class="py-1"><i class="fa fa-clock text-primary me-2"></i><?php echo $value; ?></div>
+                        <div class="py-1"><i class="ki-duotone ki-time text-primary me-2"><span class="path1"></span><span class="path2"></span></i><?php echo $value; ?></div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -1168,11 +1168,11 @@ function cv_badges($label, $pipeValue) {
     function boxtog(id) {
         $('.box' + id).toggle(200);
         var clas = $("#icon" + id).attr("class");
-        if (clas == 'fa fa-minus') {
-            $("#icon" + id).attr("class", "fa fa-plus");
+        if (clas == 'ki-duotone ki-minus fs-3') {
+            $("#icon" + id).attr("class", "ki-duotone ki-plus fs-3");
         }
-        if (clas == 'fa fa-plus') {
-            $("#icon" + id).attr("class", "fa fa-minus");
+        if (clas == 'ki-duotone ki-plus fs-3') {
+            $("#icon" + id).attr("class", "ki-duotone ki-minus fs-3");
         }
     }
 
@@ -1231,6 +1231,11 @@ function cv_badges($label, $pipeValue) {
 <script type="text/javascript">
     function objettog(id) {
         $('.optionb' + id).toggle();
+        // NOTE: the .objet/.optionh/.optionb markup this function drives is NOT
+        // emitted by this view -- it lives in Rapports/{add,edit,view}.ctp and
+        // Users/admin_statistique.ctp, which are still on Font Awesome. The
+        // selectors below therefore stay on .fa until those views are migrated,
+        // otherwise the toggle would stop matching. See PROJECT_LOG TODO #18.
         var clas = $(".optionh" + id + " .fa").attr("class");
         if (clas == 'fa fa-minus') {
             $(".optionh" + id + " .fa").attr("class", "fa fa-plus");

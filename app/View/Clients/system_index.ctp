@@ -1,7 +1,7 @@
-<?php echo $this->Html->css('dataTables.bootstrap');?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
 	@media (max-width:896px){
-		.box-body{
+		.card-body{
 			overflow: scroll;
 			overflow-y: hidden;
 		}
@@ -17,15 +17,15 @@
 </style>	
 
 
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><?php echo __('La liste des clients'); ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?php echo __('La liste des clients'); ?></h3>
         <?php if ($this->requestAction('/droits/getrole/clients/add') == 1)
             echo $this->Html->link(__('Ajouter'), array('action' => 'add',"Médecin"), array("target"=>"_blanck",'class'=>"btn bg-purple btn-flat", 'style'=>"float:right;"));
         ?>
     </div>
-    <div class="box-body" id="tabclient">
-        <table id="example1" class="table table-bordered table-striped display">
+    <div class="card-body" id="tabclient">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4 gs-4">
             <thead>
                 <tr>
 					<th>Code</th>
@@ -92,26 +92,16 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-//echo $this->Html->script('bootstrap.min');
-//echo $this->Html->script('app.min');
+//
+//
 ?>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <?php
-echo $this->Html->script('jquery.dataTables.min');
 //echo $this->Html->script('jquery.slimscroll.min');
 //echo $this->Html->script('fastclick');
 //echo $this->Html->script('demo');
 ?>
 
-<!-- --><script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script> 
+<!-- --><script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script> 
 <script>
 
     $(function () {

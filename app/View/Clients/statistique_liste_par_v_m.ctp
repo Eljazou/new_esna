@@ -174,12 +174,12 @@ foreach ($data as $vmp):
     <div class="row">
         <!-- 1. Dynamically Generated Categories / Potentialities Matrix Packs -->
         <?php foreach($potcat as $key => $pp): ?>
-            <div class="col-md-6 col-xs-12">
+            <div class="col-md-6 col-12">
                 <div class="report-card-custom">
-                    <div class="box-header-custom">
+                    <div class="card-header-custom">
                         <h3 class="box-title_custom">Rapport des listes de <strong><?php echo h($key); ?></strong> du <?php echo h($vmp['User']['name']); ?></h3>
                     </div>
-                    <div class="box-body-custom">
+                    <div class="card-body-custom">
                         <table class="table-report-custom">
                             <thead>
                                 <tr>
@@ -204,12 +204,12 @@ foreach ($data as $vmp):
         <?php endforeach; ?>
 
         <!-- 2. Activity Metrics Tracker Card Matrix -->
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6 col-12">
             <div class="report-card-custom">
-                <div class="box-header-custom">
-                    <h3 class="box-title-custom">Rapport des listes de Activité du <?php echo h($vmp['User']['name']); ?></h3>
+                <div class="card-header-custom">
+                    <h3 class="card-title-custom">Rapport des listes de Activité du <?php echo h($vmp['User']['name']); ?></h3>
                 </div>
-                <div class="box-body-custom">
+                <div class="card-body-custom">
                     <table class="table-report-custom">
                         <thead>
                             <tr>
@@ -237,12 +237,12 @@ foreach ($data as $vmp):
         </div>
 
         <!-- 3. Base Potentiality Tracker Card Matrix -->
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6 col-12">
             <div class="report-card-custom">
-                <div class="box-header-custom">
-                    <h3 class="box-title-custom">Rapport des listes de POT du <?php echo h($vmp['User']['name']); ?></h3>
+                <div class="card-header-custom">
+                    <h3 class="card-title-custom">Rapport des listes de POT du <?php echo h($vmp['User']['name']); ?></h3>
                 </div>
-                <div class="box-body-custom">
+                <div class="card-body-custom">
                     <table class="table-report-custom">
                         <thead>
                             <tr>
@@ -270,12 +270,12 @@ foreach ($data as $vmp):
         </div>
         
         <!-- 4. Cross-Reference Activity Potential Matrix -->
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6 col-12">
             <div class="report-card-custom">
-                <div class="box-header-custom">
-                    <h3 class="box-title-custom">Rapport des listes de POT / Activité <?php echo h($vmp['User']['name']); ?></h3>
+                <div class="card-header-custom">
+                    <h3 class="card-title-custom">Rapport des listes de POT / Activité <?php echo h($vmp['User']['name']); ?></h3>
                 </div>
-                <div class="box-body-custom">
+                <div class="card-body-custom">
                     <table class="table-report-custom">
                         <thead>
                             <tr>
@@ -291,7 +291,7 @@ foreach ($data as $vmp):
                                         <div style="line-height: 1.8;">
                                             <?php foreach($value as $k => $v): ?>
                                                 <span style="font-weight: 600;"><?php echo h($k); ?></span> 
-                                                <i class="fa fa-long-arrow-right" style="color: var(--theme-text-muted); margin: 0 4px;"></i> 
+                                                <i class="ki-duotone ki-arrow-right fs-6" style="color: var(--theme-text-muted); margin: 0 4px;"><span class="path1"></span><span class="path2"></span></i> 
                                                 <span class="report-badge" style="padding: 2px 8px; font-size: 11px; min-width: 28px;"><?php echo $v; ?></span><br>
                                             <?php endforeach; ?>
                                         </div>
@@ -305,12 +305,12 @@ foreach ($data as $vmp):
         </div>
 
         <!-- 5. Specialties Distribution Card Matrix -->
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6 col-12">
             <div class="report-card-custom">
-                <div class="box-header-custom">
-                    <h3 class="box-title-custom">Rapport des listes de spécialité <?php echo h($vmp['User']['name']); ?></h3>
+                <div class="card-header-custom">
+                    <h3 class="card-title-custom">Rapport des listes de spécialité <?php echo h($vmp['User']['name']); ?></h3>
                 </div>
-                <div class="box-body-custom">
+                <div class="card-body-custom">
                     <table class="table-report-custom">
                         <thead>
                             <tr>
@@ -338,12 +338,12 @@ foreach ($data as $vmp):
         </div>
         
         <!-- 6. Localization & Customer Types Analytics Structural Matrix -->
-        <div class="col-md-12 col-xs-12">
+        <div class="col-md-12 col-12">
             <div class="report-card-custom">
-                <div class="box-header-custom">
-                    <h3 class="box-title-custom">Rapport des listes des type clients <?php echo h($vmp['User']['name']); ?></h3>
+                <div class="card-header-custom">
+                    <h3 class="card-title-custom">Rapport des listes des type clients <?php echo h($vmp['User']['name']); ?></h3>
                 </div>
-                <div class="box-body-custom">
+                <div class="card-body-custom">
                     <div class="table-responsive" style="border: none;">
                         <table class="table-report-custom">
                             <thead>

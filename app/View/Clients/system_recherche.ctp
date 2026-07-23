@@ -1,13 +1,19 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>	
+<?php
+/**
+ * AJAX fragment: rendered with the 'login' layout (flash + content only) and
+ * injected into #tabclient by Clients/index.ctp. DataTables is NOT included
+ * here on purpose -- the parent page already loaded it, and this layout has
+ * no fetch('script') block, so an include would be silently dropped.
+ */
+?>
 <style>
     
 	.dt-button{width:auto;float:left;margin:5px;font-size:16px;line-height:22px;padding:3px 8px;background:#337ab7;color:#fff; }
 	.dt-button:hover{color:#fff;background:#1a486f;}
 </style>
-<div class="box">
-    <div class="box-body">
-       <table id="example1" class="table table-bordered table-striped">
+<div class="card">
+    <div class="card-body">
+       <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
 					<th>Code</th>
@@ -58,8 +64,8 @@
                     <td><?php echo h($client['Client']['potentialitev2']); ?>&nbsp;</td>
                     <td class="actions">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="ki-duotone ki-setting-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>&nbsp;<span class=""></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><?php if ($this->requestAction('/droits/getrole/clients/view') == 1)
@@ -80,22 +86,12 @@
    </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-/*echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');*/
-echo $this->Html->script('jquery.dataTables.min');
+/**/
 /*echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');*/
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script>
 //$(function () {});
 	$(document).ready(function() {

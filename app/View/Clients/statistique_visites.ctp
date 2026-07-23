@@ -1,3 +1,4 @@
+<?php echo $this->element('assets/datatables'); ?>
 <div class="row">
     <?php
     setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
@@ -11,14 +12,14 @@
             font-family:'Poppins',sans-serif;
             color:#3a3a4a;
         }
-        .stv-wrapper .box{
+        .stv-wrapper .card{
             background:#fff;
             border:none;
             border-radius:18px;
             box-shadow:0 4px 24px rgba(108,99,245,0.08);
             padding:26px 28px;
         }
-        .stv-wrapper .box-header{
+        .stv-wrapper .card-header{
             border:none;
             display:flex;
             align-items:center;
@@ -40,7 +41,7 @@
             height:20px;
             stroke:#6C63F5;
         }
-        .stv-wrapper .box-title{
+        .stv-wrapper .card-title{
             font-size:15.5px;
             font-weight:500;
             color:#454358;
@@ -57,7 +58,7 @@
             overflow:hidden;
             background:#fff;
         }
-        .stv-wrapper .input-group-addon{
+        .stv-wrapper .input-group-text{
             background:#faf9ff;
             border:none;
             border-right:1.5px solid #e7e5f7;
@@ -279,17 +280,17 @@
     </style>
     <div class="stv-wrapper" style="width:100%;">
     <div class="col-md-12" style="margin-bottom: 24px;"> 
-        <div class="box form-group">
-            <div class="box-header with-border">
+        <div class="card mb-5">
+            <div class="card-header">
                 <div class="stv-icon-badge">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 </div>
-                <label class="box-title" style="margin-top: 0;padding-left:0;margin-bottom: 0px;">Pour des statistiques d'une période précise, veuillez sélectionner une date :</label>
+                <label class="card-title" style="margin-top: 0;padding-left:0;margin-bottom: 0px;">Pour des statistiques d'une période précise, veuillez sélectionner une date :</label>
                 <div class="col-md-6">
                     <form action="/clients/statistique_visites<?php if($user_id!=0) echo "/$user_id"; ?>" method="get" id="dateform">
                         <div class="input-group col-lg-12" style="float:left;">
-                            <div class="input-group-addon">
-                                <i class="fa fa-clock-o"></i>
+                            <div class="input-group-text">
+                                <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                             </div>
                             <div class="date-field-wrap">
                                 <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control pull-right lb-date-input" name="date" id="reservationtime" placeholder="Rechercher" autocomplete="off">
@@ -343,8 +344,8 @@ foreach ($visites as $visite) {
     <div class="col-md-12">
         <div class="stv-chart-row">
             <div class="stv-chart-col">
-                <div class="box" style="height:100%;">
-                    <div class="box-body" style="padding:0;">
+                <div class="card" style="height:100%;">
+                    <div class="card-body" style="padding:0;">
                         <div class="stv-chart-header">
                             <div class="stv-chart-title-group">
                                 <div class="stv-icon-badge">
@@ -404,9 +405,9 @@ foreach ($visites as $visite) {
         </div>
     </div>
     <div class="col-md-12" style="margin-top:24px;">
-        <div class="box">
-            <div class="box-body boxlistes">
-                <table id="example1" class="table table-bordered table-striped">
+        <div class="card">
+            <div class="card-body boxlistes">
+                <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                     <thead> 
                         <tr>
                             <th>Nombre de visites</th>
@@ -449,9 +450,9 @@ foreach ($visites as $visite) {
 	<?php if(isset($super)) : ?>
 	<h1>La listes des Super viseur</h1>
 	 <div class="col-md-12">
-        <div class="box">
-            <div class="box-body boxlistes">
-                <table id="example1" class="table table-bordered table-striped">
+        <div class="card">
+            <div class="card-body boxlistes">
+                <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                     <thead> 
                         <tr>
                             <th>Nom</th>
@@ -478,16 +479,12 @@ foreach ($visites as $visite) {
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 echo $this->Html->script('jquery.flot.min');
 echo $this->Html->script('jquery.flot.resize.min');
 echo $this->Html->script('jquery.flot.pie.min');
 echo $this->Html->script('jquery.flot.categories.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 ?>
 
@@ -679,7 +676,7 @@ echo $this->Html->script('jquery.slimscroll.min');
                     if (b && sameDay(cellDate, b)) classes.push('range-end');
                     if (a && b && cellDate > a && cellDate < b) classes.push('in-range');
 
-                    html += '<button type="button" class="' + classes.join(' ') + '" data-date="' + formatISO(cellDate) + '">' + dayNum + '</button>';
+                    html += '<button type="button" class="' + classes.join(' ')" data-date="' + formatISO(cellDate) + '">' + dayNum + '</button>';
                 }
 
                 html += '</div></div>';

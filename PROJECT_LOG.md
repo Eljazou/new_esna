@@ -100,7 +100,8 @@ Legend: ✅ done · 🟡 in progress · ⬜ pending · ⛔ blocked
 | 7b | Classify mobile/API view groups (in scope vs out) | ✅ 2026-07-22 — **in scope**, see §7 |
 | 8 | Shared partials (sidebar / topbar / flash / breadcrumbs) | ✅ 2026-07-22 |
 | 8b | Delete dead `_old.ctp` files (16) | ✅ 2026-07-22 |
-| 9 | Page-by-page reconstruction — Clients first | ⬜ awaiting self-test result |
+| 9 | Page-by-page reconstruction — **Clients (15 views)** | ✅ 2026-07-22 |
+| 10 | Next module: Visites (17 views) | ⬜ |
 
 ### Per-module migration checklist
 
@@ -323,6 +324,71 @@ Verification performed:
   (`lib/Cake/View/HelperCollection.php:57`), which is why the old layout could use it
   without declaring `$helpers`.
 
+### 2026-07-22 — Step 3, module 1: **Clients** (16 → 15 views) ✅
+
+Self-test was confirmed green by the user before starting (jQuery 3.7.0 single instance,
+Select2/flatpickr/daterangepicker attached, `flatpickr.l10ns.fr` present, KTComponents
+loaded, Keenicons applied, `--lb-primary` = `#7c6ff0`, Poppins active).
+
+| View | Lines | What changed |
+|---|---:|---|
+| `index.ctp` | 323→300 | rewritten: 4 AdminLTE `small-box` → Metronic stat cards; `.box` → `.card`; Ionicons → Keenicons; BS3 dropdown → Metronic `menu`; **8 CDN scripts + 3 jQuery loads → 1 element** |
+| `add.ctp` | 646→380 | 280-line bespoke `<style>` removed; `.panel-*` → `.card-*`; styling moved into FormHelper `$options` |
+| `edit.ctp` | 665→560 | same treatment; region/ville/secteur cascade untouched |
+| `view.ctp` | 1339 | already largely Metronic; 2 static icons → Keenicons + matching JS |
+| `allclients.ctp` | 901 | table + filters restyled, icon in a PHP-string label swapped |
+| `archive.ctp` | 184 | bespoke `.custom-panel-*` → `.card-*` |
+| `detail_visites.ctp` | 179 | `.box` → `.card`, modals → `data-bs-*` |
+| `trouverdoublons.ctp` | 351 | bespoke card design kept, BS3 bits normalised |
+| `system_index.ctp` | 181 | restyled (**orphan view — see TODO #19**) |
+| `system_recherche.ctp` | 148 | restyled; DataTables include deliberately **not** added (AJAX fragment) |
+| `statistique_visites.ctp` | 811 | `.box` → `.card`, CSS selectors realigned |
+| `statistique_pot.ctp` | 184 | `.box` → `.card` |
+| `statistique_pot_detail.ctp` | 75 | `.box` → `.card`, modals → BS5 |
+| `statistique_liste_par_v_m.ctp` | 383 | `.box` → `.card`; bespoke `*-custom` classes kept |
+| `info_client_par_mois.ctp` | 217 | `.box` → `.card`, empty-state icon → Keenicons |
+| ~~`view_old.ctp`~~ | −2228 | **deleted** — unreferenced dead code (same criteria as the 16 already approved) |
+
+Module total: 8,815 → 6,289 lines across 16 → 15 files.
+
+**New files:** `app/webroot/css/esna-clients.css` — the only rules Metronic has no
+equivalent for. Chiefly `#map-canvas { height: 300px }`: the Google Maps API renders into
+an absolutely-positioned child, so without an explicit height the container collapses to
+0px and the map silently disappears. Loaded via `Html->css(..., array('block' => 'css'))`.
+
+**Verification (every file):**
+- `php -l` on all 15 → clean.
+- **Logic-preservation diff** vs the originals in `esna/`: 11/15 report *"logic identical"*;
+  the other 4 differ only by the `page_header` element I added (`-0` removed) plus one
+  intentional icon swap inside a PHP string label in `allclients.ctp`. **Across the whole
+  module, zero business-logic statements were removed** — `requestAction` rights checks,
+  foreach loops, `Html->link()/Url()` targets, form actions and hidden fields are intact.
+- Comment-aware audit for 15 legacy patterns → clean (`.box`, `.panel`, `small-box`,
+  `bg-aqua`, `well`, `col-xs-`, `data-toggle`, `input-group-addon`, `control-label`,
+  `form-horizontal`, `label-*`, `<i class="fa">`, BS3 DataTables, duplicate jQuery).
+
+**Three bugs found and fixed during this module** (all would have shipped silently):
+
+1. **CSS selectors lagging renamed markup.** The migrator renamed `class="box-body"` →
+   `card-body` but left `.box-body { }` rules in the views' own `<style>` blocks pointing
+   at the old names, so bespoke styling silently died. Found in 6 files; the migrator now
+   rewrites selectors too.
+2. **Substring class matches.** A regex-based rewrite turned `search-icon-box` into
+   `search-icon-card`. Replaced with token-level rewriting that only matches whole class
+   names.
+3. **JS/markup icon-toggle desync.** `Clients/view.ctp` toggles icons by comparing the
+   *literal class string* (`if (clas == 'fa fa-plus')`). Swapping the markup to Keenicons
+   without updating the comparison would break every expander. Fixed in lockstep for
+   `boxtog()`; **deliberately reverted for `objettog()`** because the markup it drives
+   lives in `Rapports/{add,edit,view}.ctp` and `Users/admin_statistique.ctp`, which are
+   still on Font Awesome — see TODO #18.
+
+**Tooling built** (kept out of the repo, in the session scratchpad): `metronize.py`, a
+reusable AdminLTE/BS3 → Metronic migrator (token-safe class map, Keenicons icon map with
+correct duotone `<span class="pathN">` counts, BS3→BS5 `data-bs-*` rewriting, asset
+de-duplication), and `verify_php.py`, which proves a migrated view's PHP logic is
+unchanged. Both were hardened by the bugs above and are ready for the remaining modules.
+
 ---
 
 ## 5. Migration checklist — inventory of `app/View/**/*.ctp`
@@ -375,7 +441,7 @@ pattern · `KI` = files already using Keenicons.
 | Visites | 17 | 13 | 6 | 9 | 8 | 0 | ⬜ |
 | Appwebfinalv2 | 17 | 3 | 2 | 2 | 8 | 0 | ⬜ |
 | Users | 16 | 9 | 4 | 10 | 5 | 1 | ⬜ |
-| Clients | 16 | 11 | 3 | 10 | 11 | 1 | ⬜ |
+| Clients | ~~16~~ 15 | 0 | 0 | 0 | 0 | ✅ | **✅ done 2026-07-22** |
 | Appwebfinal | 16 | 7 | 1 | 3 | 16 | 0 | ⬜ |
 | Appweb | 16 | 7 | 2 | 5 | 16 | 0 | ⬜ |
 | Listes | 12 | 7 | 6 | 8 | 2 | 2 | ⬜ |
@@ -541,6 +607,18 @@ work.
     - table pages → `$this->element('assets/datatables')` instead of the BS3 pair
     - per-view assets → pass `array('block' => 'css')` / `array('block' => 'script')`
     - brand colours → use the `--lb-*` custom properties, never raw `#7c6ff0`
+18. **`objettog()` icon toggle is intentionally still on Font Awesome** in
+    `Clients/view.ctp`. It drives `.objet/.optionh/.optionb` markup that lives in
+    `Rapports/{add,edit,view}.ctp` and `Users/admin_statistique.ctp`. When those views are
+    migrated, swap the markup **and** the class-string comparison in `objettog()` together,
+    or the toggle stops matching. (The same function's `#icon` variant in
+    `statistique_pot.ctp` / `statistique_visites.ctp` targets markup that does not exist in
+    those files — pre-existing dead code, left untouched.)
+19. **`Clients/system_index.ctp` is an orphan view** — no controller action and no
+    references anywhere in `app/`. It was restyled for consistency but is unreachable.
+    Candidate for deletion; **not deleted without approval** since it is not an `_old` file.
+20. **`esna-clients.css` must stay loaded** on `add`/`edit`: `#map-canvas` needs its
+    explicit 300px height or the Google Maps picker collapses to zero height.
 17. **Bootstrap 3/4 compat shim is still active** in the layout — a delegated click
     handler that maps legacy `data-toggle`/`data-target`/`data-dismiss` to Bootstrap 5's
     `data-bs-*`. It keeps un-migrated views working. Once every view uses `data-bs-*`,

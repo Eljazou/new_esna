@@ -1,5 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
-
+<?php echo $this->element('assets/datatables'); ?>
 <style type="text/css">
     /* Theme Base Definitions */
     :root {
@@ -17,7 +16,7 @@
     }
 
     /* Modern Container Card */
-    .custom-panel {
+    .card {
         background: #ffffff;
         border: 1px solid var(--theme-border);
         border-radius: var(--radius-xl);
@@ -25,7 +24,7 @@
         margin-bottom: 30px;
         overflow: hidden;
     }
-    .custom-panel-header {
+    .card-header {
         background: #ffffff;
         padding: 24px 28px;
         border-bottom: 1px solid var(--theme-border);
@@ -33,13 +32,13 @@
         justify-content: space-between;
         align-items: center;
     }
-    .custom-panel-title {
+    .card-title {
         margin: 0;
         font-size: 18px;
         font-weight: 700;
         color: var(--theme-text-dark);
     }
-    .custom-panel-body {
+    .card-body {
         padding: 24px 28px;
     }
 
@@ -114,15 +113,15 @@
     }
 </style>
 
-<div class="custom-panel">
-    <div class="custom-panel-header">
-        <h3 class="custom-panel-title"><?php echo __('La liste des clients'); ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="custom-card-title"><?php echo __('La liste des clients'); ?></h3>
         <?php echo $this->Html->link('Archiver tout', array('action' => 'archivetous'), array('class' => 'btn btn-lavender btn-lavender-sm')); ?>
     </div>
     
-    <div class="custom-panel-body">
-        <div class="table-responsive-custom">
-            <table id="example1" class="table table-custom">
+    <div class="custom-card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                 <thead>
                     <tr>
                         <th>Nom & prénom</th>
@@ -161,10 +160,6 @@
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

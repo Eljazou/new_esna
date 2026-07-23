@@ -1,8 +1,7 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
 	@media (max-width:896px){
-		.box-body{
+		.card-body{
 			overflow: scroll;
 			overflow-y: hidden;
 		}
@@ -11,13 +10,13 @@
 	.dt-button:hover{color:#fff;background:#1a486f;}
 </style>	
 <?php //debug($clients);?>
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><?php echo __('La liste des clients'); ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?php echo __('La liste des clients'); ?></h3>
         
     </div>
-    <div class="box-body" id="tabclient">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body" id="tabclient">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
 					<th>VM</th>
@@ -71,8 +70,8 @@
 					<!-- <td>&nbsp;</td> -->
                     <td class="actions">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="ki-duotone ki-setting-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>&nbsp;<span class=""></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><?php if ($this->requestAction('/droits/getrole/clients/view') == 1)
@@ -84,7 +83,7 @@
                                 <li><?php if ($this->requestAction('/droits/getrole/clients/archive') == 1)
                             echo $this->Html->link(__('Archiver'), array('action' => 'archive', $client['Client']['id'], 0));
                         ?></li>
-						<li><a style="cursor:pointer;" data-toggle="modal" data-target="#myModal<?php echo $i;?>">Afficher Brochures</a></li>
+						<li><a style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $i;?>">Afficher Brochures</a></li>
                             </ul>
                         </div>
                     </td>
@@ -93,7 +92,7 @@
 					<div class="modal-dialog">
 						<div class="modal-content" style="float:left;width:100%;">
 							<div class="modal-header" style="float:left;width:100%;">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
 								<h4 class="modal-title">Brochures</h4>
 							</div>	
 							<div class="modal-body" style="float:left;width:100%;">
@@ -105,7 +104,7 @@
 								?>
 						  </div>
 						  <div class="modal-footer" style="float:left;width:100%;">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+							<button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
 						  </div>
 						</div>
 					</div>
@@ -116,10 +115,6 @@ endforeach; ?>
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -153,13 +148,6 @@ echo $this->Html->script('demo');
     });*/
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script>
     $(function () {
         //$("#example1").DataTable();
