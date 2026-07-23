@@ -293,7 +293,7 @@
                                 <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                             </div>
                             <div class="date-field-wrap">
-                                <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control pull-right lb-date-input" name="date" id="reservationtime" placeholder="Rechercher" autocomplete="off">
+                                <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control float-end lb-date-input" name="date" id="reservationtime" placeholder="Rechercher" autocomplete="off">
                             </div>
                         </div>
                     </form>

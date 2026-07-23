@@ -23,11 +23,11 @@
         font-family: "Poppins", sans-serif !important;
     }
 
-    .box {
+    .card {
         border-radius: 12px;
     }
 
-    .box .box-title {
+    .card .card-title {
         margin: 0;
         font-size: 15px;
         height: 35px;
@@ -238,8 +238,8 @@
         <h2>Tableau de bord</h2>
     </div>
     <div class="col-md-7">
-        <div class="box box-solid box-status">
-            <div class="box-body">
+        <div class="card box-solid box-status">
+            <div class="card-body">
                 <label for="weekPicker">Sélectionner une semaine :</label>
                 <input type="week" id="weekPicker" class="form-control" />
             </div>
@@ -254,9 +254,9 @@
 
             <div class="boxes-statistique row boxes_<?php echo $user_supe_key; ?>">
                 <div class="col-md-3">
-                    <div class="box box-solid box-status">
-                        <div class="box-body">
-                            <h3 class="box-title title-status">Nombre vmp</h3>
+                    <div class="card box-solid box-status">
+                        <div class="card-body">
+                            <h3 class="card-title title-status">Nombre vmp</h3>
                             <div class="div-number-status">
                                 <span class="circle"></span>
                                 <span class="number-status nbr_vmp"></span>
@@ -266,9 +266,9 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="box box-solid box-status">
-                        <div class="box-body">
-                            <h3 class="box-title title-status">Objectif total</h3>
+                    <div class="card box-solid box-status">
+                        <div class="card-body">
+                            <h3 class="card-title title-status">Objectif total</h3>
                             <div class="div-number-status">
                                 <span class="circle"></span>
                                 <span class="number-status tt_objectif"></span>
@@ -278,9 +278,9 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="box box-solid box-status">
-                        <div class="box-body">
-                            <h3 class="box-title title-status">Objectif realisée</h3>
+                    <div class="card box-solid box-status">
+                        <div class="card-body">
+                            <h3 class="card-title title-status">Objectif realisée</h3>
                             <div class="div-number-status">
                                 <span class="circle"></span>
                                 <span class="number-status tt_objectif_realise"></span>
@@ -293,14 +293,14 @@
 
 
             </div>
-            <div class="box box-solid">
-                <div class="box-header with-border">
+            <div class="card box-solid">
+                <div class="card-header">
 
-                    <h3 class="box-title"> Rapport des visites de l'équipe de <?php echo $super[0]['User']['name']; ?></h3>
+                    <h3 class="card-title"> Rapport des visites de l'équipe de <?php echo $super[0]['User']['name']; ?></h3>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body">
-                    <table class="table mytables table-striped  table-bordered">
+                <div class="card-body">
+                    <table class="table mytables table-striped table-row-bordered">
                         <thead>
                             <tr>
                                 <th><?php echo 'VM'; ?></th>
@@ -384,7 +384,7 @@
                                                 <div class="td-vm-name">
                                                     <?php if (isset($vmp['User']['image'])) { ?>
 
-                                                        <div class="symbol symbol-circle symbol-50px  me-3">
+                                                        <div class="symbol symbol-circle symbol-50px me-3">
                                                             <a href="<?php echo $this->Html->url(array('action' => 'view', $vmp['User']['id'])) ?>">
                                                                 <div class="symbol-label">
                                                                     <?php echo $this->Html->image('users/' . $vmp['User']['image'], array('class' => 'w-100')); ?>
@@ -394,7 +394,7 @@
 
                                                     <?php } else { ?>
 
-                                                        <div class="symbol symbol-circle symbol-50px  me-3">
+                                                        <div class="symbol symbol-circle symbol-50px me-3">
                                                             <a href="<?php echo $this->Html->url(array('action' => 'view', $vmp['User']['id'])) ?>">
                                                                 <div class="symbol-label fs-3">
                                                                     <?php
@@ -543,9 +543,9 @@
             for (const [key, values] of Object.entries(arr_all_objectif_detail)) {
                 const boxHTML = `
             <div class="col-md-3">
-                <div class="box box-solid box-status">
-                    <div class="box-body">
-                        <h3 class="box-title title-status">${key}</h3>
+                <div class="card box-solid box-status">
+                    <div class="card-body">
+                        <h3 class="card-title title-status">${key}</h3>
                         <div class="div-number-status">
                             <span class="circle"></span>
                             <span class="number-status">${values.realisee}/${values.objectif}</span><br/>
@@ -575,9 +575,9 @@
         </div>
     </div>
 </div>
-
-
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<?php // jQuery 3.7.1 was loaded from CDN here on top of the jQuery already
+// inside Metronic's plugins.bundle.js -- the second instance replaces
+// window.$ and detaches plugins bound to the first. Removed. ?>
 <!-- Add these in your <head> section -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -642,7 +642,7 @@
 
                 // Add tab header
                 $('#modal-default .nav-tabs').append(
-                    '<li class="' + isActive + '"><a href="#tab_' + index + '" data-toggle="tab">' + type + '</a></li>'
+                    '<li class="' + isActive + '"><a href="#tab_' + index + '" data-bs-toggle="tab">' + type + '</a></li>'
                 );
 
                 // Add tab content
@@ -650,7 +650,7 @@
 
                 // Add the visits data
                 if (visitesData[type] && visitesData[type].length > 0) {
-                    tabContent += '<table class="table table-bordered">';
+                    tabContent += '<table class="table table-row-bordered align-middle gy-4">';
                     tabContent += '<thead><tr><th>Nom & Prénom</th><th>Activité</th><th>POT</th><th>Date</th><th>Timer</th></tr></thead>';
                     tabContent += '<tbody>';
 
@@ -674,7 +674,7 @@
             });
 
             // Add map tab
-            $('#modal-default .nav-tabs').append('<li><a href="#tab_map" data-toggle="tab">Map</a></li>');
+            $('#modal-default .nav-tabs').append('<li><a href="#tab_map" data-bs-toggle="tab">Map</a></li>');
 
             // Create the map tab content
             var mapTabContent = '<div class="tab-pane" id="tab_map">';
@@ -684,8 +684,8 @@
 
             // Add the close button back to the nav tabs
             $('#modal-default .nav-tabs').append(
-                '<li class="pull-right">' +
-                '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+                '<li class="float-end">' +
+                '<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">' +
                 '<span aria-hidden="true">×</span></button>' +
                 '</li>'
             );
@@ -827,7 +827,7 @@
             }
 
             // Fix the map display issue - force a redraw when tab is shown
-            $('a[data-toggle="tab"][href="#tab_map"]').on('shown.bs.tab', function(e) {
+            $('a[data-bs-toggle="tab"][href="#tab_map"]').on('shown.bs.tab', function(e) {
                 map.invalidateSize();
             });
         }

@@ -1,7 +1,7 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     @media (max-width:932px){
-        .box-body{
+        .card-body{
             overflow: scroll;
             overflow-y: hidden;
         }
@@ -36,7 +36,7 @@
         border-radius: 9px;
         flex-shrink: 0;
     }
-    .lb-card-header .box-title {
+    .lb-card-header .card-title {
         color: #fff;
         font-weight: 600;
         margin: 0;
@@ -176,8 +176,8 @@
     }
 </style>
 
-<div class="box lb-card">
-    <div class="box-header lb-card-header">
+<div class="card lb-card">
+    <div class="card-header lb-card-header">
         <div class="lb-header-flex">
             <div class="lb-title-group">
                 <span class="lb-icon-badge">
@@ -185,7 +185,7 @@
                         <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM21 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </span>
-                <h3 class="box-title"><?php echo __('La liste des utilisateurs'); ?></h3>
+                <h3 class="card-title"><?php echo __('La liste des utilisateurs'); ?></h3>
             </div>
             <div class="lb-actions-group">
                 <?php if ($this->requestAction('/droits/getrole/users/add') == 1): ?>
@@ -205,7 +205,7 @@
             </div>
         </div>
     </div>
-    <div class="box-body lb-card-body">
+    <div class="card-body lb-card-body">
         <table id="example1" class="table lb-table">
             <thead>
                 <tr>
@@ -242,7 +242,7 @@
                             <div class="btn-group">
                                 <button type="button" class="lb-dropdown-toggle" aria-haspopup="true" aria-expanded="false" onclick="return toggleLegacyDropdown(this, event);">
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-                                    <span class="caret"></span>
+                                    <span class=""></span>
                                 </button>
                                 <ul class="dropdown-menu lb-dropdown-menu" role="menu" style="display:none;">
                                     <li> <?php
@@ -326,7 +326,7 @@
                                     <div class="btn-group">
                                         <button type="button" class="lb-dropdown-toggle" aria-haspopup="true" aria-expanded="false" onclick="return toggleLegacyDropdown(this, event);">
                                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-                                            <span class="caret"></span>
+                                            <span class=""></span>
                                         </button>
                                         <ul class="dropdown-menu lb-dropdown-menu" role="menu" style="display:none;">
                                             <li>  <?php
@@ -385,10 +385,6 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

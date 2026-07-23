@@ -31,6 +31,13 @@ PATTERNS = {
     'legacy DataTables css': r"Html->css\('dataTables\.bootstrap'\)",
     'duplicate jQuery':      r"Html->script\('jquery-[\d.]+min'\)|code\.jquery\.com",
     'CSS .box/.panel rule':  r'(?<![-\w])\.(box|panel)(-header|-body|-title|-footer)?(?![-\w])\s*[,{]',
+    # AdminLTE widget chrome + Bootstrap 3 float helpers. Added after the Users
+    # module revealed these in files earlier audits had passed as clean.
+    'AdminLTE small-box':    r'class="[^"]*(?<![-\w])small-box(?![-\w])',
+    'AdminLTE box-tools':    r'class="[^"]*(?<![-\w])(box-tools|btn-box-tool|collapsed-box)(?![-\w])',
+    'AdminLTE data-widget':  r'\sdata-widget=',
+    'BS3 pull-right/left':   r'class="[^"]*(?<![-\w])pull-(right|left)(?![-\w])',
+    'AdminLTE description':  r'class="[^"]*(?<![-\w])description-block(?![-\w])',
 }
 
 

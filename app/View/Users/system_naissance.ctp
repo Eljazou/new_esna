@@ -114,7 +114,7 @@
 
             <!-- 1. BIRTHDAYS TODAY -->
             <h3 class="bday-section-title">
-                <i class="fa fa-birthday-cake" aria-hidden="true"></i> Anniversaires aujourd'hui
+                <i class="ki-duotone ki-cake fs-5" aria-hidden="true"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i> Anniversaires aujourd'hui
             </h3>
             
             <?php $auj = 0; ?>
@@ -126,7 +126,7 @@
                             <a href="#" class="bday-username"><?php echo h($user["User"]["name"]); ?></a>
                         </div>
                         <div>
-                            <span class="bday-date-badge"><i class="fa fa-gift"></i> Aujourd'hui</span>
+                            <span class="bday-date-badge"><i class="ki-duotone ki-gift fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> Aujourd'hui</span>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -141,7 +141,7 @@
 
             <!-- 2. RECENT BIRTHDAYS -->
             <h3 class="bday-section-title">
-                <i class="fa fa-history" aria-hidden="true"></i> Anniversaires récents
+                <i class="ki-duotone ki-time fs-5" aria-hidden="true"><span class="path1"></span><span class="path2"></span></i> Anniversaires récents
             </h3>
             
             <?php $rec = 0; ?>
@@ -170,7 +170,7 @@
 
             <!-- 3. UPCOMING BIRTHDAYS -->
             <h3 class="bday-section-title">
-                <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Anniversaires à venir
+                <i class="ki-duotone ki-calendar-tick fs-5" aria-hidden="true"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i> Anniversaires à venir
             </h3>
             
             <?php $ven = 0; ?>

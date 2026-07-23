@@ -103,7 +103,7 @@ h2::after{ content:"👋"; margin-left:6px; }
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <div class="row">
-    <div class="col-md-12 ">
+    <div class="col-md-12">
         <div class="row mb-5">
             <div class="col-md-5">
                 <h2>Tableau de bord</h2>
@@ -479,9 +479,9 @@ h2::after{ content:"👋"; margin-left:6px; }
         </div>
     </div>
 </div>
-
-
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<?php // jQuery 3.7.1 was loaded from CDN here on top of the jQuery already
+// inside Metronic's plugins.bundle.js -- the second instance replaces
+// window.$ and detaches plugins bound to the first. Removed. ?>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
@@ -543,7 +543,7 @@ h2::after{ content:"👋"; margin-left:6px; }
                 var isActive = (type === currentType) ? 'active' : '';
 
                 $('#modal-default .nav-tabs').append(
-                    '<li class="' + isActive + '"><a href="#tab_' + index + '" data-toggle="tab">' + type + '</a></li>'
+                    '<li class="' + isActive + '"><a href="#tab_' + index + '" data-bs-toggle="tab">' + type + '</a></li>'
                 );
 
                 var tabContent = '<div class="tab-pane ' + isActive + '" id="tab_' + index + '">';
@@ -585,7 +585,7 @@ h2::after{ content:"👋"; margin-left:6px; }
                 $('#modal-default .tab-content').append(tabContent);
             });
 
-            $('#modal-default .nav-tabs').append('<li><a href="#tab_map" data-toggle="tab">Map</a></li>');
+            $('#modal-default .nav-tabs').append('<li><a href="#tab_map" data-bs-toggle="tab">Map</a></li>');
 
             var mapTabContent = '<div class="tab-pane" id="tab_map">';
             mapTabContent += '<div id="map-container" style="height: 400px; width: 100%;"></div>';
@@ -593,8 +593,8 @@ h2::after{ content:"👋"; margin-left:6px; }
             $('#modal-default .tab-content').append(mapTabContent);
 
             $('#modal-default .nav-tabs').append(
-                '<li class="pull-right">' +
-                '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+                '<li class="float-end">' +
+                '<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">' +
                 '<span aria-hidden="true">×</span></button>' +
                 '</li>'
             );
@@ -605,7 +605,7 @@ h2::after{ content:"👋"; margin-left:6px; }
                 initLeafletMap(visitesData);
             });
 
-            $(document).on('shown.bs.tab', 'a[data-toggle="tab"][href="#tab_map"]', function(e) {
+            $(document).on('shown.bs.tab', 'a[data-bs-toggle="tab"][href="#tab_map"]', function(e) {
                 if (window.visiteMap) {
                     window.visiteMap.invalidateSize();
                 }

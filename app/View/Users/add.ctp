@@ -21,7 +21,7 @@
             <?php echo $this->Form->create('User', array('type' => 'file', 'class' => 'form')); ?>
                 
                 <!-- PHOTO UPLOAD -->
-                <div class="form-group mb-6">
+                <div class="mb-5 mb-6">
                     <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Photo d'utilisateur</label>
                     <div class="custom-file-upload-wrapper">
                         <?php echo $this->Form->file('image', array('label' => false, 'class' => 'form-control-file-hidden', 'id' => 'userImageFileInput')); ?>
@@ -37,37 +37,37 @@
                 <div class="row">
                     <!-- COLUMN LEFT (8 Fields) -->
                     <div class="col-md-6">
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Ligne</label>
                             <?php echo $this->Form->input('ligne_id', array('label' => false, 'class' => 'form-control form-control-solid h-auto py-3 px-4 select2 custom-select-styled')); ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Nom & prénom</label>
                             <?php echo $this->Form->input('name', array('label' => false, 'class' => 'form-control form-control-solid h-auto py-3 px-4', 'placeholder' => 'Ex: Jean Dupont')); ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">E-mail</label>
                             <?php echo $this->Form->input('username', array('label' => false, 'class' => 'form-control form-control-solid h-auto py-3 px-4', 'placeholder' => 'exemple@domaine.com')); ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Mot de passe</label>
                             <?php echo $this->Form->input('password', array('label' => false, 'class' => 'form-control form-control-solid h-auto py-3 px-4')); ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Date de naissance</label>
                             <?php echo $this->Form->input('date_de_naissance', ['type' => 'text', 'class' => 'form-control form-control-solid h-auto py-3 px-4 date', 'label' => false, 'placeholder' => 'AAAA-MM-JJ']); ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Téléphone</label>
                             <?php echo $this->Form->input('tel', array('label' => false, 'class' => 'form-control form-control-solid h-auto py-3 px-4', 'placeholder' => '+212...')); ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Role</label>
                             <?php 
                             $roles = array("Admin" => "Admin", "Directeur" => "Directeur", "Responsable promotion" => "Responsable promotion",
@@ -76,7 +76,7 @@
                             ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Adresse</label>
                             <?php echo $this->Form->input('adresse', array('label' => false, 'class' => 'form-control form-control-solid h-auto py-3 px-4', 'placeholder' => 'Rue, Ville, Code Postal')); ?>
                         </div>
@@ -84,12 +84,12 @@
 
                     <!-- COLUMN RIGHT (8 Fields) -->
                     <div class="col-md-6">
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Ville (Sélection multiple)</label>
                             <?php echo $this->Form->input('ville', array("id" => "select2_ville", "name" => "ville[]", 'label' => false, 'class' => 'form-control form-control-solid choix_multi_ville', "multiple" => true)); ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Ville officiel note frais</label>
                             <?php 
                             $vv=array();
@@ -102,27 +102,27 @@
                             ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Prix kilométrage urbain</label>
                             <?php echo $this->Form->input('kilometrage_urbain', array('label' => false, 'class' => 'form-control form-control-solid h-auto py-3 px-4')); ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Prix kilométrage interville</label>
                             <?php echo $this->Form->input('kilometrage_interville', array('label' => false, 'class' => 'form-control form-control-solid h-auto py-3 px-4')); ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Code wavsoft</label>
                             <?php echo $this->Form->input('code_wavsoft', array('label' => false, 'class' => 'form-control form-control-solid h-auto py-3 px-4')); ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Matricule RH</label>
                             <?php echo $this->Form->input('mat_rh', array('label' => false, 'class' => 'form-control form-control-solid h-auto py-3 px-4')); ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Identification</label>
                             <?php 
                             $identifications=array("OTC"=>"OTC","Medical"=>"Medical");
@@ -130,7 +130,7 @@
                             ?>
                         </div>
 
-                        <div class="form-group mb-6">
+                        <div class="mb-5 mb-6">
                             <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Région ODP</label>
                             <?php 
                             $region_odp=array("CASA"=>"CASA","ORIENT"=>"ORIENT","RABAT"=>"RABAT","MARRAKECH"=>"MARRAKECH","TANGER"=>"TANGER","AGADIR"=>"AGADIR");
@@ -341,7 +341,6 @@
 </style>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
 echo $this->Html->css('datepicker3');
 echo $this->Html->script('bootstrap-datepicker');
 echo $this->Html->script('bootstrap-datepicker.fr');

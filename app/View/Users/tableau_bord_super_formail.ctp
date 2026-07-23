@@ -172,25 +172,25 @@
         padding-right: 91px;
     }
 </style>
-<!-- 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<?php // jQuery UI CSS removed: this view calls no jQuery UI widget and uses a
+// native <input type="date">. Verified - zero .datepicker()/.autocomplete()
+// calls and zero ui-* classes. ?>
 <?php echo $this->Html->css('leaflet'); ?>
 
 <div class="col-md-12" style="margin-bottom: 24px;padding:0px;">
-    <div class="box form-group">
-        <div class="box-header with-border">
-            <label class="box-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 6px;font-weight: normal;width: auto;text-align:left;float:left;">Pour des statistiques d'une période précise,veuillez sélectionner une date :</label>
+    <div class="card mb-5">
+        <div class="card-header">
+            <label class="card-title" style="margin-top: 7px;padding-left:10px;font-size: 16px;margin-bottom: 6px;font-weight: normal;width: auto;text-align:left;float:left;">Pour des statistiques d'une période précise,veuillez sélectionner une date :</label>
             <div class="col-md-6" style="height: 37px;">
                 <form action="<?php echo $this->Html->url(array("action" => "tableau_bord_super")); ?>/" method="get" id="dateform" autocomplete="off">
                     <div class="input-group col-lg-12" style="float:left;">
-                        <div class="input-group-addon">
-                            <i class="fa fa-clock-o"></i>
+                        <div class="input-group-text">
+                            <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                         </div>
-                        <input type="date" class="form-control pull-right" name="date" id="datetimepicker" placeholder="Rechercher" autocomplete="off">
+                        <input type="date" class="form-control float-end" name="date" id="datetimepicker" placeholder="Rechercher" autocomplete="off">
                     </div>
                     <input type="submit" value="Rechercher" style="float: right;top: -30px;position: relative;z-index: 999;right: 4px;-webkit-appearance:  none;background: #367fa9;border: none;border-radius: 3px;color: #fff;padding: 3px 5px;box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.52);">
                 </form>
@@ -203,27 +203,27 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="box ">
-            <div class="box-header with-border">
-                <h3 class="box-title">Détails</h3>
-                <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Détails</h3>
+                <div class="card-toolbar float-end">
+                    <button class="btn btn-sm btn-icon btn-active-light-primary"><i class="ki-duotone ki-minus"><span class="path1"></span></i></button>
+                    <button class="btn btn-sm btn-icon btn-active-light-primary"><i class="ki-duotone ki-cross"><span class="path1"></span></i></button>
                 </div>
             </div><!-- /.box-header -->
-            <div class="box-body" id="statistiques_mail">
+            <div class="card-body" id="statistiques_mail">
                 <section>
                     <div class="col-md-12" style="float: left;width: 100%;padding: 0px;">
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 divPadding">
-                            <div class="small-box bg-white box box-default collapsed-box" style="border-top:0px;">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 divPadding">
+                            <div class="card bg-white" style="border-top:0px;">
                                 <div class="inner">
                                     <div id="<?php echo $id; ?>specailites" style="width:100%;max-width:600px;height:200px"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 divPadding" id="<?php echo $id; ?>" id="<?php echo $id; ?>">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 divPadding" id="<?php echo $id; ?>" id="<?php echo $id; ?>">
                             <h3>Objectif global</h3>
-                            <div class="small-box bg-white box box-default collapsed-box" style="border-top:0px;">
+                            <div class="card bg-white" style="border-top:0px;">
                                 <div class="inner">
                                     <div class="gauge" style="width: 100%; max-width:600px;height:100%; --rotation:<?php echo round((180 * $objectifglobal / 100), 0); ?>deg; --color:#DCE35B; --background:#e9ecef;">
                                         <div class="percentage"></div>
@@ -233,8 +233,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 divPadding">
-                            <div class="small-box bg-white box box-default collapsed-box" style="border-top:0px;">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 divPadding">
+                            <div class="card bg-white" style="border-top:0px;">
                                 <div class="inner">
                                     <div id="<?php echo $id; ?>visites" style="width:100%; max-width:600px;height:200px"></div>
                                 </div>
@@ -242,24 +242,24 @@
                         </div>
                     </div>
                     <div class="col-md-12" style="float: left;width: 100%;padding: 0px;">
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 divPadding">
-                            <div class="small-box bg-white box box-default collapsed-box" style="border-top:0px;">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 divPadding">
+                            <div class="card bg-white" style="border-top:0px;">
                                 <div class="inner">
                                     <div id="<?php echo $id; ?>pots" style="width:100%; max-width:600px;height:200px">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 divPadding" id="<?php echo $id; ?>">
-                            <div class="small-box bg-white box box-default collapsed-box" style="border-top:0px;">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 divPadding" id="<?php echo $id; ?>">
+                            <div class="card bg-white" style="border-top:0px;">
                                 <div class="inner">
                                     <div id="<?php echo $id; ?>nbvsitiesbydate" style="width:100%;max-width:600px;height:200px"></div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 divPadding">
-                            <div class="small-box bg-white box box-default collapsed-box" style="border-top:0px;">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 divPadding">
+                            <div class="card bg-white" style="border-top:0px;">
                                 <div class="inner">
                                     <canvas id="<?php echo $id; ?>types" style="width:100%;max-width:600px;height:200px"></canvas>
                                 </div>
@@ -276,16 +276,16 @@
 
 <div id="detailModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content col-xs-12" style="border-radius: 6px;font-size: 16px;padding: 0px;">
-            <div class="modal-head col-xs-12" style="background:#469ed1;color: #fff;">
+        <div class="modal-content col-12" style="border-radius: 6px;font-size: 16px;padding: 0px;">
+            <div class="modal-head col-12" style="background:#469ed1;color: #fff;">
                 <h2 class="modal-title" id="gridModalLabel" style="width: auto;float: left;">Détail :</h2>
                 <span class="modal-title-time"><b class="time"></b></span>
 
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: 35px;float: right;">×</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
             </div>
-            <div class="modal-body col-xs-12">
+            <div class="modal-body col-12">
                 <div class="all-body-modal">
-                    <table class="table table-bordred table-detail col-xs-10" style="width:100%;">
+                    <table class="table table-bordred table-detail col-10" style="width:100%;">
                         <thead>
                             <tr>
                                 <th>Nom & Prénom</th>
@@ -301,10 +301,10 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- <div class="col-xs-2" style="width:25%;"><b class="time"></b></div> -->
-                <div class="col-xs-2 pull-right" style="margin-top: 5px;">
-                    <button data-toggle="modal" data-target="#detailMap" type="button" class="btn btn-primary bg-green detailmap">
-                        <i class="fa fa-map-marker" style="margin-right: 6px;"></i>Détail Maps
+                <!-- <div class="col-2" style="width:25%;"><b class="time"></b></div> -->
+                <div class="col-2 float-end" style="margin-top: 5px;">
+                    <button data-bs-toggle="modal" data-bs-target="#detailMap" type="button" class="btn btn-primary bg-success detailmap">
+                        <i class="ki-duotone ki-geolocation fs-5" style="margin-right: 6px;"><span class="path1"></span><span class="path2"></span></i>Détail Maps
                     </button>
                 </div>
             </div>
@@ -316,14 +316,14 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 <h4 class="modal-title">Maps <b style="float:right;margin-right:10px;"></b></h4>
             </div>
             <div class="modal-body" style="height: 480px;">
                 <div id="map-canvas" class="col-md-12" style="height: 480px;"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
             </div>
         </div>
     </div>
@@ -342,14 +342,14 @@ foreach ($users as $vmp) :
 
 ?>
     <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
                         Rapport des visites de l'équipe de <?php echo $vmp['super']['User']['name']; ?>
                     </h3>
                 </div>
-                <div class="box-body table-responsive no-padding">
+                <div class="card-body table-responsive no-padding">
                     <table class="table table-hover">
                         <tbody>
                             <tr>
@@ -539,8 +539,8 @@ foreach ($detail as $drenieruser => $v) {
             </div>
             <div class="card-pane-right bg-success pt-2 pb-2 pl-4 pr-4">
                 <?php foreach ($derniervisite as $key => $value) : ?>
-                    <div class="description-block mb-4">
-                        <div class="sparkbar pad" data-color="#fff"><i class="fa fa-circle <?php echo $derniervisite[$key]["color"] ?>"></i> <?php echo $key; ?></div>
+                    <div class="d-block mb-4">
+                        <div class="sparkbar pad" data-color="#fff"><i class="ki-duotone ki-abstract-8 fs-6 <?php echo $derniervisite[$key]["color"] ?>"><span class="path1"></span><span class="path2"></span></i> <?php echo $key; ?></div>
                     </div>
                 <?php endforeach; ?>
             </div><!-- /.card-pane-right -->
@@ -551,9 +551,7 @@ foreach ($detail as $drenieruser => $v) {
 
 <button onclick="captureWithHtml2Canvas()">Capture with html2canvas</button>
 <img id="result" alt="Screenshot will appear here" style="width: 100%;" />
-
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<?php // jQuery UI JS removed for the same reason (unused on this page). ?>
 <!-- Make sure you put this AFTER Leaflet's CSS -->
 <?php echo $this->Html->script('leaflet'); ?>
 

@@ -147,7 +147,7 @@
                                 <div class="input-group-text">
                                     <i class="fa-regular fa-clock"></i>
                                 </div>
-                                <input type="text" name="data[Rapport][date]" class="form-control pull-right" name="date" id="reservationtime" placeholder="Date">
+                                <input type="text" name="data[Rapport][date]" class="form-control float-end" name="date" id="reservationtime" placeholder="Date">
                             </div>
                         </div>
                     </div>

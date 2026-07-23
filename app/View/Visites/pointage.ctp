@@ -246,7 +246,7 @@ function distance($longitude,$latitude,$client_longitude,$client_latitude)
 							<div class="input-group-text">
 								<i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
 							</div>
-							<input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control pull-right" name="date" id="reservationtime" placeholder="Rechercher">
+							<input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control float-end" name="date" id="reservationtime" placeholder="Rechercher">
 						</div>
 						<span class="ptg-chevron">
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -259,7 +259,7 @@ function distance($longitude,$latitude,$client_longitude,$client_latitude)
 </div>
 <div class="row">
 	<div class="col-md-12" style="margin-bottom: 24px;"> 
-	<div class="card collapsed-box">
+	<div class="card">
             <div class="card-header">
               <h3 class="card-title">
 				<span class="ptg-icon-chip teal">
@@ -268,8 +268,8 @@ function distance($longitude,$latitude,$client_longitude,$client_latitude)
 				Les informations
 			  </h3>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+              <div class="card-toolbar float-end">
+                <button type="button" class="btn btn-sm btn-icon btn-active-light-primary"><i class="ki-duotone ki-plus"><span class="path1"></span></i>
                 </button>
               </div>
             </div>
@@ -528,7 +528,7 @@ foreach ($visites as $value)
 						</span>
 						Recape
 					</h3>
-					<div class="box-tools pull-right">
+					<div class="card-toolbar float-end">
 						<span class="ptg-action-btn">
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"></line><circle cx="9" cy="6" r="2"></circle><line x1="4" y1="12" x2="20" y2="12"></line><circle cx="16" cy="12" r="2"></circle><line x1="4" y1="18" x2="20" y2="18"></line><circle cx="10" cy="18" r="2"></circle></svg>
 						</span>

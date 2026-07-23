@@ -207,6 +207,16 @@ def metronize(src):
         'input-group-addon': 'input-group-text',
         'table-bordered': 'table-row-bordered',
         'btn-block': 'w-100',
+        # AdminLTE leftovers found while migrating Users -- these appear across
+        # every module, including ones previously reported clean.
+        'small-box': 'card',
+        'collapsed-box': '',
+        'box-tools': 'card-toolbar',
+        'btn-box-tool': 'btn btn-sm btn-icon btn-active-light-primary',
+        'description-block': 'd-block',
+        # Bootstrap 3 float helpers -> Bootstrap 5
+        'pull-right': 'float-end',
+        'pull-left': 'float-start',
     }
 
     def fix_tokens(m):

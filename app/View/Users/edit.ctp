@@ -1,5 +1,3 @@
-<?php echo $this->Html->css('select2.min'); ?>
-
 <!-- Injecting Modern Dashboard Styles Directly into this View -->
 <style type="text/css">
     /* Form Section Layout Containers */
@@ -293,8 +291,6 @@
 
 <!-- Dynamic Vendor Script Injections -->
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('select2.full.min');
 echo $this->Html->css('datepicker3');
 echo $this->Html->script('bootstrap-datepicker');
 echo $this->Html->script('bootstrap-datepicker.fr');

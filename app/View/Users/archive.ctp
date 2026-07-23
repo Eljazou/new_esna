@@ -1,4 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
+<?php echo $this->element('assets/datatables'); ?>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style type="text/css">
@@ -7,11 +7,11 @@
         --primary-light: #ece9fe;
     }
 
-    body, .box, table, .dropdown-menu {
+    body, .card, table, .dropdown-menu {
         font-family: 'Poppins', sans-serif;
     }
 
-    .box {
+    .card {
         border-radius: 22px !important;
         border: none !important;
         box-shadow: 0 4px 20px rgba(108, 99, 245, 0.08) !important;
@@ -20,7 +20,7 @@
     }
 
     /* ===== Hero header ===== */
-    .box-header {
+    .card-header {
         border: none !important;
         position: relative;
         overflow: hidden;
@@ -46,7 +46,7 @@
         color: var(--primary);
     }
 
-    .box-title.hero-title {
+    .card-title.hero-title {
         font-size: 24px;
         font-weight: 700;
         color: #171730;
@@ -83,7 +83,7 @@
     }
 
     /* ===== Body / controls ===== */
-    .box-body { padding: 0 30px 28px; }
+    .card-body { padding: 0 30px 28px; }
 
     .dataTables_length,
     .dataTables_filter,
@@ -286,14 +286,14 @@
     }
 </style>
 
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
         <div class="hero-left">
             <div class="hero-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <div>
-                <h3 class="box-title hero-title"><?php echo __('Utilisateurs'); ?></h3>
+                <h3 class="card-title hero-title"><?php echo __('Utilisateurs'); ?></h3>
                 <div class="hero-subtitle">Gérez les comptes et les accès des utilisateurs</div>
             </div>
         </div>
@@ -307,8 +307,8 @@
         );
         ?>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>Image</th>
@@ -406,10 +406,6 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

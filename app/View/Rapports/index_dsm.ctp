@@ -130,7 +130,7 @@ function truncateText($text, $limit = 50)
                         </div>
                         <input type="text"
                             <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?>
-                            class="form-control pull-right"
+                            class="form-control float-end"
                             name="date"
                             id="reservationtime"
                             placeholder="Rechercher">
@@ -157,7 +157,7 @@ function truncateText($text, $limit = 50)
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title"><?php echo __('Rapports'); ?></h3>
-                <div class="box-tools pull-right">
+                <div class="card-toolbar float-end">
                     <?php
                     $currentDay  = date('N'); // 1 = Monday, 7 = Sunday
                     $currentHour = date('H'); // 00–23

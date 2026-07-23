@@ -533,10 +533,6 @@ echo $this->Html->css('daterangepicker');
 </div>
 
 <!-- SCRIPTS -->
-<?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <?php echo $this->Html->script('daterangepicker'); ?>
 <script>

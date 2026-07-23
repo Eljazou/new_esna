@@ -1,5 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     /* ===== LaboRate Indigo Card System — Affectations ===== */
     .lb-card {
@@ -23,7 +22,7 @@
         border-radius: 9px;
         flex-shrink: 0;
     }
-    .lb-card-header .box-title {
+    .lb-card-header .card-title {
         color: #fff;
         font-weight: 600;
         margin: 0;
@@ -201,18 +200,18 @@
     }
 </style>
 
-<div class="box lb-card">
-    <div class="box-header lb-card-header">
+<div class="card lb-card">
+    <div class="card-header lb-card-header">
         <div class="lb-header-flex">
             <span class="lb-icon-badge">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM19 8v6M22 11h-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </span>
-            <h3 class="box-title">La liste des affectations</h3>
+            <h3 class="card-title">La liste des affectations</h3>
         </div>
     </div>
-    <div class="box-body lb-card-body">
+    <div class="card-body lb-card-body">
         <table id="example1" class="table lb-table">
             <thead>
                 <tr>
@@ -281,10 +280,6 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

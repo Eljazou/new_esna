@@ -68,6 +68,14 @@ def check(rel):
     if not os.path.isfile(old) or not os.path.isfile(new):
         print('%-44s SKIP' % rel)
         return 0
+    new_src = io.open(new, encoding='utf-8', errors='replace').read()
+    # A view that was deliberately rebuilt from scratch (rather than restyled)
+    # will legitimately lose whole JS blocks, so token counts are meaningless.
+    # Such files opt out explicitly with @migration-rewrite in their docblock.
+    if '@migration-rewrite' in new_src:
+        print('%-44s REWRITE (opted out)' % rel)
+        return 0
+
     a, b = counts(old), counts(new)
     # Asset includes legitimately removed by the migration shift some counts,
     # so only flag tokens that indicate *code* damage.

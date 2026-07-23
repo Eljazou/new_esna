@@ -19,7 +19,7 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
                                 <div class="input-group-text">
                                     <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                                 </div>
-                                <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control pull-right" name="date" id="reservationtime" placeholder="Rechercher">
+                                <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control float-end" name="date" id="reservationtime" placeholder="Rechercher">
                             </div>
                         </form>
                     </div>

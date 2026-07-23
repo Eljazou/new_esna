@@ -2857,10 +2857,10 @@ if (!empty($tSpec)) {
 											echo 'Objectif non renseigné,impossible de faire le calcul';
 										else
 											echo round($value / $objectifglobale * 100, 2) . '%'; ?>
-										<button type="button" onclick="boxtogl(<?php echo $i; ?>)" class="btn btn-box-tool" style="font-size:16px; border-radius:0px;border-left:1px solid #fff;padding: 0px 4px;color:#fff;"><i id="iconl<?php echo $i; ?>" class="ki-duotone ki-plus fs-6" style="color:#fff;"></i></button>
+										<button type="button" onclick="boxtogl(<?php echo $i; ?>)" class="btn btn-sm btn-icon btn-active-light-primary" style="font-size:16px; border-radius:0px;border-left:1px solid #fff;padding: 0px 4px;color:#fff;"><i id="iconl<?php echo $i; ?>" class="ki-duotone ki-plus fs-6" style="color:#fff;"></i></button>
 									</span></div>
 							</div>
-							<button type="button" onclick="boxtog(<?php echo $i; ?>)" class="btn btn-box-tool" style="float: right;font-size:16px;">Voir tout les visites <i id="icon<?php echo $i; ?>" class="ki-duotone ki-plus fs-6" style="color:#aaa;"></i></button>
+							<button type="button" onclick="boxtog(<?php echo $i; ?>)" class="btn btn-sm btn-icon btn-active-light-primary" style="float: right;font-size:16px;">Voir tout les visites <i id="icon<?php echo $i; ?>" class="ki-duotone ki-plus fs-6" style="color:#aaa;"></i></button>
 							<div class="col-md-12 boxtogl<?php echo $i; ?>" style="display:none;overflow: scroll;overflow-y: hidden;">
 								<table class="table table-row-bordered align-middle gy-4" style="text-align:center;">
 									<thead>
@@ -2947,7 +2947,7 @@ if (!empty($tSpec)) {
 																										echo 0;
 																									} ?>%</span><?php } ?>
 											</td>
-											<td><?php if ($keyO == "Médecin"): ?><button type="button" onclick="boxtogp(<?php echo $i; ?>)" class="btn btn-box-tool" style="float: none;margin:auto;font-size:16px;"><i id="iconp<?php echo $i; ?>" class="ki-duotone ki-plus fs-6" style="color:#aaa;"></i></button><?php endif; ?></td>
+											<td><?php if ($keyO == "Médecin"): ?><button type="button" onclick="boxtogp(<?php echo $i; ?>)" class="btn btn-sm btn-icon btn-active-light-primary" style="float: none;margin:auto;font-size:16px;"><i id="iconp<?php echo $i; ?>" class="ki-duotone ki-plus fs-6" style="color:#aaa;"></i></button><?php endif; ?></td>
 										</tr>
 										<?php if ($keyO == "Médecin"): ?>
 											<tbody class="boxtogp<?php echo $i; ?>" style="display:none;">

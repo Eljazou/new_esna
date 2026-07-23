@@ -242,7 +242,7 @@ echo $this->Html->script('demo');
 		</div>
 		<form action="<?php $this->Html->url("/rapports/visites/") ?>" method="get" id="dateform">
 			<div class="input-group">
-				<input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control pull-right" name="date" id="reservationtime" placeholder="Rechercher" autocomplete="off">
+				<input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control float-end" name="date" id="reservationtime" placeholder="Rechercher" autocomplete="off">
 			</div>
 		</form>
 	</div>

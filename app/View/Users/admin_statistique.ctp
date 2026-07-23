@@ -1,5 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>	
+<?php echo $this->element('assets/datatables'); ?>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
     .dt-button{width:auto;float:left;margin:5px;font-size:16px;line-height:22px;padding:3px 8px;background:#337ab7;color:#fff; }
@@ -73,13 +72,13 @@
             font-family:'Poppins',sans-serif;
             color:#3a3a4a;
         }
-        .avs-wrapper .box{
+        .avs-wrapper .card{
             background:#fff;
             border:none;
             border-radius:18px;
             box-shadow:0 4px 24px rgba(108,99,245,0.08);
         }
-        .avs-wrapper .row > .col-md-12 > .box{
+        .avs-wrapper .row > .col-md-12 > .card{
             padding:0;
             overflow:hidden;
         }
@@ -134,7 +133,7 @@
             overflow:hidden;
             background:#fff;
         }
-        .avs-wrapper .input-group-addon{
+        .avs-wrapper .input-group-text{
             background:#faf9ff;
             border:none;
             border-right:1.5px solid #ded9fb;
@@ -168,17 +167,17 @@
             stroke:#fff;
         }
         /* employee cards (generated inside the PHP loop) */
-        .avs-wrapper .row .col-md-12 > .box > .box[style*="padding:1%"]{
+        .avs-wrapper .row .col-md-12 > .card > .card[style*="padding:1%"]{
             border:1px solid #eeecf9 !important;
             border-radius:16px !important;
             box-shadow:none;
             margin-bottom:18px !important;
         }
-        .avs-wrapper .box-header.with-border{
+        .avs-wrapper .card-header.with-border{
             border:none;
             padding:14px 16px;
         }
-        .avs-wrapper .box-title{
+        .avs-wrapper .card-title{
             color:#2d2b45;
         }
         .avs-wrapper .badge.bg-red{background:#f4544e;border-radius:999px;padding:4px 10px;}
@@ -246,7 +245,7 @@
             border-radius:3px;
             background:linear-gradient(90deg,#6C63F5,#8c7ef2);
         }
-        .avs-wrapper .tablebox .box-body{
+        .avs-wrapper .tablebox .card-body{
             padding:20px 26px 26px 26px !important;
         }
         .avs-wrapper .dt-buttons{
@@ -356,8 +355,7 @@
         .lb-cal-apply-btn{ background:#6C63F5; color:#fff; }
         .lb-cal-apply-btn:hover{ background:#5a51e0; }
     </style>
-    <?php echo $this->Html->css('dataTables.bootstrap'); ?>
-    <div class="avs-wrapper" style="width:100%;">
+        <div class="avs-wrapper" style="width:100%;">
     <div class="col-md-12" style="margin-bottom: 24px;"> 
         <div class="avs-datebanner">
             <div class="avs-datebanner-left">
@@ -372,11 +370,11 @@
                 <div class="col-md-6" style="padding:0;">
                     <form action="<?php echo $this->Html->url(array("controller" => "users", "action" => "admin_statistique")); ?>" method="get" id="dateform">
                         <div class="input-group col-lg-12" style="float:left;">
-                            <div class="input-group-addon">
-                                <i class="fa fa-clock-o"></i>
+                            <div class="input-group-text">
+                                <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                             </div>
                             <div class="date-field-wrap" style="flex:1;">
-                                <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control pull-right lb-date-input" name="date" id="reservationtime" placeholder="Rechercher" autocomplete="off">
+                                <input type="text" <?php if ($date_debut != '') echo 'value="' . $date_debut . ' -- ' . $date_fin . '"'; ?> class="form-control float-end lb-date-input" name="date" id="reservationtime" placeholder="Rechercher" autocomplete="off">
                             </div>
                         </div>
                     </form>
@@ -403,7 +401,7 @@ foreach ($users as $u) {
 <div class="avs-wrapper">
 <div class="row">
     <div class="col-md-12" style="float:none;margin:auto;">
-        <div class="box" style="border-color:#3c8dbc;">
+        <div class="card" style="border-color:#3c8dbc;">
             <div class="avs-listbanner">
                 <div class="avs-icon-badge">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
@@ -434,7 +432,7 @@ foreach ($users as $u) {
 
                     $j++;
                     ?>
-                    <div class="box" style="padding:1% 0%;width:98%;margin:auto;">
+                    <div class="card" style="padding:1% 0%;width:98%;margin:auto;">
                         <?php
                         $class = "";
                         $objectifglobale = 0;
@@ -496,8 +494,8 @@ foreach ($users as $u) {
                             $sdata[$name]["progression"] = 0;
                         ?>
 
-                        <div class="box-header with-border">
-                            <div class="box-title col-md-10" style="padding: 0px;">
+                        <div class="card-header">
+                            <div class="card-title col-md-10" style="padding: 0px;">
                                 <div class="col-md-2" style="font-size: 15px;padding: 4px;"><b>Employé : </b></br><span><?php echo $name; ?></span></div>
                                 <div class="col-md-2" style="font-size: 15px;padding: 4px;width: 11%;"><b>Rôle : </b></br><span><?php echo $role; ?></span></div>
                                 <div class="col-md-2" style="font-size: 15px;padding: 4px;width: 27%;">
@@ -528,12 +526,12 @@ foreach ($users as $u) {
                                         else
                                             echo round($value / $objectifglobale * 100, 2) . '%';
                                         ?> 
-                                        <button type="button" onclick="boxtogl(<?php echo $i; ?>)" class="btn btn-box-tool" style="font-size:16px; border-radius:0px;border-left:1px solid #fff;padding: 0px 4px;"><i id="iconl<?php echo $i; ?>" class="fa fa-plus" style="color:#fff;"></i></button>
+                                        <button type="button" onclick="boxtogl(<?php echo $i; ?>)" class="btn btn-sm btn-icon btn-active-light-primary" style="font-size:16px; border-radius:0px;border-left:1px solid #fff;padding: 0px 4px;"><i id="iconl<?php echo $i; ?>" class="ki-duotone ki-plus fs-6" style="color:#fff;"></i></button>
                                     </span></div>
                             </div>
-                            <button type="button" onclick="boxtog(<?php echo $i; ?>)" class="btn btn-box-tool" style="float: right;font-size:15px;">Voir tout les visites <i id="icon<?php echo $i; ?>" class="fa fa-plus" style="color:#aaa;"></i></button>
+                            <button type="button" onclick="boxtog(<?php echo $i; ?>)" class="btn btn-sm btn-icon btn-active-light-primary" style="float: right;font-size:15px;">Voir tout les visites <i id="icon<?php echo $i; ?>" class="ki-duotone ki-plus fs-6" style="color:#aaa;"></i></button>
                             <div class="col-md-12 boxtogl<?php echo $i; ?>" style="display:none;overflow: scroll;overflow-y: hidden;">
-                                <table class="table table-bordered" style="text-align:center;">
+                                <table class="table table-row-bordered align-middle gy-4" style="text-align:center;">
                                     <thead>
                                         <tr>
                                             <th>Type</th>
@@ -634,7 +632,7 @@ foreach ($users as $u) {
                                                     }
                                                     ?>%</span></td>
                                             <td>
-                                                <?php if ($keyO == "Médecin"): ?><button type="button" onclick="boxtogp(<?php echo $i; ?>)" class="btn btn-box-tool" style="float: none;margin:auto;font-size:16px;"><i id="iconp<?php echo $i; ?>" class="fa fa-plus" style="color:#aaa;"></i></button><?php endif; ?>
+                                                <?php if ($keyO == "Médecin"): ?><button type="button" onclick="boxtogp(<?php echo $i; ?>)" class="btn btn-sm btn-icon btn-active-light-primary" style="float: none;margin:auto;font-size:16px;"><i id="iconp<?php echo $i; ?>" class="ki-duotone ki-plus fs-6" style="color:#aaa;"></i></button><?php endif; ?>
                                             </td>
                                         </tr>
                                         <?php if ($keyO == "Médecin"): ?>
@@ -735,8 +733,8 @@ foreach ($users as $u) {
                                 </table>
                             </div>
                         </div>
-                        <div class="box-body boxtog<?php echo $i; ?>" style="display:none;overflow: scroll;overflow-y: hidden;padding: 0px;">
-                            <table class="table table-bordered display" id="e<?php echo $j ?>">
+                        <div class="card-body boxtog<?php echo $i; ?>" style="display:none;overflow: scroll;overflow-y: hidden;padding: 0px;">
+                            <table class="table table-row-bordered align-middle gy-4 display" id="e<?php echo $j ?>">
                                 <thead>
                                     <tr>
                                         <th>Client</th>
@@ -783,8 +781,8 @@ foreach ($users as $u) {
                                                     foreach ($obV as $o) {
                                                         $products = explode(';', $o);
                                                         ?>
-                                                        <div class="col-xs-12" style="float:left;padding: 0px;margin-bottom: 4px;">
-                                                            <span class="label bg-aqua" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
+                                                        <div class="col-12" style="float:left;padding: 0px;margin-bottom: 4px;">
+                                                            <span class="label bg-primary" style="width: 100%;padding: 7px 5px;margin-right: 3px;vertical-align: middle;float:left;font-size: 13px;"><b style="margin-right: 0px;"><?php
                                                                     //debug($product);
                                                                     foreach ($produits as $key => $p) {
                                                                         if ($key == $products[0]) {
@@ -793,7 +791,7 @@ foreach ($users as $u) {
                                                                     }
                                                                     //echo $products[0];
                                                                     ?>
-                                                                </b> <i class="fa fa-plus" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
+                                                                </b> <i class="ki-duotone ki-plus fs-6" id="iconpr<?php echo $ii; ?>" style="cursor:pointer;border-left: 2px solid #fff;padding: 0px 5px;" onclick="boxtogprod(<?php echo $ii; ?>)"></i></span>
                                                             <div class="boxtogprod<?php echo $ii; ?>" style="display:none;">
                                                                 <?php
                                                                 $objections = explode(',', $products[1]);
@@ -802,7 +800,7 @@ foreach ($users as $u) {
                                                                     $objec = explode('|', $obj);
                                                                     ?>
                                                                     <div class="col-md-2 objet objeto<?php echo $iii; ?>">
-                                                                        <span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="fa fa-plus"></i></span>
+                                                                        <span class="optionh optionho<?php echo $iii; ?>" onclick="boxtogpo(<?php echo $iii; ?>)"><?php echo $objec[0]; ?> <i id="iconpo<?php echo $iii; ?>" class="ki-duotone ki-plus fs-6"></i></span>
                                                                         <ul class="optionb optionbo boxtogpo<?php echo $iii; ?>">
                                                                             <?php for ($j = 1; $j < count($objec); $j++) { ?>
                                                                                 <li><?php echo $objec[$j]; ?></li>
@@ -875,16 +873,16 @@ foreach ($users as $u) {
             </div>
         </div>
     </div>
-    <div class="tablebox col-md-12 col-sm-12 col-xs-12">
-        <div class="box">
+    <div class="tablebox col-md-12 col-sm-12 col-12">
+        <div class="card">
             <div class="avs-tableheader">
                 <div class="avs-icon-badge" style="width:40px;height:40px;min-width:40px;">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
                 </div>
                 <h3 class="avs-tableheader-title">Tableau global</h3>
             </div>
-            <div class="box-body" style="height: 243px;overflow-y: scroll;overflow-x: hidden;padding: 20px 26px 26px 26px;">
-                <table id="examplen" class="table table-bordered table-striped">
+            <div class="card-body" style="height: 243px;overflow-y: scroll;overflow-x: hidden;padding: 20px 26px 26px 26px;">
+                <table id="examplen" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                     <thead>
                         <tr>
                             <th>Employé </th>
@@ -917,27 +915,16 @@ foreach ($users as $u) {
 </div>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 echo $this->Html->script('jquery.flot.min');
 echo $this->Html->script('jquery.flot.resize.min');
 echo $this->Html->script('jquery.flot.pie.min');
 echo $this->Html->script('jquery.flot.categories.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script>
                                                                             $(function () {
                                                                                 $('#examplen').DataTable({
@@ -1284,51 +1271,51 @@ echo $this->Html->script('jquery.slimscroll.min');
     function boxtog(id) {
         $(".boxtog" + id).toggle();
         var clas = $("#icon" + id).attr("class");
-        if (clas == 'fa fa-minus') {
-            $("#icon" + id).attr("class", "fa fa-plus");
+        if (clas == 'ki-duotone ki-minus fs-6') {
+            $("#icon" + id).attr("class", "ki-duotone ki-plus fs-6");
         }
-        if (clas == 'fa fa-plus') {
-            $("#icon" + id).attr("class", "fa fa-minus");
+        if (clas == 'ki-duotone ki-plus fs-6') {
+            $("#icon" + id).attr("class", "ki-duotone ki-minus fs-6");
         }
     }
     function boxtogl(id) {
         $(".boxtogl" + id).toggle();
         var clas = $("#iconl" + id).attr("class");
-        if (clas == 'fa fa-minus') {
-            $("#iconl" + id).attr("class", "fa fa-plus");
+        if (clas == 'ki-duotone ki-minus fs-6') {
+            $("#iconl" + id).attr("class", "ki-duotone ki-plus fs-6");
         }
-        if (clas == 'fa fa-plus') {
-            $("#iconl" + id).attr("class", "fa fa-minus");
+        if (clas == 'ki-duotone ki-plus fs-6') {
+            $("#iconl" + id).attr("class", "ki-duotone ki-minus fs-6");
         }
     }
     function boxtogp(id) {
         $(".boxtogp" + id).toggle();
         var clas = $("#iconp" + id).attr("class");
-        if (clas == 'fa fa-minus') {
-            $("#iconp" + id).attr("class", "fa fa-plus");
+        if (clas == 'ki-duotone ki-minus fs-6') {
+            $("#iconp" + id).attr("class", "ki-duotone ki-plus fs-6");
         }
-        if (clas == 'fa fa-plus') {
-            $("#iconp" + id).attr("class", "fa fa-minus");
+        if (clas == 'ki-duotone ki-plus fs-6') {
+            $("#iconp" + id).attr("class", "ki-duotone ki-minus fs-6");
         }
     }
     function boxtogpo(id) {
         $(".boxtogpo" + id).toggle();
         var clas = $("#iconpo" + id).attr("class");
-        if (clas == 'fa fa-minus') {
-            $("#iconpo" + id).attr("class", "fa fa-plus");
+        if (clas == 'ki-duotone ki-minus fs-6') {
+            $("#iconpo" + id).attr("class", "ki-duotone ki-plus fs-6");
         }
-        if (clas == 'fa fa-plus') {
-            $("#iconpo" + id).attr("class", "fa fa-minus");
+        if (clas == 'ki-duotone ki-plus fs-6') {
+            $("#iconpo" + id).attr("class", "ki-duotone ki-minus fs-6");
         }
     }
     function boxtogprod(id) {
         $(".boxtogprod" + id).toggle();
         var clas = $("#iconpr" + id).attr("class");
-        if (clas == 'fa fa-minus') {
-            $("#iconpr" + id).attr("class", "fa fa-plus");
+        if (clas == 'ki-duotone ki-minus fs-6') {
+            $("#iconpr" + id).attr("class", "ki-duotone ki-plus fs-6");
         }
-        if (clas == 'fa fa-plus') {
-            $("#iconpr" + id).attr("class", "fa fa-minus");
+        if (clas == 'ki-duotone ki-plus fs-6') {
+            $("#iconpr" + id).attr("class", "ki-duotone ki-minus fs-6");
         }
     }
 

@@ -103,7 +103,8 @@ Legend: ✅ done · 🟡 in progress · ⬜ pending · ⛔ blocked
 | 9 | Page-by-page reconstruction — **Clients (15 views)** | ✅ 2026-07-22 |
 | 10 | Page-by-page — **Visites (13 views)** | ✅ 2026-07-23 |
 | 11 | Page-by-page — **Rapports (11 views)** | ✅ 2026-07-23 |
-| 12 | Next module: Users (16 views) | ⬜ |
+| 12 | Page-by-page — **Users (15 views)** | ✅ 2026-07-23 |
+| 13 | Next module: Listes (12 views) | ⬜ |
 
 ### Per-module migration checklist
 
@@ -558,6 +559,76 @@ damage exists.**
 | Visites (13) | ✅ | ✅ identical | ✅ | ✅ | ✅ |
 | Rapports (11) | ✅ | ✅ identical | ✅ | ✅ | ✅ |
 
+### 2026-07-23 — Step 3, module 4: **Users** (16 → 15 views) ✅
+
+8,082 → 6,981 lines. Deleted `tableau_bord_super_old.ctp` (1,110 lines, unreferenced).
+All 15 views: `php -l` clean, **logic identical**, legacy audit **ALL CLEAN**.
+
+**`login.ctp` was rebuilt, not restyled.** It renders a *complete* HTML document (the
+`login` layout is only `flash + content`) and was a standalone AdminLTE page —
+`skin-blue.min`, `style.min`, Bootstrap 3, Font Awesome and Ionicons from CDNs. It is now a
+Metronic sign-in card on the ESNAPHARM background, using the same bundle order as the main
+layout so branding matches.
+
+Preserved exactly, because `AuthComponent` depends on them — each verified present exactly
+once in the markup: `$this->Form->create('User')`, the raw `</form>` close,
+`name="data[User][username]"`, `name="data[User][password]"`, and the
+`/img/background/dwa2.jpg` background.
+
+Two JS blocks were dropped on purpose: the `$(window).load()` flash rewriter (flash is now
+server-side — `Layouts/login.ctp` was switched to `element('layout/flash')`, without which
+the page would have shown a raw unstyled `<div class="message">`), and an `$('input').iCheck()`
+call — **iCheck was never loaded on that page**, so it had been throwing on every visit.
+
+Because a full rewrite makes token-count comparison meaningless, `verify_code_intact.py`
+gained an explicit `@migration-rewrite` opt-out marker, which `login.ctp` carries. Its form
+contract is still asserted by `verify_php.py` (reports logic-identical).
+
+**TODO #25 closed** — `admin_statistique.ctp`'s `.optionh` toggle migrated, markup and JS
+together. As in Rapports, the assignments used double quotes and the comparisons single
+quotes; 25 toggle strings plus 5 static icons converted, both forms moved together.
+
+### 🟡 Third incomplete pattern set — found leftovers in modules already reported clean
+
+Migrating Users surfaced AdminLTE classes none of my audit patterns covered:
+`small-box`, `collapsed-box`, `box-tools`, `btn-box-tool`, `data-widget`,
+`description-block`, and the Bootstrap 3 float helpers `pull-right` / `pull-left`.
+
+A cross-module survey found them in **all four** modules — including Clients, Visites and
+Rapports, each previously reported ALL CLEAN. `pull-right`/`pull-left` alone appeared in 15
+files.
+
+Both tools were extended (`metronize.py` token map + `audit_legacy.py` patterns) and the
+migrator re-run across **every** migrated module. 17 files changed. All four now audit
+ALL CLEAN against the enlarged 22-pattern set.
+
+**Pattern:** this is the third time a clean report reflected the limits of the pattern set
+rather than the state of the code (Ionicons in Clients, then concat damage in allclients,
+now AdminLTE widget chrome). Each gap has been closed permanently in tooling, but "ALL
+CLEAN" should be read as *"clean against the 22 patterns currently checked"*, not as proof
+of a perfect result. The browser pass on real data remains the authority.
+
+Other fixes in this pass:
+- **Duplicate jQuery removed** from `tableau_bord_super.ctp` and `tableau_bord_super_cp.ctp`
+  — both pulled jQuery 3.7.1 from CDN on top of the 3.7.0 inside `plugins.bundle.js`. The
+  earlier CDN de-dup rule missed them because these tags carry `integrity`/`crossorigin`
+  attributes.
+- **Unused jQuery UI removed** from `tableau_bord_super_formail.ctp` (CSS + JS 1.13.2):
+  verified zero widget calls (`.datepicker()`, `.autocomplete()`, …) and zero `ui-*`
+  classes — the page uses a native `<input type="date">`. Contrast with Visites, where
+  jQuery UI **is** required and was kept and vendored.
+- `class="box-body boxtog<?php echo $i; ?>"` — class attribute containing a PHP echo, which
+  the code-fragment guard correctly refuses to touch; renamed by hand.
+
+### Verification status — 54 views, 4 modules
+
+| Module | views | lint | logic | code intact | concat | legacy |
+|---|---:|---|---|---|---|---|
+| Clients | 15 | ✅ | ✅ *(4 files `-0` removals)* | ✅ | ✅ | ✅ |
+| Visites | 13 | ✅ | ✅ identical | ✅ | ✅ | ✅ |
+| Rapports | 11 | ✅ | ✅ identical | ✅ | ✅ | ✅ |
+| Users | 15 | ✅ | ✅ identical | ✅ | ✅ | ✅ |
+
 ---
 
 ## 5. Migration checklist — inventory of `app/View/**/*.ctp`
@@ -609,7 +680,7 @@ pattern · `KI` = files already using Keenicons.
 | Layouts | 19 | 2 | 0 | 2 | 4 | 0 | ⬜ |
 | Visites | ~~17~~ 13 | 0 | 0 | 0 | 0 | ✅ | **✅ done 2026-07-23** |
 | Appwebfinalv2 | 17 | 3 | 2 | 2 | 8 | 0 | ⬜ |
-| Users | 16 | 9 | 4 | 10 | 5 | 1 | ⬜ |
+| Users | ~~16~~ 15 | 0 | 0 | 0 | 0 | ✅ | **✅ done 2026-07-23** |
 | Clients | ~~16~~ 15 | 0 | 0 | 0 | 0 | ✅ | **✅ done 2026-07-22** |
 | Appwebfinal | 16 | 7 | 1 | 3 | 16 | 0 | ⬜ |
 | Appweb | 16 | 7 | 2 | 5 | 16 | 0 | ⬜ |
@@ -788,9 +859,25 @@ work.
 19. **`Clients/system_index.ctp` is an orphan view** — no controller action and no
     references anywhere in `app/`. It was restyled for consistency but is unreachable.
     Candidate for deletion; **not deleted without approval** since it is not an `_old` file.
-25. **`Users/admin_statistique.ctp` still uses Font Awesome** for its `.optionh` toggle.
+25. ~~`Users/admin_statistique.ctp` still uses Font Awesome~~ — **CLOSED 2026-07-23**
+    with the Users module (markup + JS migrated together). Original note: for its `.optionh` toggle.
     It is self-contained (own markup + own `boxtogpo()`), so nothing is broken — migrate
     markup and JS together when the Users module is done.
+28. **Inert AdminLTE collapse/remove buttons remain** in `Visites/pointage.ctp` and
+    `Users/tableau_bord_super_formail.ctp`. Their `data-widget="collapse|remove"` attribute
+    needed AdminLTE's `app.min.js`, which the Metronic layout does not load — so they have
+    been dead since before this migration. The attribute (the last AdminLTE marker) was
+    stripped; the buttons were left in place and now carry Metronic styling. **Product
+    decision needed:** either wire them to Bootstrap 5 collapse or delete them. Removing
+    visible controls was not mine to make unilaterally.
+29. **`Users/tableau_bord_super_cp.ctp` is an orphan** (868 lines) — no controller action
+    and no references, same situation as `Clients/system_index.ctp`. Restyled for
+    consistency, left in place per the precedent set for that file.
+30. **"ALL CLEAN" means "clean against the 22 patterns currently audited."** Three separate
+    times an incomplete pattern set produced a clean report on code that still had defects.
+    When migrating a new module, expect to discover legacy classes not yet in
+    `tools/audit_legacy.py`; add them and **re-run the migrator over all previously
+    finished modules**, as was done on 2026-07-23.
 26. **Icons whose class is swapped by JavaScript must be single-glyph Keenicons** (no
     `<span class="pathN">` children). The JS replaces the whole class attribute; duotone
     child spans would survive and render as stray boxes. Applies to every `ki-plus`/
