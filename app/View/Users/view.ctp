@@ -446,7 +446,7 @@ echo $this->Html->css('daterangepicker');
                 <div class="card metronic-card">
                     <div class="card-header">
                         <div class="card-title-wrap">
-                            <span class="card-icon"><i class="ki-duotone ki-check-circle fs-5"></i></span>
+                            <span class="card-icon"><i class="ki-duotone ki-check-circle fs-5"><span class="path1"></span><span class="path2"></span></i></span>
                             <div class="title-text"><h3>Visites</h3></div>
                         </div>
                     </div>
@@ -462,7 +462,7 @@ echo $this->Html->css('daterangepicker');
                         </div>
                         <?php if (empty($user['Visite'])): ?>
                             <div class="alert alert-info d-flex align-items-center justify-content-center gap-2 py-3 fs-7 mb-0" style="background-color: #f0f7ff; color: #0070f3; border: none; border-radius: 12px;">
-                                <i class="ki-duotone ki-information-5 fs-4"></i>
+                                <i class="ki-duotone ki-information-5 fs-4"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
                                 Aucune visite pour cette période
                             </div>
                         <?php endif; ?>

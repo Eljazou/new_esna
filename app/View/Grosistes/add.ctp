@@ -21,7 +21,7 @@
             <?php echo $this->Form->create('Grosiste', array('class' => 'form')); ?>
                 
                 <!-- FIELD: NOM -->
-                <div class="form-group mb-6">
+                <div class="mb-5 mb-6">
                     <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Nom</label>
                     <?php echo $this->Form->input('name', array(
                         'label' => false,
@@ -31,7 +31,7 @@
                 </div>
 
                 <!-- FIELD: RESPONSABLE -->
-                <div class="form-group mb-6">
+                <div class="mb-5 mb-6">
                     <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Responsable</label>
                     <?php echo $this->Form->input('super_id', array(
                         'label' => false,
@@ -42,7 +42,7 @@
                 </div>
 
                 <!-- FIELD: REGION -->
-                <div class="form-group mb-8">
+                <div class="mb-5 mb-8">
                     <label class="font-weight-bold font-size-sm text-muted text-uppercase tracking-wider">Région</label>
                     <?php echo $this->Form->input('region', array(
                         'label' => false,

@@ -19,7 +19,7 @@
         --radius-xl: 22px;
     }
 
-    body, .panel, .form-control {
+    body, .card, .form-control {
         font-family: 'Poppins', sans-serif;
     }
 
@@ -31,7 +31,7 @@
         padding: 0 15px;
     }
 
-    .panel.panel-primary {
+    .card {
         border-radius: var(--radius-xl) !important;
         border: 1px solid var(--theme-border) !important;
         box-shadow: 0 4px 20px rgba(108, 99, 245, 0.06) !important;
@@ -42,7 +42,7 @@
         margin-bottom: 30px;
     }
 
-    .panel.panel-primary > .panel-heading {
+    .card > .card-header {
         display: none;
     }
 
@@ -92,7 +92,7 @@
         pointer-events: none;
     }
 
-    .panel-body.form-horizontal {
+    .card-body.form-horizontal {
         padding: 28px 34px 30px !important;
         background: #fff;
     }
@@ -215,7 +215,7 @@
         border: 1px solid var(--primary-light) !important;
     }
 
-    .well.text-center.col-md-12 {
+    .card.text-center.col-md-12 {
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
@@ -247,7 +247,7 @@
         border-color: #d9d6fb;
     }
 
-    .well.text-center.col-md-12 input[type="submit"] {
+    .card.text-center.col-md-12 input[type="submit"] {
         background: linear-gradient(135deg, var(--primary), #5479f7) !important;
         border: none !important;
         border-radius: 20px !important;
@@ -258,14 +258,14 @@
         box-shadow: 0 6px 16px rgba(108, 99, 245, .3);
     }
 
-    .well.text-center.col-md-12 input[type="submit"]:hover {
+    .card.text-center.col-md-12 input[type="submit"]:hover {
         background: linear-gradient(135deg, #5f56ee, #3f66e6) !important;
     }
 </style>
 
 <!-- Added structural centering node wrapper -->
 <div class="panel-center-wrapper">
-    <div class="panel panel-primary">
+    <div class="card">
         <div class="edit-hero">
             <div class="hero-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m15.5 12.5-3 3 3 3"/></svg>
@@ -288,7 +288,7 @@
             </svg>
         </div>
         
-        <div class="panel-body form-horizontal payment-form">
+        <div class="card-body payment-form">
             <div class="col-lg-12" style="width:100%; padding:0;">
                 <?php
                 echo $this->Form->create('Brochure', array('type' => 'file'));

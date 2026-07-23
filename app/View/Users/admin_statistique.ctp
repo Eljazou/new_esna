@@ -180,9 +180,9 @@
         .avs-wrapper .card-title{
             color:#2d2b45;
         }
-        .avs-wrapper .badge.bg-red{background:#f4544e;border-radius:999px;padding:4px 10px;}
-        .avs-wrapper .badge.bg-yellow{background:#e6b93d;border-radius:999px;padding:4px 10px;color:#4a3c07;}
-        .avs-wrapper .badge.bg-green{background:#3fb37f;border-radius:999px;padding:4px 10px;}
+        .avs-wrapper .badge.bg-danger{background:#f4544e;border-radius:999px;padding:4px 10px;}
+        .avs-wrapper .badge.bg-warning{background:#e6b93d;border-radius:999px;padding:4px 10px;color:#4a3c07;}
+        .avs-wrapper .badge.bg-success{background:#3fb37f;border-radius:999px;padding:4px 10px;}
         .avs-wrapper .progress.progress-xs{
             border-radius:999px;
             background:#f1effe;
@@ -191,27 +191,27 @@
         .avs-wrapper .progress-bar-red{background:#f4544e;}
         .avs-wrapper .progress-bar-yellow{background:#e6b93d;}
         .avs-wrapper .progress-bar-green{background:#3fb37f;}
-        .avs-wrapper .btn-box-tool{
+        .avs-wrapper .btn{
             color:#6C63F5;
         }
-        .avs-wrapper .btn-box-tool i.fa{
+        .avs-wrapper .btn i.fa{
             color:#6C63F5 !important;
         }
-        .avs-wrapper table.table-bordered{
+        .avs-wrapper table.table-row-bordered{
             border-radius:12px;
             overflow:hidden;
             border-color:#eeecf9;
         }
-        .avs-wrapper table.table-bordered thead th{
+        .avs-wrapper table.table-row-bordered thead th{
             background:#faf9ff;
             color:#4a4863;
             font-weight:600;
             border-color:#eeecf9;
         }
-        .avs-wrapper table.table-bordered td, .avs-wrapper table.table-bordered th{
+        .avs-wrapper table.table-row-bordered td, .avs-wrapper table.table-row-bordered th{
             border-color:#eeecf9;
         }
-        .avs-wrapper .label.bg-aqua{
+        .avs-wrapper .label.bg-primary{
             background:#6C63F5 !important;
             border-radius:10px;
         }

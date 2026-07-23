@@ -33,7 +33,7 @@
     }
 
     /* Card Wrapper */
-    .box {
+    .card {
         background: #ffffff;
         border: 1px solid var(--kt-border-color);
         border-radius: var(--radius-xl);
@@ -41,10 +41,10 @@
         margin-bottom: 24px;
         transition: box-shadow 0.2s ease;
     }
-    .box:hover {
+    .card:hover {
         box-shadow: var(--shadow-md);
     }
-    .box .box-header {
+    .card .card-header {
         padding: 20px 24px;
         border-bottom: 1px solid var(--kt-border-color);
         display: flex;
@@ -53,7 +53,7 @@
         gap: 16px;
         flex-wrap: wrap;
     }
-    .box .box-body {
+    .card .card-body {
         padding: 24px;
     }
 
@@ -74,7 +74,7 @@
         justify-content: center;
         font-size: 15px;
     }
-    .box-title {
+    .card-title {
         margin: 0;
         font-size: 15px;
         font-weight: 700;
@@ -109,7 +109,7 @@
         position: relative;
         flex-grow: 1;
     }
-    #dateform .input-group-addon {
+    #dateform .input-group-text {
         position: absolute;
         left: 14px;
         z-index: 10;
@@ -293,10 +293,14 @@
     }
 </style>
 
-<?php echo $this->Html->script('jquery-2.2.3.min'); ?>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<?php
+// jQuery UI is NOT part of Metronic's plugins.bundle and is genuinely used
+// here ($("#datepicker").datepicker() below), so it stays -- only the CDN is
+// swapped for the local copy. Same library, same version (1.12.1), same
+// position in the load order.
+echo $this->Html->css('jquery-ui.min');
+echo $this->Html->script('jquery-ui.min');
+?>
 <script>
     $(function () {
         $("#datepicker").datepicker();
@@ -305,17 +309,17 @@
 
 <!-- Filter Section -->
 <div class="col-md-12" style="margin-bottom: 24px; padding:0px;"> 
-    <div class="box">
-        <div class="box-header">
+    <div class="card">
+        <div class="card-header">
             <div class="filter-card-wrapper">
                 <div class="section-header">
-                    <span class="section-icon"><i class="fa fa-filter"></i></span>
+                    <span class="section-icon"><i class="ki-duotone ki-filter"><span class="path1"></span><span class="path2"></span></i></span>
                     <label class="filter-card-label">Pour des statistiques d'une période précise, veuillez sélectionner une date :</label>
                 </div>
                 <form action="<?php echo $this->Html->url(array("action" => "tableau_bord_conseiller")); ?>/" method="get" id="dateform" autocomplete="off">
                     <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="fa fa-clock-o"></i>
+                        <span class="input-group-text">
+                            <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                         </span>
                         <input type="text" class="form-control" name="date" id="datepicker" placeholder="Rechercher" autocomplete="off">
                     </div>
@@ -332,10 +336,10 @@
         <div class="modal-content" style="margin-top: 8%; max-height: 450px; overflow: hidden; display: flex; flex-direction: column;">
             <div class="modal-header">
                 <h2 class="modal-title" id="gridModalLabel">Détail</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
             </div>
             <div class="modal-body" style="overflow-y: auto; flex-grow: 1; display: flex; gap: 20px; align-items: flex-start;">
-                <table class="table table-bordered table-detail" style="width:75%; margin: 0;">
+                <table class="table table-row-bordered align-middle gy-4 table-detail" style="width:75%; margin: 0;">
                     <thead>
                         <tr>
                             <th>Campagne</th>
@@ -367,17 +371,17 @@ $cc = array();
 foreach ($users as $vmp):
     ?>
     <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
                     <div class="section-header">
-                        <span class="section-icon"><i class="fa fa-users"></i></span>
-                        <h3 class="box-title">
+                        <span class="section-icon"><i class="ki-duotone ki-profile-user s"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>
+                        <h3 class="card-title">
                             Rapport des visites de l'équipe de <?php echo $vmp['super']['User']['name']; ?>
                         </h3>
                     </div>
                 </div>
-                <div class="box-body table-responsive no-padding">
+                <div class="card-body table-responsive no-padding">
                     <table class="table table-hover" border="0">
                         <thead>
                             <tr>
@@ -454,7 +458,6 @@ foreach ($users as $vmp):
     </div>
     <?php
 endforeach;
-echo $this->Html->script('jquery-2.2.3.min');
 ?>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEpnSCwdoRPf5V3vIWy7j6wzjewQRC8uE&amp;"></script>
 <script>

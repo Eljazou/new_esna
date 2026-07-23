@@ -41,7 +41,7 @@ if (empty($vendeurJson)) {
         color: #ec0000;
     }
 
-    .panel-info>.panel-heading {
+    .card>.card-header {
         color: #ffffff;
         background: linear-gradient(45deg, #019ffb, #29f499);
     }
@@ -256,8 +256,8 @@ if (empty($vendeurJson)) {
                     <th>Vendeur</th>
                     <td> : </td>
                     <td class="vendeur_td">
-                        <button class="btn btn-secondary" data-toggle="modal" data-target="#popup_vendor">
-                            <i class="fa fa-users"></i>
+                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#popup_vendor">
+                            <i class="ki-duotone ki-profile-user s"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
                             <span class="count_vd"><?php
                                                     echo count($vendeurs); ?></span>
                         </button>
@@ -350,12 +350,12 @@ if (empty($vendeurJson)) {
     </div>
 
     <div class="col-md-6" style="margin-left: -11px;">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo __('Ajouter un rapport prospect'); ?>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><?php echo __('Ajouter un rapport prospect'); ?>
                 </h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
                 <?php echo $this->Form->create('Rapportprocpect', array('onsubmit' => 'return verifed()', 'class' => 'form1')); ?>
 
                 <?php
@@ -393,7 +393,7 @@ if (empty($vendeurJson)) {
                 <div class="alert alert-info alert_pre1" role="alert"><strong>faire une présentation détaillée du produit !</strong></div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class=" questions questions3">
+                        <div class="questions questions3">
                             <label><b>3-</b> Avez vous réalisé des ventes?</label>
                             <p>
                                 <input type="radio" id="realise1" name="data[Rapportprocpect][vente]" value="Oui">
@@ -406,7 +406,7 @@ if (empty($vendeurJson)) {
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class=" questions questions4">
+                        <div class="questions questions4">
                             <label><b>4-</b> Si oui , comment</label>
                             <p>
                                 <input type="radio" id="comment1" name="data[Rapportprocpect][comment]" value="Prescription">
@@ -510,42 +510,42 @@ if (empty($vendeurJson)) {
                 </div>
                 <div class="questions questions9">
                     <label><b>8-</b>Réclamation client</label>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][reclamation][]" value="Demande delegue" id="commande8">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande8">Demande délégué</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][reclamation][]" value="Demande echantillons" id="commande9">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande9">Demande échantillons</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][reclamation][]" value="Demande flyer/panneaux/plv" id="commande10">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande10">Demande flyer/panneaux/plv</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][reclamation][]" value="Demande gadgets publicitaires" id="commande11">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande11">Demande gadgets publicitaires</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][reclamation][]" value="Rupture produit" id="commande12">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande12">Rupture produit</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][reclamation][]" value="Rupture produit" id="commande25">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
@@ -555,42 +555,42 @@ if (empty($vendeurJson)) {
                 </div>
                 <div class="questions questions10">
                     <label><b>9-</b>Objections</label>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][objection][]" value="Probleme de prescription" id="commande13">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande13">Problème de prescription </label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][objection][]" value="Prix produit" id="commande14">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande14">Prix produit</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][objection][]" value="Indication rare" id="commande15">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande15">Indication rare</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][objection][]" value="Retour client negatif" id="commande16">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande16">Retour client négatif</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][objection][]" value="Produit dispo mais ne se vend pas" id="commande17">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande17">Produit dispo mais ne se vend pas</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][objection][]" value="Pharmacie ne fait pas de conseil" id="commande18">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
@@ -604,42 +604,42 @@ if (empty($vendeurJson)) {
                 </div>
                 <div class="questions questions12">
                     <label><b>11-</b>Qualification contact</label>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][qualification][]" value="Donne du temps/ecoute" id="commande19">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande19">Donne du temps/écoute</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][qualification][]" value="Mise en place assuree" id="commande20">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande20">Mise en place assurée</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][qualification][]" value="Commande assuree" id="commande21">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande21">Commande assurée</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][qualification][]" value="Benchmark" id="commande22">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande22">Benchmark</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][qualification][]" value="Pharmacie conseil" id="commande23">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                         </svg>
                         <label for="commande23">Pharmacie conseil</label>
                     </p>
-                    <p class="checkbox bounce ">
+                    <p class="checkbox bounce">
                         <input type="checkbox" name="data[Rapportprocpect][qualification][]" value="Interet tres faible pour la prospection telephonique" id="commande24">
                         <svg viewBox="0 0 21 21">
                             <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
@@ -649,7 +649,7 @@ if (empty($vendeurJson)) {
                 </div>
                 <!-- --------------------------- begin the hide tab -------------------------------- -->
                 <div id="accordion">
-                    <div class="card" data-toggle="collapse" data-target="#questionsCollapse">
+                    <div class="card" data-bs-toggle="collapse" data-bs-target="#questionsCollapse">
                         <div class="card-header" id="headingOne">
                             <label> Questionnaire commercial
                             </label>
@@ -784,14 +784,14 @@ if (empty($vendeurJson)) {
                 ?>
 
             </div>
-            <div class="box-footer">
-                <div class="well text-center"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#reportermodal" style="float: left;">
+            <div class="card-footer">
+                <div class="card card-body bg-light text-center"><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#reportermodal" style="float: left;">
                         <i class="fas fa-bow-arrow" style="transform: rotate3d(1, 1, 36, -90deg);"></i> Reporter
                     </button>
-                    <button class="btn btn-success" id="envoyer" type="submit"><i class="fas fa-share"></i> Envoyer</button>
+                    <button class="btn btn-success" id="envoyer" type="submit"><i class="ki-duotone ki-send"><span class="path1"></span><span class="path2"></span></i> Envoyer</button>
 
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#annulermodal" style="float: right;">
-                        <i class="far fa-times-circle"> </i> Annuler
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#annulermodal" style="float: right;">
+                        <i class="ki-duotone ki-cross-circle"><span class="path1"></span><span class="path2"></span></i> Annuler
                     </button>
                 </div>
 
@@ -828,9 +828,7 @@ if (empty($vendeurJson)) {
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" id="exampleModalLabel" style="display: inline-block;">Motif d'annulation</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
             </div>
             <div class="modal-body">
                 <?php
@@ -840,8 +838,8 @@ if (empty($vendeurJson)) {
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fal fa-arrow-left"> </i> Retour</button>
-                <button class="btn btn btn-danger" type="submit" value="Annuler"><i class="far fa-calendar-times"></i> Annuler Le rapport</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="ki-duotone ki-arrow-left"><span class="path1"></span><span class="path2"></span></i> Retour</button>
+                <button class="btn btn-danger" type="submit" value="Annuler"><i class="ki-duotone ki-calendar-remove"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i> Annuler Le rapport</button>
                 </form>
             </div>
         </div>
@@ -854,9 +852,7 @@ if (empty($vendeurJson)) {
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLabel" style="display: inline-block;">Date et heure du report</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
             </div>
             <div class="modal-body">
                 <?php echo $this->Form->create('Rapportprocpect', array('url' => array('action' => 'reporter_appel')));
@@ -867,7 +863,7 @@ if (empty($vendeurJson)) {
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fal fa-arrow-left"> </i> Retour</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="ki-duotone ki-arrow-left"><span class="path1"></span><span class="path2"></span></i> Retour</button>
                 <button class="btn btn-info" type="submit" value="Reporter"><i class="fas fa-bow-arrow" style="transform: rotate3d(1, 1, 36, -90deg);"></i> Reporter</button>
                 </form>
             </div>
@@ -885,10 +881,8 @@ if (empty($vendeurJson)) {
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <div id="modal-title"><i class="fal fa-exclamation-triangle"></i>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="red()">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div id="modal-title"><i class="ki-duotone ki-information-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 </div>
 
             </div>
@@ -897,7 +891,7 @@ if (empty($vendeurJson)) {
                     Vous n'avez pas lancé le temps d'appel</h3>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="red()" data-dismiss="modal">OK</button>
+                <button type="button" class="btn btn-primary" onclick="red()" data-bs-dismiss="modal">OK</button>
             </div>
         </div>
     </div>
@@ -907,10 +901,8 @@ if (empty($vendeurJson)) {
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <div id="modal-title"><i class="fal fa-exclamation-triangle"></i>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="red()">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div id="modal-title"><i class="ki-duotone ki-information-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 </div>
 
             </div>
@@ -919,8 +911,8 @@ if (empty($vendeurJson)) {
                     Voulez-vous arrêter la durée de l'appel ?</h3>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="arreter()" data-dismiss="modal">Oui ,Et envoyer </button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non pas encore</button>
+                <button type="button" class="btn btn-primary" onclick="arreter()" data-bs-dismiss="modal">Oui ,Et envoyer </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non pas encore</button>
 
             </div>
         </div>
@@ -931,10 +923,8 @@ if (empty($vendeurJson)) {
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <div id="modal-title"><i class="fal fa-exclamation-triangle"></i>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="red()">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div id="modal-title"><i class="ki-duotone ki-information-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 </div>
 
             </div>
@@ -943,8 +933,8 @@ if (empty($vendeurJson)) {
                     Vous avez stopper la durée de l'appel, Voulez-vous continuer?</h3>
             </div>
             <div class="modal-footer">
-                <button type="button" id="stop" class="btn btn-primary" onclick="stopper()" data-dismiss="modal">Oui continuer </button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                <button type="button" id="stop" class="btn btn-primary" onclick="stopper()" data-bs-dismiss="modal">Oui continuer </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
 
             </div>
         </div>
@@ -956,9 +946,7 @@ if (empty($vendeurJson)) {
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 <h4 class="modal-title" id="popup_vendorLabel">Ajouter plusieurs vendeurs</h4>
             </div>
             <div class="modal-body">
@@ -1000,7 +988,7 @@ if (empty($vendeurJson)) {
                     </div>
                 </div>
                 <div class="div_add_btn">
-                    <button class="btn btn-default" onclick="addVendorRow()"> + </button>
+                    <button class="btn btn-light" onclick="addVendorRow()"> + </button>
                 </div>
 
             </div>
@@ -1012,8 +1000,6 @@ if (empty($vendeurJson)) {
 </div>
 
 
-<?php ?>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
 <?php
 

@@ -61,9 +61,13 @@ def statements(path):
     return out
 
 
+SKIPPED = []
+
+
 def report(rel):
     old, new = os.path.join(OLD_ROOT, rel), os.path.join(NEW_ROOT, rel)
     if not os.path.isfile(old):
+        SKIPPED.append(rel)
         print('%-40s SKIP (no original)' % rel)
         return 0
     a, b = sorted(statements(old)), sorted(statements(new))
@@ -81,6 +85,17 @@ def report(rel):
 
 
 if __name__ == '__main__':
-    bad = sum(report(r) for r in sys.argv[1:])
-    print('\n%s' % ('ALL CLEAN' if not bad else '%d file(s) differ' % bad))
+    rels = sys.argv[1:]
+    bad = sum(report(r) for r in rels)
+    # A skip is not a pass. Paths are relative to NEW_ROOT ('app/View/'), so a
+    # repo-relative argument like `app/View/Prospects/add.ctp` finds no original
+    # and silently skips -- a whole batch of those used to print ALL CLEAN
+    # having compared nothing. Only a genuinely new view should ever skip.
+    if not rels or len(SKIPPED) == len(rels):
+        print('\nERROR: compared 0 file(s) -- paths are relative to %s '
+              '(use "Prospects/add.ctp")' % NEW_ROOT)
+        sys.exit(2)
+    print('\n%d compared, %d skipped -- %s'
+          % (len(rels) - len(SKIPPED), len(SKIPPED),
+             'ALL CLEAN' if not bad else '%d file(s) differ' % bad))
     sys.exit(1 if bad else 0)

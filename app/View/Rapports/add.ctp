@@ -156,7 +156,7 @@ echo $this->Html->script('demo');
 							<div class="col-12">
 								<h4 class="col-12 bg-primary" style="border: 1px solid #aaa; border-top-right-radius: 4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;">
 									<b style="line-height: 27px;">Concurrence (1):</b>
-									<!-- <span class="concurclose0" style="float:right;cursor:pointer;padding:4px;color:#074c75;margin-left:5px;" onclick="concurcl(0)"><i class="ki-duotone ki-cross"><span class="path1"></span></i></span> -->
+									<!-- <span class="concurclose0" style="float:right;cursor:pointer;padding:4px;color:#074c75;margin-left:5px;" onclick="concurcl(0)"><i class="ki-duotone ki-cross"><span class="path1"></span><span class="path2"></span></i></span> -->
 									<span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#074c75;" onclick="concur(0)"><i id="concuricon0" class="ki-duotone ki-minus fs-6"></i></span>
 								</h4>
 								<div style="border:1px solid #aaa; border-bottom-right-radius:4px; border-bottom-left-radius:4px; padding:10px 0px; margin-top:0px; background:#fefefe;" class="col-12 concur0 concur">
@@ -2412,7 +2412,7 @@ if (!empty($tSpec)) {
 												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh optionh0" style="color:#00a65a;font-size: 22px;font-weight: bold;" onclick="objettog(0)">
-												<e class="pcm-v">0</e> <i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<e class="pcm-v">0</e> <i class="ki-duotone ki-plus"></i>
 											</span>
 										</div>
 									</div>
@@ -2424,7 +2424,7 @@ if (!empty($tSpec)) {
 												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh optionh1" style="color:#00a65a;font-size: 22px;font-weight: bold;" onclick="objettog(1)">
-												<e class="qam-v">0</e> <i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<e class="qam-v">0</e> <i class="ki-duotone ki-plus"></i>
 											</span>
 										</div>
 									</div>
@@ -2436,7 +2436,7 @@ if (!empty($tSpec)) {
 												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh optionh2" style="color:#00a65a;font-size: 22px;font-weight: bold;" onclick="objettog(2)">
-												<e class="pm-v">0</e> <i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<e class="pm-v">0</e> <i class="ki-duotone ki-plus"></i>
 											</span>
 										</div>
 									</div>
@@ -2448,7 +2448,7 @@ if (!empty($tSpec)) {
 												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh optionh3" style="color:#00a65a;font-size: 22px;font-weight: bold;" onclick="objettog(3)">
-												<e class="nr-v">0</e> <i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<e class="nr-v">0</e> <i class="ki-duotone ki-plus"></i>
 											</span>
 										</div>
 									</div>
@@ -2541,7 +2541,7 @@ if (!empty($tSpec)) {
 						<b class="knob-b">%</b>
 						<div class="knob-label" style="color:#00a65a;margin-top:10px;">
 							<div class="objet objet4">
-								<span class="optionh optionh4" style="color:#00a65a;" onclick="objettog(4)"><b>BIEN </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
+								<span class="optionh optionh4" style="color:#00a65a;" onclick="objettog(4)"><b>BIEN </b><i class="ki-duotone ki-plus"></i></span>
 							</div>
 						</div>
 					</div>
@@ -2550,7 +2550,7 @@ if (!empty($tSpec)) {
 						<b class="knob-m">%</b>
 						<div class="knob-label" style="color:#fdde00;margin-top:10px;">
 							<div class="objet objet5">
-								<span class="optionh optionh5" style="color:#fdde00;" onclick="objettog(5)"><b>MOYEN </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
+								<span class="optionh optionh5" style="color:#fdde00;" onclick="objettog(5)"><b>MOYEN </b><i class="ki-duotone ki-plus"></i></span>
 							</div>
 						</div>
 					</div>
@@ -2559,7 +2559,7 @@ if (!empty($tSpec)) {
 						<b class="knob-fi">%</b>
 						<div class="knob-label" style="color:#f56954;margin-top:10px;">
 							<div class="objet objet6">
-								<span class="optionh optionh6" style="color:#f56954;" onclick="objettog(6)"><b>FAIBLE </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
+								<span class="optionh optionh6" style="color:#f56954;" onclick="objettog(6)"><b>FAIBLE </b><i class="ki-duotone ki-plus"></i></span>
 							</div>
 						</div>
 					</div>
@@ -2571,7 +2571,7 @@ if (!empty($tSpec)) {
 						<b class="knob-b">%</b>
 						<div class="knob-label" style="color:#00a65a;margin-top:10px;">
 							<div class="objet objet7">
-								<span class="optionh optionh7" style="color:#00a65a;" onclick="objettog(7)"><b>Exclusif </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
+								<span class="optionh optionh7" style="color:#00a65a;" onclick="objettog(7)"><b>Exclusif </b><i class="ki-duotone ki-plus"></i></span>
 							</div>
 						</div>
 					</div>
@@ -2580,7 +2580,7 @@ if (!empty($tSpec)) {
 						<b class="knob-m">%</b>
 						<div class="knob-label" style="color:#fdde00;margin-top:10px;">
 							<div class="objet objet8">
-								<span class="optionh optionh8" style="color:#fdde00;" onclick="objettog(8)"><b>Fidèle </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
+								<span class="optionh optionh8" style="color:#fdde00;" onclick="objettog(8)"><b>Fidèle </b><i class="ki-duotone ki-plus"></i></span>
 							</div>
 						</div>
 					</div>
@@ -2589,7 +2589,7 @@ if (!empty($tSpec)) {
 						<b class="knob-fi">%</b>
 						<div class="knob-label" style="color:#f56954;margin-top:10px;">
 							<div class="objet objet9">
-								<span class="optionh optionh9" style="color:#f56954;" onclick="objettog(9)"><b>Rare </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
+								<span class="optionh optionh9" style="color:#f56954;" onclick="objettog(9)"><b>Rare </b><i class="ki-duotone ki-plus"></i></span>
 							</div>
 						</div>
 					</div>
@@ -2667,7 +2667,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_price)) {
 										foreach ($sliced_price as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2681,7 +2681,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_indication)) {
 										foreach ($sliced_indication as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2694,7 +2694,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_pathologie)) {
 										foreach ($sliced_pathologie as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2707,7 +2707,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_posologie)) {
 										foreach ($sliced_posologie as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2720,7 +2720,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_presentation)) {
 										foreach ($sliced_presentation as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2754,7 +2754,7 @@ if (!empty($tSpec)) {
 										</td>
 										<td>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $sec; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $sec; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 										</td>
 									</tr>
@@ -2790,7 +2790,7 @@ if (!empty($tSpec)) {
 										</td>
 										<td>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $vl; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $vl; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 										</td>
 									</tr>
@@ -3743,7 +3743,7 @@ echo $this->Html->script('daterangepicker'); ?>
 		var cu = $(".concurr").attr('id');
 		var ci = parseInt(cu);
 		console.log(ci);
-		var div = '<h4 class="col-12 bg-primary" style="border: 1px solid #aaa; border-top-right-radius:4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;"><b style="line-height: 27px;">Concurrence (' + (ci + 1) + '):</b><span class="concurclose' + ci + '" style="float:right;cursor:pointer;padding:4px;color:#074c75;margin-left:5px;" onclick="concurcl(' + ci + ')"><i class="ki-duotone ki-cross"><span class="path1"></span></i></span><span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#074c75;" onclick="concur(' + ci + ')"><i id="concuricon' + ci + '" class="ki-duotone ki-minus fs-6"></i></span></h4><div style="border:1px solid #aaa; border-bottom-right-radius:4px; border-bottom-left-radius:4px; padding:10px 0px;margin-top:0px;background:#fefefe;" class="col-12 concur' + ci + ' concur"><div class="col-md-6 col-12"><div class="col-md-6 col-12"><label class="col-12" style="padding: 0px;">Produit :</label><select name="data[RapportConcurance][' + ci + '][produit_id]" class="form-control select2 prodc1"><?php foreach ($produits as $k => $v): ?><option value="<?php echo $k; ?>"><?php echo $v; ?></option><?php endforeach; ?></select></div><div class="col-md-6 col-12"><label class="col-12" style="padding: 0px;">Produit concurrent :</label><input type="text" name="data[RapportConcurance][' + ci + '][produit_concurant]" class="col-12" placeholder="Rédigez le nom du concurrent" style="float:left; padding:6px 8px;font-weight:bold;"></div><div class="col-md-6 col-12"><label class="col-12" style="padding: 0px;">L’offre :</label><textarea name="data[RapportConcurance][' + ci + '][offre]" class="col-12" placeholder="L’offre" style="float:left; padding:4px 8px; font-weight:bold; max-width:100%; max-height:50px;"></textarea> </div><div class="col-md-6 col-12"><label class="col-12" style="padding: 0px;">Commentaires :</label><textarea name="data[RapportConcurance][' + ci + '][commentaire]" class="col-12" placeholder="Commentaires" style="float:left; padding:4px 8px; font-weight:bold; max-width:100%; max-height:50px; "></textarea> </div> </div><div class="col-md-6 col-12"><div class="col-md-12 col-12"><label class="col-12" style="padding: 0px;margin-bottom: 11px;">Type de l’offre :</label><div class="col-4"><input type="checkbox" name="data[RapportConcurance][' + ci + '][type_offre][]" value="Pack"><b> Pack</b></div><div class="col-4"><input type="checkbox" name="data[RapportConcurance][' + ci + '][type_offre][]" value="Action"><b> Action</b></div><div class="col-4"><input type="checkbox" name="data[RapportConcurance][' + ci + '][type_offre][]" value="Autres"><b> Autres</b></div> </div><div class="col-md-12 col-12" style="margin-top: 11px;"><label class="col-12" style="padding: 0px;margin-bottom: 11px;">Degrés d’agressivité :</label><div class="col-4"><input type="radio" name="data[RapportConcurance][' + ci + '][agressivite][]" value="Très agressive"><b> Très agressive</b></div><div class="col-4"><input type="radio" name="data[RapportConcurance][' + ci + '][agressivite][]" value="Agressive"><b> Agressive</b></div><div class="col-4"><input type="radio" name="data[RapportConcurance][' + ci + '][agressivite][]" value="Peu agressive"><b> Peu agressive</b></div></div></div></div>';
+		var div = '<h4 class="col-12 bg-primary" style="border: 1px solid #aaa; border-top-right-radius:4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;"><b style="line-height: 27px;">Concurrence (' + (ci + 1) + '):</b><span class="concurclose' + ci + '" style="float:right;cursor:pointer;padding:4px;color:#074c75;margin-left:5px;" onclick="concurcl(' + ci + ')"><i class="ki-duotone ki-cross"><span class="path1"></span><span class="path2"></span></i></span><span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#074c75;" onclick="concur(' + ci + ')"><i id="concuricon' + ci + '" class="ki-duotone ki-minus fs-6"></i></span></h4><div style="border:1px solid #aaa; border-bottom-right-radius:4px; border-bottom-left-radius:4px; padding:10px 0px;margin-top:0px;background:#fefefe;" class="col-12 concur' + ci + ' concur"><div class="col-md-6 col-12"><div class="col-md-6 col-12"><label class="col-12" style="padding: 0px;">Produit :</label><select name="data[RapportConcurance][' + ci + '][produit_id]" class="form-control select2 prodc1"><?php foreach ($produits as $k => $v): ?><option value="<?php echo $k; ?>"><?php echo $v; ?></option><?php endforeach; ?></select></div><div class="col-md-6 col-12"><label class="col-12" style="padding: 0px;">Produit concurrent :</label><input type="text" name="data[RapportConcurance][' + ci + '][produit_concurant]" class="col-12" placeholder="Rédigez le nom du concurrent" style="float:left; padding:6px 8px;font-weight:bold;"></div><div class="col-md-6 col-12"><label class="col-12" style="padding: 0px;">L’offre :</label><textarea name="data[RapportConcurance][' + ci + '][offre]" class="col-12" placeholder="L’offre" style="float:left; padding:4px 8px; font-weight:bold; max-width:100%; max-height:50px;"></textarea> </div><div class="col-md-6 col-12"><label class="col-12" style="padding: 0px;">Commentaires :</label><textarea name="data[RapportConcurance][' + ci + '][commentaire]" class="col-12" placeholder="Commentaires" style="float:left; padding:4px 8px; font-weight:bold; max-width:100%; max-height:50px; "></textarea> </div> </div><div class="col-md-6 col-12"><div class="col-md-12 col-12"><label class="col-12" style="padding: 0px;margin-bottom: 11px;">Type de l’offre :</label><div class="col-4"><input type="checkbox" name="data[RapportConcurance][' + ci + '][type_offre][]" value="Pack"><b> Pack</b></div><div class="col-4"><input type="checkbox" name="data[RapportConcurance][' + ci + '][type_offre][]" value="Action"><b> Action</b></div><div class="col-4"><input type="checkbox" name="data[RapportConcurance][' + ci + '][type_offre][]" value="Autres"><b> Autres</b></div> </div><div class="col-md-12 col-12" style="margin-top: 11px;"><label class="col-12" style="padding: 0px;margin-bottom: 11px;">Degrés d’agressivité :</label><div class="col-4"><input type="radio" name="data[RapportConcurance][' + ci + '][agressivite][]" value="Très agressive"><b> Très agressive</b></div><div class="col-4"><input type="radio" name="data[RapportConcurance][' + ci + '][agressivite][]" value="Agressive"><b> Agressive</b></div><div class="col-4"><input type="radio" name="data[RapportConcurance][' + ci + '][agressivite][]" value="Peu agressive"><b> Peu agressive</b></div></div></div></div>';
 		$('.concurr').append(div);
 		$(".concurr").attr('id', ci + 1);
 		$(".prodc1").select2();

@@ -1,7 +1,4 @@
-<?php
-echo $this->Html->css('dataTables.bootstrap');
-?>
-
+<?php echo $this->element('assets/datatables'); ?>
 <!-- ===== METRONIC CARD CONTAINER ===== -->
 <div class="card card-custom shadow-sm">
     
@@ -239,10 +236,6 @@ echo $this->Html->css('dataTables.bootstrap');
 </style>
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

@@ -3,14 +3,14 @@
 <div class="row">
 <div class="col-md-2"></div>
 <div class="col-md-8">
-<div class="panel panel-success">
-	<div class="panel-heading">
-        <h3 class="panel-title"><?php echo __('Ajouter Prospect'); ?></h3>
+<div class="card">
+	<div class="card-header">
+        <h3 class="card-title"><?php echo __('Ajouter Prospect'); ?></h3>
     </div>
 	
         
             
-                <div class="panel-body">
+                <div class="card-body">
 				<?php echo $this->Form->create('Prospect'); ?>
 	<?php
 		echo $this->Form->input('tyncode',array('class'=>'form-control'));
@@ -32,7 +32,7 @@
 	?>
 	
 </div>
-<div class="box-footer">
+<div class="card-footer">
 <?php echo $this->Form->end(array('label' => 'Envoyer','class'=>'btn btn-success','div' => array('class' => 'well text-center'))); ?>
 
 </div>

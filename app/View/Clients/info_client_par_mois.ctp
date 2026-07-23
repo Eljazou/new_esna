@@ -54,7 +54,7 @@
         width:100%;
     }
     #ClientVmForm select.form-control:focus{ border-color:var(--accent) !important; background:#fff !important; }
-    .well.text-center.col-md-12{
+    .card.text-center.col-md-12{
         background:transparent !important; border:none !important; box-shadow:none !important;
         padding:18px 0 0 0 !important; text-align:center;
     }
@@ -145,7 +145,7 @@
         <div class="card">
             <div class="card-body" style="padding-top:24px;">
                 <div class="section-header">
-                    <span class="section-icon"><i class="ki-duotone ki-menu"><span class="path1"></span></i></span>
+                    <span class="section-icon"><i class="ki-duotone ki-menu"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>
                     <div>
                         <h3 class="card-title">Liste des clients</h3>
                     </div>

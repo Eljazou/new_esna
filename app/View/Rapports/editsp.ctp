@@ -1,8 +1,6 @@
 <?php echo $this->Html->css('daterangepicker'); ?>
-<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
-
 <style>
-    .box-primary .card-header {
+    .card .card-header {
         background: #3c8dbc;
         color: white;
     }
@@ -53,7 +51,7 @@
         margin-left: 30px;
     }
 
-    .card.box-primary {
+    .card {
         border: 2px solid #3c8dbc;
         z-index: 9;
     }
@@ -73,7 +71,7 @@
                         <div class="col-md-4">
                             <div class="input-group col-lg-12" >
                                 <div class="input-group-text">
-                                    <i class="fa-regular fa-clock"></i>
+                                    <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                                 </div>
                                 <input type="text" name="data[Rapport][date]" class="form-control float-end" name="date" id="reservationtime" placeholder="Date" value="<?php echo $this->request->data['Rapport']['date_debut'].' -- '.$this->request->data['Rapport']['date_fin']; ?>">
                             </div>

@@ -19,7 +19,7 @@
 }
 
 body { background: var(--lr-bg); }
-.card.panel-primary { border: none; box-shadow: none; background: transparent; }
+.card { border: none; box-shadow: none; background: transparent; }
 .col-md-8 label { float: left; margin-top: 6px; font-weight: normal; }
 @media (max-width: 810px) { .card-header { width: 100% !important; } }
 

@@ -21,7 +21,7 @@
         
         <?php echo $this->Form->input('id'); ?>
 
-        <div class="form-group mb-5">
+        <div class="mb-5">
             <label class="font-weight-bolder text-dark font-size-sm"><?php echo __('Nom'); ?></label>
             <?php echo $this->Form->input('name', array(
                 'label' => false,
@@ -30,7 +30,7 @@
             )); ?>
         </div>
 
-        <div class="form-group mb-5">
+        <div class="mb-5">
             <label class="font-weight-bolder text-dark font-size-sm"><?php echo __('Responsable'); ?></label>
             <?php echo $this->Form->input('super_id', array(
                 'label' => false,
@@ -40,7 +40,7 @@
             )); ?>
         </div>
 
-        <div class="form-group mb-5">
+        <div class="mb-5">
             <label class="font-weight-bolder text-dark font-size-sm"><?php echo __('Région'); ?></label>
             <?php echo $this->Form->input('region', array(
                 'label' => false,

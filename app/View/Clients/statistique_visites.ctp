@@ -184,7 +184,7 @@
         .stv-wrapper .boxlistes table.dataTable.table-striped tbody tr.odd{
             background:#fbfaff;
         }
-        .stv-wrapper .table.table-bordered.table-striped{
+        .stv-wrapper .table.table-row-bordered.table-striped{
             border:1px solid #eeecf9;
             border-radius:12px;
             overflow:hidden;
@@ -193,7 +193,7 @@
             color:#6C63F5;
             font-weight:600;
         }
-        .stv-wrapper .btn.bg-blue{
+        .stv-wrapper .btn.bg-primary{
             background:transparent !important;
             color:#6C63F5 !important;
             border:1.5px solid #d8d3fb !important;
@@ -206,7 +206,7 @@
             gap:5px;
             transition:background .15s ease;
         }
-        .stv-wrapper .btn.bg-blue:hover{
+        .stv-wrapper .btn.bg-primary:hover{
             background:#f1effe !important;
         }
         .stv-wrapper h1{

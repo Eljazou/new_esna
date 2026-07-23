@@ -1,11 +1,5 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
-echo $this->Html->css('select2.min');
-echo $this->Html->css('dataTables.bootstrap');
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('select2.full.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('demo');
 ?>
@@ -34,7 +28,7 @@ echo $this->Html->script('demo');
         font-family:'Poppins',sans-serif;
         color:#3a3a4a;
     }
-    .pcl-wrapper .box{
+    .pcl-wrapper .card{
         background:#fff !important;
         border:none !important;
         border-top:none !important;
@@ -42,7 +36,7 @@ echo $this->Html->script('demo');
         box-shadow:0 4px 24px rgba(108,99,245,0.08) !important;
         overflow:hidden;
     }
-    .pcl-wrapper .box-header.with-border{
+    .pcl-wrapper .card-header.with-border{
         border:none !important;
         display:flex;
         align-items:center;
@@ -65,22 +59,22 @@ echo $this->Html->script('demo');
         height:20px;
         stroke:#6C63F5;
     }
-    .pcl-wrapper .panel-title,
-    .pcl-wrapper .box-title{
+    .pcl-wrapper .card-title,
+    .pcl-wrapper .card-title{
         font-size:16px;
         font-weight:600;
         color:#2d2b45;
         margin:0;
     }
-    .pcl-wrapper .box-body{
+    .pcl-wrapper .card-body{
         padding:24px 26px;
     }
-    .pcl-wrapper .box-footer{
+    .pcl-wrapper .card-footer{
         background:#fff !important;
         border-top:1px solid #eeecf9 !important;
         padding:20px 26px !important;
     }
-    .pcl-wrapper .form-group label{
+    .pcl-wrapper .mb-5 label{
         font-size:13.5px;
         font-weight:600;
         color:#454358;
@@ -112,14 +106,14 @@ echo $this->Html->script('demo');
         opacity:.92;
         background:linear-gradient(90deg,#6C63F5,#8c7ef2) !important;
     }
-    .pcl-wrapper table.table-bordered thead tr:first-child th,
-    .pcl-wrapper table.table-bordered tr:first-child th{
+    .pcl-wrapper table.table-row-bordered thead tr:first-child th,
+    .pcl-wrapper table.table-row-bordered tr:first-child th{
         background:#faf9ff !important;
         color:#4a4863 !important;
         font-weight:600 !important;
         border-bottom:2px solid #ece9fb !important;
     }
-    .pcl-wrapper table.table-bordered td{
+    .pcl-wrapper table.table-row-bordered td{
         font-size:13.5px;
         color:#454358;
         vertical-align:middle;
@@ -141,23 +135,20 @@ echo $this->Html->script('demo');
     }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 
 <div class="pcl-wrapper">
     <div class="row">
         <div class="col-md-12">
             
             <?php if(empty($prospects)) : ?>
-                <div class="box box-info" style="margin-bottom:22px;">
-                    <div class="box-header with-border">
+                <div class="card" style="margin-bottom:22px;">
+                    <div class="card-header">
                         <div class="pcl-icon-badge">
                             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                         </div>
-                        <h2 class="panel-title">Générer une liste d'appel pour un conseiller</h2>
+                        <h2 class="card-title">Générer une liste d'appel pour un conseiller</h2>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <?php 
@@ -171,13 +162,13 @@ echo $this->Html->script('demo');
                             </div>
                         </div>
                     </div>
-                    <div class="box-footer clearfix text-center">
+                    <div class="card-footer clearfix text-center">
                         <button type="submit" class="btn btn_search">Rechercher</button>
                     </div>
                 </div>
             <?php else :  ?>
-                <div class="box box-info" style="margin-bottom:22px;">
-                    <div class="box-header with-border">
+                <div class="card" style="margin-bottom:22px;">
+                    <div class="card-header">
                         <div class="pcl-icon-badge">
                             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                         </div>
@@ -193,7 +184,7 @@ echo $this->Html->script('demo');
                         </div>
                     </div>
                     <?php echo $this->Form->create('Prospectcompagne', array('type' => 'file')); ?>
-                    <div class="box-body">
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-md-4">
                                 <?php echo $this->Form->input('user_id', array('label' => "Conseiller",'class' => 'form-control choix_multi select2'));?>
@@ -209,23 +200,23 @@ echo $this->Html->script('demo');
                             </div>
                         </div>
                     </div>
-                    <div class="box-footer clearfix text-center">
+                    <div class="card-footer clearfix text-center">
                         <button type="submit" class="btn btn_search">Mise à jour</button>
                     </div>
                 </div>
             <?php endif; ?>
             
             <?php if(isset($clientnonreconnus)): ?>
-                <div class="box box-info" style="margin-bottom:22px;">
-                    <div class="box-header with-border">
+                <div class="card" style="margin-bottom:22px;">
+                    <div class="card-header">
                         <div class="pcl-icon-badge">
                             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                         </div>
-                        <h3 class="box-title">La liste des clients non reconnus</h3>
+                        <h3 class="card-title">La liste des clients non reconnus</h3>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
+                            <table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                                 <thead>
                                     <tr>
                                         <th>Code wavesoft</th>
@@ -244,16 +235,16 @@ echo $this->Html->script('demo');
                 </div>
             <?php endif; ?>
             
-            <div class="box box-info">
-                <div class="box-header with-border">
+            <div class="card">
+                <div class="card-header">
                     <div class="pcl-icon-badge">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
                     </div>
-                    <h3 class="box-title">La liste des prospects</h3>
+                    <h3 class="card-title">La liste des prospects</h3>
                 </div>
-                <div class="box-body">
+                <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                             <thead>
                                 <tr>
                                     <th>Code wavesoft</th>

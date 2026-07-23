@@ -110,7 +110,23 @@ Legend: ✅ done · 🟡 in progress · ⬜ pending · ⛔ blocked
 ### Per-module migration checklist
 
 See §5 (inventory) — every module row becomes ✅ as its views are rebuilt.
-Nothing migrated yet beyond the layout groundwork.
+
+**Done (11 modules, 107 views):** Clients 15, Visites 13, Rapports 11, Users 15,
+Listes 12, Prospects 8, Brochures 8, Rapportprocpects 6, Analyses 7,
+Prospectcompagnes 6, Grosistes 6.
+
+**Remaining desktop CRUD (~41 modules, ~176 views):** Evaluations 6,
+Echantillons 6, Documents 6, Commandes 6, Avences 6, then the 5-view tier
+(Secteurs, Produits, Packs, Offres, Objectifprofiles, Notefrais, Groproduits,
+Games, Gadjets, Formations, Clientsproposes, Categories, Actions), the 4-view
+tier (Zquestions, Types, Prospectaffaires, Pots, Odpobjectifs, Objectifs,
+Marketings, Lignes, Jourferiers, Groventes, Digitals, Autoechantiants, Absences)
+and the ≤3-view tail.
+
+**Separate track (§7):** `Appweb` 10, `Appwebfinal` 13, `Appwebfinalv2` 14,
+`Visitemobileapis` 4 — Bootstrap 4.3.1/AdminLTE layouts, a BS4→BS5 job distinct
+from the desktop BS3→BS5 work. Also outstanding: `Elements/`, the remaining
+layouts (`appmobile`, `appmobilepro`, `mobile`, `error`, `blanck`, `Emails/`).
 
 ---
 
@@ -682,6 +698,136 @@ Audit pattern set is now **22 patterns**, both quote styles.
 
 ---
 
+### 2026-07-23 — Step 3, batch 1: **6 small CRUD modules** (42 → 41 views) ✅
+
+`Prospects` (8), `Brochures` (8), `Rapportprocpects` (7 → 6), `Analyses` (7),
+`Prospectcompagnes` (6), `Grosistes` (6).
+
+Deleted `Rapportprocpects/ajouter_old.ctp` — no controller action, no references,
+same class as the 14 dead `_old.ctp` files removed in Step 2.
+
+#### 🔴 A styling regression the migrator itself introduced — in five modules already signed off
+
+The markup pass renamed `bg-aqua`→`bg-primary`, `bg-yellow`→`bg-warning`,
+`bg-green`→`bg-success`, but the `<style>`-block rewriter had a **hand-maintained
+parallel list** covering only box/panel/input-group-addon. So in
+`Rapportprocpects/fuille_route_conseiller.ctp` the CSS still read
+`.fdr-wrapper .info-box.bg-aqua { background:#fff !important }` while the markup
+said `bg-primary`.
+
+That is not merely a lost tint. `bg-primary`/`bg-warning`/`bg-success` are **real
+Bootstrap 5 utilities**, so with the local neutralizer no longer matching, those
+three cards rendered as solid blue/yellow/green blocks with dark text on top.
+
+Root-caused rather than patched: `_atomic_renames()` now **derives** the CSS
+rename list from `CLASS_MAP` + `TOKENS`, the same maps the markup pass uses, so
+the two can never drift again. Two further defects fell out of the fix:
+
+- The selector regex used a `(?<![-\w])` lookbehind on the dot, which breaks
+  **compound** selectors — `.info-box.bg-aqua` has a word char before `.bg-aqua`.
+  A `.` cannot occur inside a CSS identifier, so the lookbehind was simply wrong.
+- `.card.panel-primary` / `.card.box-info` rules matched nothing, because the
+  markup collapses `panel panel-primary` to a bare `card`. Dead in **11 files**
+  across Rapports, Visites, Listes, Brochures, Prospectcompagnes, Rapportprocpects.
+
+Re-running the fixed migrator over all five finished modules changed **17 files**.
+
+#### 🟡 Verification that verified nothing
+
+`verify_php.py` and `verify_code_intact.py` take paths relative to `app/View/`.
+Invoked with repo-relative paths (`--dir app/View/Prospects`) they matched zero
+files and printed **ALL INTACT / ALL CLEAN** — a pass built on an empty set.
+Both now refuse to report success when they compared nothing, and print the
+count they actually checked.
+
+#### 🟡 Three Font Awesome delivery paths, two of them invisible to the audit
+
+The audit's icon pattern matched only the bare `fa` token, so it had never seen:
+
+| Delivery | Where | Disposition |
+|---|---|---|
+| FA 4.5.0 local CSS | global, from the layout | stays until the last `fa-` is gone (TODO #11) |
+| FA Pro **kit loader** → `kit-pro.fontawesome.com` | 4 Rapportprocpects views | removed from 3; kept in `ajouter.ctp` |
+| FA 6.x CDN `<link>` → `site-assets.fontawesome.com` | 6 views in Rapports/Users/Visites | removed from 5; kept in `viewsp.ctp` |
+
+FA6 also uses long-form prefixes (`fa-solid fa-plus`) that neither the swapper
+nor the audit recognised. Both now handle `fa`/`fas`/`far`/`fal`/`fab` **and**
+`fa-solid`/`fa-regular`/`fa-light`/`fa-thin`/`fa-brands`/`fa-duotone`, plus a new
+`Font Awesome CDN` audit pattern. Removal is guarded: a file keeps its loader if
+any FA class survives outside `<style>`.
+
+#### 🟡 The icon path-count table was wrong
+
+`ICON_PATHS` was hand-written and wrong for `ki-menu` (4 layers, listed as 1),
+`ki-burger-menu` (4), `ki-archive` (3) and `ki-chart-line` (2) — those icons had
+been rendering with **missing duotone layers** wherever they appeared. It also
+had no notion of single-glyph icons, which must carry **no** `<span class="pathN">`
+at all.
+
+The table is deleted. Counts are now read from Metronic's own
+`plugins.bundle.css` at run time, and an icon name absent from that stylesheet
+warns and is left unconverted instead of silently rendering nothing. A repair
+pass (`fix_icon_paths`) normalises already-converted icons; it touches only `<i>`
+elements whose body is nothing but path spans, so icons wrapping real content are
+never disturbed. 18 files corrected, 0 mismatches remain app-wide.
+
+#### Judgement calls
+
+- **`info-box` kept** in `Brochures/{index,detail_vmp}` and
+  `Rapportprocpects/fuille_route_conseiller` (33 occurrences). These are *not*
+  AdminLTE dependents: each file ships its own complete scoped CSS
+  (`#programme-produit-page .info-box`, `.fdr-wrapper .info-box`), already present
+  in `esna/`, and Metronic defines no colliding `.info-box`. Renaming markup and
+  CSS in lockstep would be churn with real risk and no visual gain.
+- **Sentiment scale kept on Font Awesome** — `fa-angry` … `fa-laugh-beam` is a
+  five-point rating control; Keenicons has no faithful equivalent set and
+  approximate glyphs would change what the control communicates. Same for
+  `fa-bow-arrow` (Pro-only) and the `getFileIcon()` PDF/Word/Excel/image
+  indicators in `Rapports/{view,viewsp}` — Keenicons has no file-type icons, so
+  converting would collapse four distinguishable types into one.
+- **`fa-spinner` → Bootstrap 5 `spinner-border`**, not a Keenicon: FA's spinner is
+  animated (`fa-spin`) and a static glyph would leave a "loading" indicator that
+  never moves.
+- **Scoped `.form-group` rules re-pointed to `.mb-5`** (5 files) — the wrapper
+  bounds the blast radius. **Unscoped ones left dead** (4 files): re-pointing
+  `.description-block{padding:0!important}` onto `.d-block` would leak `!important`
+  across every Metronic component on the page, and those rules were mostly
+  compensating for AdminLTE defaults that no longer exist.
+- **jQuery UI**: genuinely used by `.datepicker()` in all three files that load it
+  (`Prospects/tableau_bord_conseiller`, `Prospectcompagnes/{add,edit}`), so it was
+  de-CDN'd to the local copy rather than dropped, keeping its original position in
+  the load order. The audit's `duplicate jQuery` pattern was matching
+  `code.jquery.com/ui/…` and is now narrowed to jQuery **core**, the same line
+  `metronize.py` already drew.
+- **`Prospects/teleconseiller.ctp`**: the "Ajouter" link passed
+  `array('class="btn bg-purple btn-flat margin"')` — a positional string, which
+  CakePHP renders as a junk `0="class=…"` attribute, so the button never received
+  a class and the local `.tc-wrapper .btn` rule had never applied. Corrected to a
+  real `'class'` key; link target untouched.
+- **JS-toggled icon** in `teleconseiller.ctp` migrated in lockstep with `boxtog()`,
+  using single-glyph `ki-plus`/`ki-minus` (TODO #26).
+
+### Verification status — 107 views, 11 modules
+
+| Module | views | lint | logic | code intact | concat | legacy |
+|---|---:|---|---|---|---|---|
+| Clients | 15 | ✅ | ✅ *(4 files, `-0` removals)* | ✅ | ✅ | ✅ |
+| Visites | 13 | ✅ | ✅ identical | ✅ | ✅ | ✅ |
+| Rapports | 11 | ✅ | ✅ *(1 file, icon swaps)* | ✅ | ✅ | ⚠️ FA kept (file-type icons) |
+| Users | 15 | ✅ | ✅ identical | ✅ | ✅ | ✅ |
+| Listes | 12 | ✅ | ✅ *(2 files, icons + `data-bs-*`)* | ✅ | ✅ | ✅ |
+| Prospects | 8 | ✅ | ✅ *(1 file, class-key fix)* | ✅ | ✅ | ✅ |
+| Brochures | 8 | ✅ | ✅ identical | ✅ | ✅ | ⚠️ `info-box` kept by design |
+| Rapportprocpects | 6 | ✅ | ✅ *(1 file, FA loader removed)* | ✅ | ✅ | ⚠️ FA kept (sentiment scale) |
+| Analyses | 7 | ✅ | ✅ identical | ✅ | ✅ | ⚠️ `data-widget` (TODO #28) |
+| Prospectcompagnes | 6 | ✅ | ✅ identical | ✅ | ✅ | ✅ |
+| Grosistes | 6 | ✅ | ✅ identical | ✅ | ✅ | ✅ |
+
+107 files linted, 0 failures. 107 compared for logic, 0 skipped. Every ⚠️ is a
+recorded decision, not an unknown. Audit pattern set is now **24 patterns**.
+
+---
+
 ## 5. Migration checklist — inventory of `app/View/**/*.ctp`
 
 **376 `.ctp` files** across 65 view directories.
@@ -939,7 +1085,34 @@ work.
     entirely. Under Bootstrap 5 that means a control that silently does nothing — invisible
     to lint, logic diff and concat scan alike. Fixed in the tools 2026-07-23; if a new
     attribute rewrite is ever added, add both variants.
-30. **"ALL CLEAN" means "clean against the 22 patterns currently audited."** Three separate
+33. **`Prospectcompagnes/{add,edit}.ctp` load two datepicker plugins.** jQuery UI and
+    bootstrap-datepicker both define `$.fn.datepicker`; bootstrap-datepicker loads second
+    and wins, so the trailing `$(".date").datepicker("option","showAnim","drop")` — jQuery
+    UI's API — is a no-op. Pre-existing; load order preserved exactly. Whoever owns the app
+    can drop one of the two.
+34. **Font Awesome is deliberately retained in three views.** `Rapportprocpects/ajouter.ctp`
+    (five-point sentiment scale + `fa-bow-arrow`) and `Rapports/viewsp.ctp`
+    (`getFileIcon()` PDF/Word/Excel/image indicators). Keenicons has no faithful
+    equivalent for either set, so converting would lose meaning rather than restyle it.
+    Both keep their external FA loader; every other view's loader was removed. Revisit
+    only if someone picks a deliberate icon substitution.
+35. **`Rapports/view.ctp` file-type icons have never rendered.** It emits
+    `<i class="fas fa-file-pdf">` (Font Awesome 5/6 syntax) but loads no FA kit, and the
+    global stylesheet is FA 4.5.0 — which has no `.fas` class and calls that icon
+    `fa-file-pdf-o`. Identical in `esna/`, so this is upstream breakage, not migration
+    damage. Left as-is per the precedent set for TODO #28 and #31; the fix is either an FA
+    loader (as its sibling `viewsp.ctp` has) or FA4 names.
+36. **A verification tool that matches no files must fail, not pass.** `verify_php.py` and
+    `verify_code_intact.py` take paths relative to `app/View/`; given repo-relative paths
+    they silently compared nothing and reported ALL CLEAN. Both now error out and print how
+    many files they actually checked. Treat any "clean" result without a file count as
+    unverified.
+37. **Derive, never duplicate, the rewrite maps.** The `<style>`-block rewriter kept its own
+    hand-maintained copy of the class renames; it drifted from `CLASS_MAP`/`TOKENS` and let
+    markup and CSS disagree in five modules already signed off. It is now derived from
+    those maps. Same lesson as #30, one layer down: a second list of the same facts will
+    eventually disagree with the first.
+30. **"ALL CLEAN" means "clean against the 24 patterns currently audited."** Four separate
     times an incomplete pattern set produced a clean report on code that still had defects.
     When migrating a new module, expect to discover legacy classes not yet in
     `tools/audit_legacy.py`; add them and **re-run the migrator over all previously

@@ -207,8 +207,8 @@
             <div class="card-header">
                 <h3 class="card-title">Détails</h3>
                 <div class="card-toolbar float-end">
-                    <button class="btn btn-sm btn-icon btn-active-light-primary"><i class="ki-duotone ki-minus"><span class="path1"></span></i></button>
-                    <button class="btn btn-sm btn-icon btn-active-light-primary"><i class="ki-duotone ki-cross"><span class="path1"></span></i></button>
+                    <button class="btn btn-sm btn-icon btn-active-light-primary"><i class="ki-duotone ki-minus"></i></button>
+                    <button class="btn btn-sm btn-icon btn-active-light-primary"><i class="ki-duotone ki-cross"><span class="path1"></span><span class="path2"></span></i></button>
                 </div>
             </div><!-- /.box-header -->
             <div class="card-body" id="statistiques_mail">

@@ -1,11 +1,5 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
-echo $this->Html->css('select2.min');
-echo $this->Html->css('dataTables.bootstrap');
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('select2.full.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('demo');
 ?>
@@ -29,16 +23,13 @@ echo $this->Html->script('demo');
     }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 <div class="row">
     <div class="col-md-12">
-<div class="box box-info ">
-    <div class="box-header with-border">
-        <h2 class="panel-title" >Généré une liste d'appel pour un conseillier</h2>
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title" >Généré une liste d'appel pour un conseillier</h2>
     </div>
-    <div class="box-body">
+    <div class="card-body">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8 text-center">
@@ -78,14 +69,14 @@ echo $this->Html->script('demo');
 
                 </div>
 </div>
-<div class="box-footer clearfix text-center">
+<div class="card-footer clearfix text-center">
                 <button type="button" class="btn btn_search" onclick="getclients()">Rechercher </button>
             </div>
 </div>
 
-                <div class="box box-info">
-                <div class="box-header table-responsive">
-                    <h3 class="box-title">La liste des clients et prospects
+                <div class="card">
+                <div class="card-header table-responsive">
+                    <h3 class="card-title">La liste des clients et prospects
 
                     </h3>
                     <div class="checkbox" style="float: right;">
@@ -100,8 +91,8 @@ echo $this->Html->script('demo');
                 </div> -->
                 </div>
 
-                <div class="box-body">
-                <table class="table table-bordered table-striped">
+                <div class="card-body">
+                <table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                     <tr>
                         <th>Code wavesoft</th>
                         <th>Société</th>
@@ -143,7 +134,7 @@ echo $this->Html->script('demo');
                 </table>
 
             </div>
-            <div class="box-footer clearfix">
+            <div class="card-footer clearfix">
                 <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-outline-info', 'div' => array('class' => 'well text-center'))); ?>
             </div>
         </div>

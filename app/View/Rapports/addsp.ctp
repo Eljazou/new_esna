@@ -1,8 +1,6 @@
 <?php echo $this->Html->css('daterangepicker'); ?>
-<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
-
 <style>
-    .box-primary .card-header {
+    .card .card-header {
         background: #3c8dbc;
         color: white;
     }
@@ -53,7 +51,7 @@
         margin-left: 30px;
     }
 
-    .card.box-primary {
+    .card {
         border: 2px solid #3c8dbc;
         z-index: 9;
     }
@@ -145,7 +143,7 @@
                         <div class="col-md-4">
                             <div class="input-group col-lg-12">
                                 <div class="input-group-text">
-                                    <i class="fa-regular fa-clock"></i>
+                                    <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                                 </div>
                                 <input type="text" name="data[Rapport][date]" class="form-control float-end" name="date" id="reservationtime" placeholder="Date">
                             </div>
@@ -263,7 +261,7 @@
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-success add-product">
-                                    <i class="fa-solid fa-plus"></i>
+                                    <i class="ki-duotone ki-plus"></i>
                                 </button>
                             </div>
 
@@ -312,7 +310,7 @@
                                 <label class="file-label">Pièces jointes (Rapports de terrain)</label>
 
                                 <div id="drop-zone" style="border: 1.5px dashed #aaa; border-radius: 8px; padding: 32px 20px; text-align:center; cursor:pointer; background: #f9f9f9; position:relative;">
-                                    <i class="fas fa-cloud-upload-alt" style="font-size:32px; color:#2196F3; display:block; margin-bottom:10px;"></i>
+                                    <i class="ki-duotone ki-cloud-add" style="font-size:32px; color:#2196F3; display:block; margin-bottom:10px;"><span class="path1"></span><span class="path2"></span></i>
                                     <p style="margin:0 0 4px; font-size:14px; font-weight:600;">Cliquez ou glissez vos fichiers ici</p>
                                     <p style="margin:0; font-size:12px; color:#888;">PDF, DOC, XLS — max 5 MB par fichier</p>
                                     <input type="file" id="file-terrain" name="data[Rapport][file_terrain][]" multiple
@@ -354,7 +352,7 @@
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-success add-action">
-                                    <i class="fa-solid fa-plus"></i>
+                                    <i class="ki-duotone ki-plus"></i>
                                 </button>
                             </div>
                         </div>
@@ -579,7 +577,7 @@ echo $this->Html->script('daterangepicker'); ?>
 
             for (let i = 0; i < this.files.length; i++) {
                 const fileElement = document.createElement('div');
-                fileElement.innerHTML = '<i class="fas fa-check-circle"></i> ' + this.files[i].name;
+                fileElement.innerHTML = '<i class="ki-duotone ki-check -circle"></i> ' + this.files[i].name;
                 fileNameDisplay.appendChild(fileElement);
             }
         } else {

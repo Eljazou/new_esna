@@ -12,7 +12,7 @@
     }
 
     /* Modern Rounded Layout Card */
-    #edit-compagne-wrapper .panel.panel-primary {
+    #edit-compagne-wrapper .card {
         background: #fff !important;
         border: 1px solid var(--border-color) !important;
         border-radius: var(--radius-lg) !important;
@@ -22,7 +22,7 @@
     }
 
     /* Header Components Structural Realignment */
-    #edit-compagne-wrapper .panel-heading {
+    #edit-compagne-wrapper .card-header {
         padding: 20px 24px !important;
         background: #fff !important;
         border-bottom: 1px solid var(--border-color) !important;
@@ -30,7 +30,7 @@
         float: none !important;
     }
 
-    #edit-compagne-wrapper .panel-title {
+    #edit-compagne-wrapper .card-title {
         font-size: 20px !important;
         font-weight: 800 !important;
         color: var(--text-dark) !important;
@@ -39,18 +39,18 @@
     }
 
     /* Workspace Content Formatting */
-    #edit-compagne-wrapper .panel-body {
+    #edit-compagne-wrapper .card-body {
         padding: 24px !important;
     }
 
     /* Nested Inner Blueprint Panels Stripping */
-    #edit-compagne-wrapper .panel-body .panel.panel-primary {
+    #edit-compagne-wrapper .card-body .card {
         border: none !important;
         box-shadow: none !important;
         border-radius: 0 !important;
         margin: 0 !important;
     }
-    #edit-compagne-wrapper .panel-body .panel-body {
+    #edit-compagne-wrapper .card-body .card-body {
         padding: 0 !important;
     }
 
@@ -98,13 +98,13 @@
     }
 
     /* Form Workspace Footer Architecture Elements */
-    #edit-compagne-wrapper .box-footer {
+    #edit-compagne-wrapper .card-footer {
         background: transparent !important;
         border-top: none !important;
         padding: 12px 0 0 0 !important;
     }
 
-    #edit-compagne-wrapper .well.text-center {
+    #edit-compagne-wrapper .card.text-center {
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
@@ -136,14 +136,14 @@
 </style>
 
 <div id="edit-compagne-wrapper">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title"><?php echo __('Editer une compagne'); ?></h3>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"><?php echo __('Editer une compagne'); ?></h3>
         </div>
-        <div class="panel-body">
-            <div class="col-lg-12 col-xs-12">
-                <div class="panel panel-primary">
-                    <div class="panel-body payment-form">
+        <div class="card-body">
+            <div class="col-lg-12 col-12">
+                <div class="card">
+                    <div class="card-body payment-form">
                         <?php
                         echo $this->Form->create('Prospectcompagne', array('type' => 'file'));
                         
@@ -180,7 +180,7 @@
                         ));
                         ?>
                     </div>
-                    <div class="box-footer">
+                    <div class="card-footer">
                         <?php echo $this->Form->end(array('label' => 'Envoyer', 'class' => 'btn btn-outline-info', 'div' => array('class' => 'well text-center'))); ?>
                     </div>
                 </div>
@@ -190,14 +190,14 @@
 </div>
 
 <?php
-    echo $this->Html->script('jquery-2.2.3.min');
     echo $this->Html->css('datepicker3');
 ?>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<?php echo $this->Html->script('jquery-ui.min'); ?>
 <?php
-    echo $this->Html->script('bootstrap.min');
-    echo $this->Html->script('app.min');
+    // jQuery UI de-CDN'd to the local copy, kept in its ORIGINAL position --
+    // before bootstrap-datepicker below. That order matters: both plugins
+    // define $.fn.datepicker and the later one wins, so bootstrap-datepicker
+    // shadows jQuery UI's. Preserved exactly as found; see PROJECT_LOG TODO #33.
     echo $this->Html->script('jquery.slimscroll.min');
     echo $this->Html->script('fastclick');
     echo $this->Html->script('demo');

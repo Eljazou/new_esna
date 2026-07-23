@@ -1,3 +1,4 @@
+<?php echo $this->element('assets/datatables'); ?>
 <style type="text/css">
 	@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
@@ -9,7 +10,7 @@
 	}
 
 	/* ---------- Page card container ---------- */
-	#programme-produit-page .box {
+	#programme-produit-page .card {
 		background: #ffffff;
 		border-radius: 20px;
 		border: none;
@@ -18,7 +19,7 @@
 		margin: 15px auto;
 	}
 
-	#programme-produit-page .box-header.with-border {
+	#programme-produit-page .card-header.with-border {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -27,7 +28,7 @@
 		margin-bottom: 20px;
 	}
 
-	#programme-produit-page .box-header .box-title {
+	#programme-produit-page .card-header .card-title {
 		font-size: 22px;
 		font-weight: 700;
 		background: linear-gradient(135deg, #1a1d36 0%, #8c7ef2 100%);
@@ -36,7 +37,7 @@
 		margin: 0;
 	}
 
-	#programme-produit-page .box-header .btn.bg-purple {
+	#programme-produit-page .card-header .btn.bg-primary {
 		background: linear-gradient(135deg, #a397ff 0%, #8c7ef2 100%);
 		border: none;
 		border-radius: 8px;
@@ -47,7 +48,7 @@
 		box-shadow: 0 4px 12px rgba(140, 126, 242, 0.2);
 	}
 
-	#programme-produit-page .box-body h4.box-title {
+	#programme-produit-page .card-body h4.card-title {
 		font-size: 14px;
 		font-weight: 700;
 		color: #51526c;
@@ -162,19 +163,18 @@
 		border-color: transparent;
 	}
 </style>
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>
 <?php //if (1 == 1) {//AuthComponent::user('role') != 'VMP' || AuthComponent::user('id') ==216) { 
 ?>
 <div id="programme-produit-page">
-    <div class="box">
-        <div class="box-header with-border">
-            <h2 class="box-title"><?php echo __('Programme produit'); ?></h2>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title"><?php echo __('Programme produit'); ?></h2>
             <?php
             if ($this->requestAction('/droits/getrole/Brochures/add') == 1)
                 echo $this->Html->link(__('Ajouter'), array('action' => 'add'), array('class' => "btn bg-purple btn-flat"));
             ?>
         </div>
-        <div class="box-body">
+        <div class="card-body">
             <?php foreach ($categories as $kcat => $c):
                 foreach ($lignes as $kligne => $ligne):
                     if (AuthComponent::user('ligne_id') != $kligne && AuthComponent::user('role') != 'Admin')
@@ -182,7 +182,7 @@
                     $brochures = $this->requestAction("/brochures/system_getbrochures/$kligne/$kcat");
                     if (empty($brochures))
                         continue; ?>
-                    <h4 class="box-title"><?php echo $c . " - " . $ligne; ?></h4>
+                    <h4 class="card-title"><?php echo $c . " - " . $ligne; ?></h4>
                     <div class="brochure-grid">
                         <?php foreach ($brochures as $b): ?>
                             <div class="info-box">
@@ -219,11 +219,11 @@
     //} else {
     if (AuthComponent::user('role') != 'VMP') {
     ?>
-        <div class="box">
-            <div class="box-header with-border">
-                <h2 class="box-title"><?php echo __('La liste des brochures'); ?></h2>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><?php echo __('La liste des brochures'); ?></h2>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="brochure-grid">
                     <?php foreach ($brochuresall as $b): ?>
                         <div class="info-box">

@@ -1,8 +1,8 @@
-<?php echo $this->Html->css('dataTables.bootstrap'); ?>	
+<?php echo $this->element('assets/datatables'); ?>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
     @media (max-width:932px){
-        .box-body{
+        .card-body{
             overflow: scroll;
             overflow-y: hidden;
         }
@@ -19,7 +19,7 @@
         font-family:'Poppins',sans-serif;
         color:#3a3a4a;
     }
-    .tc-wrapper .box{
+    .tc-wrapper .card{
         background:#fff;
         border:none;
         border-radius:18px;
@@ -67,7 +67,7 @@
         color:#8b87a8;
         margin-top:2px;
     }
-    .tc-wrapper .btn.bg-purple{
+    .tc-wrapper .btn.bg-primary{
         background:linear-gradient(90deg,#6C63F5,#8c7ef2) !important;
         border:none !important;
         border-radius:999px !important;
@@ -77,7 +77,7 @@
         box-shadow:0 6px 16px rgba(108,99,245,0.28) !important;
         color:#fff !important;
     }
-    .tc-wrapper .box-body{
+    .tc-wrapper .card-body{
         padding:20px 24px 24px 24px;
     }
     .tc-wrapper table.dataTable thead th{
@@ -144,7 +144,7 @@
         background:#f4f2ff;
         color:#6C63F5;
     }
-    .tc-wrapper .btn-box-tool{
+    .tc-wrapper .btn{
         color:#6C63F5;
     }
     .tc-wrapper .dataTables_filter input{
@@ -166,8 +166,8 @@
     }
 </style>
 <div class="tc-wrapper">
-<div class="box">
-    <div class="box-header tc-banner">
+<div class="card">
+    <div class="card-header tc-banner">
         <div class="tc-banner-left">
             <div class="tc-icon-badge">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -179,12 +179,18 @@
         </div>
         <?php
         if ($this->requestAction('/droits/getrole/users/add') == 1 )
-            echo $this->Html->link(__('Ajouter'), array("controller"=>"users",'action' => 'add'), array('class="btn bg-purple btn-flat margin"'));
+            // The options array was written as a positional string,
+            // array('class="btn bg-purple btn-flat margin"'), which CakePHP
+            // renders as a junk `0="class=..."` attribute -- so this button
+            // never actually received a class and the .tc-wrapper .btn rule
+            // above has never applied. Corrected to a real 'class' key; purely
+            // presentational, the link target is untouched.
+            echo $this->Html->link(__('Ajouter'), array("controller"=>"users",'action' => 'add'), array('class' => 'btn bg-primary'));
         
         ?>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>Image</th>
@@ -207,8 +213,8 @@
                     <td><span class="tc-role-badge"><?php echo h($user['User']['role']); ?></span>&nbsp;</td>
                     <td class="actions">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="ki-duotone ki-setting-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>&nbsp;<span class=""></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 
@@ -231,7 +237,7 @@
                             </ul>
                         </div>
                         <?php if ($user['User']['role'] == 'Super viseur' && !isset($tous)): ?>
-                            <button type="button" onclick="boxtog(<?php echo $i; ?>)" class="btn btn-box-tool" style="float: right;font-size:16px;"><i id="icon<?php echo $i; ?>" class="fa fa-plus" style="color:#aaa;"></i></button>
+                            <button type="button" onclick="boxtog(<?php echo $i; ?>)" class="btn btn-sm btn-icon btn-active-light-primary" style="float: right;font-size:16px;"><i id="icon<?php echo $i; ?>" class="ki-duotone ki-plus" style="color:#aaa;"></i></button>
                         <?php endif; ?>
                     </td>
                 </tr>
@@ -242,10 +248,6 @@
 </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -288,12 +290,16 @@ echo $this->Html->script('demo');
     });
     function boxtog(id) {
         $('.boxlistes' + id).toggle(300);
+        // These compare and assign the WHOLE class attribute, so they must stay
+        // byte-identical to the markup above. ki-plus/ki-minus are single-glyph
+        // Keenicons, so the icon carries no <span class="pathN"> children --
+        // which is what makes a whole-attribute swap safe here.
         var clas = $("#icon" + id).attr("class");
-        if (clas == 'fa fa-minus') {
-            $("#icon" + id).attr("class", "fa fa-plus");
+        if (clas == 'ki-duotone ki-minus') {
+            $("#icon" + id).attr("class", "ki-duotone ki-plus");
         }
-        if (clas == 'fa fa-plus') {
-            $("#icon" + id).attr("class", "fa fa-minus");
+        if (clas == 'ki-duotone ki-plus') {
+            $("#icon" + id).attr("class", "ki-duotone ki-minus");
         }
     }
 </script>

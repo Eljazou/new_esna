@@ -11,6 +11,7 @@ Usage:
 Options are per-file and idempotent -- running twice changes nothing.
 """
 import io
+import os
 import re
 import sys
 
@@ -77,6 +78,36 @@ CLASS_MAP = [
     (r'\bcaret\b', ''),
 ]
 
+# Class renames that are safe to apply to a CSS selector as well as to markup.
+# Targets that are Bootstrap UTILITIES rather than components are excluded: a
+# rule written for a component (`.form-group { margin-bottom: 20px }`) must not
+# be re-pointed at a utility (`.mb-5 { margin-bottom: 20px }`), because that
+# would leak the component's styling onto every element using that utility.
+# Those cases are reported instead, so a human decides.
+UTILITY_TARGETS = {'mb-5', 'w-100', 'float-end', 'float-start', 'd-block'}
+
+STYLE_WARNINGS = []
+
+
+def _atomic_renames(tokens):
+    """Every single-class rename the markup pass performs, as {old: new}.
+
+    Derived from CLASS_MAP and TOKENS so the CSS side can never lag the markup
+    side again. Multi-class targets collapse to their first class
+    (`.control-label` -> `.form-label`); renames to nothing are skipped, since
+    deleting a selector's text would corrupt the rule rather than retire it.
+    """
+    ren = {}
+    for pat, rep in CLASS_MAP:
+        m = re.fullmatch(r'\\b([\w-]+)\\b', pat)
+        if m and rep:
+            ren[m.group(1)] = rep.split()[0]
+    for old, new in tokens.items():
+        if new:
+            ren[old] = new.split()[0]
+    return {o: n for o, n in ren.items() if n not in UTILITY_TARGETS}
+
+
 # Font Awesome 4 -> Keenicons. Only the icons actually used in this app.
 ICON_MAP = {
     'fa-cog': 'ki-setting-3', 'fa-cogs': 'ki-setting-3',
@@ -102,36 +133,134 @@ ICON_MAP = {
     'fa-lock': 'ki-lock', 'fa-unlock': 'ki-lock-2',
     'fa-star': 'ki-star', 'fa-clock-o': 'ki-time',
     'fa-archive': 'ki-archive', 'fa-copy': 'ki-copy',
+    # Added for the small-CRUD batch. Rapportprocpects/Analyses use Font
+    # Awesome 5 PRO prefixes (fal/fas/far) served by a licensed kit loader
+    # (webroot/js/fontawesome.js -> kit-pro.fontawesome.com); mapping these to
+    # Keenicons removes that external, license-tied dependency.
+    'fa-filter': 'ki-filter', 'fa-bold': 'ki-text-bold',
+    'fa-share': 'ki-send', 'fa-times-circle': 'ki-cross-circle',
+    'fa-calendar-times': 'ki-calendar-remove', 'fa-calendar-alt': 'ki-calendar-8',
+    'fa-phone-alt': 'ki-phone', 'fa-clock': 'ki-time',
+    'fa-alarm-clock': 'ki-timer', 'fa-comments': 'ki-messages',
+    'fa-comments-alt': 'ki-message-text-2', 'fa-calculator': 'ki-calculator',
+    'fa-table': 'ki-element-11', 'fa-camera': 'ki-picture',
+    'fa-clipboard': 'ki-clipboard', 'fa-server': 'ki-data',
+    'fa-heart': 'ki-heart', 'fa-briefcase': 'ki-briefcase',
+    'fa-building': 'ki-bank',
+    'fa-cloud-upload-alt': 'ki-cloud-add', 'fa-cloud-download-alt': 'ki-cloud-download',
+    # Font Awesome 6 icon names (loaded in a few views from a
+    # site-assets.fontawesome.com <link>, a third FA delivery path alongside the
+    # local v4 CSS and the kit-pro loader).
+    'fa-pen-to-square': 'ki-pencil', 'fa-user-group': 'ki-people',
+    'fa-magnifying-glass': 'ki-magnifier', 'fa-trash-can': 'ki-trash',
+    'fa-xmark': 'ki-cross', 'fa-floppy-disk': 'ki-check-circle',
 }
-# how many <span class="pathN"> each Keenicon needs (duotone layers)
-ICON_PATHS = {
-    'ki-setting-3': 5, 'ki-profile-user': 4, 'ki-chart-simple': 4,
-    'ki-calendar-8': 6, 'ki-people': 5, 'ki-chart-pie-simple': 3,
-    'ki-information-5': 3, 'ki-cross-circle': 2, 'ki-check-circle': 2,
-    'ki-plus-circle': 2, 'ki-minus-circle': 2, 'ki-geolocation': 2,
-    'ki-magnifier': 2, 'ki-trash': 5, 'ki-pencil': 2, 'ki-eye': 3,
-    'ki-file': 2, 'ki-sms': 2, 'ki-phone': 2, 'ki-tag': 2, 'ki-lock': 3,
-    'ki-lock-2': 4, 'ki-star': 1, 'ki-time': 2, 'ki-archive': 1,
-    'ki-copy': 1, 'ki-printer': 5, 'ki-cloud-download': 2,
-    'ki-cloud-add': 2, 'ki-home-2': 2, 'ki-burger-menu': 1,
-    'ki-arrows-circle': 2, 'ki-chart-line': 1, 'ki-menu': 1,
+
+# Icons deliberately NOT mapped. The sentiment scale in Rapportprocpects is a
+# five-point rating UI (very unfavourable -> very favourable); Keenicons has no
+# faithful equivalent set, and substituting approximate glyphs would change what
+# the control communicates. fa-bow-arrow (Pro-only) likewise has no counterpart.
+# These keep Font Awesome, so the kit loader stays on those pages -- see
+# PROJECT_LOG TODO #34.
+ICON_KEEP = {
+    'fa-angry', 'fa-frown', 'fa-meh-rolling-eyes', 'fa-smile-beam',
+    'fa-laugh-beam', 'fa-bow-arrow', 'fa-spinner',
 }
+# How many <span class="pathN"> each Keenicon needs (duotone layers).
+#
+# Read from Metronic's own stylesheet rather than trusted from this table: a
+# duotone icon rendered with the wrong number of path spans draws only part of
+# itself, and a typo'd ki-* name renders nothing at all -- neither shows up in
+# php -l, the logic diff or the legacy audit. Deriving the counts makes those
+# two failures impossible instead of merely unlikely. The literals below stay as
+# the fallback for when the bundle is not present.
+_KI_CSS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                       'app', 'webroot', 'metronic', 'demo1', 'dist', 'assets',
+                       'plugins', 'global', 'plugins.bundle.css')
+
+
+def _derive_icon_paths():
+    """{ki-name: number of <span class="pathN"> children it needs}.
+
+    0 means a SINGLE-GLYPH icon, which must get no path spans at all; a duotone
+    icon returns its real layer count. Both matter: too few spans draws a
+    partial icon, and the hand-written table this replaced was wrong for
+    ki-menu (4, listed as 1), ki-burger-menu (4), ki-archive (3) and
+    ki-chart-line (2), so those had been rendering incomplete wherever used.
+    A name absent from the result is unknown and is left alone by swap_icons.
+    """
+    try:
+        css = io.open(_KI_CSS, encoding='utf-8', errors='replace').read()
+    except IOError:
+        sys.stderr.write('metronize: WARNING Keenicons stylesheet not found at '
+                         '%s -- no icons will be converted\n' % _KI_CSS)
+        return {}
+    found = {}
+    for name in set(ICON_MAP.values()):
+        n = len(set(re.findall(r'\.%s \.path(\d+):before' % re.escape(name), css)))
+        if n:
+            found[name] = n
+        elif re.search(r'\.%s:before' % re.escape(name), css):
+            found[name] = 0
+        else:
+            sys.stderr.write('metronize: WARNING %s is not defined in '
+                             'Keenicons -- it would render as nothing\n' % name)
+    return found
+
+
+ICON_PATHS = _derive_icon_paths()
+
+
+_ONLY_PATHS = re.compile(r'(?:\s*<span class="path\d+"></span>)*\s*')
+
+
+def fix_icon_paths(src):
+    """Repair the <span class="pathN"> children of ALREADY-converted icons.
+
+    Needed because earlier runs used a hand-written path-count table that was
+    wrong for several icons, so views already committed carry duotone icons
+    missing layers (and single-glyph icons carrying a span that renders
+    nothing). Only icons whose body is nothing but path spans are touched, so
+    an <i> wrapping real content is never disturbed.
+    """
+    def repl(m):
+        head, name, tail, inner = m.groups()
+        if name not in ICON_PATHS or not _ONLY_PATHS.fullmatch(inner):
+            return m.group(0)
+        paths = ''.join('<span class="path%d"></span>' % i
+                        for i in range(1, ICON_PATHS[name] + 1))
+        return '%s%s%s>%s</i>' % (head, name, tail, paths)
+
+    return re.sub(r'(<i[^>]*class="ki-duotone\s+)(ki-[\w-]+)([^"]*")>(.*?)</i>',
+                  repl, src, flags=re.S)
 
 
 def swap_icons(src):
     def repl(m):
-        prefix, name, suffix = m.group(1), m.group(2), m.group(3)
+        attrs, name, suffix, after = m.group(1), m.group(3), m.group(4), m.group(5)
+        if name in ICON_KEEP:
+            return m.group(0)
         ki = ICON_MAP.get(name)
-        if not ki:
+        if not ki or ki not in ICON_PATHS:
             return m.group(0)
         paths = ''.join('<span class="path%d"></span>' % i
-                        for i in range(1, ICON_PATHS.get(ki, 1) + 1))
+                        for i in range(1, ICON_PATHS[ki] + 1))
         extra = (' ' + suffix.strip()) if suffix.strip() else ''
-        return '<i class="ki-duotone %s%s">%s</i>' % (ki, extra, paths)
+        return '<i%s class="ki-duotone %s%s"%s>%s</i>' % (
+            attrs, ki, extra, after, paths)
 
-    # <i class="fa fa-cog"></i>  /  <i class="fa fa-cog fs-2"></i>
-    return re.sub(r'<i class="(fa\s+)(' + '|'.join(ICON_MAP) + r')([^"]*)"\s*></i>',
-                  repl, src)
+    # Matches, with any other attributes preserved in place:
+    #   <i class="fa fa-cog"></i>            <i class="fa fa-cog fs-2"></i>
+    #   <i onclick="..." class="fa fa-clock-o"></i>
+    #   <i class="fal fa-comments"></i>      (Font Awesome 5 Pro prefixes)
+    # `fa` alone stays in the alternation for FA4 markup; fas/far/fal/fab are
+    # FA5 and appear in the Rapportprocpects and Analyses views.
+    return re.sub(
+        r'<i((?:\s+(?!class=)[\w-]+="[^"]*")*)\s+class="'
+        r'((?:fa[srlb]?|fa-(?:solid|regular|light|thin|brands|duotone))\s+)('
+        + '|'.join(sorted(set(ICON_MAP) | ICON_KEEP, key=len, reverse=True))
+        + r')([^"]*)"((?:\s+[\w-]+="[^"]*")*)\s*>\s*</i>',
+        repl, src)
 
 
 
@@ -237,23 +366,56 @@ def metronize(src):
 
     # --- CSS selectors inside this view's own <style> blocks ------------
     # Markup classes were renamed above; rules still pointing at the old names
-    # would silently stop applying (this hit 6 files in the Clients module).
+    # silently stop applying (this hit 6 files in Clients). The rename list is
+    # now DERIVED from the same maps the markup pass uses, instead of being a
+    # hand-maintained parallel list -- that parallel list had drifted and missed
+    # the AdminLTE colour helpers, which is how Rapportprocpects/
+    # fuille_route_conseiller.ctp ended up with `.info-box.bg-aqua{...}` rules
+    # aimed at markup that now said `bg-primary`. That was not merely a lost
+    # tint: bg-primary/-warning/-success are REAL Bootstrap 5 utilities, so the
+    # local `background:#fff !important` neutralizer stopped matching and the
+    # cards rendered as solid colour blocks.
     def fix_style_block(m):
         css = m.group(0)
-        for a, b in (('.box-header', '.card-header'), ('.box-body', '.card-body'),
-                     ('.box-title', '.card-title'), ('.box-footer', '.card-footer'),
-                     ('.panel-heading', '.card-header'), ('.panel-body', '.card-body'),
-                     ('.panel-title', '.card-title'), ('.panel-footer', '.card-footer'),
-                     ('.input-group-addon', '.input-group-text')):
-            css = css.replace(a, b)
-        css = re.sub(r'(?<![-\w])\.box(?![-\w])', '.card', css)
-        css = re.sub(r'(?<![-\w])\.panel(?![-\w])', '.card', css)
+        # No lookbehind on the dot: a `.` cannot occur inside a CSS identifier,
+        # and requiring a non-word char before it breaks COMPOUND selectors --
+        # `.info-box.bg-aqua` has `x` before `.bg-aqua`, which is exactly the
+        # form the colour-helper rules use. The trailing (?![-\w]) still stops
+        # `.box` from eating `.box-header`.
+        for old, new in sorted(_atomic_renames(TOKENS).items(),
+                               key=lambda kv: -len(kv[0])):
+            css = re.sub(r'\.%s(?![-\w])' % re.escape(old), '.' + new, css)
+        css = re.sub(r'\.col-xs-(\d+)(?![-\w])', r'.col-\1', css)
+        # Compound container selectors. Markup collapsed `panel panel-primary`
+        # (and `box box-info`, etc.) to a bare `card`, so a rule still written
+        # as `.card.panel-primary` matches nothing -- it is dead CSS, and the
+        # page silently loses that styling. Drop the variant half; a variant
+        # appearing on its own becomes `.card`.
+        VARIANT = r'(?:default|primary|info|success|warning|danger)'
+        css = re.sub(r'\.card\.(?:panel|box)-%s(?![-\w])' % VARIANT, '.card', css)
+        css = re.sub(r'\.(?:panel|box)-%s(?![-\w])' % VARIANT, '.card', css)
+        # Renames excluded above are not silently dropped. Whether the rule is
+        # actually dead depends on the REST of the file, which is checked in
+        # process() -- FormHelper emits `'div' => array('class' => 'form-group')`
+        # from inside PHP, and the markup pass never touches PHP, so a
+        # .form-group rule is usually still very much alive.
+        for old, new in TOKENS.items():
+            if (new and new.split()[0] in UTILITY_TARGETS
+                    and re.search(r'\.%s(?![-\w])' % re.escape(old), css)):
+                STYLE_WARNINGS.append(old)
         return css
 
     src = re.sub(r'<style[^>]*>.*?</style>', fix_style_block, src, flags=re.S)
 
     # --- icons ------------------------------------------------------------
+    # Font Awesome's spinner is an ANIMATED glyph (fa-spin). Keenicons has no
+    # animated equivalent, so mapping it to a static icon would leave a "loading"
+    # indicator that never moves. Bootstrap 5's spinner is the right target.
+    src = re.sub(r'<i class="fa[srlb]?\s+fa-spinner[^"]*"\s*>\s*</i>',
+                 '<span class="spinner-border spinner-border-sm align-middle">'
+                 '</span>', src)
     src = swap_icons(src)
+    src = fix_icon_paths(src)
 
     # --- BS3 close button inside modals ----------------------------------
     src = re.sub(
@@ -293,7 +455,17 @@ def metronize(src):
 
 def process(path):
     src = io.open(path, encoding='utf-8').read()
+    del STYLE_WARNINGS[:]
     out, had_dt = metronize(src)
+    # A CSS rule kept for a utility-target class is only DEAD if nothing in the
+    # finished file still produces that class -- including PHP, which the markup
+    # pass deliberately never rewrites. Checking the whole output removes the
+    # false alarms that would otherwise fire on every FormHelper-built form.
+    for cls in sorted(set(STYLE_WARNINGS)):
+        body = re.sub(r'<style[^>]*>.*?</style>', '', out, flags=re.S)
+        if not re.search(r'[\'"\s]%s[\'"\s]' % re.escape(cls), body):
+            print('  WARN %s: .%s rule is now dead (class no longer emitted)'
+                  % (path, cls))
     if had_dt and "element('assets/datatables')" not in out:
         out = "<?php echo $this->element('assets/datatables'); ?>\n" + out
     if out != src:

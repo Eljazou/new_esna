@@ -393,7 +393,7 @@
                     </div>
                     <?php
                     if ($this->requestAction('/droits/getrole/listes/feuilleroute') == 1)
-                        echo $this->Html->link('<i class="ki-duotone ki-plus"><span class="path1"></span></i> Créer une feuille de route', array('action' => 'feuilleroute', AuthComponent::user('id')), array('class' => 'lr-btn-primary', 'escape' => false));
+                        echo $this->Html->link('<i class="ki-duotone ki-plus"></i> Créer une feuille de route', array('action' => 'feuilleroute', AuthComponent::user('id')), array('class' => 'lr-btn-primary', 'escape' => false));
                     ?>
                 </div>
 

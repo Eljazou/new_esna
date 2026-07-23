@@ -16,21 +16,21 @@
     }
 
     /* Modern Box Card Component */
-    .box {
+    .card {
         background: #ffffff;
         border: 1px solid var(--theme-border);
         border-radius: var(--radius-xl);
         box-shadow: 0 4px 18px rgba(155, 144, 224, 0.08);
         margin-bottom: 30px;
     }
-    .box-header {
+    .card-header {
         padding: 24px 28px;
         border-bottom: 1px solid var(--theme-border);
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
-    .box-header h2 {
+    .card-header h2 {
         margin: 0;
         font-size: 18px;
         font-weight: 700;
@@ -42,15 +42,15 @@
     }
 
     /* Clean Info Tables */
-    .box-body {
+    .card-body {
         padding: 24px 20px;
     }
-    .box-body table.table {
+    .card-body table.table {
         width: 100%;
         margin-bottom: 0;
         border-collapse: collapse;
     }
-    .box-body th {
+    .card-body th {
         width: 35%;
         color: var(--theme-text-muted);
         font-size: 13.5px;
@@ -60,7 +60,7 @@
         border-bottom: 1px dashed var(--theme-border);
         text-align: left !important;
     }
-    .box-body td {
+    .card-body td {
         color: var(--theme-text-dark);
         font-size: 14px;
         font-weight: 500;
@@ -69,8 +69,8 @@
         border-bottom: 1px dashed var(--theme-border);
         text-align: left !important;
     }
-    .box-body tr:last-child th, 
-    .box-body tr:last-child td {
+    .card-body tr:last-child th, 
+    .card-body tr:last-child td {
         border-bottom: none;
     }
 
@@ -177,7 +177,7 @@
         left: 18px;
         top: 4px;
     }
-    ul.timeline > li > .fa.bg-blue {
+    ul.timeline > li > .fa.bg-primary {
         background-color: var(--theme-primary-light) !important;
         color: var(--theme-primary-hover) !important;
     }
@@ -230,14 +230,14 @@
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h2>
                     <?php echo __('Prospect'); ?>
                     <?php echo $this->Html->link(__('Editer'), array('action' => 'edit'), array('class'=>'btn btn-lavender-primary'));?>
                 </h2>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="col-md-6">
                     <table class="table">
                         <tr>
@@ -336,9 +336,9 @@
             
             <!-- timeline item -->
             <li>
-                <i class="fa fa-envelope bg-blue"></i>
+                <i class="ki-duotone ki-sms bg-primary"><span class="path1"></span><span class="path2"></span></i>
                 <div class="timeline-item">
-                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                    <span class="time"><i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i> 12:05</span>
                     <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
                     <div class="timeline-body">
                         Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
@@ -355,7 +355,7 @@
 
             <!-- timeline end marker -->
             <li>
-                <i class="fa fa-clock-o bg-gray"></i>
+                <i class="ki-duotone ki-time bg-gray"><span class="path1"></span><span class="path2"></span></i>
             </li>
         </ul>
     </div>

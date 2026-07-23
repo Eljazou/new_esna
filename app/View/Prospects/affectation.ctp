@@ -1,5 +1,4 @@
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     :root{
         --accent:#9b90e0;
@@ -14,15 +13,15 @@
         --shadow-card:0 2px 14px rgba(108,92,231,0.06);
     }
 
-    .box{
+    .card{
         background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-lg);
         box-shadow:var(--shadow-card); margin-bottom:20px;
     }
-    .box .box-header{ border-bottom:none; padding:20px 24px 10px 24px; }
-    .box .box-body{ padding:0 24px 24px 24px; }
+    .card .card-header{ border-bottom:none; padding:20px 24px 10px 24px; }
+    .card .card-body{ padding:0 24px 24px 24px; }
 
-    .box-title{ margin:0; font-size:16px; font-weight:700; color:var(--text-dark); display:flex; align-items:center; }
-    .box-title:before{
+    .card-title{ margin:0; font-size:16px; font-weight:700; color:var(--text-dark); display:flex; align-items:center; }
+    .card-title:before{
         content:"\f0c0"; font-family:"FontAwesome"; display:inline-flex; align-items:center; justify-content:center;
         width:32px; height:32px; border-radius:50%; margin-right:10px; font-size:14px;
         background:var(--accent-light); color:var(--accent-dark);
@@ -46,14 +45,14 @@
     table.display a:hover{ color:var(--accent-dark); text-decoration:underline; }
 
     /* ---------- Réaffecter form ---------- */
-    table.display .form-group{ display:flex; align-items:center; gap:8px; margin:0; }
+    table.display .mb-5{ display:flex; align-items:center; gap:8px; margin:0; }
     table.display select#ApartientSuperviseurs{
         border:1px solid var(--border-color); border-radius:var(--radius-sm);
         background:#fafafa; padding:7px 10px; font-size:13px; color:var(--text-dark);
         min-height:36px; min-width:160px;
     }
     table.display select#ApartientSuperviseurs:focus{ border-color:var(--accent); background:#fff; outline:none; }
-    table.display .box-footer{
+    table.display .card-footer{
         background:transparent !important; border-top:none !important; padding:0 !important; display:inline-block;
     }
     table.display .btn-primary{
@@ -80,12 +79,12 @@
         background:var(--accent-light) !important; color:var(--accent-dark) !important; border-color:var(--accent) !important;
     }
 </style>
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><?php echo __('Utilisateurs'); ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?php echo __('Utilisateurs'); ?></h3>
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped display">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4 gs-4">
             <thead>
                 <tr>
                     <th>Nom & prénom</th>
@@ -113,7 +112,7 @@
                     <td>
                         <?php echo $this->Form->create('Prospectaffectation');
                         echo $this->Form->hidden('user1_id',array('value'=>$user['User']['id']));?>
-                        <div class="form-group">
+                        <div class="mb-5">
 							<select name="data[Prospectaffectation][superviseurs]" id="ApartientSuperviseurs">
 								<?php foreach ($superviseurs as $k=>$v):
 										$s='';
@@ -137,10 +136,6 @@
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');

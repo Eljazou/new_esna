@@ -34,10 +34,7 @@ echo $this->element('assets/datatables');
                     </div>
                 </div>
                 <div class="card-body d-flex align-items-end pt-0">
-                    <i class="ki-duotone ki-profile-user fs-3x text-white opacity-50">
-                        <span class="path1"></span><span class="path2"></span>
-                        <span class="path3"></span><span class="path4"></span>
-                    </i>
+                    <i class="ki-duotone ki-profile-user fs-3x text-white opacity-50"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
                 </div>
             </div>
         </a>
@@ -53,10 +50,7 @@ echo $this->element('assets/datatables');
                     </div>
                 </div>
                 <div class="card-body d-flex align-items-end pt-0">
-                    <i class="ki-duotone ki-chart-simple fs-3x text-white opacity-50">
-                        <span class="path1"></span><span class="path2"></span>
-                        <span class="path3"></span><span class="path4"></span>
-                    </i>
+                    <i class="ki-duotone ki-chart-simple fs-3x text-white opacity-50"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
                 </div>
             </div>
         </a>
@@ -91,9 +85,7 @@ echo $this->element('assets/datatables');
                         </div>
                     </div>
                     <div class="card-body d-flex align-items-end pt-0">
-                        <i class="ki-duotone ki-minus-circle fs-3x text-white opacity-50">
-                            <span class="path1"></span><span class="path2"></span>
-                        </i>
+                        <i class="ki-duotone ki-minus-circle fs-3x text-white opacity-50"><span class="path1"></span><span class="path2"></span></i>
                     </div>
                 </div>
             </a>
@@ -115,9 +107,7 @@ echo $this->element('assets/datatables');
             </div>
             <div class="col-md-5">
                 <button type="button" id="search" class="btn btn-primary">
-                    <i class="ki-duotone ki-magnifier fs-3">
-                        <span class="path1"></span><span class="path2"></span>
-                    </i>
+                    <i class="ki-duotone ki-magnifier fs-3"><span class="path1"></span><span class="path2"></span></i>
                     Rechercher
                 </button>
             </div>
@@ -193,10 +183,7 @@ echo $this->element('assets/datatables');
                     <td class="actions">
                         <button type="button" class="btn btn-light-primary btn-sm btn-flex" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                            <i class="ki-duotone ki-setting-3 fs-5">
-                                <span class="path1"></span><span class="path2"></span><span class="path3"></span>
-                                <span class="path4"></span><span class="path5"></span>
-                            </i>
+                            <i class="ki-duotone ki-setting-3 fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
                             <i class="ki-duotone ki-down fs-6 ms-1"></i>
                         </button>
                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-3"

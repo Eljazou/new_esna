@@ -1,9 +1,6 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
-echo $this->Html->css('dataTables.bootstrap');
 echo $this->Html->css('_all-skins.min');
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('jquery.dataTables.min');
 ?>
 
 <style>
@@ -87,18 +84,18 @@ echo $this->Html->script('jquery.dataTables.min');
 
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">Tableau de bord Superviseurs - Visites Doubles</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Tableau de bord Superviseurs - Visites Doubles</h3>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <!-- Filtre par mois -->
                 <form action="<?php echo $this->Html->url(array('controller' => 'analyses', 'action' => 'system_asm_stat')); ?>" method="post" class="form-inline" style="margin-bottom: 25px; background: #f9f9f9; padding: 15px; border-radius: 5px; border: 1px solid #eee;">
-                    <div class="form-group">
+                    <div class="mb-5">
                         <label for="mois" style="margin-right: 10px;">Choisir le mois : </label>
                         <input type="month" name="data[Filtre][mois]" id="mois" class="form-control" value="<?php echo h($mois_choisi); ?>">
                     </div>
-                    <button type="submit" class="btn btn-primary" style="margin-left: 10px;"><i class="fa fa-filter"></i> Filtrer</button>
+                    <button type="submit" class="btn btn-primary" style="margin-left: 10px;"><i class="ki-duotone ki-filter"><span class="path1"></span><span class="path2"></span></i> Filtrer</button>
                 </form>
 
                 <!-- Tableau Principal -->
@@ -167,11 +164,11 @@ echo $this->Html->script('jquery.dataTables.min');
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 <h4 class="modal-title" id="datesModalLabel">Jours travaillés</h4>
             </div>
             <div class="modal-body">
-                <table class="table table-bordered table-striped table-hover" id="datesTable">
+                <table class="table table-row-bordered table-row-gray-300 align-middle gy-4 table-hover" id="datesTable">
                     <thead>
                         <tr>
                             <th>Date</th>
@@ -184,7 +181,7 @@ echo $this->Html->script('jquery.dataTables.min');
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
             </div>
         </div>
     </div>
@@ -195,12 +192,12 @@ echo $this->Html->script('jquery.dataTables.min');
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-success">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:#fff; opacity:1;"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 <h4 class="modal-title" id="visitesModalLabel" style="color:#fff;">Détails des visites</h4>
             </div>
             <div class="modal-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped" id="visitesTable">
+                    <table class="table table-row-bordered table-row-gray-300 align-middle gy-4" id="visitesTable">
                         <thead>
                             <tr>
                                 <th>VMP (Accompagné)</th>
@@ -216,7 +213,7 @@ echo $this->Html->script('jquery.dataTables.min');
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="$('#visitesModal').modal('hide'); $('body').addClass('modal-open');">Retour</button>
+                <button type="button" class="btn btn-light" onclick="$('#visitesModal').modal('hide'); $('body').addClass('modal-open');">Retour</button>
             </div>
         </div>
     </div>
@@ -247,7 +244,7 @@ echo $this->Html->script('jquery.dataTables.min');
 
             tr.append($('<td>').css('text-align', 'center').append(valBtn));
 
-            var actBtn = $('<button>').addClass('btn btn-sm btn-primary').html('<i class="fa fa-eye"></i> Détails')
+            var actBtn = $('<button>').addClass('btn btn-sm btn-primary').html('<i class="ki-duotone ki-eye"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Détails')
                 .attr('onclick', "openVisitesModal('" + key + "', '" + dateStr + "')");
             tr.append($('<td>').css('text-align', 'center').append(actBtn));
 

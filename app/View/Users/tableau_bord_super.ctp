@@ -1,8 +1,6 @@
 ﻿<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
-
 <style>
 /* Only what Metronic genuinely doesn't already give us. Everything else
    (cards, symbols, badges, table stripes, colors) comes from style.bundle.css */
@@ -566,7 +564,7 @@ h2::after{ content:"👋"; margin-left:6px; }
                         var userLink = baseUrl + "users/view/" + visite.user_id;
                         tabContent += '<tr>';
                         if (visite.user_double) {
-                            tabContent += '<td><a href="' + userLink + '" target="_blank"><i class="fa-regular fa-user-group"></i>' + visite.user_double + '</a></td>';
+                            tabContent += '<td><a href="' + userLink + '" target="_blank"><i class="ki-duotone ki-people"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>' + visite.user_double + '</a></td>';
                         }
                         tabContent += '<td><a href="' + clientLink + '" target="_blank">' + ((visite.client_nom || '') + ' ' + (visite.client_prenom || '')).trim() + '</a></td>';
                         tabContent += '<td>' + (visite.client_activite || 'N/A') + '</td>';

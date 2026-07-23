@@ -1,3 +1,4 @@
+<?php echo $this->element('assets/datatables'); ?>
 <style>
     .brochure {
         float: left;
@@ -96,23 +97,21 @@
         color: #fff !important;
     }
 </style>
-<?php echo $this->Html->css('dataTables.bootstrap');
-?>	
 <div class="col-md-12" style="float:none;margin:auto;">
-    <div class="box">
-        <div class="box-header with-border">
-            <h2 class="box-title"><?php echo __('La liste des brochures'); ?></h2>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title"><?php echo __('La liste des brochures'); ?></h2>
         </div>
-        <div class="box-body">
+        <div class="card-body">
             <?php
             $i = 0;
             foreach ($brochures as $b): if ($i % 3 == 0 && $i != 0)
                     echo "</tr><tr>";$i++;
                 ?>
                 <a href="img/brochures/<?php echo $b['brochures']['file']; ?>" target="_blanck">
-                    <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom:10px;">
+                    <div class="col-md-4 col-sm-6 col-12" style="margin-bottom:10px;">
                         <div class="info-box" style="box-shadow: 1px 1px 1px rgba(0,0,0,0.1) !important;">
-                            <span class="info-box-icon bg-aqua-active"><i class="fa fa-bold"></i></span>
+                            <span class="info-box-icon bg-primary-active"><i class="ki-duotone ki-text-bold"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text" style="color:#444;text-decoration:none;">Spécialité : <?php echo $b['categories']['name']; ?></span>
                                 <span class="info-box-text" style="color:#444;text-decoration:none;"><?php echo $b['brochures']['name']; ?></span>

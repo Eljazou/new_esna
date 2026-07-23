@@ -15,11 +15,7 @@ echo $this->Html->script([
 
 <?php
 echo $this->Html->css('daterangepicker');
-echo $this->Html->css('select2.min');
 echo $this->Html->css('_all-skins.min');
-echo $this->Html->script('select2.full.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -41,11 +37,11 @@ echo $this->Html->script('demo');
         --imp-shadow: 0 6px 24px rgba(108, 99, 245, 0.08);
     }
 
-    body, .content-wrapper, .box, .form-control, table {
+    body, .content-wrapper, .card, .form-control, table {
         font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    .box-body {
+    .card-body {
         overflow: hidden;
         overflow-y: hidden;
     }
@@ -60,7 +56,7 @@ echo $this->Html->script('demo');
         margin-bottom: 24px;
     }
 
-    .imp-filter-card .box-header {
+    .imp-filter-card .card-header {
         border: none;
         padding: 0 0 4px;
     }
@@ -89,7 +85,7 @@ echo $this->Html->script('demo');
         display: block;
     }
 
-    .imp-filter-card .form-group {
+    .imp-filter-card .mb-5 {
         margin-bottom: 18px;
     }
 
@@ -218,7 +214,7 @@ echo $this->Html->script('demo');
         margin-bottom: 22px;
     }
 
-    .imp-card .box-header {
+    .imp-card .card-header {
         background: var(--imp-lavender);
         border: none;
         padding: 18px 24px;
@@ -228,7 +224,7 @@ echo $this->Html->script('demo');
         cursor: pointer;
     }
 
-    .imp-card .box-title {
+    .imp-card .card-title {
         font-size: 15.5px;
         font-weight: 600;
         color: var(--imp-text);
@@ -237,7 +233,7 @@ echo $this->Html->script('demo');
         gap: 10px;
     }
 
-    .imp-card .box-title .imp-vm-badge {
+    .imp-card .card-title .imp-vm-badge {
         background: var(--imp-primary);
         color: #fff;
         border-radius: 999px;
@@ -246,7 +242,7 @@ echo $this->Html->script('demo');
         font-weight: 600;
     }
 
-    .imp-card .box-title .imp-total-badge {
+    .imp-card .card-title .imp-total-badge {
         background: #fff;
         color: var(--imp-primary-dark);
         border-radius: 999px;
@@ -256,7 +252,7 @@ echo $this->Html->script('demo');
         border: 1px solid var(--imp-primary-light);
     }
 
-    .imp-card .box-tools .btn-box-tool {
+    .imp-card .card-toolbar .btn {
         background: #fff;
         border-radius: 50%;
         width: 30px;
@@ -268,12 +264,12 @@ echo $this->Html->script('demo');
         border: 1px solid var(--imp-primary-light);
     }
 
-    .imp-card .box-tools .btn-box-tool svg {
+    .imp-card .card-toolbar .btn svg {
         width: 14px;
         height: 14px;
     }
 
-    .imp-card .box-body {
+    .imp-card .card-body {
         padding: 26px 24px;
     }
 
@@ -328,10 +324,10 @@ echo $this->Html->script('demo');
 </style>
 
 <div class="row">
-    <div class="col-xs-12" style="margin-bottom: 24px;">
+    <div class="col-12" style="margin-bottom: 24px;">
 
-        <div class="box form-group imp-filter-card">
-            <div class="box-header with-border">
+        <div class="card mb-5 imp-filter-card">
+            <div class="card-header">
                 <div class="imp-filter-title">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
@@ -339,7 +335,7 @@ echo $this->Html->script('demo');
                     Filtrer les statistiques
                 </div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <?php
                 echo $this->Form->create('Analyse', array('id' => 'dateform', 'autocomplete' => 'off'));
                 ?>
@@ -426,14 +422,14 @@ echo $this->Html->script('demo');
         if ($info['total_clients'] == 0)
             continue; ?>
         <div class="col-md-12">
-            <div class="box box-primary box-solid collapsed-box imp-card">
-                <div class="box-header with-border" data-widget="collapse">
-                    <h3 class="box-title">
+            <div class="card box-solid imp-card">
+                <div class="card-header" data-widget="collapse">
+                    <h3 class="card-title">
                         <span class="imp-vm-badge">VM #<?php echo $tout_user_pour_affchage_dans_le_view[$userId]; ?></span>
                         <span class="imp-total-badge">Total clients : <?php echo h($info['total_clients']); ?></span>
                     </h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <div class="card-toolbar float-end">
+                        <button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="collapse">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -442,7 +438,7 @@ echo $this->Html->script('demo');
                     </div>
                 </div>
 
-                <div class="box-body">
+                <div class="card-body">
                     <div class="row">
                         <!-- Spécialités -->
                         <div class="col-md-6 text-center">
@@ -452,7 +448,7 @@ echo $this->Html->script('demo');
                             </div>
 
                             <div class="table-responsive" style="max-height:200px; overflow-y:auto; margin-top:14px;">
-                                <table class="table table-bordered table-condensed table-striped table_d">
+                                <table class="table table-row-bordered align-middle gy-4 table-condensed table-striped table_d">
                                     <thead class="color-thead">
                                         <tr>
                                             <th>Spécialité</th>
@@ -513,7 +509,7 @@ echo $this->Html->script('demo');
                                 </div>
 
                                 <div class="table-responsive" style="max-height:200px; overflow-y:auto; margin-top:14px;">
-                                    <table class="table table-bordered table-condensed table-striped table_d">
+                                    <table class="table table-row-bordered align-middle gy-4 table-condensed table-striped table_d">
                                         <thead class="color-thead">
                                             <tr>
                                                 <th>Tendance</th>
@@ -575,14 +571,14 @@ echo $this->Html->script('demo');
     $info=$global; ?>
 
     <div class="col-md-12">
-            <div class="box box-primary box-solid collapsed-box imp-card">
-                <div class="box-header with-border" data-widget="collapse">
-                    <h3 class="box-title">
+            <div class="card box-solid imp-card">
+                <div class="card-header" data-widget="collapse">
+                    <h3 class="card-title">
                         <span class="imp-vm-badge">GLOBAL</span>
                         <span class="imp-total-badge">Total clients : <?php echo h($info['total_clients']); ?></span>
                     </h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <div class="card-toolbar float-end">
+                        <button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-widget="collapse">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -591,7 +587,7 @@ echo $this->Html->script('demo');
                     </div>
                 </div>
 
-                <div class="box-body">
+                <div class="card-body">
                     <div class="row">
                         <!-- Spécialités -->
                         <div class="col-md-6 text-center">
@@ -601,7 +597,7 @@ echo $this->Html->script('demo');
                             </div>
 
                             <div class="table-responsive" style=" overflow-y:auto; margin-top:14px;">
-                                <table class="table table-bordered table-condensed table-striped table_dd">
+                                <table class="table table-row-bordered align-middle gy-4 table-condensed table-striped table_dd">
                                     <thead class="color-thead">
                                         <tr>
                                             <th>Spécialité</th>
@@ -662,7 +658,7 @@ echo $this->Html->script('demo');
                                 </div>
 
                                 <div class="table-responsive" style=" overflow-y:auto; margin-top:14px;">
-                                    <table class="table table-bordered table-condensed table-striped table_dd">
+                                    <table class="table table-row-bordered align-middle gy-4 table-condensed table-striped table_dd">
                                         <thead class="color-thead">
                                             <tr>
                                                 <th>Tendance</th>
@@ -725,13 +721,6 @@ echo $this->Html->script('demo');
 <!-- Chart.js + Datalabels -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 <script>
     var dtFrench = {

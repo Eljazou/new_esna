@@ -1,20 +1,13 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
 echo $this->Html->css('daterangepicker');
-echo $this->Html->css('select2.min');
-echo $this->Html->css('dataTables.bootstrap');
-echo $this->Html->script('jquery-2.2.3.min');
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <?php
 echo $this->Html->script('daterangepicker');
-echo $this->Html->script('select2.full.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('jquery.dataTables.min');
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -123,7 +116,7 @@ echo $this->Html->script('jquery.dataTables.min');
         padding: 11px 16px;
     }
 
-    .pv-wrapper .form-group label,
+    .pv-wrapper .mb-5 label,
     .pv-wrapper label {
         display: flex;
         align-items: center;
@@ -134,7 +127,7 @@ echo $this->Html->script('jquery.dataTables.min');
         margin-bottom: 6px;
     }
 
-    .pv-wrapper .form-group {
+    .pv-wrapper .mb-5 {
         margin-bottom: 18px;
     }
 
@@ -353,7 +346,7 @@ echo $this->Html->script('jquery.dataTables.min');
                 <div class="card-body">
                     <div class="pv-date-banner">
                         <div class="card-icon">
-                            <i class="fa fa-clock-o"></i>
+                            <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                         </div>
                         <p class="pv-date-title">Période</p>
                     </div>
@@ -361,7 +354,7 @@ echo $this->Html->script('jquery.dataTables.min');
                     <?php echo $this->Form->create('Analyse', array('id' => 'dateform', 'autocomplete' => 'off')); ?>
 
                     <div class="input-group col-lg-10 col-md-10 col-12 float-end mb-4">
-                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+                        <div class="input-group-text"><i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i></div>
                         <input type="text" class="form-control" value="<?php echo h($dateaafficherdansleview); ?>" name="date" id="reservationtime">
                     </div>
 
@@ -492,7 +485,7 @@ echo $this->Html->script('jquery.dataTables.min');
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon"><i class="fa fa-bar-chart"></i></div>
+                    <div class="card-icon"><i class="ki-duotone ki-chart-simple"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></div>
                     <h3 class="card-title">Distribution de la Fréquence des Visites</h3>
                 </div>
                 <div class="card-body">
@@ -562,14 +555,14 @@ echo $this->Html->script('jquery.dataTables.min');
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon icon-blue"><i class="fa fa-table"></i></div>
+                    <div class="card-icon icon-blue"><i class="ki-duotone ki-element-11"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></div>
                     <h3 class="card-title" style="flex:1;">Détail par Client</h3>
                     <button class="btn my-btn-excel" onclick="$('.buttons-excel').click()">
-                        <i class="fa fa-file-excel-o"></i> Excel
+                        <i class="ki-duotone ki-file -excel-o"><span class="path1"></span><span class="path2"></span></i> Excel
                     </button>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered table-striped" id="tableClients">
+                    <table class="table table-row-bordered table-row-gray-300 align-middle gy-4" id="tableClients">
                         <thead>
                             <tr>
                                 <th>ID Client</th>

@@ -1,6 +1,4 @@
-<?php 
-echo $this->Html->css('dataTables.bootstrap');
-		?>	
+<?php echo $this->element('assets/datatables'); ?>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -8,10 +6,10 @@ echo $this->Html->css('dataTables.bootstrap');
     --primary-light: #ece9fe;
 }
 
-body, .box, .form-control { font-family: 'Poppins', sans-serif; }
+body, .card, .form-control { font-family: 'Poppins', sans-serif; }
 
 /* Kill the AdminLTE box chrome; we build our own card look */
-.box {
+.card {
     border: none !important;
     box-shadow: none !important;
     background: transparent !important;
@@ -46,15 +44,15 @@ body, .box, .form-control { font-family: 'Poppins', sans-serif; }
 
 .gro-hero-text { z-index: 2; }
 
-.box-title {
+.card-title {
     font-weight: 700 !important;
     color: #171730 !important;
     margin: 0 !important;
     display: inline-block;
 }
 
-.gro-hero-text .box-title:first-of-type { font-size: 22px !important; }
-.gro-hero-text .box-title:nth-of-type(2) { font-size: 22px !important; color: var(--primary) !important; margin-left: 8px !important; }
+.gro-hero-text .card-title:first-of-type { font-size: 22px !important; }
+.gro-hero-text .card-title:nth-of-type(2) { font-size: 22px !important; color: var(--primary) !important; margin-left: 8px !important; }
 
 .gro-hero-subtitle {
     font-size: 13.5px;
@@ -164,7 +162,7 @@ body, .box, .form-control { font-family: 'Poppins', sans-serif; }
 }
 
 /* ===== Section cards (Total + per-ville tables) ===== */
-.box-body.table-responsive {
+.card-body.table-responsive {
     background: #fff;
     border-radius: 18px;
     box-shadow: 0 4px 20px rgba(108, 99, 245, 0.06);
@@ -172,7 +170,7 @@ body, .box, .form-control { font-family: 'Poppins', sans-serif; }
     margin-bottom: 22px;
 }
 
-.box-body.table-responsive > big {
+.card-body.table-responsive > big {
     display: block;
     font-size: 16px;
     font-weight: 700;
@@ -336,17 +334,17 @@ table.display tbody tr td:not(:first-child) {
 </style>
 
 <div class="row">
-<div class="col-xs-12">
+<div class="col-12">
 
-	<div class="box">
-    <div class="box-header">
+	<div class="card">
+    <div class="card-header">
         <div class="gro-hero">
             <div class="gro-hero-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
             </div>
             <div class="gro-hero-text">
-                <h3 class="box-title"><?php echo __('Grossistes'); ?></h3>
-		        <h3 class="box-title"><?php echo $anne; ?></h3>
+                <h3 class="card-title"><?php echo __('Grossistes'); ?></h3>
+		        <h3 class="card-title"><?php echo $anne; ?></h3>
                 <div class="gro-hero-subtitle">Suivez les grossistes mois par mois</div>
             </div>
             <svg class="gro-hero-illustration" width="200" height="130" viewBox="0 0 200 130" fill="none">
@@ -391,11 +389,11 @@ table.display tbody tr td:not(:first-child) {
             </div>
         </div>
     </div>
-    <div class="box-body table-responsive">
+    <div class="card-body table-responsive">
 	
     <big>Total</big>
       	
-        <table id="example1" class="display table table-bordered table-striped">
+        <table id="example1" class="display table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
 			<tr>
 				<th>Produit</th>
@@ -440,11 +438,11 @@ table.display tbody tr td:not(:first-child) {
  </div>
  
  <?php foreach ($villes as $ville) :?>
- <div class="box-body table-responsive">
+ <div class="card-body table-responsive">
 	
     <big><?php echo $ville['grosistes']['region']; ?></big>
       	
-        <table id="example1" class="display table table-bordered table-striped">
+        <table id="example1" class="display table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
 			<tr>
 				<th>Produit</th>
@@ -496,22 +494,12 @@ table.display tbody tr td:not(:first-child) {
 	</div>
 </div>
  
-	<?php echo $this->Html->script('jquery-2.2.3.min');
-        echo $this->Html->script('bootstrap.min');
-        echo $this->Html->script('app.min');
-        echo $this->Html->script('jquery.dataTables.min');
+	<?php
         echo $this->Html->script('jquery.slimscroll.min');
         echo $this->Html->script('fastclick');
         echo $this->Html->script('demo');
         ?>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script> 
 <script>
     $(function () {
         $('.display').DataTable({

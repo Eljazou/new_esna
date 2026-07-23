@@ -16,7 +16,7 @@
     }
 
     /* Layout & Structure Card Rules */
-    #suivi-opportunite-container .panel {
+    #suivi-opportunite-container .card {
         background: #fff !important;
         border: 1px solid var(--border-color) !important;
         border-radius: var(--radius-lg) !important;
@@ -25,21 +25,21 @@
         overflow: hidden !important;
     }
 
-    #suivi-opportunite-container .panel-heading {
+    #suivi-opportunite-container .card-header {
         padding: 20px 24px !important;
         background: #fff !important;
         border-bottom: 1px solid var(--border-color) !important;
         position: relative !important;
     }
 
-    #suivi-opportunite-container .panel-title {
+    #suivi-opportunite-container .card-title {
         font-size: 18px !important;
         font-weight: 800 !important;
         color: var(--text-dark) !important;
         margin: 0 !important;
     }
 
-    #suivi-opportunite-container .panel-body {
+    #suivi-opportunite-container .card-body {
         padding: 24px !important;
     }
 
@@ -106,7 +106,7 @@
     }
 
     /* Actions and Submission Footers */
-    #suivi-opportunite-container .panel-footer {
+    #suivi-opportunite-container .card-footer {
         background: var(--bg-light) !important;
         border-top: 1px solid var(--border-color) !important;
         padding: 16px 24px !important;
@@ -201,7 +201,7 @@
     }
 
     /* Dynamic Badges Realignment styling blocks */
-    #suivi-opportunite-container .panel-warning .panel-heading {
+    #suivi-opportunite-container .card .card-header {
         display: flex !important;
         flex-wrap: wrap !important;
         align-items: center !important;
@@ -209,7 +209,7 @@
         padding: 20px 24px !important;
     }
 
-    #suivi-opportunite-container .panel-warning .panel-heading h4 {
+    #suivi-opportunite-container .card .card-header h4 {
         margin: 0 !important;
         font-size: 16px !important;
         font-weight: 700 !important;
@@ -277,7 +277,6 @@
 echo $this->Html->css("style_radio");
 echo $this->Html->css("style_rapport");
 echo $this->Html->css("jquery.datetimepicker");
-echo $this->Html->script("fontawesome");
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
@@ -286,16 +285,16 @@ echo $this->Html->script("fontawesome");
     <div class="row">
         <!-- Main Panel Action Stream Column -->
         <div class="col-md-8">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Suivi Opportunité</h3>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Suivi Opportunité</h3>
                 </div>
                 
                 <?php echo $this->Form->create('Prospectfeuille', array('div' => false)); 
                     echo $this->Form->hidden("prospectfeuille_id", array("value" => $rapportprocpect["Rapportprocpect"]["prospectfeuille_id"]));
                 ?>
                 
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="row">
                         <div class="col-md-6 radio-group-wrapper questions1">
                             <span class="section-label"><b>A- </b>Type de l'action</span>
@@ -357,33 +356,33 @@ echo $this->Html->script("fontawesome");
                         </div>
 
                         <div class="col-md-12 question" style="margin-bottom: 10px;">
-                            <span class="section-label"><b><i class="fal fa-comments-alt"></i> </b>Commentaire</span>
+                            <span class="section-label"><b><i class="ki-duotone ki-message-text-2"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> </b>Commentaire</span>
                             <textarea class="form-control" name="data[Prospectfeuille][commercial_commentaire]"></textarea>
                         </div>
                     </div>
                 </div>
                 
-                <div class="panel-footer">
+                <div class="card-footer">
                     <button class="btn btn-success" type="submit" value="Envoyer">
-                        Envoyer <i class="far fa-share"></i>
+                        Envoyer <i class="ki-duotone ki-send"><span class="path1"></span><span class="path2"></span></i>
                     </button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reportermodal">
-                        <i class="far fa-alarm-clock"></i> Programmer
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reportermodal">
+                        <i class="ki-duotone ki-timer"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Programmer
                     </button>
                 </div>
                 </form>
             </div>
 
             <!-- Pre-existing Survey Log Analytics Sub-Panel Info View -->
-            <div class="panel panel-warning">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     <?php $date = explode(" ", $rapportprocpect["Rapportprocpect"]["created"]); ?>
-                    <h4><i class="fas fa-user"></i> <?php echo $rapportprocpect["User"]["name"]; ?></h4>
-                    <span class="badge badge-pill badge-duration"><i class="far fa-phone-alt"></i> <?php echo $rapportprocpect["Rapportprocpect"]["duree"]; ?></span>
-                    <span class="badge badge-pill badge-date"><i class="fal fa-calendar-alt"></i> <?php echo $date[0]; ?></span>
-                    <span class="badge badge-pill badge-time"><i class="far fa-clock"></i> <?php echo $date[1]; ?></span>
+                    <h4><i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> <?php echo $rapportprocpect["User"]["name"]; ?></h4>
+                    <span class="badge badge-pill badge-duration"><i class="ki-duotone ki-phone"><span class="path1"></span><span class="path2"></span></i> <?php echo $rapportprocpect["Rapportprocpect"]["duree"]; ?></span>
+                    <span class="badge badge-pill badge-date"><i class="ki-duotone ki-calendar-8"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i> <?php echo $date[0]; ?></span>
+                    <span class="badge badge-pill badge-time"><i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i> <?php echo $date[1]; ?></span>
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
                             <table class="table">
@@ -483,9 +482,7 @@ echo $this->Html->script("fontawesome");
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLabel" style="display: inline-block;">Programmer Opportunité</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
             </div>
             <?php echo $this->Form->create('Prospectfeuille', array('url' => array('controller' => 'rapportprocpects','action' => 'programmer_opportunites'))); ?>
             <div class="modal-body row" style="margin: 0;">
@@ -504,15 +501,13 @@ echo $this->Html->script("fontawesome");
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fal fa-arrow-left"></i> Retour</button>
-                <button class="btn btn-primary" type="submit" value="Reporter"><i class="far fa-alarm-clock"></i> Programmer</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="ki-duotone ki-arrow-left"><span class="path1"></span><span class="path2"></span></i> Retour</button>
+                <button class="btn btn-primary" type="submit" value="Reporter"><i class="ki-duotone ki-timer"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Programmer</button>
             </div>
             </form>
         </div>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
 
 <script type="text/javascript">

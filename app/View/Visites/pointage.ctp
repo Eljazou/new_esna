@@ -23,7 +23,7 @@
 	margin-bottom: 20px;
 }
 .ptg-wrapper .card.box-solid,
-.ptg-wrapper .card.box-info{
+.ptg-wrapper .card{
 	border-top: none;
 }
 .ptg-wrapper .card-header{
@@ -62,10 +62,10 @@
 .ptg-icon-chip svg{ width: 18px; height: 18px; display:block; }
 
 /* round action button top-right of a box (plus / sliders / chevron) */
-.ptg-wrapper .box-tools{
+.ptg-wrapper .card-toolbar{
 	margin-left: auto;
 }
-.ptg-wrapper .box-tools .btn-box-tool,
+.ptg-wrapper .card-toolbar .btn,
 .ptg-action-btn{
 	width: 34px;
 	height: 34px;
@@ -78,12 +78,12 @@
 	border: none;
 	transition: background .15s ease, transform .15s ease;
 }
-.ptg-wrapper .box-tools .btn-box-tool:hover,
+.ptg-wrapper .card-toolbar .btn:hover,
 .ptg-action-btn:hover{
 	background: var(--ptg-purple);
 	color: #fff !important;
 }
-.ptg-wrapper .box-tools .btn-box-tool i{
+.ptg-wrapper .card-toolbar .btn i{
 	font-size: 14px;
 }
 
@@ -269,7 +269,7 @@ function distance($longitude,$latitude,$client_longitude,$client_latitude)
 			  </h3>
 
               <div class="card-toolbar float-end">
-                <button type="button" class="btn btn-sm btn-icon btn-active-light-primary"><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+                <button type="button" class="btn btn-sm btn-icon btn-active-light-primary"><i class="ki-duotone ki-plus"></i>
                 </button>
               </div>
             </div>

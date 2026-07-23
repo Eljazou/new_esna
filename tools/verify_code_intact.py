@@ -110,6 +110,15 @@ if __name__ == '__main__':
                 for f in sorted(glob.glob(os.path.join(NEW_ROOT, d, '*.ctp')))]
     else:
         rels = args
+    # A run that compares nothing must never print a pass. Paths here are
+    # relative to NEW_ROOT ('app/View/'), so passing a repo-relative path such
+    # as `--dir app/View/Prospects` globs app/View/app/View/... , finds no
+    # files, and would otherwise report ALL INTACT having checked zero files.
+    if not rels:
+        print('ERROR: no files matched -- paths are relative to %s '
+              '(use "Prospects/add.ctp" or "--dir Prospects")' % NEW_ROOT)
+        sys.exit(2)
     bad = sum(check(r) for r in rels)
-    print('\n%s' % ('ALL INTACT' if not bad else '%d file(s) CORRUPTED' % bad))
+    print('\n%d file(s) checked -- %s'
+          % (len(rels), 'ALL INTACT' if not bad else '%d CORRUPTED' % bad))
     sys.exit(1 if bad else 0)

@@ -3,8 +3,8 @@
 		text-align: left !important;
 	}
 </style>
-<div class="box">
-	<div class="box-header table-responsive">
+<div class="card">
+	<div class="card-header table-responsive">
 <h2>Campagne <a href="#"> <?php echo $prospectcompagne['Prospectcompagne']['name'] ?></a>
 &nbsp;&nbsp;
 <?php echo $this->Html->link(__('Editer'), array('action' => 'edit',$prospectcompagne['Prospectcompagne']['id']), array('class'=>'btn btn-warning', 'style'=>'float:right;margin-left: 3px;'));
@@ -14,7 +14,7 @@ echo $this->Html->link(__('Générer une liste des appels'), array('action' => '
 		 			
 		 			
 </div>
-<div class="box-body">
+<div class="card-body">
 	<div class="col-md-6">
 		<table class="table table-striped">
 	<tr>
@@ -96,23 +96,23 @@ echo $this->Html->link(__('Générer une liste des appels'), array('action' => '
  <div class="col-md-12" style="padding: 0px;">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">les appels En cours</a></li>
-                <li><a href="#tab_2" data-toggle="tab" aria-expanded="true">les appels annulés</a></li>
-                <li><a href="#tab_3" data-toggle="tab" aria-expanded="true">les appels terminés</a></li>
-                <li><a href="#tab_4" data-toggle="tab" aria-expanded="true">les appels A traiter</a></li>
+                <li class="active"><a href="#tab_1" data-bs-toggle="tab" aria-expanded="true">les appels En cours</a></li>
+                <li><a href="#tab_2" data-bs-toggle="tab" aria-expanded="true">les appels annulés</a></li>
+                <li><a href="#tab_3" data-bs-toggle="tab" aria-expanded="true">les appels terminés</a></li>
+                <li><a href="#tab_4" data-bs-toggle="tab" aria-expanded="true">les appels A traiter</a></li>
             </ul>
             <div class="tab-content">
                 
                 <div class="tab-pane active" id="tab_1">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="col-12">
                                <div class="related">
 	<?php if (!empty($prospectcompagne['Prospectfeuille'])): ?>
 		<div style="padding: 14px 0;">
 		
 		<a  class="btn btn-danger" id="sup_all" onclick="if (confirm('Etes-vous sur de vouloir supprimer ?')) { document.post_5f295097c56d8209377613.submit(); } event.returnValue = false; return false;">Supprimer</a>
 		</div>
-	<table class="table table-bordered table-striped">
+	<table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 	<tr>
 		<th >
 			<input type="checkbox" id="checkAll">
@@ -183,12 +183,12 @@ echo $this->Html->link(__('Générer une liste des appels'), array('action' => '
                 </div>
                 <div class="tab-pane" id="tab_2">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="col-12">
                                 
 
 <div class="related">
 	<?php if (!empty($prospectcompagne['Prospectfeuille'])): ?>
-	<table class="table table-bordered table-striped">
+	<table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 	<tr>
 		<th>Prospect</th>
 		<th>Type</th>
@@ -250,12 +250,12 @@ echo $this->Html->link(__('Générer une liste des appels'), array('action' => '
                 </div>
                 <div class="tab-pane" id="tab_3">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="col-12">
                                
                                <div class="related">
 	<?php if (!empty($prospectcompagne['Prospectfeuille'])): ?>
 
-	<table class="table table-bordered table-striped">
+	<table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 	<tr>
 		<th>Prospect</th>
 		<th>Type</th>
@@ -316,12 +316,12 @@ echo $this->Html->link(__('Générer une liste des appels'), array('action' => '
                 </div>
                 <div class="tab-pane" id="tab_4">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="col-12">
                                 
 
 <div class="related">
 	<?php if (!empty($prospectcompagne['Prospectfeuille'])): ?>
-	<table class="table table-bordered table-striped">
+	<table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
 	<tr>
 		<th>Prospect</th>
 		<th>Type</th>
@@ -390,10 +390,7 @@ echo $this->Html->link(__('Générer une liste des appels'), array('action' => '
 
 
 
- <?php
-echo $this->Html->script('jquery-2.2.3.min'); 
-?>
-<script type="text/javascript">
+ <script type="text/javascript">
 	list_sup= [];
 	function puch(id){
 		

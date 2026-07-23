@@ -43,7 +43,7 @@
     }
 
     /* Responsive Grid Wrapper */
-    .table-responsive-custom {
+    .table-responsive {
         width: 100%;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;

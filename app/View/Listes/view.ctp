@@ -571,7 +571,7 @@ $visites = array();
 								<td><?php
 									echo $this->Html->link($value["Client"]["nom"] . ' ' . $value["Client"]["prenom"], array('controller' => 'clients', 'action' => 'view', $value["Client"]["id"]), array('class' => 'text-gray-800 text-hover-primary fw-semibold'));
 									if ($value["Client"]["action"] != 0)
-										echo ' <i class="ki-duotone ki-star fs-4 text-warning"><span class="path1"></span><span class="path2"></span></i>';
+										echo ' <i class="ki-duotone ki-star fs-4 text-warning"></i>';
 									?></td>
 								<td><?php echo $value["Client"]["activite"]; ?></td>
 								<td><?php echo $value["Client"]["type"]; ?></td>

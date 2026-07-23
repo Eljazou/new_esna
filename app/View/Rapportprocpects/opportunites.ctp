@@ -1,7 +1,6 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
-echo $this->Html->css('dataTables.bootstrap');
 echo $this->Html->css('btn-style');
-echo $this->Html->script('fontawesome');
 ?>	
 
 
@@ -47,14 +46,14 @@ echo $this->Html->script('fontawesome');
     }
 
     /* ---------- Card / table shell ---------- */
-    .box{
+    .card{
         background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-lg);
         box-shadow:var(--shadow-card); margin-bottom:20px;
     }
-    .box .box-header{ border-bottom:none; padding:20px 24px 8px 24px; }
-    .box .box-body{ padding:0 24px 24px 24px; }
-    .box-title{ margin:0; font-size:16px; font-weight:700; color:var(--text-dark); display:flex; align-items:center; }
-    .box-title:before{
+    .card .card-header{ border-bottom:none; padding:20px 24px 8px 24px; }
+    .card .card-body{ padding:0 24px 24px 24px; }
+    .card-title{ margin:0; font-size:16px; font-weight:700; color:var(--text-dark); display:flex; align-items:center; }
+    .card-title:before{
         content:"\f0d6"; font-family:"FontAwesome"; display:inline-flex; align-items:center; justify-content:center;
         width:32px; height:32px; border-radius:50%; margin-right:10px; font-size:14px;
         background:var(--accent-light); color:var(--accent-dark);
@@ -103,12 +102,12 @@ echo $this->Html->script('fontawesome');
 <div class="row">
     
     <div class="col-md-12">
-        <div class="box">
-            <div class="box-header table-responsive">
-                <h3 class="box-title">La liste des opportunités</h3>
+        <div class="card">
+            <div class="card-header table-responsive">
+                <h3 class="card-title">La liste des opportunités</h3>
             </div>
-            <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+            <div class="card-body">
+                <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                     <thead>
                         <tr>
                             <th>Client</th>
@@ -161,22 +160,11 @@ echo $this->Html->script('fontawesome');
     </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <?php

@@ -134,7 +134,7 @@
 
     .th-icon svg { color: var(--primary); flex-shrink: 0; }
 
-    table.table-bordered td, table.table-bordered th {
+    table.table-row-bordered td, table.table-row-bordered th {
         border-color: #f1effa !important;
     }
 

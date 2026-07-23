@@ -1,7 +1,6 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
 echo $this->Html->css('daterangepicker');
-echo $this->Html->css('dataTables.bootstrap');
-echo $this->Html->css('select2.min');
 ?>
 
 <style>
@@ -18,12 +17,12 @@ echo $this->Html->css('select2.min');
         --shadow-card:0 2px 14px rgba(124,92,250,0.07);
     }
 
-    .box{
+    .card{
         background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-lg);
         box-shadow:var(--shadow-card); margin-bottom:20px; border-top:3px solid var(--accent);
     }
-    .box .box-header.with-border{ border-bottom:none; padding:22px 24px 8px 24px; display:flex; align-items:flex-start; justify-content:space-between; }
-    .box .box-body{ padding:20px 24px 24px 24px; }
+    .card .card-header.with-border{ border-bottom:none; padding:22px 24px 8px 24px; display:flex; align-items:flex-start; justify-content:space-between; }
+    .card .card-body{ padding:20px 24px 24px 24px; }
 
     .section-header{ display:flex; align-items:flex-start; gap:14px; }
     .section-icon{
@@ -31,8 +30,8 @@ echo $this->Html->css('select2.min');
         background:var(--accent-light); color:var(--accent);
         display:flex; align-items:center; justify-content:center; font-size:17px;
     }
-    .box-title{ margin:0; font-size:17px; font-weight:700; color:var(--text-dark); display:flex; align-items:center; }
-    .box-title i{
+    .card-title{ margin:0; font-size:17px; font-weight:700; color:var(--text-dark); display:flex; align-items:center; }
+    .card-title i{
         display:inline-flex; align-items:center; justify-content:center;
         width:32px; height:32px; border-radius:50%; margin-right:10px; font-size:14px;
         background:var(--accent-light); color:var(--accent);
@@ -41,7 +40,7 @@ echo $this->Html->css('select2.min');
 
     /* ---------- Filter card ---------- */
     .filter-card{ position:relative; overflow:hidden; }
-    .filter-card .box-header.with-border{ padding-bottom:4px; }
+    .filter-card .card-header.with-border{ padding-bottom:4px; }
     .filter-decor{
         position:absolute; top:14px; right:24px; display:flex; align-items:center; gap:8px;
         color:var(--border-color); font-size:22px; opacity:.7; pointer-events:none;
@@ -100,17 +99,17 @@ echo $this->Html->css('select2.min');
     #dateform input[type="submit"]:hover{ background:var(--accent-dark) !important; }
 
     /* ---------- Chart / table card headers ---------- */
-    .box-header .btn{
+    .card-header .btn{
         border-radius:20px !important; font-size:13px !important; font-weight:600; padding:8px 18px !important;
         border:none !important; box-shadow:none !important;
     }
-    .box-header .btn-info{ background:var(--accent) !important; color:#fff !important; }
-    .box-header .btn-info:hover{ background:var(--accent-dark) !important; }
+    .card-header .btn-info{ background:var(--accent) !important; color:#fff !important; }
+    .card-header .btn-info:hover{ background:var(--accent-dark) !important; }
 
     /* ---------- Badges / labels ---------- */
-    .badge.bg-aqua{ background:#e6f7fb !important; color:#17a2b8 !important; font-weight:700; }
-    .badge.bg-red{ background:#fdeaf1 !important; color:#e0457b !important; font-weight:700; }
-    .badge.bg-yellow{ background:#fff4e2 !important; color:#e08a17 !important; font-weight:700; }
+    .badge.bg-primary{ background:#e6f7fb !important; color:#17a2b8 !important; font-weight:700; }
+    .badge.bg-danger{ background:#fdeaf1 !important; color:#e0457b !important; font-weight:700; }
+    .badge.bg-warning{ background:#fff4e2 !important; color:#e08a17 !important; font-weight:700; }
     .label-danger{ background:#fdeaf1 !important; color:#e0457b !important; font-weight:600; border-radius:20px; padding:.4em .9em; }
     .label-warning{ background:#fff4e2 !important; color:#e08a17 !important; font-weight:600; border-radius:20px; padding:.4em .9em; }
 
@@ -164,29 +163,29 @@ echo $this->Html->css('select2.min');
 </style>
 
 <div class="row">
-    <div class="col-xs-12" style="margin-bottom: 24px;">
+    <div class="col-12" style="margin-bottom: 24px;">
 
-        <div class="box form-group filter-card">
-            <div class="box-header with-border">
+        <div class="card mb-5 filter-card">
+            <div class="card-header">
                 <div class="section-header">
-                    <span class="section-icon"><i class="fa fa-filter"></i></span>
+                    <span class="section-icon"><i class="ki-duotone ki-filter"><span class="path1"></span><span class="path2"></span></i></span>
                     <div>
-                        <h3 class="box-title" style="display:block;">Filtrer par date</h3>
+                        <h3 class="card-title" style="display:block;">Filtrer par date</h3>
                         <p class="section-subtitle">Sélectionnez une période et d'autres critères</p>
                     </div>
                 </div>
                 <div class="filter-decor">
-                    <i class="fa fa-calendar-o"></i>
-                    <i class="fa fa-clock-o"></i>
+                    <i class="ki-duotone ki-calendar-8 -o"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>
+                    <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                 </div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <form action="<?php echo $this->Html->url("/analyses/visite_dsm") ?>" method="post" id="dateform"
                     autocomplete="off">
 
                     <div class="input-group" style="margin-bottom:30px;width: 45%;">
                         <label for="reservationtime">Date</label>
-                        <input type="text" class="form-control pull-right" value="<?php echo h($dateaafficherdansleview); ?>" name="date" id="reservationtime" placeholder="Rechercher">
+                        <input type="text" class="form-control float-end" value="<?php echo h($dateaafficherdansleview); ?>" name="date" id="reservationtime" placeholder="Rechercher">
                     </div>
                     <div class="input-group" style="margin-bottom:30px;width: 45%;">
                         <?php echo $this->Form->input('super', array('class' => "form-control pull-right choix_multi", 'label' => 'La liste des VM', 'options' => $supers, 'multiple' => true)); ?>
@@ -204,33 +203,33 @@ echo $this->Html->css('select2.min');
 <div class="row">
 
     <div class="col-md-12">
-        <div class="box box-success">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-bar-chart"></i>Statistiques par superviseur</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-chart-simple"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>Statistiques par superviseur</h3>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <canvas id="chartVisites" height="500"></canvas>
             </div>
         </div>
     </div>
 
     <div class="col-md-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
+        <div class="card">
+            <div class="card-header">
                 <div class="section-header">
-                    <span class="section-icon"><i class="fa fa-clipboard"></i></span>
+                    <span class="section-icon"><i class="ki-duotone ki-clipboard"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i></span>
                     <div>
-                        <h3 class="box-title" style="display:block;">Résumé par superviseur</h3>
+                        <h3 class="card-title" style="display:block;">Résumé par superviseur</h3>
                         <p class="section-subtitle">Aperçu des performances et des visites</p>
                     </div>
                 </div>
                 <button class="btn btn-info" onclick="exportTableAsImage()">
-                    <i class="fa fa-camera"></i> Exporter en image
+                    <i class="ki-duotone ki-picture"><span class="path1"></span><span class="path2"></span></i> Exporter en image
                 </button>
             </div>
 
-            <div class="box-body table-responsive">
-                <table class="table table-bordered table-hover display" id="tableContainer">
+            <div class="card-body table-responsive">
+                <table class="table table-row-bordered align-middle gy-4 table-hover display" id="tableContainer">
                     <thead>
                         <tr>
                             <th>Superviseur</th>
@@ -245,10 +244,10 @@ echo $this->Html->css('select2.min');
                         <?php foreach ($data as $super_id => $info): ?>
                             <tr>
                                 <td><?= h($super_id) ?></td>
-                                <td><span class="badge bg-aqua"><?= $info["solo"] ?></span></td>
-                                <td><span class="badge bg-red"><?= $info["double"] ?></span></td>
-                                <td><span class="badge bg-red"><?= $info["total"] ?></span></td>
-                                <td><span class="badge bg-yellow"><?= $info["nb_client"] ?></span></td>
+                                <td><span class="badge bg-primary"><?= $info["solo"] ?></span></td>
+                                <td><span class="badge bg-danger"><?= $info["double"] ?></span></td>
+                                <td><span class="badge bg-danger"><?= $info["total"] ?></span></td>
+                                <td><span class="badge bg-warning"><?= $info["nb_client"] ?></span></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -259,12 +258,12 @@ echo $this->Html->css('select2.min');
 
 
     <div class="col-md-12">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-list-alt"></i>Détails des clients visités</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-menu -alt"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>Détails des clients visités</h3>
             </div>
-            <div class="box-body" style="max-height:500px; overflow-y:auto;">
-                <table class="table table-bordered table-striped display">
+            <div class="card-body" style="max-height:500px; overflow-y:auto;">
+                <table class="table table-row-bordered table-row-gray-300 align-middle gy-4 gs-4">
                     <thead>
                         <tr>
                             <th>Superviseur</th>
@@ -287,9 +286,9 @@ echo $this->Html->css('select2.min');
                                     <td><?= h($c['Category']['name']) ?></td>
                                     <td>
                                         <?php if ($c['Visite']['type_visite'] == "double"): ?>
-                                            <span class="label label-danger">Double</span>
+                                            <span class="badge badge-light-danger">Double</span>
                                         <?php else: ?>
-                                            <span class="label label-warning">Solo</span>
+                                            <span class="badge badge-light-warning">Solo</span>
                                         <?php endif; ?>
                                     </td>
                                     <td><?= h($c['Visite']['created']) ?></td>
@@ -319,7 +318,7 @@ echo $this->Html->css('select2.min');
             // Show loading state
             const exportBtn = event.target;
             const originalHTML = exportBtn.innerHTML;
-            exportBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Génération...';
+            exportBtn.innerHTML = '<span class="spinner-border spinner-border-sm align-middle"></span> Génération...';
             exportBtn.disabled = true;
 
             // Generate image
@@ -445,14 +444,8 @@ echo $this->Html->css('select2.min');
 
     });
 </script>
-<?php
-echo $this->Html->script('jquery.dataTables.min');
-?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 <?php
 echo $this->Html->script('daterangepicker');
 ?>

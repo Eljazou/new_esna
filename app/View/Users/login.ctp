@@ -98,9 +98,7 @@
                         <input type="text" id="esnaLoginUsername" class="form-control form-control-solid ps-12"
                                placeholder="Email" name="data[User][username]" autocomplete="username" autofocus>
                         <span class="position-absolute translate-middle-y top-50 ms-4">
-                            <i class="ki-duotone ki-sms fs-2 text-gray-500">
-                                <span class="path1"></span><span class="path2"></span>
-                            </i>
+                            <i class="ki-duotone ki-sms fs-2 text-gray-500"><span class="path1"></span><span class="path2"></span></i>
                         </span>
                     </div>
                 </div>
@@ -111,9 +109,7 @@
                         <input type="password" id="esnaLoginPassword" class="form-control form-control-solid ps-12"
                                placeholder="Mot de passe" name="data[User][password]" autocomplete="current-password">
                         <span class="position-absolute translate-middle-y top-50 ms-4">
-                            <i class="ki-duotone ki-lock fs-2 text-gray-500">
-                                <span class="path1"></span><span class="path2"></span><span class="path3"></span>
-                            </i>
+                            <i class="ki-duotone ki-lock fs-2 text-gray-500"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
                         </span>
                     </div>
                 </div>

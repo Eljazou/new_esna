@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!--
   NOTE ON SCRIPTS REMOVED FROM THIS VIEW (do not re-add):
   - jquery-2.2.3.min / the duplicate moment.js copy: Metronic's plugins.bundle.js already
@@ -18,11 +15,9 @@
   Versions are pinned to match statistiquesvisite.ctp (buttons 1.2.2 / jszip 2.5.0)
   so the two pages don't load conflicting DataTables Buttons builds.
 -->
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.18/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.18/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 <style>
     :root{
         --accent:#6c5ce7;
@@ -37,47 +32,47 @@
         --shadow-card:0 2px 14px rgba(108,92,231,0.07);
     }
 
-    /* NOTE: overflow:hidden used to be on the generic .box-body rule below,
+    /* NOTE: overflow:hidden used to be on the generic .card-body rule below,
        which clipped select2 / daterangepicker dropdowns inside the filter
        card. It now only applies to .chart-body (the canvas wrappers, which
        need it to contain Chart.js resize/animation overflow). */
 
     /* ---------- Generic card shell ---------- */
-    .box{
+    .card{
         background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-lg);
         box-shadow:var(--shadow-card); margin-bottom:20px; border-top:3px solid var(--border-color);
     }
-    .box-primary{ border-top-color:var(--accent); }
-    .box-success{ border-top-color:#1a9c74; }
-    .box-warning{ border-top-color:#f39c12; }
-    .box-info{ border-top-color:#17a2b8; }
+    .card{ border-top-color:var(--accent); }
+    .card{ border-top-color:#1a9c74; }
+    .card{ border-top-color:#f39c12; }
+    .card{ border-top-color:#17a2b8; }
 
-    .box .box-header.with-border{ border-bottom:1px solid var(--border-color); padding:16px 20px; display:flex; align-items:center; justify-content:space-between; }
-    .box-title{ font-weight:700; font-size:15px; color:var(--text-dark); margin:0; display:flex; align-items:center; }
-    .box-title i{
+    .card .card-header.with-border{ border-bottom:1px solid var(--border-color); padding:16px 20px; display:flex; align-items:center; justify-content:space-between; }
+    .card-title{ font-weight:700; font-size:15px; color:var(--text-dark); margin:0; display:flex; align-items:center; }
+    .card-title i{
         display:inline-flex; align-items:center; justify-content:center;
         width:28px; height:28px; border-radius:8px; margin-right:9px; font-size:13px;
         background:var(--accent-light); color:var(--accent);
     }
-    .box-primary .box-title i{ background:#efeafc; color:#6c5ce7; }
-    .box-success .box-title i{ background:#e6f9f0; color:#1a9c74; }
-    .box-warning .box-title i{ background:#fff4e5; color:#f39c12; }
-    .box-info .box-title i{ background:#e6f7fb; color:#17a2b8; }
+    .card .card-title i{ background:#efeafc; color:#6c5ce7; }
+    .card .card-title i{ background:#e6f9f0; color:#1a9c74; }
+    .card .card-title i{ background:#fff4e5; color:#f39c12; }
+    .card .card-title i{ background:#e6f7fb; color:#17a2b8; }
 
-    .box-header .btn-default{
+    .card-header .btn-light{
         background:#fff !important; border:1px solid var(--border-color) !important;
         color:var(--text-dark) !important; border-radius:20px !important;
         padding:7px 16px !important; font-size:12.5px !important; font-weight:600;
         box-shadow:none !important;
     }
-    .box-header .btn-default:hover{ border-color:var(--accent) !important; color:var(--accent) !important; }
+    .card-header .btn-light:hover{ border-color:var(--accent) !important; color:var(--accent) !important; }
 
-    .box-footer{ background:#fafafa !important; border-top:1px solid var(--border-color) !important; padding:10px 20px !important; }
-    .box-footer .text-muted{ color:var(--text-muted) !important; font-size:12.5px; }
-    .box-footer strong{ color:var(--text-dark); }
+    .card-footer{ background:#fafafa !important; border-top:1px solid var(--border-color) !important; padding:10px 20px !important; }
+    .card-footer .text-muted{ color:var(--text-muted) !important; font-size:12.5px; }
+    .card-footer strong{ color:var(--text-dark); }
 
     /* ---------- Filter card ---------- */
-    .filter-box.box-body{ padding:24px !important; overflow:visible !important; height:auto !important; }
+    .filter-box.card-body{ padding:24px !important; overflow:visible !important; height:auto !important; }
     #dateform{ overflow:visible; }
     #dateform .input,
     #dateform .select_vm{
@@ -130,7 +125,7 @@
 
     /* Date range pill */
     .date-range-wrap{ float:none !important; width:100% !important; max-width:420px; margin:0 0 24px 0 !important; }
-    .date-range-wrap .input-group-addon{
+    .date-range-wrap .input-group-text{
         background:#fff !important; border:1px solid var(--border-color) !important; border-right:none !important;
         border-radius:20px 0 0 20px !important; color:var(--accent) !important; padding-left:16px;
     }
@@ -226,24 +221,24 @@
     }
 </style>
 <div class="row">
-    <div class="col-xs-12" style="margin-bottom: 24px;">
+    <div class="col-12" style="margin-bottom: 24px;">
 
-        <div class="box form-group">
-            <div class="box-header with-border" style="border-bottom:none;">
+        <div class="card mb-5">
+            <div class="card-header" style="border-bottom:none;">
             </div>
-            <div class="box-body filter-box">
+            <div class="card-body filter-box">
                 <form action="<?php echo $this->Html->url("/analyses/moyenne_visites") ?>" method="post" id="dateform"
                     autocomplete="off">
                     <div class="input-group date-range-wrap">
-                        <div class="input-group-addon">
-                            <i class="fa fa-clock-o"></i>
+                        <div class="input-group-text">
+                            <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                         </div>
-                        <input type="text" class="form-control pull-right" value="<?php echo h($dateaafficherdansleview); ?>" name="date" id="reservationtime" placeholder="Rechercher">
+                        <input type="text" class="form-control float-end" value="<?php echo h($dateaafficherdansleview); ?>" name="date" id="reservationtime" placeholder="Rechercher">
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <?php
                         echo $this->Form->input('category', array(
-                            "label" => array('text' => '<span class="field-icon f-indigo"><i class="fa fa-briefcase"></i></span>Choisissez l\'activté', 'escape' => false),
+                            "label" => array('text' => '<span class="field-icon f-indigo"><i class="ki-duotone ki-briefcase"><span class="path1"></span><span class="path2"></span></i></span>Choisissez l\'activté', 'escape' => false),
                             "name" => "activite",
                             'options' => array("" => "Choisissez", "prive" => "Privé", "Publique" => "Publique"),
                             'class' => 'form-control pull-right',
@@ -251,7 +246,7 @@
                         ));
                         echo $this->Form->input('potentialite', array(
                             "multiple" => "true",
-                            "label" => array('text' => '<span class="field-icon f-pink"><i class="fa fa-star"></i></span>Choisissez potentialité', 'escape' => false),
+                            "label" => array('text' => '<span class="field-icon f-pink"><i class="ki-duotone ki-star"></i></span>Choisissez potentialité', 'escape' => false),
                             "name" => "potentialite",
                             'options' => array(
                                 "A1" => "A1",
@@ -270,7 +265,7 @@
                         if (AuthComponent::user('role') != 'Super viseur')
                             echo $this->Form->input('secteur', array(
                                 "multiple" => "true",
-                                "label" => array('text' => '<span class="field-icon f-blue"><i class="fa fa-building"></i></span>La liste des secteurs', 'escape' => false),
+                                "label" => array('text' => '<span class="field-icon f-blue"><i class="ki-duotone ki-bank"><span class="path1"></span><span class="path2"></span></i></span>La liste des secteurs', 'escape' => false),
                                 "name" => "secteur",
                                 'options' => $secteurs,
                                 'class' => 'form-control pull-right choix_multi select2',
@@ -278,15 +273,15 @@
 
                         echo $this->Form->input('category', array(
                             "multiple" => "true",
-                            "label" => array('text' => '<span class="field-icon f-purple"><i class="fa fa-heart"></i></span>La liste des spécialité', 'escape' => false),
+                            "label" => array('text' => '<span class="field-icon f-purple"><i class="ki-duotone ki-heart"><span class="path1"></span><span class="path2"></span></i></span>La liste des spécialité', 'escape' => false),
                             "name" => "category",
                             'options' => $categories,
                             'class' => 'form-control pull-right choix_multi select2'
                         ));
                         ?>
                     </div>
-                    <div class="col-md-6 col-sm-6 ">
-                        <label><span class="field-icon f-green"><i class="fa fa-server"></i></span>La liste des VM</label>
+                    <div class="col-md-6 col-sm-6">
+                        <label><span class="field-icon f-green"><i class="ki-duotone ki-data"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i></span>La liste des VM</label>
                         <div class="select_vm">
                             <?php
                             echo $this->Form->input('user', array(
@@ -302,7 +297,7 @@
                         <?php
                         echo $this->Form->input('ligne', array(
                             "multiple" => "true",
-                            "label" => array('text' => '<span class="field-icon f-mint"><i class="fa fa-list-ul"></i></span>Les lignes', 'escape' => false),
+                            "label" => array('text' => '<span class="field-icon f-mint"><i class="ki-duotone ki-menu -ul"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>Les lignes', 'escape' => false),
                             "name" => "ligne",
                             'options' => $lignes,
                             'class' => 'form-control pull-right choix_multi vm select2',
@@ -311,7 +306,7 @@
                         $types = array("1" => "Medcin", "2" => "Pharmacie",);
                         echo $this->Form->input('type', array(
                             "multiple" => "true",
-                            "label" => array('text' => '<span class="field-icon f-teal"><i class="fa fa-user"></i></span>Type de client', 'escape' => false),
+                            "label" => array('text' => '<span class="field-icon f-teal"><i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i></span>Type de client', 'escape' => false),
                             "name" => "type",
                             'options' => $types,
                             'class' => 'form-control pull-right choix_multi vm select2',
@@ -414,42 +409,42 @@ $moyenne_globale_vm = isset($data_moyenne['par_vm']['_moyenne_globale']) ? (floa
 <div class="row">
     <!-- Graphique par Région -->
     <div class="col-md-6">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-map-marker"></i> Moyenne par Région</h3>
-                <button class="btn btn-xs btn-default pull-right" onclick="downloadChart('chartRegion', 'region.png')">
-                    <i class="fa fa-download"></i> Télécharger image
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> Moyenne par Région</h3>
+                <button class="btn btn-xs btn-light float-end" onclick="downloadChart('chartRegion', 'region.png')">
+                    <i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Télécharger image
                 </button>
             </div>
-            <div class="box-body chart-body">
+            <div class="card-body chart-body">
                 <canvas id="chartRegion" width="400" height="300"></canvas>
             </div>
-            <div class="box-footer text-center">
+            <div class="card-footer text-center">
                 <small class="text-muted">Moyenne générale: <strong id="moyenneRegion">0</strong></small>
             </div>
             <div class="table-responsive">
-                <table id="tableRegion" class="table table-bordered table-striped"></table>
+                <table id="tableRegion" class="table table-row-bordered table-row-gray-300 align-middle gy-4"></table>
             </div>
         </div>
     </div>
 
     <!-- Graphique par Ligne -->
     <div class="col-md-6">
-        <div class="box box-success">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-line-chart"></i> Moyenne par Ligne</h3>
-                <button class="btn btn-xs btn-default pull-right" onclick="downloadChart('chartLigne', 'ligne.png')">
-                    <i class="fa fa-download"></i> Télécharger image
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-chart-line"><span class="path1"></span><span class="path2"></span></i> Moyenne par Ligne</h3>
+                <button class="btn btn-xs btn-light float-end" onclick="downloadChart('chartLigne', 'ligne.png')">
+                    <i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Télécharger image
                 </button>
             </div>
-            <div class="box-body chart-body">
+            <div class="card-body chart-body">
                 <canvas id="chartLigne" width="400" height="300"></canvas>
             </div>
-            <div class="box-footer text-center">
+            <div class="card-footer text-center">
                 <small class="text-muted">Moyenne générale: <strong id="moyenneLigne">0</strong></small>
             </div>
             <div class="table-responsive">
-                <table id="tableLigne" class="table table-bordered table-striped"></table>
+                <table id="tableLigne" class="table table-row-bordered table-row-gray-300 align-middle gy-4"></table>
             </div>
         </div>
     </div>
@@ -458,43 +453,43 @@ $moyenne_globale_vm = isset($data_moyenne['par_vm']['_moyenne_globale']) ? (floa
 <div class="row">
     <!-- Graphique par Superviseur -->
     <div class="col-md-6">
-        <div class="box box-warning">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-user-circle"></i> Moyenne par équipe</h3>
-                <button class="btn btn-xs btn-default pull-right"
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-profile-user -circle"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> Moyenne par équipe</h3>
+                <button class="btn btn-xs btn-light float-end"
                     onclick="downloadChart('chartSuper', 'superviseur.png')">
-                    <i class="fa fa-download"></i> Télécharger image
+                    <i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Télécharger image
                 </button>
             </div>
-            <div class="box-body chart-body">
+            <div class="card-body chart-body">
                 <canvas id="chartSuper" width="400" height="300"></canvas>
             </div>
-            <div class="box-footer text-center">
+            <div class="card-footer text-center">
                 <small class="text-muted">Moyenne générale: <strong id="moyenneSuper">0</strong></small>
             </div>
             <div class="table-responsive">
-                <table id="tableSuper" class="table table-bordered table-striped"></table>
+                <table id="tableSuper" class="table table-row-bordered table-row-gray-300 align-middle gy-4"></table>
             </div>
         </div>
     </div>
 
     <!-- Graphique par Mois -->
     <div class="col-md-6">
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title"> <i class="fa fa-calendar"></i> Moyenne par Mois</h3>
-                <button class="btn btn-xs btn-default pull-right" onclick="downloadChart('chartMois', 'mois.png')">
-                    <i class="fa fa-download"></i> Télécharger image
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"> <i class="ki-duotone ki-calendar-8"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i> Moyenne par Mois</h3>
+                <button class="btn btn-xs btn-light float-end" onclick="downloadChart('chartMois', 'mois.png')">
+                    <i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Télécharger image
                 </button>
             </div>
-            <div class="box-body chart-body">
+            <div class="card-body chart-body">
                 <canvas id="chartMois" width="400" height="300"></canvas>
             </div>
-            <div class="box-footer text-center">
+            <div class="card-footer text-center">
                 <small class="text-muted">Moyenne générale: <strong id="moyenneMois">0</strong></small>
             </div>
             <div class="table-responsive">
-                <table id="tableMois" class="table table-bordered table-striped"></table>
+                <table id="tableMois" class="table table-row-bordered table-row-gray-300 align-middle gy-4"></table>
             </div>
         </div>
     </div>
@@ -502,21 +497,21 @@ $moyenne_globale_vm = isset($data_moyenne['par_vm']['_moyenne_globale']) ? (floa
 <div class="row">
     <!-- Graphique par vm -->
     <div class="col-md-12">
-        <div class="box box-warning">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-user-circle"></i> Moyenne par VMP</h3>
-                <button class="btn btn-xs btn-default pull-right" onclick="downloadChart('chartVm', 'vmp.png')">
-                    <i class="fa fa-download"></i> Télécharger image
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-profile-user -circle"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> Moyenne par VMP</h3>
+                <button class="btn btn-xs btn-light float-end" onclick="downloadChart('chartVm', 'vmp.png')">
+                    <i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Télécharger image
                 </button>
             </div>
-            <div class="box-body chart-body">
+            <div class="card-body chart-body">
                 <canvas id="chartVm" width="400" height="300"></canvas>
             </div>
-            <div class="box-footer text-center">
+            <div class="card-footer text-center">
                 <small class="text-muted">Moyenne générale: <strong id="moyenneVm">0</strong></small>
             </div>
             <div class="table-responsive">
-                <table id="tableVm" class="table table-bordered table-striped"></table>
+                <table id="tableVm" class="table table-row-bordered table-row-gray-300 align-middle gy-4"></table>
             </div>
         </div>
     </div>
@@ -525,37 +520,37 @@ $moyenne_globale_vm = isset($data_moyenne['par_vm']['_moyenne_globale']) ? (floa
 <div class="row">
     <!-- Graphique par Région -->
     <div class="col-md-6">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-map-marker"></i> Taux de réalisation des objectifs en % par Région</h3>
-                <button class="btn btn-xs btn-default pull-right" onclick="downloadChart('chartRegion', 'region.png')">
-                    <i class="fa fa-download"></i> Télécharger image
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> Taux de réalisation des objectifs en % par Région</h3>
+                <button class="btn btn-xs btn-light float-end" onclick="downloadChart('chartRegion', 'region.png')">
+                    <i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Télécharger image
                 </button>
             </div>
-            <div class="box-body chart-body">
+            <div class="card-body chart-body">
                 <canvas id="chartRegionGlobal" width="400" height="300"></canvas>
             </div>
 
             <div class="table-responsive">
-                <table id="tableRegionGlobal" class="table table-bordered table-striped"></table>
+                <table id="tableRegionGlobal" class="table table-row-bordered table-row-gray-300 align-middle gy-4"></table>
             </div>
         </div>
     </div>
 
     <!-- Graphique par Ligne -->
     <div class="col-md-6">
-        <div class="box box-success">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-line-chart"></i> Taux de réalisation des objectifs en % par Ligne</h3>
-                <button class="btn btn-xs btn-default pull-right" onclick="downloadChart('chartLigne', 'ligne.png')">
-                    <i class="fa fa-download"></i> Télécharger image
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-chart-line"><span class="path1"></span><span class="path2"></span></i> Taux de réalisation des objectifs en % par Ligne</h3>
+                <button class="btn btn-xs btn-light float-end" onclick="downloadChart('chartLigne', 'ligne.png')">
+                    <i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Télécharger image
                 </button>
             </div>
-            <div class="box-body chart-body">
+            <div class="card-body chart-body">
                 <canvas id="chartLigneGlobal" width="400" height="300"></canvas>
             </div>
             <div class="table-responsive">
-                <table id="tableLigneGlobal" class="table table-bordered table-striped"></table>
+                <table id="tableLigneGlobal" class="table table-row-bordered table-row-gray-300 align-middle gy-4"></table>
             </div>
         </div>
     </div>
@@ -565,37 +560,37 @@ $moyenne_globale_vm = isset($data_moyenne['par_vm']['_moyenne_globale']) ? (floa
 <div class="row">
     <!-- Graphique par Superviseur -->
     <div class="col-md-6">
-        <div class="box box-warning">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-user-circle"></i>Taux de réalisation des objectifs en % par équipe</h3>
-                <button class="btn btn-xs btn-default pull-right"
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-profile-user -circle"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>Taux de réalisation des objectifs en % par équipe</h3>
+                <button class="btn btn-xs btn-light float-end"
                     onclick="downloadChart('chartSuper', 'superviseur.png')">
-                    <i class="fa fa-download"></i> Télécharger image
+                    <i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Télécharger image
                 </button>
             </div>
-            <div class="box-body chart-body">
+            <div class="card-body chart-body">
                 <canvas id="chartSuperGlobal" width="400" height="300"></canvas>
             </div>
             <div class="table-responsive">
-                <table id="tableSuperGlobal" class="table table-bordered table-striped"></table>
+                <table id="tableSuperGlobal" class="table table-row-bordered table-row-gray-300 align-middle gy-4"></table>
             </div>
         </div>
     </div>
 
     <!-- Graphique par Mois -->
     <div class="col-md-6">
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title"> <i class="fa fa-calendar"></i>Taux de réalisation des objectifs en % par Mois</h3>
-                <button class="btn btn-xs btn-default pull-right" onclick="downloadChart('chartMoisGlobal', 'mois.png')">
-                    <i class="fa fa-download"></i> Télécharger image
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"> <i class="ki-duotone ki-calendar-8"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>Taux de réalisation des objectifs en % par Mois</h3>
+                <button class="btn btn-xs btn-light float-end" onclick="downloadChart('chartMoisGlobal', 'mois.png')">
+                    <i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Télécharger image
                 </button>
             </div>
-            <div class="box-body chart-body">
+            <div class="card-body chart-body">
                 <canvas id="chartMoisGlobal" width="400" height="300"></canvas>
             </div>
             <div class="table-responsive">
-                <table id="tableMoisGlobal" class="table table-bordered table-striped"></table>
+                <table id="tableMoisGlobal" class="table table-row-bordered table-row-gray-300 align-middle gy-4"></table>
             </div>
 
         </div>
@@ -604,18 +599,18 @@ $moyenne_globale_vm = isset($data_moyenne['par_vm']['_moyenne_globale']) ? (floa
 <div class="row">
     <!-- Graphique par vm -->
     <div class="col-md-12">
-        <div class="box box-warning">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-user-circle"></i>Taux de réalisation des objectifs en % par VMP</h3>
-                <button class="btn btn-xs btn-default pull-right" onclick="downloadChart('chartVm', 'vmp.png')">
-                    <i class="fa fa-download"></i> Télécharger image
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-profile-user -circle"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>Taux de réalisation des objectifs en % par VMP</h3>
+                <button class="btn btn-xs btn-light float-end" onclick="downloadChart('chartVm', 'vmp.png')">
+                    <i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Télécharger image
                 </button>
             </div>
-            <div class="box-body chart-body">
+            <div class="card-body chart-body">
                 <canvas id="chartVmGlobal" width="400" height="300"></canvas>
             </div>
             <div class="table-responsive">
-                <table id="tableVmGlobal" class="table table-bordered table-striped"></table>
+                <table id="tableVmGlobal" class="table table-row-bordered table-row-gray-300 align-middle gy-4"></table>
             </div>
 
         </div>
@@ -830,7 +825,7 @@ $moyenne_globale_vm = isset($data_moyenne['par_vm']['_moyenne_globale']) ? (floa
             searching: false,
             buttons: [{
                 extend: 'excelHtml5',
-                text: '<i class="fa fa-file-excel-o"></i> Export Excel',
+                text: '<i class="ki-duotone ki-file -excel-o"><span class="path1"></span><span class="path2"></span></i> Export Excel',
                 className: 'btn btn-success btn-sm'
             }]
         });

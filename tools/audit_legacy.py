@@ -26,10 +26,27 @@ PATTERNS = {
     'control-label':         r'class="[^"]*control-label',
     'form-horizontal':       r'class="[^"]*form-horizontal',
     'BS3 label-*':           r'class="[^"]*label-(success|danger|warning|info|primary)',
-    'Font Awesome <i>':      r'<i[^>]*class="[^"]*(?<![-\w])fa(?![-\w])',
+    # Font Awesome 4 (`fa`) AND Font Awesome 5 (`fas`/`far`/`fal`/`fab`). The
+    # pattern used to match only the bare `fa` token, so every FA5 icon in the
+    # app was invisible to this audit -- including the whole Rapportprocpects
+    # sentiment scale, which is served by a licensed kit-pro loader.
+    'Font Awesome <i>':      r'<i[^>]*class="[^"]*(?<![-\w])'
+                             r'(fa[srlb]?|fa-(solid|regular|light|thin|brands|duotone))'
+                             r'(?![-\w])',
+    # Font Awesome delivered by CDN <link>/<script>, which the icon pattern
+    # above cannot see: site-assets.fontawesome.com (v6) and the licensed
+    # kit-pro loader in webroot/js/fontawesome.js. Both are external requests.
+    'Font Awesome CDN':      r'(site-assets|kit|use|kit-pro)\.fontawesome\.com'
+                             r"|Html->script\(['\"]fontawesome['\"]\)",
     'Ionicons':              r'<i[^>]*class="[^"]*(?<![-\w])ion(?![-\w])',
     'legacy DataTables css': r"Html->css\('dataTables\.bootstrap'\)",
-    'duplicate jQuery':      r"Html->script\('jquery-[\d.]+min'\)|code\.jquery\.com",
+    # jQuery CORE only -- matching bare `code.jquery.com` also flagged
+    # code.jquery.com/ui/..., but jQuery UI is a DIFFERENT library that Metronic
+    # does not bundle and that several views genuinely use for .datepicker().
+    # metronize.py already draws this line; the audit must draw the same one or
+    # it reports false positives on every view that legitimately keeps jQuery UI.
+    'duplicate jQuery':      r"Html->script\('jquery-[\d.]+min'\)"
+                             r"|code\.jquery\.com/jquery-",
     'CSS .box/.panel rule':  r'(?<![-\w])\.(box|panel)(-header|-body|-title|-footer)?(?![-\w])\s*[,{]',
     # AdminLTE widget chrome + Bootstrap 3 float helpers. Added after the Users
     # module revealed these in files earlier audits had passed as clean.

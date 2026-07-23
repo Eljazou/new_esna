@@ -1,7 +1,6 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
-echo $this->Html->css('dataTables.bootstrap');
 echo $this->Html->css('btn-style');
-echo $this->Html->script('fontawesome');
 echo $this->Html->css('daterangepicker');
 $objectif = 0;
 $clientappel = $prospectappel = $pencours = $cencours = 0;
@@ -116,13 +115,13 @@ if ($objectif != 0)
         color:inherit !important;
     }
 
-    .fdr-wrapper .info-box.bg-aqua .info-box-icon{ background:#e8f6fb !important; color:#3ab7de !important; }
-    .fdr-wrapper .info-box.bg-yellow .info-box-icon{ background:#fdf5e2 !important; color:#e0ab1f !important; }
-    .fdr-wrapper .info-box.bg-green .info-box-icon{ background:#e6f9ef !important; color:#2fb374 !important; }
+    .fdr-wrapper .info-box.bg-primary .info-box-icon{ background:#e8f6fb !important; color:#3ab7de !important; }
+    .fdr-wrapper .info-box.bg-warning .info-box-icon{ background:#fdf5e2 !important; color:#e0ab1f !important; }
+    .fdr-wrapper .info-box.bg-success .info-box-icon{ background:#e6f9ef !important; color:#2fb374 !important; }
 
-    .fdr-wrapper .info-box.bg-aqua,
-    .fdr-wrapper .info-box.bg-yellow,
-    .fdr-wrapper .info-box.bg-green{
+    .fdr-wrapper .info-box.bg-primary,
+    .fdr-wrapper .info-box.bg-warning,
+    .fdr-wrapper .info-box.bg-success{
         background:#fff !important;
     }
 
@@ -168,21 +167,21 @@ if ($objectif != 0)
         opacity:1;
     }
 
-    .fdr-wrapper .box{
+    .fdr-wrapper .card{
         background:#fff !important;
         border:none !important;
         border-radius:18px !important;
         box-shadow:0 4px 20px rgba(108,99,245,0.07) !important;
         overflow:hidden;
     }
-    .fdr-wrapper .box-header.table-responsive{
+    .fdr-wrapper .card-header.table-responsive{
         border:none !important;
         display:flex;
         align-items:center;
         gap:12px;
         padding:20px 24px 14px 24px;
     }
-    .fdr-wrapper .box-header.table-responsive:before{
+    .fdr-wrapper .card-header.table-responsive:before{
         content:'';
         width:7px;
         height:22px;
@@ -190,13 +189,13 @@ if ($objectif != 0)
         border-radius:4px;
         background:linear-gradient(180deg,#6C63F5,#8c7ef2);
     }
-    .fdr-wrapper .box-title{
+    .fdr-wrapper .card-title{
         font-size:16px;
         font-weight:600;
         color:#2d2b45;
         margin:0;
     }
-    .fdr-wrapper .box-body{
+    .fdr-wrapper .card-body{
         padding:20px 24px 24px 24px;
     }
     .fdr-wrapper table.dataTable thead th{
@@ -246,8 +245,8 @@ if ($objectif != 0)
         <!-- /.info-box -->
         <div class="fdr-stats-row">
         <div class="col-md-4">
-            <div class="info-box bg-aqua">
-                <span class="info-box-icon"><i class="fal fa-comments"></i></span>
+            <div class="info-box bg-primary">
+                <span class="info-box-icon"><i class="ki-duotone ki-messages"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Prospect</span>
@@ -259,8 +258,8 @@ if ($objectif != 0)
         </div>
         <!-- Info Boxes Style 2 -->
         <div class="col-md-4">
-            <div class="info-box bg-yellow">
-                <span class="info-box-icon"><i class="fal fa-users"></i></span>
+            <div class="info-box bg-warning">
+                <span class="info-box-icon"><i class="ki-duotone ki-people"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Clients</span>
@@ -272,8 +271,8 @@ if ($objectif != 0)
 
         <!-- /.info-box -->
         <div class="col-md-4">
-            <div class="info-box bg-green ">
-                <span class="info-box-icon"><i class="fal fa-calculator"></i></span>
+            <div class="info-box bg-success">
+                <span class="info-box-icon"><i class="ki-duotone ki-calculator"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Total</span>
@@ -293,12 +292,12 @@ if ($objectif != 0)
 
     </div>
     <div class="col-md-12">
-        <div class="box">
-            <div class="box-header table-responsive">
-                <h3 class="box-title">Feuille de route</h3>
+        <div class="card">
+            <div class="card-header table-responsive">
+                <h3 class="card-title">Feuille de route</h3>
             </div>
-            <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+            <div class="card-body">
+                <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                     <thead>
                         <tr>
                             <th>Société</th>
@@ -353,22 +352,11 @@ if ($objectif != 0)
 </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <?php

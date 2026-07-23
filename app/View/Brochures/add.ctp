@@ -1,5 +1,4 @@
-<?php 
-echo $this->Html->script('jquery-2.2.3.min');
+<?php
 echo $this->Html->css("image-uploader.min"); 
 ?>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">

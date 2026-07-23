@@ -138,7 +138,7 @@
         white-space: nowrap;
     }
 
-    table.table-bordered td, table.table-bordered th {
+    table.table-row-bordered td, table.table-row-bordered th {
         border-color: #f1effa !important;
     }
 

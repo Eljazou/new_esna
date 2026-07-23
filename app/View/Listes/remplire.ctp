@@ -26,11 +26,11 @@
     }
     #sortable1 li{background:#1188c1;color: #fff;}
     #sortable2 li{background:#11905b;color:#fff;}
-	.card.panel-primary .well.text-center .btn-primary {
+	.card .card.text-center .btn-primary {
 		float: right;
 		margin-right: 4px;
 	}
-	.card.panel-primary .well.text-center {
+	.card .card.text-center {
 		padding-bottom: 22px !important;
 		float:left;
 	}

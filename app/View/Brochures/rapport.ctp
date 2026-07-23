@@ -1,11 +1,11 @@
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title"><?php echo __('Rapport d\'affichage des brochures'); ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?php echo __('Rapport d\'affichage des brochures'); ?></h3>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
         <div class="col-lg-6">
-            <div class="panel panel-primary">
-                <div class="panel-body form-horizontal payment-form">
+            <div class="card">
+                <div class="card-body payment-form">
                     <?php echo $this->Form->create('Brochure'); 
                     $i=0; ?>
                     <input name="data[Brochure][<?php echo $i; ?>][client_id]" value="<?php echo $client_id; ?>" type="hidden">

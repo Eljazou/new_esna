@@ -1,6 +1,5 @@
+<?php echo $this->element('assets/datatables'); ?>
 <?php
-
-echo $this->Html->css('dataTables.bootstrap');
 echo $this->Html->css('btn-style');
 ?>	
 <style type="text/css">
@@ -10,15 +9,15 @@ echo $this->Html->css('btn-style');
 </style>
 <div class="row">
     <div class="col-md-12">
-<div class="box">
-    <div class="box-header table-responsive">
-        <h3 class="box-title col-md-12"><?php echo __('Prospect compagnes'); ?><?php echo $this->Html->link(__(''), array('action' => 'add',), array('class' => 'fa fa-plus btn-sc btn btn-outline-success ','style'=>'float:right;')); ?></h3>
+<div class="card">
+    <div class="card-header table-responsive">
+        <h3 class="card-title col-md-12"><?php echo __('Prospect compagnes'); ?><?php echo $this->Html->link(__(''), array('action' => 'add',), array('class' => 'fa fa-plus btn-sc btn btn-outline-success ','style'=>'float:right;')); ?></h3>
 
         
 
     </div>
-    <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+    <div class="card-body">
+        <table id="example1" class="table table-row-bordered table-row-gray-300 align-middle gy-4">
             <thead>
                 <tr>
                     <th>Affaire</th>
@@ -45,7 +44,7 @@ echo $this->Html->css('btn-style');
                     <td><?php 
                     if($prospectcompagne['Prospectcompagne']['file'] != null){?>
                        
-                        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter<?php echo $i ?>"> <i class="ion-image" style="font-size: 23px;padding: 0px;"></i></button>
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter<?php echo $i ?>"> <i class="ion-image" style="font-size: 23px;padding: 0px;"></i></button>
 
                         <div class="modal fade" id="exampleModalCenter<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle<?php echo $i ?>" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -75,10 +74,6 @@ echo $this->Html->css('btn-style');
 </div>
 </div>
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->script('jquery.dataTables.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
@@ -86,13 +81,6 @@ echo $this->Html->script('demo');
 
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
 <script>
     $(function () {

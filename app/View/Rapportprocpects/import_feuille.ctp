@@ -15,33 +15,33 @@
 
     /* Everything below is scoped under #import-feuille-route (an ID) so it
        reliably out-specifies the theme's existing skin/panel CSS, which is
-       often written as ".skin-blue .panel-primary { ... !important }" and
+       often written as ".skin-blue .card { ... !important }" and
        can otherwise beat plain class selectors even when we also use !important. */
 
-    #import-feuille-route .panel.panel-primary{
+    #import-feuille-route .card{
         background:#fff !important; border:1px solid var(--border-color) !important;
         border-radius:var(--radius-lg) !important; box-shadow:var(--shadow-card) !important; overflow:hidden !important;
     }
-    #import-feuille-route .panel.panel-primary > .panel-heading{
+    #import-feuille-route .card > .card-header{
         background:var(--accent-light) !important; border-bottom:1px solid var(--border-color) !important;
         padding:16px 24px !important; display:flex !important; align-items:center !important;
     }
-    #import-feuille-route .panel.panel-primary > .panel-heading .panel-title{
+    #import-feuille-route .card > .card-header .card-title{
         color:var(--text-dark) !important; font-size:16px !important; font-weight:700 !important;
         display:flex !important; align-items:center !important;
     }
-    #import-feuille-route .panel.panel-primary > .panel-heading .panel-title:before{
+    #import-feuille-route .card > .card-header .card-title:before{
         content:"\f0ee"; font-family:"FontAwesome"; display:inline-flex; align-items:center; justify-content:center;
         width:32px; height:32px; border-radius:50%; margin-right:10px; font-size:14px;
         background:#fff; color:var(--accent-dark); flex:0 0 auto;
     }
-    #import-feuille-route .panel.panel-primary > .panel-body{ padding:24px !important; }
+    #import-feuille-route .card > .card-body{ padding:24px !important; }
 
     /* Inner panel (upload card) */
-    #import-feuille-route .col-lg-6 .panel.panel-primary{
+    #import-feuille-route .col-lg-6 .card{
         box-shadow:none !important; border:1px dashed var(--accent-pale) !important;
     }
-    #import-feuille-route .col-lg-6 .panel.panel-primary .panel-body{ padding:22px !important; }
+    #import-feuille-route .col-lg-6 .card .card-body{ padding:22px !important; }
 
     #import-feuille-route .payment-form input[type="file"]{
         border:1px solid var(--border-color) !important; border-radius:var(--radius-sm) !important;
@@ -52,7 +52,7 @@
         border-color:var(--accent) !important; background:#fff !important; outline:none !important;
     }
 
-    #import-feuille-route .payment-form .well.text-center{
+    #import-feuille-route .payment-form .card.text-center{
         background:transparent !important; border:none !important; box-shadow:none !important;
         padding:18px 0 0 0 !important;
     }
@@ -71,14 +71,14 @@
 </style>
 
 <div id="import-feuille-route">
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title" style="padding-left: 0px;margin-left: -7px;">Importer un fichier exel (Feuille de route)</h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title" style="padding-left: 0px;margin-left: -7px;">Importer un fichier exel (Feuille de route)</h3>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
         <div class="col-lg-6">
-            <div class="panel panel-primary">
-                <div class="panel-body form-horizontal payment-form">
+            <div class="card">
+                <div class="card-body payment-form">
                     <?php echo $this->Form->create('Prospectfeuille', array('type' => 'file')); ?>
                     <?php
 					

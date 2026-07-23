@@ -11,20 +11,20 @@
         --shadow-card:0 2px 14px rgba(108,92,231,0.07);
     }
 
-    .box{
+    .card{
         background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-lg);
         box-shadow:var(--shadow-card); margin-bottom:20px; border-top:3px solid var(--accent);
     }
-    .box .box-header.with-border{ border-bottom:none; padding:20px 24px 8px 24px; }
-    .box .box-body{ padding:16px 24px 24px 24px; }
+    .card .card-header.with-border{ border-bottom:none; padding:20px 24px 8px 24px; }
+    .card .card-body{ padding:16px 24px 24px 24px; }
 
-    .box-title{ margin:0; font-size:15.5px; font-weight:700; color:var(--text-dark); display:flex; align-items:center; }
-    .box-title i{
+    .card-title{ margin:0; font-size:15.5px; font-weight:700; color:var(--text-dark); display:flex; align-items:center; }
+    .card-title i{
         display:inline-flex; align-items:center; justify-content:center;
         width:30px; height:30px; border-radius:50%; margin-right:10px; font-size:13px;
         background:var(--accent-light); color:var(--accent); flex:0 0 auto;
     }
-    .box-title .vm-name{ color:var(--accent); font-weight:700; }
+    .card-title .vm-name{ color:var(--accent); font-weight:700; }
 
     .table-responsive::-webkit-scrollbar{ width:8px; }
     .table-responsive::-webkit-scrollbar-thumb{ background:var(--border-color); border-radius:8px; }
@@ -58,17 +58,17 @@
 <div class="row">
 <?php foreach ($data as $vmId => $clients): ?>
     <div class="col-md-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">
-                    <i class="fa fa-copy"></i>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="ki-duotone ki-copy"></i>
                     Médecins en doublons — VM #<?php echo $vmId; ?>
                     (<span class="vm-name"><?php echo h($clients[0]['vm']); ?></span>)
                 </h3>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="table-responsive" style="max-height:400px; overflow-y:auto; cursor:pointer;">
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-row-bordered table-row-gray-300 align-middle gy-4">
                         <thead>
                             <tr>
                                 <th>Nom du Médecin</th>

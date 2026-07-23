@@ -1,17 +1,7 @@
-<?php
-
-?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-    .box-body {
+    .card-body {
         overflow: hidden;
         overflow-y: hidden;
     }
@@ -84,7 +74,7 @@
         font-family:'Poppins',sans-serif;
         color:#3a3a4a;
     }
-    .cvg-wrapper .box{
+    .cvg-wrapper .card{
         background:#fff !important;
         border:none !important;
         border-top:none !important;
@@ -92,7 +82,7 @@
         box-shadow:0 4px 20px rgba(108,99,245,0.07) !important;
         margin-bottom:22px !important;
     }
-    .cvg-wrapper .box-header.with-border{
+    .cvg-wrapper .card-header.with-border{
         border:none !important;
         display:flex;
         align-items:center;
@@ -100,21 +90,21 @@
         padding:20px 24px 14px 24px;
         flex-wrap:wrap;
     }
-    .cvg-wrapper .box-header.with-border .box-title{
+    .cvg-wrapper .card-header.with-border .card-title{
         font-size:16px;
         font-weight:600;
         color:#2d2b45;
         margin:0;
         padding:0;
     }
-    .cvg-wrapper .box-header.with-border .box-title .fa{
+    .cvg-wrapper .card-header.with-border .card-title .fa{
         color:#6C63F5;
         margin-right:4px;
     }
-    .cvg-wrapper .box-header.with-border .pull-right{
+    .cvg-wrapper .card-header.with-border .pull-right{
         margin-left:auto;
     }
-    .cvg-wrapper .box-body{
+    .cvg-wrapper .card-body{
         padding:20px 24px 24px 24px;
     }
     /* filter banner */
@@ -169,7 +159,7 @@
         background:#fff;
         min-width:260px;
     }
-    .cvg-wrapper .input-group-addon{
+    .cvg-wrapper .input-group-text{
         background:#faf9ff;
         border:none;
         border-right:1.5px solid #e7e5f7;
@@ -181,7 +171,7 @@
         font-size:14px;
         padding:11px 16px;
     }
-    .cvg-wrapper .form-group label{
+    .cvg-wrapper .mb-5 label{
         display:flex;
         align-items:center;
         gap:8px;
@@ -192,7 +182,7 @@
         float:none;
         width:auto;
     }
-    .cvg-wrapper .form-group{
+    .cvg-wrapper .mb-5{
         margin-bottom:18px;
         clear:both;
         overflow:hidden;
@@ -250,7 +240,7 @@
         color:#6C63F5 !important;
     }
     /* tables */
-    .cvg-wrapper table.table-bordered thead th,
+    .cvg-wrapper table.table-row-bordered thead th,
     .cvg-wrapper table.dataTable thead th{
         background:#faf9ff !important;
         color:#4a4863 !important;
@@ -258,7 +248,7 @@
         font-size:13px;
         border-bottom:2px solid #ece9fb !important;
     }
-    .cvg-wrapper table.table-bordered tbody td,
+    .cvg-wrapper table.table-row-bordered tbody td,
     .cvg-wrapper table.dataTable tbody td{
         font-size:13px;
         color:#454358;
@@ -379,10 +369,10 @@
 </style>
 <div class="cvg-wrapper">
 <div class="row">
-    <div class="col-xs-12" style="margin-bottom: 24px;">
+    <div class="col-12" style="margin-bottom: 24px;">
 
-        <div class="box form-group">
-            <div class="box-body">
+        <div class="card mb-5">
+            <div class="card-body">
                 <?php
                 echo $this->Form->create('Analyse', array('id' => 'dateform', 'autocomplete' => 'off'));
                 ?>
@@ -392,8 +382,8 @@
                     </div>
                     <p class="cvg-date-title">Période</p>
                     <div class="input-group cvg-date-input">
-                        <div class="input-group-addon">
-                            <i class="fa fa-clock-o"></i>
+                        <div class="input-group-text">
+                            <i class="ki-duotone ki-time"><span class="path1"></span><span class="path2"></span></i>
                         </div>
                         <input type="text" class="form-control"
                             value="<?php echo h($dateaafficherdansleview); ?>" name="date" id="reservationtime"
@@ -492,20 +482,20 @@
 <div class="row">
     <!-- Graphique par Région -->
     <div class="col-md-12" id="tableContainer2">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-map-marker"></i> Calcul automatisé des réalisations avec tous les
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> Calcul automatisé des réalisations avec tous les
                     détails</h3>
-                <button class="btn image-btn pull-right"
+                <button class="btn image-btn float-end"
                     onclick="exportTableAsImage(event, 'tableContainer2', 'couvertureTable')">
-                    <i class="fa fa-download"></i> Télécharger image
+                    <i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Télécharger image
                 </button>
-                <button class="btn my-btn-excel  pull-right" data-table="1">
-                    <i class="fa fa-file-excel-o"></i> Excel
+                <button class="btn my-btn-excel float-end" data-table="1">
+                    <i class="ki-duotone ki-file -excel-o"><span class="path1"></span><span class="path2"></span></i> Excel
                 </button>
             </div>
 
-            <table class="table table-bordered table-striped table-one table-1 ">
+            <table class="table table-row-bordered table-row-gray-300 align-middle gy-4 table-one table-1">
                 <thead class="color-thead">
                     <tr>
                         <th>VMP</th>
@@ -584,19 +574,19 @@
 <div class="row">
     <!-- Graphique par Région -->
     <div class="col-md-12" id="tableContainer1">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-map-marker"></i> Calcul automatisé de la couverture</h3>
-                <button class="btn image-btn pull-right"
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i> Calcul automatisé de la couverture</h3>
+                <button class="btn image-btn float-end"
                     onclick="exportTableAsImage(event, 'tableContainer1', 'tableau_realisations')">
-                    <i class="fa fa-download"></i> Télécharger image
+                    <i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Télécharger image
                 </button>
-                <button class="btn my-btn-excel  pull-right" data-table="2">
-                    <i class="fa fa-file-excel-o"></i> Excel
+                <button class="btn my-btn-excel float-end" data-table="2">
+                    <i class="ki-duotone ki-file -excel-o"><span class="path1"></span><span class="path2"></span></i> Excel
                 </button>
             </div>
 
-            <table class="table table-bordered table-striped table-2 ">
+            <table class="table table-row-bordered table-row-gray-300 align-middle gy-4 table-2">
                 <thead class="color-thead">
                     <tr>
                         <th>VMP</th>
@@ -675,7 +665,6 @@
 
 
 <?php
-echo $this->Html->script('jquery-2.2.3.min');
 echo $this->Html->script('daterangepicker');
 ?>
 
@@ -683,18 +672,18 @@ echo $this->Html->script('daterangepicker');
 
 <style>
     /* Styles personnalisés pour les graphiques */
-    .box-body {
+    .card-body {
         position: relative;
         max-height: fit-content;
         min-height: 370px;
     }
 
-    .box-footer {
+    .card-footer {
         background-color: #f9f9f9;
         border-top: 1px solid #f4f4f4;
     }
 
-    .box-title {
+    .card-title {
         font-weight: 600;
     }
 
@@ -704,7 +693,7 @@ echo $this->Html->script('daterangepicker');
             margin-bottom: 20px;
         }
 
-        .box-body {
+        .card-body {
             height: 300px;
         }
     }
@@ -899,7 +888,7 @@ echo $this->Html->script('daterangepicker');
             // Show loading state
             const exportBtn = event.target.closest('button');
             const originalHTML = exportBtn.innerHTML;
-            exportBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Génération...';
+            exportBtn.innerHTML = '<span class="spinner-border spinner-border-sm align-middle"></span> Génération...';
             exportBtn.disabled = true;
 
             // Generate image
@@ -941,11 +930,11 @@ echo $this->Html->script('daterangepicker');
 
 <div class="row">
     <div class="col-md-12">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-bar-chart"></i> Couverture par VM et par mois</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-chart-simple"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> Couverture par VM et par mois</h3>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <canvas id="barChart"></canvas>
             </div>
         </div>
@@ -957,15 +946,15 @@ echo $this->Html->script('daterangepicker');
 <div class="row">
     <!-- Graphique par Région -->
     <div class="col-md-12" id="tableContainer3">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-map-marker"></i>Récapitulatif de performance</h3>
-                <button class="btn image-btn pull-right"
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="ki-duotone ki-geolocation"><span class="path1"></span><span class="path2"></span></i>Récapitulatif de performance</h3>
+                <button class="btn image-btn float-end"
                     onclick="exportTableAsImage(event, 'tableContainer3', 'couvertureTable')">
-                    <i class="fa fa-download"></i> Télécharger image
+                    <i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i> Télécharger image
                 </button>
-                <button class="btn recap-excel pull-right" data-table="3">
-                    <i class="fa fa-file-excel-o"></i> Excel
+                <button class="btn recap-excel float-end" data-table="3">
+                    <i class="ki-duotone ki-file -excel-o"><span class="path1"></span><span class="path2"></span></i> Excel
                 </button>
             </div>
 
@@ -980,7 +969,7 @@ echo $this->Html->script('daterangepicker');
                 }
             }
             ?>
-            <table class="table table-bordered table-striped recap">
+            <table class="table table-row-bordered table-row-gray-300 align-middle gy-4 recap">
                 <thead>
                     <tr>
                         <th></th>
@@ -1120,19 +1109,19 @@ echo $this->Html->script('daterangepicker');
     ?>
 
             <div class="col-md-6">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">
-                            <i class="fa fa-user"></i> <?php echo h($vmp_name); ?>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="ki-duotone ki-profile-user"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> <?php echo h($vmp_name); ?>
                         </h3>
-                        <span class="label label-info pull-right"><?php echo h($mois); ?></span>
+                        <span class="badge badge-light-info float-end"><?php echo h($mois); ?></span>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <!-- Taux de Couverture -->
                         <div class="performance-item" style="margin-bottom: 25px;">
                             <div style="margin-bottom: 8px;">
                                 <span style="font-weight: 600; color: #333;">Taux de Couverture</span>
-                                <span class="pull-right" style="font-weight: 700; color: <?php echo $couverture_color; ?>;">
+                                <span class="float-end" style="font-weight: 700; color: <?php echo $couverture_color; ?>;">
                                     <?php echo h(round($couverture, 1)); ?>%
                                 </span>
                             </div>
@@ -1148,7 +1137,7 @@ echo $this->Html->script('daterangepicker');
                         <div class="performance-item" style="margin-bottom: 25px;">
                             <div style="margin-bottom: 8px;">
                                 <span style="font-weight: 600; color: #333;">Visite Instantanée</span>
-                                <span class="pull-right" style="font-weight: 700; color: <?php echo $visite_color; ?>;">
+                                <span class="float-end" style="font-weight: 700; color: <?php echo $visite_color; ?>;">
                                     <?php echo h(round($visite_instantanee, 1)); ?>%
                                 </span>
                             </div>
@@ -1294,7 +1283,7 @@ echo $this->Html->script('daterangepicker');
         background-image: linear-gradient(to bottom, #5cb85c, #449d44);
     }
 
-    .box {
+    .card {
         margin-bottom: 20px;
     }
 

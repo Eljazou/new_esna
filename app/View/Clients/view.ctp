@@ -274,7 +274,7 @@ function cv_badges($label, $pipeValue) {
             <div class="card-body d-flex align-items-center pt-5">
                 <div class="symbol symbol-45px me-4">
                     <span class="symbol-label bg-light-warning">
-                        <i class="ki-duotone ki-star fs-1 text-warning"><span class="path1"></span><span class="path2"></span></i>
+                        <i class="ki-duotone ki-star fs-1 text-warning"></i>
                     </span>
                 </div>
                 <div class="flex-grow-1">
@@ -836,7 +836,7 @@ function cv_badges($label, $pipeValue) {
                             <div class="timeline-item">
                                 <div class="timeline-line"></div>
                                 <div class="timeline-icon">
-                                    <i class="ki-duotone ki-phone fs-2 text-primary"><span class="path1"></span></i>
+                                    <i class="ki-duotone ki-phone fs-2 text-primary"><span class="path1"></span><span class="path2"></span></i>
                                 </div>
                                 <div class="timeline-content mb-10 mt-n1">
                                     <div class="pe-3 mb-5">

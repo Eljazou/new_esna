@@ -172,7 +172,7 @@
 													<div class="file-details">
 														<a href="<?php echo $this->webroot . $file; ?>" target="_blank" class="file-link">
 															<span class="file-name"><?php echo $fileName; ?></span>
-															<span class="file-action"><i class="fas fa-download"></i></span>
+															<span class="file-action"><i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i></span>
 														</a>
 													</div>
 												</li>
@@ -190,7 +190,7 @@
 												<div class="file-details">
 													<a href="<?php echo $this->webroot . $rapport['Rapport']['file_terrain']; ?>" target="_blank" class="file-link">
 														<span class="file-name"><?php echo $fileName; ?></span>
-														<span class="file-action"><i class="fas fa-download"></i></span>
+														<span class="file-action"><i class="ki-duotone ki-cloud-download"><span class="path1"></span><span class="path2"></span></i></span>
 													</a>
 												</div>
 											</li>
@@ -2423,7 +2423,7 @@ if (!empty($tSpec)) {
 												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh optionh0" style="color:#00a65a;font-size: 22px;font-weight: bold;" onclick="objettog(0)">
-												<e class="pcm-v">0</e> <i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<e class="pcm-v">0</e> <i class="ki-duotone ki-plus"></i>
 											</span>
 										</div>
 									</div>
@@ -2435,7 +2435,7 @@ if (!empty($tSpec)) {
 												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh optionh1" style="color:#00a65a;font-size: 22px;font-weight: bold;" onclick="objettog(1)">
-												<e class="qam-v">0</e> <i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<e class="qam-v">0</e> <i class="ki-duotone ki-plus"></i>
 											</span>
 										</div>
 									</div>
@@ -2447,7 +2447,7 @@ if (!empty($tSpec)) {
 												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh optionh2" style="color:#00a65a;font-size: 22px;font-weight: bold;" onclick="objettog(2)">
-												<e class="pm-v">0</e> <i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<e class="pm-v">0</e> <i class="ki-duotone ki-plus"></i>
 											</span>
 										</div>
 									</div>
@@ -2459,7 +2459,7 @@ if (!empty($tSpec)) {
 												<i class="ki-duotone ki-profile-user" style="font-size:30px;"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
 											</b>
 											<span class="optionh optionh3" style="color:#00a65a;font-size: 22px;font-weight: bold;" onclick="objettog(3)">
-												<e class="nr-v">0</e> <i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<e class="nr-v">0</e> <i class="ki-duotone ki-plus"></i>
 											</span>
 										</div>
 									</div>
@@ -2555,7 +2555,7 @@ if (!empty($tSpec)) {
 						<b class="knob-b">%</b>
 						<div class="knob-label" style="color:#00a65a;margin-top:10px;">
 							<div class="objet objet4">
-								<span class="optionh optionh4" style="color:#00a65a;" onclick="objettog(4)"><b>BIEN </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
+								<span class="optionh optionh4" style="color:#00a65a;" onclick="objettog(4)"><b>BIEN </b><i class="ki-duotone ki-plus"></i></span>
 							</div>
 						</div>
 					</div>
@@ -2564,7 +2564,7 @@ if (!empty($tSpec)) {
 						<b class="knob-m">%</b>
 						<div class="knob-label" style="color:#fdde00;margin-top:10px;">
 							<div class="objet objet5">
-								<span class="optionh optionh5" style="color:#fdde00;" onclick="objettog(5)"><b>MOYEN </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
+								<span class="optionh optionh5" style="color:#fdde00;" onclick="objettog(5)"><b>MOYEN </b><i class="ki-duotone ki-plus"></i></span>
 							</div>
 						</div>
 					</div>
@@ -2573,7 +2573,7 @@ if (!empty($tSpec)) {
 						<b class="knob-fi">%</b>
 						<div class="knob-label" style="color:#f56954;margin-top:10px;">
 							<div class="objet objet6">
-								<span class="optionh optionh6" style="color:#f56954;" onclick="objettog(6)"><b>FAIBLE </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
+								<span class="optionh optionh6" style="color:#f56954;" onclick="objettog(6)"><b>FAIBLE </b><i class="ki-duotone ki-plus"></i></span>
 							</div>
 						</div>
 					</div>
@@ -2585,7 +2585,7 @@ if (!empty($tSpec)) {
 						<b class="knob-b">%</b>
 						<div class="knob-label" style="color:#00a65a;margin-top:10px;">
 							<div class="objet objet7">
-								<span class="optionh optionh7" style="color:#00a65a;" onclick="objettog(7)"><b>100 </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
+								<span class="optionh optionh7" style="color:#00a65a;" onclick="objettog(7)"><b>100 </b><i class="ki-duotone ki-plus"></i></span>
 							</div>
 						</div>
 					</div>
@@ -2594,7 +2594,7 @@ if (!empty($tSpec)) {
 						<b class="knob-m">%</b>
 						<div class="knob-label" style="color:#fdde00;margin-top:10px;">
 							<div class="objet objet8">
-								<span class="optionh optionh8" style="color:#fdde00;" onclick="objettog(8)"><b>50 </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
+								<span class="optionh optionh8" style="color:#fdde00;" onclick="objettog(8)"><b>50 </b><i class="ki-duotone ki-plus"></i></span>
 							</div>
 						</div>
 					</div>
@@ -2603,7 +2603,7 @@ if (!empty($tSpec)) {
 						<b class="knob-fi">%</b>
 						<div class="knob-label" style="color:#f56954;margin-top:10px;">
 							<div class="objet objet9">
-								<span class="optionh optionh9" style="color:#f56954;" onclick="objettog(9)"><b>-+ </b><i class="ki-duotone ki-plus"><span class="path1"></span></i></span>
+								<span class="optionh optionh9" style="color:#f56954;" onclick="objettog(9)"><b>-+ </b><i class="ki-duotone ki-plus"></i></span>
 							</div>
 						</div>
 					</div>
@@ -2629,7 +2629,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_price)) {
 										foreach ($sliced_price as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2643,7 +2643,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_indication)) {
 										foreach ($sliced_indication as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2656,7 +2656,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_pathologie)) {
 										foreach ($sliced_pathologie as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2669,7 +2669,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_posologie)) {
 										foreach ($sliced_posologie as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2682,7 +2682,7 @@ if (!empty($tSpec)) {
 									if (!empty($sliced_presentation)) {
 										foreach ($sliced_presentation as $s => $value) { ?>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $s . ' | ' . $value; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 									<?php $nbre++;
 										}
@@ -2717,7 +2717,7 @@ if (!empty($tSpec)) {
 										</td>
 										<td>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $sec; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $sec; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 										</td>
 									</tr>
@@ -2753,7 +2753,7 @@ if (!empty($tSpec)) {
 										</td>
 										<td>
 											<span class="optionh" style="color:#3c8dbc;border: 1px solid #3c8dbc;padding: 1px 2px;margin: 0px 4px;cursor:pointer;" onclick="objettog(<?php echo $nbre; ?>)">
-												<b><?php echo $vl; ?> </b><i class="ki-duotone ki-plus"><span class="path1"></span></i>
+												<b><?php echo $vl; ?> </b><i class="ki-duotone ki-plus"></i>
 											</span>
 										</td>
 									</tr>
