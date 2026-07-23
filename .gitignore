@@ -54,3 +54,6 @@ Thumbs.db
 *.bak
 *.sql
 *.zip
+
+# Local DB credentials (copy database.php.default -> database.php)
+app/Config/database.php

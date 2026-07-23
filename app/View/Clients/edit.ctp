@@ -580,8 +580,6 @@ $secteur_clean = utf8ize($secteur);
 </div>
 
 
-<?php
-?>
 <script>
     $(document).ready(function() {
         $("#regions").change(function() {
@@ -670,7 +668,6 @@ $secteur_clean = utf8ize($secteur);
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-<?php echo $this->Html->script('select2.full.min'); ?>
 <script type="text/javascript">
     $(function() {
         $("#ClientSecteurId, #game, #produit_list, #ClientVilleId, #ClientRegionId").select2();

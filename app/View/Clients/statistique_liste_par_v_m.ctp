@@ -23,19 +23,19 @@
         overflow: hidden;
         margin-bottom: 30px;
     }
-    .report-card-custom .box-header-custom {
+    .report-card-custom .card-header-custom {
         background: #ffffff;
         padding: 22px 24px;
         border-bottom: 1px solid var(--theme-border);
     }
-    .report-card-custom .box-title-custom {
+    .report-card-custom .card-title-custom {
         margin: 0;
         font-size: 16px;
         font-weight: 700;
         color: var(--theme-text-dark);
         line-height: 1.4;
     }
-    .report-card-custom .box-body-custom {
+    .report-card-custom .card-body-custom {
         padding: 0;
     }
 

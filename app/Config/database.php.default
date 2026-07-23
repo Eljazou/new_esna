@@ -1,0 +1,45 @@
+<?php
+/**
+ * Database configuration template for esna-new (CakePHP 2.10.19).
+ *
+ * ---------------------------------------------------------------------------
+ * SETUP: copy this file to app/Config/database.php and fill in your credentials.
+ *
+ *     cp app/Config/database.php.default app/Config/database.php
+ *
+ * app/Config/database.php is intentionally NOT committed (it holds credentials).
+ * The upstream esna repository never committed one either, which is why a fresh
+ * clone cannot boot until you create it.
+ * ---------------------------------------------------------------------------
+ *
+ * Notes for this app specifically:
+ *  - 'encoding' => 'utf8' matters here: the UI is French and the data contains
+ *    accented characters throughout (é, à, ô). Getting this wrong shows up as
+ *    mojibake rather than as an error.
+ *  - CakePHP 2.10 runs on PHP 5.3–7.4. It is NOT PHP 8 clean, so use 7.4.
+ *  - Required PHP extensions: pdo_mysql, mbstring, curl, json.
+ */
+class DATABASE_CONFIG {
+
+	public $default = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'localhost',
+		'login' => 'root',
+		'password' => '',
+		'database' => 'esna',
+		'prefix' => '',
+		'encoding' => 'utf8',
+	);
+
+	public $test = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'localhost',
+		'login' => 'root',
+		'password' => '',
+		'database' => 'esna_test',
+		'prefix' => '',
+		'encoding' => 'utf8',
+	);
+}
