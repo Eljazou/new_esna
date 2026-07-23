@@ -329,7 +329,7 @@ $adoptLabels = array(
     <!-- 1. Commentaire -->
     <?php if (!empty($visite['commentaire'])): ?>
         <div class="v2-section">
-            <div class="v2-section-title"><i class="fa fa-commenting-o"></i> Commentaire</div>
+            <div class="v2-section-title"><i class="ki-duotone ki-message-text"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Commentaire</div>
             <div class="v2-content-block">
                 <div class="v2-comment-card">
                     <?php echo iconv('ASCII', 'UTF-8//IGNORE', $visite['commentaire']); ?>
@@ -341,7 +341,7 @@ $adoptLabels = array(
     <!-- 2. Objectif de visite -->
     <?php if (!empty($visite['objectif_visite'])): ?>
         <div class="v2-section">
-            <div class="v2-section-title"><i class="fa fa-bullseye"></i> Objectifs</div>
+            <div class="v2-section-title"><i class="ki-duotone ki-focus"><span class="path1"></span><span class="path2"></span></i> Objectifs</div>
             <div class="v2-content-block">
                 <div class="v2-badge-container">
                     <?php
@@ -358,7 +358,7 @@ $adoptLabels = array(
     <!-- 3. Feedback Produits -->
     <?php if (!empty($feedbacks)): ?>
         <div class="v2-section">
-            <div class="v2-section-title"><i class="fa fa-medkit"></i> Feedback Produits</div>
+            <div class="v2-section-title"><i class="ki-duotone ki-bandage"><span class="path1"></span><span class="path2"></span></i> Feedback Produits</div>
             <div class="v2-content-block">
                 <?php foreach ($feedbacks as $pid => $fb):
                     $pname = $this->requestAction('/games/system_get_name_game/' . $pid);
@@ -391,7 +391,7 @@ $adoptLabels = array(
                                         </div>
                                         <?php if (!empty($objData['preciser'])): ?>
                                             <div class="objection-precision">
-                                                <i class="fa fa-quote-left" style="font-size:10px; margin-right:6px; opacity:0.6;"></i>
+                                                <i class="ki-duotone ki-message-text" style="font-size:10px; margin-right:6px; opacity:0.6;"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
                                                 <?php echo h($objData['preciser']); ?>
                                             </div>
                                         <?php endif; ?>
@@ -412,14 +412,14 @@ $adoptLabels = array(
         if (!empty($concurrents)):
     ?>
         <div class="v2-section">
-            <div class="v2-section-title"><i class="fa fa-balance-scale"></i> Concurrents</div>
+            <div class="v2-section-title"><i class="ki-duotone ki-arrow-right-left"><span class="path1"></span><span class="path2"></span></i> Concurrents</div>
             <div class="v2-content-block">
                 <?php foreach ($concurrents as $cc):
                     $cpname = $this->requestAction('/games/system_get_name_game/' . $cc['produit_id']);
                 ?>
                     <div class="competitor-card">
                         <div class="competitor-product-info">
-                            <?php echo $cpname; ?> <i class="fa fa-long-arrow-right" style="margin: 0 6px; opacity: 0.4;"></i>
+                            <?php echo $cpname; ?> <i class="ki-duotone ki-arrow-right" style="margin: 0 6px; opacity: 0.4;"><span class="path1"></span><span class="path2"></span></i>
                             <span class="competitor-brand"><?php echo h($cc['concurrent']); ?></span>
                             <?php if (!empty($cc['frequence'])): ?>
                                 <span class="adoption-badge lb-v2-bg-orange" style="margin-left:8px; font-size:11px;"><?php echo ucfirst($cc['frequence']); ?></span>
@@ -436,11 +436,11 @@ $adoptLabels = array(
         $emg = json_decode($visite['distribution_emg'], true);
     ?>
         <div class="v2-section">
-            <div class="v2-section-title"><i class="fa fa-gift"></i> Matériel EMG</div>
+            <div class="v2-section-title"><i class="ki-duotone ki-gift"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i> Matériel EMG</div>
             <div class="v2-content-block">
                 <div class="emg-container">
                     <?php if (!empty($emg['distribue'])): ?>
-                        <span class="adoption-badge lb-v2-bg-green"><i class="fa fa-check"></i> Distribué</span>
+                        <span class="adoption-badge lb-v2-bg-green"><i class="ki-duotone ki-check"></i> Distribué</span>
                         <div style="margin-top: 4px;">
                             <?php if (!empty($emg['produits'])):
                                 foreach ($emg['produits'] as $ep):
@@ -450,7 +450,7 @@ $adoptLabels = array(
                             <?php endforeach; endif; ?>
                         </div>
                     <?php else: ?>
-                        <span class="adoption-badge lb-v2-bg-red"><i class="fa fa-times"></i> Non distribué</span>
+                        <span class="adoption-badge lb-v2-bg-red"><i class="ki-duotone ki-cross"><span class="path1"></span><span class="path2"></span></i> Non distribué</span>
                     <?php endif; ?>
                 </div>
             </div>
@@ -462,7 +462,7 @@ $adoptLabels = array(
     $visitesorders = $this->requestAction('/visiteordres/system_get_visiteordre/' . $visite['id']);
     if (!empty($visitesorders)): ?>
         <div class="v2-section">
-            <div class="v2-section-title"><i class="fa fa-image"></i> Ordre Présentation</div>
+            <div class="v2-section-title"><i class="ki-duotone ki-picture"><span class="path1"></span><span class="path2"></span></i> Ordre Présentation</div>
             <div class="v2-content-block">
                 <div class="odp-gallery">
                     <?php 
@@ -483,7 +483,7 @@ $adoptLabels = array(
     <!-- 7. Requête CRM -->
     <?php if (!empty($visite['requete_crm'])): ?>
         <div class="v2-section">
-            <div class="v2-section-title"><i class="fa fa-bell"></i> Requête CRM</div>
+            <div class="v2-section-title"><i class="ki-duotone ki-notification"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i> Requête CRM</div>
             <div class="v2-content-block">
                 <div class="crm-request-banner">
                     <span><?php echo h($visite['requete_crm']); ?></span>

@@ -526,8 +526,6 @@
         <i class="fa-solid fa-paper-plane"></i> Enregistrer
     </button>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     // ---- Games data for JS cloning ----
     var gamesOptions = '<?php $opts = "<option value=\"\">Choisissez un produit ODP</option>";

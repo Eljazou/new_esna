@@ -99,6 +99,10 @@ UTILITY_TARGETS = {'mb-5', 'w-100', 'float-end', 'float-start', 'd-block'}
 
 STYLE_WARNINGS = []
 
+# Icon conversion is on for the desktop track (Keenicons ship with Metronic) and
+# off for the mobile track (--no-icons), which keeps its own Font Awesome Pro 6.
+SWAP_ICONS = True
+
 
 def _atomic_renames(tokens):
     """Every single-class rename the markup pass performs, as {old: new}.
@@ -198,6 +202,14 @@ ICON_MAP = {
     'fa-id-badge': 'ki-badge', 'fa-cube': 'ki-cube-2', 'fa-flag': 'ki-flag',
     'fa-facebook': 'ki-facebook', 'fa-facebook-official': 'ki-facebook',
     'fa-bullhorn': 'ki-speaker', 'fa-exchange': 'ki-arrows-loop',
+    # Shared Clients/view.ctp partials. Keenicons has no quotation mark and no
+    # balance scale: the first is a decorative marker before a free-text remark
+    # (a message glyph carries the same "this is a written note"), the second
+    # titles a Concurrents/competitors block (a left-right arrow reads as the
+    # comparison it stands for).
+    'fa-quote-left': 'ki-message-text', 'fa-balance-scale': 'ki-arrow-right-left',
+    'fa-long-arrow-right': 'ki-arrow-right', 'fa-gift': 'ki-gift',
+    'fa-image': 'ki-picture',
 }
 
 # Ionicons -> Keenicons. Ionicons ships in webroot but is loaded by nothing --
@@ -603,9 +615,15 @@ def metronize(src):
     src = re.sub(r'<i class="fa[srlb]?\s+fa-spinner[^"]*"\s*>\s*</i>',
                  '<span class="spinner-border spinner-border-sm align-middle">'
                  '</span>', src)
-    src = swap_icons(src)
-    src = swap_ionicons(src)
-    src = fix_icon_paths(src)
+    # The mobile track keeps Font Awesome (it vendors FA Pro 6 as
+    # webroot/css/all.css) rather than adopting Keenicons, which would mean
+    # loading 719 KB of Metronic plugin CSS on a phone for icons alone. Swapping
+    # them there would produce ki-* classes with no stylesheet behind them --
+    # every icon would silently vanish.
+    if SWAP_ICONS:
+        src = swap_icons(src)
+        src = swap_ionicons(src)
+        src = fix_icon_paths(src)
 
     # --- BS3 close button inside modals ----------------------------------
     src = re.sub(
@@ -682,5 +700,10 @@ def process(path):
 
 
 if __name__ == '__main__':
-    for p in sys.argv[1:]:
+    args = sys.argv[1:]
+    if '--no-icons' in args:
+        # Mobile track: keep Font Awesome, do not emit Keenicons.
+        SWAP_ICONS = False
+        args = [a for a in args if a != '--no-icons']
+    for p in args:
         process(p)

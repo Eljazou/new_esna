@@ -62,7 +62,7 @@
     .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
         color: #fff !important;
     }
-    .panel.panel-primary .col-lg-8 {
+    .card .col-lg-8 {
         float: none !important;
         margin: auto !important;
         background: #fff !important;
@@ -70,7 +70,7 @@
         padding-top: 8px;
     }
 
-    .panel-heading.col-lg-8 {
+    .card-header.col-lg-8 {
         width: 65.666667%;
     }
     input[type='readonly']{
@@ -80,7 +80,7 @@
         .nopad {
             margin:10px 0px!important;
         }
-        .panel-heading.col-lg-8,.panel-body .col-lg-8{
+        .card-header.col-lg-8,.card-body .col-lg-8{
             width:100% !important;
         }
     }
@@ -90,9 +90,9 @@
             margin-bottom:10px;
         }
     }
-    .concur .col-xs-8{padding:0px;}
-    .concur .col-xs-9{padding:0px;}
-    .concur .col-xs-12 span.col-xs-4{padding-left:0px;}
+    .concur .col-8{padding:0px;}
+    .concur .col-9{padding:0px;}
+    .concur .col-12 span.col-4{padding-left:0px;}
     .payment-form{padding:0px;}
     .select2-dropdown{width:324px !important;}
 
@@ -188,7 +188,7 @@
         line-height: 1.8;
         font-weight: normal;
     }
-    .panel-body {
+    .card-body {
     padding: 0px; 
     }
     label {
@@ -206,7 +206,7 @@
         margin: 12px 0 53px;
         font-weight: 100;
     }
-    .header_visite .panel-title{
+    .header_visite .card-title{
         padding-left: 0 ;
         font-size: 18px;
     }
@@ -214,7 +214,7 @@
         padding: 20px 10px 20px 20px;
         border-bottom: 2px solid #dfdfdf !important;
     }
-    .header_visite .panel-title:after{
+    .header_visite .card-title:after{
         content: "";
         width: 115px;
         height: 3px;
@@ -252,9 +252,9 @@
         <h2 class="title_page" > Rapport d'une  visite</h2>
     </div>
     
-        <div class="col-lg-12 col-xs-12 no-padding">
-            <div class="panel panel-primary">
-                <div class="box-body no-padding  form-horizontal payment-form">
+        <div class="col-lg-12 col-12 no-padding">
+            <div class="card">
+                <div class="card-body no-padding payment-form">
                     <?php echo $this->Form->create('Visite', array("style" => "float: left; width: 100%; height: auto;"));
                     echo $this->Form->hidden('client_id', array('value' => $client_id));
 					echo $this->Form->hidden('user_id', array('value' => $user_id));
@@ -265,11 +265,11 @@
                     ?>   
 
                     <div class="col-md-12">
-                            <div class="panel panel-default panel_visite">
-                              <div class="panel-heading header_visite">
-                                <h3 class="panel-title">Type de visite</h3>
+                            <div class="card panel_visite">
+                              <div class="card-header header_visite">
+                                <h3 class="card-title">Type de visite</h3>
                               </div>
-                              <div class="panel-body">
+                              <div class="card-body">
                                   <div class="inputGroup">
                                     <input id="solo" name="data[Visite][type_visite]" type="radio" value="solo" />
                                     <label for="solo">Visite solo</label>
@@ -285,11 +285,11 @@
                         if (empty($infosclient[0]['clients']['sexe'])) {
                             ?>
                             <div class="col-md-12">
-                            <div class="panel panel-default panel_visite">
-                              <div class="panel-heading header_visite">
-                                <h3 class="panel-title">GENRE</h3>
+                            <div class="card panel_visite">
+                              <div class="card-header header_visite">
+                                <h3 class="card-title">GENRE</h3>
                               </div>
-                              <div class="panel-body">
+                              <div class="card-body">
                                   <div class="inputGroup">
                                     <input type="radio" name="data[Client][sexe]" value="h" id="homme" required="required" />
                                     <label for="homme">HOMME</label>
@@ -304,12 +304,12 @@
                         <?php } ?>
                         
                         <div class="col-md-12">
-                            <div class="panel panel-default panel_visite">
-                              <div class="panel-heading header_visite">
-                                <h3 class="panel-title title_with_cp">Potentialité du cabinet</h3>
+                            <div class="card panel_visite">
+                              <div class="card-header header_visite">
+                                <h3 class="card-title title_with_cp">Potentialité du cabinet</h3>
                                 <span class="caption">Comment jugez-vous l’activité du cabinet ?</span>
                               </div>
-                              <div class="panel-body">
+                              <div class="card-body">
                                   <div class="inputGroup">
                                     <input  type="radio" name="data[Visite][partenaires]" value="bien" required="required" id="bien" />
                                     <label for="bien">BIEN</label>
@@ -326,11 +326,11 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="panel panel-default panel_visite">
-                              <div class="panel-heading header_visite">
-                                <h3 class="panel-title ">Adoption produits Esnapharm<sup style="color:red;">*</sup></h3>
+                            <div class="card panel_visite">
+                              <div class="card-header header_visite">
+                                <h3 class="card-title">Adoption produits Esnapharm<sup style="color:red;">*</sup></h3>
                               </div>
-                              <div class="panel-body">
+                              <div class="card-body">
                                   <div class="inputGroup">
                                     <input  type="radio" name="data[Visite][veille]" value="100" required="required" id="exclusif" />
                                     <label for="exclusif">Exclusif</label>
@@ -350,32 +350,32 @@
                         <!--<div class="input text" style="margin: 4px 0px;float: left;width: 100%;border-top: 3px solid #eee;padding: 3px 6px;border-radius:5px;">
                                 
                                 // <?php
-                        // echo $this->Form->input('produits', array('name' => "data[Visite][produits]", 'label' => 'La liste des produits partenaire', 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control select2 esna',"style"=>"padding:0px;"));
+                        // echo $this->Form->input('produits', array('name' => "data[Visite][produits]", 'label' => 'La liste des produits partenaire', 'class' => 'col-md-12 col-sm-12 col-12 form-control select2 esna',"style"=>"padding:0px;"));
                         // 
                         ?>
      </div>-->
                         
                             <div class="col-md-12">
-                            <div class="panel panel-default panel_visite">
-                              <div class="panel-heading header_visite">
-                                <h3 class="panel-title ">La liste des produits partenaire</h3>
+                            <div class="card panel_visite">
+                              <div class="card-header header_visite">
+                                <h3 class="card-title">La liste des produits partenaire</h3>
                               </div>
-                              <div class="panel-body panel_text">
+                              <div class="card-body panel_text">
                                   
                                     <?php
-                                        echo $this->Form->input('games', array('name' => "data[Visite][produits]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control select2 produits', 'multiple' => "multiple"));
+                                        echo $this->Form->input('games', array('name' => "data[Visite][produits]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-12 form-control select2 produits', 'multiple' => "multiple"));
                                         ?>
                                   
                               </div>
                             </div>
                         </div>
                             <div class="col-md-12">
-                            <div class="panel panel-default panel_visite">
-                              <div class="panel-heading header_visite">
-                                <h3 class="panel-title title_with_cp">Nombre de boites</h3>
+                            <div class="card panel_visite">
+                              <div class="card-header header_visite">
+                                <h3 class="card-title title_with_cp">Nombre de boites</h3>
                                 <span class="caption">Prescrites/semaine</span>
                               </div>
-                              <div class="panel-body">
+                              <div class="card-body">
                                   <div class="inputGroup">
                                     <input  type="radio" name="data[Produit][nbr_boites]" class="boits" value="5" required="required" id="boit1" />
                                     <label for="boit1">5</label>
@@ -392,26 +392,26 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="panel panel-default panel_visite">
-                              <div class="panel-heading header_visite">
-                                <h3 class="panel-title ">DEMANDE PRODUITS NON PRESENTES</h3>
+                            <div class="card panel_visite">
+                              <div class="card-header header_visite">
+                                <h3 class="card-title">DEMANDE PRODUITS NON PRESENTES</h3>
                               </div>
-                              <div class="panel-body panel_text">
+                              <div class="card-body panel_text">
                                   
                                         <?php
-                            echo $this->Form->input('games', array('name' => "data[Visite][produitsNP]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control select2 produits', 'multiple' => "multiple", "style" => "padding:0px;"));
+                            echo $this->Form->input('games', array('name' => "data[Visite][produitsNP]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-12 form-control select2 produits', 'multiple' => "multiple", "style" => "padding:0px;"));
                             ?>
                                   
                               </div>
                             </div>
                         </div>
                          <div class="col-md-12">
-                            <div class="panel panel-default panel_visite">
-                              <div class="panel-heading header_visite">
-                                <h3 class="panel-title title_with_cp">OBJECTIONS</h3>
+                            <div class="card panel_visite">
+                              <div class="card-header header_visite">
+                                <h3 class="card-title title_with_cp">OBJECTIONS</h3>
                                 <span class="caption">(1)</span>
                               </div>
-                              <div class="panel-body panel_text">
+                              <div class="card-body panel_text">
                                 <select name="data[Visite][produitO][0]" class="form-control select2 esna">
                                         <option value="" selected>Choisissez</option>
                                         <?php foreach ($produits as $key => $p) { ?>
@@ -445,12 +445,12 @@
                         </div>
 
                         <div class="input text" style="margin: 4px 0px;float: left;width: 100%;border-top: 3px solid #eee;padding: 3px 6px;border-radius:5px;">
-                            <label class="col-xs-12" style="border: 1px solid #aaa; border-top-right-radius: 4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;margin-top:5px;">
+                            <label class="col-12" style="border: 1px solid #aaa; border-top-right-radius: 4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;margin-top:5px;">
                                 <b style="line-height: 27px;">OBJECTIONS (1):</b> <span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#aaa;" onclick="concur(0)"><i id="concuricon0" class="fa fa-minus"></i></span>
                             </label>
-                            <div style="border:1px solid #aaa;border-bottom-right-radius:4px;border-bottom-left-radius:4px;padding:10px 0px;margin-top:0px;" class="col-xs-12 concur0 concure">
+                            <div style="border:1px solid #aaa;border-bottom-right-radius:4px;border-bottom-left-radius:4px;padding:10px 0px;margin-top:0px;" class="col-12 concur0 concure">
 
-                                <div class="col-md-3 col-sm-12 col-xs-12" style="margin-top: 8%;">
+                                <div class="col-md-3 col-sm-12 col-12" style="margin-top: 8%;">
                                     <select name="data[Visite][produitO][0]" class="form-control select2 esna">
                                         <option value="" selected>Choisissez</option>
                                         <?php foreach ($produits as $key => $p) { ?>
@@ -459,67 +459,67 @@
                                     </select>
                                 </div>
 
-                                <div class="col-md-9 col-sm-12 col-xs-12 ch">
-                                    <span class="col-md-4 col-sm-12 col-xs-12 check0">
+                                <div class="col-md-9 col-sm-12 col-12 ch">
+                                    <span class="col-md-4 col-sm-12 col-12 check0">
                                         <input type="checkbox" name="data[Visite][objection][0]" value="prix" onclick="check(0)" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;">
                                         <b style="font-weight:normal;">PRIX</b>
                                     </span>
-                                    <span class="col-md-8 col-sm-12 col-xs-12">
-                                        <input type="text" name="data[objections][mot_cles][0]" class="mc0 col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 5px 2px;width: 30%;border-radius: 6px;">
-                                        <input type="text" name="data[objections][mot_cles][1]" class="mc0 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
-                                        <input type="text" name="data[objections][mot_cles][2]" class="mc0 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
+                                    <span class="col-md-8 col-sm-12 col-12">
+                                        <input type="text" name="data[objections][mot_cles][0]" class="mc0 col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 5px 2px;width: 30%;border-radius: 6px;">
+                                        <input type="text" name="data[objections][mot_cles][1]" class="mc0 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
+                                        <input type="text" name="data[objections][mot_cles][2]" class="mc0 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
                                     </span>
 
-                                    <span class="col-md-4 col-sm-12 col-xs-12 check1">
+                                    <span class="col-md-4 col-sm-12 col-12 check1">
                                         <input type="checkbox" name="data[Visite][objection][1]" value="indication" onclick="check(1)" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;">
                                         <b style="font-weight:normal;">INDICATION</b>
                                     </span>
-                                    <span class="col-md-8 col-sm-12 col-xs-12">
-                                        <input type="text" name="data[objections][mot_cles][3]" class="mc1 col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
-                                        <input type="text" name="data[objections][mot_cles][4]" class="mc1 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
-                                        <input type="text" name="data[objections][mot_cles][5]" class="mc1 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 5px 2px;width: 30%;">
+                                    <span class="col-md-8 col-sm-12 col-12">
+                                        <input type="text" name="data[objections][mot_cles][3]" class="mc1 col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
+                                        <input type="text" name="data[objections][mot_cles][4]" class="mc1 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
+                                        <input type="text" name="data[objections][mot_cles][5]" class="mc1 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 5px 2px;width: 30%;">
                                     </span>
 
-                                    <span class="col-md-4 col-sm-12 col-xs-12 check2">
+                                    <span class="col-md-4 col-sm-12 col-12 check2">
                                         <input type="checkbox" name="data[Visite][objection][2]" value="pathologie" onclick="check(2)" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;">
                                         <b style="font-weight:normal;">PATHOLOGIE</b>
                                     </span>
-                                    <span class="col-md-8 col-sm-12 col-xs-12">
-                                        <input type="text" name="data[objections][mot_cles][6]" class="mc2 col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
-                                        <input type="text" name="data[objections][mot_cles][7]" class="mc2 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
-                                        <input type="text" name="data[objections][mot_cles][8]" class="mc2 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
+                                    <span class="col-md-8 col-sm-12 col-12">
+                                        <input type="text" name="data[objections][mot_cles][6]" class="mc2 col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
+                                        <input type="text" name="data[objections][mot_cles][7]" class="mc2 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
+                                        <input type="text" name="data[objections][mot_cles][8]" class="mc2 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
                                     </span>
 
-                                    <span class="col-md-4 col-sm-12 col-xs-12 check3">
+                                    <span class="col-md-4 col-sm-12 col-12 check3">
                                         <input type="checkbox" name="data[Visite][objection][3]" value="posologie" onclick="check(3)" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;">
                                         <b style="font-weight:normal;">POSOLOGIE</b>
                                     </span>
-                                    <span class="col-md-8 col-sm-12 col-xs-12">
-                                        <input type="text" name="data[objections][mot_cles][9]" class="mc3 col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
-                                        <input type="text" name="data[objections][mot_cles][10]" class="mc3 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
-                                        <input type="text" name="data[objections][mot_cles][11]" class="mc3 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
+                                    <span class="col-md-8 col-sm-12 col-12">
+                                        <input type="text" name="data[objections][mot_cles][9]" class="mc3 col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
+                                        <input type="text" name="data[objections][mot_cles][10]" class="mc3 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
+                                        <input type="text" name="data[objections][mot_cles][11]" class="mc3 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
                                     </span>
 
-                                    <span class="col-md-4 col-sm-12 col-xs-12 check4">
+                                    <span class="col-md-4 col-sm-12 col-12 check4">
                                         <input type="checkbox" name="data[Visite][objection][4]" value="presentation" onclick="check(4)" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;">
                                         <b style="font-weight:normal;">PRESENTATION</b>
                                     </span>
-                                    <span class="col-md-8 col-sm-12 col-xs-12">
-                                        <input type="text" name="data[objections][mot_cles][12]" class="mc4 col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
-                                        <input type="text" name="data[objections][mot_cles][13]" class="mc4 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
-                                        <input type="text" name="data[objections][mot_cles][14]" class="mc4 col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
+                                    <span class="col-md-8 col-sm-12 col-12">
+                                        <input type="text" name="data[objections][mot_cles][12]" class="mc4 col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
+                                        <input type="text" name="data[objections][mot_cles][13]" class="mc4 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
+                                        <input type="text" name="data[objections][mot_cles][14]" class="mc4 col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 5px 2px;border-radius: 6px;width: 30%;">
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-12 concurr" style="margin-bottom:10px;padding:3px 6px;" id="1">
+                        <div class="col-12 concurr" style="margin-bottom:10px;padding:3px 6px;" id="1">
                         </div>
-                        <div class="col-xs-12">
+                        <div class="col-12">
                             <b class="ajouterconcur btn btn-primary" style="float:right;">Ajouter Objections</b>
                         </div>
                         <?php
                         foreach ($ordres as $key => $value) :?>
-                        <div class="col-xs-4 col-sm-4 col-md-4 nopad text-center">
+                        <div class="col-4 col-sm-4 col-md-4 nopad text-center">
                             <label class="image-checkbox">
                                 <?php if($value["Brochure"]["logo"]!="" && $value["Brochure"]["logo"]!=null):?>
                                     <img class="img-responsive" style="width:381px;height:130px" src="<?php echo $this->Html->url("/img/brochures/".$value["Brochure"]["logo"])?>" />
@@ -537,14 +537,14 @@
                             else
                                 echo $this->Form->input('order',array('label'=>false));
                         ?>
-                        <div class="input text col-md-12 col-sm-12 col-xs-12" >
+                        <div class="input text col-md-12 col-sm-12 col-12" >
                             <?php
                             echo $this->Form->input('commentaire', array('required','label' => 'Commentaire', 'class' => 'form-control'));
                             ?>
                         </div>
                     </ul>
 
-                    <?php echo $this->Form->end(array('label' => 'Enregistrer le rapport de la visite', 'class' => 'btn btn-primary btn-large submit', 'div' => array('class' => 'well text-center  col-md-12 col-sm-12 col-xs-12'))); ?>
+                    <?php echo $this->Form->end(array('label' => 'Enregistrer le rapport de la visite', 'class' => 'btn btn-primary btn-large submit', 'div' => array('class' => 'card card-body bg-light text-center col-md-12 col-sm-12 col-12'))); ?>
 
                 </div>
 
@@ -552,19 +552,11 @@
         </div>
 </div>
 
-<?php
-echo $this->Html->script('jquery-2.2.3.min');
-?>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <?php
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->css('select2.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
-echo $this->Html->script('select2.full.min');
 ?>
 <script>                            
 (function (factory) {
@@ -674,7 +666,7 @@ $('.ajouterconcur').click(function () {
     var ci = parseInt(cu);
     var chi = 5 + $(".concurr input[type=checkbox]").length;
     var omc = 15 + $(".concurr input[type=text]").length;
-    var div = '<label class="col-xs-12" style="border: 1px solid #aaa; border-top-right-radius: 4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;margin-top:5px;"><b style="line-height: 27px;">OBJECTIONS (' + (ci + 1) + '):</b> <span class="concurclose' + ci + '" style="float:right;cursor:pointer;padding:4px;color:#aaa;margin-left:5px;" onclick="concurcl(' + ci + ')"><i class="fa fa-times"></i></span><span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#aaa;" onclick="concur(' + ci + ')"><i id="concuricon' + ci + '" class="fa fa-minus"></i></span></label><div style="border:1px solid #aaa;border-bottom-right-radius:4px;border-bottom-left-radius:4px;padding:10px 0px;" class="col-xs-12 concur' + ci + ' concure"><div class="col-md-3 col-sm-12 col-xs-12" style="margin-top: 8%;"><select name="data[Visite][produitO][' + ci + ']" class="form-control select2 esna1"><option value="" selected>Choisissez</option><?php foreach ($produits as $key => $p) { ?><option value="<?php echo $key; ?>"><?php echo $p; ?></option><?php } ?></select></div><div class="col-md-9 col-sm-12 col-xs-12 ch"><span class="col-md-4 col-sm-12 col-xs-12 check' + chi + '"><input type="checkbox" name="data[Visite][objection][' + chi + ']" value="prix" onclick="check(' + chi + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PRIX</b></span><span class="col-md-8 col-sm-12 col-xs-12"><input type="text" name="data[objections][mot_cles][' + omc + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 1) + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 2) + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-xs-12 check' + (chi + 1) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 1) + ']" value="indication" onclick="check(' + (chi + 1) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">INDICATION</b></span><span class="col-md-8 col-sm-12 col-xs-12"><input type="text" name="data[objections][mot_cles][' + (omc + 3) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 4) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 5) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-xs-12 check' + (chi + 2) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 2) + ']" value="pathologie" onclick="check(' + (chi + 2) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PATHOLOGIE</b></span><span class="col-md-8 col-sm-12 col-xs-12"><input type="text" name="data[objections][mot_cles][' + (omc + 6) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 7) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 8) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-xs-12 check' + (chi + 3) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 3) + ']" value="posologie" onclick="check(' + (chi + 3) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">POSOLOGIE</b></span><span class="col-md-8 col-sm-12 col-xs-12"><input type="text" name="data[objections][mot_cles][' + (omc + 9) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 10) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 11) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-xs-12 check' + (chi + 4) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 4) + ']" value="presentation" onclick="check(' + (chi + 4) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PRESENTATION</b></span><span class="col-md-8 col-sm-12 col-xs-12"><input type="text" name="data[objections][mot_cles][' + (omc + 12) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 13) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 14) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span></div></div>';
+    var div = '<label class="col-12" style="border: 1px solid #aaa; border-top-right-radius: 4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;margin-top:5px;"><b style="line-height: 27px;">OBJECTIONS (' + (ci + 1) + '):</b> <span class="concurclose' + ci + '" style="float:right;cursor:pointer;padding:4px;color:#aaa;margin-left:5px;" onclick="concurcl(' + ci + ')"><i class="fa fa-times"></i></span><span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#aaa;" onclick="concur(' + ci + ')"><i id="concuricon' + ci + '" class="fa fa-minus"></i></span></label><div style="border:1px solid #aaa;border-bottom-right-radius:4px;border-bottom-left-radius:4px;padding:10px 0px;" class="col-12 concur' + ci + ' concure"><div class="col-md-3 col-sm-12 col-12" style="margin-top: 8%;"><select name="data[Visite][produitO][' + ci + ']" class="form-control select2 esna1"><option value="" selected>Choisissez</option><?php foreach ($produits as $key => $p) { ?><option value="<?php echo $key; ?>"><?php echo $p; ?></option><?php } ?></select></div><div class="col-md-9 col-sm-12 col-12 ch"><span class="col-md-4 col-sm-12 col-12 check' + chi + '"><input type="checkbox" name="data[Visite][objection][' + chi + ']" value="prix" onclick="check(' + chi + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PRIX</b></span><span class="col-md-8 col-sm-12 col-12"><input type="text" name="data[objections][mot_cles][' + omc + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 1) + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 2) + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-12 check' + (chi + 1) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 1) + ']" value="indication" onclick="check(' + (chi + 1) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">INDICATION</b></span><span class="col-md-8 col-sm-12 col-12"><input type="text" name="data[objections][mot_cles][' + (omc + 3) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 4) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 5) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-12 check' + (chi + 2) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 2) + ']" value="pathologie" onclick="check(' + (chi + 2) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PATHOLOGIE</b></span><span class="col-md-8 col-sm-12 col-12"><input type="text" name="data[objections][mot_cles][' + (omc + 6) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 7) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 8) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-12 check' + (chi + 3) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 3) + ']" value="posologie" onclick="check(' + (chi + 3) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">POSOLOGIE</b></span><span class="col-md-8 col-sm-12 col-12"><input type="text" name="data[objections][mot_cles][' + (omc + 9) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 10) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 11) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-12 col-12 check' + (chi + 4) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 4) + ']" value="presentation" onclick="check(' + (chi + 4) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PRESENTATION</b></span><span class="col-md-8 col-sm-12 col-12"><input type="text" name="data[objections][mot_cles][' + (omc + 12) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 13) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 14) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span></div></div>';
     $('.concurr').append(div);
     $(".concurr").attr('id', ci + 1);
     $(".esna1").select2();

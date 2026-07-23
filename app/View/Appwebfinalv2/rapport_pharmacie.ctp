@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css">
 <?php $i = 0;
 foreach ($produits as $key => $p) {
     $pro = str_replace("'", "\'", $p);
@@ -86,7 +85,7 @@ foreach ($produits as $key => $p) {
         color: #fff !important;
     }
 
-    .panel.panel-primary .col-lg-8 {
+    .card .col-lg-8 {
         float: none !important;
         margin: auto !important;
         background: #fff !important;
@@ -94,7 +93,7 @@ foreach ($produits as $key => $p) {
         padding-top: 8px;
     }
 
-    .panel-heading.col-lg-8 {
+    .card-header.col-lg-8 {
         width: 65.666667%;
     }
 
@@ -104,8 +103,8 @@ foreach ($produits as $key => $p) {
 
     @media (max-width:810px) {
 
-        .panel-heading.col-lg-8,
-        .panel-body .col-lg-8 {
+        .card-header.col-lg-8,
+        .card-body .col-lg-8 {
             width: 100% !important;
         }
     }
@@ -117,15 +116,15 @@ foreach ($produits as $key => $p) {
         }
     }
 
-    .concur .col-xs-8 {
+    .concur .col-8 {
         padding: 0px;
     }
 
-    .concur .col-xs-9 {
+    .concur .col-9 {
         padding: 0px;
     }
 
-    .concur .col-xs-12 span.col-xs-4 {
+    .concur .col-12 span.col-4 {
         padding-left: 0px;
     }
 
@@ -244,46 +243,46 @@ foreach ($produits as $key => $p) {
     </div>
     <div class="all-elements">
         <div class="col-md-8 no-padding">
-            <div class="box box-primary col-md-11 no-padding">
-                <div class="box-header with-border col-lg-12 col-xs-12">
-                    <h3 class="box-title" style="padding-left: 0px;margin-left: -7px;"><?php echo __('Rapport d\'une  visite'); ?></h3>
+            <div class="card col-md-11 no-padding">
+                <div class="card-header col-lg-12 col-12">
+                    <h3 class="card-title" style="padding-left: 0px;margin-left: -7px;"><?php echo __('Rapport d\'une  visite'); ?></h3>
                 </div>
-                <div class="box-body no-padding">
+                <div class="card-body no-padding">
 
-                    <div class="col-lg-12 col-xs-12 no-padding">
-                        <div class="panel panel-primary">
-                            <div class="box-body no-padding  form-horizontal payment-form">
+                    <div class="col-lg-12 col-12 no-padding">
+                        <div class="card">
+                            <div class="card-body no-padding payment-form">
                                 <?php echo $this->Form->create('Visite', array("style" => "float: left; width: 100%; height: auto;"));
                                 ?>
                                 <ul class="nav nav-pills nav-stacked">
 
-                                    <div class="input text box box-primary" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
-                                        <div class="box-header with-border">
-                                            <h4 class=" box-title col-md-12 col-sm-12 col-xs-12" style="padding:0;">Type de pharmacie <sup style="color:red;">*</sup></h4>
+                                    <div class="input text card" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
+                                        <div class="card-header">
+                                            <h4 class="card-title col-md-12 col-sm-12 col-12" style="padding:0;">Type de pharmacie <sup style="color:red;">*</sup></h4>
                                         </div>
                                         <div class="for-pad">
-                                            <span class="col-md-6 col-sm-6 col-xs-6">
+                                            <span class="col-md-6 col-sm-6 col-6">
                                                 <input type="radio" name="data[Visite][type_visite]" value="Client" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" required="required"><b style="font-weight:normal;"> Client </b>
                                             </span>
-                                            <span class="col-md-6 col-sm-6 col-xs-6">
+                                            <span class="col-md-6 col-sm-6 col-6">
                                                 <input type="radio" name="data[Visite][type_visite]" value="Non client" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" required="required"><b style="font-weight:normal;"> Non client </b>
                                             </span>
                                         </div>
                                         <br>
                                     </div>
 
-                                    <div class="input text box box-primary" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
-                                        <div class="box-header with-border">
-                                            <h4 class="box-title col-md-12 col-sm-12 col-xs-12" style="padding:0;">Activité de pharmacie <sup style="color:red;">*</sup></h4>
+                                    <div class="input text card" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
+                                        <div class="card-header">
+                                            <h4 class="card-title col-md-12 col-sm-12 col-12" style="padding:0;">Activité de pharmacie <sup style="color:red;">*</sup></h4>
                                         </div>
                                         <div class="for-pad">
-                                            <span class="col-md-4 col-sm-4 col-xs-4 text-center">
+                                            <span class="col-md-4 col-sm-4 col-4 text-center">
                                                 <input type="radio" name="data[Visite][partenaires]" value="Bien" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" required="required"><b style="font-weight:normal;"> Bien </b>
                                             </span>
-                                            <span class="col-md-4 col-sm-4 col-xs-4 text-center">
+                                            <span class="col-md-4 col-sm-4 col-4 text-center">
                                                 <input type="radio" name="data[Visite][partenaires]" value="Moyen" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" required="required"><b style="font-weight:normal;"> Moyen </b>
                                             </span>
-                                            <span class="col-md-4 col-sm-4 col-xs-4 text-center">
+                                            <span class="col-md-4 col-sm-4 col-4 text-center">
                                                 <input type="radio" name="data[Visite][partenaires]" value="Faible" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" required="required"><b style="font-weight:normal;"> Faible </b>
                                             </span>
                                         </div>
@@ -291,25 +290,25 @@ foreach ($produits as $key => $p) {
                                     </div>
 
                                     <!--  commenté en 1-28-2025 
-                                    <div class="input text selectgame box box-primary" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
+                                    <div class="input text selectgame card" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
                                         <?php
-                                        echo "<div class='box-header with-border'>
-                            <h4 class='box-title'>La liste des produits partenaire de prescription </h4></div>";
-                                        echo $this->Form->input('games', array('name' => "data[Visite][produits]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control select2 produits', 'multiple' => "multiple", "style" => "padding:0px;"));
+                                        echo "<div class='card-header'>
+                            <h4 class='card-title'>La liste des produits partenaire de prescription </h4></div>";
+                                        echo $this->Form->input('games', array('name' => "data[Visite][produits]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-12 form-control select2 produits', 'multiple' => "multiple", "style" => "padding:0px;"));
                                         ?>
                                     </div>
-                                    <div class="input text box box-primary" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
-                                        <div class="box-header with-border">
-                                            <h4 class="box-title col-md-12 col-sm-12 col-xs-12" style="padding:0;">Nombre de boites vendues/semaine </h4>
+                                    <div class="input text card" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
+                                        <div class="card-header">
+                                            <h4 class="card-title col-md-12 col-sm-12 col-12" style="padding:0;">Nombre de boites vendues/semaine </h4>
                                         </div>
                                         <div class="for-pad">
-                                            <span class="col-md-4 col-sm-4 col-xs-4 text-center">
+                                            <span class="col-md-4 col-sm-4 col-4 text-center">
                                                 <input type="radio" name="data[Visite][produitschoix]" class="boits" value="5" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" disabled required="required"><b style="font-weight:normal;"> 5 </b>
                                             </span>
-                                            <span class="col-md-4 col-sm-4 col-xs-4 text-center">
+                                            <span class="col-md-4 col-sm-4 col-4 text-center">
                                                 <input type="radio" name="data[Visite][produitschoix]" class="boits" value="10" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" disabled required="required"><b style="font-weight:normal;"> 10 </b>
                                             </span>
-                                            <span class="col-md-4 col-sm-4 col-xs-4 text-center ">
+                                            <span class="col-md-4 col-sm-4 col-4 text-center">
                                                 <input type="radio" name="data[Visite][produitschoix]" class="boits" value="20" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" disabled required="required"><b style="font-weight:normal;"> 20 </b>
                                             </span>
                                         </div>
@@ -318,47 +317,47 @@ foreach ($produits as $key => $p) {
 
                                     <?php
 
-                                    echo '<div class="input text selectgame box box-primary" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;" >';
-                                    echo "<div class='box-header with-border'>
-                            <h4 class='box-title'>La liste des produits partenaire de conseil </h4></div>";
-                                    echo $this->Form->input('games', array('name' => "data[Visite][produitsNP]", 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control select2 produits', 'label' => false, 'multiple' => "multiple", "style" => "padding:0px;"));
+                                    echo '<div class="input text selectgame card" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;" >';
+                                    echo "<div class='card-header'>
+                            <h4 class='card-title'>La liste des produits partenaire de conseil </h4></div>";
+                                    echo $this->Form->input('games', array('name' => "data[Visite][produitsNP]", 'class' => 'col-md-12 col-sm-12 col-12 form-control select2 produits', 'label' => false, 'multiple' => "multiple", "style" => "padding:0px;"));
                                     echo "</div>";
                                     ?>
 
-                                    <div class="input text box box-primary" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
-                                        <div class="box-header with-border">
-                                            <h4 class="box-title col-md-12 col-sm-12 col-xs-12" style="padding:0;">Nombre de boites vendues/semaine </h4>
+                                    <div class="input text card" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
+                                        <div class="card-header">
+                                            <h4 class="card-title col-md-12 col-sm-12 col-12" style="padding:0;">Nombre de boites vendues/semaine </h4>
                                         </div>
                                         <div class="for-pad">
-                                            <span class="col-md-4 col-sm-4 col-xs-4">
+                                            <span class="col-md-4 col-sm-4 col-4">
                                                 <input type="radio" name="data[Visite][produitsNPchoix]" class="boits" value="5" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" disabled required="required"><b style="font-weight:normal;"> 5 </b>
                                             </span>
-                                            <span class="col-md-4 col-sm-4 col-xs-4">
+                                            <span class="col-md-4 col-sm-4 col-4">
                                                 <input type="radio" name="data[Visite][produitsNPchoix]" class="boits" value="10" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" disabled required="required"><b style="font-weight:normal;"> 10 </b>
                                             </span>
-                                            <span class="col-md-4 col-sm-4 col-xs-4">
+                                            <span class="col-md-4 col-sm-4 col-4">
                                                 <input type="radio" name="data[Visite][produitsNPchoix]" class="boits" value="20" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;" disabled required="required"><b style="font-weight:normal;"> 20 </b>
                                             </span>
                                         </div>
                                     </div>
 
-                                    <!-- <div class="input text selectgame box box-primary " style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
+                                    <!-- <div class="input text selectgame card" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
                                         <?php
                                         // commenté en 1-30-2025
-                                        //             echo "<div class='box-header with-border'>
-                                        // <h4 class='box-title'>Noms des principaux prescripteurs </h4></div>";
-                                        //             echo $this->Form->input('clients', array('name' => "data[Visite][prescripteurs]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-xs-12 form-control select2 produits', 'multiple' => "multiple", "style" => "padding:0px;"));
+                                        //             echo "<div class='card-header'>
+                                        // <h4 class='card-title'>Noms des principaux prescripteurs </h4></div>";
+                                        //             echo $this->Form->input('clients', array('name' => "data[Visite][prescripteurs]", 'label' => false, 'class' => 'col-md-12 col-sm-12 col-12 form-control select2 produits', 'multiple' => "multiple", "style" => "padding:0px;"));
                                         ?>
                                     </div> -->
 
-                                    <div class="input text box box-primary" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
-                                        <label class="col-xs-12 " style="border-bottom: 1px solid #ecf0f5; border-top-right-radius: 4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;margin-top:5px;">
+                                    <div class="input text card" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
+                                        <label class="col-12" style="border-bottom: 1px solid #ecf0f5; border-top-right-radius: 4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;margin-top:5px;">
                                             <b style="line-height: 27px;">Veille :</b>
                                             <span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#aaa;" onclick="concur(1)"><i id="concuricon1" class="fa fa-minus"></i></span>
                                         </label>
-                                        <div style="  padding: 10px 0px; margin-top: 0px; display: block;" class="col-xs-12 concur1 concure">
+                                        <div style="  padding: 10px 0px; margin-top: 0px; display: block;" class="col-12 concur1 concure">
 
-                                            <div class="col-md-3 col-sm-12 col-xs-12 ">
+                                            <div class="col-md-3 col-sm-12 col-12">
                                                 <select name="data[Visite][objection][1][produit]" class="form-control select2 esna">
                                                     <option value="" selected>Choisissez produit</option>
                                                     <?php foreach ($games as $key => $p) { ?>
@@ -368,7 +367,7 @@ foreach ($produits as $key => $p) {
                                             </div>
 
 
-                                            <div class="col-md-3 col-sm-12 col-xs-12 no-padding">
+                                            <div class="col-md-3 col-sm-12 col-12 no-padding">
                                                 <select name="data[Visite][objection][1][plv]" class="form-control select2 esna">
                                                     <option value="" selected>Choisissez PLV</option>
                                                     <?php
@@ -379,7 +378,7 @@ foreach ($produits as $key => $p) {
                                                     <?php } ?>
                                                 </select>
                                             </div>
-                                            <div class="col-md-3 col-sm-12 col-xs-12 no-padding">
+                                            <div class="col-md-3 col-sm-12 col-12 no-padding">
                                                 <select name="data[Visite][objection][1][emplacement]" class="form-control select2 esna">
                                                     <option value="" selected>Choisissez emplacement</option>
                                                     <?php
@@ -390,7 +389,7 @@ foreach ($produits as $key => $p) {
                                                     <?php } ?>
                                                 </select>
                                             </div>
-                                            <div class="col-md-3 col-sm-12 col-xs-12 no-padding">
+                                            <div class="col-md-3 col-sm-12 col-12 no-padding">
                                                 <?php echo $this->Form->input("Visite.objection.1.stock", array("class" => "VisiteObjectionStock", "label" => false, 'placeholder' => "Stock disponible au moment de la visite", "type" => "number", "style" => "margin-top:2px;width: 100%;")); ?>
                                             </div>
 
@@ -402,14 +401,14 @@ foreach ($produits as $key => $p) {
 
                                     ?>
 
-                                        <div class="input text box box-primary" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
-                                            <label class="col-xs-12" style="border-bottom: 1px solid #ecf0f5; padding: 5px 6px; margin-bottom: 0px;margin-top:5px;">
+                                        <div class="input text card" style="border: 1px solid #3c8dbc; border-radius: 6px; padding: 7px;margin-top: 6px;">
+                                            <label class="col-12" style="border-bottom: 1px solid #ecf0f5; padding: 5px 6px; margin-bottom: 0px;margin-top:5px;">
                                                 <b style="line-height: 27px;">Concurrent <?php echo $i - 1; ?> : </b>
                                                 <span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#aaa;" onclick="concur(<?php echo $i ?>)">
                                                     <i id="concuricon<?php echo $i ?>" class="fa fa-minus"></i></span>
                                             </label>
 
-                                            <div style="padding: 10px 0px; margin-top: 0px; display: block;" class="col-xs-12 concur<?php echo $i ?> concure">
+                                            <div style="padding: 10px 0px; margin-top: 0px; display: block;" class="col-12 concur<?php echo $i ?> concure">
 
 
                                                 <select name="data[Visite][concurrence_p][<?php echo $i; ?>][produit]" class="form-control select2 esna">
@@ -421,11 +420,11 @@ foreach ($produits as $key => $p) {
 
 
 
-                                                <span class="col-md-6 col-sm-12 col-xs-12 check0 no-padding">
+                                                <span class="col-md-6 col-sm-12 col-12 check0 no-padding">
                                                     <?php echo $this->Form->input("Visite.concurrence_p.$i.produitconcurant", array("label" => false, 'placeholder' => "Produit concurrent", "style" => "width:100%")); ?>
                                                 </span>
                                                 <div class="col-md-12 no-padding" style="margin-top: 14px;">
-                                                    <div class="col-md-6 col-sm-12 col-xs-12 no-padding emp" style="padding-left: 0;">
+                                                    <div class="col-md-6 col-sm-12 col-12 no-padding emp" style="padding-left: 0;">
                                                         <select name="data[Visite][concurrence_p][<?php echo $i; ?>][emplacement]" class="form-control select2 esna" style="margin: 2px;padding: 0px 2px;width: 30%;">
                                                             <option value="" selected>Choisissez emplacement</option>
                                                             <?php
@@ -436,7 +435,7 @@ foreach ($produits as $key => $p) {
                                                             <?php } ?>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-6 col-sm-12 col-xs-12 no-padding">
+                                                    <div class="col-md-6 col-sm-12 col-12 no-padding">
                                                         <select name="data[Visite][concurrence_p][<?php echo $i; ?>][plv]" class="form-control select2 esna" style="margin: 2px;padding: 0px 2px;width: 30%;">
                                                             <option value="" selected>Choisissez PLV</option>
                                                             <?php
@@ -449,43 +448,43 @@ foreach ($produits as $key => $p) {
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+                                                <div class="col-md-12 col-sm-12 col-12 no-padding">
                                                     <?php echo $this->Form->input("Visite.concurrence_p.$i.stock", array("label" => false, 'placeholder' => "Stock disponible au moment de la visite", "type" => "number", "style" => "width:98%;text-align:center;")); ?>
                                                 </div>
-                                                <div class="col-md-12 col-sm-12 col-xs-12 no-padding" >
-                                                    <span class="col-md-3 col-sm-12 col-xs-12 check3" style="margin-bottom: 10px;">
+                                                <div class="col-md-12 col-sm-12 col-12 no-padding" >
+                                                    <span class="col-md-3 col-sm-12 col-12 check3" style="margin-bottom: 10px;">
                                                         <b style="font-weight: 600;">Type de l'offre</b>
                                                     </span>
-                                                    <span class="col-md-8 col-sm-12 col-xs-12" style="padding-left: 18px;">
-                                                        <span class="col-md-4 col-sm-12 col-xs-12">
-                                                            <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][offre]" class="mc3 col-md-4 col-sm-4 col-xs-4" value="Pack" style="margin: 2px;padding: 0px 2px;width: 30%;">
+                                                    <span class="col-md-8 col-sm-12 col-12" style="padding-left: 18px;">
+                                                        <span class="col-md-4 col-sm-12 col-12">
+                                                            <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][offre]" class="mc3 col-md-4 col-sm-4 col-4" value="Pack" style="margin: 2px;padding: 0px 2px;width: 30%;">
                                                             <b style="font-weight:normal;"> Pack </b>
                                                         </span>
-                                                        <span class="col-md-4 col-sm-12 col-xs-12">
-                                                            <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][offre]" class="mc3 col-md-4 col-sm-4 col-xs-4" value="Action" style="margin: 2px;padding: 0px 2px;width: 30%;">
+                                                        <span class="col-md-4 col-sm-12 col-12">
+                                                            <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][offre]" class="mc3 col-md-4 col-sm-4 col-4" value="Action" style="margin: 2px;padding: 0px 2px;width: 30%;">
                                                             <b style="font-weight:normal;"> Action </b>
                                                         </span>
-                                                        <span class="col-md-4 col-sm-12 col-xs-12">
-                                                            <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][offre]" class="mc3 col-md-4 col-sm-4 col-xs-4" value="Autres" style="margin: 2px;padding: 0px 2px;width: 30%;">
+                                                        <span class="col-md-4 col-sm-12 col-12">
+                                                            <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][offre]" class="mc3 col-md-4 col-sm-4 col-4" value="Autres" style="margin: 2px;padding: 0px 2px;width: 30%;">
                                                             <b style="font-weight:normal;"> Autres </b>
                                                         </span>
                                                     </span>
                                                 </div>
                                                 <div class="col-md-12 no-padding" >
-                                                    <span class="col-md-3 col-sm-12 col-xs-12 check3" style="margin-bottom: 10px;">
+                                                    <span class="col-md-3 col-sm-12 col-12 check3" style="margin-bottom: 10px;">
                                                         <b style="font-weight: 600;">Degré d'agressivité</b>
                                                     </span>
-                                                    <span class="col-md-9 col-sm-12 col-xs-12">
-                                                        <span class="col-md-4 col-sm-12 col-xs-12">
-                                                            <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][agressivite]" class="mc3 col-md-4 col-sm-4 col-xs-4" value="Tres agressive" style="margin: 2px;padding: 0px 2px;width: 30%;">
+                                                    <span class="col-md-9 col-sm-12 col-12">
+                                                        <span class="col-md-4 col-sm-12 col-12">
+                                                            <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][agressivite]" class="mc3 col-md-4 col-sm-4 col-4" value="Tres agressive" style="margin: 2px;padding: 0px 2px;width: 30%;">
                                                             <b style="font-weight:normal;"> Tres agressive </b>
                                                         </span>
-                                                        <span class="col-md-4 col-sm-12 col-xs-12">
-                                                            <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][agressivite]" class="mc3 col-md-4 col-sm-4 col-xs-4" value="Agressive" style="margin: 2px;padding: 0px 2px;width: 30%;">
+                                                        <span class="col-md-4 col-sm-12 col-12">
+                                                            <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][agressivite]" class="mc3 col-md-4 col-sm-4 col-4" value="Agressive" style="margin: 2px;padding: 0px 2px;width: 30%;">
                                                             <b style="font-weight:normal;"> Agressive </b>
                                                         </span>
-                                                        <span class="col-md-4 col-sm-12 col-xs-12">
-                                                            <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][agressivite]" class="mc3 col-md-4 col-sm-4 col-xs-4" value="Peu agressive" style="margin: 2px;padding: 0px 2px;width: 30%;">
+                                                        <span class="col-md-4 col-sm-12 col-12">
+                                                            <input type="radio" name="data[Visite][concurrence_p][<?php echo $i; ?>][agressivite]" class="mc3 col-md-4 col-sm-4 col-4" value="Peu agressive" style="margin: 2px;padding: 0px 2px;width: 30%;">
                                                             <b style="font-weight:normal;"> Peu agressive </b>
                                                         </span>
                                                     </span>
@@ -495,7 +494,7 @@ foreach ($produits as $key => $p) {
                                     <?php endfor; ?>
 
                                     <?php if ($user["User"]["ligne_id"] == 9) { ?>
-                                        <div class="input text col-md-12 col-sm-12 col-xs-12" id="stockv" style="    position: relative;">
+                                        <div class="input text col-md-12 col-sm-12 col-12" id="stockv" style="    position: relative;">
                                             <ul class="tabs" style="margin-bottom:17px;border: 1px solid #3c8dbc;border-radius: 6px;padding: 7px;margin-top: 6px;">
                                                 <li><?php echo $this->Form->input("Stockvisite.0.produit_id", array('label' => 'Produit', "options" => $produits_stock, 'div' => array('id' => 'div0'), 'class' => 'form-control')); ?></li>
                                                 <li><?php echo $this->Form->input("Stockvisite.0.quantite", array('label' => 'Quantité', 'class' => 'form-control')); ?></li>
@@ -506,14 +505,14 @@ foreach ($produits as $key => $p) {
                                     <?php } ?>
 
 
-                                    <div class="input text col-md-12 col-sm-12 col-xs-12">
+                                    <div class="input text col-md-12 col-sm-12 col-12">
                                         <?php
                                         echo $this->Form->input('commentaire', array('label' => 'Commentaire', 'class' => 'form-control'));
                                         ?>
                                     </div>
                                 </ul>
 
-                                <?php echo $this->Form->end(array('label' => 'Enregistrer le rapport de la visite', 'class' => 'btn btn-primary btn-large submit', 'div' => array('class' => 'well text-center  col-md-12 col-sm-12 col-xs-12'))); ?>
+                                <?php echo $this->Form->end(array('label' => 'Enregistrer le rapport de la visite', 'class' => 'btn btn-primary btn-large submit', 'div' => array('class' => 'card card-body bg-light text-center col-md-12 col-sm-12 col-12'))); ?>
 
                             </div>
 
@@ -526,19 +525,11 @@ foreach ($produits as $key => $p) {
     </div>
 </div>
 
-<?php
-echo $this->Html->script('jquery-2.2.3.min');
-?>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <?php
-echo $this->Html->script('bootstrap.min');
-echo $this->Html->script('app.min');
-echo $this->Html->css('select2.min');
 echo $this->Html->script('jquery.slimscroll.min');
 echo $this->Html->script('fastclick');
 echo $this->Html->script('demo');
-echo $this->Html->script('select2.full.min');
 ?>
 <script>
     (function(factory) {
@@ -659,7 +650,7 @@ echo $this->Html->script('select2.full.min');
         var ci = parseInt(cu);
         var chi = 5 + $(".concurr input[type=checkbox]").length;
         var omc = 15 + $(".concurr input[type=text]").length;
-        var div = '<label class="col-xs-12" style="border: 1px solid #aaa; border-top-right-radius: 4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;margin-top:5px;"><b style="line-height: 27px;">OBJECTIONS (' + (ci + 1) + '):</b> <span class="concurclose' + ci + '" style="float:right;cursor:pointer;padding:4px;color:#aaa;margin-left:5px;" onclick="concurcl(' + ci + ')"><i class="fa fa-times"></i></span><span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#aaa;" onclick="concur(' + ci + ')"><i id="concuricon' + ci + '" class="fa fa-minus"></i></span></label><div style="border:1px solid #aaa;border-bottom-right-radius:4px;border-bottom-left-radius:4px;padding:10px 0px;" class="col-xs-12 concur' + ci + ' concure"><div class="col-md-3 col-sm-12 col-xs-12" style="margin-top: 8%;"><select name="data[Visite][produitO][' + ci + ']" class="form-control select2 esna1"><option value="" selected>Choisissez</option><?php foreach ($produits as $key => $p) { ?><option value="<?php echo $key; ?>"><?php echo $p; ?></option><?php } ?></select></div><div class="col-md-9 col-sm-12 col-xs-12"><span class="col-md-4 col-sm-4 col-xs-4 check' + chi + '"><input type="checkbox" name="data[Visite][objection][' + chi + ']" value="prix" onclick="check(' + chi + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PRIX</b></span><span class="col-md-8 col-sm-8 col-xs-8"><input type="text" name="data[objections][mot_cles][' + omc + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 1) + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 2) + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-4 col-xs-4 check' + (chi + 1) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 1) + ']" value="indication" onclick="check(' + (chi + 1) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">INDICATION</b></span><span class="col-md-8 col-sm-8 col-xs-8"><input type="text" name="data[objections][mot_cles][' + (omc + 3) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 4) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 5) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-4 col-xs-4 check' + (chi + 2) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 2) + ']" value="pathologie" onclick="check(' + (chi + 2) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PATHOLOGIE</b></span><span class="col-md-8 col-sm-8 col-xs-8"><input type="text" name="data[objections][mot_cles][' + (omc + 6) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 7) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 8) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-4 col-xs-4 check' + (chi + 3) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 3) + ']" value="posologie" onclick="check(' + (chi + 3) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">POSOLOGIE</b></span><span class="col-md-8 col-sm-8 col-xs-8"><input type="text" name="data[objections][mot_cles][' + (omc + 9) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 10) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 11) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-4 col-xs-4 check' + (chi + 4) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 4) + ']" value="presentation" onclick="check(' + (chi + 4) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PRESENTATION</b></span><span class="col-md-8 col-sm-8 col-xs-8"><input type="text" name="data[objections][mot_cles][' + (omc + 12) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-xs-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 13) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 14) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-xs-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span></div></div>';
+        var div = '<label class="col-12" style="border: 1px solid #aaa; border-top-right-radius: 4px; border-top-left-radius: 4px; padding: 5px 6px; margin-bottom: 0px;margin-top:5px;"><b style="line-height: 27px;">OBJECTIONS (' + (ci + 1) + '):</b> <span class="concurclose' + ci + '" style="float:right;cursor:pointer;padding:4px;color:#aaa;margin-left:5px;" onclick="concurcl(' + ci + ')"><i class="fa fa-times"></i></span><span class="concurtogg" style="float:right;cursor:pointer;padding:4px;color:#aaa;" onclick="concur(' + ci + ')"><i id="concuricon' + ci + '" class="fa fa-minus"></i></span></label><div style="border:1px solid #aaa;border-bottom-right-radius:4px;border-bottom-left-radius:4px;padding:10px 0px;" class="col-12 concur' + ci + ' concure"><div class="col-md-3 col-sm-12 col-12" style="margin-top: 8%;"><select name="data[Visite][produitO][' + ci + ']" class="form-control select2 esna1"><option value="" selected>Choisissez</option><?php foreach ($produits as $key => $p) { ?><option value="<?php echo $key; ?>"><?php echo $p; ?></option><?php } ?></select></div><div class="col-md-9 col-sm-12 col-12"><span class="col-md-4 col-sm-4 col-4 check' + chi + '"><input type="checkbox" name="data[Visite][objection][' + chi + ']" value="prix" onclick="check(' + chi + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PRIX</b></span><span class="col-md-8 col-sm-8 col-8"><input type="text" name="data[objections][mot_cles][' + omc + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 1) + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 2) + ']" class="mc' + chi + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-4 col-4 check' + (chi + 1) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 1) + ']" value="indication" onclick="check(' + (chi + 1) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">INDICATION</b></span><span class="col-md-8 col-sm-8 col-8"><input type="text" name="data[objections][mot_cles][' + (omc + 3) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 4) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 5) + ']" class="mc' + (chi + 1) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-4 col-4 check' + (chi + 2) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 2) + ']" value="pathologie" onclick="check(' + (chi + 2) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PATHOLOGIE</b></span><span class="col-md-8 col-sm-8 col-8"><input type="text" name="data[objections][mot_cles][' + (omc + 6) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 7) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 8) + ']" class="mc' + (chi + 2) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-4 col-4 check' + (chi + 3) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 3) + ']" value="posologie" onclick="check(' + (chi + 3) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">POSOLOGIE</b></span><span class="col-md-8 col-sm-8 col-8"><input type="text" name="data[objections][mot_cles][' + (omc + 9) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 10) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 11) + ']" class="mc' + (chi + 3) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span><span class="col-md-4 col-sm-4 col-4 check' + (chi + 4) + '"><input type="checkbox" name="data[Visite][objection][' + (chi + 4) + ']" value="presentation" onclick="check(' + (chi + 4) + ')" style="float:left;width: 17px;height: 16px;margin-top: 3px;margin-left: 2px;"><b style="font-weight:normal;">PRESENTATION</b></span><span class="col-md-8 col-sm-8 col-8"><input type="text" name="data[objections][mot_cles][' + (omc + 12) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-4" disabled required="required" placeholder="Mot cle 1" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 13) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 2" style="margin: 2px;padding: 0px 2px;width: 30%;"><input type="text" name="data[objections][mot_cles][' + (omc + 14) + ']" class="mc' + (chi + 4) + ' col-md-4 col-sm-4 col-4" disabled placeholder="Mot cle 3" style="margin: 2px;padding: 0px 2px;width: 30%;"></span></div></div>';
         $('.concurr').append(div);
         $(".concurr").attr('id', ci + 1);
         $(".esna1").select2();

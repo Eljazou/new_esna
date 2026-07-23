@@ -1084,6 +1084,95 @@ layouts (`appmobile`, `appmobilepro`, `mobile`, `error`, `blanck`, `Emails/`,
 
 ---
 
+### 2026-07-23 — Shared partials + mobile analysis + the `mobile` layout ✅
+
+#### Shared partials — `Clients/view.ctp` is now fully clean
+
+`Elements/clients/visite_item_v2.ctp` and `visite_item_pharmacie_v2.ctp` (22
+Font Awesome icons) are rendered *inside* the already-migrated
+`Clients/view.ctp`, so that page had been mixing Metronic markup with legacy
+partials. Both migrated; five new icon mappings needed
+(`fa-quote-left`, `fa-balance-scale`, `fa-long-arrow-right`, `fa-gift`,
+`fa-image`).
+
+The remaining "AdminLTE colours" hits turned out to be `lb-v2-bg-green` /
+`lb-v2-bg-red` — the file's **own** prefixed classes with their own CSS. Another
+hyphen-boundary false positive (TODO #38), so I swept every audit pattern:
+**six were unguarded** (`small-box/info-box`, `AdminLTE colours`,
+`input-group-addon`, `control-label`, `form-horizontal`, `BS3 label-*`) and are
+now boundary-anchored. Re-running across all 57 modules produced a residual list
+**byte-identical** to before, confirming the guards removed only the false
+positive and masked nothing real.
+
+#### Mobile analysis — the track is three stacks, not one
+
+Recorded in full in the options document. The headline correction: the 41 mobile
+views are **not** "41 views on Bootstrap 4.3.1". They are
+
+| layout | stack | views | lines |
+|---|---|---:|---:|
+| `mobile` | Bootstrap 3 + AdminLTE 2 + FA4 + Ionicons | 14 | 9,817 |
+| `appmobile` | Bootstrap 4.3.1 (CDN) + FA Pro 6 | 17 | 8,356 |
+| `appmobilepro` | Bootstrap 4.3.1 (CDN) + Lucide + own `connectpro-theme.css` | 10 | 3,727 |
+
+`Appweb` and `Appwebfinal` are near-duplicates (89.8–99.9% identical on shared
+views); `Appwebfinalv2` is a genuine rewrite (2.4–27.9%). **Owner decision:
+Option B** — keep the mobile app's own design, do not force Metronic onto it.
+The 17 `appmobile` views are **on hold** pending which URL the deployed phone app
+actually opens.
+
+#### `Layouts/mobile.ctp` + its 14 report views
+
+Migrated off Bootstrap 3 + AdminLTE 2 onto **plain Bootstrap 5.3.3, vendored
+locally** (`webroot/css/bootstrap5.min.css`, 227 KB) — deliberately *not*
+Metronic, whose core bundles are ~4.4 MB. Mobile page weight lands at ~890 KB,
+essentially unchanged from the 839 KB it was.
+
+Icons **stay on Font Awesome** here (`--no-icons` mode added to the migrator).
+Adopting Keenicons would mean shipping 719 KB of Metronic plugin CSS to a phone
+for icons alone, and emitting `ki-*` classes with no stylesheet behind them would
+make every icon silently vanish.
+
+That decision also fixed a live bug. The 14 views mix two Font Awesome syntaxes —
+37 v4-style (`fa fa-minus`) and 40 v6-style (`fa-solid fa-plus`,
+`fa-scale-unbalanced`) — while the layout loaded only **FA 4.5.0**. So roughly
+**40 icons had been rendering as empty boxes**. The vendored `all.css` is FA Pro
+6.4 *unminified*, where `.fa` still supplies the font family and `fa-times` is
+retained as an alias — so loading it makes **both** syntaxes resolve. No icon
+conversion needed, and the 40 broken ones now work.
+
+Removed from the layout: BS3, AdminLTE CSS/JS, the Font Awesome 4.5.0 and
+Ionicons CDN links, the IE8 html5shiv/respond conditionals, `searchmenu()` (drove
+a sidebar this layout never had), and the `$(window).load()` handler that rewrote
+`#flashMessage` client-side — replaced by the server-side
+`Elements/layout/flash.ctp`, as on desktop. No view referenced `#flashMessage`.
+
+Kept on purpose: `.content-wrapper` / `.content-header`. The names came from
+AdminLTE, but **seven views supply their own rules for them** (centring, padding,
+background) — they are a layout/view contract, and dropping them would silently
+un-style those pages.
+
+Two residuals the migrator will not touch by design were handled separately:
+**147 `col-xs-*` inside JavaScript-built markup** (TODO #21 — safe here because
+the token contains no quote, `+`, `.` or `$`, so a textual swap cannot damage a
+concatenation), and **6 redundant per-view FA CDN `<link>`s** now that the layout
+serves FA locally.
+
+### Verification — 14 views + layout
+
+| | |
+|---|---|
+| `php -l` | 14 views + `mobile.ctp`, **0 failures** |
+| logic diff | 14 compared, 0 skipped; 3 differ — AdminLTE `box-*` → `card-*` inside PHP echo strings, all `-N/+N` balanced |
+| code intact | ALL INTACT across all four mobile controllers |
+| concat damage | ALL CLEAN |
+| legacy audit | **no non-Font-Awesome legacy remains**; FA is the recorded Option B decision |
+
+Scope was contained: `git status` shows only the 14 report views changed. Not one
+`appmobile` or `appmobilepro` view was touched.
+
+---
+
 ## 5. Migration checklist — inventory of `app/View/**/*.ctp`
 
 **376 `.ctp` files** across 65 view directories.
@@ -1402,6 +1491,16 @@ work.
     was skipped for four batches because `swap_icons` anchored the prefix at the start of the
     attribute. Fixed in batch 4; matters for the mobile track, which is dense with FA. When a
     pattern assumes token *position* rather than token *presence*, it will miss real cases.
+46. **`Layouts/mobile.ctp` still loads jQuery 2.2.3.** Its 14 views use `$(...)` heavily but
+    no jQuery-2-only idioms, so 3.x would very likely work — "very likely" is not worth it on
+    views nobody has rendered yet. Upgrade when someone can watch the forms submit.
+47. **The mobile track keeps Font Awesome; only the desktop uses Keenicons.** Run the
+    migrator with `--no-icons` on `Appweb`/`Appwebfinal`/`Appwebfinalv2`/`Visitemobileapis`.
+    Keenicons lives in Metronic's 719 KB plugin CSS, which is not worth shipping to a phone,
+    and emitting `ki-*` without it makes every icon silently disappear.
+48. **`Appweb` / `Appwebfinal` are ON HOLD** pending which URL the deployed phone app opens.
+    They are 89.8–99.9% identical to each other; if the app only opens `Appwebfinalv2`, 17
+    views are dead code. Do not migrate them until that is answered.
 30. **"ALL CLEAN" means "clean against the 25 patterns currently audited."** Seven separate
     times an incomplete pattern set produced a clean report on code that still had defects.
     When migrating a new module, expect to discover legacy classes not yet in

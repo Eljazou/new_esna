@@ -21,15 +21,17 @@ PATTERNS = {
     # metronize.py rewrite `small-box-footer` into `small-card-footer`.
     'box-header/body/title': r'class="[^"]*(?<![-\w])box-(header|body|title|footer)(?![-\w])',
     'BS3 panel':             r'class="[^"]*(?<![-\w])panel(-heading|-body|-title|-footer)?(?![-\w])',
-    'small-box/info-box':    r'class="[^"]*(small-box|info-box)',
-    'AdminLTE colours':      r'class="[^"]*bg-(aqua|green|red|yellow|purple|navy|teal)(?![-\w])',
+    # Leading (?<![-\w]) only: `info-box-icon` IS part of the AdminLTE component
+    # and should still count, but the app's own `lb-v2-info-box` must not.
+    'small-box/info-box':    r'class="[^"]*(?<![-\w])(small-box|info-box)',
+    'AdminLTE colours':      r'class="[^"]*(?<![-\w])bg-(aqua|green|red|yellow|purple|navy|teal)(?![-\w])',
     'well':                  r'class="[^"]*(?<![-\w])well(?![-\w])',
     'col-xs-*':              r'\bcol-xs-\d',
     'BS3 data-toggle':       r'''\sdata-(toggle|dismiss|target|parent)=['"]''',
-    'input-group-addon':     r'input-group-addon',
-    'control-label':         r'class="[^"]*control-label',
-    'form-horizontal':       r'class="[^"]*form-horizontal',
-    'BS3 label-*':           r'class="[^"]*label-(success|danger|warning|info|primary)',
+    'input-group-addon':     r'(?<![-\w])input-group-addon(?![-\w])',
+    'control-label':         r'class="[^"]*(?<![-\w])control-label(?![-\w])',
+    'form-horizontal':       r'class="[^"]*(?<![-\w])form-horizontal(?![-\w])',
+    'BS3 label-*':           r'class="[^"]*(?<![-\w])label-(success|danger|warning|info|primary)',
     # Font Awesome 4 (`fa`) AND Font Awesome 5 (`fas`/`far`/`fal`/`fab`). The
     # pattern used to match only the bare `fa` token, so every FA5 icon in the
     # app was invisible to this audit -- including the whole Rapportprocpects

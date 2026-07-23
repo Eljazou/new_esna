@@ -1,26 +1,52 @@
-<?php                                    ?>
+<?php
+/**
+ * `mobile` layout — the visit-report forms opened inside the native phone app's
+ * webview (Appweb, Appwebfinal, Appwebfinalv2, Visitemobileapis).
+ *
+ * Migrated off Bootstrap 3 + AdminLTE 2. Deliberately NOT rebuilt on Metronic:
+ * this is a phone surface, and Metronic's core bundles total ~4.4 MB against
+ * ~890 KB here. It gets plain Bootstrap 5 plus the Font Awesome Pro 6 the mobile
+ * app already vendors (webroot/css/all.css) — see PROJECT_LOG §7, Option B.
+ *
+ * REMOVED
+ *   - bootstrap.css (3.3.6), style.min.css + skin-blue.min.css (AdminLTE),
+ *     bootstrap.min.js (BS3), app.min.js (AdminLTE)
+ *   - Font Awesome 4.5.0 and Ionicons 2.0.1 CDN links. Both were external
+ *     requests; FA 6 Pro is local and supersedes the first. Ionicons was never
+ *     used by any view on this layout.
+ *   - the html5shiv / respond.js IE8 conditional comments
+ *   - the $(window).load() handler that rewrote #flashMessage into a Bootstrap
+ *     alert on the client. Flash is now rendered server-side by
+ *     Elements/layout/flash.ctp, exactly as on the desktop layout. No view on
+ *     this layout referenced #flashMessage.
+ *   - searchmenu(), which drove a sidebar this layout has never contained.
+ *
+ * KEPT ON PURPOSE
+ *   - `.content-wrapper` / `.content-header`. The class names came from
+ *     AdminLTE, but seven views now supply their OWN rules for them (centring,
+ *     padding, background) — they are a layout/view contract, and dropping them
+ *     would silently un-style those pages.
+ *   - jQuery 2.2.3. The views make heavy use of `$(...)`; none of them use
+ *     jQuery-2-only idioms, so 3.x would probably work, but "probably" is not
+ *     worth it on views nobody can render yet. See PROJECT_LOG TODO #46.
+ *   - the loading overlay and its `.btn_spiner` trigger, used by 10 views.
+ *   - the viewport, verbatim (it blocks pinch-zoom; that is pre-existing
+ *     behaviour of the app shell, not something to change while restyling).
+ */
+?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CRM VMP</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <?php
-    echo $this->Html->css('bootstrap');
-    echo $this->Html->css('font-awesome.min');
-    echo $this->Html->css('style.min');
-    echo $this->Html->css('skin-blue.min');
+    echo $this->Html->css('bootstrap5.min');
+    echo $this->Html->css('all');
+    echo $this->fetch('css');
     ?>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
     <style>
         /*  loading style */
         #loading-overlay {
@@ -59,80 +85,38 @@
 
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
-
-        <!-- Main Header -->
-
-        <div class="content-wrapper">
-            <section class="content-header">
-                <?php
-                echo $this->Session->flash();
-                echo $this->fetch('content');
-                ?>
-            </section>
-            <section class="content">
-            </section>
-        </div>
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                CRM VMP
-            </div>
-            <strong>Copyright &copy; <?php echo date("Y"); ?> <a href="#">ICOZ</a>.</strong> All rights reserved.
-        </footer>
-        <div class="control-sidebar-bg"></div>
+<body>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <?php
+            echo $this->element('layout/flash');
+            echo $this->fetch('content');
+            ?>
+        </section>
+        <section class="content">
+        </section>
     </div>
+    <footer class="main-footer text-muted small border-top py-3 px-3">
+        <div class="float-end d-none d-sm-block">
+            CRM VMP
+        </div>
+        <strong>Copyright &copy; <?php echo date("Y"); ?> <a href="#">ICOZ</a>.</strong> All rights reserved.
+    </footer>
     <div id="loading-overlay">
         <div class="loading-spinner"></div>
     </div>
     <?php
     echo $this->Html->script('jquery-2.2.3.min');
-    echo $this->Html->script('bootstrap.min');
-    echo $this->Html->script('app.min');
+    echo $this->Html->script('bootstrap5.bundle.min');
+    echo $this->fetch('script');
     ?>
-</body>
-<script>
-    $(window).load(function() {
-        var text1 = $("#flashMessage").text();
-        var htm1 = "<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a> <strong>Alert!</strong>&nbsp;&nbsp;" + text1;
-        $("#flashMessage").html(htm1);
-        $("#flashMessage").attr("class", "alert alert-success fade in");
-        $("#flashMessage").attr("style", "background:#3c8dbc !important;border-color:#3c8dba;");
-        var text2 = $("#authMessage").text();
-        var htm2 = "<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a> <strong>Alert!</strong>&nbsp;&nbsp;" + text2;
-        $("#authMessage").html(htm2);
-        $("#authMessage").attr("class", "alert alert-danger fade in");
-        var h = $(window).height();
-        $(".sidebar-menu").height(h - 45);
-    });
-
-    function searchmenu(va) {
-        var v = va.toLowerCase();
-        var menu = document.getElementById("menu");
-        for (i = 0; i < menu.getElementsByTagName('li').length; i++) {
-            var lien = menu.getElementsByTagName('li')[i].innerText.toLowerCase();
-            menu.getElementsByTagName('li')[i].style.display = "none";
-            menu.getElementsByTagName('li')[0].style.display = "block";
-            if (lien.indexOf(v) !== -1) {
-                menu.getElementsByTagName('li')[i].style.display = "block";
-                menu.getElementsByTagName('li')[i].parentNode.style.display = "block";
-            }
-        }
-        for (j = 0; j < menu.getElementsByTagName('ul').length; j++) {
-            if (va === "") {
-                $(".treeview ul:eq(" + j + ")").hide();
-            }
-        }
-    }
-
-
-    $(document).ready(function() {
-        $(".btn_spiner").on("click", function() {
-            $("#loading-overlay").css('display', 'flex');
+    <script>
+        $(document).ready(function() {
+            $(".btn_spiner").on("click", function() {
+                $("#loading-overlay").css('display', 'flex');
+            });
         });
-    });
-</script>
+    </script>
+</body>
 
 </html>
-<?php //echo $this->element('sql_dump');   
-?>
